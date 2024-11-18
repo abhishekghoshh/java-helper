@@ -8,7 +8,7 @@ public class Runner {
         run(clazz, true);
     }
 
-    private static void run(Class<?> clazz, boolean run) {
+    public static void run(Class<?> clazz, boolean run) {
         if (!run) return;
         try {
             // Get the main method
