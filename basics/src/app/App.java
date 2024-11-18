@@ -1,10 +1,10 @@
-package com;
+package app;
 
-import com.collection.CollectionsTest;
+import app.collection.CollectionsTest;
 
-import static com.util.Runner.run;
+import static app.util.Runner.run;
 
-public class Main {
+public class App {
     public static void main(String[] args) {
         // basics
 

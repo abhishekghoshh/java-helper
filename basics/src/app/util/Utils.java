@@ -1,4 +1,4 @@
-package com.util;
+package app.util;
 
 public class Utils {
     public static void run(Runnable runnable) {
