@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 
 public class Runner {
     public static void run(Class<?> clazz) {
-        run(clazz, true);
+        run(clazz, false);
     }
 
     public static void run(Class<?> clazz, boolean run) {
