@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 import static app.util.Utils.run;
 
 public class ReflectionsTest {
-    public static void main(String[] args) throws InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchMethodException {
+    public static void main(String[] args) throws InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchMethodException, NoSuchFieldException {
         run(() -> {
             Class<?> className = Class.forName("app.basics.ReflectionsTest.Person");
             System.out.println("className.getCanonicalName() : " + className.getCanonicalName());
@@ -22,17 +22,23 @@ public class ReflectionsTest {
         // we can get via this method
         Class<Person> personClass = Person.class;
         Person person = new Person("Abhishek Ghosh", 24);
-        System.out.println(personClass.getCanonicalName());
-        System.out.println(personClass.getPackageName());
+
+        System.out.println("person.getName() " + person.getName());
+        System.out.println("personClass.getCanonicalName() " + personClass.getCanonicalName());
+        System.out.println("personClass.getPackageName() " + personClass.getPackageName());
 
         checkFields(personClass.getFields(), "personClass.getFields()");
         checkFields(personClass.getDeclaredFields(), "personClass.getDeclaredFields()");
 
+        // Getting public methods of the class through the object of the class by using getMethods
         checkMethods(personClass.getMethods(), "personClass.getMethods()");
+        // creates object of desired method by providing the method name and parameter class as arguments to the getDeclaredMethod
         checkMethods(personClass.getDeclaredMethods(), "personClass.getDeclaredMethods()");
 
+        // getting all fields by getDeclaredFields
         setFieldsToPublic(personClass.getDeclaredFields(), "this fields will be public");
 
+        // Getting the constructor of the class through the object of the class
         checkConstructor(personClass.getDeclaredConstructors(), "personClass.getDeclaredConstructors()");
 
         checkInterfaces(personClass.getInterfaces(), "personClass.getInterfaces()");
@@ -65,6 +71,7 @@ public class ReflectionsTest {
         for (Field field : declaredFields) {
             if (Modifier.isPrivate(field.getModifiers())) {
                 System.out.println("Field name : " + field.getName() + ", modifier type " + Modifier.toString(field.getModifiers()));
+                // allows the object to access the field irrespective of the access specifier used with the field
                 field.setAccessible(true);
             }
         }
@@ -79,7 +86,7 @@ public class ReflectionsTest {
                     " parameters, is accessible :" + Modifier.isPrivate(constructor.getModifiers()));
             if (constructor.getParameterCount() == 0) {
                 constructor.setAccessible(true);
-                System.out.println(constructor.newInstance());
+                System.out.println("creating new instance of the " + constructor.newInstance());
             }
         }
 
@@ -92,20 +99,31 @@ public class ReflectionsTest {
         }
     }
 
-    public static void checkSuperClass(Class<? super Person> superclass, String identifier) {
+    public static void checkSuperClass(Class<?> superclass, String identifier) {
         System.out.println(identifier + " superclass name is " + superclass.getCanonicalName());
     }
 
-    public static void checkAnnotation(Person obj, String identifier) throws NoSuchMethodException {
+    public static <T> void checkAnnotation(T obj, String identifier) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException {
         System.out.println(identifier);
         Class<?> cls = obj.getClass();
-        Method printMethod = cls.getMethod("print", Logger.class);
+        // Creates object of desired method by providing the method name as argument to the getDeclaredMethod
+        Method printMethod = cls.getDeclaredMethod("print", String.class);
+        printMethod.setAccessible(true);
+
         if (printMethod.isAnnotationPresent(Logging.class)) {
-            Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+            // get logging type
             Logging logging = printMethod.getAnnotation(Logging.class);
             Level level = logging.type().equalsIgnoreCase(Logging.INFO) ? Level.INFO : Level.WARNING;
+            // setting the logger to the field
+            Logger logger = Logger.getLogger(cls.getCanonicalName());
             logger.setLevel(level);
-            obj.print(logger);
+            Field field = cls.getDeclaredField("logger");
+            field.setAccessible(true);
+            field.set(obj, logger);
+            // get output of the toString and invokes the method at runtime
+            Method toStringMethod = cls.getDeclaredMethod("toString");
+            String output = (String) toStringMethod.invoke(obj);
+            printMethod.invoke(obj, output);
         }
     }
 
@@ -114,8 +132,6 @@ public class ReflectionsTest {
     @Target(ElementType.METHOD)
     @interface Logging {
         String type();
-
-        String WARNING = "WARNING";
         String INFO = "INFO";
     }
 
@@ -127,6 +143,7 @@ public class ReflectionsTest {
         private static final long serialVersionUID = -3123937727503616788L;
         private String fullName;
         private int age;
+        Logger logger;
 
         public Person(String fullName, int age) {
             super();
@@ -158,8 +175,8 @@ public class ReflectionsTest {
         }
 
         @Logging(type = Logging.INFO)
-        public void print(Logger logger) {
-            logger.log(logger.getLevel(), toString());
+        public void print(String output) {
+            logger.log(logger.getLevel(), output);
         }
 
         @Override
