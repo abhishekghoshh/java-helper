@@ -3,7 +3,12 @@ package app;
 import app.basics.GenericsTest;
 import app.basics.ReflectionsTest;
 import app.collection.*;
+import app.concurrency.ThreadTest;
+import app.functional.PrimitiveTypeStreamTest;
+import app.functional.MethodReferenceTest;
+import app.functional.StreamOfStringTest;
 import app.functional.StreamTest;
+import app.functional.model.FileStreamTest;
 
 import static app.util.Runner.run;
 
@@ -24,9 +29,13 @@ public class App {
         run(CollectionSortTest.class);
 
         // concurrency
+        run(ThreadTest.class);
 
-
-        // streams
+        // functional
+        run(MethodReferenceTest.class);
+        run(PrimitiveTypeStreamTest.class);
+        run(StreamOfStringTest.class);
+        run(FileStreamTest.class);
         run(StreamTest.class);
     }
 }

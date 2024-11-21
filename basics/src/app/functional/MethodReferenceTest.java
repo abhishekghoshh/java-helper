@@ -1,0 +1,20 @@
+package app.functional;
+
+import app.functional.model.Student;
+
+import java.util.function.Function;
+import java.util.function.Supplier;
+
+public class MethodReferenceTest {
+    public static void main(String[] args) {
+        // Supplier functional interface, both are same
+        Supplier<Student> studentSupplier1 = () -> new Student();
+        Supplier<Student> studentSupplier2 = Student::new;
+        System.out.println("studentSupplier1 " + studentSupplier1.get() + " studentSupplier2 " + studentSupplier2.get());
+
+        // Function functional interface, both are same
+        Function<String, Student> studentFunction1 = name -> new Student(name);
+        Function<String, Student> studentFunction2 = Student::new;
+        System.out.println("studentFunction1 " + studentFunction1.apply("abhishek") + " studentSupplier2 " + studentFunction2.apply("abhishek"));
+    }
+}
