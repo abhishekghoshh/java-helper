@@ -112,5 +112,9 @@ public class Student {
                 '}';
     }
 
+    public static Student adam = new Student(
+            "Adam", 2, 4.0, "male",
+            List.of("swimming", "basketball", "volleyball")
+    );
 
 }

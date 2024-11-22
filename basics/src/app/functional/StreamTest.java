@@ -2,9 +2,13 @@ package app.functional;
 
 import app.functional.model.Course;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static app.functional.model.Course.isReviewScoreGreaterThan;
+import static app.util.Utils.print;
+import static java.util.Comparator.comparing;
+import static java.util.Comparator.comparingInt;
+import static java.util.stream.Collectors.*;
 
 public class StreamTest {
 
@@ -12,114 +16,101 @@ public class StreamTest {
     public static void main(String[] args) {
         List<Course> courses = Course.courses();
 
-        System.out.println(
-                courses.stream()
-                        .allMatch(course -> Course.isReviewScoreGreaterThan(course, 95))
+        print(() -> courses.stream()
+                .allMatch(course ->
+                        isReviewScoreGreaterThan(course, 95)
+                )
         );
-        System.out.println(
-                courses.stream()
-                        .noneMatch(course -> Course.isReviewScoreGreaterThan(course, 95))
+        print(() -> courses.stream()
+                .noneMatch(course ->
+                        isReviewScoreGreaterThan(course, 95)
+                )
         );
-        System.out.println(
-                courses.stream()
-                        .anyMatch(course -> Course.isReviewScoreGreaterThan(course, 95))
+        print(() -> courses.stream()
+                .anyMatch(course ->
+                        isReviewScoreGreaterThan(course, 95)
+                )
         );
-        System.out.println(
-                courses.stream()
-                        .sorted(Comparator
-                                .comparing(Course::getNoOfStudents)
+        print(() -> courses.stream()
+                .sorted(comparing(Course::getNoOfStudents)
                                 .thenComparing(Course::getName)
                         )
-                        .collect(Collectors.toList())
+                .collect(toList())
         );
-        System.out.println(
-                courses.stream()
-                        .sorted(Comparator
-                                .comparing(Course::getNoOfStudents)
+        print(() -> courses.stream()
+                .sorted(comparing(Course::getNoOfStudents)
                                 .reversed()
                         )
-                        .collect(Collectors.toList())
+                .collect(toList())
         );
-        System.out.println(
-                courses.stream()
-                        .sorted(Comparator.comparingInt(Course::getNoOfStudents))
+        print(() -> courses.stream()
+                .sorted(comparingInt(Course::getNoOfStudents))
                         .limit(2)
-                        .collect(Collectors.toList())
+                .collect(toList())
         );
-        System.out.println(
-                courses.stream()
-                        .sorted(Comparator.comparingInt(Course::getNoOfStudents))
+        print(() -> courses.stream()
+                .sorted(comparingInt(Course::getNoOfStudents))
                         .skip(2)
-                        .collect(Collectors.toList())
+                .collect(toList())
         );
-        System.out.println(
-                courses.stream()
-                        .sorted(Comparator.comparingInt(Course::getNoOfStudents))
+        print(() -> courses.stream()
+                .sorted(comparingInt(Course::getNoOfStudents))
                         .limit(1)
                         .skip(2)
-                        .collect(Collectors.toList())
+                .collect(toList())
         );
-        System.out.println(
-                courses
-                        .stream()
-                        .sorted(Comparator.comparingInt(Course::getReviewScore))
-                        .takeWhile(course -> Course.isReviewScoreGreaterThan(course, 95))
-                        .collect(Collectors.toList())
+        print(() -> courses.stream()
+                .sorted(comparingInt(Course::getReviewScore))
+                .takeWhile(course -> isReviewScoreGreaterThan(course, 95))
+                .collect(toList())
         );
-        System.out.println(
-                courses.stream()
-                        .sorted(Comparator.comparingInt(Course::getReviewScore))
-                        .dropWhile(course -> Course.isReviewScoreGreaterThan(course, 95))
-                        .collect(Collectors.toList())
+        print(() -> courses.stream()
+                .sorted(comparingInt(Course::getReviewScore))
+                .dropWhile(course -> isReviewScoreGreaterThan(course, 95))
+                .collect(toList())
         );
-        System.out.println(
-                courses.stream()
-                        .max(Comparator.comparingInt(Course::getReviewScore))
+        print(() -> courses.stream()
+                .max(comparingInt(Course::getReviewScore))
                         .orElse(new Course("Kubernetes", "Cloud", 95, 21000))
         );
 
-        System.out.println(
-                courses.stream()
+        print(() -> courses.stream()
                         .mapToInt(Course::getNoOfStudents)
                         .max()
         );
-        System.out.println(
-                courses.stream()
+        print(() -> courses.stream()
                         .mapToInt(Course::getNoOfStudents)
                         .min()
         );
-        System.out.println(
-                courses.stream()
+        print(() -> courses.stream()
                         .mapToInt(Course::getNoOfStudents)
                         .sum()
         );
-        System.out.println(
-                courses.stream()
+        print(() -> courses.stream()
                         .mapToInt(Course::getNoOfStudents)
                         .average()
         );
 
-        System.out.println(
-                courses.stream()
-                        .collect(Collectors.groupingBy(Course::getCategory))
+        print(() -> courses.stream()
+                .collect(groupingBy(Course::getCategory))
         );
-        System.out.println(
-                courses.stream()
-                        .collect(Collectors.groupingBy(Course::getCategory, Collectors.counting()))
+        print(() -> courses.stream()
+                .collect(groupingBy(Course::getCategory, counting()))
         );
-        System.out.println(
-                courses.stream()
-                        .collect(Collectors.groupingBy(
+        print(() -> courses.stream()
+                .collect(groupingBy(
                                 Course::getCategory,
-                                Collectors.maxBy(Comparator.comparing(Course::getReviewScore))
+                        maxBy(comparing(Course::getReviewScore))
                         ))
         );
-        System.out.println(
-                courses.stream()
-                        .collect(Collectors.groupingBy(
+        print(() -> courses.stream()
+                .collect(
+                        groupingBy(
                                 Course::getCategory,
-                                Collectors.mapping(Course::getName, Collectors.toList())
-                        ))
+                                mapping(Course::getName, toList()
+                                )
+                        )
+                )
         );
     }
 }

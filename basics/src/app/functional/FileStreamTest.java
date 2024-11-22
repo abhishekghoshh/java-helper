@@ -1,4 +1,4 @@
-package app.functional.model;
+package app.functional;
 
 import app.util.Utils;
 

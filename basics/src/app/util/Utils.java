@@ -1,28 +1,30 @@
 package app.util;
 
+import app.util.RunnerConfig.CallableV2;
+import app.util.RunnerConfig.RunnableV2;
+
 public class Utils {
 
-    public interface RunnableV2 {
-        void run() throws Exception;
-    }
 
-    public interface CallableV2<V> {
-        V call() throws Exception;
-    }
 
     public static void run(RunnableV2 runnable) {
-        run(runnable, false, null);
+        run(runnable, false, null, false);
     }
 
     public static void run(RunnableV2 runnable, String identifier) {
-        run(runnable, false, identifier);
+        run(runnable, false, identifier, false);
+    }
+
+    public static void run(RunnableV2 runnable, String identifier, boolean toRun) {
+        run(runnable, false, identifier, toRun);
     }
 
     public static void run(RunnableV2 runnable, boolean showStackTrace) {
-        run(runnable, showStackTrace, null);
+        run(runnable, showStackTrace, null, false);
     }
 
-    public static void run(RunnableV2 runnable, boolean showStackTrace, String identifier) {
+    public static void run(RunnableV2 runnable, boolean showStackTrace, String identifier, boolean toRun) {
+        if (!toRun) return;
         if (null != identifier && !identifier.isEmpty()) System.out.println(identifier);
         try {
             runnable.run();

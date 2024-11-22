@@ -1,5 +1,9 @@
 package app.util;
 
+
+import app.util.RunnerConfig.CallableV2;
+import app.util.RunnerConfig.RunnableV2;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -19,4 +23,6 @@ public class Runner {
             throw new RuntimeException(e);
         }
     }
+
+
 }
