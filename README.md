@@ -9,5 +9,12 @@ A repository to keep all java related learnings in one place
 - [Java Interview Questions](https://www.youtube.com/playlist?list=PLhfxuQVMs-nyWxxtah2pedp5zar-vZ0Yn)
 
 
-## GraalVM
+
+
+
+
+## Extras
+
+
+### GraalVM
 -[Building Native Images in Java with GraalVM](https://www.youtube.com/watch?v=Rk4zfvVvRks)
