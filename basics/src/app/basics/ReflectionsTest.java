@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 import static app.util.Utils.run;
 
 public class ReflectionsTest {
-    public static void main(String[] args) throws InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchMethodException, NoSuchFieldException {
+    public static void main(String[] args) throws Exception {
         run(() -> {
             Class<?> className = Class.forName("app.basics.ReflectionsTest.Person");
             System.out.println("className.getCanonicalName() : " + className.getCanonicalName());
@@ -32,7 +32,7 @@ public class ReflectionsTest {
 
         // Getting public methods of the class through the object of the class by using getMethods
         checkMethods(personClass.getMethods(), "personClass.getMethods()");
-        // creates object of desired method by providing the method name and parameter class as arguments to the getDeclaredMethod
+        // creates an object of desired method by providing the method name and parameter class as arguments to the getDeclaredMethod
         checkMethods(personClass.getDeclaredMethods(), "personClass.getDeclaredMethods()");
 
         // getting all fields by getDeclaredFields

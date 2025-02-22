@@ -1,7 +1,5 @@
 package app.collection;
 
-import app.util.Utils;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -12,7 +10,7 @@ import static app.util.Utils.run;
 public class CollectionsTest {
 
     public static void main(String[] args) {
-        // If we create an arraylist using Arrays.asList then we can't add anything
+        // If we create an arraylist using Arrays.asList, then we can't add anything
         run(() -> {
             List<Integer> list = Arrays.asList(1, 5, 3, 2, 4);
             // it else it will give java.lang.UnsupportedOperationException
@@ -54,7 +52,7 @@ public class CollectionsTest {
             list.add(5);
         }, true);
 
-        // creates synchronized thread-safe list by using intrinsic lock
+        // creates a synchronized thread-safe list by using intrinsic lock
         run(() -> {
             Collections.synchronizedList(list());
         });
