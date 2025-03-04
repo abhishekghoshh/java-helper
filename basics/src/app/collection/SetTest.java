@@ -1,29 +1,45 @@
 package app.collection;
 
+import app.runner.Run;
+import app.runner.Runner;
+
 import java.util.*;
 
 public class SetTest {
     public static void main(String[] args) {
-        // based on hashcode , does not maintain order almost same as hashmap
-        Set<String> hashSet = new HashSet<>();
+        Runner.runAnnotatedMethods(SetTest.class);
+    }
 
+    @Run(active = false)
+    private static void hashSet() {
+        // based on hashcode , does not maintain order almost same as hashmap
+        Set<Integer> hashSet = new HashSet<>();
+        add(hashSet);
+        print(hashSet);
+    }
+
+    @Run(active = false)
+    private static void linkedHashSet() {
         // based on hashcode and doubly linked list, this maintains order
         // almost same as linked hashmap
-        Set<String> linkedHashSet = new LinkedHashSet<>();
+        Set<Integer> linkedHashSet = new LinkedHashSet<>();
+        add(linkedHashSet);
+        print(linkedHashSet);
+    }
 
+    @Run(active = false)
+    private static void treeSet() {
         // based on red black tree, implementation of SortedSet interface ,sorted
-        Set<String> treeSet = new TreeSet<>();
+        Set<Integer> treeSet = new TreeSet<>();
+        add(treeSet);
+        print(treeSet);
+    }
 
+    @Run(active = false)
+    private static void sortedSet() {
         // tree set implements Navigable set and transitively Sorted Set
         SortedSet<Integer> sortedSet = new TreeSet<>();
-        sortedSet.add(1);
-        sortedSet.add(5);
-        sortedSet.add(2);
-        sortedSet.add(4);
-        sortedSet.add(3);
-        sortedSet.add(6);
-        sortedSet.add(9);
-        sortedSet.add(10);
+        add(sortedSet);
 
         System.out.println("sortedSet.first() : " + sortedSet.first());
         System.out.println("sortedSet.last() : " + sortedSet.last());
@@ -35,6 +51,17 @@ public class SetTest {
 
         SortedSet<Integer> taiSet = sortedSet.tailSet(7);
         print(taiSet);
+    }
+
+    private static void add(Set<Integer> set) {
+        set.add(1);
+        set.add(5);
+        set.add(2);
+        set.add(4);
+        set.add(3);
+        set.add(6);
+        set.add(9);
+        set.add(10);
     }
 
 

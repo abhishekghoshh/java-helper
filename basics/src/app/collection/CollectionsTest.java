@@ -1,7 +1,7 @@
 package app.collection;
 
-import app.util.Run;
-import app.util.Runner;
+import app.runner.Run;
+import app.runner.Runner;
 
 import java.util.ArrayList;
 import java.util.Collections;

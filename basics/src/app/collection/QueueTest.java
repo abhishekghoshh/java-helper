@@ -1,14 +1,23 @@
 package app.collection;
 
+import app.runner.Run;
+import app.runner.Runner;
+
 import java.util.*;
 
-import static app.util.Utils.time;
+import static app.runner.Runner.time;
 
 public class QueueTest {
 
     public static final int COUNTER = 500000;
 
     public static void main(String[] args) throws Exception {
+        Runner.runAnnotatedMethods(QueueTest.class);
+    }
+
+
+    @Run(active = false)
+    private static void queueUsingLinkedList() {
         Queue<Integer> queue = new LinkedList<>();
         queue.offer(10);// same as add method
         System.out.println("queue.peek() : " + queue.peek()); // getting the front element
@@ -21,7 +30,10 @@ public class QueueTest {
         names.offer("Nasim");
         names.offer("Kushal");
         poll(names, "Names are : ");
+    }
 
+    @Run(active = false)
+    private static void dequeUsingPriorityQueue() {
         // Priority queue is based on priority heap
         // Each item has its priority
         // the elements of the priority queue are ordered according to their natural
@@ -45,15 +57,20 @@ public class QueueTest {
         persons.add(new Person("Nasim", 25));
         persons.add(new Person("Kushal", 23));
         poll(persons, "Persons using priority queue with custom comparator ");
+    }
 
+    @Run(active = false)
+    private static void dequeUsingArrayDeque() {
         // Double ended queue
         Deque<Integer> deque = new ArrayDeque<>();
         deque.addFirst(10);
         deque.addLast(12);
         System.out.println("deque.removeFirst() : " + deque.removeFirst());
         System.out.println("deque.removeLast() : " + deque.removeLast());
+    }
 
-
+    @Run(active = false)
+    private static void stackUsingArrayDeque() {
         // stack by Deque
         Deque<Integer> stackByQueue = new ArrayDeque<>();
         stackByQueue.push(1);
@@ -61,28 +78,31 @@ public class QueueTest {
         stackByQueue.push(3);
         stackByQueue.push(4);
         stackByQueue.push(5);
-        pop(stackByQueue, "Stack by Array deque");
-
-        final Deque<Integer> dq = time(() -> add(new ArrayDeque<>()), "adding into array deque");
-        time(() -> pop(dq), "popping from array deque");
-
-        // all methods are synchronized as everytime when we want to access any method there is lock
-        final Stack<Integer> stk = time(() -> add(new Stack<>()), "adding into array deque");
-        time(() -> pop(stk), "popping from array deque");
+        System.out.println("Stack by Array deque");
+        while (!stackByQueue.isEmpty()) {
+            System.out.print(stackByQueue.pop() + " ");
+        }
+        System.out.println();
     }
+
+    @Run(active = false)
+    private static void arrayDequeTimeChecking() throws Exception {
+        Deque<Integer> dq = time(() -> add(new ArrayDeque<>()), "adding into array deque");
+        time(() -> pop(dq), "popping from array deque");
+    }
+
+    @Run(active = false)
+    private static void stackTimeChecking() throws Exception {
+        // all methods are synchronized as everytime when we want to access any method there is lock
+        Stack<Integer> stack = time(() -> add(new Stack<>()), "adding into array deque");
+        time(() -> pop(stack), "popping from array deque");
+    }
+
 
     private static void poll(Queue<?> queue, String identifier) {
         System.out.println(identifier);
         while (!queue.isEmpty()) {
             System.out.print(queue.poll() + " ");
-        }
-        System.out.println();
-    }
-
-    private static void pop(Deque<?> stack, String identifier) {
-        System.out.println(identifier);
-        while (!stack.isEmpty()) {
-            System.out.print(stack.pop() + " ");
         }
         System.out.println();
     }

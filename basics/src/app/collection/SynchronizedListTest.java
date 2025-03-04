@@ -1,9 +1,11 @@
 package app.collection;
 
+import app.runner.Run;
+import app.runner.Runner;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import static app.util.Utils.time;
 import static java.util.Collections.synchronizedList;
 
 public class SynchronizedListTest {
@@ -11,9 +13,19 @@ public class SynchronizedListTest {
     public static final int COUNTER = 10000000;
 
     public static void main(String[] args) throws Exception {
+        Runner.runAnnotatedMethods(SynchronizedListTest.class);
+    }
 
-        time(() -> checkSynchronizedMethods(synchronizedList(new ArrayList<>())), "Synchronized list");
-        time(() -> checkSynchronizedMethods(new ArrayList<>()), "normal list");
+    @Run(active = false, timer = true, timeIdentifier = "Normal Array List", printMethodName = true)
+    private static void checkForNormalArrayList() throws InterruptedException {
+        ArrayList<String> arrayList = new ArrayList<>();
+        checkSynchronizedMethods(arrayList);
+    }
+
+    @Run(active = false, timer = true, timeIdentifier = "Synchronized Array List", printMethodName = true)
+    private static void checkForNormalSynchronizedArrayList() throws InterruptedException {
+        List<String> synchronizedArrayList = synchronizedList(new ArrayList<>());
+        checkSynchronizedMethods(synchronizedArrayList);
     }
 
     private static void checkSynchronizedMethods(List<String> list) throws InterruptedException {

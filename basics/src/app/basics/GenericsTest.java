@@ -1,7 +1,7 @@
 package app.basics;
 
-import app.util.Run;
-import app.util.Runner;
+import app.runner.Run;
+import app.runner.Runner;
 
 import java.io.Serial;
 import java.util.ArrayList;

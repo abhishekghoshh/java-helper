@@ -1,8 +1,8 @@
-package app.util;
+package app.runner;
 
 
-import app.util.RunnerConfig.CallableV2;
-import app.util.RunnerConfig.RunnableV2;
+import app.runner.RunnerConfig.CallableV2;
+import app.runner.RunnerConfig.RunnableV2;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -41,6 +41,22 @@ public class Runner {
         return code(callable).run();
     }
 
+    public static void time(RunnableV2 runnable) throws Exception {
+        code(runnable).timer().run();
+    }
+
+    public static <T> T time(CallableV2<T> callable) throws Exception {
+        return code(callable).timer().run();
+    }
+
+    public static void time(RunnableV2 runnable, String timeId) throws Exception {
+        code(runnable).timer(timeId).run();
+    }
+
+    public static <T> T time(CallableV2<T> callable, String timeId) throws Exception {
+        return code(callable).timer(timeId).run();
+    }
+
     public static void runAnnotatedMethods(Class<?> clazz) {
         for (Method method : clazz.getDeclaredMethods()) {
             if (Modifier.isStatic(method.getModifiers())
@@ -49,6 +65,7 @@ public class Runner {
                 try {
                     Run annotation = method.getAnnotation(Run.class);
                     if (!annotation.active()) continue;
+                    if (annotation.printMethodName()) System.out.println("Executing : " + method.getName());
                     code(() -> method.invoke(null))
                             .id(annotation.id())
                             .print(annotation.print())

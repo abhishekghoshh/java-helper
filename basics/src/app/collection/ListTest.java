@@ -1,11 +1,9 @@
 package app.collection;
 
-import app.util.Run;
+import app.runner.Run;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import static app.util.Utils.time;
 
 public class ListTest {
 
@@ -13,14 +11,6 @@ public class ListTest {
 
     public static void main(String[] args) throws Exception {
 
-
-        time(() -> addFirst(new LinkedList<>()), "For adding at first into LinkedList :");
-
-        time(() -> addLast(new ArrayList<>()), "For adding at last into ArrayList :");
-        time(() -> addLast(new ArrayList<>(COUNTER)), "For adding at last into ArrayList with size given :");
-        time(() -> addLast(new Vector<>()), "For adding at last into Vector :");
-        time(() -> addLast(new Vector<>(COUNTER)), "For adding at last into Vector with size given :");
-        time(() -> addLast(new LinkedList<>()), "For adding at last into LinkedList :");
     }
 
     @Run(active = false)
@@ -38,28 +28,56 @@ public class ListTest {
         });
     }
 
-    @Run(active = false, id = "For adding at first into ArrayList :")
+    @Run(active = false, id = "For adding at first into ArrayList :", timer = true)
     static void addFirstIntoArrayList() {
         addFirst(new ArrayList<>());
     }
 
-    @Run(active = false, id = "For adding at first into ArrayList with size given :")
+    @Run(active = false, id = "For adding at first into ArrayList with size given :", timer = true)
     static void addFirstIntoArrayListWithCounter() {
         addFirst(new ArrayList<>(COUNTER));
     }
 
-    @Run(active = false, id = "For adding at first into Vector :")
+    @Run(active = false, id = "For adding at first into Vector :", timer = true)
     static void addFirstIntoVector() {
         addFirst(new Vector<>());
     }
 
-    @Run(active = false, id = "For adding at first into Vector with size given :")
+    @Run(active = false, id = "For adding at first into Vector with size given :", timer = true)
     static void addFirstIntoVectorWithCounter() {
         addFirst(new Vector<>(COUNTER));
     }
 
 
+    @Run(active = false, id = "For adding at first into LinkedList :", timer = true)
+    static void addFirstIntoLinkedList() {
+        addFirst(new LinkedList<>());
+    }
 
+    @Run(active = false, id = "For adding at last into ArrayList :", timer = true)
+    static void addLastToArrayList() {
+        addLast(new ArrayList<>());
+    }
+
+    @Run(active = false, id = "For adding at last into ArrayList with size given :", timer = true)
+    static void addLastToArrayListWithCounter() {
+        addLast(new ArrayList<>(COUNTER));
+    }
+
+    @Run(active = false, id = "For adding at last into Vector :", timer = true)
+    static void addLastToVector() {
+        addLast(new Vector<>());
+    }
+
+    @Run(active = false, id = "For adding at last into Vector with size given :", timer = true)
+    static void addLastToVectorWithCounter() {
+        addLast(new Vector<>(COUNTER));
+    }
+
+    @Run(active = false, id = "For adding at last into LinkedList :", timer = true)
+    static void addLastToLinkedList() {
+        addLast(new LinkedList<>());
+    }
 
 
 

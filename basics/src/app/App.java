@@ -7,7 +7,7 @@ import app.collection.*;
 import app.concurrency.ThreadTest;
 import app.functional.*;
 
-import static app.util.Runner.runMain;
+import static app.runner.Runner.runMain;
 
 public class App {
     public static void main(String[] args) {

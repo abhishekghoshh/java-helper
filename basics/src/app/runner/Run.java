@@ -1,4 +1,4 @@
-package app.util;
+package app.runner;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -24,5 +24,6 @@ public @interface Run {
 
     boolean throwing() default false;
 
+    boolean printMethodName() default false;
 
 }

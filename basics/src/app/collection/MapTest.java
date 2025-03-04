@@ -1,27 +1,47 @@
 package app.collection;
 
+import app.runner.Run;
+import app.runner.Runner;
+
 import java.util.*;
 
-import static app.util.Utils.time;
+import static app.runner.Runner.time;
 
 public class MapTest {
 
 
     private static final int COUNTER = 100000;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        Runner.runAnnotatedMethods(MapTest.class);
+    }
+
+    @Run(active = false)
+    private static void hashMap() {
         Map<String, String> agesMap = new HashMap<>();
         populateAges(agesMap);
         print(agesMap); // HashMap does not maintain the insertion order
+    }
 
+    @Run(active = false)
+    private static void linkedHashMap() {
+        Map<String, String> agesMap;
         agesMap = new LinkedHashMap<>();
         populateAges(agesMap);
         print(agesMap); // LinkedHashMap maintain the insertion order
+    }
 
+    @Run(active = false)
+    private static void treeMap() {
+        Map<String, String> agesMap;
         agesMap = new TreeMap<>();// Tree map relies on Red Black tree data structure
         populateAges(agesMap);
         print(agesMap);// treemap is sort the keys internally as it's a tree data structure so traversal of items will be depending on keys
+    }
 
+    @Run(active = false)
+    private static void reverseTreeMap() {
+        Map<String, String> agesMap;
         agesMap = new TreeMap<>(Collections.reverseOrder());// We can assign our comparator as well
         populateAges(agesMap);
         print(agesMap);
@@ -30,18 +50,28 @@ public class MapTest {
         System.out.println(agesEntrySet);
         Set<String> keySet = agesMap.keySet();
         System.out.println(keySet);
+    }
 
-        // checking timing
+    @Run(active = false)
+    private static void hashMapTimeChecking() throws Exception {
         final Map<Integer, String> hashMap = time(() -> put(new HashMap<>()), "Hashmap adding :");
         time(() -> get(hashMap), "Hashmap getting :");
+    }
 
+    @Run(active = false)
+    private static void linkedHashMapTimeChecking() throws Exception {
         final Map<Integer, String> linkedHashMap = time(() -> put(new LinkedHashMap<>()), "linkedHashMap adding :");
         time(() -> get(linkedHashMap), "linkedHashMap getting :");
+    }
 
+    @Run(active = false)
+    private static void treeMapTimeChecking() throws Exception {
         final Map<Integer, String> treeMap = time(() -> put(new TreeMap<>()), "treeMap adding :");
         time(() -> get(treeMap), "treeMap getting :");
+    }
 
-
+    @Run(active = false)
+    private static void hashMapWithCustomClass() {
         Map<Person, String> persons = new HashMap<>();
         persons.put(new Person("Abhishek Ghosh", 24), "abhishek1@@gmail.com");
         persons.put(new Person("Abhishek Pal", 24), "abhishek2@gmail.com");
@@ -61,6 +91,7 @@ public class MapTest {
          * has read time complexity as O(log(n)) rather than o(n)
          */
     }
+
 
     public static Map<Integer, String> put(Map<Integer, String> map) {
         for (int i = 0; i < COUNTER; i++) {

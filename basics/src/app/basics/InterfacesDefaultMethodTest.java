@@ -2,8 +2,8 @@ package app.basics;
 
 import app.functional.model.Student;
 import app.functional.model.StudentDataBase;
-import app.util.Run;
-import app.util.Runner;
+import app.runner.Run;
+import app.runner.Runner;
 
 import java.util.Arrays;
 import java.util.Comparator;

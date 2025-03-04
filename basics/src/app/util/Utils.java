@@ -1,7 +1,7 @@
 package app.util;
 
-import app.util.RunnerConfig.CallableV2;
-import app.util.RunnerConfig.RunnableV2;
+import app.runner.RunnerConfig.CallableV2;
+import app.runner.RunnerConfig.RunnableV2;
 
 public class Utils {
 
