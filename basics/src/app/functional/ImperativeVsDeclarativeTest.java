@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static app.util.RunnerConfig.code;
+import static app.util.Runner.code;
+
 
 public class ImperativeVsDeclarativeTest {
     public static void main(String[] args) {

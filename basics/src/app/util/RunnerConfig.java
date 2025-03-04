@@ -1,7 +1,5 @@
 package app.util;
 
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 import java.util.Objects;
 
 public class RunnerConfig<T> {
@@ -117,50 +115,5 @@ public class RunnerConfig<T> {
         }
         return obj;
     }
-
-    public static <T> RunnerConfig<T> code(CallableV2<T> callable) {
-        return new RunnerConfig<>(callable);
-    }
-
-
-    public static <T> RunnerConfig<T> code(RunnableV2 runnable) {
-        return new RunnerConfig<>(runnable);
-    }
-
-    public static void run(RunnableV2 runnable) throws Exception {
-        code(runnable).run();
-    }
-
-    public static <T> T run(CallableV2<T> callable) throws Exception {
-        return code(callable).run();
-    }
-
-    public static void run(Class<?> clazz) {
-        for (Method method : clazz.getDeclaredMethods()) {
-            if (Modifier.isStatic(method.getModifiers())
-                    && method.isAnnotationPresent(Run.class)) {
-                method.setAccessible(true);
-                try {
-                    Run annotation = method.getAnnotation(Run.class);
-                    if (!annotation.active()) continue;
-
-                    code(() -> method.invoke(null))
-                            .id(annotation.id())
-                            .print(annotation.print())
-                            .timer(annotation.timer(), annotation.timeIdentifier())
-                            .error(annotation.showError())
-                            .showStackTrace(annotation.showStacktrace())
-                            .throwing(annotation.throwing())
-                            .run();
-                } catch (Exception e) {
-                    System.err.println("Error invoking method: " + e.getMessage());
-                    System.exit(0);
-                }
-            }
-        }
-    }
-
-
-
 }
 

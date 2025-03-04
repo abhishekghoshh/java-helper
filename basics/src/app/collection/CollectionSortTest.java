@@ -1,14 +1,33 @@
 package app.collection;
 
+import app.util.Run;
+import app.util.Runner;
+
 import java.util.*;
 
 public class CollectionSortTest {
     public static void main(String[] args) {
+        Runner.runAnnotatedMethods(CollectionSortTest.class);
+    }
+
+    @Run(active = false)
+    private static void primitiveSort() {
         int[] nums = {1, 5, -5, 4, 12, 3};
         // sorts in ascending
         Arrays.sort(nums);
+        for (int num : nums) System.out.print(num + " ");
+        System.out.println();
+    }
 
-        List<String> names = Arrays.asList("Abhishek Ghosh", "Abhishek Pal", "Bishal Mukherjee", "Nasim Molla", "Kushal Ghosh");
+    @Run(active = false)
+    private static void stringSort() {
+        List<String> names = Arrays.asList(
+                "Abhishek Ghosh",
+                "Abhishek Pal",
+                "Bishal Mukherjee",
+                "Nasim Molla",
+                "Kushal Ghosh"
+        );
 
         // Sorts ascending
         Collections.sort(names);
@@ -17,7 +36,10 @@ public class CollectionSortTest {
         // Sorts descending using => Collections.sort(names, Collections.reverseOrder())
         names.sort(Collections.reverseOrder());
         System.out.println(names);
+    }
 
+    @Run(active = false)
+    private static void customClassSorting() {
         List<Person> persons = new ArrayList<>();
         persons.add(new Person("Abhishek Ghosh", 24));
         persons.add(new Person("Abhishek Ghosh", 23));
@@ -31,6 +53,7 @@ public class CollectionSortTest {
 
         // Sorting based on lambda => (p1, p2) -> p1.getName().compareTo(p2.getName())
         persons.sort(Comparator.comparing(Person::getName));
+        System.out.println(persons);
 
         // implementation of Comparator.compare
         persons.sort(Comparator

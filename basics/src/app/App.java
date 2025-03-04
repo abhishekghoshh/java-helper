@@ -7,36 +7,36 @@ import app.collection.*;
 import app.concurrency.ThreadTest;
 import app.functional.*;
 
-import static app.util.Runner.run;
+import static app.util.Runner.runMain;
 
 public class App {
     public static void main(String[] args) {
         // basics
-        run(InterfacesDefaultMethodTest.class);
-        run(GenericsTest.class);
-        run(ReflectionsTest.class);
+        runMain(InterfacesDefaultMethodTest.class);
+        runMain(GenericsTest.class);
+        runMain(ReflectionsTest.class);
 
         // collections
-        run(CollectionsTest.class);
-        run(ListTest.class);
-        run(SynchronizedListTest.class);
-        run(MapTest.class);
-        run(SetTest.class);
-        run(QueueTest.class);
-        run(StackTest.class);
-        run(CollectionSortTest.class);
+        runMain(CollectionsTest.class);
+        runMain(ListTest.class);
+        runMain(SynchronizedListTest.class);
+        runMain(MapTest.class);
+        runMain(SetTest.class);
+        runMain(QueueTest.class);
+        runMain(StackTest.class);
+        runMain(CollectionSortTest.class);
 
         // concurrency
-        run(ThreadTest.class);
+        runMain(ThreadTest.class);
 
         // functional
-        run(ImperativeVsDeclarativeTest.class);
-        run(FunctionalInterfacesTest.class);
-        run(MethodReferenceTest.class);
-        run(PrimitiveTypeStreamTest.class);
-        run(StreamOfStringTest.class);
-        run(FileStreamTest.class);
-        run(StreamTest.class);
+        runMain(ImperativeVsDeclarativeTest.class);
+        runMain(FunctionalInterfacesTest.class);
+        runMain(MethodReferenceTest.class);
+        runMain(PrimitiveTypeStreamTest.class);
+        runMain(StreamOfStringTest.class);
+        runMain(FileStreamTest.class);
+        runMain(StreamTest.class);
 
     }
 }

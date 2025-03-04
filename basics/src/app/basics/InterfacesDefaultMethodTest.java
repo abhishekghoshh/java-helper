@@ -3,18 +3,18 @@ package app.basics;
 import app.functional.model.Student;
 import app.functional.model.StudentDataBase;
 import app.util.Run;
+import app.util.Runner;
 
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 
-import static app.util.RunnerConfig.run;
 
 public class InterfacesDefaultMethodTest {
 
     public static void main(String[] args) throws Exception {
-        run(InterfacesDefaultMethodTest.class);
+        Runner.runAnnotatedMethods(InterfacesDefaultMethodTest.class);
     }
 
     @Run(active = false)
@@ -52,7 +52,7 @@ public class InterfacesDefaultMethodTest {
         studentList.forEach(studentConsumer);
     }
 
-    @Run(active = true, timer = true)
+    @Run(active = false)
     public static void sortByGPA() {
         Comparator<Student> gpaComparator = Comparator.comparing(Student::getGpa);
         Consumer<Student> studentConsumer = student -> System.out.println("student : " + student);

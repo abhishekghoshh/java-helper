@@ -1,5 +1,8 @@
 package app.basics;
 
+import app.util.Run;
+import app.util.Runner;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.lang.annotation.ElementType;
@@ -10,43 +13,97 @@ import java.lang.reflect.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static app.util.Utils.run;
-
 public class ReflectionsTest {
     public static void main(String[] args) throws Exception {
-        run(() -> {
-            Class<?> className = Class.forName("app.basics.ReflectionsTest.Person");
-            System.out.println("className.getCanonicalName() : " + className.getCanonicalName());
-        });
+        Runner.runAnnotatedMethods(ReflectionsTest.class);
+    }
 
-        // we can get via this method
+
+    @Run(active = false, showError = true, showStacktrace = true)
+    private static void loadClass() throws ClassNotFoundException {
+        System.out.println("person.getName() " + Person.class.getName());
+        System.out.println("person.getCanonicalName() " + Person.class.getCanonicalName());
+
+        Class<?> className = Class.forName("app.basics.ReflectionsTest.Person");
+        System.out.println("className.getCanonicalName() : " + className.getCanonicalName());
+    }
+
+    @Run(active = false, showError = true)
+    private static void classInformation() {
         Class<Person> personClass = Person.class;
         Person person = new Person("Abhishek Ghosh", 24);
 
         System.out.println("person.getName() " + person.getName());
         System.out.println("personClass.getCanonicalName() " + personClass.getCanonicalName());
         System.out.println("personClass.getPackageName() " + personClass.getPackageName());
+    }
 
+    @Run(active = false, showError = true)
+    private static void checkFields() {
+        Class<Person> personClass = Person.class;
         checkFields(personClass.getFields(), "personClass.getFields()");
         checkFields(personClass.getDeclaredFields(), "personClass.getDeclaredFields()");
+        // getting all fields by getDeclaredFields
+        setFieldsToPublic(personClass.getDeclaredFields(), "this fields will be public");
+    }
+
+    @Run(active = false)
+    private static void checkMethods() throws InstantiationException, IllegalAccessException, InvocationTargetException {
+        Class<Person> personClass = Person.class;
 
         // Getting public methods of the class through the object of the class by using getMethods
         checkMethods(personClass.getMethods(), "personClass.getMethods()");
         // creates an object of desired method by providing the method name and parameter class as arguments to the getDeclaredMethod
         checkMethods(personClass.getDeclaredMethods(), "personClass.getDeclaredMethods()");
 
-        // getting all fields by getDeclaredFields
-        setFieldsToPublic(personClass.getDeclaredFields(), "this fields will be public");
-
         // Getting the constructor of the class through the object of the class
         checkConstructor(personClass.getDeclaredConstructors(), "personClass.getDeclaredConstructors()");
-
-        checkInterfaces(personClass.getInterfaces(), "personClass.getInterfaces()");
-
-        checkSuperClass(personClass.getSuperclass(), "personClass.getSuperclass()");
-
-        checkAnnotation(person, "Custom Annotations");
     }
+
+
+    @Run(active = false)
+    public static void checkInterfaces() {
+        Class<?>[] interfaces = Person.class.getInterfaces();
+        System.out.println("personClass.getInterfaces() : " + interfaces.length);
+        for (Class<?> interfaceName : interfaces) {
+            System.out.println("Interface name is " + interfaceName.getCanonicalName());
+        }
+    }
+
+    @Run(active = false)
+    public static void checkSuperClass() {
+        Class<?> superclass = Person.class.getSuperclass();
+        System.out.println("personClass.getSuperclass() superclass name is " + superclass.getCanonicalName());
+    }
+
+
+    @Run(active = false)
+    public static <T> void checkAnnotation() throws NoSuchMethodException,
+            InvocationTargetException, IllegalAccessException, NoSuchFieldException {
+        Person person = new Person();
+        System.out.println("Custom Annotations");
+        Class<?> cls = person.getClass();
+        // Creates object of desired method by providing the method name as argument to the getDeclaredMethod
+        Method printMethod = cls.getDeclaredMethod("print", String.class);
+        printMethod.setAccessible(true);
+
+        if (printMethod.isAnnotationPresent(Logging.class)) {
+            // get logging type
+            Logging logging = printMethod.getAnnotation(Logging.class);
+            Level level = logging.type().equalsIgnoreCase(Logging.INFO) ? Level.INFO : Level.WARNING;
+            // setting the logger to the field
+            Logger logger = Logger.getLogger(cls.getCanonicalName());
+            logger.setLevel(level);
+            Field field = cls.getDeclaredField("logger");
+            field.setAccessible(true);
+            field.set(person, logger);
+            // get output of the toString and invokes the method at runtime
+            Method toStringMethod = cls.getDeclaredMethod("toString");
+            String output = (String) toStringMethod.invoke(person);
+            printMethod.invoke(person, output);
+        }
+    }
+
 
     public static void checkFields(Field[] fields, String identifier) {
         System.out.println(identifier + " : " + fields.length);
@@ -90,41 +147,6 @@ public class ReflectionsTest {
             }
         }
 
-    }
-
-    public static void checkInterfaces(Class<?>[] interfaces, String identifier) {
-        System.out.println(identifier + " : " + interfaces.length);
-        for (Class<?> interfaceName : interfaces) {
-            System.out.println("Interface name is " + interfaceName.getCanonicalName());
-        }
-    }
-
-    public static void checkSuperClass(Class<?> superclass, String identifier) {
-        System.out.println(identifier + " superclass name is " + superclass.getCanonicalName());
-    }
-
-    public static <T> void checkAnnotation(T obj, String identifier) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchFieldException {
-        System.out.println(identifier);
-        Class<?> cls = obj.getClass();
-        // Creates object of desired method by providing the method name as argument to the getDeclaredMethod
-        Method printMethod = cls.getDeclaredMethod("print", String.class);
-        printMethod.setAccessible(true);
-
-        if (printMethod.isAnnotationPresent(Logging.class)) {
-            // get logging type
-            Logging logging = printMethod.getAnnotation(Logging.class);
-            Level level = logging.type().equalsIgnoreCase(Logging.INFO) ? Level.INFO : Level.WARNING;
-            // setting the logger to the field
-            Logger logger = Logger.getLogger(cls.getCanonicalName());
-            logger.setLevel(level);
-            Field field = cls.getDeclaredField("logger");
-            field.setAccessible(true);
-            field.set(obj, logger);
-            // get output of the toString and invokes the method at runtime
-            Method toStringMethod = cls.getDeclaredMethod("toString");
-            String output = (String) toStringMethod.invoke(obj);
-            printMethod.invoke(obj, output);
-        }
     }
 
 

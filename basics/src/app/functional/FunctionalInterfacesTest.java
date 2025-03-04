@@ -11,7 +11,7 @@ import java.util.concurrent.Callable;
 import java.util.function.*;
 import java.util.stream.Collectors;
 
-import static app.util.RunnerConfig.code;
+import static app.util.Runner.code;
 import static app.util.Utils.run;
 
 public class FunctionalInterfacesTest {
