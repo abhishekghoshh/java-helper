@@ -1,5 +1,7 @@
 package app.util;
 
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.Objects;
 
 public class RunnerConfig<T> {
@@ -38,13 +40,20 @@ public class RunnerConfig<T> {
         return this;
     }
 
-
+    public RunnerConfig<T> print(boolean print) {
+        this.toPrint = print;
+        return this;
+    }
     public RunnerConfig<T> print() {
         this.toPrint = true;
         return this;
     }
 
-
+    public RunnerConfig<T> timer(boolean timer, String timeIdentifier) {
+        this.checkTime = timer;
+        this.timeIdentifier = timeIdentifier;
+        return this;
+    }
     public RunnerConfig<T> timer() {
         return timer(null);
     }
@@ -56,35 +65,56 @@ public class RunnerConfig<T> {
         return this;
     }
 
+    public RunnerConfig<T> error(boolean showError) {
+        this.showError = showError;
+        return this;
+    }
+
     public RunnerConfig<T> error() {
         this.showError = true;
         return this;
     }
 
+    public RunnerConfig<T> showStackTrace(boolean showStacktrace) {
+        this.showStacktrace = showStacktrace;
+        return this;
+    }
+
+    public RunnerConfig<T> throwing(boolean throwError) {
+        this.throwError = throwError;
+        return this;
+    }
     public RunnerConfig<T> throwing() {
         this.throwError = true;
         return this;
     }
 
+    public T run(boolean shouldRun) throws Exception {
+        if (!shouldRun) return null;
+        return run();
+    }
 
     public T run() throws Exception {
-        if (null != this.identifier) System.out.println(identifier);
+        if (null != this.identifier && !this.identifier.isBlank())
+            System.out.println(identifier);
         long currentTime = System.currentTimeMillis();
         T obj = null;
         try {
             if (null != this.runnable) runnable.run();
             else {
                 obj = this.callable.call();
-                System.out.println(obj);
+                if (this.toPrint) System.out.println(obj);
             }
         } catch (Exception exception) {
-            if (this.showError) System.out.println(exception.getMessage());
+            if (this.showError) System.err.println(exception.getMessage());
             if (this.showStacktrace) exception.printStackTrace();
             if (throwError) throw exception;
         }
-        if (this.checkTime)
-            System.out.println((this.timeIdentifier != null ? this.timeIdentifier : "it is")
-                    + " taking " + (System.currentTimeMillis() - currentTime) + " milliseconds");
+        if (this.checkTime) {
+            long timeTaken = System.currentTimeMillis() - currentTime;
+            String timeIdentifier = this.timeIdentifier != null ? this.timeIdentifier : "it is";
+            System.out.printf("%s taking %d milliseconds%n", timeIdentifier, timeTaken);
+        }
         return obj;
     }
 
@@ -97,4 +127,40 @@ public class RunnerConfig<T> {
         return new RunnerConfig<>(runnable);
     }
 
+    public static void run(RunnableV2 runnable) throws Exception {
+        code(runnable).run();
+    }
+
+    public static <T> T run(CallableV2<T> callable) throws Exception {
+        return code(callable).run();
+    }
+
+    public static void run(Class<?> clazz) {
+        for (Method method : clazz.getDeclaredMethods()) {
+            if (Modifier.isStatic(method.getModifiers())
+                    && method.isAnnotationPresent(Run.class)) {
+                method.setAccessible(true);
+                try {
+                    Run annotation = method.getAnnotation(Run.class);
+                    if (!annotation.active()) continue;
+
+                    code(() -> method.invoke(null))
+                            .id(annotation.id())
+                            .print(annotation.print())
+                            .timer(annotation.timer(), annotation.timeIdentifier())
+                            .error(annotation.showError())
+                            .showStackTrace(annotation.showStacktrace())
+                            .throwing(annotation.throwing())
+                            .run();
+                } catch (Exception e) {
+                    System.err.println("Error invoking method: " + e.getMessage());
+                    System.exit(0);
+                }
+            }
+        }
+    }
+
+
+
 }
+
