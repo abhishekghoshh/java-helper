@@ -3,6 +3,8 @@ package app.functional;
 import app.functional.model.Course;
 
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static app.functional.model.Course.isReviewScoreGreaterThan;
 import static app.util.Utils.print;
@@ -12,9 +14,9 @@ import static java.util.stream.Collectors.*;
 
 public class StreamTest {
 
+    final static List<Course> courses = Course.courses();
 
     public static void main(String[] args) {
-        List<Course> courses = Course.courses();
 
         print(() -> courses.stream()
                 .allMatch(course ->

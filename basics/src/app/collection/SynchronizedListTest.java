@@ -8,6 +8,7 @@ import java.util.List;
 
 import static java.util.Collections.synchronizedList;
 
+@Run(active = false, all = true)
 public class SynchronizedListTest {
 
     public static final int COUNTER = 10000000;
