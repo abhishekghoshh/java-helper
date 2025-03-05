@@ -1,6 +1,6 @@
 package app.runner;
 
-@Run
+@Run(active = false)
 public class Sample {
 
     @Run(timer = true, printMethodName = true, print = true, showError = true)

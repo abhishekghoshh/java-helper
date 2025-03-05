@@ -9,10 +9,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Stream;
 
 public class Runner {
@@ -163,5 +160,53 @@ public class Runner {
 
     static String updatePackageName(String packageName) {
         return packageName.replace('.', '/');
+    }
+
+
+    /**
+     * it takes almost 25ms to load all the class,
+     * but here we are running all the classes one by one
+     */
+    public static void runAll(Class<?> clazz) {
+        String packageName = clazz.getPackageName();
+        List<Class<?>> runningClasses = getAllClasses(packageName);
+        runningClasses.forEach(Runner::runAnnotatedMethods);
+    }
+
+    private static List<Class<?>> getAllClasses(String packageName) {
+
+        String updatePackageName = updatePackageName(packageName);
+        ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+        URL packageUrl = classLoader.getResource(updatePackageName);
+        Objects.requireNonNull(packageUrl);
+        File packageDir = new File(packageUrl.getFile());
+
+        List<? extends Class<?>> runningClasses = Arrays.stream(Objects.requireNonNull(packageDir.listFiles()))
+                .parallel()
+                .filter(file -> file.isFile() && file.getName().endsWith(".class"))
+                .map(file -> packageName + "." + file.getName().replace(".class", ""))
+                .map(clasName -> {
+                    try {
+                        return classLoader.loadClass(clasName);
+                    } catch (ClassNotFoundException e) {
+                        return null;
+                    }
+                })
+                .filter(Objects::nonNull)
+                .filter(cls -> cls.isAnnotationPresent(Run.class) && cls.getAnnotation(Run.class).active())
+                .toList();
+
+        List<Class<?>> all = new ArrayList<>(runningClasses);
+
+        List<? extends Class<?>> nestedRunningClasses = Arrays.stream(Objects.requireNonNull(packageDir.listFiles()))
+                .parallel()
+                .filter(File::isDirectory)
+                .map(file -> packageName + "." + file.getName())
+                .flatMap(p -> getAllClasses(p).stream())
+                .toList();
+
+        all.addAll(nestedRunningClasses);
+
+        return all;
     }
 }
