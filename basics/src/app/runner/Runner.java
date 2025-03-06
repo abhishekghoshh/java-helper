@@ -62,7 +62,9 @@ public class Runner {
     }
 
 
-
+    /**
+     * Run the one class or classes with Run annotation
+     */
     public static void run(Class<?> clazz) {
         runOne(clazz);
     }
