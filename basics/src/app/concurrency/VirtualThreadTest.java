@@ -7,9 +7,9 @@ import java.util.stream.IntStream;
 
 public class VirtualThreadTest {
 
-    /*
+    /**
      * It uses java 21
-     * */
+     */
     public static void main(String[] args) {
         Runner.runAnnotatedMethods(VirtualThreadTest.class);
     }

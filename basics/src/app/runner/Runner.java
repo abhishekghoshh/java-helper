@@ -7,7 +7,6 @@ import app.runner.RunnerConfig.RunnableV2;
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 import java.net.URL;
 import java.util.*;
 import java.util.stream.Stream;
@@ -64,6 +63,13 @@ public class Runner {
 
     public static void runAnnotatedMethods(Class<?> clazz) {
         boolean runAllMethods;
+        Object instance;
+        try {
+            instance = clazz.getConstructor().newInstance();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
         if (clazz.isAnnotationPresent(Run.class)) {
             Run clazzRun = clazz.getAnnotation(Run.class);
             // is not an active Run annotated class
@@ -79,7 +85,6 @@ public class Runner {
         // method filtering
         List<Method> methods = Stream.of(clazz.getDeclaredMethods())
                 .parallel()
-                .filter(method -> Modifier.isStatic(method.getModifiers()))
                 .filter(method -> method.isAnnotationPresent(Run.class))
                 .filter(method -> runAllMethods || method.getAnnotation(Run.class).active())
                 .peek(method -> method.setAccessible(true))
@@ -89,7 +94,7 @@ public class Runner {
         List<RunnerConfig<Object>> runnerConfigs = methods.parallelStream()
                 .map(method -> {
                     Run annotation = method.getAnnotation(Run.class);
-                    return code(() -> method.invoke(null))
+                    return code(() -> method.invoke(instance))
                             .id(annotation.id())
                             .print(annotation.print())
                             .timer(annotation.timer(), annotation.timeIdentifier())
