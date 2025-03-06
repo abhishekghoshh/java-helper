@@ -61,68 +61,19 @@ public class Runner {
         return code(callable).timer(timeId).run();
     }
 
-    public static void runAnnotatedMethods(Class<?> clazz) {
-        boolean runAllMethods;
-        Object instance;
-        try {
-            instance = clazz.getConstructor().newInstance();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
 
-        if (clazz.isAnnotationPresent(Run.class)) {
-            Run clazzRun = clazz.getAnnotation(Run.class);
-            // is not an active Run annotated class
-            if (!clazzRun.active()) return;
-            // should all methods run
-            runAllMethods = clazzRun.all();
-            if (clazzRun.print()) {
-                System.out.println("Executing class : " + clazz.getCanonicalName());
-            }
-        } else {
-            runAllMethods = false;
-        }
-        // method filtering
-        List<Method> methods = Stream.of(clazz.getDeclaredMethods())
-                .parallel()
-                .filter(method -> method.isAnnotationPresent(Run.class))
-                .filter(method -> runAllMethods || method.getAnnotation(Run.class).active())
-                .peek(method -> method.setAccessible(true))
-                .toList();
 
-        // mapping methods to runner config
-        List<RunnerConfig<Object>> runnerConfigs = methods.parallelStream()
-                .map(method -> {
-                    Run annotation = method.getAnnotation(Run.class);
-                    return code(() -> method.invoke(instance))
-                            .id(annotation.id())
-                            .print(annotation.print())
-                            .timer(annotation.timer(), annotation.timeIdentifier())
-                            .error(annotation.showError())
-                            .showStackTrace(annotation.showStacktrace())
-                            .throwing(annotation.throwing())
-                            .printMethodName(annotation.print())
-                            .methodName(method.getName());
-                }).toList();
-
-        // running individual runner config
-        runnerConfigs.forEach(rc -> {
-            try {
-                if (rc.printMethodName()) System.out.println("Executing : " + rc.methodName());
-                rc.run();
-            } catch (Exception e) {
-                System.err.println("Error invoking method: " + e.getMessage());
-                System.exit(0);
-            }
-        });
+    public static void run(Class<?> clazz) {
+        runOne(clazz);
     }
+
 
     /**
      * it takes almost 25ms to load all the class,
      * but here we are using find first
      * once we find any class any Run annotation we are returning
      */
-    public static void run(Class<?> clazz) {
+    public static void runOne(Class<?> clazz) {
         String packageName = clazz.getPackageName();
         Class<?> runningClass = getClass(packageName);
         if (null == runningClass) return;
@@ -213,5 +164,62 @@ public class Runner {
         all.addAll(nestedRunningClasses);
 
         return all;
+    }
+
+
+    public static void runAnnotatedMethods(Class<?> clazz) {
+        boolean runAllMethods;
+        Object instance;
+        try {
+            instance = clazz.getConstructor().newInstance();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        if (clazz.isAnnotationPresent(Run.class)) {
+            Run clazzRun = clazz.getAnnotation(Run.class);
+            // is not an active Run annotated class
+            if (!clazzRun.active()) return;
+            // should all methods run
+            runAllMethods = clazzRun.all();
+            if (clazzRun.print()) {
+                System.out.println("Executing class : " + clazz.getCanonicalName());
+            }
+        } else {
+            runAllMethods = false;
+        }
+        // method filtering
+        List<Method> methods = Stream.of(clazz.getDeclaredMethods())
+                .parallel()
+                .filter(method -> method.isAnnotationPresent(Run.class))
+                .filter(method -> runAllMethods || method.getAnnotation(Run.class).active())
+                .peek(method -> method.setAccessible(true))
+                .toList();
+
+        // mapping methods to runner config
+        List<RunnerConfig<Object>> runnerConfigs = methods.parallelStream()
+                .map(method -> {
+                    Run annotation = method.getAnnotation(Run.class);
+                    return code(() -> method.invoke(instance))
+                            .id(annotation.id())
+                            .print(annotation.print())
+                            .timer(annotation.timer(), annotation.timeIdentifier())
+                            .error(annotation.showError())
+                            .showStackTrace(annotation.showStacktrace())
+                            .throwing(annotation.throwing())
+                            .printMethodName(annotation.print())
+                            .methodName(method.getName());
+                }).toList();
+
+        // running individual runner config
+        runnerConfigs.forEach(rc -> {
+            try {
+                if (rc.printMethodName()) System.out.println("Executing : " + rc.methodName());
+                rc.run();
+            } catch (Exception e) {
+                System.err.println("Error invoking method: " + e.getMessage());
+                System.exit(0);
+            }
+        });
     }
 }

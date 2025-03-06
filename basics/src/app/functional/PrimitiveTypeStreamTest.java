@@ -1,7 +1,6 @@
 package app.functional;
 
 import app.runner.Run;
-import app.util.Utils;
 
 import java.math.BigInteger;
 import java.util.Arrays;
@@ -108,8 +107,9 @@ public class PrimitiveTypeStreamTest {
     static void intStreamWithLimitAndPeekThenSumExample() {
         int sum = IntStream.iterate(0, e -> e + 1)
                 .limit(10)
-                .peek(Utils::print)
+                .peek(i -> System.out.print(i + " "))
                 .sum();
+        System.out.println();
         System.out.println(sum);
     }
 
