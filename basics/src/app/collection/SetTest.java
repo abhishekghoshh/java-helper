@@ -1,14 +1,10 @@
 package app.collection;
 
 import app.runner.Run;
-import app.runner.Runner;
 
 import java.util.*;
 
 public class SetTest {
-    public static void main(String[] args) {
-        Runner.runAnnotatedMethods(SetTest.class);
-    }
 
     @Run(active = false)
     private static void hashSet() {

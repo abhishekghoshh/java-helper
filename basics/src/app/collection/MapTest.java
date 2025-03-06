@@ -1,7 +1,6 @@
 package app.collection;
 
 import app.runner.Run;
-import app.runner.Runner;
 
 import java.util.*;
 
@@ -11,10 +10,6 @@ public class MapTest {
 
 
     private static final int COUNTER = 100000;
-
-    public static void main(String[] args) throws Exception {
-        Runner.runAnnotatedMethods(MapTest.class);
-    }
 
     @Run(active = false)
     private static void hashMap() {

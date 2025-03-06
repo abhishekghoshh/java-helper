@@ -1,12 +1,9 @@
 package app.concurrency;
 
 import app.runner.Run;
-import app.runner.Runner;
 
 public class ThreadTest {
-    public static void main(String[] args) {
-        Runner.runAnnotatedMethods(ThreadTest.class);
-    }
+
 
     @Run(active = false)
     private static void fromRunnableInterface() {

@@ -3,10 +3,7 @@ package app.functional;
 import app.functional.model.Course;
 
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
-import static app.functional.model.Course.isReviewScoreGreaterThan;
 import static app.util.Utils.print;
 import static java.util.Comparator.comparing;
 import static java.util.Comparator.comparingInt;
@@ -20,17 +17,17 @@ public class StreamTest {
 
         print(() -> courses.stream()
                 .allMatch(course ->
-                        isReviewScoreGreaterThan(course, 95)
+                        Course.isReviewScoreGreaterThan(course, 95)
                 )
         );
         print(() -> courses.stream()
                 .noneMatch(course ->
-                        isReviewScoreGreaterThan(course, 95)
+                        Course.isReviewScoreGreaterThan(course, 95)
                 )
         );
         print(() -> courses.stream()
                 .anyMatch(course ->
-                        isReviewScoreGreaterThan(course, 95)
+                        Course.isReviewScoreGreaterThan(course, 95)
                 )
         );
         print(() -> courses.stream()
@@ -63,12 +60,12 @@ public class StreamTest {
         );
         print(() -> courses.stream()
                 .sorted(comparingInt(Course::getReviewScore))
-                .takeWhile(course -> isReviewScoreGreaterThan(course, 95))
+                .takeWhile(course -> Course.isReviewScoreGreaterThan(course, 95))
                 .collect(toList())
         );
         print(() -> courses.stream()
                 .sorted(comparingInt(Course::getReviewScore))
-                .dropWhile(course -> isReviewScoreGreaterThan(course, 95))
+                .dropWhile(course -> Course.isReviewScoreGreaterThan(course, 95))
                 .collect(toList())
         );
         print(() -> courses.stream()

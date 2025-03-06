@@ -9,12 +9,14 @@ import java.util.stream.Collectors;
 import static app.util.Utils.print;
 
 public class StreamOfStringTest {
+
+    static List<String> courses = new ArrayList<>(
+            List.of("Spring", "Spring Boot", "API", "Microservices", "AWS", "PCF", "Azure", "Docker", "Kubernetes", "GCP")
+    );
+
+
     public static void main(String[] args) {
-        List<String> courses = new ArrayList<>(
-                List.of("Spring", "Spring Boot", "API", "Microservices",
-                        "AWS", "PCF", "Azure", "Docker", "Kubernetes", "GCP"
-                )
-        );
+
 
         print(() -> courses.stream()
                         .collect(Collectors.joining(","))

@@ -14,10 +14,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ReflectionsTest {
-    public static void main(String[] args) throws Exception {
-        Runner.runAnnotatedMethods(ReflectionsTest.class);
-    }
-
 
     @Run(active = false, showError = true, showStacktrace = true)
     private static void loadClass() throws ClassNotFoundException {

@@ -11,9 +11,6 @@ import java.util.List;
 
 @Run(active = false)
 public class GenericsTest {
-    public static void main(String[] args) {
-        Runner.runAnnotatedMethods(GenericsTest.class);
-    }
 
 
     @Run(active = false)

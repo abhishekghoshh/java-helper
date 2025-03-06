@@ -1,7 +1,6 @@
 package app.collection;
 
 import app.runner.Run;
-import app.runner.Runner;
 
 import java.util.*;
 
@@ -10,10 +9,6 @@ import static app.runner.Runner.time;
 public class QueueTest {
 
     public static final int COUNTER = 500000;
-
-    public static void main(String[] args) throws Exception {
-        Runner.runAnnotatedMethods(QueueTest.class);
-    }
 
 
     @Run(active = false)

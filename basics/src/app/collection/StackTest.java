@@ -1,15 +1,12 @@
 package app.collection;
 
 import app.runner.Run;
-import app.runner.Runner;
 
 import java.util.Stack;
 import java.util.stream.IntStream;
 
 public class StackTest {
-    public static void main(String[] args) {
-        Runner.runAnnotatedMethods(StackTest.class);
-    }
+
 
     @Run(active = false)
     private static void stack() {

@@ -1,18 +1,15 @@
 package app.concurrency;
 
 import app.runner.Run;
-import app.runner.Runner;
 
 import java.util.stream.IntStream;
 
+
+/**
+ * It uses java 21
+ */
 public class VirtualThreadTest {
 
-    /**
-     * It uses java 21
-     */
-    public static void main(String[] args) {
-        Runner.runAnnotatedMethods(VirtualThreadTest.class);
-    }
 
     static int COUNTER = 10000;
 

@@ -1,15 +1,11 @@
 package app.collection;
 
 import app.runner.Run;
-import app.runner.Runner;
 
 import java.util.*;
 
 @Run(active = false, all = true)
 public class CollectionSortTest {
-    public static void main(String[] args) {
-        Runner.runAnnotatedMethods(CollectionSortTest.class);
-    }
 
     @Run(active = false)
     private static void primitiveSort() {

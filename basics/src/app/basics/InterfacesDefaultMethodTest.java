@@ -13,10 +13,6 @@ import java.util.function.Consumer;
 
 public class InterfacesDefaultMethodTest {
 
-    public static void main(String[] args) throws Exception {
-        Runner.runAnnotatedMethods(InterfacesDefaultMethodTest.class);
-    }
-
     @Run(active = false)
     static void defaultInterfaceMethods() {
         Client14 client14 = new Client14();

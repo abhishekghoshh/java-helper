@@ -1,7 +1,6 @@
 package app.collection;
 
 import app.runner.Run;
-import app.runner.Runner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +12,6 @@ public class SynchronizedListTest {
 
     public static final int COUNTER = 10000000;
 
-    public static void main(String[] args) throws Exception {
-        Runner.runAnnotatedMethods(SynchronizedListTest.class);
-    }
 
     @Run(active = false, timer = true, timeIdentifier = "Normal Array List", printMethodName = true)
     private static void checkForNormalArrayList() throws InterruptedException {

@@ -9,10 +9,6 @@ public class ListTest {
 
     private static final int COUNTER = 100000;
 
-    public static void main(String[] args) throws Exception {
-
-    }
-
     @Run(active = false)
     private static void basicListOperation() {
         List<String> names = Arrays.asList("Dave", "Jessie", "Alex", "Dan");

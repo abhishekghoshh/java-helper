@@ -9,9 +9,6 @@ import java.util.List;
 
 public class CollectionsTest {
 
-    public static void main(String[] args) {
-        Runner.runAnnotatedMethods(CollectionsTest.class);
-    }
 
     @Run(active = false)
     private static void unmodifiableList2() {
