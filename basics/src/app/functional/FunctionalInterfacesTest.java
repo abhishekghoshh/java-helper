@@ -1,7 +1,7 @@
 package app.functional;
 
-import app.functional.model.Student;
-import app.functional.model.StudentDataBase;
+import app.model.Student;
+import app.model.StudentDataBase;
 import app.runner.Run;
 
 import java.util.Comparator;

@@ -1,6 +1,6 @@
 package app.functional;
 
-import app.functional.model.Course;
+import app.model.Course;
 import app.runner.Run;
 
 import java.util.Comparator;

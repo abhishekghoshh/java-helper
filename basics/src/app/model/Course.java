@@ -1,4 +1,4 @@
-package app.functional.model;
+package app.model;
 
 import java.util.List;
 import java.util.function.Predicate;

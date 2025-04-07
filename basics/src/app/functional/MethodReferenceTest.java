@@ -1,6 +1,6 @@
 package app.functional;
 
-import app.functional.model.Student;
+import app.model.Student;
 import app.runner.Run;
 
 import java.util.function.Function;
