@@ -13,7 +13,6 @@ import java.util.stream.Stream;
 @Run(active = false)
 public class FileStreamTest {
 
-
     @Run(id = "print all the line from the stream")
     private static void printLines() throws IOException {
         Path path = Paths.get("user.txt");
