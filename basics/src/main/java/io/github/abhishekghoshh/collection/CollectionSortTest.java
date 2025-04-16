@@ -7,6 +7,7 @@ import java.util.*;
 @Run(active = false, all = true)
 public class CollectionSortTest {
 
+
     @Run(active = false)
     private static void primitiveSort() {
         int[] nums = {1, 5, -5, 4, 12, 3};

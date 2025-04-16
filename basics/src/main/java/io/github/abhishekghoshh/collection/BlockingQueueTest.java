@@ -9,6 +9,10 @@ import java.util.concurrent.BlockingQueue;
 @Run(active = false)
 public class BlockingQueueTest {
 
+    public static void main(String[] args) {
+
+    }
+
     @Run(active = false)
     static void blockingQueueTest() throws InterruptedException {
 

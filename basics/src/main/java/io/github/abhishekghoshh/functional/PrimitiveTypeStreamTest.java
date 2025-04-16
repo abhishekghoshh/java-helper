@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
-@Run
+@Run(active = false)
 public class PrimitiveTypeStreamTest {
 
     @Run(active = false, id = "even numbers multiplied by 2 and print")

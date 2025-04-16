@@ -26,6 +26,8 @@ io/github/abhishekghoshh/concurrency/VirtualThreadTest.class
 io/github/abhishekghoshh/functional/FileStreamTest.class
 io/github/abhishekghoshh/collection/StackTest.class
 io/github/abhishekghoshh/collection/MapTest$Person.class
+io/github/abhishekghoshh/runner/ClassUtil.class
+io/github/abhishekghoshh/model/submodel/Person.class
 io/github/abhishekghoshh/model/Interface2.class
 io/github/abhishekghoshh/runner/Sample.class
 io/github/abhishekghoshh/concurrency/ThreadTest$ThreadExample.class

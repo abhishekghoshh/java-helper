@@ -63,8 +63,19 @@ public class Runner {
     /**
      * Run the one class or classes with Run annotation
      */
-    public static void run(Class<?> clazz) {
-        runOne(clazz);
+    public static void run(Class<?> clazz) throws Exception {
+        String packageName = clazz.getPackageName();
+        List<Class<?>> classes = ClassUtil.allClasses(packageName, Runner::isActive);
+        System.out.println(classes);
+        if (classes.isEmpty()) {
+            System.out.println("No class with Run annotation found in package: " + packageName);
+            return;
+        }
+        classes.forEach(Runner::runAnnotatedMethods);
+    }
+
+    public static boolean isActive(Class<?> cls) {
+        return cls.isAnnotationPresent(Run.class) && cls.getAnnotation(Run.class).active();
     }
 
     static ClassLoader classLoader = ClassLoader.getSystemClassLoader();
@@ -84,6 +95,7 @@ public class Runner {
 
 
     private static Class<?> getClass(String packageName) {
+        System.out.println("packageName is " + packageName);
         File[] files = getFiles(packageName);
         Optional<? extends Class<?>> runningClass = Arrays.stream(files)
                 .parallel()
@@ -109,6 +121,7 @@ public class Runner {
     }
 
     private static List<Class<?>> getAllClasses(String packageName) {
+        System.out.println("packageName is " + packageName);
         File[] files = getFiles(packageName);
         List<? extends Class<?>> runningClasses = Arrays.stream(files)
                 .parallel()
@@ -158,10 +171,12 @@ public class Runner {
     }
 
 
-    private static Class<?> loadClass(String clasName) {
+    private static Class<?> loadClass(String className) {
         try {
-            return classLoader.loadClass(clasName);
+            System.out.println("Loading class " + className);
+            return classLoader.loadClass(className);
         } catch (ClassNotFoundException e) {
+            System.err.println("Skipping: " + className + " (missing dependencies?)");
             return null;
         }
     }
