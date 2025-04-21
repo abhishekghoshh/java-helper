@@ -1,3 +1,11 @@
+
+
+## Medium blogs
+
+- [Everything You Need To Know About Apache Maven : Part 1](https://medium.com/@saquibdev/everything-you-need-to-know-about-apache-maven-part-1-f16ce2ed7d24)
+- [Maven Build Lifecycles, Maven Plugins and Maven Profiles](https://medium.com/javarevisited/maven-build-lifecycles-maven-plugins-and-maven-profiles-10bc01640662)
+
+
 ## Youtube video
 
 - [Maven Tutorial - Crash Course](https://www.youtube.com/watch?v=Xatr8AZLOsE)

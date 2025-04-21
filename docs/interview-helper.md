@@ -8,6 +8,13 @@
 - [56 Java Interview Questions And Answers For All Levels](https://www.datacamp.com/blog/java-interview-questions)
 - [Java Interview Questions and Answers 2025](https://www.naukri.com/code360/library/java-interview-questions)
 
+- [I Gave More Than 50 Interviews in the Last 6 Months— Here Are the Most Frequently Asked Java Interview Questions](https://medium.com/javarevisited/i-gave-more-than-50-interviews-in-the-last-6-months-here-are-the-most-frequently-asked-java-b98348f02e9e)
+- [Java Interview Questions : Exception, try,catch,finally,throw,throws,Autocloseable,Custom Exception](https://medium.com/@priyasrivastava18official/java-interview-questions-exception-try-catch-finally-throw-throws-autocloseable-custom-exception-607a8c78310e)
+- [Frequently Asked Java String Interview Questions and Answers](https://medium.com/javaguides/frequently-asked-java-string-interview-questions-and-answers-f97b65f5b485)
+- [Top 20 Java 8 Interview Questions with Scenarios and Solutions](https://saannjaay.medium.com/top-20-java-8-interview-questions-with-scenarios-and-solutions-e21b2d1d2cb8)
+- [Java Interview Questions : Java 8 features related question](https://medium.com/@priyasrivastava18official/java-interview-questions-java-8-features-related-question-a8452082840b)
+- [70+ Real Interview Questions for Java Backend Developers EPAM | Autodesk | Citi Bank 2025](https://usersk7.medium.com/70-java-backend-interview-questions-from-epam-autodesk-citi-bank-2025-45f2f273bbf0)
+
 
 ## Collections
 
@@ -34,15 +41,24 @@
 - [Java Concurrency Interview Questions (+ Answers)](https://www.baeldung.com/java-concurrency-interview-questions)
 - [Multithreading Interview Questions](https://www.interviewbit.com/multithreading-interview-questions/)
 
+- [Top 7 Advanced Java Multithreading Questions (With Detailed Explanations and Examples)](https://codefarm0.medium.com/top-7-advanced-java-multithreading-questions-with-detailed-explanations-and-examples-e02e04486cc6)
+- [30 Tricky Java Multi-Threading Interview Questions with Answers](https://medium.com/@chandantechie/30-tricky-java-multi-threading-interview-questions-with-answers-c47a9dedaa57)
+- [Multithreading: 350+ Interview Questions & In-Depth Explanations in Java?](https://medium.com/@gaddamnaveen192/multithreading-350-interview-questions-in-depth-explanations-in-java-a9160ba65ad9)
+- [Java Multithreading Interview Questions 2024](https://medium.com/@scholarhatblogs/java-multithreading-interview-questions-2024-d756e4a1d4bf)
+- [Java Interview Questions : Static,final,volatile,synchronized ,Transient ,Atomic](https://medium.com/@priyasrivastava18official/java-interview-questions-static-final-volatile-synchronised-transiet-atomic-4493cf3f5fcc)
+
 
 
 ## Stream and lambda and functional interfaces
 
 - [Java 8 Interview Questions](https://www.interviewbit.com/java-8-interview-questions)
 - [Java Stream API Interview Questions and Answer](https://www.naukri.com/code360/library/stream-api-interview-questions)
+
 - [Java Stream Coding Interview Questions: Part 1](https://medium.com/@mehar.chand.cloud/java-stream-coding-interview-questions-part-1-dc39e3575727)
 - [Java Stream Coding Interview Questions: Part 2](https://medium.com/@mehar.chand.cloud/java-stream-coding-interview-questions-part-2-9f3aad0025f3)
 - [Java Stream Hard Interview Questions](https://medium.com/@mehar.chand.cloud/java-stream-hard-interview-questions-54ea0de40acc)
+- [Avoid These 5 Common Java Stream Mistakes for Efficient Development](https://medium.com/javarevisited/avoid-these-5-common-java-stream-mistakes-for-efficient-development-7aefce097ac3)
+- [Top 10 Java Stream API Coding Questions for your next interview](https://rathod-ajay.medium.com/top-10-java-stream-api-coding-questions-for-your-next-interview-5b96c22da6f7)
 
 
 
@@ -81,15 +97,12 @@
 - [Java Essentials](https://www.youtube.com/playlist?list=PLIRBoI92yMam1HaUYrMAaPdbZKV1BFW0F)
 
 
-## Medium channels
-
-- [Shivam Srivastava](https://medium.com/@shivamsrivastava.iec)
-- [Oleksandr Klymenko](https://medium.com/@alxkm)
-
-
-
 
 ## Other topics
+
+- [Optimizing Spring Boot for INSANE Traffic: The 1M RPS Guide](https://medium.com/@kanishksinghpujari/optimizing-spring-boot-for-insane-traffic-the-1m-rps-guide-8b2a54cd711d)
+- [Memory Leaks in Java (Real-Time Use Case & Fixes)](https://medium.com/@gaddamnaveen192/memory-leaks-in-java-real-time-use-case-fixes-29f92faa99e0)
+
 
 hashcode and equals <br>
 ArrayList implementation <br>

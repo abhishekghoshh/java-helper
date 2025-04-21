@@ -7,6 +7,7 @@ import java.util.*;
 import static io.github.abhishekghoshh.runner.Runner.time;
 
 
+@Run(active = false)
 public class MapTest {
 
 
@@ -175,5 +176,27 @@ public class MapTest {
             return "Person [name=" + name + ", age=" + age + "]";
         }
 
+    }
+
+    @Run(active = true, id = "weak hashmap but here we are using object reference as key")
+    static void weakHashMap1() {
+        Map<String, String> weakHashMap = new WeakHashMap<>();
+        String key = new String("key");
+        weakHashMap.put(key, "value");
+        System.out.println(weakHashMap);
+        key = null;
+        System.gc();
+        System.out.println(weakHashMap);
+    }
+
+    @Run(active = true, id = "weak hashmap but here we are using string literal as key")
+    static void weakHashMap2() {
+        Map<String, String> weakHashMap = new WeakHashMap<>();
+        String key = new String("key");
+        weakHashMap.put(key, "value");
+        System.out.println(weakHashMap);
+        key = null;
+        System.gc();
+        System.out.println(weakHashMap);
     }
 }

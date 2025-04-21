@@ -66,9 +66,8 @@ public class Runner {
     public static void run(Class<?> clazz) throws Exception {
         String packageName = clazz.getPackageName();
         List<Class<?>> classes = ClassUtil.allClasses(packageName, Runner::isActive);
-        System.out.println(classes);
         if (classes.isEmpty()) {
-            System.out.println("No class with Run annotation found in package: " + packageName);
+            System.out.println("No Active Run Class found in the package: " + packageName);
             return;
         }
         classes.forEach(Runner::runAnnotatedMethods);
