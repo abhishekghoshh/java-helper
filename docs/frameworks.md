@@ -19,7 +19,7 @@
 
 ### Blogs
 - [Let's Play with Reactive Streams on Armeria - Part 1](https://engineering.linecorp.com/en/blog/reactive-streams-armeria-1)
-- [Let's Play with Reactive Streams on Armeria – Part 2](https://engineering.linecorp.com/en/blog/reactive-streams-armeria-2)
+- [Let's Play with Reactive Streams on Armeria - Part 2](https://engineering.linecorp.com/en/blog/reactive-streams-armeria-2)
 
 
 
