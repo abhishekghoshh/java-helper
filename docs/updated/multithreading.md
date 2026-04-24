@@ -24,10 +24,12 @@
 
 ## Udemy
 
-- [Java: Multi-threading and Concurrency Simplified](https://udemy.com/course/java-multi-threading-by-sagar/)
-- [Java Multithreading, Concurrency & Performance Optimization](https://udemy.com/course/java-multithreading-concurrency-performance-optimization/)
-- [Efficient Java Multithreading and Concurrency with Executors](https://udemy.com/course/efficient-java-multithreading-with-executors/)
-- [Multithreading,Parallel & Asynchronous Coding in Modern Java](https://udemy.com/course/parallel-and-asynchronous-programming-in-modern-java/)
+- [Java: Multi-threading and Concurrency Simplified](https://www.udemy.com/course/java-multi-threading-by-sagar/)
+- [Java Multithreading, Concurrency & Performance Optimization](https://www.udemy.com/course/java-multithreading-concurrency-performance-optimization/)
+- [Efficient Java Multithreading and Concurrency with Executors](https://www.udemy.com/course/efficient-java-multithreading-with-executors/)
+- [Multithreading,Parallel & Asynchronous Coding in Modern Java](https://www.udemy.com/course/parallel-and-asynchronous-programming-in-modern-java/)
+
+- [Concurrency, Multithreading and Parallel Computing in Java](https://www.udemy.com/course/multithreading-and-parallel-computing-in-java)
 
 
-- [Concurrency, Multithreading and Parallel Computing in Java](https://udemy.com/course/multithreading-and-parallel-computing-in-java/)
+)

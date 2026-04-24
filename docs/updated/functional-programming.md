@@ -12,7 +12,7 @@
 - [Java Techie](https://www.youtube.com/@Javatechie/playlists)
   - [Java8](https://www.youtube.com/playlist?list=PLVz2XdJiJQxzrdrpglCv_nWIO5CDIqOVj)
   - [Java Stream Gatherers Explained 🚀 | The Next Evolution of Streams](https://www.youtube.com/watch?v=If6wFkY8ux4)
-
+- [Java Stream Interview Questions](https://www.youtube.com/playlist?list=PL-bgVzzRdaPjJoMRvpCLpusTTIvi3v342)
 
 
 
