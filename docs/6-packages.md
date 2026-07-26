@@ -349,3 +349,80 @@ module com.acme.reporting {
     exports com.acme.reporting.api;
 }
 ```
+
+## Additional Resources
+
+### Build Tooling
+
+Java source files are organized into packages/modules, but real-world projects are almost always compiled, tested, and packaged with a build tool rather than raw `javac`. Maven and Gradle are the two dominant choices in the Java ecosystem.
+
+#### Maven
+
+- [Everything You Need To Know About Apache Maven : Part 1](https://medium.com/@saquibdev/everything-you-need-to-know-about-apache-maven-part-1-f16ce2ed7d24)
+- [Maven Build Lifecycles, Maven Plugins and Maven Profiles](https://medium.com/javarevisited/maven-build-lifecycles-maven-plugins-and-maven-profiles-10bc01640662)
+- [Maven Tutorial - Crash Course](https://www.youtube.com/watch?v=Xatr8AZLOsE) — [marcobehlerjetbrains/maven-tutorial](https://github.com/marcobehlerjetbrains/maven-tutorial)
+- [Introduction to the POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)
+- [Introduction to the Dependency Mechanism](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Dependency_Scope)
+- [Maven: The Complete Reference](https://books.sonatype.com/mvnref-book/reference/index.html)
+- [mvn clean install - a short guide to Maven](https://www.marcobehler.com/guides/mvn-clean-install-a-short-guide-to-maven)
+
+**Useful commands**
+
+```sh
+mvn --version                       # Display Maven version
+mvn clean                           # Remove the target directory with all build data
+mvn install                         # Install the project's artifacts into the local repository
+mvn validate                        # Validate the project is correct and all necessary information is available
+mvn compile                         # Compile the source code of the project
+mvn test                            # Run tests using a suitable unit testing framework
+mvn clean install                   # Clean the project then install its artifacts into the local repository
+mvn clean package -DskipTests       # Clean and package the project, skipping tests
+mvn compile test package            # Compile, test, and package the project
+mvn clean -Pnative native:compile -DskipTests   # Clean and compile the project natively, skipping tests
+mvn wrapper:wrapper                 # Create the Maven wrapper scripts
+mvnw --version                      # Display the Maven wrapper version
+mvn clean deploy
+mvn nexus-staging:release
+mvn nexus-staging:drop
+```
+
+**Publishing to Maven Central**
+
+- [How to publish your own library to Maven Central Repository | Publishing dependency to OSSRH | HINDI](https://www.youtube.com/watch?v=xEMOF443WI8) — [librbary/librbary-retry](https://github.com/librbary/librbary-retry)
+- [Publish your artifact to the Maven Central Repository using GitHub Actions](https://medium.com/@jtbsorensen/publish-your-artifact-to-the-maven-central-repository-using-github-actions-15d3b5d9ce88)
+- [Deploying to OSSRH with Apache Maven](https://central.sonatype.org/publish/publish-maven/)
+- [Maven Central](https://central.sonatype.com/) / [Register to Publish Via the Central Portal](https://central.sonatype.org/register/central-portal/)
+
+Steps: (1) create an account on Maven Central, create and verify a namespace (signing in with GitHub helps), generate a publishing token; (2) add the required plugins from the OSSRH publishing guide above; (3) install GnuPG and create a key pair per the [GPG requirements](https://central.sonatype.org/publish/requirements/gpg/) — `gpg --gen-key` to generate, `gpg --list-signatures --keyid-format 0xshort` to list, `gpg --keyserver keys.openpgp.org --send-keys $PUBLIC_KEY` to publish the public key, `gpg --armor --export-secret-keys $PUBLIC_KEY` to export the private key.
+
+The official `maven-gpg-plugin` does not work well in GitHub Actions, so `org.simplify4u.plugins:sign-maven-plugin` can be used there instead, keeping `maven-gpg-plugin` for local builds:
+
+```xml
+<!-- This plugin is used for signing the jars in GitHub Actions -->
+<plugin>
+    <groupId>org.simplify4u.plugins</groupId>
+    <artifactId>sign-maven-plugin</artifactId>
+    <version>1.1.0</version>
+</plugin>
+<!-- This plugin does not work in GitHub Actions; uncomment if building locally -->
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-gpg-plugin</artifactId>
+    <version>${maven-gpg-plugin.version}</version>
+    <executions>
+        <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+                <goal>sign</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
+```
+
+See also [Easy way to create PGP/GPG Signatures with Maven on CI/CD](https://www.simplify4u.org/how-to/maven-openpgp-signatures.html) and [Sign artifacts with GnuPG](https://maven.apache.org/plugins/maven-gpg-plugin/usage.html).
+
+#### Gradle
+
+- [Gradle Tutorial - Crash Course](https://www.youtube.com/watch?v=gKPMKRnnbXU) — [marcobehlerjetbrains/gradle-tutorial](https://github.com/marcobehlerjetbrains/gradle-tutorial)

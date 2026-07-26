@@ -3729,3 +3729,36 @@ jcmd <pid> GC.heap_info
 | Java 22 | Feature | Unnamed Variables (`_`), FFM API |
 | Java 24 | Feature | Stream Gatherers, Pinning-free Virtual Threads |
 | Java 25 | LTS | Instance Main Methods, Scoped Values, Flexible Constructors |
+
+## Additional Resources
+
+### Videos
+
+- [Java biggest upgrade in decades](https://www.youtube.com/watch?v=F4MCnVuKvzA)
+- [Java just got faster](https://www.youtube.com/watch?v=b-sKmiVB4g8)
+- [Java just got cleaner](https://www.youtube.com/watch?v=YLCrAm-aGI8)
+- [Java is now easier than ever...](https://www.youtube.com/watch?v=6M6M0-87y8A)
+- [Modern Java is pretty cool and you can't avoid it anymore...](https://www.youtube.com/watch?v=lvHR2Xc9LMU)
+- [Java 25 is here](https://www.youtube.com/watch?v=BOErAo3MJvM)
+- [Java 25 | Game Changer! 🚀 Top Features Explained with Code](https://www.youtube.com/watch?v=xvHhO0SN2xc)
+- [Java' biggest upgrade in decades](https://www.youtube.com/watch?v=UuQQVY9jxSs)
+- [✅Java 25 Features Explained 🔥What's New & Why It Matters | Instant Main Methods & More - Hindi](https://www.youtube.com/watch?v=w4ugzANtLYM)
+  - [Java 25: The Future of Coding](https://www.learncodewithdurgesh.com/blogs/java-25-the-future-of-coding-now)
+
+### Courses
+
+- [What's New in Java 9 - Modules and More!](https://udemy.com/course/whats-new-in-java-9/)
+- [Java 9 New Features In Simple Way : JShell, JPMS and More](https://udemy.com/course/java-9-new-features-in-simple-way-jshell-jpms-and-more/)
+- [Modern Java: Mastering Features from Java 8 to Java 25](https://udemy.com/course/modern-java-learn-java-8-features-by-coding-it/)
+
+### Interview Question Resources
+
+- [Busy Developers' Guide to Java 9, 10, …, 22, 23, and All Recent Java Versions](https://4comprehension.com/busy-developers-guide-to-java-9-10-11-12-13-and-above/)
+- [Java Versions and Features](https://www.marcobehler.com/guides/a-guide-to-java-versions-and-features)
+- [A Detailed Guide to all Java Versions and Features](https://www.linkedin.com/pulse/detailed-guide-all-java-versions-features-lalit-wazir-xs5wc/)
+- [Java Versions and Features [Updated upto Java 22]](https://howtodoinjava.com/series/java-versions-features/)
+- [A categorized list of all Java and JVM features since JDK 8 to 21](https://advancedweb.hu/a-categorized-list-of-all-java-and-jvm-features-since-jdk-8-to-21/)
+- [Java 8 vs Java 11 vs Java 17 vs Java 21: A Comprehensive Comparison](https://medium.com/@a.r.m.monesan_9577/java-8-vs-java-11-vs-java-17-vs-java-21-a-comprehensive-comparison-aa4635f9c3fe)
+- [Comprehensive list of Java versions with key features and upcoming releases](https://medium.com/@chandantechie/comprehensive-list-of-java-versions-with-key-features-and-upcoming-releases-54be35646cca)
+- [Top 20 Java 8 Interview Questions with Scenarios and Solutions](https://saannjaay.medium.com/top-20-java-8-interview-questions-with-scenarios-and-solutions-e21b2d1d2cb8)
+- [Java Interview Questions : Java 8 features related question](https://medium.com/@priyasrivastava18official/java-interview-questions-java-8-features-related-question-a8452082840b)

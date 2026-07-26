@@ -1061,3 +1061,9 @@ public class RegexIntegrationDemo {
     }
 }
 ```
+
+## Additional Resources
+
+### Interview Question Resources
+
+- [Frequently Asked Java String Interview Questions and Answers](https://medium.com/javaguides/frequently-asked-java-string-interview-questions-and-answers-f97b65f5b485)

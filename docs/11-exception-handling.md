@@ -827,3 +827,9 @@ class OrderServiceException extends RuntimeException { // unchecked: infra failu
     public OrderServiceException(String message, Throwable cause) { super(message, cause); }
 }
 ```
+
+## Additional Resources
+
+### Interview Question Resources
+
+- [Java Interview Questions : Exception, try,catch,finally,throw,throws,Autocloseable,Custom Exception](https://medium.com/@priyasrivastava18official/java-interview-questions-exception-try-catch-finally-throw-throws-autocloseable-custom-exception-607a8c78310e)

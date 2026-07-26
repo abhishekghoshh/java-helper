@@ -1308,3 +1308,12 @@ class ValidationHandler extends RequestHandler {
 ### Visitor *(new)*
 
 ### Mediator *(new)*
+
+## Additional Resources
+
+### Pipeline Design Pattern
+
+- [Pipeline Design Pattern in Java](https://www.baeldung.com/java-pipeline-design-pattern)
+- [The Pipeline design pattern (in Java)](https://medium.com/@deepakbapat/the-pipeline-design-pattern-in-java-831d9ce2fe21)
+- [\[Software Architecture\] The Pipeline Design Pattern — From Zero to Hero](https://medium.com/@bonnotguillaume/software-architecture-the-pipeline-design-pattern-from-zero-to-hero-b5c43d8a4e60)
+- [Pipeline Pattern in Java: Streamlining Data Processing with Modular Components](https://java-design-patterns.com/patterns/pipeline/)

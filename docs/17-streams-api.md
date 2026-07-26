@@ -679,3 +679,23 @@ public class StreamGatherersDemo {
     }
 }
 ```
+
+## Additional Resources
+
+### Videos
+
+- [Java Stream Gatherers Explained 🚀 | The Next Evolution of Streams](https://www.youtube.com/watch?v=If6wFkY8ux4)
+- [Java Stream Interview Questions](https://www.youtube.com/playlist?list=PL-bgVzzRdaPjJoMRvpCLpusTTIvi3v342)
+
+### Courses
+
+- [Java Streams API Developer Guide](https://udemy.com/course/java-streams/)
+
+### Interview Question Resources
+
+- [Java Stream API Interview Questions and Answer](https://www.naukri.com/code360/library/stream-api-interview-questions)
+- [Java Stream Coding Interview Questions: Part 1](https://medium.com/@mehar.chand.cloud/java-stream-coding-interview-questions-part-1-dc39e3575727)
+- [Java Stream Coding Interview Questions: Part 2](https://medium.com/@mehar.chand.cloud/java-stream-coding-interview-questions-part-2-9f3aad0025f3)
+- [Java Stream Hard Interview Questions](https://medium.com/@mehar.chand.cloud/java-stream-hard-interview-questions-54ea0de40acc)
+- [Avoid These 5 Common Java Stream Mistakes for Efficient Development](https://medium.com/javarevisited/avoid-these-5-common-java-stream-mistakes-for-efficient-development-7aefce097ac3)
+- [Top 10 Java Stream API Coding Questions for your next interview](https://rathod-ajay.medium.com/top-10-java-stream-api-coding-questions-for-your-next-interview-5b96c22da6f7)

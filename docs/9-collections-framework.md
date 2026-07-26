@@ -2815,3 +2815,27 @@ public class LinkedListInternalsDemo {
     }
 }
 ```
+
+## Additional Resources
+
+### Courses
+
+- [Introduction to Collections, Generics & Reflection in Java](https://udemy.com/course/introduction-to-generics-in-java/) *(also covers [Generics](10-generics.md) and [Reflection](14-reflection.md))*
+- [Java Collections from basics to Advanced](https://udemy.com/course/collections-and-concurrent-collection-video-lectures-and-tutorials/)
+
+### Interview Question Resources
+
+- [Java Collections](https://www.callicoder.com/java-arraylist/)
+- [Java Collections Interview Questions and Answers](https://www.geeksforgeeks.org/java-collections-interview-questions)
+- [Java Collections Interview Questions](https://www.interviewbit.com/java-collections-interview-questions/)
+- [Top 50 Java Collections Interview Questions You Need to Know](https://medium.com/@harendrakumarrajpoot5/top-50-java-collections-interview-questions-you-need-to-know-e55fcdc8dbfb)
+- [Top Java Collection Interview Questions and Answers for 2025](https://www.simplilearn.com/tutorials/java-tutorial/java-collection-interview-questions)
+- [Java Collections Interview Questions](https://www.baeldung.com/java-collections-interview-questions)
+
+### Topics to Review
+
+- hashCode and equals
+- ArrayList implementation
+- Internal working of HashMap, TreeMap, ConcurrentHashMap, LinkedHashMap, SortedMap, Hashtable
+- Same for HashSet, TreeSet, LinkedHashSet
+- Comparable and Comparator

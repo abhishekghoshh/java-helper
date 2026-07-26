@@ -2,6 +2,40 @@ site_name: Java Helper
 site_url: https://abhishekghoshh.github.io/java-helper
 
 nav:
+  - Home: 0-index.md
+  - Java Language Fundamentals: 1-java-language-fundamentals.md
+  - Object-Oriented Programming: 2-object-oriented-programming.md
+  - Classes: 3-classes.md
+  - Constructors: 4-constructors.md
+  - Access Modifiers: 5-access-modifiers.md
+  - Packages: 6-packages.md
+  - Strings: 7-strings.md
+  - Arrays: 8-arrays.md
+  - Collections Framework: 9-collections-framework.md
+  - Generics: 10-generics.md
+  - Exception Handling: 11-exception-handling.md
+  - File I/O: 12-file-io.md
+  - Serialization: 13-serialization.md
+  - Reflection: 14-reflection.md
+  - Annotations: 15-annotations.md
+  - Functional Programming: 16-functional-programming.md
+  - Streams API: 17-streams-api.md
+  - Date and Time API: 18-date-and-time-api.md
+  - JVM Internals: 19-jvm-internals.md
+  - Class Loader: 20-class-loader.md
+  - Memory Management: 21-memory-management.md
+  - Garbage Collection: 22-garbage-collection.md
+  - Concurrency: 23-concurrency.md
+  - Networking: 24-networking.md
+  - Design Patterns in Java: 25-design-patterns-in-java.md
+  - Modern Java Language Features: 26-modern-java-language-features.md
+  - Regular Expressions: 27-regular-expressions.md
+  - Internationalization & Localization: 28-internationalization-and-localization.md
+  - Logging: 29-logging.md
+  - Security Basics: 30-security-basics.md
+  - Native & Foreign Interoperability: 31-native-and-foreign-interoperability.md
+  - Process & System APIs: 32-process-and-system-apis.md
+  - Testing Fundamentals: 33-testing-fundamentals.md
 
 
 

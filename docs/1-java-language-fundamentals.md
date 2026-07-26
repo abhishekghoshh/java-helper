@@ -2696,3 +2696,27 @@ public class ShortCircuitDemo {
     static boolean isNotBlacklisted(String s) { System.out.println("blacklist check (most expensive)"); return true; }
 }
 ```
+
+## Additional Resources
+
+### Articles & Blogs
+
+- [Difference between Anonymous Inner Class and Lambda Expression](https://www.geeksforgeeks.org/java/difference-between-anonymous-inner-class-and-lambda-expression/)
+- [Java Isn't Verbose // we just suck](https://www.youtube.com/watch?v=UZuWeLjyT3c) — [Java Isn't Verbose - You Are](https://dev.to/adamthedeveloper/java-isnt-verbose-you-are-1di3)
+
+### Videos
+
+- [Netflix is Built on Java](https://www.youtube.com/watch?v=sMPMiy0NsUs)
+- [Play all JAVA from Basics to Advanced (All Videos are in English)](https://www.youtube.com/playlist?list=PL6W8uoQQ2c63f469AyV78np0rbxRFppkx)
+- [Java Programming](https://www.youtube.com/playlist?list=PLdkBFJZuflnYXyPlsg2yoWUOGdZXj4e1j)
+- [Java Interview Questions](https://www.youtube.com/playlist?list=PLhfxuQVMs-nyWxxtah2pedp5zar-vZ0Yn)
+- [Java Essentials](https://www.youtube.com/playlist?list=PLIRBoI92yMam1HaUYrMAaPdbZKV1BFW0F)
+
+### Interview Question Resources
+
+- [Java Interview Questions and Answers](https://www.geeksforgeeks.org/java-interview-questions/)
+- [Java Interview Questions](https://www.interviewbit.com/java-interview-questions/)
+- [56 Java Interview Questions And Answers For All Levels](https://www.datacamp.com/blog/java-interview-questions)
+- [Java Interview Questions and Answers 2025](https://www.naukri.com/code360/library/java-interview-questions)
+- [I Gave More Than 50 Interviews in the Last 6 Months— Here Are the Most Frequently Asked Java Interview Questions](https://medium.com/javarevisited/i-gave-more-than-50-interviews-in-the-last-6-months-here-are-the-most-frequently-asked-java-b98348f02e9e)
+- [70+ Real Interview Questions for Java Backend Developers EPAM | Autodesk | Citi Bank 2025](https://usersk7.medium.com/70-java-backend-interview-questions-from-epam-autodesk-citi-bank-2025-45f2f273bbf0)

@@ -655,3 +655,9 @@ public class ProfilingTargetDemo {
     }
 }
 ```
+
+## Additional Resources
+
+### Articles
+
+- [Memory Leaks in Java (Real-Time Use Case & Fixes)](https://medium.com/@gaddamnaveen192/memory-leaks-in-java-real-time-use-case-fixes-29f92faa99e0)

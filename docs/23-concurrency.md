@@ -3056,3 +3056,60 @@ public class ScopedTenantContext {
     }
 }
 ```
+
+## Additional Resources
+
+### Videos
+
+- [Introduction to Java Semaphores - Java Programming](https://www.youtube.com/watch?v=g19pjkJyGEU)
+- [Are You Using Java's Parallel Streams Correctly? - Java Programming](https://www.youtube.com/watch?v=j2kp4d_axhI)
+- [Structured Concurrency in Java 21](https://www.youtube.com/watch?v=9O7ukS-DHV0)
+- [Rayan Slim](https://www.youtube.com/@RayanSlim087/playlists)
+  - [Java Multithreading Course](https://www.youtube.com/playlist?list=PLZv1rlQ0kEKhks3wpCvOH9t-FV_LMlHT_)
+
+#### Virtual Threads
+
+- [Virtual Threads Explained](https://www.youtube.com/watch?v=bOnIYy3Y5OA)
+- [Java Threads vs Virtual Threads | Why This Changes Everything](https://www.youtube.com/watch?v=0NtIcbSsjBc)
+- [Understanding Java Virtual Threads | Java 21, 20, 19 | Made Easy](https://www.youtube.com/watch?v=CY_6yq11DEM)
+- [Virtual Threads in Java 21](https://www.youtube.com/watch?v=aXGrR8Q9_ak)
+- [Java Network Sockets + Virtual Threads = Cool!](https://www.youtube.com/watch?v=sFizpxHkIlI)
+- [Java 21 new feature: Virtual Threads](https://www.youtube.com/watch?v=5E0LU85EnTI)
+- [Java Virtual Threads](https://www.youtube.com/watch?v=MOgynY7VIJI)
+- [The Challenges of Introducing Virtual Threads to the Java Platform - Project Loom](https://www.youtube.com/watch?v=WsCJYQDPrrE)
+- [Java 24 Stops Pinning Virtual Threads (Almost) - Inside Java Newscast #80](https://www.youtube.com/watch?v=QDk1c0ifoNo)
+- [Project Loom - Structured Concurrency](https://www.youtube.com/watch?v=0mXGfsy7_Qo)
+- [Virtual Threads in JDK-24: The Synchronized Block Breakthrough Explained](https://www.youtube.com/watch?v=V4gsffMge7E)
+- [Spring into the Future: Embracing Virtual Threads with Java's Project Loom](https://www.youtube.com/watch?v=Is5HXJhC3jE)
+- [Significant Scalability Benefits in Spring Boot 3.2 using Virtual Threads](https://www.youtube.com/watch?v=THavIYnlwck)
+
+### Courses
+
+- [Java: Multi-threading and Concurrency Simplified](https://www.udemy.com/course/java-multi-threading-by-sagar/)
+- [Java Multithreading, Concurrency & Performance Optimization](https://www.udemy.com/course/java-multithreading-concurrency-performance-optimization/)
+- [Efficient Java Multithreading and Concurrency with Executors](https://www.udemy.com/course/efficient-java-multithreading-with-executors/)
+- [Multithreading,Parallel & Asynchronous Coding in Modern Java](https://www.udemy.com/course/parallel-and-asynchronous-programming-in-modern-java/)
+- [Concurrency, Multithreading and Parallel Computing in Java](https://www.udemy.com/course/multithreading-and-parallel-computing-in-java)
+- [Java Multithreading & Concurrency - Interview Practice Exams](https://thoughtworks.udemy.com/course/java-multithreading-concurrency-interview-practice-exams/)
+
+### Reactive Programming
+
+- [Reactive Programming in Modern Java using Project Reactor](https://udemy.com/course/reactive-programming-in-modern-java-using-project-reactor/)
+- [Mastering Java Reactive Programming [ From Scratch ]](https://udemy.com/course/complete-java-reactive-programming/)
+- [Functional & Reactive programming in Java : Modern Style](https://udemy.com/course/functional-programming-and-reactive-programming-in-java/)
+
+### Interview Question Resources
+
+- [Java concurrency basics](https://www.callicoder.com/java-concurrency-multithreading-basics/)
+- [Java CompletableFuture Tutorial with Examples](https://www.callicoder.com/java-8-completablefuture-tutorial/)
+- [Guide to the Fork/Join Framework in Java](https://www.baeldung.com/java-fork-join)
+- [A Guide to the Java ExecutorService](https://www.baeldung.com/java-executor-service-tutorial)
+- [Custom Thread Pools in Java Parallel Streams](https://www.baeldung.com/java-8-parallel-streams-custom-threadpool)
+- [Java Multithreading Interview Questions and Answers](https://www.geeksforgeeks.org/java-multithreading-interview-questions-and-answers/)
+- [Java Concurrency Interview Questions (+ Answers)](https://www.baeldung.com/java-concurrency-interview-questions)
+- [Multithreading Interview Questions](https://www.interviewbit.com/multithreading-interview-questions/)
+- [Top 7 Advanced Java Multithreading Questions (With Detailed Explanations and Examples)](https://codefarm0.medium.com/top-7-advanced-java-multithreading-questions-with-detailed-explanations-and-examples-e02e04486cc6)
+- [30 Tricky Java Multi-Threading Interview Questions with Answers](https://medium.com/@chandantechie/30-tricky-java-multi-threading-interview-questions-with-answers-c47a9dedaa57)
+- [Multithreading: 350+ Interview Questions & In-Depth Explanations in Java?](https://medium.com/@gaddamnaveen192/multithreading-350-interview-questions-in-depth-explanations-in-java-a9160ba65ad9)
+- [Java Multithreading Interview Questions 2024](https://medium.com/@scholarhatblogs/java-multithreading-interview-questions-2024-d756e4a1d4bf)
+- [Java Interview Questions : Static,final,volatile,synchronized ,Transient ,Atomic](https://medium.com/@priyasrivastava18official/java-interview-questions-static-final-volatile-synchronised-transiet-atomic-4493cf3f5fcc)

@@ -516,3 +516,18 @@ public class OptionalPitfallsDemo {
     }
 }
 ```
+
+## Additional Resources
+
+### Videos
+
+- [Java Techie](https://www.youtube.com/@Javatechie/playlists)
+  - [Java8](https://www.youtube.com/playlist?list=PLVz2XdJiJQxzrdrpglCv_nWIO5CDIqOVj)
+
+### Courses
+
+- [Learn Java Functional Programming with Lambdas & Streams](https://www.udemy.com/course/functional-programming-with-java)
+
+### Interview Question Resources
+
+- [Java 8 Interview Questions](https://www.interviewbit.com/java-8-interview-questions)
