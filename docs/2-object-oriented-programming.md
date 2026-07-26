@@ -1523,20 +1523,45 @@ public class PrivateInterfaceMethodDemo {
 
 #### One-to-One
 
-**Theory**: A one-to-one association means one instance of a class is linked to exactly one instance of another, each holding a reference to the other (or one-directional). Example: `Person` has exactly one `Passport`. Modeled with a single field reference (`private Passport passport;`), not a collection. Use it when the domain genuinely enforces a strict 1:1 cardinality; enforce it via constructor injection and validation, not just convention. Advantage: simplest, most direct association, easy to reason about. Limitation: real-world cardinality can change (e.g., a person might later have zero or multiple passports), requiring a model migration to a collection-based association.
+##### Theory
+- **Core Concepts** - A one-to-one association means one instance of a class is linked to exactly one instance of another, each holding a reference to the other (or one-directional). Example: `Person` has exactly one `Passport`. Modeled with a single field reference (`private Passport passport;`), not a collection.
+- **Internal Working** - At runtime this is just an object reference field connecting two independently-allocated heap objects.
+- **When to Use It** - Use it when the domain genuinely enforces a strict 1:1 cardinality; enforce it via constructor injection and validation, not just convention.
+- **Advantages** - Simplest, most direct association, easy to reason about.
+- **Limitations** - Real-world cardinality can change (e.g., a person might later have zero or multiple passports), requiring a model migration to a collection-based association.
 
-**Internal Working**: At runtime this is just an object reference field; both objects live independently on the heap connected by a pointer. If bidirectional, each object holds a reference to the other, which can create retention cycles that only a tracing GC (not naive reference counting) can collect correctly.
+##### Internal Working
+- **Step-by-Step Explanation** - Both objects live independently on the heap connected by a pointer. If bidirectional, each object holds a reference to the other, which can create retention cycles that only a tracing GC (not naive reference counting) can collect correctly.
+- **Memory Layout** - Not directly applicable beyond a standard object reference field occupying one word in the owning object's layout.
+- **Diagrams**
 ```
 Person --passport--> Passport
 Passport --owner-->  Person   (if bidirectional)
 ```
-JVM Behaviour: the reference field is a normal object pointer in the object's memory layout; the GC's reachability tracing walks both directions of a bidirectional link without issue (cycles are fine for a tracing collector).
+- **JVM Behaviour** - The reference field is a normal object pointer in the object's memory layout; the GC's reachability tracing walks both directions of a bidirectional link without issue (cycles are fine for a tracing collector).
 
-**Interview Questions & Answers**
-1. Q: How do you model a 1:1 association in Java? A: A single non-collection reference field on one or both sides, e.g., `private Passport passport;` in `Person`, optionally with a back-reference in `Passport`.
-2. Q: What's the risk of making a bidirectional 1:1 association? A: Keeping both sides in sync manually (if you change `person.setPassport(p)`, you must also set `p.setOwner(person)`), otherwise the model becomes inconsistent; encapsulate this synchronization inside a single method.
-3. Q: How would you enforce 1:1 cardinality strictly? A: Require the associated object in the constructor (not a setter) so an instance can never exist without its counterpart, and avoid exposing a way to null it out if the domain forbids that.
+##### Interview Questions
+**Basic**
+1. How do you model a 1:1 association in Java?
+2. What field type distinguishes a 1:1 association from a 1:N association?
 
+**Intermediate**
+1. What's the risk of making a bidirectional 1:1 association?
+
+**Advanced**
+1. How would you enforce 1:1 cardinality strictly at the language level?
+
+**Scenario-based**
+1. A `Person`-`Passport` 1:1 model later needs to support zero-or-multiple passports per person - how do you migrate the model safely?
+
+##### Detailed Answers
+1. **Q: How do you model a 1:1 association?** A: A single non-collection reference field on one or both sides, e.g., `private Passport passport;` in `Person`, optionally with a back-reference in `Passport`.
+2. **Q: Field type distinguishing 1:1 from 1:N?** A: 1:1 uses a plain single-object reference field; 1:N uses a collection field (`List`/`Set`/`Map`) referencing many instances.
+3. **Q: Risk of bidirectional 1:1?** A: Keeping both sides in sync manually (if you change `person.setPassport(p)`, you must also set `p.setOwner(person)`), otherwise the model becomes inconsistent; encapsulate this synchronization inside a single method.
+4. **Q: Enforcing 1:1 cardinality strictly?** A: Require the associated object in the constructor (not a setter) so an instance can never exist without its counterpart, and avoid exposing a way to null it out if the domain forbids that.
+5. **Q: Migrating to zero-or-multiple passports?** A: Replace the single `Passport` field with a `List<Passport>`, update the constructor/accessors to accept and expose a collection, and audit all callers that assumed exactly one passport.
+
+##### Code Examples
 ```java
 class Passport { private final String number; Passport(String number) { this.number = number; } }
 class Person {
@@ -1548,20 +1573,45 @@ class Person {
 
 #### One-to-Many
 
-**Theory**: A one-to-many association links one instance to a collection of instances of another class, e.g., `Department` has many `Employee`s. Modeled with a `List`/`Set`/`Map` field on the "one" side. Use when a single parent legitimately owns/references multiple children conceptually (though ownership/lifecycle is a separate concept from association - see Aggregation/Composition). Advantage: naturally models real-world one-to-many domain relationships and supports iteration/queries. Limitation: needs defensive copying/unmodifiable views on the collection getter to preserve encapsulation (see Defensive Copying).
+##### Theory
+- **Core Concepts** - A one-to-many association links one instance to a collection of instances of another class, e.g., `Department` has many `Employee`s. Modeled with a `List`/`Set`/`Map` field on the "one" side.
+- **Internal Working** - The parent holds a reference to a collection object that in turn holds references to each child.
+- **When to Use It** - Use when a single parent legitimately references multiple children conceptually (ownership/lifecycle is a separate concept - see Aggregation/Composition).
+- **Advantages** - Naturally models real-world one-to-many domain relationships and supports iteration/queries.
+- **Limitations** - Needs defensive copying/unmodifiable views on the collection getter to preserve encapsulation.
 
-**Internal Working**: The "one" side holds a reference to a collection object (itself heap-allocated, e.g., an `ArrayList` backed by an array), which in turn holds references to each "many" object; three levels of indirection exist (parent -> collection -> children).
+##### Internal Working
+- **Step-by-Step Explanation** - The "one" side holds a reference to a collection object (itself heap-allocated, e.g., an `ArrayList` backed by an array), which in turn holds references to each "many" object; three levels of indirection exist (parent -> collection -> children).
+- **Memory Layout** - Parent object -> collection object header + backing array -> individual child object references.
+- **Diagrams**
 ```
 Department --employees--> ArrayList --[0]--> Employee1
                                     --[1]--> Employee2
 ```
-JVM Behaviour: iterating the collection uses the collection's own iterator machinery (fail-fast `modCount` checks for `ArrayList`); the GC treats the collection and its elements as ordinary reachable objects - no special-casing.
+- **JVM Behaviour** - Iterating the collection uses the collection's own iterator machinery (fail-fast `modCount` checks for `ArrayList`); the GC treats the collection and its elements as ordinary reachable objects - no special-casing.
 
-**Interview Questions & Answers**
-1. Q: How do you model one-to-many in Java? A: A collection field (`List<Employee> employees`) on the "one" side, populated via an `addEmployee()` method rather than exposing the raw mutable list.
-2. Q: How do you prevent external code from corrupting the internal collection? A: Return `Collections.unmodifiableList(employees)` from the getter, or a defensive copy, so callers can't `add`/`remove` directly.
-3. Q: Should the "many" side hold a back-reference to the "one" side? A: Only if you need to navigate both directions frequently; otherwise a unidirectional association keeps the model simpler and avoids synchronization bugs.
+##### Interview Questions
+**Basic**
+1. How do you model one-to-many in Java?
+2. What collection types are commonly used for the "many" side?
 
+**Intermediate**
+1. How do you prevent external code from corrupting the internal collection?
+
+**Advanced**
+1. Should the "many" side hold a back-reference to the "one" side? What are the trade-offs?
+
+**Scenario-based**
+1. A `Department.getEmployees()` getter returns the live internal `List`, and external code accidentally clears it - how do you prevent this?
+
+##### Detailed Answers
+1. **Q: How do you model one-to-many?** A: A collection field (`List<Employee> employees`) on the "one" side, populated via an `addEmployee()` method rather than exposing the raw mutable list.
+2. **Q: Common collection types?** A: `List` for ordered/duplicate-allowed children, `Set` when duplicates should be rejected, `Map` when children are keyed/looked-up by an identifier.
+3. **Q: Preventing corruption of the internal collection?** A: Return `Collections.unmodifiableList(employees)` from the getter, or a defensive copy, so callers can't `add`/`remove` directly.
+4. **Q: Back-reference trade-offs?** A: A back-reference enables navigating from child to parent but requires keeping both sides in sync on every add/remove; a unidirectional association keeps the model simpler and avoids synchronization bugs when bidirectional navigation isn't needed.
+5. **Q: Preventing external mutation of getEmployees()?** A: Wrap the returned list in `Collections.unmodifiableList(...)` (or return a defensive copy), so calling `.clear()`/`.add()` on the returned reference either throws `UnsupportedOperationException` or has no effect on the real internal state.
+
+##### Code Examples
 ```java
 import java.util.*;
 class Employee { final String name; Employee(String name) { this.name = name; } }
@@ -1576,20 +1626,45 @@ class Department {
 
 #### Many-to-Many
 
-**Theory**: A many-to-many association means instances on both sides can relate to multiple instances of the other, e.g., `Student` enrolls in many `Course`s, and each `Course` has many `Student`s. Modeled with a collection field on both sides, or via a dedicated join/link class holding extra relationship data (like a JPA `@ManyToMany` join table). Use when the domain genuinely has bidirectional multiplicity. Advantage: accurately models complex real-world relationships. Limitation: bidirectional many-to-many is the hardest to keep consistent - easy to create sync bugs or memory leaks from uncollectible growth if not managed carefully.
+##### Theory
+- **Core Concepts** - A many-to-many association means instances on both sides can relate to multiple instances of the other, e.g., `Student` enrolls in many `Course`s, and each `Course` has many `Student`s. Modeled with a collection field on both sides, or via a dedicated join/link class holding extra relationship data (like a JPA `@ManyToMany` join table).
+- **Internal Working** - Both sides hold collections of references to the other type.
+- **When to Use It** - Use when the domain genuinely has bidirectional multiplicity.
+- **Advantages** - Accurately models complex real-world relationships.
+- **Limitations** - Bidirectional many-to-many is the hardest to keep consistent - easy to create sync bugs or memory leaks from uncollectible growth if not managed carefully.
 
-**Internal Working**: Both sides hold collections of references to the other type; without care, keeping both collections in sync requires updating both sides on every add/remove, ideally centralized in one method (e.g., `enroll(student, course)` updates both collections atomically).
+##### Internal Working
+- **Step-by-Step Explanation** - Without care, keeping both collections in sync requires updating both sides on every add/remove, ideally centralized in one method (e.g., `enroll(student, course)` updates both collections atomically).
+- **Memory Layout** - Each side holds a `HashSet`/`ArrayList` whose backing storage references the other side's instances - no fundamentally different memory shape from other collection-backed associations, just doubled (one collection per side).
+- **Diagrams**
 ```
 Student1 --courses--> {CourseA, CourseB}
 CourseA  --students--> {Student1, Student2}
 ```
-JVM Behaviour: no special runtime behaviour beyond standard collection/object reachability; care is needed at the design level (not JVM level) to avoid inconsistent bidirectional state.
+- **JVM Behaviour** - No special runtime behaviour beyond standard collection/object reachability; care is needed at the design level (not JVM level) to avoid inconsistent bidirectional state.
 
-**Interview Questions & Answers**
-1. Q: How do you model many-to-many in plain Java (no ORM)? A: Each side holds a collection referencing the other type, updated together via a single relationship-management method (e.g., a static `enroll(Student, Course)` helper) to avoid partial/inconsistent updates.
-2. Q: How does JPA typically represent many-to-many at the database level, and how does that map to the Java model? A: Via a join table with two foreign keys; in Java this often maps to `@ManyToMany` collections on both entities, sometimes backed by an explicit join entity if extra attributes (e.g., enrollment date) are needed on the relationship itself.
-3. Q: What issue arises if you only update one side of a bidirectional many-to-many association? A: The model becomes inconsistent (e.g., `student.getCourses()` shows the course but `course.getStudents()` doesn't show the student), causing subtle bugs in code that navigates from either direction.
+##### Interview Questions
+**Basic**
+1. How do you model many-to-many in plain Java (no ORM)?
+2. Give a real-world example of a many-to-many relationship.
 
+**Intermediate**
+1. How does JPA typically represent many-to-many at the database level, and how does that map to the Java model?
+
+**Advanced**
+1. What issue arises if you only update one side of a bidirectional many-to-many association?
+
+**Scenario-based**
+1. A many-to-many `Student`/`Course` model needs to also track an enrollment date per pairing - how would you redesign it?
+
+##### Detailed Answers
+1. **Q: Modeling many-to-many in plain Java?** A: Each side holds a collection referencing the other type, updated together via a single relationship-management method (e.g., a static `enroll(Student, Course)` helper) to avoid partial/inconsistent updates.
+2. **Q: Real-world example?** A: Students enrolling in courses, or actors appearing in multiple movies while movies have multiple actors.
+3. **Q: JPA's database representation?** A: Via a join table with two foreign keys; in Java this often maps to `@ManyToMany` collections on both entities, sometimes backed by an explicit join entity if extra attributes (e.g., enrollment date) are needed on the relationship itself.
+4. **Q: Issue with one-sided updates?** A: The model becomes inconsistent (e.g., `student.getCourses()` shows the course but `course.getStudents()` doesn't show the student), causing subtle bugs in code that navigates from either direction.
+5. **Q: Adding enrollment-date attribute?** A: Introduce an explicit `Enrollment` join entity holding `student`, `course`, and `enrollmentDate` fields, replacing the direct `Set<Course>`/`Set<Student>` references with `Set<Enrollment>` on each side - mirroring how JPA models many-to-many-with-attributes via an explicit join entity.
+
+##### Code Examples
 ```java
 import java.util.*;
 class Course { final String title; final Set<Student> students = new HashSet<>(); Course(String t){title=t;} }
@@ -1604,43 +1679,94 @@ class Enrollment {
 
 #### Weak Relationship
 
-**Theory**: Aggregation is a "weak" has-a relationship where the contained object's lifecycle is independent of the container - the part can exist before, after, or without the whole (e.g., a `Team` has `Player`s, but players exist independently of any one team). Modeled by storing a reference to an object created/owned externally (passed in, not `new`'d internally). Use when the child object is shared or can outlive the parent. Advantage: promotes reuse (same object can belong to multiple aggregates) and independent lifecycle management. Limitation: because ownership is unclear, it's easy to create dangling references or unclear responsibility for cleanup.
+##### Theory
+- **Core Concepts** - Aggregation is a "weak" has-a relationship where the contained object's lifecycle is independent of the container - the part can exist before, after, or without the whole (e.g., a `Team` has `Player`s, but players exist independently of any one team).
+- **Internal Working** - Modeled by storing a reference to an object created/owned externally (passed in, not `new`'d internally).
+- **When to Use It** - Use when the child object is shared or can outlive the parent.
+- **Advantages** - Promotes reuse (same object can belong to multiple aggregates) and independent lifecycle management.
+- **Limitations** - Because ownership is unclear, it's easy to create dangling references or unclear responsibility for cleanup.
 
-**Internal Working**: Purely a reference-holding relationship at runtime - no special construct in Java distinguishes aggregation from any other reference field; it's a UML/design-level distinction based on lifecycle ownership, not a language feature.
+##### Internal Working
+- **Step-by-Step Explanation** - Purely a reference-holding relationship at runtime - no special construct in Java distinguishes aggregation from any other reference field; it's a UML/design-level distinction based on lifecycle ownership, not a language feature.
+- **Memory Layout** - Not directly applicable beyond a standard object reference field; the referenced object's storage is unaffected by which "aggregate" holds a pointer to it.
+- **Diagrams**
 ```
 Team --players--> [Player1, Player2]   (players created/passed in externally, outlive the Team)
 ```
-JVM Behaviour: the GC has no concept of aggregation vs composition - both are just references; an aggregated object remains reachable (alive) as long as ANY reference to it exists, including references held outside the "aggregate" container.
+- **JVM Behaviour** - The GC has no concept of aggregation vs composition - both are just references; an aggregated object remains reachable (alive) as long as ANY reference to it exists, including references held outside the "aggregate" container.
 
-**Interview Questions & Answers**
-1. Q: How is aggregation different from composition at the language level? A: Java has no syntactic distinction - both are just reference fields; the difference is purely conceptual/design-level (lifecycle ownership and whether the part can exist independently).
-2. Q: How do you typically construct an aggregation relationship in code? A: The contained object is created outside the container and passed in (e.g., via a constructor parameter or setter/add method), rather than being `new`'d inside the container's constructor.
-3. Q: Give a practical example distinguishing aggregation from composition. A: A `Team` aggregates `Player`s (players exist independently, can join another team) versus a `Car` composes `Engine` (the specific engine instance is created with and destroyed with that car).
+##### Interview Questions
+**Basic**
+1. How is aggregation different from composition at the language level?
+2. How do you typically construct an aggregation relationship in code?
 
+**Intermediate**
+1. Give a practical example distinguishing aggregation from composition.
+
+**Advanced**
+1. How does the GC's reachability analysis treat an aggregated object once the aggregate container itself becomes unreachable?
+
+**Scenario-based**
+1. A `Team` holds `Player` references; a player leaves the team and joins another, but the first team's roster still references them - how do you correctly model removal?
+
+##### Detailed Answers
+1. **Q: Aggregation vs composition at the language level?** A: Java has no syntactic distinction - both are just reference fields; the difference is purely conceptual/design-level (lifecycle ownership and whether the part can exist independently).
+2. **Q: Constructing aggregation in code?** A: The contained object is created outside the container and passed in (e.g., via a constructor parameter or setter/add method), rather than being `new`'d inside the container's constructor.
+3. **Q: Practical example?** A: A `Team` aggregates `Player`s (players exist independently, can join another team) versus a `Car` composes `Engine` (the specific engine instance is created with and destroyed with that car).
+4. **Q: GC treatment after container becomes unreachable?** A: The GC does not distinguish aggregation from any other reference - if the `Player` is still referenced elsewhere (e.g., a league-wide roster), it remains reachable and alive even though the `Team` that aggregated it is now garbage.
+5. **Q: Correctly modeling player removal/transfer?** A: Explicitly remove the player reference from the old team's collection (`oldTeam.removePlayer(p)`) and add it to the new team's collection (`newTeam.addPlayer(p)`) - since aggregation doesn't imply exclusive ownership, both operations must be performed explicitly.
+
+##### Code Examples
 ```java
 class Player { final String name; Player(String name) { this.name = name; } }
 class Team {
     private final List<Player> players = new ArrayList<>();
     // Players are created externally and passed in - weak, independent lifecycle
     void addPlayer(Player p) { players.add(p); }
+    void removePlayer(Player p) { players.remove(p); }
 }
 ```
 
 #### HAS-A
 
-**Theory**: "HAS-A" is the general umbrella term for any association where one class holds a reference to another as a field (as opposed to "IS-A" for inheritance), covering both aggregation and composition as more specific sub-forms. Use HAS-A (composition-favoring design) instead of inheritance whenever the relationship is about capability delegation rather than true type substitutability ("favor composition over inheritance"). Advantage: more flexible than inheritance - relationships can be reassigned/swapped at runtime, and avoids fragile base class problems. Limitation: requires explicit delegation code (forwarding calls to the held object) which inheritance would have given "for free" via the vtable.
+##### Theory
+- **Core Concepts** - "HAS-A" is the general umbrella term for any association where one class holds a reference to another as a field (as opposed to "IS-A" for inheritance), covering both aggregation and composition as more specific sub-forms.
+- **Internal Working** - A HAS-A relationship is simply an instance field referencing another object, with method calls potentially delegated to it.
+- **When to Use It** - Use HAS-A (composition-favoring design) instead of inheritance whenever the relationship is about capability delegation rather than true type substitutability ("favor composition over inheritance").
+- **Advantages** - More flexible than inheritance - relationships can be reassigned/swapped at runtime, and avoids fragile base class problems.
+- **Limitations** - Requires explicit delegation code (forwarding calls to the held object) which inheritance would have given "for free" via the vtable.
 
-**Internal Working**: A HAS-A relationship is simply an instance field referencing another object; method calls on the outer object may delegate to the held object's methods explicitly written by the developer, rather than relying on automatic vtable inheritance.
+##### Internal Working
+- **Step-by-Step Explanation** - A HAS-A relationship is simply an instance field referencing another object; method calls on the outer object may delegate to the held object's methods explicitly written by the developer, rather than relying on automatic vtable inheritance.
+- **Memory Layout** - Not directly applicable beyond a standard object reference field holding the collaborator's heap address.
+- **Diagrams**
 ```
 Car --engine--> Engine   (Car HAS-A Engine; Car delegates start() to engine.start())
 ```
-JVM Behaviour: delegation compiles to an ordinary method call on the held reference (`invokevirtual`/`invokeinterface`); no different from any other object graph traversal.
+- **JVM Behaviour** - Delegation compiles to an ordinary method call on the held reference (`invokevirtual`/`invokeinterface`); no different from any other object graph traversal.
 
-**Interview Questions & Answers**
-1. Q: What does "favor composition over inheritance" mean and why? A: Prefer HAS-A (holding and delegating to another object) over IS-A (extending a class) when you just need to reuse behaviour, because composition avoids tight coupling to a fixed superclass hierarchy, allows swapping implementations at runtime, and avoids fragile base class issues.
-2. Q: How do you implement delegation in a HAS-A relationship? A: The containing class holds a reference to the collaborator and its methods forward calls to it, optionally adding extra logic (decorator-like), e.g., `void start() { engine.start(); }`.
-3. Q: Can HAS-A relationships be swapped at runtime, unlike inheritance? A: Yes - since it's just a field reference, you can reassign it (e.g., `car.setEngine(newEngine)`) to change behaviour dynamically, which is impossible with static inheritance relationships.
+##### Interview Questions
+**Basic**
+1. What does "favor composition over inheritance" mean and why?
+2. How do you implement delegation in a HAS-A relationship?
 
+**Intermediate**
+1. Can HAS-A relationships be swapped at runtime, unlike inheritance?
+
+**Advanced**
+1. How does the JVM bytecode for delegated calls differ (if at all) from calls made via inheritance-based polymorphism?
+
+**Scenario-based**
+1. A `Car` class was originally designed to `extends Engine` to reuse its `start()` logic, but this creates an awkward "is-a" relationship - how would you refactor it to HAS-A?
+
+##### Detailed Answers
+1. **Q: "Favor composition over inheritance"?** A: Prefer HAS-A (holding and delegating to another object) over IS-A (extending a class) when you just need to reuse behaviour, because composition avoids tight coupling to a fixed superclass hierarchy, allows swapping implementations at runtime, and avoids fragile base class issues.
+2. **Q: Implementing delegation?** A: The containing class holds a reference to the collaborator and its methods forward calls to it, optionally adding extra logic (decorator-like), e.g., `void start() { engine.start(); }`.
+3. **Q: Runtime swappability?** A: Yes - since it's just a field reference, you can reassign it (e.g., `car.setEngine(newEngine)`) to change behaviour dynamically, which is impossible with static inheritance relationships.
+4. **Q: Bytecode difference for delegated calls?** A: A delegated call compiles to a normal `invokevirtual`/`invokeinterface` on the field's reference, identical to any other method call on a held object - there is no special "delegation" bytecode; it's indistinguishable from any other object collaboration at the JVM level.
+5. **Q: Refactoring `Car extends Engine` to HAS-A?** A: Replace `extends Engine` with a `private Engine engine` field, add a constructor/setter to inject it, and rewrite `Car`'s methods to explicitly delegate to `engine` (e.g., `engine.start()`) instead of inheriting `Engine`'s methods directly - removing the incorrect IS-A relationship (a `Car` is not literally an `Engine`).
+
+##### Code Examples
 ```java
 interface Engine { void start(); }
 class PetrolEngine implements Engine { public void start() { System.out.println("Vroom"); } }
@@ -1656,19 +1782,44 @@ class Car {
 
 #### Strong Relationship
 
-**Theory**: Composition is a "strong" has-a relationship where the contained object's lifecycle is bound to the container - the part cannot exist meaningfully without the whole and is typically created and destroyed together with it (e.g., a `House` composes `Room`s that don't exist independently of that house). Modeled by instantiating the contained object inside the container's constructor. Use when the part has no independent existence/identity outside the whole. Advantage: strong encapsulation, clear single ownership, simplifies reasoning about object lifetimes. Limitation: makes the contained object harder to reuse/share or substitute (e.g., for testing) unless designed with injectable dependencies.
+##### Theory
+- **Core Concepts** - Composition is a "strong" has-a relationship where the contained object's lifecycle is bound to the container - the part cannot exist meaningfully without the whole and is typically created and destroyed together with it (e.g., a `House` composes `Room`s that don't exist independently of that house).
+- **Internal Working** - Modeled by instantiating the contained object inside the container's constructor.
+- **When to Use It** - Use when the part has no independent existence/identity outside the whole.
+- **Advantages** - Strong encapsulation, clear single ownership, simplifies reasoning about object lifetimes.
+- **Limitations** - Makes the contained object harder to reuse/share or substitute (e.g., for testing) unless designed with injectable dependencies.
 
-**Internal Working**: The composed object is typically created via `new` directly inside the owning object's constructor and stored in a `final` field with no external setter, so no other code can obtain or replace that specific instance.
+##### Internal Working
+- **Step-by-Step Explanation** - The composed object is typically created via `new` directly inside the owning object's constructor and stored in a `final` field with no external setter, so no other code can obtain or replace that specific instance.
+- **Memory Layout** - When the containing object becomes unreachable, if nothing else references the composed part, it becomes garbage in the same GC cycle - the two effectively share a lifetime on the heap.
+- **Diagrams**
 ```
 new House() --constructs--> new Room() for each room (rooms cannot outlive/leave the house)
 ```
-JVM Behaviour: no different from any object reference at the bytecode level; the "strength" of the relationship is a design convention (no public constructor/setter access to the inner object) rather than a JVM-enforced rule. When the containing object becomes unreachable, if nothing else references the composed part, it becomes garbage in the same GC cycle.
+- **JVM Behaviour** - No different from any object reference at the bytecode level; the "strength" of the relationship is a design convention (no public constructor/setter access to the inner object) rather than a JVM-enforced rule.
 
-**Interview Questions & Answers**
-1. Q: How do you enforce composition (strong ownership) in Java code? A: Instantiate the part directly inside the owner's constructor, store it in a `private final` field, and do not provide a setter or a way to inject an externally-created instance.
-2. Q: What's the GC lifecycle implication of composition vs aggregation? A: In composition, once the owner is unreachable and nothing else references the parts, both owner and parts become garbage together in the same reachability analysis; in aggregation, the parts may remain reachable (alive) via other references even after the owner is collected.
-3. Q: What's a downside of strict composition for testability? A: It's harder to substitute a mock/stub for the composed object in unit tests since it's not injectable - mitigated by allowing constructor injection while still conceptually "owning" the lifecycle.
+##### Interview Questions
+**Basic**
+1. How do you enforce composition (strong ownership) in Java code?
+2. What's the GC lifecycle implication of composition vs aggregation?
 
+**Intermediate**
+1. What's a downside of strict composition for testability?
+
+**Advanced**
+1. How would you allow constructor injection for testability while still conceptually preserving composition semantics?
+
+**Scenario-based**
+1. A `House` composes `Room` objects created internally, but a unit test needs to verify behavior with a mock `Room` - how do you reconcile this with strict composition?
+
+##### Detailed Answers
+1. **Q: Enforcing composition in code?** A: Instantiate the part directly inside the owner's constructor, store it in a `private final` field, and do not provide a setter or a way to inject an externally-created instance.
+2. **Q: GC lifecycle implication?** A: In composition, once the owner is unreachable and nothing else references the parts, both owner and parts become garbage together in the same reachability analysis; in aggregation, the parts may remain reachable (alive) via other references even after the owner is collected.
+3. **Q: Downside for testability?** A: It's harder to substitute a mock/stub for the composed object in unit tests since it's not injectable - mitigated by allowing constructor injection while still conceptually "owning" the lifecycle.
+4. **Q: Allowing injection while preserving semantics?** A: Provide a constructor overload that accepts a pre-built part (useful for tests) while the default/primary constructor still creates it internally for normal production use, keeping the field `private final` either way so external code can't replace it after construction.
+5. **Q: Reconciling composition with mock-based testing?** A: Add a package-private or test-only constructor overload that accepts an injected `Room` (or a factory/interface abstraction for `Room` creation), preserving the public API's composition semantics for production code while enabling test doubles.
+
+##### Code Examples
 ```java
 class Room { private final String name; Room(String name) { this.name = name; } }
 class House {
@@ -1681,19 +1832,44 @@ class House {
 
 #### Part-of Relationship
 
-**Theory**: "Part-of" describes composition from the semantic angle: the contained object is conceptually and structurally a piece of the whole, without independent identity outside it (e.g., an `Engine` is part-of a specific `Car`, not a general-purpose reusable engine object shared across cars). This is the same underlying mechanism as "Strong Relationship" composition, viewed from the UML "whole/part" terminology. Use it to model structural decomposition of a complex object into smaller cohesive pieces. Advantage: improves cohesion/single-responsibility by delegating sub-behaviour to focused part classes. Limitation: if a "part" needs to be shared across multiple "wholes", it's actually aggregation, not true part-of composition - misclassifying this leads to design errors (e.g., accidentally letting two cars reference the same Engine instance).
+##### Theory
+- **Core Concepts** - "Part-of" describes composition from the semantic angle: the contained object is conceptually and structurally a piece of the whole, without independent identity outside it (e.g., an `Engine` is part-of a specific `Car`, not a general-purpose reusable engine object shared across cars).
+- **Internal Working** - Same underlying mechanism as "Strong Relationship" composition, viewed from the UML "whole/part" terminology.
+- **When to Use It** - Use it to model structural decomposition of a complex object into smaller cohesive pieces.
+- **Advantages** - Improves cohesion/single-responsibility by delegating sub-behaviour to focused part classes.
+- **Limitations** - If a "part" needs to be shared across multiple "wholes", it's actually aggregation, not true part-of composition - misclassifying this leads to design errors (e.g., accidentally letting two cars reference the same `Engine` instance).
 
-**Internal Working**: Identical at the bytecode/runtime level to composition - a reference field populated internally at construction, with the part's lifetime tied to the whole via exclusive ownership (no external references retained elsewhere).
+##### Internal Working
+- **Step-by-Step Explanation** - Identical at the bytecode/runtime level to composition - a reference field populated internally at construction, with the part's lifetime tied to the whole via exclusive ownership (no external references retained elsewhere).
+- **Memory Layout** - Not directly applicable beyond standard composition memory semantics (part's storage is reachable only through the whole).
+- **Diagrams**
 ```
 Car {  Engine (part-of Car, created with this Car, filled with this car's VIN etc.) }
 ```
-JVM Behaviour: same as composition - no special JVM support; ownership/part-of semantics are purely a design-level contract enforced by not leaking references to the part.
+- **JVM Behaviour** - Same as composition - no special JVM support; ownership/part-of semantics are purely a design-level contract enforced by not leaking references to the part.
 
-**Interview Questions & Answers**
-1. Q: How is "part-of" different from generic composition, if at all? A: They describe the same underlying mechanism (exclusive ownership, tied lifecycle); "part-of" emphasizes the structural/semantic view (the object is literally a piece of a larger whole) while "composition" emphasizes the lifecycle-binding aspect.
-2. Q: How would you detect that a supposed "part-of" relationship is actually aggregation in disguise? A: If the same instance of the "part" needs to be referenced by more than one "whole" simultaneously, or needs to survive the whole's destruction, it isn't exclusively owned and should be modeled as aggregation instead.
-3. Q: Why does exclusive ownership matter for encapsulation? A: It guarantees the whole's invariants over its parts (e.g., a `Car`'s `Engine` always matches its `Car`'s specs) since no external code can substitute or independently mutate the part outside the whole's control.
+##### Interview Questions
+**Basic**
+1. How is "part-of" different from generic composition, if at all?
+2. Give an example of a part-of relationship.
 
+**Intermediate**
+1. How would you detect that a supposed "part-of" relationship is actually aggregation in disguise?
+
+**Advanced**
+1. Why does exclusive ownership matter for encapsulation in a part-of relationship?
+
+**Scenario-based**
+1. A `Car`'s `Engine` (modeled as part-of) is accidentally exposed via a public getter and another class starts holding onto it after the car is sold/destroyed - what design flaw does this expose and how do you fix it?
+
+##### Detailed Answers
+1. **Q: "Part-of" vs generic composition?** A: They describe the same underlying mechanism (exclusive ownership, tied lifecycle); "part-of" emphasizes the structural/semantic view (the object is literally a piece of a larger whole) while "composition" emphasizes the lifecycle-binding aspect.
+2. **Q: Example of part-of?** A: A `Car`'s `Engine`, a `House`'s `Room`s, or a `Document`'s `Paragraph`s - each part has no independent identity or use outside its specific whole.
+3. **Q: Detecting aggregation-in-disguise?** A: If the same instance of the "part" needs to be referenced by more than one "whole" simultaneously, or needs to survive the whole's destruction, it isn't exclusively owned and should be modeled as aggregation instead.
+4. **Q: Why exclusive ownership matters?** A: It guarantees the whole's invariants over its parts (e.g., a `Car`'s `Engine` always matches its `Car`'s specs) since no external code can substitute or independently mutate the part outside the whole's control.
+5. **Q: Fixing leaked Engine reference?** A: Remove the public getter that exposes the mutable `Engine` reference (or return an immutable/defensive view of only the data needed), keeping the actual `Engine` instance encapsulated so external code cannot retain a reference that outlives the `Car`.
+
+##### Code Examples
 ```java
 class Engine { private final int horsepower; Engine(int hp) { this.horsepower = hp; } }
 class Car {
@@ -1704,19 +1880,44 @@ class Car {
 
 ### Dependency
 
-**Theory**: A dependency is the weakest relationship - one class uses another only transiently (e.g., as a method parameter, local variable, or return type) without holding a persistent reference as a field. Example: a `ReportGenerator` method takes a `Formatter` parameter and uses it just for that call. Use dependency (rather than association/field reference) when the collaboration is limited to a single method invocation. Advantage: minimal coupling - the depending class doesn't need to know about the dependency outside that method's scope, easing testing/mocking per call. Limitation: if the same collaborator is needed repeatedly, passing it on every call becomes repetitive versus storing it as a field (association).
+#### Theory
+- **Core Concepts** - A dependency is the weakest relationship - one class uses another only transiently (e.g., as a method parameter, local variable, or return type) without holding a persistent reference as a field. Example: a `ReportGenerator` method takes a `Formatter` parameter and uses it just for that call.
+- **Internal Working** - The collaborator exists only as a local variable/parameter reference during the method call.
+- **When to Use It** - Use dependency (rather than association/field reference) when the collaboration is limited to a single method invocation.
+- **Advantages** - Minimal coupling - the depending class doesn't need to know about the dependency outside that method's scope, easing testing/mocking per call.
+- **Limitations** - If the same collaborator is needed repeatedly, passing it on every call becomes repetitive versus storing it as a field (association).
 
-**Internal Working**: At runtime this is just a local variable/parameter reference on the stack frame during the method's execution, with no persistent field holding it after the method returns - the object becomes eligible for GC once no other references remain after the call.
+#### Internal Working
+- **Step-by-Step Explanation** - At runtime this is just a local variable/parameter reference on the stack frame during the method's execution, with no persistent field holding it after the method returns - the object becomes eligible for GC once no other references remain after the call.
+- **Memory Layout** - The reference occupies a slot in the method's local variable array on the calling thread's stack frame; it is discarded when that stack frame is popped.
+- **Diagrams**
 ```
 void generate(Formatter formatter) { ... uses formatter only within this call ... }
 ```
-JVM Behaviour: the parameter occupies a slot in the method's local variable array on the calling thread's stack frame; once the method returns, that stack frame (and its local reference) is discarded - no lasting reachability from this method call alone.
+- **JVM Behaviour** - The parameter occupies a slot in the method's local variable array on the calling thread's stack frame; once the method returns, that stack frame (and its local reference) is discarded - no lasting reachability from this method call alone.
 
-**Interview Questions & Answers**
-1. Q: How is a dependency different from an association in UML/OOP terms? A: An association is a persistent structural relationship (typically a field reference lasting the object's lifetime); a dependency is transient, usually just a method parameter or local variable used within a single operation.
-2. Q: Why is minimizing dependencies (low coupling) valuable? A: Classes with fewer/narrower dependencies are easier to test (fewer collaborators to mock), easier to change independently, and less likely to ripple-break when a dependency changes.
-3. Q: How would you visualize a dependency vs association in a UML class diagram? A: Association is a solid line (often with an arrow showing navigability and multiplicity); dependency is a dashed arrow, signifying a weaker, non-persistent "uses" relationship.
+#### Interview Questions
+**Basic**
+1. How is a dependency different from an association in UML/OOP terms?
+2. Give an example of a dependency relationship in Java code.
 
+**Intermediate**
+1. Why is minimizing dependencies (low coupling) valuable?
+
+**Advanced**
+1. How would you visualize a dependency vs association in a UML class diagram?
+
+**Scenario-based**
+1. A method's `Formatter` dependency is needed by three different methods in the same class - should you keep passing it as a parameter or promote it to a field (association)? Justify your choice.
+
+#### Detailed Answers
+1. **Q: Dependency vs association?** A: An association is a persistent structural relationship (typically a field reference lasting the object's lifetime); a dependency is transient, usually just a method parameter or local variable used within a single operation.
+2. **Q: Example?** A: A `ReportGenerator.generate(String data, Formatter formatter)` method that receives a `Formatter` purely to format output for that one call, without storing it.
+3. **Q: Why minimize dependencies?** A: Classes with fewer/narrower dependencies are easier to test (fewer collaborators to mock), easier to change independently, and less likely to ripple-break when a dependency changes.
+4. **Q: UML visualization?** A: Association is a solid line (often with an arrow showing navigability and multiplicity); dependency is a dashed arrow, signifying a weaker, non-persistent "uses" relationship.
+5. **Q: Parameter vs field promotion?** A: If the same `Formatter` is needed across many methods/calls, promoting it to a field (constructor-injected association) reduces repetitive parameter passing and clarifies that the class has a standing collaborator; keep it as a per-call parameter only if different calls genuinely need different formatters.
+
+#### Code Examples
 ```java
 interface Formatter { String format(String data); }
 class ReportGenerator {
@@ -1729,21 +1930,45 @@ class ReportGenerator {
 
 ### Realization
 
-**Theory**: Realization is the relationship between an interface (contract) and the class that implements it, distinct from inheritance (which extends a concrete/abstract class). In Java it's expressed via the `implements` keyword. Use realization whenever a class must fulfill a contract/capability defined independently of any concrete class hierarchy (enabling multiple, unrelated classes to satisfy the same contract). Advantage: enables polymorphism across unrelated class hierarchies and multiple contract fulfillment (a class can `implements` many interfaces). Limitation: interfaces (pre-default-methods) provide no shared implementation, so common logic across realizations must be duplicated or factored into default methods/helper classes.
+#### Theory
+- **Core Concepts** - Realization is the relationship between an interface (contract) and the class that implements it, distinct from inheritance (which extends a concrete/abstract class). In Java it's expressed via the `implements` keyword.
+- **Internal Working** - The implementing class's constant pool/interfaces table records which interface(s) it realizes.
+- **When to Use It** - Use realization whenever a class must fulfill a contract/capability defined independently of any concrete class hierarchy (enabling multiple, unrelated classes to satisfy the same contract).
+- **Advantages** - Enables polymorphism across unrelated class hierarchies and multiple contract fulfillment (a class can `implements` many interfaces).
+- **Limitations** - Interfaces (pre-default-methods) provide no shared implementation, so common logic across realizations must be duplicated or factored into default methods/helper classes.
 
-
-**Internal Working**: The class file for an implementing class lists the interface(s) it realizes in its `interfaces` table; the JVM builds an itable (interface method table) in addition to the class's vtable, used for `invokeinterface` dispatch when the reference's static type is the interface rather than a concrete class.
+#### Internal Working
+- **Step-by-Step Explanation** - The class file for an implementing class lists the interface(s) it realizes in its `interfaces` table; the JVM builds an itable (interface method table) in addition to the class's vtable, used for `invokeinterface` dispatch when the reference's static type is the interface rather than a concrete class.
+- **Memory Layout** - Not directly applicable to instance memory layout - the itable is metadata maintained per-class in the method area/metaspace, not per-instance.
+- **Diagrams**
 ```
 interface Drawable { void draw(); }
 class Circle implements Drawable { public void draw() { ... } }  // realization
 ```
-JVM Behaviour: `invokeinterface` historically required a linear/itable-based search for the implementing method (slightly costlier than `invokevirtual`'s direct vtable index), though modern JVMs optimize this heavily via caching and JIT inlining once a call site proves monomorphic/bimorphic.
+- **JVM Behaviour** - `invokeinterface` historically required a linear/itable-based search for the implementing method (slightly costlier than `invokevirtual`'s direct vtable index), though modern JVMs optimize this heavily via caching and JIT inlining once a call site proves monomorphic/bimorphic.
 
-**Interview Questions & Answers**
-1. Q: How is realization different from inheritance in Java syntax? A: Realization uses `implements` against an interface (a contract with no state and, traditionally, no implementation); inheritance uses `extends` against a class (which can carry state and concrete implementation), and only one `extends` is allowed versus multiple `implements`.
-2. Q: What JVM structure supports interface method dispatch, and how does it differ from vtable dispatch? A: An itable (interface method table), used with `invokeinterface`; unlike a class's vtable (a fixed per-class array indexed identically across the hierarchy), itables historically required searching for the right interface's method table within a class implementing multiple interfaces, since interface method slot numbering isn't uniform across unrelated interfaces.
-3. Q: Why can a single class realize multiple interfaces but extend only one class? A: Interfaces (without default method conflicts) impose no ambiguous state/implementation, avoiding the diamond problem that motivated restricting class inheritance to a single parent.
+#### Interview Questions
+**Basic**
+1. How is realization different from inheritance in Java syntax?
+2. Can a class realize (implement) more than one interface?
 
+**Intermediate**
+1. What JVM structure supports interface method dispatch, and how does it differ from vtable dispatch?
+
+**Advanced**
+1. Why can a single class realize multiple interfaces but extend only one class?
+
+**Scenario-based**
+1. A hot code path repeatedly calls a method through an interface reference (`Drawable d = ...; d.draw();`) inside a tight loop with only one concrete implementing class ever used at that call site - how does the JIT typically optimize this over time?
+
+#### Detailed Answers
+1. **Q: Realization vs inheritance syntax?** A: Realization uses `implements` against an interface (a contract with no state and, traditionally, no implementation); inheritance uses `extends` against a class (which can carry state and concrete implementation), and only one `extends` is allowed versus multiple `implements`.
+2. **Q: Multiple interface realization?** A: Yes - a class can `implements` any number of interfaces, since interfaces carry no state and (pre-default-methods) no implementation, avoiding the diamond-inheritance ambiguity that limits `extends` to one superclass.
+3. **Q: JVM dispatch structure?** A: An itable (interface method table), used with `invokeinterface`; unlike a class's vtable (a fixed per-class array indexed identically across the hierarchy), itables historically required searching for the right interface's method table within a class implementing multiple interfaces, since interface method slot numbering isn't uniform across unrelated interfaces.
+4. **Q: Why multiple implements but single extends?** A: Interfaces (without default method conflicts) impose no ambiguous state/implementation, avoiding the diamond problem that motivated restricting class inheritance to a single parent.
+5. **Q: JIT optimization for monomorphic interface call sites?** A: The JIT profiles the call site; if it observes only one concrete type (`Circle`) is ever used through the `Drawable` reference, it performs monomorphic inline caching (and potentially speculative inlining with a guard check), effectively making the `invokeinterface` call nearly as fast as a direct call, while still falling back to the general itable lookup path if a different implementing type appears later (deoptimizing the speculation).
+
+#### Code Examples
 ```java
 interface Drawable { void draw(); }
 interface Resizable { void resize(double factor); }
