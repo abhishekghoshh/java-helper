@@ -6,6 +6,7 @@
 
 ### Java 25
 
+- [Java biggest upgrade in decades](https://www.youtube.com/watch?v=F4MCnVuKvzA)
 - [Java just got faster](https://www.youtube.com/watch?v=b-sKmiVB4g8)
 - [Java just got cleaner](https://www.youtube.com/watch?v=YLCrAm-aGI8)
 - [Java is now easier than ever...](https://www.youtube.com/watch?v=6M6M0-87y8A)

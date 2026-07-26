@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  java-helper:
+    container_name: java-helper
+    image: abhishek1009/java-helper
+    build:
+      context: .  # Set the build context to the docs directory
+      dockerfile: Dockerfile.docs.slim  # Specify the Dockerfile to use
+    ports:
+      - "8000:8000"
+    # volume mount so that it will get the local changes automatically
+    volumes:
+      - ./:/home/abhishek/workspace/java-helper  # Mounts the local docs directory to /docs in the container

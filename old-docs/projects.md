@@ -7,4 +7,3 @@
   - [gouthampradhan/simple-http-server](https://github.com/gouthampradhan/simple-http-server)
 - [Create a Simple HTTP Server in Java Tutorial](https://www.youtube.com/playlist?list=PLAuGQNR28pW56GigraPdiI0oKwcs8gglW)
   - [CoderFromScratch/simple-java-http-server](https://github.com/CoderFromScratch/simple-java-http-server)
-

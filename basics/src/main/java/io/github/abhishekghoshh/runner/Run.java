@@ -8,11 +8,11 @@ import java.lang.annotation.Target;
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Run {
-    boolean active() default true;
+    boolean active() default false;
 
     String id() default "";
 
-    boolean print() default false;
+    boolean print() default true;
 
     boolean timer() default false;
 
