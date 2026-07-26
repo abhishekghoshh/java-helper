@@ -2,7 +2,7 @@ site_name: Java Helper
 site_url: https://abhishekghoshh.github.io/java-helper
 
 nav:
-  - Home: 0-index.md
+  - Home: index.md
   - Java Language Fundamentals: 1-java-language-fundamentals.md
   - Object-Oriented Programming: 2-object-oriented-programming.md
   - Classes: 3-classes.md
