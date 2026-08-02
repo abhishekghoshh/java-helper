@@ -1,0 +1,2672 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abhishekghoshh.github.io/java-helper/13-serialization/">
+      
+      
+        <link rel="prev" href="../12-file-io/">
+      
+      
+        <link rel="next" href="../14-reflection/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Serialization - Java Helper</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Serialization - Java Helper" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/13-serialization.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://abhishekghoshh.github.io/java-helper/13-serialization/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Serialization - Java Helper" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/13-serialization.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#13-serialization" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Java Helper" class="md-header__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Java Helper
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Serialization
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../1-java-language-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Java Language Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../2-object-oriented-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Object-Oriented Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../3-classes/" class="md-tabs__link">
+        
+  
+    
+  
+  Classes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../4-constructors/" class="md-tabs__link">
+        
+  
+    
+  
+  Constructors
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-access-modifiers/" class="md-tabs__link">
+        
+  
+    
+  
+  Access Modifiers
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../6-packages/" class="md-tabs__link">
+        
+  
+    
+  
+  Packages
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../7-strings/" class="md-tabs__link">
+        
+  
+    
+  
+  Strings
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../8-arrays/" class="md-tabs__link">
+        
+  
+    
+  
+  Arrays
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../9-collections-framework/" class="md-tabs__link">
+        
+  
+    
+  
+  Collections Framework
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../10-generics/" class="md-tabs__link">
+        
+  
+    
+  
+  Generics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../11-exception-handling/" class="md-tabs__link">
+        
+  
+    
+  
+  Exception Handling
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../12-file-io/" class="md-tabs__link">
+        
+  
+    
+  
+  File I/O
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Serialization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../14-reflection/" class="md-tabs__link">
+        
+  
+    
+  
+  Reflection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../15-annotations/" class="md-tabs__link">
+        
+  
+    
+  
+  Annotations
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../16-functional-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Functional Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../17-streams-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Streams API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../18-date-and-time-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Date and Time API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../19-jvm-internals/" class="md-tabs__link">
+        
+  
+    
+  
+  JVM Internals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../20-class-loader/" class="md-tabs__link">
+        
+  
+    
+  
+  Class Loader
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../21-memory-management/" class="md-tabs__link">
+        
+  
+    
+  
+  Memory Management
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../22-garbage-collection/" class="md-tabs__link">
+        
+  
+    
+  
+  Garbage Collection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../23-concurrency/" class="md-tabs__link">
+        
+  
+    
+  
+  Concurrency
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../24-networking/" class="md-tabs__link">
+        
+  
+    
+  
+  Networking
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../25-design-patterns-in-java/" class="md-tabs__link">
+        
+  
+    
+  
+  Design Patterns in Java
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../26-modern-java-language-features/" class="md-tabs__link">
+        
+  
+    
+  
+  Modern Java Language Features
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../27-regular-expressions/" class="md-tabs__link">
+        
+  
+    
+  
+  Regular Expressions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../28-internationalization-and-localization/" class="md-tabs__link">
+        
+  
+    
+  
+  Internationalization & Localization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../29-logging/" class="md-tabs__link">
+        
+  
+    
+  
+  Logging
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../30-security-basics/" class="md-tabs__link">
+        
+  
+    
+  
+  Security Basics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-tabs__link">
+        
+  
+    
+  
+  Native & Foreign Interoperability
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../32-process-and-system-apis/" class="md-tabs__link">
+        
+  
+    
+  
+  Process & System APIs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../33-testing-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Testing Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Java Helper" class="md-nav__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Java Helper
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-java-language-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java Language Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-object-oriented-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-classes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Classes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-constructors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constructors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-access-modifiers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access Modifiers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Packages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-strings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Strings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-collections-framework/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collections Framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-generics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-exception-handling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exception Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-file-io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File I/O
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Serialization
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Serialization
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#serializable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Serializable
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Serializable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#externalizable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Externalizable
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Externalizable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serialversionuid" class="md-nav__link">
+    <span class="md-ellipsis">
+      serialVersionUID
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="serialVersionUID">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transient" class="md-nav__link">
+    <span class="md-ellipsis">
+      transient
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="transient">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#readobject" class="md-nav__link">
+    <span class="md-ellipsis">
+      readObject()
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="readObject()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writeobject" class="md-nav__link">
+    <span class="md-ellipsis">
+      writeObject()
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="writeObject()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serialization-proxy-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Serialization Proxy Pattern
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Serialization Proxy Pattern">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record-serialization-new" class="md-nav__link">
+    <span class="md-ellipsis">
+      Record Serialization (new)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Record Serialization (new)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-reflection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reflection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-annotations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-functional-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Functional Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-streams-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Streams API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-date-and-time-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Date and Time API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-jvm-internals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JVM Internals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-class-loader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Class Loader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-memory-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-garbage-collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Garbage Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-concurrency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concurrency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-networking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-design-patterns-in-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Patterns in Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-modern-java-language-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modern Java Language Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-regular-expressions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Regular Expressions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-internationalization-and-localization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internationalization & Localization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-logging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30-security-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Native & Foreign Interoperability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32-process-and-system-apis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process & System APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33-testing-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div><h1 id="13-serialization">13. Serialization</h1>
+<h2 id="serializable">Serializable</h2>
+<h3 id="theory">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - <code>Serializable</code> is a marker interface (no methods) signaling to the JVM that instances of a class may be converted to/from a byte stream via <code>ObjectOutputStream</code>/<code>ObjectInputStream</code>, enabling persistence, deep-copying, or transmission across a network/process boundary.</li>
+<li><strong>Internal Working</strong> - The default serialization mechanism uses reflection to walk the object's non-transient, non-static fields and writes their values (recursively serializing referenced objects) to the stream, tagged with class metadata for later reconstruction.</li>
+<li><strong>When to Use It</strong> - Use for DTOs/value objects that need to cross JVM boundaries (RMI, distributed caches, session replication) or be persisted to disk; avoid for classes with sensitive data, complex invariants, or singleton/security-sensitive semantics without extra safeguards.</li>
+<li><strong>Advantages</strong> - Built into the JDK with zero boilerplate for simple classes (just implement the marker interface); integrates with many frameworks (RMI, <code>HttpSession</code> replication, some caching solutions).</li>
+<li><strong>Limitations</strong> - Reflection-based (slow, bypasses constructors), a well-known security liability (deserialization of untrusted data can enable RCE via gadget chains), fragile to class evolution unless <code>serialVersionUID</code> is managed carefully, and serialized form leaks the internal field layout as a de facto public API.</li>
+</ul>
+<h3 id="internal-working">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - On <code>writeObject(obj)</code>: the stream writes class metadata (name, <code>serialVersionUID</code>), then reflectively reads each non-transient, non-static field's value, recursively serializing any referenced object graph (handling cycles via an internal handle table so shared/circular references are written only once). On <code>readObject()</code>: the JVM allocates the object WITHOUT calling any constructor of the serializable class (it calls the no-arg constructor of the first non-serializable superclass, if any, then uses reflection to set fields directly from the stream data), reconstructing the object graph from the handle table.</li>
+<li><strong>Memory Layout</strong> - Deserialized objects are heap-allocated normally, but bypass the class's own constructors entirely - fields are set via low-level reflective mechanisms (<code>sun.reflect</code>/<code>Unsafe</code>-based field setting internally), which is why constructor invariants aren't automatically enforced.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Object graph --writeObject--&gt; [classname, serialVersionUID, field values, nested object handles] --&gt; byte stream
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>byte stream  --readObject--&gt;  new object (no constructor run) with fields set reflectively
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - Serialization/deserialization is implemented mostly in the <code>java.io</code> library using reflection (<code>Field.setAccessible(true)</code> internally) rather than special bytecode instructions; deserializing untrusted input is a well-documented attack vector because <code>readObject()</code> can trigger arbitrary code execution via crafted object graphs exploiting classes with dangerous <code>readObject()</code>/<code>finalize()</code> side effects ("gadget chains").</li>
+</ul>
+<h3 id="interview-questions">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What is the <code>Serializable</code> interface, and what methods does it require you to implement?
+2. What happens if a class has a non-serializable field and you try to serialize it?</p>
+<p><strong>Intermediate</strong>
+1. Why does deserialization bypass the class's normal constructors?
+2. How does the JVM handle circular references during serialization?</p>
+<p><strong>Advanced</strong>
+1. Why is deserializing untrusted data considered a serious security risk, and what are "gadget chains"?</p>
+<p><strong>Scenario-based</strong>
+1. A class implementing <code>Serializable</code> has a field referencing a non-serializable third-party type you can't modify - how do you handle this?</p>
+<h3 id="detailed-answers">Detailed Answers</h3>
+<ol>
+<li><strong>Q: What is <code>Serializable</code>?</strong> A: A marker interface (<code>java.io.Serializable</code>) with zero methods; implementing it simply opts the class into the JVM's default reflection-based serialization mechanism.</li>
+<li><strong>Q: Non-serializable field?</strong> A: <code>NotSerializableException</code> is thrown at runtime when the stream encounters a non-transient field whose declared runtime object doesn't implement <code>Serializable</code> - unless that field is marked <code>transient</code> (excluded from serialization) or the containing class provides custom <code>writeObject()</code>/<code>readObject()</code> logic to handle it manually.</li>
+<li><strong>Q: Why bypass constructors?</strong> A: Deserialization needs to reconstruct the EXACT prior state of the object (including private/invariant-violating intermediate states in theory), and calling the normal constructor (which may run validation, generate IDs, or have side effects) could change or reject that state, or duplicate side effects that already happened once during the original construction - so the JVM restores fields directly instead.</li>
+<li><strong>Q: Circular references?</strong> A: The stream maintains an internal handle table mapping already-serialized objects to a reference handle; when the same object is encountered again (including via a cycle), only the handle is written instead of re-serializing the object, and deserialization reconstructs the same shared/circular structure using those handles.</li>
+<li><strong>Q: Why is untrusted deserialization risky?</strong> A: <code>readObject()</code> (and related methods like <code>readResolve()</code>, <code>hashCode()</code>/<code>equals()</code> called incidentally during reconstruction, e.g., inside a <code>HashMap</code>) can execute arbitrary application code as objects are reconstructed; attackers craft a serialized byte stream referencing a chain of existing classes on the classpath whose side effects, when composed ("gadget chain"), achieve arbitrary code execution - a class of vulnerability that has caused real-world RCEs (e.g., Apache Commons Collections gadget chains).</li>
+<li><strong>Q: Non-serializable third-party field?</strong> A: Mark the field <code>transient</code> and provide custom <code>writeObject()</code>/<code>readObject()</code> methods that manually serialize/deserialize a substitute representation (e.g., convert the third-party object to a serializable form before writing, and reconstruct it after reading), or wrap it and implement the Serialization Proxy Pattern.</li>
+</ol>
+<h3 id="code-examples">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.*</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kd">class</span> <span class="nc">User</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Serializable</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">serialVersionUID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1L</span><span class="p">;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="p">;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="n">User</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">username</span><span class="p">;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="nd">@Override</span><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">toString</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" ("</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">")"</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">}</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SerializableDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="n">User</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">User</span><span class="p">(</span><span class="s">"alice"</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">);</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span><span class="c1">// Serialize to a byte array</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="n">ByteArrayOutputStream</span><span class="w"> </span><span class="n">bos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ByteArrayOutputStream</span><span class="p">();</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">ObjectOutputStream</span><span class="w"> </span><span class="n">oos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ObjectOutputStream</span><span class="p">(</span><span class="n">bos</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">oos</span><span class="p">.</span><span class="na">writeObject</span><span class="p">(</span><span class="n">user</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">        </span><span class="c1">// Deserialize back - note: no constructor of User runs during this</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">ObjectInputStream</span><span class="w"> </span><span class="n">ois</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ObjectInputStream</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ByteArrayInputStream</span><span class="p">(</span><span class="n">bos</span><span class="p">.</span><span class="na">toByteArray</span><span class="p">())))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">            </span><span class="n">User</span><span class="w"> </span><span class="n">restored</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">User</span><span class="p">)</span><span class="w"> </span><span class="n">ois</span><span class="p">.</span><span class="na">readObject</span><span class="p">();</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">restored</span><span class="p">);</span><span class="w"> </span><span class="c1">// alice (30)</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="externalizable">Externalizable</h2>
+<h3 id="theory_1">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - <code>Externalizable</code> extends <code>Serializable</code> but requires the class to implement <code>writeExternal(ObjectOutput)</code>/<code>readExternal(ObjectInput)</code> explicitly, giving the developer complete manual control over the serialized format instead of relying on reflection-based defaults.</li>
+<li><strong>Internal Working</strong> - Unlike default serialization, <code>Externalizable</code> classes MUST have a public no-arg constructor (called by the JVM during deserialization before <code>readExternal()</code> populates the state), since the JVM has no reflective knowledge of the fields to restore automatically.</li>
+<li><strong>When to Use It</strong> - Use when you need full control over serialized format/versioning (e.g., a compact custom binary format, cross-language interoperability, or performance-critical serialization avoiding reflection overhead).</li>
+<li><strong>Advantages</strong> - Faster than default reflection-based serialization (direct field writes, no reflective field enumeration), full control over exact byte format and versioning strategy, smaller serialized payloads possible.</li>
+<li><strong>Limitations</strong> - Entirely manual - every field must be explicitly written/read in the correct order, error-prone to keep in sync as the class evolves; requires a public no-arg constructor (breaks immutability/complicates classes designed to always be fully constructed).</li>
+</ul>
+<h3 id="internal-working_1">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - On serialization: the stream calls the class's <code>writeExternal(ObjectOutput out)</code> method, where the developer explicitly writes each field via <code>out.writeInt()</code>, <code>out.writeObject()</code>, etc., in a chosen order. On deserialization: the JVM first invokes the class's public no-arg constructor (unlike default <code>Serializable</code>, which skips constructors entirely), then calls <code>readExternal(ObjectInput in)</code>, where the developer reads fields back in the exact same order they were written.</li>
+<li><strong>Memory Layout</strong> - The object IS constructed via its normal constructor first (unlike default serialization), then its fields are subsequently overwritten by <code>readExternal()</code> - a hybrid of normal construction plus manual field population.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Serialize:   obj.writeExternal(out)  -&gt; out.writeUTF(name); out.writeInt(age);  (developer-controlled order)
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Deserialize: new Obj() (no-arg ctor runs!) -&gt; obj.readExternal(in) -&gt; name = in.readUTF(); age = in.readInt();
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - Because the JVM must invoke a real constructor for <code>Externalizable</code> classes, standard object initialization semantics apply (any constructor-time invariant checks run), unlike default <code>Serializable</code>'s reflection-only field restoration - this is a deliberate design trade-off for control versus convenience.</li>
+</ul>
+<h3 id="interview-questions_1">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What two methods must an <code>Externalizable</code> class implement?
+2. What constructor requirement does <code>Externalizable</code> impose that <code>Serializable</code> does not?</p>
+<p><strong>Intermediate</strong>
+1. Why is <code>Externalizable</code> typically faster than default <code>Serializable</code>?
+2. What happens if <code>writeExternal</code>/<code>readExternal</code> read/write fields in inconsistent order?</p>
+<p><strong>Advanced</strong>
+1. How does <code>Externalizable</code>'s constructor-calling behaviour change security/invariant considerations compared to default serialization?</p>
+<p><strong>Scenario-based</strong>
+1. You need extremely compact, high-throughput serialization for a high-frequency trading message class - would you choose default <code>Serializable</code> or <code>Externalizable</code>, and why?</p>
+<h3 id="detailed-answers_1">Detailed Answers</h3>
+<ol>
+<li><strong>Q: Required methods?</strong> A: <code>void writeExternal(ObjectOutput out) throws IOException</code> and <code>void readExternal(ObjectInput in) throws IOException, ClassNotFoundException</code>.</li>
+<li><strong>Q: Constructor requirement?</strong> A: A public no-arg constructor is mandatory - the JVM calls it during deserialization before <code>readExternal()</code> populates fields; default <code>Serializable</code> requires no such constructor since it bypasses constructors entirely via reflection.</li>
+<li><strong>Q: Why faster?</strong> A: It avoids the reflective field-enumeration and per-field metadata overhead of default serialization, writing/reading only the exact bytes the developer specifies, often in a more compact custom format.</li>
+<li><strong>Q: Inconsistent read/write order?</strong> A: Deserialization silently reads garbage/wrong values into the wrong fields (since the stream is just a sequence of bytes with no self-describing field names) - a subtle, hard-to-detect bug requiring careful discipline (and often a version field) to avoid across code changes.</li>
+<li><strong>Q: Security/invariant implications of constructor calling?</strong> A: Since a real constructor runs, any validation/invariant-establishing logic in it executes normally before <code>readExternal()</code> overwrites fields - somewhat safer than default serialization's total constructor bypass, though <code>readExternal()</code> itself can still set fields to arbitrary values afterward, so it's not a complete guarantee against invalid states from untrusted input.</li>
+<li><strong>Q: High-frequency trading message?</strong> A: <code>Externalizable</code> - the ability to hand-control the exact byte layout (avoiding reflection overhead and unnecessary metadata) is valuable for minimizing latency and payload size in a performance-critical, high-throughput context.</li>
+</ol>
+<h3 id="code-examples_1">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.*</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kd">class</span> <span class="nc">TradeMessage</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Externalizable</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">symbol</span><span class="p">;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">price</span><span class="p">;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">TradeMessage</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="c1">// required public no-arg constructor</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="n">TradeMessage</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">symbol</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">symbol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">symbol</span><span class="p">;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">price</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="nd">@Override</span><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">writeExternal</span><span class="p">(</span><span class="n">ObjectOutput</span><span class="w"> </span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="n">out</span><span class="p">.</span><span class="na">writeUTF</span><span class="p">(</span><span class="n">symbol</span><span class="p">);</span><span class="w"> </span><span class="c1">// developer controls exact order/format</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="n">out</span><span class="p">.</span><span class="na">writeDouble</span><span class="p">(</span><span class="n">price</span><span class="p">);</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="nd">@Override</span><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">readExternal</span><span class="p">(</span><span class="n">ObjectInput</span><span class="w"> </span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">        </span><span class="n">symbol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">in</span><span class="p">.</span><span class="na">readUTF</span><span class="p">();</span><span class="w"> </span><span class="c1">// must match writeExternal's order exactly</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">        </span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">in</span><span class="p">.</span><span class="na">readDouble</span><span class="p">();</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="nd">@Override</span><span class="w"> </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">toString</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">symbol</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"@"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">price</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="p">}</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ExternalizableDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">        </span><span class="n">TradeMessage</span><span class="w"> </span><span class="n">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TradeMessage</span><span class="p">(</span><span class="s">"AAPL"</span><span class="p">,</span><span class="w"> </span><span class="mf">185.23</span><span class="p">);</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">        </span><span class="n">ByteArrayOutputStream</span><span class="w"> </span><span class="n">bos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ByteArrayOutputStream</span><span class="p">();</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">ObjectOutputStream</span><span class="w"> </span><span class="n">oos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ObjectOutputStream</span><span class="p">(</span><span class="n">bos</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">oos</span><span class="p">.</span><span class="na">writeObject</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">ObjectInputStream</span><span class="w"> </span><span class="n">ois</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ObjectInputStream</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ByteArrayInputStream</span><span class="p">(</span><span class="n">bos</span><span class="p">.</span><span class="na">toByteArray</span><span class="p">())))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">ois</span><span class="p">.</span><span class="na">readObject</span><span class="p">());</span><span class="w"> </span><span class="c1">// AAPL@185.23</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="serialversionuid">serialVersionUID</h2>
+<h3 id="theory_2">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - <code>serialVersionUID</code> is a <code>private static final long</code> field that acts as a version identifier for a serializable class, checked during deserialization to ensure the sender's and receiver's class definitions are compatible.</li>
+<li><strong>Internal Working</strong> - If not declared explicitly, the JVM computes one automatically via a hash of the class's structure (name, fields, methods, interfaces) - a computation sensitive to nearly any change, making implicit UIDs fragile across recompilation/evolution.</li>
+<li><strong>When to Use It</strong> - Always declare it explicitly for any long-lived serializable class (especially ones persisted to disk or sent across versions of an application) to control exactly when changes are considered compatible.</li>
+<li><strong>Advantages</strong> - Explicit declaration gives control over compatibility - you decide which class changes are considered compatible (bump the UID) versus safely additive (leave it unchanged).</li>
+<li><strong>Limitations</strong> - Doesn't validate actual field compatibility beyond the UID match - a mismatched non-UID structural change (e.g., changed field type) can still cause <code>readObject()</code> to throw or produce incorrect data if not paired with custom serialization logic.</li>
+</ul>
+<h3 id="internal-working_2">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - During deserialization, the stream's embedded <code>serialVersionUID</code> (written by the serializing JVM) is compared against the loaded class's <code>serialVersionUID</code> (either explicitly declared or computed via <code>ObjectStreamClass</code>'s SHA-based algorithm over the class's structure); a mismatch immediately throws <code>InvalidClassException</code>, aborting deserialization before any field data is even processed.</li>
+<li><strong>Memory Layout</strong> - Not directly applicable - purely a metadata field checked before any object construction/field restoration occurs.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Sender class serialVersionUID = 1L   --&gt;  written into stream
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Receiver class serialVersionUID = 2L (changed) --&gt; MISMATCH --&gt; InvalidClassException, deserialization aborted
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - Computing the default (implicit) UID requires reflecting over the class's full structure via <code>ObjectStreamClass</code>, which is why even a trivial change like adding a method can alter the computed hash if not pinned explicitly - a classic "worked in dev, broke in prod after redeploy" gotcha.</li>
+</ul>
+<h3 id="interview-questions_2">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What is <code>serialVersionUID</code> used for?
+2. What happens if the sender's and receiver's <code>serialVersionUID</code> don't match?</p>
+<p><strong>Intermediate</strong>
+1. Why is it best practice to always declare <code>serialVersionUID</code> explicitly?
+2. What warning does the compiler give if you omit it, and why?</p>
+<p><strong>Advanced</strong>
+1. Does a matching <code>serialVersionUID</code> guarantee the object will deserialize correctly? What else can go wrong?</p>
+<p><strong>Scenario-based</strong>
+1. After adding a new field to a class deployed across multiple service versions, deserialization between old and new versions starts throwing <code>InvalidClassException</code> - what likely happened, and how do you prevent this going forward?</p>
+<h3 id="detailed-answers_2">Detailed Answers</h3>
+<ol>
+<li><strong>Q: What is it for?</strong> A: A version identifier embedded in the serialized stream, compared against the current class definition's UID during deserialization to detect and reject incompatible class changes.</li>
+<li><strong>Q: Mismatch consequence?</strong> A: <code>InvalidClassException</code> is thrown immediately, and deserialization of that object fails entirely.</li>
+<li><strong>Q: Why declare explicitly?</strong> A: The implicit, compiler-computed UID is derived from the class's full structure and can change with seemingly unrelated edits (adding a method, changing compiler versions), causing unnecessary <code>InvalidClassException</code>s for changes that were actually meant to remain compatible; an explicit value gives you deliberate control over compatibility.</li>
+<li><strong>Q: Compiler warning?</strong> A: <code>serializable class ... does not declare a static final serialVersionUID field</code> - it warns because relying on the computed default is fragile and non-portable across compiler/JVM implementations.</li>
+<li><strong>Q: Does matching UID guarantee correctness?</strong> A: No - the UID only gates a coarse compatibility check; if fields were added/removed/changed type without corresponding custom <code>readObject()</code>/<code>writeObject()</code> handling, deserialization can still fail (missing field) or silently default missing fields (e.g., to 0/null), potentially causing subtle bugs even though the UID matched.</li>
+<li><strong>Q: <code>InvalidClassException</code> after adding a field?</strong> A: Since no <code>serialVersionUID</code> was explicitly declared, the compiler-computed UID changed due to the class structure changing, causing the version mismatch; prevent this by always declaring an explicit <code>serialVersionUID</code> and only changing it deliberately when you intend to break backward compatibility, while relying on default serialization's ability to handle newly-added fields gracefully (they'll just default to 0/null when reading old streams) as long as the UID itself stays pinned.</li>
+</ol>
+<h3 id="code-examples_2">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.Serializable</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kd">class</span> <span class="nc">Config</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Serializable</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">serialVersionUID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42L</span><span class="p">;</span><span class="w"> </span><span class="c1">// explicit, deliberately controlled</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">version</span><span class="p">;</span><span class="w"> </span><span class="c1">// added later - old streams (lacking this field) will default it to 0</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="transient">transient</h2>
+<h3 id="theory_3">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - The <code>transient</code> keyword marks a field to be EXCLUDED from default Java serialization - it's skipped when writing the object and restored to its default value (0/null/false) upon deserialization, unless custom <code>readObject()</code> logic repopulates it.</li>
+<li><strong>Internal Working</strong> - The serialization machinery (<code>ObjectOutputStream</code>) simply skips transient fields when reflectively enumerating fields to write; on the way back, the field is left at its Java default since there's no data in the stream for it.</li>
+<li><strong>When to Use It</strong> - Use for fields that shouldn't/can't be serialized: derived/cacheable values recomputable from other state, non-serializable resources (sockets, threads, file handles), or sensitive data (passwords, keys) that shouldn't be persisted/transmitted.</li>
+<li><strong>Advantages</strong> - Avoids <code>NotSerializableException</code> for non-serializable field types, reduces serialized payload size, prevents leaking sensitive data into the serialized form.</li>
+<li><strong>Limitations</strong> - The field must be manually repopulated after deserialization (via custom <code>readObject()</code>, lazy recomputation, or a <code>readResolve()</code>), otherwise code relying on it post-deserialization will see a default (often null) value, a common source of <code>NullPointerException</code> bugs.</li>
+</ul>
+<h3 id="internal-working_3">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - <code>ObjectOutputStream.writeObject()</code> reflects over the class's declared fields and skips any marked <code>transient</code> (and any <code>static</code> field, which is a class-level not instance-level concern anyway) when writing values; <code>ObjectInputStream.readObject()</code> allocates the object (without transient field data available) and leaves those fields at their type's default value, unless a custom <code>readObject()</code> method explicitly recomputes/reassigns them afterward.</li>
+<li><strong>Memory Layout</strong> - Not directly applicable - purely affects which fields participate in the byte stream, not the object's in-memory layout (the field still exists as a normal field slot on every instance, just uninitialized by the stream).</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>class Session { String userId; transient Connection dbConnection; }
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Serialize:   writes userId only, skips dbConnection
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>Deserialize: userId restored; dbConnection == null (must be reopened manually)
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - No special JVM-level mechanism - purely handled by the <code>java.io</code> serialization library's reflective field-processing logic checking each <code>Field</code>'s modifiers for the <code>TRANSIENT</code> bit before including it in the stream.</li>
+</ul>
+<h3 id="interview-questions_3">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What does the <code>transient</code> keyword do?
+2. What value does a transient field have immediately after deserialization?</p>
+<p><strong>Intermediate</strong>
+1. Give two practical reasons to mark a field <code>transient</code>.
+2. How would you repopulate a transient field's value after deserialization?</p>
+<p><strong>Advanced</strong>
+1. Are <code>static</code> fields serialized by default, and how does that relate conceptually to <code>transient</code>?</p>
+<p><strong>Scenario-based</strong>
+1. A <code>UserSession</code> class has a <code>transient Connection dbConnection</code> field; after deserializing a session from a distributed cache, code immediately throws <code>NullPointerException</code> when using the connection - what's the fix?</p>
+<h3 id="detailed-answers_3">Detailed Answers</h3>
+<ol>
+<li><strong>Q: What does <code>transient</code> do?</strong> A: Excludes the field from default serialization - its value is not written to the stream and not restored on deserialization.</li>
+<li><strong>Q: Value after deserialization?</strong> A: The field's type default - <code>null</code> for objects, <code>0</code>/<code>0.0</code> for numeric primitives, <code>false</code> for boolean - unless custom logic (e.g., overridden <code>readObject()</code>) explicitly sets it.</li>
+<li><strong>Q: Two reasons to use it?</strong> A: (1) The field's type isn't serializable (e.g., a <code>Socket</code>, <code>Thread</code>, file handle) and would otherwise throw <code>NotSerializableException</code>; (2) the field holds sensitive data (password, API key) that shouldn't be persisted or transmitted in the serialized form.</li>
+<li><strong>Q: Repopulating after deserialization?</strong> A: Override <code>readObject(ObjectInputStream in)</code>, call <code>in.defaultReadObject()</code> to restore the normal fields, then manually recompute/reinitialize the transient field (e.g., reopen a connection, recompute a cache) before the method returns.</li>
+<li><strong>Q: Are static fields serialized by default?</strong> A: No - <code>static</code> fields belong to the class, not the instance, so default serialization never includes them regardless of <code>transient</code>; conceptually similar in effect to <code>transient</code> (excluded from the instance's serialized data) but for an entirely different reason (class-level vs. explicitly-excluded instance-level state).</li>
+<li><strong>Q: <code>dbConnection</code> NPE after deserialization?</strong> A: The transient <code>Connection</code> field was never re-established after deserialization; fix by implementing a custom <code>readObject()</code> that calls <code>in.defaultReadObject()</code> then reopens/re-acquires the connection (e.g., from a connection pool) before the object is used, or lazily reconnect on first use via a null-check-and-reconnect pattern in the accessor method.</li>
+</ol>
+<h3 id="code-examples_3">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.*</span><span class="p">;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.Connection</span><span class="p">;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="kd">class</span> <span class="nc">UserSession</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Serializable</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">serialVersionUID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1L</span><span class="p">;</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">userId</span><span class="p">;</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">transient</span><span class="w"> </span><span class="n">Connection</span><span class="w"> </span><span class="n">dbConnection</span><span class="p">;</span><span class="w"> </span><span class="c1">// excluded from serialization</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="n">UserSession</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">userId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">userId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">userId</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">    </span><span class="c1">// Custom hook to re-establish the transient resource after deserialization</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">readObject</span><span class="p">(</span><span class="n">ObjectInputStream</span><span class="w"> </span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="p">,</span><span class="w"> </span><span class="n">ClassNotFoundException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">        </span><span class="n">in</span><span class="p">.</span><span class="na">defaultReadObject</span><span class="p">();</span><span class="w"> </span><span class="c1">// restores userId</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">dbConnection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w"> </span><span class="c1">// would normally reacquire from a pool here</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="readobject"><code>readObject()</code></h2>
+<h3 id="theory_4">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - <code>private void readObject(ObjectInputStream in)</code> is an optional, specially-named hook a <code>Serializable</code> class can declare to customize how it's reconstructed from a stream, invoked reflectively by the serialization machinery (not a normal override - no interface declares it).</li>
+<li><strong>Internal Working</strong> - If present, it's called instead of the default field-restoration logic; typically calls <code>in.defaultReadObject()</code> first to restore standard fields, then adds custom logic (validation, transient field recomputation, defensive copying).</li>
+<li><strong>When to Use It</strong> - Use to validate invariants on untrusted/external input, recompute transient fields, perform defensive copying of mutable fields read from the stream, or handle backward-compatible field evolution.</li>
+<li><strong>Advantages</strong> - Lets you enforce the same invariants a constructor would, even though deserialization normally bypasses constructors; central point to guard against malicious/malformed serialized data.</li>
+<li><strong>Limitations</strong> - Easy to forget (silently falls back to unsafe defaults if omitted), must be kept manually in sync with the class's fields, and is itself a common target for deserialization-based attacks if not carefully validated.</li>
+</ul>
+<h3 id="internal-working_4">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - The JVM's serialization framework uses reflection to detect a <code>private void readObject(ObjectInputStream)</code> method with the exact signature; if found, it's invoked (via reflection, bypassing normal access control) instead of the default field-by-field restoration; inside it, calling <code>in.defaultReadObject()</code> performs the standard reflective restoration of non-transient fields, after which the method can add validation or custom logic before returning.</li>
+<li><strong>Memory Layout</strong> - The object has already been allocated (without running its constructor) before <code>readObject()</code> executes; the method operates on that already-allocated instance, populating/validating its fields directly.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ObjectInputStream.readObject()
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>  -&gt; allocate object (no constructor)
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>  -&gt; reflectively finds custom readObject(ObjectInputStream) if present
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>  -&gt; in.defaultReadObject() restores standard fields
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>  -&gt; custom validation / transient field setup
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>  -&gt; return fully constructed (and validated) object
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - Because <code>readObject()</code> is invoked via reflection based purely on its exact private method signature (a "magic method", not from any interface), it runs even though it's <code>private</code>, bypassing normal Java access-control expectations - this is a JDK-specific serialization convention, not a general language feature.</li>
+</ul>
+<h3 id="interview-questions_4">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What is the exact signature of the custom <code>readObject()</code> hook?
+2. What does <code>in.defaultReadObject()</code> do?</p>
+<p><strong>Intermediate</strong>
+1. Why would you add validation logic inside <code>readObject()</code>?
+2. Can <code>readObject()</code> be <code>public</code>? Why is it conventionally <code>private</code>?</p>
+<p><strong>Advanced</strong>
+1. How does defining <code>readObject()</code> help defend against deserialization attacks that try to construct invalid object states?</p>
+<p><strong>Scenario-based</strong>
+1. A <code>Range</code> class has an invariant <code>min &lt;= max</code> enforced in its constructor, but this invariant can be violated via a maliciously crafted serialized stream - how would you use <code>readObject()</code> to close this gap?</p>
+<h3 id="detailed-answers_4">Detailed Answers</h3>
+<ol>
+<li><strong>Q: Exact signature?</strong> A: <code>private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException</code>.</li>
+<li><strong>Q: What does <code>in.defaultReadObject()</code> do?</strong> A: Performs the JVM's standard reflective restoration of the object's non-transient, non-static fields from the stream - the same behaviour that would happen automatically if no custom <code>readObject()</code> were defined at all.</li>
+<li><strong>Q: Why add validation?</strong> A: Deserialization bypasses the normal constructor (which would normally validate arguments), so a crafted/corrupted byte stream could otherwise produce an object in an invalid state; validating inside <code>readObject()</code> (after <code>defaultReadObject()</code>) re-establishes the same guarantees the constructor provides.</li>
+<li><strong>Q: Can it be public? Why private?</strong> A: It's conventionally <code>private</code> because the serialization mechanism finds and invokes it via reflection based on exact signature match, regardless of access modifier, and there's no reason for other code to call it directly - keeping it private prevents misuse/direct invocation from application code.</li>
+<li><strong>Q: Defending against invalid states?</strong> A: By validating invariants immediately after <code>in.defaultReadObject()</code> and throwing an <code>InvalidObjectException</code> (or similar) if they don't hold, you prevent a maliciously or accidentally corrupted stream from producing an object that violates its class's fundamental guarantees, closing off a class of deserialization-based attacks that rely on constructing "impossible" objects.</li>
+<li><strong>Q: <code>Range</code> invariant fix?</strong> A: Add <code>private void readObject(ObjectInputStream in) { in.defaultReadObject(); if (min &gt; max) throw new InvalidObjectException("min &gt; max"); }</code> so any deserialized <code>Range</code> is guaranteed to satisfy the same invariant the constructor enforces.</li>
+</ol>
+<h3 id="code-examples_4">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.*</span><span class="p">;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="kd">class</span> <span class="nc">Range</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Serializable</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">serialVersionUID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1L</span><span class="p">;</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">,</span><span class="w"> </span><span class="n">max</span><span class="p">;</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="n">Range</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">max</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">min</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">max</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s">"min &gt; max"</span><span class="p">);</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">min</span><span class="p">;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">;</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">    </span><span class="c1">// Re-validate the invariant since deserialization bypasses the constructor</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">readObject</span><span class="p">(</span><span class="n">ObjectInputStream</span><span class="w"> </span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="p">,</span><span class="w"> </span><span class="n">ClassNotFoundException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">        </span><span class="n">in</span><span class="p">.</span><span class="na">defaultReadObject</span><span class="p">();</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">min</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">max</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InvalidObjectException</span><span class="p">(</span><span class="s">"min &gt; max after deserialization"</span><span class="p">);</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="writeobject"><code>writeObject()</code></h2>
+<h3 id="theory_5">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - <code>private void writeObject(ObjectOutputStream out)</code> is the write-side counterpart to <code>readObject()</code> - an optional, specially-named hook letting a <code>Serializable</code> class customize exactly what gets written to the stream.</li>
+<li><strong>Internal Working</strong> - If declared, it's invoked instead of the default field-serialization logic; typically calls <code>out.defaultWriteObject()</code> first (writing standard non-transient fields), then writes any additional custom data (e.g., a manually-serialized transient field).</li>
+<li><strong>When to Use It</strong> - Use to serialize a transient field manually (writing a substitute/derived representation), omit/mask sensitive data selectively, or write extra versioning metadata alongside the standard fields.</li>
+<li><strong>Advantages</strong> - Gives fine-grained control over exactly what's persisted/transmitted, letting you handle otherwise-non-serializable fields or reduce payload size by writing a compact custom representation.</li>
+<li><strong>Limitations</strong> - Must be paired with a matching <code>readObject()</code> that reads data back in the exact same order/format, or deserialization breaks; adds maintenance burden to keep both methods in sync as the class evolves.</li>
+</ul>
+<h3 id="internal-working_5">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - The framework detects a <code>private void writeObject(ObjectOutputStream)</code> method via reflection; if present, it's called instead of default serialization; inside, <code>out.defaultWriteObject()</code> writes the standard non-transient fields (in the same reflective manner as if no custom hook existed), after which the method can write additional data via <code>out.writeObject()</code>/<code>out.writeInt()</code>/etc., which the corresponding <code>readObject()</code> must read back in the identical order.</li>
+<li><strong>Memory Layout</strong> - Not directly applicable - this operates on the byte stream representation, not the in-memory object layout.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>writeObject(out):
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>  out.defaultWriteObject();          // writes normal fields
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>  out.writeObject(computeExtra());   // custom extra data (e.g., derived from a transient field)
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>readObject(in) (matching):
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>  in.defaultReadObject();
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>  Object extra = in.readObject();    // must read in the SAME order
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - Like <code>readObject()</code>, this is a reflection-discovered "magic method" convention specific to the <code>java.io</code> serialization framework, not a general Java language override mechanism - it works despite being <code>private</code> because the framework explicitly looks for and invokes it by exact signature.</li>
+</ul>
+<h3 id="interview-questions_5">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What is the exact signature of the custom <code>writeObject()</code> hook?
+2. What does <code>out.defaultWriteObject()</code> do?</p>
+<p><strong>Intermediate</strong>
+1. Why must <code>writeObject()</code> and <code>readObject()</code> be kept in sync?
+2. Give an example of when you'd write extra data beyond <code>defaultWriteObject()</code>.</p>
+<p><strong>Advanced</strong>
+1. How would you use <code>writeObject()</code> to redact a sensitive field before it's persisted, while still keeping the field usable in-memory?</p>
+<p><strong>Scenario-based</strong>
+1. A class has a transient <code>Map&lt;String, CachedValue&gt;</code> cache field; you want the serialized form to include a lightweight, recomputable summary instead of the full cache - how would you implement this with <code>writeObject()</code>/<code>readObject()</code>?</p>
+<h3 id="detailed-answers_5">Detailed Answers</h3>
+<ol>
+<li><strong>Q: Exact signature?</strong> A: <code>private void writeObject(java.io.ObjectOutputStream out) throws IOException</code>.</li>
+<li><strong>Q: What does <code>out.defaultWriteObject()</code> do?</strong> A: Writes the object's standard non-transient, non-static fields to the stream using the JVM's normal reflective serialization logic - the same thing that would happen automatically without a custom <code>writeObject()</code>.</li>
+<li><strong>Q: Why must they stay in sync?</strong> A: The stream format is a raw, unlabeled sequence of bytes/values - <code>readObject()</code> must read back exactly what <code>writeObject()</code> wrote, in the same order and format, or deserialization will read garbage or throw an exception (e.g., <code>EOFException</code>/<code>OptionalDataException</code>).</li>
+<li><strong>Q: Example of extra data?</strong> A: Serializing a derived/summary value in place of a large or non-serializable transient field, e.g., writing just a cache's size or a checksum instead of the entire (transient) cache contents.</li>
+<li><strong>Q: Redacting a sensitive field?</strong> A: Declare the field normally (usable in-memory as usual), but in <code>writeObject()</code>, call <code>out.defaultWriteObject()</code> for the safe fields, then explicitly write a masked placeholder (e.g., <code>out.writeObject("***")</code>) instead of the real value for the sensitive field (which itself should be marked <code>transient</code> so <code>defaultWriteObject()</code> doesn't also serialize the real value).</li>
+<li><strong>Q: Transient cache summary?</strong> A: In <code>writeObject()</code>: call <code>out.defaultWriteObject()</code> then <code>out.writeInt(cache.size())</code>; in <code>readObject()</code>: call <code>in.defaultReadObject()</code> then <code>int cachedSize = in.readInt();</code> and reinitialize <code>cache = new HashMap&lt;&gt;()</code> (empty, to be repopulated lazily), using <code>cachedSize</code> only for logging/diagnostics if needed.</li>
+</ol>
+<h3 id="code-examples_5">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.*</span><span class="p">;</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.HashMap</span><span class="p">;</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Map</span><span class="p">;</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="kd">class</span> <span class="nc">ReportCache</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Serializable</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">serialVersionUID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1L</span><span class="p">;</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">reportName</span><span class="p">;</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">transient</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w"> </span><span class="c1">// not serialized directly</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">    </span><span class="n">ReportCache</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">reportName</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">reportName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reportName</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">writeObject</span><span class="p">(</span><span class="n">ObjectOutputStream</span><span class="w"> </span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">        </span><span class="n">out</span><span class="p">.</span><span class="na">defaultWriteObject</span><span class="p">();</span><span class="w">       </span><span class="c1">// writes reportName</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">        </span><span class="n">out</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="n">cache</span><span class="p">.</span><span class="na">size</span><span class="p">());</span><span class="w">     </span><span class="c1">// custom: write only a summary of the transient cache</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">readObject</span><span class="p">(</span><span class="n">ObjectInputStream</span><span class="w"> </span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="p">,</span><span class="w"> </span><span class="n">ClassNotFoundException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="w">        </span><span class="n">in</span><span class="p">.</span><span class="na">defaultReadObject</span><span class="p">();</span><span class="w">         </span><span class="c1">// restores reportName</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">previousCacheSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">in</span><span class="p">.</span><span class="na">readInt</span><span class="p">();</span><span class="w"> </span><span class="c1">// read in the SAME order as written</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">cache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w">   </span><span class="c1">// reinitialize transient field fresh</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Previous cache had "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">previousCacheSize</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" entries (not restored)"</span><span class="p">);</span>
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="serialization-proxy-pattern">Serialization Proxy Pattern</h2>
+<h3 id="theory_6">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - The Serialization Proxy Pattern replaces a class's actual serialized form with a separate, simpler "proxy" class that captures its logical state; the original class writes a proxy via <code>writeReplace()</code>, and the proxy reconstructs the real object via its own <code>readResolve()</code>, using the real constructor (restoring invariant checks).</li>
+<li><strong>Internal Working</strong> - <code>writeReplace()</code> on the original class returns an instance of a private static nested proxy class holding the essential state; that proxy is what actually gets serialized; on deserialization, the proxy's <code>readResolve()</code> calls the original class's public constructor/factory to build a fully-validated real instance, which replaces the proxy transparently in the returned object graph.</li>
+<li><strong>When to Use It</strong> - Recommended (Effective Java) for classes with complex invariants, singleton/enum-like classes, or immutable classes where you want serialization to go through the same validation path as normal construction, rather than bypassing it as default serialization does.</li>
+<li><strong>Advantages</strong> - Serialized objects are ALWAYS constructed via real constructors (full invariant enforcement), defends against most deserialization attacks targeting invalid internal states, decouples the serialized format from the class's internal field layout (can freely refactor internals without breaking the wire format).</li>
+<li><strong>Limitations</strong> - More boilerplate (an extra nested class, <code>writeReplace()</code>/<code>readResolve()</code>), doesn't work for classes designed to be extensible by untrusted subclasses in certain ways, and adds a small serialization/deserialization overhead (an extra intermediate object).</li>
+</ul>
+<h3 id="internal-working_6">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - (1) The outer class implements <code>writeReplace()</code> returning <code>new SerializationProxy(this)</code> (the proxy class holds copies of the outer object's essential fields); (2) the JVM serializes the PROXY instead of the outer object; (3) on deserialization, the JVM reconstructs the proxy (a normal, simple object with a normal constructor), then calls the proxy's <code>readResolve()</code>, which invokes the outer class's real public constructor/factory using the proxy's captured state, producing a fully-validated real instance that's substituted into the final object graph in place of the proxy.</li>
+<li><strong>Memory Layout</strong> - Two short-lived intermediate objects (the proxy on each side) are created during the round-trip, in addition to the final reconstructed real object; not significant overhead for typical use cases.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sequenceDiagram
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    participant Real as RealObject
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    participant Proxy as SerializationProxy
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    participant Stream as Byte Stream
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    Real-&gt;&gt;Proxy: writeReplace() creates proxy with essential state
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>    Proxy-&gt;&gt;Stream: proxy is what's actually serialized
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>    Stream-&gt;&gt;Proxy: deserialize proxy (normal constructor runs)
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>    Proxy-&gt;&gt;Real: readResolve() calls REAL constructor with captured state
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>    Real--&gt;&gt;Stream: fully validated real object returned to caller
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - <code>writeReplace()</code>/<code>readResolve()</code> are both reflection-discovered "magic methods" (like <code>readObject()</code>/<code>writeObject()</code>) recognized by the <code>java.io</code> serialization framework by exact signature, letting the framework substitute a different object into the stream/graph transparently to the caller of <code>readObject()</code>.</li>
+</ul>
+<h3 id="interview-questions_6">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What two special methods implement the Serialization Proxy Pattern?
+2. What problem with default serialization does this pattern solve?</p>
+<p><strong>Intermediate</strong>
+1. Why does using the real constructor via <code>readResolve()</code> improve security compared to default deserialization?
+2. Why is the proxy class typically declared <code>private static</code> and nested inside the outer class?</p>
+<p><strong>Advanced</strong>
+1. How does this pattern decouple the serialized wire format from the class's internal implementation, and why is that valuable?</p>
+<p><strong>Scenario-based</strong>
+1. An immutable <code>ImmutableRange(min, max)</code> class with a <code>min &lt;= max</code> invariant needs to be safely serializable against untrusted input - design it using the Serialization Proxy Pattern.</p>
+<h3 id="detailed-answers_6">Detailed Answers</h3>
+<ol>
+<li><strong>Q: Two special methods?</strong> A: <code>Object writeReplace()</code> on the original class (returns the proxy to serialize instead) and <code>Object readResolve()</code> on the proxy class (returns the real reconstructed object).</li>
+<li><strong>Q: Problem solved?</strong> A: Default deserialization bypasses constructors entirely, allowing invalid/malicious byte streams to produce objects that violate class invariants; this pattern forces every deserialized instance to go through the real, validating constructor.</li>
+<li><strong>Q: Why more secure via <code>readResolve()</code>?</strong> A: Because the actual object the caller receives is built by calling the class's normal constructor (with the proxy's captured field values as arguments), any validation logic in that constructor runs exactly as it would for normal object creation - a forged/corrupted byte stream can't produce an object that skips this validation.</li>
+<li><strong>Q: Why <code>private static</code> nested?</strong> A: <code>private</code> hides the proxy as a pure implementation detail invisible outside the outer class; <code>static</code> avoids an implicit reference to an outer instance (which isn't needed and would complicate/undermine serialization of the proxy itself).</li>
+<li><strong>Q: Decoupling wire format from implementation?</strong> A: Since only the proxy's simple, stable fields are actually serialized (not the outer class's real internal fields/layout), you can freely refactor the outer class's internal representation across versions without breaking compatibility with previously serialized data, as long as the proxy's captured essential state and the constructor it calls remain compatible.</li>
+<li><strong>Q: <code>ImmutableRange</code> design?</strong> A: Implement <code>writeReplace()</code> returning a nested <code>SerializationProxy</code> holding <code>min</code>/<code>max</code>; the proxy's <code>readResolve()</code> calls <code>new ImmutableRange(min, max)</code> (running the real constructor's <code>min &lt;= max</code> validation); never implement <code>readObject()</code> directly on <code>ImmutableRange</code> itself (or make it throw, to prevent bypassing the proxy).</li>
+</ol>
+<h3 id="code-examples_6">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.*</span><span class="p">;</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="kd">final</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ImmutableRange</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Serializable</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">serialVersionUID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1L</span><span class="p">;</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">,</span><span class="w"> </span><span class="n">max</span><span class="p">;</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">    </span><span class="n">ImmutableRange</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">max</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">min</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">max</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s">"min &gt; max"</span><span class="p">);</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">min</span><span class="p">;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">;</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">    </span><span class="c1">// Substitute a proxy for actual serialization</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="nf">writeReplace</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SerializationProxy</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="w">    </span><span class="c1">// Defend against a forged stream bypassing writeReplace()</span>
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">readObject</span><span class="p">(</span><span class="n">ObjectInputStream</span><span class="w"> </span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InvalidObjectException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InvalidObjectException</span><span class="p">(</span><span class="s">"Proxy required"</span><span class="p">);</span>
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SerializationProxy</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Serializable</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a><span class="w">        </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">serialVersionUID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1L</span><span class="p">;</span>
+<a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="w">        </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">,</span><span class="w"> </span><span class="n">max</span><span class="p">;</span>
+<a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a><span class="w">        </span><span class="n">SerializationProxy</span><span class="p">(</span><span class="n">ImmutableRange</span><span class="w"> </span><span class="n">range</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">range</span><span class="p">.</span><span class="na">min</span><span class="p">;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">range</span><span class="p">.</span><span class="na">max</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a><span class="w">        </span><span class="c1">// Reconstructs via the REAL constructor, re-running validation</span>
+<a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a><span class="w">        </span><span class="kd">private</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="nf">readResolve</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ImmutableRange</span><span class="p">(</span><span class="n">min</span><span class="p">,</span><span class="w"> </span><span class="n">max</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="record-serialization-new">Record Serialization <em>(new)</em></h2>
+<h3 id="theory_7">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - Records (Java 16+) can implement <code>Serializable</code> like any class, but their serialization is canonical: the JVM serializes/deserializes based on the record's component values, and deserialization ALWAYS goes through the record's canonical constructor, unlike ordinary classes which bypass constructors entirely.</li>
+<li><strong>Internal Working</strong> - <code>readObject()</code>/<code>readObjectNoData()</code> cannot be customized for records (they're ignored if declared, or disallowed) - deserialization reads each component's value and invokes the canonical constructor directly, meaning compact-constructor validation/normalization ALWAYS runs.</li>
+<li><strong>When to Use It</strong> - Ideal for simple, immutable serializable data-carrier types (DTOs, value objects) where you want serialization safety (constructor validation) with minimal boilerplate, without needing the Serialization Proxy Pattern's manual setup.</li>
+<li><strong>Advantages</strong> - Automatically as safe as the Serialization Proxy Pattern (always validated via the canonical/compact constructor) with none of that pattern's boilerplate; serialized form is tied to the record's components, which is usually exactly the class's public API surface anyway.</li>
+<li><strong>Limitations</strong> - You cannot customize the serialized field layout via custom <code>writeObject()</code>/<code>readObject()</code> the way ordinary classes can (the mechanism is intentionally fixed/canonical for records); still requires implementing <code>Serializable</code> explicitly and still subject to <code>serialVersionUID</code> version-compatibility concerns across component changes.</li>
+</ul>
+<h3 id="internal-working_7">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - Serialization writes each record component's value (by name, similar to default field serialization) to the stream; deserialization reads back each named component's value and then calls the record's canonical constructor with those values as arguments - meaning any validation/normalization logic in a compact constructor executes for EVERY deserialized instance, exactly as it would for <code>new MyRecord(...)</code> in normal code.</li>
+<li><strong>Memory Layout</strong> - Standard heap allocation for the reconstructed record instance, but critically, unlike ordinary class deserialization, the constructor genuinely runs as part of this process rather than being bypassed.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>record Range(int min, int max) { Range { if (min &gt; max) throw new IllegalArgumentException(); } }
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>Deserialize: read min, max from stream -&gt; new Range(min, max)  &lt;-- compact constructor validation ALWAYS runs
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - The JDK's serialization mechanism special-cases records (<code>ObjectStreamClass</code> recognizes record classes) to always reconstruct via <code>invokedynamic</code>-based canonical constructor invocation rather than the reflective bypass-constructor path used for ordinary classes, making unsafe deserialization (skipping validation) structurally impossible for records.</li>
+</ul>
+<h3 id="interview-questions_7">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. Can a <code>record</code> implement <code>Serializable</code>?
+2. Does record deserialization call the canonical constructor?</p>
+<p><strong>Intermediate</strong>
+1. Why does this make records inherently safer to deserialize than ordinary classes, without needing extra patterns?
+2. Can you customize record serialization with a custom <code>readObject()</code>?</p>
+<p><strong>Advanced</strong>
+1. How does this relate to the Serialization Proxy Pattern - do records need it?</p>
+<p><strong>Scenario-based</strong>
+1. You're designing a network message DTO with a <code>min &lt;= max</code> invariant and want it to be safely serializable against untrusted senders with minimal code - would you use a record or the Serialization Proxy Pattern with a regular class?</p>
+<h3 id="detailed-answers_7">Detailed Answers</h3>
+<ol>
+<li><strong>Q: Can records implement <code>Serializable</code>?</strong> A: Yes - simply add <code>implements Serializable</code> to the record declaration, exactly as with a normal class.</li>
+<li><strong>Q: Does deserialization call the canonical constructor?</strong> A: Yes - unlike ordinary classes (which bypass all constructors), record deserialization is specified to always invoke the canonical (or compact) constructor with the deserialized component values.</li>
+<li><strong>Q: Why inherently safer?</strong> A: Since the canonical/compact constructor's validation logic always runs during deserialization, invalid states that violate the record's invariants are rejected automatically, achieving the same safety the Serialization Proxy Pattern provides for ordinary classes, but without any extra proxy class or <code>writeReplace()</code>/<code>readResolve()</code> boilerplate.</li>
+<li><strong>Q: Can you customize with <code>readObject()</code>?</strong> A: No - the JLS/serialization spec for records does not allow overriding the deserialization process via <code>readObject()</code>/<code>readObjectNoData()</code>/<code>writeObject()</code> in the traditional sense; the mechanism is fixed to always go through the canonical constructor (you CAN still customize via a compact constructor for validation/normalization, which is the intended customization point).</li>
+<li><strong>Q: Relation to Serialization Proxy Pattern - needed?</strong> A: No - records get the pattern's core safety benefit (constructor-validated deserialization) built into the language/runtime automatically, making the manual Serialization Proxy Pattern largely unnecessary for record types specifically (it remains relevant for ordinary classes).</li>
+<li><strong>Q: Record vs Proxy Pattern for network DTO?</strong> A: Prefer a <code>record</code> with a compact constructor validating <code>min &lt;= max</code> and <code>implements Serializable</code> - it achieves the same safety guarantee as the Serialization Proxy Pattern with drastically less code, making it the clearly better choice for a new, simple immutable DTO.</li>
+</ol>
+<h3 id="code-examples_7">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.*</span><span class="p">;</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="kd">record</span> <span class="nc">Range</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">min</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">max</span><span class="p">)</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Serializable</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">    </span><span class="c1">// Compact constructor: validation ALWAYS runs on deserialization too</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">    </span><span class="n">Range</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">min</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">max</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s">"min &gt; max"</span><span class="p">);</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="p">}</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RecordSerializationDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">        </span><span class="n">Range</span><span class="w"> </span><span class="n">range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">        </span><span class="n">ByteArrayOutputStream</span><span class="w"> </span><span class="n">bos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ByteArrayOutputStream</span><span class="p">();</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">ObjectOutputStream</span><span class="w"> </span><span class="n">oos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ObjectOutputStream</span><span class="p">(</span><span class="n">bos</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">oos</span><span class="p">.</span><span class="na">writeObject</span><span class="p">(</span><span class="n">range</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">ObjectInputStream</span><span class="w"> </span><span class="n">ois</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ObjectInputStream</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ByteArrayInputStream</span><span class="p">(</span><span class="n">bos</span><span class="p">.</span><span class="na">toByteArray</span><span class="p">())))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="w">            </span><span class="n">Range</span><span class="w"> </span><span class="n">restored</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Range</span><span class="p">)</span><span class="w"> </span><span class="n">ois</span><span class="p">.</span><span class="na">readObject</span><span class="p">();</span><span class="w"> </span><span class="c1">// canonical constructor runs, validation enforced</span>
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">restored</span><span class="p">);</span><span class="w"> </span><span class="c1">// Range[min=1, max=10]</span>
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="p">}</span>
+</code></pre></div></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2025 <a href="https://github.com/abhishekghoshh"  target="_blank" rel="noopener">Abhishek Ghosh</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/abhishekghoshh" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://x.com/abhishek_ghoshh" target="_blank" rel="noopener" title="x.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/abhishek-ghosh-220679132/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

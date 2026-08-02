@@ -1,0 +1,3037 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abhishekghoshh.github.io/java-helper/22-garbage-collection/">
+      
+      
+        <link rel="prev" href="../21-memory-management/">
+      
+      
+        <link rel="next" href="../23-concurrency/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Garbage Collection - Java Helper</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Garbage Collection - Java Helper" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/22-garbage-collection.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://abhishekghoshh.github.io/java-helper/22-garbage-collection/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Garbage Collection - Java Helper" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/22-garbage-collection.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#22-garbage-collection" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Java Helper" class="md-header__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Java Helper
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Garbage Collection
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../1-java-language-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Java Language Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../2-object-oriented-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Object-Oriented Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../3-classes/" class="md-tabs__link">
+        
+  
+    
+  
+  Classes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../4-constructors/" class="md-tabs__link">
+        
+  
+    
+  
+  Constructors
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-access-modifiers/" class="md-tabs__link">
+        
+  
+    
+  
+  Access Modifiers
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../6-packages/" class="md-tabs__link">
+        
+  
+    
+  
+  Packages
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../7-strings/" class="md-tabs__link">
+        
+  
+    
+  
+  Strings
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../8-arrays/" class="md-tabs__link">
+        
+  
+    
+  
+  Arrays
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../9-collections-framework/" class="md-tabs__link">
+        
+  
+    
+  
+  Collections Framework
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../10-generics/" class="md-tabs__link">
+        
+  
+    
+  
+  Generics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../11-exception-handling/" class="md-tabs__link">
+        
+  
+    
+  
+  Exception Handling
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../12-file-io/" class="md-tabs__link">
+        
+  
+    
+  
+  File I/O
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../13-serialization/" class="md-tabs__link">
+        
+  
+    
+  
+  Serialization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../14-reflection/" class="md-tabs__link">
+        
+  
+    
+  
+  Reflection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../15-annotations/" class="md-tabs__link">
+        
+  
+    
+  
+  Annotations
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../16-functional-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Functional Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../17-streams-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Streams API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../18-date-and-time-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Date and Time API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../19-jvm-internals/" class="md-tabs__link">
+        
+  
+    
+  
+  JVM Internals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../20-class-loader/" class="md-tabs__link">
+        
+  
+    
+  
+  Class Loader
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../21-memory-management/" class="md-tabs__link">
+        
+  
+    
+  
+  Memory Management
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Garbage Collection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../23-concurrency/" class="md-tabs__link">
+        
+  
+    
+  
+  Concurrency
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../24-networking/" class="md-tabs__link">
+        
+  
+    
+  
+  Networking
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../25-design-patterns-in-java/" class="md-tabs__link">
+        
+  
+    
+  
+  Design Patterns in Java
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../26-modern-java-language-features/" class="md-tabs__link">
+        
+  
+    
+  
+  Modern Java Language Features
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../27-regular-expressions/" class="md-tabs__link">
+        
+  
+    
+  
+  Regular Expressions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../28-internationalization-and-localization/" class="md-tabs__link">
+        
+  
+    
+  
+  Internationalization & Localization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../29-logging/" class="md-tabs__link">
+        
+  
+    
+  
+  Logging
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../30-security-basics/" class="md-tabs__link">
+        
+  
+    
+  
+  Security Basics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-tabs__link">
+        
+  
+    
+  
+  Native & Foreign Interoperability
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../32-process-and-system-apis/" class="md-tabs__link">
+        
+  
+    
+  
+  Process & System APIs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../33-testing-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Testing Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Java Helper" class="md-nav__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Java Helper
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-java-language-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java Language Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-object-oriented-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-classes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Classes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-constructors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constructors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-access-modifiers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access Modifiers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Packages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-strings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Strings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-collections-framework/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collections Framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-generics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-exception-handling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exception Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-file-io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File I/O
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-serialization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serialization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-reflection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reflection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-annotations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-functional-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Functional Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-streams-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Streams API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-date-and-time-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Date and Time API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-jvm-internals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JVM Internals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-class-loader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Class Loader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-memory-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Garbage Collection
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Garbage Collection
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#reference-counting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference Counting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reference Counting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reachability-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reachability Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reachability Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gc-roots" class="md-nav__link">
+    <span class="md-ellipsis">
+      GC Roots
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GC Roots">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-types-strong-soft-weak-phantom-new" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference Types (Strong, Soft, Weak, Phantom) (new)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reference Types (Strong, Soft, Weak, Phantom) (new)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#collectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Collectors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Collectors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#serial-gc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Serial GC
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Serial GC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parallel-gc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parallel GC
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parallel GC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cms" class="md-nav__link">
+    <span class="md-ellipsis">
+      CMS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CMS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g1" class="md-nav__link">
+    <span class="md-ellipsis">
+      G1
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="G1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zgc" class="md-nav__link">
+    <span class="md-ellipsis">
+      ZGC
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ZGC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shenandoah" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shenandoah
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Shenandoah">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gc-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      GC Tuning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GC Tuning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Additional Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#videos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Videos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-concurrency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concurrency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-networking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-design-patterns-in-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Patterns in Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-modern-java-language-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modern Java Language Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-regular-expressions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Regular Expressions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-internationalization-and-localization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internationalization & Localization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-logging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30-security-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Native & Foreign Interoperability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32-process-and-system-apis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process & System APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33-testing-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div><h1 id="22-garbage-collection">22. Garbage Collection</h1>
+<h2 id="reference-counting">Reference Counting</h2>
+<h3 id="theory">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - Reference counting is a garbage collection strategy where each object maintains a count of active references to it; when the count drops to zero, the object is immediately reclaimed. Java's HotSpot JVM does NOT use pure reference counting for its main heap - it uses tracing (reachability-based) collection instead.</li>
+<li><strong>Internal Working</strong> - Every <code>assign</code>/<code>unassign</code> of a reference increments/decrements a counter stored with the object; reclamation happens synchronously and immediately at the point the count hits zero.</li>
+<li><strong>When to Use It</strong> - Relevant conceptually for understanding alternatives (e.g., <code>PhantomReference</code>/native interop reference counting, or other languages like Python/Objective-C which use it), and for understanding why Java chose tracing GC instead.</li>
+<li><strong>Advantages</strong> - Immediate reclamation (no stop-the-world pause for detecting garbage), simple to reason about locally, spreads collection cost evenly rather than in bursts.</li>
+<li><strong>Limitations</strong> - Cannot detect cyclic garbage (two objects referencing each other with no external reference are never reclaimed, since neither count reaches zero); counter updates add overhead to every reference assignment, even in single-threaded hot paths.</li>
+</ul>
+<h3 id="internal-working">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - On every pointer assignment, the runtime decrements the old target's count (freeing it immediately if it reaches zero, potentially cascading to its own referents) and increments the new target's count; this happens synchronously as part of normal program execution, not as a separate GC pass.</li>
+<li><strong>Memory Layout</strong> - Each object would need an embedded counter field (extra per-object memory overhead); Java's actual object header does NOT include a reference count field, since HotSpot doesn't use this scheme for heap objects.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>A --ref--&gt; C (count=1)
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>B --ref--&gt; C (count=2)
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>B loses its reference to C --&gt; C count=1 (not collected)
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>A loses its reference to C --&gt; C count=0 --&gt; C reclaimed immediately
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>Cycle problem: X --&gt; Y --&gt; X (both count=1 forever, never collected, even if unreachable externally)
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - HotSpot uses tracing garbage collectors (mark-sweep-compact, generational copying, region-based like G1/ZGC) precisely to correctly handle cycles, which reference counting cannot do without extra cycle-detection machinery; some JVM-adjacent technologies (e.g., native <code>std::shared_ptr</code> interop, COM/JNI reference counting) do use reference counting at the native boundary.</li>
+</ul>
+<h3 id="interview-questions">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What is reference counting as a GC strategy?
+2. Does the JVM use reference counting for the heap?</p>
+<p><strong>Intermediate</strong>
+1. What is the fundamental flaw of pure reference counting?
+2. What overhead does reference counting add compared to tracing GC?</p>
+<p><strong>Advanced</strong>
+1. How do languages/runtimes that use reference counting (e.g., Python, Swift) address the cyclic reference problem?</p>
+<p><strong>Scenario-based</strong>
+1. You're integrating Java with a native library that uses reference-counted objects (via JNI) - what precautions must you take around object lifecycle across the JNI boundary?</p>
+<h3 id="detailed-answers">Detailed Answers</h3>
+<ol>
+<li><strong>Q: What is reference counting?</strong> A: A GC technique where each object tracks how many active references point to it; the object is freed the instant that count reaches zero.</li>
+<li><strong>Q: Does JVM use it?</strong> A: No - HotSpot's heap is managed by tracing collectors (reachability analysis from GC roots), not reference counting.</li>
+<li><strong>Q: Fundamental flaw?</strong> A: It cannot reclaim cyclic garbage - if object A references B and B references A, and nothing external references either, both counts stay above zero forever, leaking memory.</li>
+<li><strong>Q: Overhead vs tracing?</strong> A: Every single reference assignment (even a local variable reassignment) requires an increment/decrement operation (often needing atomic operations in multi-threaded contexts), adding continuous overhead throughout program execution, versus tracing GC's overhead being concentrated in periodic collection cycles.</li>
+<li><strong>Q: How do RC languages handle cycles?</strong> A: Python has a supplementary cycle detector that periodically runs a mark-and-sweep-like pass specifically to find and collect reference cycles that pure refcounting misses; Swift requires developers to manually mark one side of a potential cycle as <code>weak</code>/<code>unowned</code> to break it.</li>
+<li><strong>Q: JNI native reference-counted objects?</strong> A: You must carefully manage native reference count increments/decrements matching Java object lifecycle (e.g., via <code>NewGlobalRef</code>/<code>DeleteGlobalRef</code>), ensure cleanup happens even on exceptional paths (try/finally or <code>Cleaner</code>), and be aware the JVM's GC has no visibility into native refcounts, so a native cycle or leak isn't fixed by Java-side GC at all.</li>
+</ol>
+<h3 id="code-examples">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// Conceptual illustration: manual reference-count-like tracking (NOT how Java's GC actually works)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">class</span> <span class="nc">RefCounted</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">refCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">retain</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">refCount</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">release</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">--</span><span class="n">refCount</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Freed!"</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">}</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RefCountingDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="n">RefCounted</span><span class="w"> </span><span class="n">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RefCounted</span><span class="p">();</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="n">obj</span><span class="p">.</span><span class="na">retain</span><span class="p">();</span><span class="w">  </span><span class="c1">// simulate a reference being taken</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="n">obj</span><span class="p">.</span><span class="na">retain</span><span class="p">();</span><span class="w">  </span><span class="c1">// a second reference</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">        </span><span class="n">obj</span><span class="p">.</span><span class="na">release</span><span class="p">();</span><span class="w"> </span><span class="c1">// one reference dropped</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="n">obj</span><span class="p">.</span><span class="na">release</span><span class="p">();</span><span class="w"> </span><span class="c1">// last reference dropped -&gt; "freed"</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span><span class="c1">// Real Java objects are managed by the JVM's tracing GC, not this pattern.</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="reachability-analysis">Reachability Analysis</h2>
+<h3 id="theory_1">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - Reachability analysis is the algorithm HotSpot's tracing garbage collectors use to determine which objects are alive: starting from a set of GC roots, the collector traverses the object graph; anything reachable is live, everything else is garbage.</li>
+<li><strong>Internal Working</strong> - A mark phase walks all reference chains from GC roots, marking visited objects; unmarked objects after the traversal completes are unreachable and eligible for reclamation.</li>
+<li><strong>When to Use It</strong> - This is the fundamental mechanism underlying all of Java's garbage collectors (Serial, Parallel, G1, ZGC, Shenandoah) - understanding it explains GC pause behaviour, memory leak causes, and reference-type semantics.</li>
+<li><strong>Advantages</strong> - Correctly reclaims cyclic garbage (unlike reference counting), since cycles with no path from a GC root are still found unreachable.</li>
+<li><strong>Limitations</strong> - Requires a full (or incremental/concurrent) traversal of the live object graph, which can be expensive for very large heaps unless done concurrently/incrementally (motivating G1/ZGC/Shenandoah's region-based and concurrent designs).</li>
+</ul>
+<h3 id="internal-working_1">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - (1) Identify GC roots (stack locals, static fields, JNI handles, active monitors); (2) traverse outward from each root following every reference field, marking each newly-visited object as "reachable"; (3) once traversal is exhausted, any object not marked is unreachable garbage; (4) the collector then reclaims (sweep/compact/copy) the unmarked objects' memory.</li>
+<li><strong>Memory Layout</strong> - The mark bit is often stored in the object header or a separate bitmap (depending on collector); reachable objects may subsequently be moved (compacted/copied) to reduce fragmentation, updating all references that pointed to them.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>graph LR
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    Root1[Stack: main frame] --&gt; A[Object A]
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    Root2[Static field] --&gt; B[Object B]
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    A --&gt; C[Object C]
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    D[Object D] --&gt; E[Object E]
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    E --&gt; D
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    classDef garbage fill:#f66,stroke:#333;
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    class D,E garbage
+</code></pre></div>
+(D and E reference each other but have no path from any root - both are garbage, correctly detected.)</li>
+<li><strong>JVM Behaviour</strong> - Modern collectors (G1, ZGC, Shenandoah) perform most of this marking concurrently with application threads to minimize stop-the-world pauses, using techniques like SATB (snapshot-at-the-beginning) or colored pointers to handle objects that change reachability mid-collection.</li>
+</ul>
+<h3 id="interview-questions_1">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What is reachability analysis in the context of GC?
+2. What are GC roots (briefly)?</p>
+<p><strong>Intermediate</strong>
+1. Why does reachability analysis correctly handle cyclic references, unlike reference counting?
+2. What's the difference between "marking" and "sweeping"/"compacting"?</p>
+<p><strong>Advanced</strong>
+1. How do concurrent collectors perform reachability analysis while the application is still mutating the object graph?</p>
+<p><strong>Scenario-based</strong>
+1. An object is stored in a static <code>Map</code> cache and never removed, causing a memory leak despite the app never directly referencing it again - explain this in reachability terms.</p>
+<h3 id="detailed-answers_1">Detailed Answers</h3>
+<ol>
+<li><strong>Q: What is reachability analysis?</strong> A: The algorithm that determines object liveness by traversing reference chains starting from GC roots; objects reachable via any chain are alive, everything else is garbage.</li>
+<li><strong>Q: What are GC roots?</strong> A: The fixed starting points for reachability traversal - active thread stack locals/parameters, static fields of loaded classes, JNI global references, and a few JVM-internal references (see "GC Roots" topic for full detail).</li>
+<li><strong>Q: Why handle cycles correctly?</strong> A: Liveness is determined by an actual path from a root, not by internal reference counts between objects - two objects referencing only each other, with no path from any root, are correctly identified as unreachable regardless of their mutual references.</li>
+<li><strong>Q: Marking vs sweeping/compacting?</strong> A: Marking is the traversal phase that identifies live objects; sweeping reclaims memory occupied by unmarked (dead) objects by adding it to a free list; compacting additionally relocates surviving objects to eliminate fragmentation, updating all references to the moved objects.</li>
+<li><strong>Q: Concurrent reachability analysis?</strong> A: Techniques like SATB (Snapshot-At-The-Beginning, used by G1/Shenandoah) record a logical snapshot of the object graph at the start of marking and use write barriers to track concurrent mutations, ensuring no live object is missed even though the application keeps running and modifying references during the marking phase; ZGC uses colored pointers and load barriers for a similar purpose.</li>
+<li><strong>Q: Static map cache leak?</strong> A: The cached object remains reachable via the static field (a permanent GC root) even though application logic no longer "needs" it - reachability analysis correctly (but unhelpfully, from the app's intent) considers it alive forever unless explicitly removed from the map; fixed via <code>WeakHashMap</code>, explicit eviction, or a bounded cache (e.g., Caffeine/LRU).</li>
+</ol>
+<h3 id="code-examples_1">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.HashMap</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Map</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ReachabilityDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="c1">// Static field is a GC root - anything referenced here is always reachable</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="kt">byte</span><span class="o">[]&gt;</span><span class="w"> </span><span class="n">CACHE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="n">CACHE</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"key"</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="o">[</span><span class="mi">1024</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1024</span><span class="o">]</span><span class="p">);</span><span class="w"> </span><span class="c1">// 1MB, reachable forever via CACHE (a leak if never removed)</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="n">Object</span><span class="w"> </span><span class="n">local</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Object</span><span class="p">();</span><span class="w"> </span><span class="c1">// reachable only via this stack local</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="n">local</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w"> </span><span class="c1">// no more references -&gt; unreachable -&gt; eligible for GC</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">gc</span><span class="p">();</span><span class="w"> </span><span class="c1">// request collection (not guaranteed timing)</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="gc-roots">GC Roots</h2>
+<h3 id="theory_2">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - GC roots are the fixed, always-reachable starting points from which the garbage collector's reachability traversal begins; any object with no path from any GC root is garbage.</li>
+<li><strong>Internal Working</strong> - The JVM enumerates roots at the start of a GC cycle (a "stop-the-world" root-scanning phase, even in mostly-concurrent collectors) by scanning active thread stacks, static fields, and JNI references.</li>
+<li><strong>When to Use It</strong> - Understanding GC roots is essential for diagnosing memory leaks (heap dump analysis tools show "paths to GC roots" for suspect objects) and for reasoning about object lifetime.</li>
+<li><strong>Advantages</strong> - Provides an unambiguous, well-defined basis for liveness, enabling correct and complete garbage detection including cycles.</li>
+<li><strong>Limitations</strong> - Root-scanning itself (especially thread stack scanning) requires briefly pausing threads (a "safepoint") to get a consistent snapshot, contributing to GC pause time even in largely concurrent collectors.</li>
+</ul>
+<h3 id="internal-working_2">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - At a JVM safepoint, the collector enumerates: (1) local variables/parameters on every live thread's stack frames, (2) static fields of all loaded classes, (3) JNI global/local references held by native code, (4) objects used for synchronization (monitors currently locked), and (5) a few JVM-internal roots (e.g., objects referenced by the class loader data, interned strings' roots in some contexts). Traversal then proceeds outward from this root set.</li>
+<li><strong>Memory Layout</strong> - Roots themselves aren't heap objects - they're pointers living in thread stacks (native/Java stack frames) or in the Metaspace's static field storage area, pointing INTO the heap.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>GC Roots:
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>  [Thread1 stack frame locals] ---\
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  [Thread2 stack frame locals] ----+--&gt; traversal begins here --&gt; heap objects marked reachable
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>  [Static fields]              ---/
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>  [JNI global refs]           -/
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - Bringing all threads to a safepoint to scan stacks accurately is a key source of GC-related latency; JIT compilers cooperate by emitting "safepoint poll" checks in compiled code (especially at loop back-edges and method returns) so threads can pause promptly when a GC needs to start root scanning.</li>
+</ul>
+<h3 id="interview-questions_2">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. Name three categories of GC roots.
+2. Why can't an object referenced only by another (non-root) object ever be a "root" itself?</p>
+<p><strong>Intermediate</strong>
+1. Why does root-scanning require a safepoint/stop-the-world moment even in "concurrent" collectors?
+2. How do heap dump analysis tools (e.g., Eclipse MAT) use the concept of GC roots?</p>
+<p><strong>Advanced</strong>
+1. What is a JVM safepoint and how does compiled (JIT) code cooperate to reach one quickly?</p>
+<p><strong>Scenario-based</strong>
+1. A heap dump shows a large retained object with a "path to GC root" going through a <code>ThreadLocal</code> in a thread-pool thread that's never terminated - explain the leak and the fix.</p>
+<h3 id="detailed-answers_2">Detailed Answers</h3>
+<ol>
+<li><strong>Q: Three categories of GC roots?</strong> A: Local variables/parameters on thread stacks, static fields of loaded classes, and JNI (native code) references (also: currently-locked monitor objects, and certain JVM-internal roots).</li>
+<li><strong>Q: Why can't a non-root object be a root?</strong> A: By definition, GC roots are the JVM's fixed, externally-anchored starting points (thread state, static state, native handles) - any other object's "root-ness" would depend on being reachable FROM one of these, i.e., it's a regular heap object, not an anchor point itself.</li>
+<li><strong>Q: Why safepoints needed even for concurrent GCs?</strong> A: Accurately enumerating thread stack roots requires threads to be at a consistent, known state (not mid-instruction with ambiguous register/stack contents); even G1/ZGC/Shenandoah require a brief safepoint to snapshot roots before proceeding with the bulk of marking/relocation concurrently.</li>
+<li><strong>Q: Heap dump tools and GC roots?</strong> A: Tools like Eclipse MAT compute "paths to GC roots" for a selected object, showing exactly which root (e.g., a specific thread's stack, or a static field) is keeping it alive - essential for diagnosing why an object that should be garbage is still retained.</li>
+<li><strong>Q: What is a safepoint?</strong> A: A point during execution where all thread states are consistent and safe for the JVM to inspect/modify (e.g., for GC root scanning or deoptimization); JIT-compiled code inserts lightweight "safepoint poll" checks at strategic points (loop back-edges, method exits) so a thread can voluntarily pause quickly when the JVM signals a safepoint request, rather than the JVM needing to forcibly interrupt it.</li>
+<li><strong>Q: ThreadLocal leak via pooled thread?</strong> A: Thread-pool threads are long-lived (never terminate normally), so any <code>ThreadLocal</code> value they hold remains reachable via that thread's root for the pool's entire lifetime, even after the logical "task" that set it has finished - fix by explicitly calling <code>threadLocal.remove()</code> when the task completes (e.g., in a <code>finally</code> block).</li>
+</ol>
+<h3 id="code-examples_2">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GcRootsDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="n">staticRoot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Object</span><span class="p">();</span><span class="w"> </span><span class="c1">// reachable via static field root for the program's lifetime</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="n">Object</span><span class="w"> </span><span class="n">localRoot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Object</span><span class="p">();</span><span class="w"> </span><span class="c1">// reachable via this thread's stack frame while main() runs</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">staticRoot</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">localRoot</span><span class="p">);</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">        </span><span class="c1">// Once main() returns, localRoot's stack frame is gone, so that root disappears;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="c1">// staticRoot remains reachable as long as the class stays loaded.</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="reference-types-strong-soft-weak-phantom-new">Reference Types (Strong, Soft, Weak, Phantom) <em>(new)</em></h2>
+<h3 id="theory_3">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - Java's <code>java.lang.ref</code> package defines four reference strengths controlling how eagerly the GC reclaims an object: <strong>Strong</strong> (default, never collected while reachable), <strong>Soft</strong> (collected only under memory pressure, good for caches), <strong>Weak</strong> (collected as soon as no strong/soft references remain, good for canonicalizing maps/metadata), <strong>Phantom</strong> (already finalized; the reference itself never gives you the object, only signals post-mortem via a <code>ReferenceQueue</code>).</li>
+<li><strong>Internal Working</strong> - Each reference type is a wrapper object (<code>SoftReference&lt;T&gt;</code>, <code>WeakReference&lt;T&gt;</code>, <code>PhantomReference&lt;T&gt;</code>) holding a <code>get()</code>-accessible referent (except Phantom), which the GC treats with different reachability rules during its analysis.</li>
+<li><strong>When to Use It</strong> - Soft: memory-sensitive caches; Weak: canonicalizing/interning maps (<code>WeakHashMap</code>), avoiding memory leaks in listener registrations; Phantom: precise post-GC cleanup coordination (safer alternative to <code>finalize()</code>), often paired with <code>ReferenceQueue</code>.</li>
+<li><strong>Advantages</strong> - Gives fine-grained control over GC eagerness without manual object lifecycle management; enables memory-sensitive caches and leak-resistant designs.</li>
+<li><strong>Limitations</strong> - Adds complexity/indirection (<code>get()</code> may return <code>null</code> at any time for Soft/Weak); Phantom references require queue polling/cleanup code, they're not "automatic".</li>
+</ul>
+<h3 id="internal-working_3">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - During GC reachability analysis, an object reachable ONLY via soft references is left alone unless the collector decides to free memory (JVM-defined heuristic, generally under heap pressure, often preferring to clear soft references in LRU-ish order before throwing <code>OutOfMemoryError</code>); an object reachable only via weak references is cleared at the very next GC cycle regardless of memory pressure; an object referenced by a phantom reference is already dead (finalized), and <code>PhantomReference.get()</code> always returns <code>null</code> - phantom references exist purely to be enqueued onto a <code>ReferenceQueue</code> after the referent's memory is about to be reclaimed, letting cleanup code run precisely then.</li>
+<li><strong>Memory Layout</strong> - Reference objects (<code>SoftReference</code>, etc.) are themselves ordinary heap objects with a special internal pointer to the referent that the GC treats specially (not counted as a strong reachability edge); a <code>ReferenceQueue</code> is a normal queue data structure the GC enqueues cleared references into.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>graph TD
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    Root --&gt; StrongRef --&gt; ObjA[Object A - never collected while reachable]
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    SoftRef -.-&gt;|cleared only under memory pressure| ObjB[Object B]
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    WeakRef -.-&gt;|cleared at next GC if no strong/soft refs| ObjC[Object C]
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    PhantomRef -.-&gt;|enqueued after finalization, get() always null| ObjD[Object D]
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - The GC processes reference objects in a defined order during each collection (strong reachability determined first, then soft, then weak, then phantom/finalizable), clearing and optionally enqueuing them onto their associated <code>ReferenceQueue</code> as appropriate for that reference type's semantics.</li>
+</ul>
+<h3 id="interview-questions_3">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. List the four reference types from strongest to weakest.
+2. What's the default reference type for a normal Java variable assignment?</p>
+<p><strong>Intermediate</strong>
+1. When would you use a <code>SoftReference</code> versus a <code>WeakReference</code>?
+2. What does <code>PhantomReference.get()</code> always return, and why?</p>
+<p><strong>Advanced</strong>
+1. How does <code>WeakHashMap</code> use weak references internally to avoid memory leaks?</p>
+<p><strong>Scenario-based</strong>
+1. An image-caching library needs to keep decoded images around as long as memory allows but must never cause an <code>OutOfMemoryError</code> - which reference type fits, and how would you implement the cache?</p>
+<h3 id="detailed-answers_3">Detailed Answers</h3>
+<ol>
+<li><strong>Q: Four reference types, strongest to weakest?</strong> A: Strong &gt; Soft &gt; Weak &gt; Phantom.</li>
+<li><strong>Q: Default reference type?</strong> A: Strong - a normal <code>Object obj = new Object();</code> assignment is a strong reference; the object is never collected while any strong reference path from a GC root exists.</li>
+<li><strong>Q: Soft vs Weak use case?</strong> A: <code>SoftReference</code> for memory-sensitive caches where you want the JVM to hold onto cached data as long as possible, clearing it only when memory is genuinely needed; <code>WeakReference</code> for cases where the referent's real lifecycle is owned elsewhere and you just want a non-owning handle (e.g., canonicalizing maps, listener registries) that doesn't prevent collection at all once no strong references remain.</li>
+<li><strong>Q: <code>PhantomReference.get()</code> always returns null - why?</strong> A: By design - by the time an object is only phantom-reachable, it has already been finalized and its memory is essentially already gone/inaccessible; phantom references exist purely as a notification mechanism (via <code>ReferenceQueue</code>) for precise cleanup timing, not for resurrecting or accessing the object.</li>
+<li><strong>Q: <code>WeakHashMap</code> internals?</strong> A: Its keys are wrapped in <code>WeakReference</code>s; once a key object has no other strong references, the GC clears the weak reference and the map lazily removes the now-stale entry (typically on subsequent operations that poll the internal <code>ReferenceQueue</code>), preventing the map from being the sole reason a key (and its associated value) stays alive forever.</li>
+<li><strong>Q: Image cache avoiding OOM?</strong> A: Use <code>SoftReference&lt;Bitmap&gt;</code> values in the cache map; the JVM will clear soft references before throwing <code>OutOfMemoryError</code> under memory pressure, so the cache naturally shrinks instead of causing a crash - implement by wrapping cached values in <code>new SoftReference&lt;&gt;(image)</code> and checking <code>ref.get() != null</code> before use, re-decoding if it's been cleared.</li>
+</ol>
+<h3 id="code-examples_3">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.lang.ref.PhantomReference</span><span class="p">;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.lang.ref.ReferenceQueue</span><span class="p">;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.lang.ref.SoftReference</span><span class="p">;</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.lang.ref.WeakReference</span><span class="p">;</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.HashMap</span><span class="p">;</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Map</span><span class="p">;</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ReferenceTypesDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">        </span><span class="c1">// Soft reference: good for a memory-sensitive cache</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">        </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">SoftReference</span><span class="o">&lt;</span><span class="kt">byte</span><span class="o">[]&gt;&gt;</span><span class="w"> </span><span class="n">cache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">        </span><span class="n">cache</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"blob"</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SoftReference</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="o">[</span><span class="mi">10</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1024</span><span class="o">]</span><span class="p">));</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">        </span><span class="c1">// Weak reference: doesn't keep the object alive</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">        </span><span class="n">Object</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Object</span><span class="p">();</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">        </span><span class="n">WeakReference</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">weakRef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">WeakReference</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">target</span><span class="p">);</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">        </span><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span><span class="w"> </span><span class="c1">// drop the only strong reference</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">gc</span><span class="p">();</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">        </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Weak cleared: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">weakRef</span><span class="p">.</span><span class="na">get</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">));</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="w">        </span><span class="c1">// Phantom reference: notified via queue after finalization, get() always null</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="w">        </span><span class="n">ReferenceQueue</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ReferenceQueue</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="w">        </span><span class="n">Object</span><span class="w"> </span><span class="n">phantomTarget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Object</span><span class="p">();</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="w">        </span><span class="n">PhantomReference</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">phantomRef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PhantomReference</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">phantomTarget</span><span class="p">,</span><span class="w"> </span><span class="n">queue</span><span class="p">);</span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Phantom get() is always null: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">phantomRef</span><span class="p">.</span><span class="na">get</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">));</span>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="collectors">Collectors</h2>
+<h3 id="serial-gc">Serial GC</h3>
+<h4 id="theory_4">Theory</h4>
+<ul>
+<li><strong>Core Concepts</strong> - Serial GC (<code>-XX:+UseSerialGC</code>) is the simplest collector: it uses a single thread for both minor (young gen) and major (old gen) collections, stopping all application threads during each collection (full stop-the-world).</li>
+<li><strong>Internal Working</strong> - Young gen uses a copying collector (Eden -&gt; Survivor); old gen uses mark-sweep-compact, both executed single-threaded.</li>
+<li><strong>When to Use It</strong> - Best for small heaps (client-side apps, containers with 1 CPU, or very small services) where pause times of tens of milliseconds are acceptable and the simplicity/low overhead of a single GC thread outweighs parallelism benefits.</li>
+<li><strong>Advantages</strong> - Lowest memory/CPU overhead of any collector (no coordination between GC threads), simplest to reason about, best raw throughput per GC cycle on single-core environments.</li>
+<li><strong>Limitations</strong> - Pause times scale linearly with live-set size since only one thread does the work - unsuitable for large heaps or latency-sensitive multi-core server applications.</li>
+</ul>
+<h4 id="internal-working_4">Internal Working</h4>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - On a minor GC: stop all application threads, copy live objects from Eden+one Survivor to the other Survivor (or promote to Old Gen if they've survived enough cycles or Survivor is full), reclaim the rest of Eden. On a major/full GC: stop all threads, mark live objects across the whole heap, sweep dead ones, compact the old generation to eliminate fragmentation - all using exactly one thread throughout.</li>
+<li><strong>Memory Layout</strong> - Classic generational layout: Young Gen (Eden + 2 Survivor spaces) and Old Gen, both within the heap; Metaspace is separate (off-heap) for class metadata.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>[Eden][S0][S1]   Young Gen (copying collector)
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>[   Old Gen   ]  (mark-sweep-compact)
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>All collections: single GC thread, full STW pause
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - Because everything is single-threaded and fully stop-the-world, Serial GC has the most predictable (if not necessarily shortest) pause characteristics and the least implementation complexity/overhead of any HotSpot collector, making it a good default for constrained environments (e.g., small containers).</li>
+</ul>
+<h4 id="interview-questions_4">Interview Questions</h4>
+<p><strong>Basic</strong>
+1. How do you enable Serial GC and what's its defining characteristic?
+2. In what environment is Serial GC typically the best choice?</p>
+<p><strong>Intermediate</strong>
+1. Why doesn't Serial GC scale well to multi-core, large-heap server workloads?
+2. What algorithm does Serial GC use for young vs old generation collection?</p>
+<p><strong>Advanced</strong>
+1. Why might Serial GC sometimes outperform a parallel/concurrent collector on a single-core or heavily resource-constrained container?</p>
+<p><strong>Scenario-based</strong>
+1. A microservice runs in a container limited to 1 CPU core and 256MB heap; which collector would you pick and why?</p>
+<h4 id="detailed-answers_4">Detailed Answers</h4>
+<ol>
+<li><strong>Q: Enabling and characteristic?</strong> A: <code>-XX:+UseSerialGC</code>; its defining trait is using a single thread for all GC work (both young and old generation), with full stop-the-world pauses.</li>
+<li><strong>Q: Best environment?</strong> A: Small heaps and/or single-CPU environments (small microservices, CLI tools, constrained containers) where coordination overhead of multi-threaded GC isn't worth it.</li>
+<li><strong>Q: Why doesn't it scale?</strong> A: Pause duration is proportional to the amount of live data processed by a single thread; on large heaps with many cores available but unused, this wastes parallel hardware capacity and produces unacceptably long pauses for server workloads.</li>
+<li><strong>Q: Algorithms used?</strong> A: Young generation: copying collector (Eden/Survivor semispace copying); old generation: mark-sweep-compact.</li>
+<li><strong>Q: Why sometimes outperform parallel collectors?</strong> A: On a single core (or very few cores), a parallel collector's worker-thread coordination/synchronization overhead provides no real parallelism benefit and just adds bookkeeping cost - Serial GC's simplicity avoids that overhead entirely.</li>
+<li><strong>Q: 1-CPU, 256MB container?</strong> A: Serial GC - with only one core available, parallel/concurrent collectors gain no real speedup from extra GC threads (which don't exist) while still incurring coordination overhead; Serial GC's low footprint and simplicity best match this constrained environment.</li>
+</ol>
+<h4 id="code-examples_4">Code Examples</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">// Run with: java -XX:+UseSerialGC -Xmx128m SerialGcDemo</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SerialGcDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2_000_000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">            </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">chunk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="o">[</span><span class="mi">128</span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="c1">// generates young-gen garbage rapidly</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">500_000</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Allocated batch "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Done - observe GC logs with -Xlog:gc"</span><span class="p">);</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="parallel-gc">Parallel GC</h3>
+<h4 id="theory_5">Theory</h4>
+<ul>
+<li><strong>Core Concepts</strong> - Parallel GC (<code>-XX:+UseParallelGC</code>, the default in Java 8) uses multiple threads for both young and old generation collection, still fully stop-the-world, optimizing for maximum <strong>throughput</strong> (total application work done per unit time) rather than minimizing individual pause times.</li>
+<li><strong>Internal Working</strong> - Same generational copying/mark-sweep-compact algorithms as Serial GC, but each phase is parallelized across multiple GC worker threads.</li>
+<li><strong>When to Use It</strong> - Best for batch-processing/throughput-oriented workloads (data pipelines, batch jobs) where occasional longer pauses are acceptable in exchange for maximizing overall throughput, on multi-core machines.</li>
+<li><strong>Advantages</strong> - Higher throughput than Serial GC on multi-core hardware (same total work split across threads); simple generational design with well-understood behaviour.</li>
+<li><strong>Limitations</strong> - Still fully stop-the-world - pause times, while shorter than Serial GC's for the same heap size, still scale with live-set size and can be substantial for large heaps, making it unsuitable for latency-sensitive services.</li>
+</ul>
+<h4 id="internal-working_5">Internal Working</h4>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - On a GC cycle, the JVM divides the marking/copying/compacting work into chunks distributed across a configurable number of GC threads (<code>-XX:ParallelGCThreads</code>); all application threads are still paused for the entire duration, but the GC work itself completes faster due to parallel execution, reducing (though not eliminating) pause time compared to Serial GC for the same heap size.</li>
+<li><strong>Memory Layout</strong> - Same generational Young (Eden+2 Survivor) / Old generation layout as Serial GC.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>gantt
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    dateFormat X
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    axisFormat %s
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    section Serial GC (1 thread)
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    GC work : 0, 100
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    section Parallel GC (4 threads)
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    GC work : 0, 30
+</code></pre></div>
+(Illustrative: same total GC work completes faster with more threads, shortening the STW pause.)</li>
+<li><strong>JVM Behaviour</strong> - The JVM's <code>-XX:+UseAdaptiveSizePolicy</code> (on by default with Parallel GC) dynamically tunes generation sizes and tenuring thresholds based on observed pause times and throughput goals (<code>-XX:GCTimeRatio</code>), aiming for the configured throughput target automatically.</li>
+</ul>
+<h4 id="interview-questions_5">Interview Questions</h4>
+<p><strong>Basic</strong>
+1. What is Parallel GC optimized for: throughput or latency?
+2. How do you enable Parallel GC and control the number of GC threads?</p>
+<p><strong>Intermediate</strong>
+1. How does Parallel GC differ from Serial GC given they use similar algorithms?
+2. What does <code>-XX:GCTimeRatio</code> control?</p>
+<p><strong>Advanced</strong>
+1. Why does parallelizing GC work reduce pause time but not eliminate stop-the-world pauses entirely?</p>
+<p><strong>Scenario-based</strong>
+1. A nightly batch ETL job processing millions of records runs on a 16-core machine and cares only about total completion time, not individual pauses - would you choose Parallel GC or G1/ZGC, and why?</p>
+<h4 id="detailed-answers_5">Detailed Answers</h4>
+<ol>
+<li><strong>Q: Throughput or latency?</strong> A: Throughput - it aims to maximize the percentage of total time spent running application code versus GC, accepting individually longer (but less frequent, ideally) pauses.</li>
+<li><strong>Q: Enabling and thread control?</strong> A: <code>-XX:+UseParallelGC</code>; the number of GC worker threads is controlled via <code>-XX:ParallelGCThreads=N</code> (defaults based on available CPU cores).</li>
+<li><strong>Q: Difference from Serial GC?</strong> A: Both use generational copying (young) and mark-sweep-compact (old) algorithms, but Parallel GC executes each phase using multiple worker threads simultaneously instead of one, reducing wall-clock pause duration for the same amount of GC work on multi-core hardware.</li>
+<li><strong>Q: <code>-XX:GCTimeRatio</code>?</strong> A: Sets the target ratio of application time to GC time (e.g., a value of 99 means the JVM aims for GC to take no more than 1/(1+99) = 1% of total time), used by the adaptive sizing policy to tune heap/generation sizes automatically.</li>
+<li><strong>Q: Why still STW despite parallelism?</strong> A: All application threads are still paused for the ENTIRE GC cycle regardless of how many GC threads work on it in parallel - parallelism only shortens how long that pause lasts, it doesn't make the collection concurrent with application execution (unlike G1/ZGC/Shenandoah which run much of their work concurrently).</li>
+<li><strong>Q: 16-core nightly ETL job?</strong> A: Parallel GC is a reasonable, often ideal choice here - the workload explicitly prioritizes total throughput over pause latency, and Parallel GC's fully-parallelized, throughput-optimized design (with no concurrent-marking overhead competing with application threads) typically achieves the best total completion time for such batch workloads.</li>
+</ol>
+<h4 id="code-examples_5">Code Examples</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">// Run with: java -XX:+UseParallelGC -XX:ParallelGCThreads=4 -Xmx512m ParallelGcDemo</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ParallelGcDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">byte</span><span class="o">[]&gt;</span><span class="w"> </span><span class="n">retained</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100_000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">            </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">chunk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="o">[</span><span class="mi">1024</span><span class="o">]</span><span class="p">;</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">retained</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">chunk</span><span class="p">);</span><span class="w"> </span><span class="c1">// some survive to old gen</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Retained batches: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">retained</span><span class="p">.</span><span class="na">size</span><span class="p">());</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="cms">CMS</h3>
+<h4 id="theory_6">Theory</h4>
+<ul>
+<li><strong>Core Concepts</strong> - CMS (Concurrent Mark Sweep, <code>-XX:+UseConcMarkSweepGC</code>) was HotSpot's original low-latency collector, performing most of the old-generation marking concurrently with application threads to minimize stop-the-world pauses; <strong>deprecated in Java 9 and removed in Java 14</strong>, superseded by G1 (and later ZGC/Shenandoah).</li>
+<li><strong>Internal Working</strong> - Uses a mostly-concurrent mark-sweep algorithm for the old generation (young gen still uses a parallel copying collector), with brief STW pauses only for initial-mark and remark phases.</li>
+<li><strong>When to Use It</strong> - Historically used when low pause times mattered more than throughput, before G1 became the default and mature enough to replace it; on modern JDKs, use G1 (or ZGC/Shenandoah for even lower pauses) instead.</li>
+<li><strong>Advantages</strong> - Significantly lower pause times than Serial/Parallel GC for old-gen collection by overlapping marking work with application execution.</li>
+<li><strong>Limitations</strong> - Does NOT compact the old generation (sweep-only), leading to fragmentation over time that can force a fallback full (Serial-style, fully STW) GC; susceptible to "concurrent mode failure" if the old gen fills up before concurrent collection finishes; officially removed from the JDK (Java 14+).</li>
+</ul>
+<h4 id="internal-working_6">Internal Working</h4>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - CMS old-gen cycle: (1) Initial Mark (brief STW - marks objects directly reachable from GC roots), (2) Concurrent Mark (traverses the object graph concurrently with the application), (3) Remark (brief STW - catches up on mutations made during concurrent marking, often using multiple threads to be fast), (4) Concurrent Sweep (reclaims dead objects' space concurrently, without compaction).</li>
+<li><strong>Memory Layout</strong> - Same generational Young/Old split; because CMS doesn't compact, the old generation can become fragmented into non-contiguous free chunks, similar to a general-purpose heap allocator's fragmentation issue.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Initial Mark (STW, short) -&gt; Concurrent Mark (app runs) -&gt; Remark (STW, short) -&gt; Concurrent Sweep (app runs)
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - If the old generation fills up before a concurrent cycle completes ("concurrent mode failure"), the JVM falls back to a full, fully-stop-the-world Serial-style collection with compaction - a notorious CMS worst-case pause; this fragility, plus fragmentation, motivated its replacement by G1.</li>
+</ul>
+<h4 id="interview-questions_6">Interview Questions</h4>
+<p><strong>Basic</strong>
+1. What does CMS stand for and what problem was it designed to solve?
+2. What is the status of CMS in current JDK versions?</p>
+<p><strong>Intermediate</strong>
+1. Why doesn't CMS compact the old generation, and what problem does that cause?
+2. What is "concurrent mode failure"?</p>
+<p><strong>Advanced</strong>
+1. What replaced CMS, and what key architectural difference lets the replacement avoid CMS's main weaknesses?</p>
+<p><strong>Scenario-based</strong>
+1. A legacy service still specifies <code>-XX:+UseConcMarkSweepGC</code> on JDK 17 - what happens, and what should you do?</p>
+<h4 id="detailed-answers_6">Detailed Answers</h4>
+<ol>
+<li><strong>Q: What does CMS stand for/solve?</strong> A: Concurrent Mark Sweep; designed to reduce old-generation GC pause times by doing most marking/sweeping work concurrently with running application threads, instead of Parallel GC's fully stop-the-world old-gen collection.</li>
+<li><strong>Q: Current status?</strong> A: Deprecated in Java 9 (JEP 291) and completely removed in Java 14 (JEP 363); it no longer exists in modern JDKs.</li>
+<li><strong>Q: Why no compaction, and the problem?</strong> A: CMS's design prioritized concurrency/low pause time over compaction (compacting requires moving objects and updating all references, which is harder to do concurrently); the resulting fragmentation can eventually make it impossible to satisfy a large allocation even though total free memory is sufficient, forcing an expensive full GC.</li>
+<li><strong>Q: Concurrent mode failure?</strong> A: When the old generation fills up faster than the concurrent cycle can reclaim space (e.g., due to a high allocation rate or fragmentation), CMS cannot keep up and falls back to a full, stop-the-world, compacting collection - typically the worst-case pause scenario for CMS-based applications.</li>
+<li><strong>Q: What replaced it, and key difference?</strong> A: G1 (Garbage First) replaced CMS as the default (Java 9+); G1's key architectural difference is region-based heap division with incremental, predictable evacuation (copying live objects out of a subset of regions each cycle), which lets it compact incrementally and avoid CMS's fragmentation problem entirely.</li>
+<li><strong>Q: <code>-XX:+UseConcMarkSweepGC</code> on JDK 17?</strong> A: The JVM fails to start (an unrecognized/removed option error) since CMS was removed in Java 14; the fix is to migrate to G1 (default) or evaluate ZGC/Shenandoase for very low pause requirements, adjusting relevant tuning flags accordingly.</li>
+</ol>
+<h4 id="code-examples_6">Code Examples</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1">// Historical illustration only - CMS is removed since JDK 14; shown for interview/reference purposes.</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="c1">// Run (JDK 9-13 only): java -XX:+UseConcMarkSweepGC -Xmx512m CmsDemo</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CmsDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">        </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">longLived</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">50_000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">            </span><span class="n">longLived</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="o">[</span><span class="mi">512</span><span class="o">]</span><span class="p">);</span><span class="w"> </span><span class="c1">// fills old gen over time, exercising concurrent marking</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Long-lived objects: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">longLived</span><span class="p">.</span><span class="na">size</span><span class="p">());</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="g1">G1</h3>
+<h4 id="theory_7">Theory</h4>
+<ul>
+<li><strong>Core Concepts</strong> - G1 (Garbage First, <code>-XX:+UseG1GC</code>, default since Java 9) divides the heap into many equally-sized regions (not fixed contiguous young/old spaces) and prioritizes collecting the regions with the most garbage first, balancing throughput and pause-time predictability via a user-specified pause-time goal (<code>-XX:MaxGCPauseMillis</code>).</li>
+<li><strong>Internal Working</strong> - Performs mostly-concurrent marking (similar in spirit to CMS) but collects/compacts via incremental, evacuation-based (copying) collection of a chosen subset of regions each cycle, achieving both compaction AND concurrency, unlike CMS.</li>
+<li><strong>When to Use It</strong> - Default choice for most modern server applications, especially with heaps from a few GB up to hundreds of GB, where you want a configurable balance between throughput and low, predictable pause times.</li>
+<li><strong>Advantages</strong> - Compacts incrementally (no CMS-style fragmentation), predictable pauses tunable via <code>-XX:MaxGCPauseMillis</code>, scales well to large heaps, good general-purpose default.</li>
+<li><strong>Limitations</strong> - More CPU/memory bookkeeping overhead than simpler collectors (remembered sets per region); can still have occasional longer pauses (e.g., "mixed" collections or if the pause goal is unrealistic for the allocation rate); not as low-latency as ZGC/Shenandoase for extremely large heaps.</li>
+</ul>
+<h4 id="internal-working_7">Internal Working</h4>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - The heap is split into (typically 1-32MB) regions, each dynamically designated Eden, Survivor, Old, or Humongous (for very large objects). A cycle involves: (1) young-only collections (evacuate live objects from Eden/Survivor regions), (2) concurrent marking of the old generation regions (similar to CMS's concurrent mark), (3) "mixed" collections that evacuate both young regions and the old regions identified as having the most garbage ("garbage first"), copying survivors into fresh regions - this copying IS the compaction, done incrementally region-by-region rather than all at once.</li>
+<li><strong>Memory Layout</strong> - Heap divided into many fixed-size regions rather than two large contiguous generations; each region tracks a "remembered set" (RSet) of cross-region references pointing into it, enabling a region to be collected independently without scanning the entire heap for incoming references.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>graph TD
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    subgraph Heap Regions
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    E1[Eden] --- E2[Eden] --- S1[Survivor] --- O1[Old - low garbage] --- O2[Old - HIGH garbage] --- H[Humongous]
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    end
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>    O2 --&gt;|selected first: garbage-first| Evacuation[Evacuated &amp; compacted next mixed GC]
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - G1 uses SATB (snapshot-at-the-beginning) write barriers during concurrent marking to correctly track live objects despite concurrent mutation, and pause-time predictions based on historical region evacuation costs to select which regions to include in each collection while trying to honor <code>-XX:MaxGCPauseMillis</code>.</li>
+</ul>
+<h4 id="interview-questions_7">Interview Questions</h4>
+<p><strong>Basic</strong>
+1. What does "G1" stand for and what's its defining heap structure?
+2. What JDK version made G1 the default collector?</p>
+<p><strong>Intermediate</strong>
+1. How does G1 achieve compaction without CMS's fragmentation problem?
+2. What is a "humongous" object/region in G1?</p>
+<p><strong>Advanced</strong>
+1. What is a remembered set (RSet) and why is it necessary for G1's region-based collection?</p>
+<p><strong>Scenario-based</strong>
+1. A service configures <code>-XX:MaxGCPauseMillis=50</code> but still observes occasional 500ms pauses under load spikes - what G1 behaviour would you investigate?</p>
+<h4 id="detailed-answers_7">Detailed Answers</h4>
+<ol>
+<li><strong>Q: "G1" meaning and structure?</strong> A: "Garbage First" - it always prioritizes collecting the regions containing the most garbage first; the heap is divided into many equally-sized regions instead of two large contiguous young/old generations.</li>
+<li><strong>Q: Default since which version?</strong> A: Java 9.</li>
+<li><strong>Q: Compaction without fragmentation?</strong> A: G1 collects via evacuation (copying) - live objects from selected regions are copied into fresh, empty regions, and the old (now-empty) regions are reclaimed wholesale; because copying inherently compacts (no gaps left behind), G1 avoids the sweep-only fragmentation problem CMS had.</li>
+<li><strong>Q: Humongous objects/regions?</strong> A: Objects larger than 50% of a region size are classified "humongous" and allocated directly into one or more contiguous special regions, bypassing normal young-gen allocation - excessive humongous allocation can fragment the region space and trigger more frequent full GCs.</li>
+<li><strong>Q: Remembered sets?</strong> A: Each region maintains a set of references pointing INTO it from other regions (tracked via write barriers as the program runs); this lets G1 collect a subset of regions without having to scan the ENTIRE heap for incoming references, making partial/incremental collection tractable.</li>
+<li><strong>Q: Occasional 500ms pauses despite 50ms goal?</strong> A: <code>-XX:MaxGCPauseMillis</code> is a goal/target, not a hard guarantee - investigate: very large "mixed" collections including many old regions at once, humongous object allocation/fragmentation forcing full GCs, an allocation rate too high for the configured young-gen sizing to keep young collections small/fast, or an actual full GC (G1's fallback) being triggered by a concurrent-marking failure to keep pace.</li>
+</ol>
+<h4 id="code-examples_7">Code Examples</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1">// Run with: java -XX:+UseG1GC -XX:MaxGCPauseMillis=100 -Xmx1g G1Demo</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">G1Demo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">byte</span><span class="o">[]&gt;</span><span class="w"> </span><span class="n">cache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">200_000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">            </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">entry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="o">[</span><span class="mi">2048</span><span class="o">]</span><span class="p">;</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">cache</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">entry</span><span class="p">);</span><span class="w"> </span><span class="c1">// creates a realistic mix of short and long-lived garbage</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cache</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">20_000</span><span class="p">)</span><span class="w"> </span><span class="n">cache</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// bounded cache, generates old-gen garbage too</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Final cache size: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cache</span><span class="p">.</span><span class="na">size</span><span class="p">());</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="zgc">ZGC</h3>
+<h4 id="theory_8">Theory</h4>
+<ul>
+<li><strong>Core Concepts</strong> - ZGC (<code>-XX:+UseZGC</code>) is a scalable, low-latency collector designed to keep pause times under ~1ms regardless of heap size (tested up to multi-terabyte heaps), by performing nearly all GC work (including relocation/compaction) concurrently with application threads.</li>
+<li><strong>Internal Working</strong> - Uses colored pointers (metadata bits embedded in unused bits of 64-bit object references) and load barriers to allow concurrent relocation of objects while application threads keep running and even accessing objects mid-move.</li>
+<li><strong>When to Use It</strong> - Best for applications with very large heaps and/or strict low-latency SLAs (e.g., trading systems, large in-memory caches, real-time services) where even G1's tens-of-milliseconds pauses are unacceptable.</li>
+<li><strong>Advantages</strong> - Pause times largely independent of heap size or live-set size; scales to extremely large heaps while maintaining sub-millisecond (production-proven single-digit ms in practice) pauses.</li>
+<li><strong>Limitations</strong> - Higher CPU/memory overhead than G1 for the concurrency machinery (colored pointers, load barriers); historically had somewhat lower raw throughput than G1/Parallel for throughput-only workloads (gap has narrowed significantly in recent JDKs); requires 64-bit pointers (colored pointer scheme).</li>
+</ul>
+<h4 id="internal-working_8">Internal Working</h4>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - ZGC performs marking, relocation-set selection, and relocation almost entirely concurrently: colored pointers embed metadata (marked/remapped/finalizable bits) directly in each reference; when application code loads a reference, a lightweight "load barrier" checks these bits and, if the object has moved, transparently redirects the read to the object's new location and self-heals the reference in-place - all without stopping the application thread performing that access.</li>
+<li><strong>Memory Layout</strong> - Requires a large virtual address space reservation (multiple views of the same heap mapped at different virtual addresses corresponding to different colored-pointer states); physical memory usage still corresponds to actual live data, but virtual memory reservation is much larger than the heap size (a normal, expected characteristic, not a leak).</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sequenceDiagram
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    participant App as Application Thread
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    participant Ref as Colored Reference
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    participant GC as ZGC (concurrent)
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    GC-&gt;&gt;Ref: relocates object concurrently, marks reference as "needs remap"
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    App-&gt;&gt;Ref: load barrier reads reference
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>    Ref--&gt;&gt;App: detects stale color, transparently fetches new location &amp; self-heals
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - Nearly all phases (mark, relocate) run concurrently with only very brief STW pauses to initiate each phase (root scanning); the load barrier's overhead (a few extra machine instructions per reference load) is the main runtime cost trade-off for near-zero pause times.</li>
+</ul>
+<h4 id="interview-questions_8">Interview Questions</h4>
+<p><strong>Basic</strong>
+1. What is ZGC's primary design goal?
+2. What JDK version(s) introduced ZGC and made it production-ready/default-eligible?</p>
+<p><strong>Intermediate</strong>
+1. What is a "colored pointer" and what problem does it solve?
+2. Why does ZGC's pause time stay roughly constant regardless of heap size?</p>
+<p><strong>Advanced</strong>
+1. What is a load barrier and how does it enable concurrent object relocation?</p>
+<p><strong>Scenario-based</strong>
+1. A financial trading application requires GC pauses consistently under 10ms on a 128GB heap - which collector would you pick, and what trade-off are you accepting?</p>
+<h4 id="detailed-answers_8">Detailed Answers</h4>
+<ol>
+<li><strong>Q: Primary design goal?</strong> A: Ultra-low, largely heap-size-independent pause times (target sub-millisecond to low-single-digit milliseconds) even for very large heaps, by doing nearly all work concurrently with the application.</li>
+<li><strong>Q: Introduction timeline?</strong> A: Introduced as experimental in Java 11 (Linux/x64), matured and made production-ready with generational support added later; broadly considered production-grade from Java 15-17 onward depending on platform, with Generational ZGC becoming the default ZGC mode in newer releases (21+).</li>
+<li><strong>Q: Colored pointers?</strong> A: Reserved bits within a 64-bit object reference encode metadata about the object's GC state (e.g., marked, remapped, needing relocation); this lets the GC track state per-reference without a separate side table, and lets load barriers cheaply detect stale references needing remapping.</li>
+<li><strong>Q: Why constant pause time?</strong> A: Because marking AND relocation/compaction happen concurrently with the application (not stop-the-world), the pauses are limited to brief root-scanning/initiation phases whose cost doesn't scale with total live-set size, unlike collectors that must pause for the entire mark or copy phase.</li>
+<li><strong>Q: Load barrier mechanism?</strong> A: A load barrier is a small piece of code inserted by the JIT at every reference load that checks the colored bits of the loaded reference; if it indicates the referenced object has been (or is being) relocated, the barrier transparently follows a forwarding pointer to the object's new location and updates ("self-heals") the original reference field, all without requiring a stop-the-world pause for that thread.</li>
+<li><strong>Q: 128GB heap, sub-10ms pauses?</strong> A: ZGC (or Shenandoah, similarly concurrent) - both are designed for exactly this scenario; the trade-off accepted is somewhat higher baseline CPU overhead (load/write barriers running on every reference access) and possibly marginally lower peak throughput compared to G1/Parallel GC, in exchange for near-heap-size-independent low pause times.</li>
+</ol>
+<h4 id="code-examples_8">Code Examples</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1">// Run with: java -XX:+UseZGC -Xmx2g ZgcDemo</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ZgcDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">byte</span><span class="o">[]&gt;</span><span class="w"> </span><span class="n">retained</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">500_000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">            </span><span class="n">retained</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="o">[</span><span class="mi">1024</span><span class="o">]</span><span class="p">);</span><span class="w"> </span><span class="c1">// steadily grows the live set, exercising concurrent relocation</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">100_000</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Allocated: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Total retained: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">retained</span><span class="p">.</span><span class="na">size</span><span class="p">());</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="shenandoah">Shenandoah</h3>
+<h4 id="theory_9">Theory</h4>
+<ul>
+<li><strong>Core Concepts</strong> - Shenandoah (<code>-XX:+UseShenandoahGC</code>, developed by Red Hat) is, like ZGC, a low-latency collector aiming for pause times independent of heap size, achieved via concurrent evacuation (compaction) using a different mechanism: Brooks forwarding pointers (an extra indirection word per object) instead of ZGC's colored-pointer scheme.</li>
+<li><strong>Internal Working</strong> - Each object has a forwarding pointer field; during concurrent evacuation, readers/writers use this pointer to always reach the current (possibly relocated) copy of the object, with a read/write barrier resolving it on every access.</li>
+<li><strong>When to Use It</strong> - Similar use case to ZGC - large heaps and/or strict low-latency requirements; choice between the two is often based on JDK distribution availability (Shenandoah originated in OpenJDK builds from Red Hat, e.g., available in many OpenJDK 11+ distributions) and specific workload benchmarking.</li>
+<li><strong>Advantages</strong> - Pause times largely independent of heap size, similar to ZGC; mature and available on more platforms/architectures historically than early ZGC versions.</li>
+<li><strong>Limitations</strong> - The forwarding-pointer indirection adds a per-object memory overhead (extra word) and a barrier cost on every access, similar in spirit to ZGC's trade-offs; like ZGC, generally somewhat lower raw throughput than G1/Parallel for pure-throughput workloads.</li>
+</ul>
+<h4 id="internal-working_9">Internal Working</h4>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - Shenandoah adds a forwarding pointer to every object's header; during concurrent evacuation, the collector copies live objects to new locations and updates their forwarding pointer to point to the new copy; a read barrier on every object access resolves through this forwarding pointer (cheaply, if not yet moved - pointer just points to itself) ensuring both application threads and the GC always see a consistent, up-to-date view even while copying is in progress concurrently.</li>
+<li><strong>Memory Layout</strong> - Every object gets one extra pointer-sized field in its header for the forwarding pointer, a modest but real per-object memory overhead compared to collectors without this indirection.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>sequenceDiagram
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    participant App as Application Thread
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>    participant Obj as Object (with forwarding ptr)
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>    participant GC as Shenandoah (concurrent)
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>    GC-&gt;&gt;Obj: copies object to new location, updates forwarding pointer
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>    App-&gt;&gt;Obj: reads via forwarding pointer (barrier)
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>    Obj--&gt;&gt;App: resolves to current (possibly new) location transparently
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - Like ZGC, most phases (marking, evacuation, reference updating) run concurrently with only brief STW pauses for initiation (init-mark) and final reference updates (final-update-refs in some modes); barrier overhead on reads/writes is the main steady-state cost.</li>
+</ul>
+<h4 id="interview-questions_9">Interview Questions</h4>
+<p><strong>Basic</strong>
+1. What is Shenandoah's primary design goal, and how does it compare to ZGC's goal?
+2. What mechanism does Shenandoah use to enable concurrent compaction?</p>
+<p><strong>Intermediate</strong>
+1. What is a Brooks forwarding pointer and what per-object cost does it add?
+2. How does Shenandoah's approach differ mechanically from ZGC's colored pointers?</p>
+<p><strong>Advanced</strong>
+1. Why do both ZGC and Shenandoah accept a throughput/memory-overhead trade-off in exchange for low pause times?</p>
+<p><strong>Scenario-based</strong>
+1. You're choosing between ZGC and Shenandoah for a low-latency service on a specific OpenJDK distribution - what factors would drive the decision?</p>
+<h4 id="detailed-answers_9">Detailed Answers</h4>
+<ol>
+<li><strong>Q: Primary goal vs ZGC?</strong> A: Both aim for pause times that don't scale with heap/live-set size via concurrent compaction; they're conceptually equivalent in goal, differing mainly in their concurrent-relocation implementation mechanism.</li>
+<li><strong>Q: Mechanism for concurrent compaction?</strong> A: Brooks-style forwarding pointers - an extra indirection field added to every object, resolved via read/write barriers, allowing objects to be relocated while still being safely accessed by concurrently running application threads.</li>
+<li><strong>Q: Forwarding pointer cost?</strong> A: Adds one extra word per object (a per-object memory overhead) and requires a barrier check on relevant accesses; the object header effectively includes this forwarding slot in addition to the usual mark word/klass pointer.</li>
+<li><strong>Q: Difference from ZGC's colored pointers?</strong> A: ZGC encodes state directly in spare bits of the reference itself (no extra per-object field, but requires large virtual-address-space tricks and specific pointer-width assumptions); Shenandoah instead adds an explicit forwarding-pointer field to each object's header, a more straightforward but per-object-memory-costlier approach.</li>
+<li><strong>Q: Why accept the trade-off?</strong> A: Achieving pause times independent of heap size fundamentally requires doing marking AND compaction concurrently with the application, which necessitates some form of indirection/barrier on every access to detect and handle concurrently-relocated objects - this barrier and bookkeeping overhead is the unavoidable cost of near-zero-pause concurrent compaction.</li>
+<li><strong>Q: Choosing ZGC vs Shenandoah?</strong> A: Consider: JDK vendor/distribution support (Shenandoah originated with Red Hat's OpenJDK builds, though both are now mainline OpenJDK features on modern LTS versions), platform/architecture support, actual benchmarked throughput and pause behaviour under your specific workload (both should be load-tested), and organizational familiarity/operational experience with one or the other.</li>
+</ol>
+<h4 id="code-examples_9">Code Examples</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1">// Run with: java -XX:+UseShenandoahGC -Xmx2g ShenandoahDemo</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ShenandoahDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">byte</span><span class="o">[]&gt;</span><span class="w"> </span><span class="n">retained</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">500_000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="w">            </span><span class="n">retained</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="o">[</span><span class="mi">1024</span><span class="o">]</span><span class="p">);</span><span class="w"> </span><span class="c1">// continuous allocation exercises concurrent evacuation</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Total retained: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">retained</span><span class="p">.</span><span class="na">size</span><span class="p">());</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="gc-tuning">GC Tuning</h2>
+<h3 id="theory_10">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - GC tuning is the process of configuring heap sizes, generation ratios, collector choice, and pause-time goals to balance throughput, latency, and memory footprint for a specific application's allocation patterns.</li>
+<li><strong>Internal Working</strong> - Involves setting JVM flags (<code>-Xms</code>/<code>-Xmx</code>, <code>-XX:NewRatio</code>, <code>-XX:MaxGCPauseMillis</code>, collector selection flags) informed by GC log analysis (<code>-Xlog:gc*</code>) and profiling of allocation rate, object lifetimes, and pause/throughput requirements.</li>
+<li><strong>When to Use It</strong> - Apply when default GC behaviour doesn't meet application SLAs (too-frequent pauses, too-long pauses, excessive memory footprint, or throughput below target) - always driven by measurement, not guesswork.</li>
+<li><strong>Advantages</strong> - Can dramatically improve latency (fewer/shorter pauses), throughput, or memory efficiency when tuned correctly for the actual workload.</li>
+<li><strong>Limitations</strong> - Highly workload-specific - tuning parameters that help one application can hurt another; over-tuning based on synthetic benchmarks rather than production traffic patterns often backfires; modern collectors (G1+) are designed to need less manual tuning than older ones.</li>
+</ul>
+<h3 id="internal-working_10">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - (1) Establish a baseline using GC logs (<code>-Xlog:gc*:file=gc.log:time,uptime,level,tags</code>) to measure pause frequency/duration and throughput; (2) identify the bottleneck (too many minor GCs -&gt; increase young gen size; long pauses -&gt; switch collector or lower pause-time goal; premature promotion -&gt; increase survivor space/tenuring threshold); (3) adjust specific flags incrementally; (4) re-measure under realistic (ideally production-like) load; (5) repeat.</li>
+<li><strong>Memory Layout</strong> - Tuning directly manipulates generation/region sizing (<code>-Xmn</code>, <code>-XX:NewRatio</code>, <code>-XX:G1HeapRegionSize</code>), survivor space ratios (<code>-XX:SurvivorRatio</code>), and overall heap bounds (<code>-Xms</code>, <code>-Xmx</code> - setting them equal avoids costly heap resize events).</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>Measure (GC logs) -&gt; Diagnose (which phase/pause dominates?) -&gt; Adjust flag(s) -&gt; Re-measure -&gt; Iterate
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - Most modern collectors (Parallel, G1) include adaptive sizing policies that self-tune generation sizes toward configured goals (<code>-XX:GCTimeRatio</code>, <code>-XX:MaxGCPauseMillis</code>) automatically; manual tuning typically targets scenarios where the adaptive defaults don't match a specific workload's characteristics (e.g., very bursty allocation, huge live sets, strict SLA requirements).</li>
+</ul>
+<h3 id="interview-questions_10">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What JVM flags control minimum and maximum heap size?
+2. Why is it often recommended to set <code>-Xms</code> equal to <code>-Xmx</code>?</p>
+<p><strong>Intermediate</strong>
+1. What GC log metrics would you look at first when diagnosing a latency problem?
+2. How would you address frequent minor GCs versus infrequent but long major GCs?</p>
+<p><strong>Advanced</strong>
+1. How does <code>-XX:MaxGCPauseMillis</code> interact with G1's region selection, and what happens if the goal is unrealistic for the workload?</p>
+<p><strong>Scenario-based</strong>
+1. An application shows healthy throughput but occasional multi-second pauses correlating with traffic spikes - walk through your tuning/diagnosis approach.</p>
+<h3 id="detailed-answers_10">Detailed Answers</h3>
+<ol>
+<li><strong>Q: Heap size flags?</strong> A: <code>-Xms</code> (initial/minimum heap size), <code>-Xmx</code> (maximum heap size).</li>
+<li><strong>Q: Why <code>-Xms == -Xmx</code>?</strong> A: Prevents the JVM from performing potentially expensive heap resize operations at runtime (which can themselves cause pauses) as it grows the heap from the initial size toward the maximum under load - fixing the size upfront gives more predictable, stable behaviour.</li>
+<li><strong>Q: First GC log metrics to check?</strong> A: Pause frequency and duration per collection type (minor vs major/mixed), time-to-safepoint, and the ratio of application time to GC time (throughput) - these quickly indicate whether the problem is pause length, pause frequency, or overall GC overhead.</li>
+<li><strong>Q: Frequent minor GCs vs infrequent long major GCs?</strong> A: Frequent minor GCs suggest an undersized young generation relative to allocation rate - increase <code>-Xmn</code>/young gen size or survivor ratio; infrequent but long major/full GCs suggest the old generation is being stressed (too much promotion, fragmentation, or an undersized heap overall) - investigate promotion rate, consider a concurrent/region-based collector (G1/ZGC/Shenandoah), or increase overall heap size.</li>
+<li><strong>Q: <code>-XX:MaxGCPauseMillis</code> with G1?</strong> A: G1 uses historical evacuation-cost data per region to estimate how many regions it can collect within the pause goal and selects that many (prioritizing highest-garbage regions); if the goal is set unrealistically low for the actual allocation rate/live-set size, G1 will still exceed it when necessary (it's a best-effort goal, not a hard cap) and may fall back to more frequent or larger collections trying to keep up, or eventually a full GC if it truly can't keep pace.</li>
+<li><strong>Q: Multi-second pauses during traffic spikes?</strong> A: Enable/review GC logs first to confirm whether these are minor, mixed, or full GCs; check for promotion failures or humongous allocations (G1) coinciding with the spikes; check if allocation rate during spikes outpaces the young generation's capacity (forcing premature promotion or frequent full/mixed GCs); consider increasing young-gen size, adjusting <code>-XX:InitiatingHeapOccupancyPercent</code> (G1's concurrent-cycle trigger) to start marking earlier, or evaluating ZGC/Shenandoah if consistent low-latency under bursty load is a hard requirement.</li>
+</ol>
+<h3 id="code-examples_10">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1">// Example: comparing GC behaviour under different flags</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="c1">// java -Xms512m -Xmx512m -XX:+UseG1GC -XX:MaxGCPauseMillis=100 -Xlog:gc*:file=gc.log GcTuningDemo</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GcTuningDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">byte</span><span class="o">[]&gt;</span><span class="w"> </span><span class="n">cache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="w">        </span><span class="kt">long</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">();</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1_000_000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="w">            </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">entry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="o">[</span><span class="mi">512</span><span class="o">]</span><span class="p">;</span>
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">cache</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">entry</span><span class="p">);</span>
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cache</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">50_000</span><span class="p">)</span><span class="w"> </span><span class="n">cache</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// bounded, realistic churn</span>
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Elapsed ms: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="p">));</span>
+<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a><span class="w">        </span><span class="c1">// Analyze gc.log afterward to correlate pause times with allocation behaviour.</span>
+<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="additional-resources">Additional Resources</h2>
+<h3 id="videos">Videos</h3>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=XXOaCV5xm9s">Garbage Collection in Java | What is GC and How does it Work in the JVM? | Types of GCs | Geekific</a></li>
+<li><a href="https://www.youtube.com/watch?v=LXWbyf8SUjI">Java 21 JVM &amp; GC Improvements</a></li>
+<li><a href="https://www.youtube.com/watch?v=OnodHoNYE1Y">Z Garbage Collector: The Next Generation</a></li>
+</ul></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2025 <a href="https://github.com/abhishekghoshh"  target="_blank" rel="noopener">Abhishek Ghosh</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/abhishekghoshh" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://x.com/abhishek_ghoshh" target="_blank" rel="noopener" title="x.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/abhishek-ghosh-220679132/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

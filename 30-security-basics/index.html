@@ -1,0 +1,2289 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abhishekghoshh.github.io/java-helper/30-security-basics/">
+      
+      
+        <link rel="prev" href="../29-logging/">
+      
+      
+        <link rel="next" href="../31-native-and-foreign-interoperability/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Security Basics - Java Helper</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Security Basics - Java Helper" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/30-security-basics.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://abhishekghoshh.github.io/java-helper/30-security-basics/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Security Basics - Java Helper" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/30-security-basics.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#30-security-basics-new" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Java Helper" class="md-header__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Java Helper
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Security Basics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../1-java-language-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Java Language Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../2-object-oriented-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Object-Oriented Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../3-classes/" class="md-tabs__link">
+        
+  
+    
+  
+  Classes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../4-constructors/" class="md-tabs__link">
+        
+  
+    
+  
+  Constructors
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-access-modifiers/" class="md-tabs__link">
+        
+  
+    
+  
+  Access Modifiers
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../6-packages/" class="md-tabs__link">
+        
+  
+    
+  
+  Packages
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../7-strings/" class="md-tabs__link">
+        
+  
+    
+  
+  Strings
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../8-arrays/" class="md-tabs__link">
+        
+  
+    
+  
+  Arrays
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../9-collections-framework/" class="md-tabs__link">
+        
+  
+    
+  
+  Collections Framework
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../10-generics/" class="md-tabs__link">
+        
+  
+    
+  
+  Generics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../11-exception-handling/" class="md-tabs__link">
+        
+  
+    
+  
+  Exception Handling
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../12-file-io/" class="md-tabs__link">
+        
+  
+    
+  
+  File I/O
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../13-serialization/" class="md-tabs__link">
+        
+  
+    
+  
+  Serialization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../14-reflection/" class="md-tabs__link">
+        
+  
+    
+  
+  Reflection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../15-annotations/" class="md-tabs__link">
+        
+  
+    
+  
+  Annotations
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../16-functional-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Functional Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../17-streams-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Streams API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../18-date-and-time-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Date and Time API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../19-jvm-internals/" class="md-tabs__link">
+        
+  
+    
+  
+  JVM Internals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../20-class-loader/" class="md-tabs__link">
+        
+  
+    
+  
+  Class Loader
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../21-memory-management/" class="md-tabs__link">
+        
+  
+    
+  
+  Memory Management
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../22-garbage-collection/" class="md-tabs__link">
+        
+  
+    
+  
+  Garbage Collection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../23-concurrency/" class="md-tabs__link">
+        
+  
+    
+  
+  Concurrency
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../24-networking/" class="md-tabs__link">
+        
+  
+    
+  
+  Networking
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../25-design-patterns-in-java/" class="md-tabs__link">
+        
+  
+    
+  
+  Design Patterns in Java
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../26-modern-java-language-features/" class="md-tabs__link">
+        
+  
+    
+  
+  Modern Java Language Features
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../27-regular-expressions/" class="md-tabs__link">
+        
+  
+    
+  
+  Regular Expressions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../28-internationalization-and-localization/" class="md-tabs__link">
+        
+  
+    
+  
+  Internationalization & Localization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../29-logging/" class="md-tabs__link">
+        
+  
+    
+  
+  Logging
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Security Basics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-tabs__link">
+        
+  
+    
+  
+  Native & Foreign Interoperability
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../32-process-and-system-apis/" class="md-tabs__link">
+        
+  
+    
+  
+  Process & System APIs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../33-testing-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Testing Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Java Helper" class="md-nav__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Java Helper
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-java-language-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java Language Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-object-oriented-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-classes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Classes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-constructors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constructors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-access-modifiers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access Modifiers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Packages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-strings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Strings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-collections-framework/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collections Framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-generics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-exception-handling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exception Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-file-io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File I/O
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-serialization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serialization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-reflection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reflection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-annotations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-functional-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Functional Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-streams-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Streams API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-date-and-time-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Date and Time API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-jvm-internals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JVM Internals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-class-loader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Class Loader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-memory-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-garbage-collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Garbage Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-concurrency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concurrency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-networking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-design-patterns-in-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Patterns in Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-modern-java-language-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modern Java Language Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-regular-expressions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Regular Expressions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-internationalization-and-localization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internationalization & Localization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-logging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Security Basics
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Security Basics
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#java-cryptography-architecture-jcajce" class="md-nav__link">
+    <span class="md-ellipsis">
+      Java Cryptography Architecture (JCA/JCE)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Java Cryptography Architecture (JCA/JCE)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#messagedigest-cipher-keypairgenerator" class="md-nav__link">
+    <span class="md-ellipsis">
+      MessageDigest, Cipher, KeyPairGenerator
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MessageDigest, Cipher, KeyPairGenerator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secure-coding-practices-owasp-top-10-for-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      Secure Coding Practices (OWASP Top 10 for Java)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Secure Coding Practices (OWASP Top 10 for Java)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deprecated-security-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deprecated Security Manager
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deprecated Security Manager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Native & Foreign Interoperability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32-process-and-system-apis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process & System APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33-testing-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div><h1 id="30-security-basics-new">30. Security Basics <em>(new)</em></h1>
+<h2 id="java-cryptography-architecture-jcajce">Java Cryptography Architecture (JCA/JCE)</h2>
+<h3 id="theory">Theory</h3>
+<p><strong>Core Concepts</strong>: The Java Cryptography Architecture (JCA) is Java's pluggable framework for cryptographic services (message digests, digital signatures, key generation, certificates), designed around a provider-based model where actual algorithm implementations are supplied by pluggable <code>Provider</code> classes (e.g., the built-in <code>SUN</code>, <code>SunJCE</code>, <code>SunEC</code> providers, or third-party ones like Bouncy Castle) rather than being hardcoded into the JDK. The Java Cryptography Extension (JCE) originally shipped as a separate, US-export-controlled extension providing encryption/decryption (<code>Cipher</code>), key agreement, and MAC algorithms; JCE has been fully merged into the core JDK since Java 1.4, though the JCA/JCE naming split persists in documentation and API package names (<code>javax.crypto</code> for JCE-originated APIs, <code>java.security</code> for JCA-originated ones).</p>
+<p><strong>Internal Working</strong>: Application code requests a cryptographic service by algorithm name (e.g., <code>MessageDigest.getInstance("SHA-256")</code>), and the JCA framework consults its registered, priority-ordered list of <code>Provider</code>s to find one implementing that algorithm, returning an engine-class instance (<code>MessageDigest</code>, <code>Cipher</code>, <code>Signature</code>, <code>KeyPairGenerator</code>, etc.) backed by that provider's concrete implementation — this indirection lets algorithm implementations be swapped, upgraded, or replaced (e.g., for FIPS compliance or hardware-acceleration) without any change to application code.</p>
+<p><strong>When to Use It</strong>: Any Java application needing cryptographic primitives — hashing, encryption/decryption, digital signatures, secure random number generation, key management — should use the JCA/JCE APIs rather than hand-rolling cryptography or depending directly on a specific provider's implementation classes.</p>
+<p><strong>Advantages</strong>: Provider abstraction allows algorithm agility (upgrading to stronger algorithms/providers without application code changes), a consistent standard API surface across very different underlying algorithm families, and supports pluggable hardware security module (HSM) or PKCS#11-backed providers transparently.</p>
+<p><strong>Limitations</strong>: The provider precedence/lookup mechanism can surprise developers if multiple providers register the same algorithm name with different behavior/security properties; algorithm name strings are loosely standardized (documented in the "Java Security Standard Algorithm Names" reference) and easy to typo, generally only caught at runtime (<code>NoSuchAlgorithmException</code>) rather than compile time; historical export-control restrictions (the old "unlimited strength jurisdiction policy files," required for AES-256 and similar strong algorithms pre-Java 9) are largely obsolete now (removed as a default restriction since Java 8u161/Java 9), but this history still surfaces in older documentation and legacy deployment guidance.</p>
+<h3 id="internal-working">Internal Working</h3>
+<p><strong>Step-by-Step Explanation</strong>:
+1. The JVM maintains an ordered list of registered <code>Provider</code> instances (configured via <code>java.security</code> policy file entries, or programmatically via <code>Security.addProvider()</code>), each advertising which algorithms/engine classes it implements.
+2. <code>EngineClass.getInstance("AlgorithmName")</code> (the general JCA pattern used by <code>MessageDigest</code>, <code>Cipher</code>, <code>Signature</code>, <code>KeyPairGenerator</code>, <code>KeyStore</code>, <code>SecureRandom</code>, etc.) iterates providers in their configured priority order, returning the first one advertising support for the requested algorithm — or throwing <code>NoSuchAlgorithmException</code> if none do.
+3. The returned engine object is a "front" object delegating to the selected provider's actual <code>SPI</code> (Service Provider Interface) implementation class (e.g., <code>MessageDigestSpi</code>) — application code interacts only with the standard engine class API, remaining unaware of which concrete provider/implementation is actually doing the work underneath.
+4. An overload — <code>getInstance("AlgorithmName", "ProviderName")</code> — lets callers explicitly pin a specific provider rather than relying on priority-order lookup, important for reproducibility/compliance-sensitive code that must guarantee a specific, audited implementation is used.</p>
+<p><strong>Memory Layout</strong>: Not directly applicable — this is a service-discovery/API-design architecture concern, not a memory-layout one; provider registration data and loaded provider classes reside in ordinary heap/Metaspace like any other Java objects/classes.</p>
+<p><strong>Diagrams</strong>:
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>flowchart LR
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    A["Application: MessageDigest.getInstance('SHA-256')"] --&gt; B["JCA Provider Lookup (priority order)"]
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    B --&gt; C["Provider: SUN"]
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    B --&gt; D["Provider: SunJCE"]
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    B --&gt; E["Provider: BouncyCastle (if registered)"]
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    C --&gt;|implements SHA-256| F["Returned MessageDigest instance (delegates to SUN's SPI impl)"]
+</code></pre></div>
+<p><strong>JVM Behaviour</strong>: Provider registration/lookup happens at the Java library level (not a special bytecode/JIT feature); however, some providers (notably ones wrapping native cryptographic libraries like OpenSSL via JNI, or hardware-accelerated providers) introduce native-code interaction, and modern JDKs also include JIT intrinsics for common cryptographic primitives (e.g., AES, SHA hashing) that can dramatically accelerate operations performed through the standard <code>Cipher</code>/<code>MessageDigest</code> APIs when backed by an intrinsic-eligible provider implementation, without requiring any application code changes.</p>
+<h3 id="interview-questions">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What is the relationship between JCA and JCE in modern JDKs?
+2. What design pattern underlies <code>MessageDigest.getInstance(...)</code>, <code>Cipher.getInstance(...)</code>, etc.?</p>
+<p><strong>Intermediate</strong>
+1. What happens if two registered providers both implement the same algorithm name?
+2. Why might you want to pin a specific provider explicitly rather than rely on default priority-based lookup?</p>
+<p><strong>Advanced</strong>
+1. What were the old "unlimited strength jurisdiction policy" files, and why are they largely irrelevant on modern JDKs?</p>
+<p><strong>Scenario-based</strong>
+1. Your application must be certified against a specific compliance standard requiring only FIPS-140-validated cryptographic implementations. How would you use the JCA provider model to enforce this?</p>
+<h3 id="detailed-answers">Detailed Answers</h3>
+<ol>
+<li>
+<p><strong>JCA/JCE relationship today</strong>: JCA is the overall pluggable cryptography framework (provider model, engine classes like <code>MessageDigest</code>/<code>Signature</code>/<code>KeyPairGenerator</code>). JCE originally referred specifically to the encryption/decryption/key-agreement/MAC portion (<code>Cipher</code>, <code>KeyAgreement</code>, <code>Mac</code> — <code>javax.crypto</code> package), historically distributed separately due to US export-control regulations on cryptographic software. Since Java 1.4, JCE has been fully bundled into the standard JDK, so in practice today "JCA/JCE" refers to one unified, integrated cryptography framework, with the naming distinction mostly a historical/package-naming artifact rather than a meaningful current architectural separation.</p>
+</li>
+<li>
+<p><strong>Underlying design pattern</strong>: The Abstract Factory / Service Provider pattern — <code>getInstance(algorithmName)</code> is a factory method that returns an appropriately-configured engine class instance without the caller needing to know or specify which concrete provider/implementation class is actually doing the work, exactly analogous to how <code>DriverManager.getConnection()</code> in JDBC abstracts over pluggable database drivers.</p>
+</li>
+<li>
+<p><strong>Multiple providers, same algorithm</strong>: The JCA consults providers in their configured priority order (as registered in the <code>java.security</code> configuration file or via <code>Security.insertProviderAt</code>/<code>addProvider</code>) and returns the implementation from the <em>first</em> provider in that order advertising support for the requested algorithm — later, lower-priority providers offering the same algorithm are simply not selected unless the higher-priority one is removed/unregistered or the caller explicitly requests a specific provider by name.</p>
+</li>
+<li>
+<p><strong>Why explicitly pin a provider</strong>: For compliance/audit reasons (e.g., needing a guaranteed FIPS-140-validated implementation rather than whatever happens to win default priority-ordering), for consistency across different JVM/deployment environments where provider registration order might differ, or to deliberately use a specific third-party provider (like Bouncy Castle) offering an algorithm or feature not present in the default JDK providers — <code>getInstance(algorithm, providerName)</code> (or the <code>Provider</code>-object overload) makes the choice explicit and independent of ambient configuration.</p>
+</li>
+<li>
+<p><strong>Unlimited strength jurisdiction policy files (historical)</strong>: Prior to Java 8u161 (and unconditionally from Java 9 onward), the JDK shipped with default cryptographic strength restrictions (e.g., capping AES key length effectively to 128 bits) due to US export-control regulations at the time the JDK was originally designed, requiring administrators to manually download and install separate "unlimited strength" policy jar files to enable full-strength algorithms like AES-256. This restriction was removed as the default (in favor of unlimited strength being the out-of-the-box default, with an opt-in mechanism to restrict if needed for regulatory reasons) once export-control rules relaxed sufficiently, making the old jurisdiction policy file installation step obsolete for modern JDK versions, though the history still appears in older tutorials/Stack Overflow answers that can mislead developers into unnecessary legacy workarounds.</p>
+</li>
+<li>
+<p><strong>FIPS compliance scenario</strong>: You would configure the JVM's provider list to include only FIPS-140-validated provider implementations (e.g., a FIPS-certified provider module, positioned at the top of the provider priority list, or exclusively registered while removing/not-registering non-validated providers), and additionally have application code explicitly request algorithms via the two-argument <code>getInstance(algorithm, providerName)</code> form pinned to that specific validated provider — combined with configuration-level enforcement (restricting <code>java.security</code> provider registration to only the approved provider) to prevent any accidental fallback to a non-compliant default provider, and with build/deployment-time verification (e.g., automated tests asserting <code>getInstance</code> calls resolve to the expected provider) to catch configuration drift.</p>
+</li>
+</ol>
+<h3 id="code-examples">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.security.MessageDigest</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.security.NoSuchAlgorithmException</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.security.NoSuchProviderException</span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.security.Provider</span><span class="p">;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.security.Security</span><span class="p">;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">JcaProviderDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">NoSuchAlgorithmException</span><span class="p">,</span><span class="w"> </span><span class="n">NoSuchProviderException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="c1">// Inspect registered providers and their priority order</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Provider</span><span class="w"> </span><span class="n">provider</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">Security</span><span class="p">.</span><span class="na">getProviders</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Provider: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">provider</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" v"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">provider</span><span class="p">.</span><span class="na">getVersionStr</span><span class="p">());</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span><span class="c1">// Default lookup: resolved via provider priority order</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="n">MessageDigest</span><span class="w"> </span><span class="n">defaultImpl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MessageDigest</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="s">"SHA-256"</span><span class="p">);</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Resolved provider: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">defaultImpl</span><span class="p">.</span><span class="na">getProvider</span><span class="p">().</span><span class="na">getName</span><span class="p">());</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">        </span><span class="c1">// Explicitly pinning a specific provider (useful for compliance/reproducibility)</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">        </span><span class="n">MessageDigest</span><span class="w"> </span><span class="n">pinnedImpl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MessageDigest</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="s">"SHA-256"</span><span class="p">,</span><span class="w"> </span><span class="s">"SUN"</span><span class="p">);</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Pinned provider: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">pinnedImpl</span><span class="p">.</span><span class="na">getProvider</span><span class="p">().</span><span class="na">getName</span><span class="p">());</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="messagedigest-cipher-keypairgenerator"><code>MessageDigest</code>, <code>Cipher</code>, <code>KeyPairGenerator</code></h2>
+<h3 id="theory_1">Theory</h3>
+<p><strong>Core Concepts</strong>: These three JCA/JCE engine classes cover the three fundamental cryptographic primitive categories used in most applications: <code>MessageDigest</code> (one-way cryptographic hashing — SHA-256, SHA-3, etc.), <code>Cipher</code> (symmetric/asymmetric encryption and decryption — AES, RSA), and <code>KeyPairGenerator</code> (asymmetric key pair generation — RSA, EC, Ed25519). Each follows the same <code>getInstance(algorithm[, provider])</code> factory pattern described under JCA/JCE.</p>
+<p><strong>Internal Working</strong>: <code>MessageDigest.digest(bytes)</code> processes input through the algorithm's internal compression function (e.g., SHA-256's Merkle-Damgard construction) producing a fixed-length hash regardless of input size. <code>Cipher.init(mode, key[, params])</code> followed by <code>doFinal(bytes)</code> performs the actual encryption/decryption, requiring correct mode (<code>ENCRYPT_MODE</code>/<code>DECRYPT_MODE</code>), a properly-generated/derived <code>Key</code>, and (for most modern modes) an <code>AlgorithmParameterSpec</code> supplying an IV/nonce. <code>KeyPairGenerator.generateKeyPair()</code> produces a <code>PublicKey</code>/<code>PrivateKey</code> pair using the configured algorithm and key size/parameters, backed by a <code>SecureRandom</code> source of randomness.</p>
+<p><strong>When to Use It</strong>: <code>MessageDigest</code> for integrity verification (checksums, deduplication keys) — never for password storage (see Secure Coding Practices); <code>Cipher</code> for confidentiality of data at rest or in transit when a higher-level protocol (TLS) isn't already handling it; <code>KeyPairGenerator</code> for generating keys for asymmetric encryption, digital signatures, or key exchange (e.g., generating a service's TLS certificate key pair, or per-session ephemeral keys for forward secrecy).</p>
+<p><strong>Advantages</strong>: Standardized, well-audited implementations of complex cryptographic algorithms that would be extremely risky to hand-implement; consistent API shape across wildly different underlying algorithms, easing algorithm migration.</p>
+<p><strong>Limitations</strong>: <code>MessageDigest</code> alone (e.g., raw SHA-256) is unsuitable for password hashing since it's deliberately fast (vulnerable to brute-force/rainbow-table attacks) — dedicated slow, salted KDFs (bcrypt, scrypt, Argon2, PBKDF2) are required instead; <code>Cipher</code> usage is a major footgun source — using ECB mode, static/predictable IVs, or unauthenticated encryption modes (plain CBC without a MAC) are all common, serious real-world vulnerabilities; <code>KeyPairGenerator</code> requires careful, algorithm-appropriate key-size selection (e.g., RSA keys below 2048 bits are considered weak by modern standards) and a properly-seeded <code>SecureRandom</code>.</p>
+<h3 id="internal-working_1">Internal Working</h3>
+<p><strong>Step-by-Step Explanation</strong>:
+1. <code>MessageDigest md = MessageDigest.getInstance("SHA-256"); byte[] hash = md.digest(input);</code> — internally, the digest algorithm processes the input in fixed-size blocks through its compression function, maintaining and updating internal state, finally producing a fixed-length output (32 bytes for SHA-256) regardless of input length — a core property (fixed-length output, computationally infeasible to invert or find collisions) that makes it suitable for integrity checks but not confidentiality.
+2. <code>Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding"); cipher.init(Cipher.ENCRYPT_MODE, secretKey, gcmParameterSpec); byte[] ciphertext = cipher.doFinal(plaintext);</code> — the transformation string (<code>Algorithm/Mode/Padding</code>) determines the exact cryptographic construction used; GCM mode specifically provides authenticated encryption (confidentiality plus integrity/tamper-detection via an authentication tag appended to the ciphertext), a modern best-practice choice over legacy unauthenticated modes like plain CBC.
+3. <code>KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA"); kpg.initialize(2048); KeyPair pair = kpg.generateKeyPair();</code> — internally generates two large primes (for RSA) satisfying the algorithm's mathematical requirements, deriving the public/private key components from them, using the JVM's configured <code>SecureRandom</code> implementation as its entropy source (critical: a weak/predictable random source would catastrophically compromise the generated keys' security).
+4. All three ultimately delegate to the selected provider's concrete <code>SPI</code> implementation (e.g., <code>MessageDigestSpi</code>, <code>CipherSpi</code>, <code>KeyPairGeneratorSpi</code>), which does the actual algorithmic computation, potentially leveraging JIT intrinsics or native/hardware acceleration (AES-NI CPU instructions, for example) transparently.</p>
+<p><strong>Memory Layout</strong>: Not directly applicable at the JVM memory-layout level beyond ordinary object/array allocation for keys, IVs, and buffers; however, a genuine security concern is that sensitive byte arrays (keys, plaintext) remain in heap memory for an indeterminate duration until garbage collected/overwritten, motivating explicit zeroing of sensitive arrays (e.g., via <code>Arrays.fill</code>) as soon as they're no longer needed, similar to the password-<code>char[]</code> guidance discussed under Strings/Immutability.</p>
+<p><strong>Diagrams</strong>:
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>MessageDigest:  input (any length) -&gt; [compression function, fixed rounds] -&gt; fixed-length hash (e.g., 32 bytes)
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Cipher (AES/GCM):  plaintext + key + IV -&gt; [AES-GCM authenticated encryption] -&gt; ciphertext + auth tag
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>KeyPairGenerator (RSA): SecureRandom entropy -&gt; [prime generation + key derivation] -&gt; (PublicKey, PrivateKey)
+</code></pre></div>
+<p><strong>JVM Behaviour</strong>: Modern JVMs (via HotSpot intrinsics) recognize and specially optimize common cryptographic primitives — AES encryption/decryption (leveraging AES-NI hardware instructions when available), SHA-family hashing, and certain big-integer/modular-exponentiation operations underlying RSA — meaning these <code>javax.crypto</code>/<code>java.security</code> API calls can execute dramatically faster than a naive JIT-compiled pure-Java implementation of the same algorithm would, without any application-level code changes required to benefit.</p>
+<h3 id="interview-questions_1">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What's the fundamental difference between <code>MessageDigest</code> and <code>Cipher</code>?
+2. Why shouldn't you use raw <code>MessageDigest</code> (e.g., plain SHA-256) to store user passwords?</p>
+<p><strong>Intermediate</strong>
+1. Why is AES/GCM generally preferred over AES/CBC for new applications?
+2. What role does <code>SecureRandom</code> play in <code>KeyPairGenerator</code>, and why does its quality matter so much?</p>
+<p><strong>Advanced</strong>
+1. What specific vulnerability arises from reusing the same IV/nonce with the same key in AES/GCM, and why is it so severe?</p>
+<p><strong>Scenario-based</strong>
+1. A code review finds <code>Cipher.getInstance("AES/ECB/PKCS5Padding")</code> being used to encrypt user records. Explain why this is a serious vulnerability and what to use instead.</p>
+<h3 id="detailed-answers_1">Detailed Answers</h3>
+<ol>
+<li>
+<p><strong><code>MessageDigest</code> vs <code>Cipher</code></strong>: <code>MessageDigest</code> is a one-way, non-invertible transformation producing a fixed-length fingerprint of arbitrary input, used for integrity verification (detecting tampering/corruption) — there is no way to recover the original input from the digest. <code>Cipher</code> performs reversible encryption/decryption, transforming plaintext into ciphertext (and back, given the correct key) to provide confidentiality — fundamentally different security properties for fundamentally different purposes, and neither is a substitute for the other.</p>
+</li>
+<li>
+<p><strong>Why not raw SHA-256 for passwords</strong>: General-purpose cryptographic hash functions like SHA-256 are deliberately designed to be <em>fast</em> (a design goal for their intended integrity-check use cases), which is precisely the wrong property for password storage — an attacker with access to leaked hashes can perform billions of guesses per second against fast hashes using commodity GPU hardware, making brute-force/dictionary/rainbow-table attacks highly effective. Purpose-built password hashing functions (bcrypt, scrypt, Argon2, or at minimum salted PBKDF2 with a high iteration count) are deliberately slow and often memory-hard, making large-scale brute-force attacks computationally and financially impractical even against leaked hash databases.</p>
+</li>
+<li>
+<p><strong>Why AES/GCM over AES/CBC</strong>: GCM (Galois/Counter Mode) provides <em>authenticated</em> encryption — it produces an authentication tag alongside the ciphertext that lets the receiver cryptographically verify the ciphertext hasn't been tampered with, detecting any modification before decryption even proceeds. Plain CBC mode provides confidentiality only, with no built-in integrity/authenticity check — an attacker can flip bits in CBC ciphertext to predictably corrupt/manipulate the decrypted plaintext (a padding-oracle or bit-flipping attack vector), and applications using unauthenticated CBC must manually add a separate MAC (correctly, in an encrypt-then-MAC construction) to achieve equivalent security, which is easy to get wrong — GCM bundles this correctly and efficiently by design, making it the modern recommended default for symmetric encryption.</p>
+</li>
+<li>
+<p><strong><code>SecureRandom</code>'s role and importance</strong>: <code>KeyPairGenerator</code> relies on <code>SecureRandom</code> as its entropy source for generating the random values (e.g., candidate primes for RSA) underlying key generation — if the random source is weak, predictable, or insufficiently seeded (a <code>java.util.Random</code> instance, for instance, uses a simple linear congruential generator entirely unsuitable for cryptographic use, and even a poorly-seeded <code>SecureRandom</code> can be dangerous on certain platforms/environments with limited entropy, like some embedded/container environments at boot time), an attacker who can predict or narrow down the randomness used could feasibly reconstruct the generated private key, completely compromising the cryptography regardless of how strong the chosen algorithm/key-size otherwise is — this is a real, historically-exploited class of vulnerability (e.g., the widely-cited Debian OpenSSL weak-randomness incident, and various embedded-device key-generation weaknesses).</p>
+</li>
+<li>
+<p><strong>IV/nonce reuse vulnerability in AES/GCM</strong>: Reusing the same (key, IV) pair for two different plaintexts in GCM catastrophically breaks its security guarantees — GCM's authentication mechanism relies on a keystream derived deterministically from the key and IV; if the same keystream is reused for two messages, an attacker can XOR the two ciphertexts together to cancel out the keystream and recover the XOR of the two plaintexts (from which, with any partial knowledge of one plaintext, the other can often be substantially or fully recovered), and worse, IV reuse in GCM specifically can allow an attacker to forge the authentication tag for <em>other</em> messages under that same key, completely defeating the integrity guarantee as well — this makes IV/nonce management (always generating a fresh, non-repeating IV per encryption operation with a given key, per algorithm-specific guidance) one of the single most critical correctness requirements when using GCM.</p>
+</li>
+<li>
+<p><strong>AES/ECB code review scenario</strong>: ECB (Electronic Codebook) mode encrypts each fixed-size block of plaintext completely independently with no chaining/randomization between blocks — this means identical plaintext blocks always produce identical ciphertext blocks, which visibly leaks structural patterns in the underlying data (the classic illustrative example being an ECB-encrypted bitmap image where the outline of the original image remains visibly discernible in the "encrypted" output) and, more generally, exposes any repeated-block structure in arbitrary encrypted data (e.g., repeated field values across records), which is a serious confidentiality vulnerability. The fix is to replace it with an authenticated mode like AES/GCM (with a properly-managed, unique IV per encryption), which chains/randomizes block encryption so identical plaintext blocks produce different ciphertext, while also providing integrity/authenticity guarantees ECB entirely lacks.</p>
+</li>
+</ol>
+<h3 id="code-examples_1">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.crypto.Cipher</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.crypto.KeyGenerator</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.crypto.SecretKey</span><span class="p">;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.crypto.spec.GCMParameterSpec</span><span class="p">;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.security.KeyPair</span><span class="p">;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.security.KeyPairGenerator</span><span class="p">;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.security.MessageDigest</span><span class="p">;</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.security.SecureRandom</span><span class="p">;</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CryptoPrimitivesDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="c1">// MessageDigest: integrity checksum, NOT suitable for password storage</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">        </span><span class="n">MessageDigest</span><span class="w"> </span><span class="n">sha256</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MessageDigest</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="s">"SHA-256"</span><span class="p">);</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">        </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">checksum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sha256</span><span class="p">.</span><span class="na">digest</span><span class="p">(</span><span class="s">"important-document-contents"</span><span class="p">.</span><span class="na">getBytes</span><span class="p">());</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"SHA-256 checksum length: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">checksum</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" bytes"</span><span class="p">);</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">        </span><span class="c1">// Cipher: authenticated symmetric encryption with AES/GCM</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">        </span><span class="n">KeyGenerator</span><span class="w"> </span><span class="n">keyGen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">KeyGenerator</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="s">"AES"</span><span class="p">);</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">        </span><span class="n">keyGen</span><span class="p">.</span><span class="na">init</span><span class="p">(</span><span class="mi">256</span><span class="p">);</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">        </span><span class="n">SecretKey</span><span class="w"> </span><span class="n">secretKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">keyGen</span><span class="p">.</span><span class="na">generateKey</span><span class="p">();</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">        </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">iv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="o">[</span><span class="mi">12</span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="c1">// 96-bit IV, standard for GCM</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">        </span><span class="n">SecureRandom</span><span class="p">.</span><span class="na">getInstanceStrong</span><span class="p">().</span><span class="na">nextBytes</span><span class="p">(</span><span class="n">iv</span><span class="p">);</span><span class="w"> </span><span class="c1">// fresh IV per encryption — never reuse with same key</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">        </span><span class="n">Cipher</span><span class="w"> </span><span class="n">cipher</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cipher</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="s">"AES/GCM/NoPadding"</span><span class="p">);</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">        </span><span class="n">cipher</span><span class="p">.</span><span class="na">init</span><span class="p">(</span><span class="n">Cipher</span><span class="p">.</span><span class="na">ENCRYPT_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">secretKey</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GCMParameterSpec</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="w"> </span><span class="n">iv</span><span class="p">));</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">        </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">ciphertext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cipher</span><span class="p">.</span><span class="na">doFinal</span><span class="p">(</span><span class="s">"sensitive account data"</span><span class="p">.</span><span class="na">getBytes</span><span class="p">());</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Ciphertext length (includes auth tag): "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ciphertext</span><span class="p">.</span><span class="na">length</span><span class="p">);</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="w">        </span><span class="c1">// Decrypt using the same key and IV</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">        </span><span class="n">Cipher</span><span class="w"> </span><span class="n">decryptCipher</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cipher</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="s">"AES/GCM/NoPadding"</span><span class="p">);</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="w">        </span><span class="n">decryptCipher</span><span class="p">.</span><span class="na">init</span><span class="p">(</span><span class="n">Cipher</span><span class="p">.</span><span class="na">DECRYPT_MODE</span><span class="p">,</span><span class="w"> </span><span class="n">secretKey</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GCMParameterSpec</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="w"> </span><span class="n">iv</span><span class="p">));</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="w">        </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">decrypted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">decryptCipher</span><span class="p">.</span><span class="na">doFinal</span><span class="p">(</span><span class="n">ciphertext</span><span class="p">);</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Decrypted: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="n">decrypted</span><span class="p">));</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a>
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="w">        </span><span class="c1">// KeyPairGenerator: asymmetric key generation with adequate key size</span>
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a><span class="w">        </span><span class="n">KeyPairGenerator</span><span class="w"> </span><span class="n">rsaGen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">KeyPairGenerator</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="s">"RSA"</span><span class="p">);</span>
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a><span class="w">        </span><span class="n">rsaGen</span><span class="p">.</span><span class="na">initialize</span><span class="p">(</span><span class="mi">2048</span><span class="p">);</span><span class="w"> </span><span class="c1">// 2048-bit minimum for modern RSA security</span>
+<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a><span class="w">        </span><span class="n">KeyPair</span><span class="w"> </span><span class="n">keyPair</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rsaGen</span><span class="p">.</span><span class="na">generateKeyPair</span><span class="p">();</span>
+<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Generated RSA key pair, public key algorithm: "</span>
+<a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a><span class="w">                </span><span class="o">+</span><span class="w"> </span><span class="n">keyPair</span><span class="p">.</span><span class="na">getPublic</span><span class="p">().</span><span class="na">getAlgorithm</span><span class="p">());</span>
+<a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="secure-coding-practices-owasp-top-10-for-java">Secure Coding Practices (OWASP Top 10 for Java)</h2>
+<h3 id="theory_2">Theory</h3>
+<p><strong>Core Concepts</strong>: Secure coding practices apply the OWASP Top 10 (a regularly-updated industry-standard list of the most critical web application security risks) specifically to Java application development — covering injection flaws (SQL, LDAP, OS command), broken access control, cryptographic failures, insecure deserialization, security misconfiguration, vulnerable/outdated dependencies, and insufficient logging/monitoring, among others.</p>
+<p><strong>Internal Working</strong>: Most of these vulnerability classes stem from trusting or directly interpolating untrusted input into a context where it can alter intended program behavior (SQL query structure, OS command structure, deserialization object-graph construction, template rendering) — Java-specific mitigations rely heavily on the standard library's parameterized/safe APIs (<code>PreparedStatement</code>, <code>ProcessBuilder</code> with explicit argument arrays, allow-list-based deserialization filters) to structurally prevent the untrusted input from being interpreted as code/control-structure rather than pure data.</p>
+<p><strong>When to Use It</strong>: Every Java application handling any external input — HTTP request parameters, file uploads, database content originally sourced externally, deserialized objects from any not-fully-trusted source, third-party library dependencies — should apply these practices as standard, non-optional engineering discipline, not an optional "hardening" afterthought.</p>
+<p><strong>Advantages</strong>: Systematically eliminates entire vulnerability classes rather than attempting to sanitize/blacklist dangerous input patterns (an approach with a long history of being incomplete/bypassable); aligns application security posture with a widely recognized, regularly updated industry standard, useful for audits/compliance and shared vocabulary across security teams.</p>
+<p><strong>Limitations</strong>: Secure coding practices reduce but don't eliminate all risk (defense-in-depth, including network segmentation, WAFs, and monitoring, remains necessary); some mitigations have real performance or development-friction costs (e.g., deserialization allow-listing requires upfront design and ongoing maintenance as the set of legitimately-deserializable types evolves); staying current requires ongoing attention since both the OWASP list and the broader threat landscape evolve over time (e.g., insecure deserialization's prominence rose sharply following widespread real-world exploitation of Java deserialization gadget chains).</p>
+<h3 id="internal-working_2">Internal Working</h3>
+<p><strong>Step-by-Step Explanation</strong> (illustrating core mitigation patterns per major risk category):
+1. <strong>SQL Injection</strong>: Untrusted input concatenated directly into a SQL query string lets an attacker alter the query's actual structure (e.g., appending <code>' OR '1'='1</code>). The mitigation is <code>PreparedStatement</code> with parameterized placeholders (<code>?</code>), which sends the query structure and the parameter values to the database <em>separately</em> — the database driver never re-parses parameter values as SQL syntax, structurally preventing injection regardless of what characters the input contains.
+2. <strong>Insecure Deserialization</strong>: Java's native serialization (<code>ObjectInputStream.readObject()</code>) reconstructs arbitrary object graphs purely from the byte stream's embedded class names and field data — if an attacker controls this byte stream, they can potentially instantiate arbitrary classes present on the classpath, and certain "gadget chain" combinations of otherwise-innocuous classes' <code>readObject</code>/finalizer/other methods can be chained to achieve remote code execution purely through the deserialization process itself, without the attacker exploiting any traditional bug at all. Mitigation: avoid deserializing untrusted data entirely where possible (prefer safer, less powerful data formats like JSON with a schema-validated, non-polymorphic deserializer); where native serialization of untrusted data is unavoidable, use <code>ObjectInputFilter</code> (Java 9+, retrofitted to 8u121+) to enforce an explicit allow-list of permitted classes, rejecting deserialization of anything not on the list before object construction proceeds.
+3. <strong>OS Command Injection</strong>: Building a shell command string by concatenating untrusted input (e.g., <code>Runtime.exec("ping " + userInput)</code>) lets an attacker inject shell metacharacters to execute arbitrary additional commands. Mitigation: use <code>ProcessBuilder</code> with an explicit <code>String...</code> argument array (never a single shell-interpreted command string), which passes each argument directly to the OS process-creation call without any shell interpretation step, so metacharacters in the input are treated as literal argument content, not command syntax.
+4. <strong>Broken Access Control</strong>: Failing to enforce authorization checks consistently (e.g., checking authorization only in a UI layer, not the underlying API/service layer, or relying on a client-supplied/unverified identifier to select which resource to return) lets attackers access or modify resources they shouldn't. Mitigation: enforce authorization checks at the actual data/service access layer (not just the presentation layer), using server-side session/context-derived identity (never trusting client-supplied user/role identifiers directly).</p>
+<p><strong>Memory Layout</strong>: Not directly applicable — these are input-validation/API-usage-pattern concerns rather than memory-layout concerns, though insecure deserialization specifically does interact with the JVM's object-construction and classloading machinery in ways relevant to the "Dynamic Object Creation"/reflection topics covered elsewhere.</p>
+<p><strong>Diagrams</strong>:
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>SQL Injection prevention:
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>  Vulnerable:  "SELECT * FROM users WHERE name = '" + input + "'"   &lt;- input can alter query structure
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  Safe:        "SELECT * FROM users WHERE name = ?"  + PreparedStatement.setString(1, input)
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>                                                          ^ value sent separately, never reparsed as SQL
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>Deserialization allow-list:
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>  ObjectInputStream -&gt; ObjectInputFilter (checks each class against allow-list) -&gt; reject or proceed
+</code></pre></div>
+<p><strong>JVM Behaviour</strong>: <code>ObjectInputFilter</code> hooks directly into <code>ObjectInputStream</code>'s class-resolution process during deserialization, intercepting each candidate class <em>before</em> the JVM proceeds to instantiate/populate it — meaning a properly configured filter can reject a malicious gadget-chain class before any of its potentially-dangerous <code>readObject</code>/constructor logic ever executes, cutting off the attack at the earliest possible point in the object-reconstruction process.</p>
+<h3 id="interview-questions_2">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. Why does <code>PreparedStatement</code> prevent SQL injection while string concatenation doesn't?
+2. What Java API should you use instead of <code>Runtime.exec(String)</code> with concatenated user input to avoid command injection?</p>
+<p><strong>Intermediate</strong>
+1. What is a Java deserialization "gadget chain," and why is it dangerous even without any traditional memory-corruption-style bug?
+2. What is <code>ObjectInputFilter</code>, and how does it mitigate insecure deserialization risk?</p>
+<p><strong>Advanced</strong>
+1. Why is "broken access control" often considered more dangerous in practice than injection flaws, despite injection historically receiving more attention?</p>
+<p><strong>Scenario-based</strong>
+1. Your application deserializes session data (using Java native serialization) originally created by the same application, but the session store is a shared Redis instance also writable by other, less-trusted internal services. What's the risk, and how would you mitigate it?</p>
+<h3 id="detailed-answers_2">Detailed Answers</h3>
+<ol>
+<li>
+<p><strong>Why <code>PreparedStatement</code> prevents injection</strong>: It separates the SQL query's structure (sent to the database once, with placeholder markers) from the parameter values (sent separately, out-of-band from the query text) — the database driver/engine never re-parses the supplied parameter values as SQL syntax at all, so no matter what characters (quotes, semicolons, SQL keywords) an attacker includes in the input, they're always treated purely as literal data for that parameter, structurally incapable of altering the query's logic; string concatenation, by contrast, builds the entire query text (structure and data mixed together) before the database ever sees it, so malicious syntax embedded in the input becomes indistinguishable from the developer's intended query structure.</p>
+</li>
+<li>
+<p><strong>Command injection mitigation</strong>: <code>ProcessBuilder</code>, constructed with an explicit list/array of separate argument strings (<code>new ProcessBuilder("ping", userInput)</code>) rather than one single shell-command string — this passes each argument directly to the OS's process-creation system call without any shell parsing/interpretation step in between, so shell metacharacters (<code>;</code>, <code>|</code>, <code>`</code>, <code>&amp;&amp;</code>) embedded in <code>userInput</code> are passed through as literal argument content rather than being interpreted as command-chaining/piping syntax.</p>
+</li>
+<li>
+<p><strong>Gadget chains explained</strong>: A "gadget chain" is a sequence of otherwise entirely legitimate, unrelated classes already present on an application's classpath (often from common third-party libraries) whose <code>readObject</code>, <code>finalize</code>, <code>hashCode</code>, or other methods — when triggered in a specific combination and order purely as a side effect of deserializing a specially crafted object graph — can be chained together to ultimately achieve an attacker's goal (commonly, arbitrary remote code execution), without any of the individual classes containing a traditional "bug" in isolation. This is dangerous precisely because it doesn't require exploiting any memory-corruption-style vulnerability at all — it exploits the inherent power and flexibility of Java's native deserialization mechanism (which can reconstruct arbitrary object graphs and invoke arbitrary constructors/methods as part of that reconstruction) against an application that naively deserializes untrusted byte streams, even if every individual library involved is otherwise perfectly well-written and bug-free in normal usage.</p>
+</li>
+<li>
+<p><strong><code>ObjectInputFilter</code> mechanism</strong>: Introduced in Java 9 (and backported to 8u121+), it lets an application register a filter function invoked by <code>ObjectInputStream</code> for every class encountered during deserialization, <em>before</em> that class is actually instantiated/populated — the filter can inspect the candidate class (and other context like array length, graph depth, reference counts) and explicitly allow or reject it. By configuring an allow-list of only the specific, expected classes the application legitimately needs to deserialize (rejecting everything else by default), this closes off the gadget-chain attack surface at its root, since a malicious gadget class not on the allow-list is rejected before any of its potentially-dangerous logic can execute during the deserialization process.</p>
+</li>
+<li>
+<p><strong>Why broken access control is often more dangerous in practice</strong>: While injection flaws are well-understood and increasingly mitigated by mature frameworks/ORMs that default to safe, parameterized query construction, access control logic is inherently application-specific business logic that frameworks generally cannot fully automate or verify — every application has a unique set of authorization rules that must be correctly and consistently implemented and enforced at every relevant access point (not just a subset), making it structurally easier to have gaps/inconsistencies (an endpoint that forgets an authorization check, a client-controllable ID parameter naively trusted without ownership verification) than for well-established injection defenses to be entirely missing. This has led OWASP's own data-driven Top 10 rankings to increasingly rank broken access control as the most prevalent/impactful real-world vulnerability category in recent years, ahead of classic injection.</p>
+</li>
+<li>
+<p><strong>Shared Redis deserialization scenario</strong>: The risk is that any less-trusted internal service with write access to the same Redis instance could inject a malicious serialized byte stream into a key the application later reads and deserializes via <code>ObjectInputStream.readObject()</code> — if that malicious payload constitutes (or references) a known gadget chain reachable from the application's classpath, deserializing it could lead to remote code execution entirely within the trusted application's process, even though the application's own code and the session data it originally wrote were never compromised. Mitigations include: switching to a safer serialization format not vulnerable to gadget-chain attacks (e.g., JSON with a schema/type-restricted deserializer, or a binary format like Protocol Buffers that doesn't support arbitrary polymorphic object reconstruction); if native Java serialization must be retained, configuring a strict <code>ObjectInputFilter</code> allow-list scoped to exactly the expected session-data classes; and, as defense-in-depth, restricting the shared Redis instance's access controls so other internal services cannot write to keys/namespaces the trusted application deserializes from.</p>
+</li>
+</ol>
+<h3 id="code-examples_2">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.*</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.Connection</span><span class="p">;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.PreparedStatement</span><span class="p">;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.SQLException</span><span class="p">;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SecureCodingDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="c1">// SQL injection prevention via PreparedStatement (never string-concatenate user input into SQL)</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">findUserSafely</span><span class="p">(</span><span class="n">Connection</span><span class="w"> </span><span class="n">conn</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">SQLException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"SELECT id, email FROM users WHERE username = ?"</span><span class="p">;</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">PreparedStatement</span><span class="w"> </span><span class="n">stmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conn</span><span class="p">.</span><span class="na">prepareStatement</span><span class="p">(</span><span class="n">sql</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">            </span><span class="n">stmt</span><span class="p">.</span><span class="na">setString</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">username</span><span class="p">);</span><span class="w"> </span><span class="c1">// value sent separately, never reparsed as SQL syntax</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">            </span><span class="n">stmt</span><span class="p">.</span><span class="na">executeQuery</span><span class="p">();</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">    </span><span class="c1">// Command injection prevention via ProcessBuilder with a separate argument array</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">pingHostSafely</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">host</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">        </span><span class="c1">// Never build a single shell string like "ping " + host — pass arguments separately</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">        </span><span class="n">ProcessBuilder</span><span class="w"> </span><span class="n">pb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProcessBuilder</span><span class="p">(</span><span class="s">"ping"</span><span class="p">,</span><span class="w"> </span><span class="s">"-c"</span><span class="p">,</span><span class="w"> </span><span class="s">"1"</span><span class="p">,</span><span class="w"> </span><span class="n">host</span><span class="p">);</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">        </span><span class="n">pb</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">    </span><span class="c1">// Deserialization allow-listing via ObjectInputFilter (Java 9+)</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="nf">deserializeWithAllowList</span><span class="p">(</span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="p">,</span><span class="w"> </span><span class="n">ClassNotFoundException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">ObjectInputStream</span><span class="w"> </span><span class="n">ois</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ObjectInputStream</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ByteArrayInputStream</span><span class="p">(</span><span class="n">data</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">            </span><span class="n">ois</span><span class="p">.</span><span class="na">setObjectInputFilter</span><span class="p">(</span><span class="n">filterInfo</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">                </span><span class="n">Class</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="n">clazz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">filterInfo</span><span class="p">.</span><span class="na">serialClass</span><span class="p">();</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">clazz</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">clazz</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">HashMap</span><span class="p">.</span><span class="na">class</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">clazz</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="na">class</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="n">ObjectInputFilter</span><span class="p">.</span><span class="na">Status</span><span class="p">.</span><span class="na">ALLOWED</span><span class="p">;</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">ObjectInputFilter</span><span class="p">.</span><span class="na">Status</span><span class="p">.</span><span class="na">REJECTED</span><span class="p">;</span><span class="w"> </span><span class="c1">// reject anything not explicitly allow-listed</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="w">            </span><span class="p">});</span>
+<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">ois</span><span class="p">.</span><span class="na">readObject</span><span class="p">();</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="deprecated-security-manager">Deprecated Security Manager</h2>
+<h3 id="theory_3">Theory</h3>
+<p><strong>Core Concepts</strong>: The Java Security Manager (<code>java.lang.SecurityManager</code>, together with the policy-file-based permission model) was Java's original built-in sandboxing mechanism, allowing fine-grained, code-source-based restriction of sensitive operations (file I/O, network access, reflection, system property access, <code>System.exit</code>, etc.) — historically central to the Java applet/Web Start sandboxing model. It was formally deprecated for removal in Java 17 (JEP 411) and is a strong candidate for actual removal in a future JDK release, reflecting both its declining real-world usage and its inherent design/performance limitations.</p>
+<p><strong>Internal Working</strong>: When enabled (via <code>-Djava.security.manager</code> or programmatically installing a <code>SecurityManager</code>), every security-sensitive JDK API call (file access, socket creation, <code>Class.forName</code>, etc.) invokes a corresponding <code>checkXxx()</code> method on the installed <code>SecurityManager</code>, which consults the active <code>Policy</code> (typically driven by policy files granting <code>Permission</code>s based on code source/signer) to allow or throw <code>SecurityException</code> — this check happens on essentially every sensitive operation throughout the call stack, walking the call stack to determine the full chain of code sources involved (<code>AccessController.doPrivileged</code> sections notwithstanding).</p>
+<p><strong>When to Use It (historically)</strong>: Sandboxing untrusted or semi-trusted code within the same JVM process as trusted code (browser applets, plugin systems, multi-tenant script execution) — a use case that has largely evaporated with the death of applets/Web Start and the shift toward process-level or container-level isolation for untrusted code instead.</p>
+<p><strong>Advantages (historically)</strong>: Fine-grained, in-process permission control without needing separate OS processes; flexible, code-source-based (not just user-based) permission granting.</p>
+<p><strong>Limitations (which drove its deprecation)</strong>: Substantial per-call performance overhead (the pervasive <code>checkXxx()</code>/stack-walking checks on security-sensitive operations measurably slow down affected code paths); the JEP 411 deprecation rationale specifically notes it's rarely used for its original sandboxing purpose today (untrusted-code-in-JVM scenarios are rare — most isolation happens at the OS/container/process level now) while still being maintained/used by some applications purely as a general-purpose "permission check" mechanism unrelated to true sandboxing, a role better served by dedicated authorization frameworks; its complexity (policy files, permission classes, protection domains) creates a large, hard-to-fully-secure attack surface for relatively little remaining real-world sandboxing benefit; several other JDK features and third-party tools depended on the Security Manager in ways that complicate its removal, leading to its "deprecated for removal" (rather than immediately removed) status starting in Java 17, giving the ecosystem time to migrate away.</p>
+<h3 id="internal-working_3">Internal Working</h3>
+<p><strong>Step-by-Step Explanation</strong>:
+1. <code>System.setSecurityManager(new SecurityManager())</code> (or the <code>-Djava.security.manager</code> launch flag) installs an active security manager for the JVM.
+2. Every security-sensitive JDK method (e.g., <code>FileInputStream</code>'s constructor, <code>Socket</code>'s constructor, <code>System.exit</code>) internally calls a corresponding check (e.g., <code>SecurityManager.checkRead</code>, <code>checkConnect</code>, <code>checkExit</code>) before proceeding with the actual operation.
+3. The installed <code>SecurityManager</code> consults the currently active <code>Policy</code> object, which maps code sources (and optionally, code signers) to granted <code>Permission</code>s, as configured in policy files (or, since Java 9's default sandboxing changes, JDK-internal defaults) — if the required permission isn't granted for the calling code's protection domain, <code>checkXxx()</code> throws <code>SecurityException</code>, aborting the operation before it takes effect.
+4. This check inherently requires walking the call stack (to determine the full chain of code sources involved in the current operation, since a privileged, trusted class might be calling on behalf of a less-trusted caller, requiring <code>AccessController.doPrivileged</code> blocks to explicitly and deliberately narrow the check to just the immediately privileged code's permissions) — this stack-walking is the primary source of the mechanism's runtime performance overhead.</p>
+<p><strong>Memory Layout</strong>: Not directly applicable — this is a security-check/API-design mechanism, not a memory-layout concern, though the stack-walking involved in permission checks does have real (if typically modest per-call) CPU overhead proportional to call-stack depth.</p>
+<p><strong>Diagrams</strong>:
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sequenceDiagram
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    participant Code as Application Code
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    participant JDKAPI as Sensitive JDK API (e.g., new FileInputStream)
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    participant SM as SecurityManager
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    participant Policy as Policy / Permissions
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    Code-&gt;&gt;JDKAPI: attempt sensitive operation
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    JDKAPI-&gt;&gt;SM: checkRead(path)
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    SM-&gt;&gt;Policy: is this permission granted for this code source?
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    Policy--&gt;&gt;SM: granted / denied
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    alt granted
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>        SM--&gt;&gt;JDKAPI: proceed
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>        JDKAPI--&gt;&gt;Code: operation succeeds
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>    else denied
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>        SM--&gt;&gt;JDKAPI: throw SecurityException
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>        JDKAPI--&gt;&gt;Code: SecurityException propagates
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>    end
+</code></pre></div>
+<p><strong>JVM Behaviour</strong>: With no <code>SecurityManager</code> installed (the overwhelmingly common case in modern applications, and the only supported state going forward per JEP 411's deprecation), all these <code>checkXxx()</code> call sites are effectively no-ops (a quick null-check on the installed manager), so the deprecation/eventual removal primarily affects applications that actively installed and relied on a custom <code>SecurityManager</code>/policy configuration — for the vast majority of applications that never used it, its deprecation has no practical runtime impact at all.</p>
+<h3 id="interview-questions_3">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What was the original primary use case for the Java Security Manager?
+2. What JEP formally deprecated the Security Manager for removal, and in which Java version?</p>
+<p><strong>Intermediate</strong>
+1. Why did the Security Manager's real-world usage decline so significantly over time?
+2. What's the performance concern associated with having a Security Manager installed and active?</p>
+<p><strong>Advanced</strong>
+1. What are applications that still rely on the Security Manager (for reasons other than true sandboxing) generally expected to migrate to instead?</p>
+<p><strong>Scenario-based</strong>
+1. Your legacy enterprise application installs a custom <code>SecurityManager</code> purely to prevent certain internal modules from calling <code>System.exit()</code> accidentally. Given the deprecation, what alternative approach would you recommend?</p>
+<h3 id="detailed-answers_3">Detailed Answers</h3>
+<ol>
+<li>
+<p><strong>Original primary use case</strong>: Sandboxing untrusted or partially-trusted code running within the same JVM process as trusted code — most famously, Java applets running in a web browser, where the browser's JVM needed to prevent applet code from performing dangerous operations (arbitrary file access, opening arbitrary network connections, etc.) while still allowing the applet to run application logic within tightly controlled bounds, all enforced in-process via the Security Manager's permission-check mechanism.</p>
+</li>
+<li>
+<p><strong>Deprecation JEP and version</strong>: JEP 411 ("Deprecate the Security Manager for Removal"), part of Java 17 — it marked the Security Manager and its supporting APIs as deprecated for removal, signaling intent to remove the feature entirely in a future release, while giving the ecosystem an extended transition period to migrate away from dependence on it.</p>
+</li>
+<li>
+<p><strong>Why usage declined</strong>: The applet/Web Start ecosystem that was the Security Manager's primary original use case has essentially disappeared (browsers dropped plugin/applet support entirely); modern approaches to running untrusted code favor OS-level or container-level isolation (separate processes, containers, VMs) rather than in-process JVM sandboxing, which is both simpler to reason about and doesn't carry the same performance overhead; and many remaining Security Manager users were actually using it for general-purpose permission/authorization checks unrelated to genuine sandboxing of untrusted code, a use case better served by dedicated, purpose-built authorization frameworks rather than repurposing a security-sandboxing mechanism.</p>
+</li>
+<li>
+<p><strong>Performance concern</strong>: Every security-sensitive JDK operation, when a Security Manager is installed, incurs the overhead of a permission check, often requiring a stack walk to determine the full chain of code sources/protection domains involved in the current call — this adds measurable per-call latency to operations like file I/O, network access, and reflection throughout the application (and any libraries it uses), a cost that scales with how frequently such sensitive operations occur and how deep the relevant call stacks are, motivating many performance-sensitive applications to avoid installing a Security Manager even when it was still fully supported.</p>
+</li>
+<li>
+<p><strong>Migration expectations for non-sandboxing usage</strong>: Applications using the Security Manager purely for general permission/authorization enforcement (not genuine untrusted-code sandboxing) are generally expected to migrate to purpose-built application-level authorization frameworks/libraries (e.g., role-based or attribute-based access control implemented at the application/service layer) that directly express and enforce the specific business authorization rules needed, rather than continuing to repurpose a JVM-wide, code-source-based sandboxing mechanism that was never designed for that use case and is being phased out.</p>
+</li>
+<li>
+<p><strong>Legacy <code>System.exit()</code> prevention scenario</strong>: Since the actual need here isn't genuine sandboxing of untrusted code but simply preventing an internal accidental/unauthorized call to <code>System.exit()</code>, a reasonable modern alternative is to enforce this at the application-architecture level instead — for instance, wrapping any legitimate shutdown logic behind a dedicated, explicitly-authorized application service/method that the few sanctioned call sites use (with code review/static analysis, such as a custom ArchUnit rule or similar, enforcing that no other code calls <code>System.exit()</code> directly), rather than relying on a deprecated, soon-to-be-removed JVM-wide security mechanism for what is fundamentally an internal code-discipline/architecture concern rather than a true security boundary against untrusted code.</p>
+</li>
+</ol>
+<h3 id="code-examples_3">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SecurityManagerDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="c1">// Illustrative only: SecurityManager is deprecated for removal since Java 17 (JEP 411)</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="c1">// and should not be relied upon in new code. Shown here purely for historical understanding.</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="nd">@SuppressWarnings</span><span class="p">(</span><span class="s">"removal"</span><span class="p">)</span><span class="w"> </span><span class="c1">// acknowledges use of a deprecated-for-removal API</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">        </span><span class="c1">// Historical pattern: install a custom SecurityManager to restrict operations</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">        </span><span class="c1">// System.setSecurityManager(new SecurityManager()); // deprecated, avoid in new code</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">        </span><span class="c1">// Modern alternative for preventing unauthorized System.exit() calls:</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">        </span><span class="c1">// enforce via application architecture / code review rather than a JVM-wide sandbox.</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">        </span><span class="n">ShutdownGuard</span><span class="p">.</span><span class="na">requestShutdown</span><span class="p">(</span><span class="s">"scheduled-maintenance"</span><span class="p">);</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ShutdownGuard</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">        </span><span class="c1">// Single, sanctioned entry point for shutdown — enforced via code convention/review</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">        </span><span class="c1">// (e.g., an architecture test asserting no other code calls System.exit directly).</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">        </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">requestShutdown</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">reason</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Authorized shutdown requested: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">reason</span><span class="p">);</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="w">            </span><span class="c1">// In real code: perform graceful shutdown hooks/cleanup here before exiting.</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="p">}</span>
+</code></pre></div></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2025 <a href="https://github.com/abhishekghoshh"  target="_blank" rel="noopener">Abhishek Ghosh</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/abhishekghoshh" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://x.com/abhishek_ghoshh" target="_blank" rel="noopener" title="x.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/abhishek-ghosh-220679132/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

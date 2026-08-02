@@ -1,0 +1,2216 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abhishekghoshh.github.io/java-helper/4-constructors/">
+      
+      
+        <link rel="prev" href="../3-classes/">
+      
+      
+        <link rel="next" href="../5-access-modifiers/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Constructors - Java Helper</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Constructors - Java Helper" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/4-constructors.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://abhishekghoshh.github.io/java-helper/4-constructors/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Constructors - Java Helper" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/4-constructors.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#4-constructors" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Java Helper" class="md-header__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Java Helper
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Constructors
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../1-java-language-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Java Language Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../2-object-oriented-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Object-Oriented Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../3-classes/" class="md-tabs__link">
+        
+  
+    
+  
+  Classes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Constructors
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-access-modifiers/" class="md-tabs__link">
+        
+  
+    
+  
+  Access Modifiers
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../6-packages/" class="md-tabs__link">
+        
+  
+    
+  
+  Packages
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../7-strings/" class="md-tabs__link">
+        
+  
+    
+  
+  Strings
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../8-arrays/" class="md-tabs__link">
+        
+  
+    
+  
+  Arrays
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../9-collections-framework/" class="md-tabs__link">
+        
+  
+    
+  
+  Collections Framework
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../10-generics/" class="md-tabs__link">
+        
+  
+    
+  
+  Generics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../11-exception-handling/" class="md-tabs__link">
+        
+  
+    
+  
+  Exception Handling
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../12-file-io/" class="md-tabs__link">
+        
+  
+    
+  
+  File I/O
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../13-serialization/" class="md-tabs__link">
+        
+  
+    
+  
+  Serialization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../14-reflection/" class="md-tabs__link">
+        
+  
+    
+  
+  Reflection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../15-annotations/" class="md-tabs__link">
+        
+  
+    
+  
+  Annotations
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../16-functional-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Functional Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../17-streams-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Streams API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../18-date-and-time-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Date and Time API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../19-jvm-internals/" class="md-tabs__link">
+        
+  
+    
+  
+  JVM Internals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../20-class-loader/" class="md-tabs__link">
+        
+  
+    
+  
+  Class Loader
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../21-memory-management/" class="md-tabs__link">
+        
+  
+    
+  
+  Memory Management
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../22-garbage-collection/" class="md-tabs__link">
+        
+  
+    
+  
+  Garbage Collection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../23-concurrency/" class="md-tabs__link">
+        
+  
+    
+  
+  Concurrency
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../24-networking/" class="md-tabs__link">
+        
+  
+    
+  
+  Networking
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../25-design-patterns-in-java/" class="md-tabs__link">
+        
+  
+    
+  
+  Design Patterns in Java
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../26-modern-java-language-features/" class="md-tabs__link">
+        
+  
+    
+  
+  Modern Java Language Features
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../27-regular-expressions/" class="md-tabs__link">
+        
+  
+    
+  
+  Regular Expressions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../28-internationalization-and-localization/" class="md-tabs__link">
+        
+  
+    
+  
+  Internationalization & Localization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../29-logging/" class="md-tabs__link">
+        
+  
+    
+  
+  Logging
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../30-security-basics/" class="md-tabs__link">
+        
+  
+    
+  
+  Security Basics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-tabs__link">
+        
+  
+    
+  
+  Native & Foreign Interoperability
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../32-process-and-system-apis/" class="md-tabs__link">
+        
+  
+    
+  
+  Process & System APIs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../33-testing-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Testing Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Java Helper" class="md-nav__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Java Helper
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-java-language-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java Language Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-object-oriented-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-classes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Classes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Constructors
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Constructors
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#default-constructor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default Constructor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameterized-constructor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parameterized Constructor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constructor-chaining" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constructor Chaining
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Constructor Chaining">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#this" class="md-nav__link">
+    <span class="md-ellipsis">
+      this()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#super" class="md-nav__link">
+    <span class="md-ellipsis">
+      super()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#private-constructors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Private Constructors
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constructor-overloading-new" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constructor Overloading (new)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-access-modifiers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access Modifiers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Packages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-strings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Strings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-collections-framework/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collections Framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-generics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-exception-handling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exception Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-file-io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File I/O
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-serialization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serialization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-reflection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reflection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-annotations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-functional-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Functional Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-streams-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Streams API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-date-and-time-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Date and Time API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-jvm-internals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JVM Internals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-class-loader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Class Loader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-memory-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-garbage-collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Garbage Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-concurrency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concurrency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-networking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-design-patterns-in-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Patterns in Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-modern-java-language-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modern Java Language Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-regular-expressions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Regular Expressions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-internationalization-and-localization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internationalization & Localization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-logging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30-security-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Native & Foreign Interoperability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32-process-and-system-apis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process & System APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33-testing-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div><h1 id="4-constructors">4. Constructors</h1>
+<h2 id="default-constructor">Default Constructor</h2>
+<p><strong>Theory</strong></p>
+<ul>
+<li><strong>Core Concepts</strong>: A default constructor is a no-argument constructor automatically synthesized by the Java compiler <em>only if</em> the class defines no constructors at all. It contains a single implicit statement: a call to the no-arg superclass constructor (<code>super()</code>), followed by nothing else — it does not initialize fields beyond their default zero/null values (which happens independently during instance creation).</li>
+<li><strong>Internal Working</strong>: Inserted by <code>javac</code> at compile time directly into the generated <code>.class</code> file's constant pool/method table if and only if the source declares zero constructors; the moment you add any constructor (even a parameterized one), the compiler stops auto-generating this default, and you must add a no-arg one yourself if still needed.</li>
+<li><strong>When to Use It</strong>: Simple data classes, POJOs, or framework-driven classes (e.g., JavaBeans, JPA entities) that require a no-arg constructor for reflective instantiation, and where no explicit constructor logic is needed.</li>
+<li><strong>Advantages</strong>: Zero boilerplate; guarantees every class is at least trivially instantiable; ensures the superclass chain's no-arg constructor always runs.</li>
+<li><strong>Limitations</strong>: Only generated when there are no other constructors; provides no way to enforce mandatory field initialization or validation; silently disappears as soon as any other constructor is added, a common source of "no default constructor found" compile errors when frameworks expect one.</li>
+</ul>
+<p><strong>Internal Working</strong></p>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: (1) <code>javac</code> scans the class body for constructor declarations. (2) If none exist, it synthesizes a public (or same-access-as-class) no-arg constructor with access matching the class's own access level. (3) That constructor's body is exactly <code>super();</code> — delegating to the direct superclass's no-arg constructor (compile error if the superclass has no accessible no-arg constructor and doesn't declare one implicitly either). (4) At the bytecode level this appears as an <code>&lt;init&gt;()V</code> method containing <code>aload_0</code>, <code>invokespecial Object.&lt;init&gt;</code> (or the actual superclass), then <code>return</code>.</li>
+<li><strong>Memory Layout</strong>: Object allocation happens on the heap before any constructor runs (<code>new</code> bytecode instruction allocates zeroed memory sized per the object's header + field layout); the default constructor itself performs no additional field initialization beyond the JVM's automatic zeroing (numeric fields to <code>0</code>/<code>0.0</code>, booleans to <code>false</code>, references to <code>null</code>) that occurs for every object regardless of constructor.</li>
+<li><strong>Diagrams</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>new Foo()
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>   │
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>   ▼
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>[JVM: allocate zeroed memory on heap, size = header + fields]
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>   │
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>   ▼
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>[Foo.&lt;init&gt;()V executes: aload_0; invokespecial Object.&lt;init&gt;; return]
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>   │
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>   ▼
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>[reference to fully constructed object returned to caller]
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong>: The <code>new</code> bytecode instruction allocates and zeroes memory; the following <code>invokespecial &lt;init&gt;</code> call actually runs constructor logic. Since the default constructor body is trivial (just <code>super()</code>), the JIT can inline/eliminate it entirely in hot allocation paths once escape analysis proves the object doesn't escape (enabling scalar replacement).</li>
+</ul>
+<p><strong>Interview Questions</strong></p>
+<p><em>Basic</em>
+1. When does the Java compiler generate a default constructor?
+2. What access modifier does the compiler give the default constructor?</p>
+<p><em>Intermediate</em>
+3. If you add a parameterized constructor to a class, does the default no-arg constructor still exist? What's the practical consequence?
+4. What does the default constructor's body actually contain?</p>
+<p><em>Advanced</em>
+5. What happens if a superclass has no accessible no-arg constructor and a subclass relies on the compiler-generated default constructor?
+6. How do frameworks like Hibernate/JPA rely on a no-arg constructor, and why might they require it to be <code>protected</code> rather than <code>private</code>?</p>
+<p><em>Scenario-based</em>
+7. You added a constructor taking a <code>String</code> parameter to a class, and now a serialization/reflection-based framework fails with "no default constructor." How do you fix it correctly?</p>
+<p><strong>Detailed Answers</strong></p>
+<ol>
+<li>Only when the class declares <em>no</em> constructors whatsoever — the moment even one explicit constructor (of any arity) is present, the compiler does not add a default one.</li>
+<li>It matches the access level of the class itself: a <code>public class</code> gets a <code>public</code> default constructor, a package-private class gets a package-private one, etc. (Note: enums are a special case — their implicit/default constructors are always <code>private</code>.)</li>
+<li>No, it disappears — the compiler's default constructor synthesis rule is strictly "generate one only if zero are declared." Practically, any code (or framework) relying on <code>new Foo()</code> will now fail to compile/run unless you explicitly add a no-arg constructor yourself alongside the parameterized one.</li>
+<li>Exactly one statement: an implicit call to the superclass's no-argument constructor, <code>super()</code> (or <code>Object</code>'s constructor if there's no explicit superclass). It does not set any field values beyond the JVM's automatic default zeroing of all fields during allocation.</li>
+<li>Compile error — "there is no default constructor available in [Superclass]" — because the compiler cannot insert an implicit <code>super()</code> call if the superclass doesn't have a matching no-arg constructor (and hasn't defined one, whether default or explicit). The subclass must then explicitly call an existing superclass constructor via <code>super(args...)</code> in its own constructor.</li>
+<li>ORMs like Hibernate instantiate entities via reflection (often bypassing normal <code>new</code> semantics using <code>Unsafe</code>/constructor reflection) to build proxies and populate fields directly, so they require a no-arg constructor to exist for that instantiation step. It's often recommended <code>protected</code> rather than <code>public</code> so that application code doesn't accidentally use the framework-only no-arg constructor to create invalid, uninitialized entities directly, while reflection (which can access non-public constructors via <code>setAccessible(true)</code>) still works.</li>
+<li>Explicitly declare a no-arg constructor alongside the <code>String</code>-parameter one (constructor overloading) — e.g., <code>public Foo() {}</code> — restoring the no-arg entry point the framework needs, while keeping the parameterized constructor for normal application use; if full field validity must be preserved, mark it <code>protected</code> and ensure any framework-set fields have sensible defaults.</li>
+</ol>
+<p><strong>Code Examples</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Point</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="c1">// defaults to 0</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="c1">// defaults to 0</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="c1">// No constructor declared -&gt; compiler generates: public Point() { super(); }</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">}</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Main</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="n">Point</span><span class="w"> </span><span class="n">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Point</span><span class="p">();</span><span class="w"> </span><span class="c1">// uses compiler-generated default constructor</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">origin</span><span class="p">);</span><span class="w"> </span><span class="c1">// fields are 0 by default</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// JPA-style entity needing a no-arg constructor for reflective instantiation</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UserEntity</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="p">;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="nf">UserEntity</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"> </span><span class="c1">// required by frameworks; discourages misuse by app code</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">UserEntity</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">username</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">username</span><span class="p">;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="parameterized-constructor">Parameterized Constructor</h2>
+<p><strong>Theory</strong></p>
+<ul>
+<li><strong>Core Concepts</strong>: A parameterized constructor accepts one or more arguments used to initialize an object's state at creation time, letting a class guarantee that instances start in a valid, fully-initialized state rather than requiring separate setter calls afterward.</li>
+<li><strong>Internal Working</strong>: Compiled to an <code>&lt;init&gt;(paramTypes)V</code> method in the classfile; when the constructor executes, arguments are pushed onto the operand stack/local variable table, field assignments (<code>putfield</code>) store them into the newly allocated object's memory, after the mandatory implicit or explicit <code>super(...)</code> call completes first.</li>
+<li><strong>When to Use It</strong>: Whenever a class has required state that must be present for the object to be valid (e.g., a <code>Point(int x, int y)</code>, an immutable <code>Money(BigDecimal amount, Currency currency)</code>), enforcing "constructor injection" of mandatory dependencies/data rather than optional post-construction mutation.</li>
+<li><strong>Advantages</strong>: Enforces mandatory initialization at compile time (you cannot call <code>new Foo(...)</code> without supplying required arguments); enables immutability (final fields can only be set in a constructor); documents required state directly in the type's public API.</li>
+<li><strong>Limitations</strong>: Many parameters lead to poor readability and error-prone positional argument passing (mitigated by Builder pattern or static factory methods with named-parameter-like clarity); adding a new parameter is a breaking change for every caller unless overloaded constructors are kept for compatibility.</li>
+</ul>
+<p><strong>Internal Working</strong></p>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: (1) <code>new ClassName(args)</code> bytecode allocates zeroed memory then invokes <code>invokespecial ClassName.&lt;init&gt;</code> with the arguments. (2) The constructor body's first statement (explicit or implicit) is a call to <code>super(...)</code> or <code>this(...)</code>, run before any of the constructor's own field assignments. (3) Remaining statements execute in textual order, typically <code>this.field = param;</code> assignments, becoming <code>aload_0; aload_N; putfield</code> bytecode. (4) Once the constructor body finishes, the fully initialized object reference is returned to the caller of <code>new</code>.</li>
+<li><strong>Memory Layout</strong>: Fields assigned in the constructor occupy the same fixed offsets within the object's instance data (determined at class-loading time) as any other field; <code>final</code> fields assigned only in constructors get special JVM Memory Model guarantees — once the constructor completes without leaking <code>this</code>, any thread that later sees a reference to the object is guaranteed to see the correctly initialized value of that final field (via the JMM's freeze/final-field semantics), without needing explicit synchronization.</li>
+<li><strong>Diagrams</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>new Point(3, 4)
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  │
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  ▼
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>[allocate zeroed Point on heap]
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>  │
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>  ▼
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>[Point.&lt;init&gt;(II)V: super(); this.x = 3; this.y = 4; return]
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>  │
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>  ▼
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>[reference to fully initialized Point returned]
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong>: The JIT can often scalar-replace (stack-allocate) short-lived objects constructed and immediately consumed within a method if escape analysis proves the reference never leaves the method, avoiding heap allocation altogether; the JVM's final-field "freeze" semantics at constructor exit provide a happens-before guarantee critical for safely publishing immutable objects across threads without extra locking.</li>
+</ul>
+<p><strong>Interview Questions</strong></p>
+<p><em>Basic</em>
+1. What is the main purpose of a parameterized constructor?
+2. Can a class have both a default and a parameterized constructor at the same time?</p>
+<p><em>Intermediate</em>
+3. Why are parameterized constructors essential for creating immutable classes with <code>final</code> fields?
+4. What compile error occurs if a <code>final</code> field is not assigned in every constructor path?</p>
+<p><em>Advanced</em>
+5. How does the JVM Memory Model guarantee safe publication of an object's <code>final</code> fields set in a parameterized constructor across threads, without explicit synchronization?
+6. What issue arises from having a constructor with many parameters, and what patterns mitigate it?</p>
+<p><em>Scenario-based</em>
+7. You need to construct an immutable <code>Order</code> object with 8 required fields. What design would you use instead of one giant parameterized constructor, and why?</p>
+<p><strong>Detailed Answers</strong></p>
+<ol>
+<li>It lets the caller supply the values needed to put a new object directly into a valid, fully-initialized state at the moment of creation, rather than relying on a no-arg constructor plus a sequence of setter calls that could leave the object temporarily (or permanently) invalid.</li>
+<li>Yes — this is constructor overloading; as long as their parameter lists differ (arity or types), a class can declare a no-arg constructor and any number of parameterized ones side by side, often with the no-arg one delegating to a parameterized one via <code>this(...)</code> with sensible defaults.</li>
+<li><code>final</code> fields can only be assigned exactly once, and that assignment must happen no later than the end of the constructor in which the field is definitely assigned (verified by definite-assignment analysis at compile time) — a parameterized constructor is the natural (and often only) place to assign required immutable state derived from caller-supplied arguments, since there's no other legal place (setters can't touch <code>final</code> fields after construction).</li>
+<li>"variable might not have been initialized" — the compiler performs definite assignment analysis across every constructor and every control-flow path within it (including all branches of <code>if</code>/<code>else</code>, loops, etc.), and fails compilation if any path exits the constructor without assigning the <code>final</code> field exactly once.</li>
+<li>The JLS/JMM specifies that when a constructor finishes, all <code>final</code> fields it set are "frozen," and any thread that subsequently obtains a reference to the object (through any means, as long as the reference wasn't leaked before construction completed) is guaranteed to see the correctly initialized values of those final fields, due to a memory barrier inserted at constructor exit — this is what makes immutable objects (like <code>String</code>) safe to share across threads without synchronization, provided the constructor doesn't let <code>this</code> escape before finishing (e.g., by registering a listener or starting a thread from within the constructor).</li>
+<li>This is the "telescoping constructor" anti-pattern — numerous overloaded constructors or one constructor with many positional parameters becomes hard to read and error-prone (easy to swap two same-typed arguments by accident). It's typically mitigated with the Builder pattern (fluent, named setter-like calls before a final <code>build()</code>), static factory methods with descriptive names, or (in modern Java) records/named parameter-like patterns combined with compact constructors for validation.</li>
+<li>Use the Builder pattern: a nested static <code>Order.Builder</code> class with fluent setter-style methods for each of the 8 fields (or a subset marked required, validated in <code>build()</code>), culminating in an immutable <code>Order</code> instance built via a single private parameterized constructor invoked only by the builder. This avoids error-prone 8-argument positional calls, allows optional fields with defaults, and still yields a fully immutable, validated final object.</li>
+</ol>
+<p><strong>Code Examples</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Point</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Point</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// parameterized constructor enforces mandatory state</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getX</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">getY</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// Builder pattern mitigating a telescoping-constructor problem</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Order</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">customer</span><span class="p">;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">total</span><span class="p">;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">Order</span><span class="p">(</span><span class="n">Builder</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="na">id</span><span class="p">;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">customer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="na">customer</span><span class="p">;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="na">total</span><span class="p">;</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Builder</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">        </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">        </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">customer</span><span class="p">;</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">        </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">total</span><span class="p">;</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="n">Builder</span><span class="w"> </span><span class="nf">id</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="n">Builder</span><span class="w"> </span><span class="nf">customer</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">customer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">customer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">customer</span><span class="p">;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="n">Builder</span><span class="w"> </span><span class="nf">total</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">total</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">total</span><span class="p">;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="n">Order</span><span class="w"> </span><span class="nf">build</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Order</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="p">}</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="c1">// Usage: new Order.Builder().id("1").customer("Alice").total(99.99).build();</span>
+</code></pre></div>
+<h2 id="constructor-chaining">Constructor Chaining</h2>
+<h3 id="this"><code>this()</code></h3>
+<p><strong>Theory</strong></p>
+<ul>
+<li><strong>Core Concepts</strong>: <code>this(...)</code> invokes another constructor of the <em>same</em> class, used to delegate shared initialization logic to a single "master" constructor instead of duplicating it across overloads — a form of intra-class constructor chaining.</li>
+<li><strong>Internal Working</strong>: Must be the first statement in the calling constructor (enforced by the compiler); compiles to an <code>invokespecial</code> call targeting the current class's other <code>&lt;init&gt;</code> overload, and the chain must eventually terminate in a constructor that calls <code>super(...)</code> (explicitly or implicitly) — you cannot have two constructors calling <code>this()</code> on each other (compile error: recursive constructor invocation).</li>
+<li><strong>When to Use It</strong>: Providing convenience overloads with default values that funnel into one canonical, fully-parameterized constructor containing the real validation/initialization logic, avoiding duplicated logic across overloads.</li>
+<li><strong>Advantages</strong>: Eliminates duplicated initialization/validation code across constructor overloads (DRY principle); centralizes invariant enforcement in one place, reducing bugs from divergent logic between overloads.</li>
+<li><strong>Limitations</strong>: Must be the very first statement (cannot run any code, even validation, before delegating) unless using Java 25's flexible constructor bodies preview/standard feature which relaxes this for statements not referencing <code>this</code>; overuse can create a chain that's hard to trace across many overloads.</li>
+</ul>
+<p><strong>Internal Working</strong></p>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: (1) Compiler verifies <code>this(...)</code> appears as the first statement. (2) It resolves which overload to call by normal overload resolution rules (matching argument types). (3) Bytecode emits <code>aload_0</code>, loads arguments, then <code>invokespecial ClassName.&lt;init&gt;(matchingSignature)</code>. (4) Control transfers entirely into that other constructor (running its own <code>super(...)</code>/<code>this(...)</code> chain and body) before returning to execute any remaining statements in the original (delegating) constructor.</li>
+<li><strong>Memory Layout</strong>: Not directly applicable beyond ordinary constructor field-assignment semantics; no extra memory overhead — it's purely a control-flow delegation mechanism at the bytecode level.</li>
+<li><strong>Diagrams</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>new Box(5)
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  │
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>  ▼
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>Box(int size) { this(size, size, size); ... }
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>  │  (this() must be first statement)
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>  ▼
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>Box(int l, int w, int h) { super(); this.l=l; this.w=w; this.h=h; }
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>  │
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>  ▼
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>[control returns to Box(int size) for any remaining statements, then object is ready]
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong>: Each link in a <code>this(...)</code> chain is a distinct <code>invokespecial</code> call; the JIT can inline short delegating constructors once hot, effectively flattening the chain's overhead to near-zero in optimized code.</li>
+</ul>
+<p><strong>Interview Questions</strong></p>
+<p><em>Basic</em>
+1. What rule governs where <code>this(...)</code> must appear in a constructor?
+2. Can two constructors call <code>this()</code> on each other, forming a cycle?</p>
+<p><em>Intermediate</em>
+3. What is the benefit of using <code>this(...)</code> chaining versus duplicating field-assignment code across overloaded constructors?
+4. Can you run validation code before calling <code>this(...)</code>?</p>
+<p><em>Advanced</em>
+5. How does the compiler detect and reject recursive constructor invocation via <code>this()</code>?
+6. How does Java 25's flexible constructor bodies feature change what's allowed before a <code>this(...)</code>/<code>super(...)</code> call?</p>
+<p><em>Scenario-based</em>
+7. You have a class with 3 overloaded constructors, each duplicating the same 5 lines of field validation. How would you refactor using <code>this()</code> chaining?</p>
+<p><strong>Detailed Answers</strong></p>
+<ol>
+<li>It must be the <em>first</em> statement in the constructor body — no other code (not even a <code>null</code> check) can precede it in standard Java (pre-Java 25), because the compiler must guarantee that any <code>this(...)</code>/<code>super(...)</code> delegation happens before the object's fields are touched by the delegating constructor itself.</li>
+<li>No — the compiler statically detects any cycle among <code>this(...)</code> calls within a class (e.g., constructor A calls <code>this()</code> targeting B, and B calls <code>this()</code> targeting A) and rejects it at compile time with "recursive constructor invocation."</li>
+<li>It centralizes the real initialization/validation logic in one canonical constructor; the other overloads become thin wrappers supplying default values, so a bug fix or new validation rule only needs to be written once, and all overloads automatically stay consistent — directly supporting the DRY principle and reducing the chance of divergent behavior between overloads.</li>
+<li>Not in the traditional model — <code>this(...)</code> must be the first statement, so no code (including validation) can run before it. Java 25's flexible constructor bodies (JEP 513) relax this: statements that don't reference <code>this</code> (e.g., validating raw constructor arguments before delegating) may now appear before the <code>this(...)</code>/<code>super(...)</code> call.</li>
+<li>The compiler builds a call graph of <code>this(...)</code> delegations among a class's constructors and performs a cycle-detection traversal (conceptually similar to detecting cycles in a directed graph); if the traversal revisits a constructor already on the current path, it reports a compile-time error, since an infinite <code>this()</code>-only chain (with no eventual <code>super()</code> call) could never actually construct an object.</li>
+<li>Prior to Java 25, absolutely no statement could precede an explicit <code>this(...)</code>/<code>super(...)</code> call, forcing pre-super validation logic into ugly static helper methods. Java 25's flexible constructor bodies (finalized JEP) let a constructor contain "prologue" statements before the <code>this(...)</code>/<code>super(...)</code> call, as long as those statements don't read or write instance state via <code>this</code> (e.g., simple argument validation using only the parameters is fine), making constructors more expressive without static-helper workarounds.</li>
+<li>Identify the most complete overload (or create a new canonical one) containing the full 5 lines of validation/assignment logic, then rewrite the other overloads to compute/derive whatever extra defaults they need and delegate via <code>this(...)</code> to the canonical constructor as their <em>only</em> statement, removing the duplicated validation from all but that one constructor.</li>
+</ol>
+<p><strong>Code Examples</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Box</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Box</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">        </span><span class="k">this</span><span class="p">(</span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">);</span><span class="w"> </span><span class="c1">// delegates to the canonical constructor (cube)</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Box</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">height</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// canonical constructor: real logic lives here</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">length</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s">"Dimensions must be positive"</span><span class="p">);</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="p">;</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">width</span><span class="p">;</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="super"><code>super()</code></h3>
+<p><strong>Theory</strong></p>
+<ul>
+<li><strong>Core Concepts</strong>: <code>super(...)</code> invokes a constructor of the direct <em>superclass</em>, ensuring the parent's state is fully initialized before the subclass's own constructor body runs — the core mechanism behind constructor chaining up an inheritance hierarchy.</li>
+<li><strong>Internal Working</strong>: If not written explicitly, the compiler inserts an implicit <code>super()</code> (no-arg) as the very first statement of every constructor that doesn't already start with <code>this(...)</code> or an explicit <code>super(...)</code>; compiles to <code>aload_0; invokespecial Superclass.&lt;init&gt;</code>.</li>
+<li><strong>When to Use It</strong>: Whenever a subclass needs to pass constructor arguments up to initialize inherited state, or whenever the superclass has no accessible no-arg constructor (making the implicit call impossible, forcing an explicit one).</li>
+<li><strong>Advantages</strong>: Guarantees the entire class hierarchy is initialized top-down (Object -&gt; ... -&gt; immediate superclass -&gt; current class), so by the time a subclass constructor body executes, all inherited fields are already validly set up.</li>
+<li><strong>Limitations</strong>: Must be the first statement (pre-Java 25) meaning no subclass-side computation/validation can happen before it in older Java versions; tightly couples subclass construction to the exact constructor signatures the superclass chooses to expose.</li>
+</ul>
+<p><strong>Internal Working</strong></p>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: (1) Subclass constructor begins; compiler ensures the first statement is either an explicit <code>super(args)</code>/<code>this(args)</code> or inserts an implicit <code>super()</code>. (2) That invocation runs the superclass constructor completely (which itself may chain further up to <em>its</em> superclass, all the way to <code>Object</code>'s constructor). (3) Only after the entire super-chain completes does control return to execute the remaining statements in the subclass constructor, including its own field initializers and instance initializer blocks (which the compiler actually weaves in right after the <code>super()</code>/<code>this()</code> call, before any explicit code you wrote). (4) The object is only considered fully constructed once the outermost (most-derived) constructor finishes.</li>
+<li><strong>Memory Layout</strong>: The JVM allocates one contiguous block of memory for the <em>entire</em> object (all fields from every class in the hierarchy) in a single <code>new</code> operation; there's no per-class sub-allocation — constructors merely populate different offset ranges within that single memory block, superclass fields being initialized first, followed by subclass fields.</li>
+<li><strong>Diagrams</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>new Dog("Rex")
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>  │
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>  ▼
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>Dog(String name) { super(name); ... }
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>  │ (super() must run first)
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>  ▼
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>Animal(String name) { super(); this.name = name; }
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>  │ (implicit super() to Object)
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>  ▼
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>Object() { /* no-op */ }
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>  │
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>  ▼  (unwind back up)
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>Animal's remaining statements run -&gt; Dog's remaining statements run -&gt; object ready
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sequenceDiagram
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    participant Caller
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    participant Dog
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    participant Animal
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    participant Object
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>    Caller-&gt;&gt;Dog: new Dog("Rex")
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    Dog-&gt;&gt;Animal: super(name)
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>    Animal-&gt;&gt;Object: super()
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>    Object--&gt;&gt;Animal: return
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>    Animal--&gt;&gt;Dog: return (name set)
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>    Dog--&gt;&gt;Caller: return (fully constructed)
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong>: The chain of <code>invokespecial &lt;init&gt;</code> calls up the hierarchy happens before any subclass-specific instance initializer blocks or field initializers execute (the compiler inserts those right after the <code>super()</code>/<code>this()</code> call in the generated bytecode); the JIT typically inlines trivial constructor chains once warmed up, and constructor call overhead is negligible compared to the actual field-initialization work performed.</li>
+</ul>
+<p><strong>Interview Questions</strong></p>
+<p><em>Basic</em>
+1. What does <code>super(...)</code> do, and where must it appear in a constructor?
+2. What happens if you don't write <code>super(...)</code> explicitly?</p>
+<p><em>Intermediate</em>
+3. What compile error occurs if a superclass has only parameterized constructors and the subclass doesn't call <code>super(...)</code> explicitly?
+4. In what order do instance initializer blocks and field initializers run relative to <code>super(...)</code>?</p>
+<p><em>Advanced</em>
+5. Why can calling an overridable method from within a superclass constructor (before <code>super()</code>'s subclass counterpart finishes) be dangerous?
+6. How does the full super-constructor chain relate to the guarantee that <code>Object</code>'s constructor always eventually runs?</p>
+<p><em>Scenario-based</em>
+7. You're designing a class hierarchy <code>Vehicle -&gt; Car -&gt; SportsCar</code>, each adding required constructor parameters. Show how <code>super()</code> chaining threads these together correctly.</p>
+<p><strong>Detailed Answers</strong></p>
+<ol>
+<li>It invokes a constructor of the direct superclass, ensuring inherited state is initialized before the subclass's own logic runs; it must be the first statement of the constructor (in standard, pre-Java-25 semantics) if written explicitly.</li>
+<li>The compiler automatically inserts an implicit no-argument <code>super()</code> call as the first statement, <em>provided</em> the superclass actually has an accessible no-arg constructor; if it doesn't, this results in a compile-time error requiring an explicit <code>super(args)</code> call instead.</li>
+<li>Compile error: "constructor Superclass in class Superclass cannot be applied to given types" or "there is no default constructor available" — since the compiler cannot insert an implicit no-arg <code>super()</code> when no such constructor exists, the subclass constructor(s) must explicitly call one of the superclass's parameterized constructors via <code>super(args)</code>.</li>
+<li>Field initializers and instance initializer blocks run in textual order immediately after the <code>super(...)</code>/<code>this(...)</code> call completes, but before the remaining explicit statements in the constructor body — the compiler effectively splices them in right after the super/this delegation, regardless of where they're textually written relative to the constructor.</li>
+<li>If a superclass constructor calls an overridable (non-private, non-final) instance method, and a subclass overrides that method, the <em>subclass's</em> override executes — but at that point the subclass's own constructor (and any field initializers) haven't run yet, so the override may operate on not-yet-initialized subclass fields (seeing default <code>0</code>/<code>null</code> values), leading to subtle bugs; this is a well-known reason to avoid calling overridable methods from constructors.</li>
+<li>Every class's constructor (explicitly or implicitly) chains to its superclass's constructor via <code>super(...)</code>, and this chain necessarily terminates at <code>Object</code>, the root of the class hierarchy, whose own no-arg constructor is trivial. This guarantees every object, no matter how deep its inheritance hierarchy, has <code>Object</code>'s constructor run first (topmost), followed by each subclass constructor down to the most-derived class, in strict top-down order.</li>
+<li>Each class declares a constructor accepting its own additional parameters and calls <code>super(...)</code> passing along the parameters relevant to the parent: <code>Vehicle(String make)</code> sets <code>make</code>; <code>Car(String make, int doors)</code> calls <code>super(make)</code> then sets <code>doors</code>; <code>SportsCar(String make, int doors, int topSpeed)</code> calls <code>super(make, doors)</code> then sets <code>topSpeed</code>. This ensures <code>new SportsCar("Ferrari", 2, 340)</code> initializes <code>Vehicle</code>'s state first, then <code>Car</code>'s, then <code>SportsCar</code>'s, each layer only responsible for its own added fields.</li>
+</ol>
+<p><strong>Code Examples</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">class</span> <span class="nc">Vehicle</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">make</span><span class="p">;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="n">Vehicle</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">make</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">make</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="p">}</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="kd">class</span> <span class="nc">Car</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Vehicle</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">doors</span><span class="p">;</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">    </span><span class="n">Car</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">make</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">doors</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">make</span><span class="p">);</span><span class="w"> </span><span class="c1">// must run first: initializes Vehicle's state</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">doors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">doors</span><span class="p">;</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="p">}</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="kd">class</span> <span class="nc">SportsCar</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Car</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">topSpeedKmh</span><span class="p">;</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="w">    </span><span class="n">SportsCar</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">make</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">doors</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">topSpeedKmh</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">make</span><span class="p">,</span><span class="w"> </span><span class="n">doors</span><span class="p">);</span><span class="w"> </span><span class="c1">// chains all the way up to Vehicle</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">topSpeedKmh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">topSpeedKmh</span><span class="p">;</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="private-constructors">Private Constructors</h2>
+<p><strong>Theory</strong></p>
+<ul>
+<li><strong>Core Concepts</strong>: A <code>private</code> constructor prevents a class from being instantiated directly via <code>new</code> from outside the class itself, used to enforce controlled object creation — singletons, utility/static-only classes, or factory-method-driven creation patterns.</li>
+<li><strong>Internal Working</strong>: The compiler marks the <code>&lt;init&gt;</code> method with <code>ACC_PRIVATE</code>; any <code>new ClassName()</code> call from outside the declaring top-level class (or its nestmates, per JEP 181 Nestmates rules) fails to compile with a "has private access" error.</li>
+<li><strong>When to Use It</strong>: Utility classes with only static members (preventing any instantiation), Singleton pattern implementations, classes exposing only static factory methods (<code>of</code>, <code>valueOf</code>, <code>getInstance</code>) as the sole creation path, and enum-like constant-holder classes.</li>
+<li><strong>Advantages</strong>: Enforces a single controlled instantiation path (factory methods can validate, cache, or return pre-built instances); prevents accidental/meaningless instantiation of stateless utility classes; supports encapsulated singleton logic.</li>
+<li><strong>Limitations</strong>: Reflection can still invoke a private constructor via <code>Constructor.setAccessible(true)</code> unless guarded against (e.g., throwing from within the constructor if already-instantiated, or relying on module <code>opens</code> restrictions); subclassing becomes impossible if <em>all</em> constructors are private (since a subclass constructor's implicit/explicit <code>super()</code> call needs an accessible superclass constructor) — which is often exactly the intended effect (making the class effectively non-extendable), like classic Singletons.</li>
+</ul>
+<p><strong>Internal Working</strong></p>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: (1) Declare the constructor <code>private</code>. (2) The compiler emits <code>ACC_PRIVATE</code> on the <code>&lt;init&gt;</code> method in the classfile. (3) Any external <code>new ClassName(...)</code> call is rejected at compile time. (4) Internally, static factory methods within the same class <em>can</em> call the private constructor freely (same-class access), so class-controlled instantiation still works — e.g., a <code>getInstance()</code> method or a static factory. (5) At the bytecode level, <code>invokespecial</code> is still used exactly as with any other constructor, but the JVM verifier confirms the caller is within the same class/nest, matching the access flag.</li>
+<li><strong>Memory Layout</strong>: Not directly applicable beyond normal object layout — access modifier doesn't change how memory for the object is laid out; it purely gates who may trigger the <code>new</code>+<code>&lt;init&gt;</code> sequence.</li>
+<li><strong>Diagrams</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>public final class Singleton {
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>  private static final Singleton INSTANCE = new Singleton(); // internal creation OK
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>  private Singleton() {}                                     // external `new` blocked
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>  public static Singleton getInstance() { return INSTANCE; }
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>}
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>External code: new Singleton();     // COMPILE ERROR
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>External code: Singleton.getInstance(); // OK, controlled access
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong>: No special runtime behavior beyond ordinary private-member access checking (<code>invokespecial</code> + <code>ACC_PRIVATE</code> verification at link/resolve time); reflection with <code>setAccessible(true)</code> bypasses the language-level check unless blocked by JPMS <code>opens</code> restrictions, so truly bulletproof singleton enforcement sometimes adds a defensive check inside the constructor itself (e.g., throwing if the static instance field is already set).</li>
+</ul>
+<p><strong>Interview Questions</strong></p>
+<p><em>Basic</em>
+1. What is the effect of declaring a constructor <code>private</code>?
+2. Name two common design patterns that rely on private constructors.</p>
+<p><em>Intermediate</em>
+3. If all constructors of a class are private, can that class be subclassed? Why or why not?
+4. How does a utility class (only static methods) typically use a private constructor?</p>
+<p><em>Advanced</em>
+5. Can reflection bypass a private constructor, and how would you defensively guard a Singleton against that?
+6. How do private constructors interact with nested (inner) classes under the Java 11+ Nestmates feature?</p>
+<p><em>Scenario-based</em>
+7. You're implementing a thread-safe Singleton and want to prevent both direct instantiation and reflective/serialization-based bypass. How would you design the class?</p>
+<p><strong>Detailed Answers</strong></p>
+<ol>
+<li>It restricts constructor invocation to code within the same top-level class (and its nestmates), preventing any <code>new ClassName()</code> call from outside that boundary — the class can then only be instantiated through whatever controlled mechanism (static factory method, singleton accessor) the class itself provides internally.</li>
+<li>The Singleton pattern (a single private static instance created once, exposed via a public static accessor) and Utility/Helper classes with only static members (e.g., <code>java.util.Collections</code>, <code>Math</code>), where a private constructor prevents any instance from being created at all since none is ever meaningful.</li>
+<li>No — a subclass constructor must call some accessible superclass constructor via an explicit or implicit <code>super(...)</code>; if every constructor of the superclass is private, no subclass (outside the same nest) can satisfy that requirement, so the class is effectively non-extendable. This is often intentional (e.g., classic Singleton or a <code>final</code> utility class), reinforcing that the class's instantiation is fully controlled internally.</li>
+<li>It declares a single <code>private</code> no-arg constructor with an empty body (sometimes throwing an <code>AssertionError</code> if somehow invoked via reflection) purely to prevent any instance from being created, since the class only exposes <code>static</code> members and instantiation would be meaningless; the class itself is also typically marked <code>final</code> to prevent subclassing as a secondary safeguard.</li>
+<li>Yes — <code>Constructor.setAccessible(true)</code> disables the language-level private-access check, allowing reflective instantiation of an otherwise private constructor (unless blocked by JPMS module <code>opens</code> rules). A defensive Singleton adds a runtime guard inside the constructor itself, e.g., checking a static flag or the existing singleton reference and throwing an <code>IllegalStateException</code> if a second instance is attempted, so even a reflective bypass attempt fails at runtime rather than silently creating a second instance.</li>
+<li>Nestmates (JEP 181, Java 11+) let a private constructor of an outer class be called directly by its nested classes (and vice versa) without the compiler needing to generate synthetic package-private bridge/accessor methods, since the JVM itself recognizes classes sharing the same nest host and permits private-level access between them — this makes private-constructor-based patterns (like a private static nested Builder invoking a private outer constructor) cleaner and slightly more efficient in generated bytecode.</li>
+<li>Use an <code>enum</code> singleton (the JLS/JVM guarantees enums cannot be instantiated via reflection or reconstructed via serialization other than through their defined constants), or, if a class-based Singleton is required, mark the constructor <code>private</code>, add a defensive check throwing if the static instance already exists, implement <code>readResolve()</code> to return the existing instance during deserialization (preventing a new instance via <code>ObjectInputStream</code>), and rely on a <code>static final</code> field initialized eagerly (or a double-checked-locking/holder-class pattern) for thread-safe lazy initialization.</li>
+</ol>
+<p><strong>Code Examples</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MathUtils</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// utility class: no instances should ever exist</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">MathUtils</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AssertionError</span><span class="p">(</span><span class="s">"No instances allowed"</span><span class="p">);</span><span class="w"> </span><span class="c1">// guards against reflection</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ConfigManager</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// classic thread-safe Singleton via private constructor</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">ConfigManager</span><span class="w"> </span><span class="n">INSTANCE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ConfigManager</span><span class="p">();</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="nf">ConfigManager</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">INSTANCE</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// defensive guard against reflective double-instantiation</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalStateException</span><span class="p">(</span><span class="s">"Instance already created"</span><span class="p">);</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">ConfigManager</span><span class="w"> </span><span class="nf">getInstance</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">INSTANCE</span><span class="p">;</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="constructor-overloading-new">Constructor Overloading <em>(new)</em></h2>
+<p><strong>Theory</strong></p>
+<ul>
+<li><strong>Core Concepts</strong>: Constructor overloading is defining multiple constructors in the same class that differ in parameter list (number, order, or types of parameters), giving callers multiple convenient ways to construct an object while (ideally) funneling shared logic through <code>this(...)</code> chaining.</li>
+<li><strong>Internal Working</strong>: Each overload compiles to a distinct <code>&lt;init&gt;</code> method with a distinct descriptor (e.g., <code>&lt;init&gt;(I)V</code> vs <code>&lt;init&gt;(Ljava/lang/String;)V</code>); the compiler resolves which overload a given <code>new</code> call targets at compile time using standard overload resolution (exact match, then widening, then autoboxing, then varargs, in that phase order).</li>
+<li><strong>When to Use It</strong>: Providing sensible default values for optional parameters, supporting multiple natural ways to build the same kind of object (e.g., <code>Color(int r, int g, int b)</code> vs <code>Color(String hexCode)</code>), or offering copy-constructor-style convenience (<code>Point(Point other)</code>).</li>
+<li><strong>Advantages</strong>: Improves API ergonomics/readability by matching how callers naturally think about constructing the object in different contexts; combined with <code>this()</code> chaining, avoids duplicating initialization logic.</li>
+<li><strong>Limitations</strong>: Overloads with ambiguous or easily-confused signatures (e.g., two constructors differing only in the order of two <code>int</code> parameters) are error-prone and hard to distinguish at call sites; unlike named-parameter languages, Java overload resolution is purely positional/type-based, so excessive overloading can create genuine ambiguity errors when autoboxing/varargs make more than one overload equally applicable.</li>
+</ul>
+<p><strong>Internal Working</strong></p>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: (1) Compiler collects every constructor declared in the class along with its erased parameter signature. (2) At each <code>new ClassName(args)</code> call site, the compiler performs three-phase overload resolution: phase 1 looks for a match without boxing/unboxing or varargs; phase 2 allows boxing/unboxing conversions; phase 3 allows varargs. (3) The most specific applicable overload (per JLS §15.12.2) is chosen and bound at compile time (constructors are never selected dynamically/polymorphically — there's no constructor "overriding"). (4) The resulting call compiles to <code>invokespecial</code> targeting that exact <code>&lt;init&gt;(descriptor)</code> method.</li>
+<li><strong>Memory Layout</strong>: Not directly applicable — the chosen overload only affects which initialization code runs; the resulting object's memory layout is identical regardless of which overload constructed it, since layout is determined purely by the class's field declarations, not the constructor used.</li>
+<li><strong>Diagrams</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>new Color(255, 0, 0)      -&gt; resolves to Color(int r, int g, int b)
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>new Color("#FF0000")      -&gt; resolves to Color(String hex)
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>new Color(existingColor)  -&gt; resolves to Color(Color other)  (copy constructor)
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong>: Each overload is a wholly separate method in the classfile with its own bytecode; there is no runtime dispatch cost for "choosing" an overload since resolution is fully static/compile-time — the emitted <code>invokespecial</code> already targets the exact resolved method, so overloading itself has zero runtime overhead beyond the constructor body's own work.</li>
+</ul>
+<p><strong>Interview Questions</strong></p>
+<p><em>Basic</em>
+1. What is constructor overloading, and how does the compiler distinguish between overloads?
+2. Can two constructors differ only in return type? Why or why not?</p>
+<p><em>Intermediate</em>
+3. What are the three phases of overload resolution the compiler uses when multiple constructors could apply?
+4. Is constructor overload resolution performed at compile time or run time, and why does that matter for constructors (unlike overridden instance methods)?</p>
+<p><em>Advanced</em>
+5. Give an example where adding a varargs constructor overload could introduce ambiguity with an existing fixed-arity overload.
+6. How does autoboxing complicate constructor overload resolution, and what's a concrete pitfall?</p>
+<p><em>Scenario-based</em>
+7. You want to add a copy constructor <code>Point(Point other)</code> to a class that already has <code>Point(int x, int y)</code>. What should the copy constructor do internally, and how can <code>this()</code> chaining help?</p>
+<p><strong>Detailed Answers</strong></p>
+<ol>
+<li>It's declaring multiple constructors with different parameter lists (differing in number, order, or types — not return type, since constructors have none) in the same class; the compiler distinguishes them purely by their parameter signatures and picks the applicable one at each call site via standard overload resolution.</li>
+<li>No — constructors don't have a return type at all (not even <code>void</code>), so return type can never be a distinguishing factor; overloading is based solely on the parameter list's arity and types. Two constructors with identical parameter lists would be a duplicate-method compile error regardless of any other difference.</li>
+<li>Phase 1: find an applicable constructor by strict invocation (no boxing/unboxing/varargs, only subtyping/widening reference conversions). Phase 2: if none found, allow loose invocation (boxing/unboxing conversions, e.g., <code>int</code> to <code>Integer</code>). Phase 3: if still none found, allow variable-arity (varargs) invocation. The compiler stops at the first phase that yields exactly one most-specific applicable constructor; ambiguity within a phase is a compile error.</li>
+<li>Entirely at compile time — unlike instance methods, constructors are never subject to dynamic/virtual dispatch because there is no such thing as "overriding" a constructor (each class's constructors are entirely its own, not inherited or polymorphic); the compiler binds a <code>new</code> expression to one specific <code>&lt;init&gt;(descriptor)</code> method based purely on the static types of the arguments at the call site.</li>
+<li>Given <code>Foo(int a, int b)</code> and <code>Foo(int... nums)</code>, a call <code>new Foo(1, 2)</code> is ambiguous in intent but resolved deterministically by phase ordering: phase 1 (strict, non-varargs) finds <code>Foo(int, int)</code> as an exact match and stops there, so <code>Foo(int, int)</code> wins and the varargs overload is never even considered for that call — but this can surprise developers expecting the varargs version, and adding the fixed-arity overload later can silently change behavior for existing <code>new Foo(1, 2)</code> call sites that previously hit the varargs constructor.</li>
+<li>Autoboxing means <code>int</code> and <code>Integer</code> (and similarly for other primitive/wrapper pairs) can both satisfy a parameter slot, but the compiler prefers a strict (phase 1) match over a boxing (phase 2) match even if the boxing match seems "closer" in spirit; a classic pitfall: <code>Foo(long x)</code> and <code>Foo(Integer x)</code> given <code>new Foo(5)</code> (an <code>int</code> literal) — phase 1 finds <code>Foo(long)</code> applicable via primitive widening (<code>int</code>-&gt;<code>long</code>) without boxing, so it's chosen over <code>Foo(Integer)</code> even though the literal itself looks like it "is" an int wanting to box to <code>Integer</code>, which can surprise developers unfamiliar with the phase ordering.</li>
+<li>The copy constructor should read all relevant fields from <code>other</code> and pass them along, ideally delegating to the canonical constructor via <code>this(other.x, other.y);</code> as its only statement — this reuses any validation logic already present in <code>Point(int x, int y)</code> rather than duplicating field-copy logic, and automatically stays correct if the canonical constructor's validation rules change later.</li>
+</ol>
+<p><strong>Code Examples</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Point</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Point</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// canonical constructor</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Point</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// overload: default to origin</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">        </span><span class="k">this</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Point</span><span class="p">(</span><span class="n">Point</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// copy-constructor overload, delegates to canonical</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="w">        </span><span class="k">this</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">x</span><span class="p">,</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="na">y</span><span class="p">);</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Color</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Color</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">g</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// RGB overload</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">g</span><span class="p">;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Color</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">hexCode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// parse-from-string overload, delegates to RGB overload</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">        </span><span class="k">this</span><span class="p">(</span><span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">hexCode</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="mi">16</span><span class="p">),</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">             </span><span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">hexCode</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">),</span><span class="w"> </span><span class="mi">16</span><span class="p">),</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="w">             </span><span class="n">Integer</span><span class="p">.</span><span class="na">parseInt</span><span class="p">(</span><span class="n">hexCode</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">),</span><span class="w"> </span><span class="mi">16</span><span class="p">));</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="p">}</span>
+</code></pre></div></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2025 <a href="https://github.com/abhishekghoshh"  target="_blank" rel="noopener">Abhishek Ghosh</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/abhishekghoshh" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://x.com/abhishek_ghoshh" target="_blank" rel="noopener" title="x.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/abhishek-ghosh-220679132/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

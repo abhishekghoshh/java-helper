@@ -1,0 +1,2221 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abhishekghoshh.github.io/java-helper/20-class-loader/">
+      
+      
+        <link rel="prev" href="../19-jvm-internals/">
+      
+      
+        <link rel="next" href="../21-memory-management/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Class Loader - Java Helper</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Class Loader - Java Helper" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/20-class-loader.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://abhishekghoshh.github.io/java-helper/20-class-loader/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Class Loader - Java Helper" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/20-class-loader.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#20-class-loader" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Java Helper" class="md-header__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Java Helper
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Class Loader
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../1-java-language-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Java Language Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../2-object-oriented-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Object-Oriented Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../3-classes/" class="md-tabs__link">
+        
+  
+    
+  
+  Classes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../4-constructors/" class="md-tabs__link">
+        
+  
+    
+  
+  Constructors
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-access-modifiers/" class="md-tabs__link">
+        
+  
+    
+  
+  Access Modifiers
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../6-packages/" class="md-tabs__link">
+        
+  
+    
+  
+  Packages
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../7-strings/" class="md-tabs__link">
+        
+  
+    
+  
+  Strings
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../8-arrays/" class="md-tabs__link">
+        
+  
+    
+  
+  Arrays
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../9-collections-framework/" class="md-tabs__link">
+        
+  
+    
+  
+  Collections Framework
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../10-generics/" class="md-tabs__link">
+        
+  
+    
+  
+  Generics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../11-exception-handling/" class="md-tabs__link">
+        
+  
+    
+  
+  Exception Handling
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../12-file-io/" class="md-tabs__link">
+        
+  
+    
+  
+  File I/O
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../13-serialization/" class="md-tabs__link">
+        
+  
+    
+  
+  Serialization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../14-reflection/" class="md-tabs__link">
+        
+  
+    
+  
+  Reflection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../15-annotations/" class="md-tabs__link">
+        
+  
+    
+  
+  Annotations
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../16-functional-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Functional Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../17-streams-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Streams API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../18-date-and-time-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Date and Time API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../19-jvm-internals/" class="md-tabs__link">
+        
+  
+    
+  
+  JVM Internals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Class Loader
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../21-memory-management/" class="md-tabs__link">
+        
+  
+    
+  
+  Memory Management
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../22-garbage-collection/" class="md-tabs__link">
+        
+  
+    
+  
+  Garbage Collection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../23-concurrency/" class="md-tabs__link">
+        
+  
+    
+  
+  Concurrency
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../24-networking/" class="md-tabs__link">
+        
+  
+    
+  
+  Networking
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../25-design-patterns-in-java/" class="md-tabs__link">
+        
+  
+    
+  
+  Design Patterns in Java
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../26-modern-java-language-features/" class="md-tabs__link">
+        
+  
+    
+  
+  Modern Java Language Features
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../27-regular-expressions/" class="md-tabs__link">
+        
+  
+    
+  
+  Regular Expressions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../28-internationalization-and-localization/" class="md-tabs__link">
+        
+  
+    
+  
+  Internationalization & Localization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../29-logging/" class="md-tabs__link">
+        
+  
+    
+  
+  Logging
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../30-security-basics/" class="md-tabs__link">
+        
+  
+    
+  
+  Security Basics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-tabs__link">
+        
+  
+    
+  
+  Native & Foreign Interoperability
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../32-process-and-system-apis/" class="md-tabs__link">
+        
+  
+    
+  
+  Process & System APIs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../33-testing-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Testing Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Java Helper" class="md-nav__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Java Helper
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-java-language-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java Language Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-object-oriented-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-classes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Classes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-constructors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constructors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-access-modifiers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access Modifiers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Packages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-strings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Strings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-collections-framework/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collections Framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-generics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-exception-handling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exception Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-file-io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File I/O
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-serialization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serialization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-reflection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reflection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-annotations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-functional-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Functional Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-streams-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Streams API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-date-and-time-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Date and Time API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-jvm-internals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JVM Internals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Class Loader
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Class Loader
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bootstrap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bootstrap
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bootstrap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Platform
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Platform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-class-loader" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Class Loader
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom Class Loader">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parent-delegation-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parent Delegation Model
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-memory-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-garbage-collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Garbage Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-concurrency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concurrency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-networking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-design-patterns-in-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Patterns in Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-modern-java-language-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modern Java Language Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-regular-expressions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Regular Expressions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-internationalization-and-localization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internationalization & Localization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-logging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30-security-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Native & Foreign Interoperability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32-process-and-system-apis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process & System APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33-testing-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div><h1 id="20-class-loader">20. Class Loader</h1>
+<h2 id="bootstrap">Bootstrap</h2>
+<h3 id="theory">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong>: The Bootstrap Class Loader is the root/top-most class loader in the JVM's hierarchy, responsible for loading the core Java platform classes essential to running the JVM itself - primarily classes from <code>java.base</code> (<code>java.lang.Object</code>, <code>java.lang.String</code>, <code>java.util.*</code> core classes, etc.).</li>
+<li><strong>Internal Working</strong>: Unlike every other class loader, the Bootstrap Class Loader is implemented natively (in C/C++ as part of the JVM itself, not as a Java object) and loads classes directly from the modular runtime image (<code>jrt:</code> filesystem / <code>lib/modules</code> file in the JDK installation, replacing the old <code>rt.jar</code> since Java 9's module system).</li>
+<li><strong>When to Use It</strong>: Not user-invoked directly - it's automatically the loader for any class in the platform's core modules; relevant to understand when reasoning about classloading hierarchy, <code>getClassLoader()</code> returning <code>null</code>, or diagnosing <code>NoClassDefFoundError</code>/module-related issues.</li>
+<li><strong>Advantages</strong>: Extremely fast and secure since it's a fixed, trusted, natively-implemented loader for the platform's own foundational classes - no Java-level security manager/verification overhead is needed for classes the JVM itself depends on to bootstrap execution.</li>
+<li><strong>Limitations</strong>: Cannot be extended, replaced, or instantiated by application code (it's not represented as an ordinary Java <code>ClassLoader</code> object you can subclass); calling <code>getClassLoader()</code> on a class it loaded returns <code>null</code> (not a genuine loader instance), which can surprise developers doing reflection-based classloader introspection.</li>
+</ul>
+<h3 id="internal-working">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: (1) JVM startup invokes the native bootstrap loading mechanism before any Java code runs. (2) It loads the fundamental classes needed to get the JVM into a runnable state: <code>java.lang.Object</code>, <code>java.lang.Class</code>, <code>java.lang.ClassLoader</code> itself, <code>String</code>, and other <code>java.base</code> module classes. (3) These classes are read directly from the JDK's module image (<code>$JAVA_HOME/lib/modules</code>, a specially indexed, compressed file introduced by Project Jigsaw/JEP 220 in Java 9, replacing the older <code>rt.jar</code>). (4) Once enough of the core runtime is loaded, the JVM proceeds to initialize the Platform and Application class loaders, which then load everything else following the delegation model.</li>
+<li><strong>Memory Layout</strong>: Class metadata for bootstrap-loaded classes lives in Metaspace exactly like any other loaded class, but is considered part of the JVM's foundational, always-resident state for the lifetime of the process (these classes are essentially never unloaded, since the bootstrap loader itself never becomes unreachable during normal execution).</li>
+<li><strong>Diagrams</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>JVM Startup
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>   |
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>   v
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Bootstrap Class Loader (native, C/C++, part of the JVM)
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>   loads: java.lang.Object, java.lang.String, java.lang.Class, java.util core, ...
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>   source: $JAVA_HOME/lib/modules (jrt: filesystem)
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>   |
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>   v
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>Platform Class Loader (Java object) -- parent = Bootstrap
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>   |
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>   v
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>Application/System Class Loader (Java object) -- parent = Platform
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong>: Because the Bootstrap Class Loader is written in native code rather than as a Java <code>ClassLoader</code> subclass, <code>SomeCoreClass.class.getClassLoader()</code> for a class it loaded (e.g. <code>Object.class.getClassLoader()</code>) returns <code>null</code> by convention, representing "loaded by the bootstrap loader" - this is a common gotcha in classloader-introspection code that assumes every class has a non-null <code>ClassLoader</code> reference.</li>
+</ul>
+<h3 id="interview-questions">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What classes does the Bootstrap Class Loader load?
+2. What does <code>SomeClass.class.getClassLoader()</code> return for a class loaded by the Bootstrap Class Loader?</p>
+<p><strong>Intermediate</strong>
+3. Why is the Bootstrap Class Loader implemented natively rather than as a Java class?
+4. Where does the Bootstrap Class Loader read its classes from since Java 9?</p>
+<p><strong>Advanced</strong>
+5. Can application code influence or replace the Bootstrap Class Loader?</p>
+<p><strong>Scenario-based</strong>
+6. You're debugging a <code>NoSuchMethodError</code> involving <code>java.lang.String</code> after adding a shaded/relocated dependency to your classpath that includes its own copy of core JDK classes. How does the Bootstrap Class Loader's role/precedence relate to this issue?</p>
+<h3 id="detailed-answers">Detailed Answers</h3>
+<ol>
+<li>It loads the foundational classes of the Java platform itself - everything in the <code>java.base</code> module (and historically, pre-modules, the core of <code>rt.jar</code>): <code>java.lang.Object</code>, <code>java.lang.String</code>, <code>java.lang.Class</code>, <code>java.lang.ClassLoader</code>, core <code>java.util</code>/<code>java.io</code> classes, and other classes the JVM needs to bootstrap and run any Java program at all.</li>
+<li>It returns <code>null</code>. This is a JVM/language-specified convention meaning "this class was loaded by the bootstrap class loader," since the bootstrap loader isn't represented as an actual instantiable <code>ClassLoader</code> object accessible from Java code - there's no real object reference to return, so <code>null</code> is used as the sentinel.</li>
+<li>Because the Bootstrap Class Loader must be operational before any Java bytecode can be executed at all - including the bytecode that would define the <code>ClassLoader</code> class hierarchy itself. It's a chicken-and-egg problem: you can't use Java objects/classes to load the very first classes needed to make Java objects/classes work, so this initial bootstrapping step is implemented directly in the JVM's native (C/C++) startup code.</li>
+<li>Since Java 9 (Project Jigsaw, JEP 220), the Bootstrap Class Loader reads classes from the JDK's modular runtime image, a specially indexed and compressed file at <code>$JAVA_HOME/lib/modules</code>, accessed via the JVM's internal <code>jrt:</code> virtual filesystem scheme - replacing the older <code>rt.jar</code>/<code>lib/rt.jar</code> approach used in Java 8 and earlier, which stored all core classes as a plain jar file on disk.</li>
+<li>No - application code cannot subclass, replace, or otherwise directly customize the Bootstrap Class Loader, since it isn't represented as a regular, extensible Java <code>ClassLoader</code> object at all (it's native JVM code). What application code <em>can</em> do is influence which classes it's asked to load via JVM startup flags like the deprecated/restricted <code>-Xbootclasspath</code> mechanisms (largely superseded and constrained since the module system's introduction), but this is a JVM configuration option, not runtime customization of loader behaviour via Java code.</li>
+<li>Because of the delegation model, when your application code references <code>java.lang.String</code>, the request is delegated all the way up to the Bootstrap Class Loader first, which will always resolve and return <em>its own</em> trusted copy of <code>String</code> from the JDK's module image - your shaded dependency's bundled copy of core JDK classes on the application classpath is effectively ignored/shadowed for any class that the Bootstrap (or Platform) loader already provides, because delegation means a child loader only attempts to load a class itself if none of its ancestors could. If the shaded copy has a different method signature/version than the genuine <code>java.lang.String</code> your code was compiled against elsewhere, you can get subtle <code>NoSuchMethodError</code>s at runtime - a classic manifestation of "classpath shadowing conflicts with core JDK classes," and a strong argument for why bundling/relocating java.* classes yourself is unsupported and actively disallowed by the JVM's security/sealing rules for the <code>java.*</code> package namespace.</li>
+</ol>
+<h3 id="code-examples">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BootstrapLoaderDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">        </span><span class="c1">// Classes from java.base are loaded by the Bootstrap Class Loader -&gt; getClassLoader() is null</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"String's loader: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getClassLoader</span><span class="p">());</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Object's loader: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Object</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getClassLoader</span><span class="p">());</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="c1">// Contrast with an application-defined class, loaded by the Application/System loader</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"This class's loader: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">BootstrapLoaderDemo</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getClassLoader</span><span class="p">());</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="c1">// Walking up the delegation chain from the Application loader eventually reaches "null"</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="n">ClassLoader</span><span class="w"> </span><span class="n">loader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BootstrapLoaderDemo</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getClassLoader</span><span class="p">();</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">loader</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Loader in chain: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">loader</span><span class="p">);</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">            </span><span class="n">loader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loader</span><span class="p">.</span><span class="na">getParent</span><span class="p">();</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Reached the Bootstrap Class Loader (represented as null)"</span><span class="p">);</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="platform">Platform</h2>
+<h3 id="theory_1">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong>: The Platform Class Loader (renamed from "Extension Class Loader" in Java 9, JEP 261) loads classes from platform modules that are part of the JDK but not part of the core <code>java.base</code> module - e.g. <code>java.sql</code>, <code>java.desktop</code>/AWT-Swing, <code>java.xml</code>, and other standard-but-non-base platform modules.</li>
+<li><strong>Internal Working</strong>: It is a genuine Java <code>ClassLoader</code> instance (unlike the native Bootstrap loader), sits directly below the Bootstrap loader in the delegation hierarchy, and is obtainable via <code>ClassLoader.getPlatformClassLoader()</code>.</li>
+<li><strong>When to Use It</strong>: Relevant when reasoning about where a given JDK-provided (but non-<code>java.base</code>) class comes from, or when configuring/inspecting module-related classloading; not something application code typically instantiates or extends directly.</li>
+<li><strong>Advantages</strong>: Cleanly separates "must always be present, foundational" (<code>java.base</code>, bootstrap-loaded) classes from "standard but optional/pluggable" platform modules, supporting the modular JDK's more granular structure introduced in Java 9; being a real <code>ClassLoader</code> object (unlike Bootstrap) makes it programmatically inspectable via standard reflection APIs.</li>
+<li><strong>Limitations</strong>: Historically (pre-Java 9) this role was filled by the "Extension Class Loader," which loaded jars from the <code>lib/ext</code> directory - a mechanism now removed; applications relying on the old extension mechanism needed to migrate to the module system or explicit classpath/module-path entries.</li>
+</ul>
+<h3 id="internal-working_1">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: (1) During JVM startup, after the Bootstrap Class Loader has loaded enough of <code>java.base</code> to get going, the JVM instantiates the Platform Class Loader as its child. (2) It's configured to resolve classes from the set of platform modules bundled with the JDK that aren't part of <code>java.base</code> (e.g. <code>java.sql</code>, <code>java.naming</code>, <code>java.desktop</code>). (3) It delegates upward to the Bootstrap loader first for any class request (per the parent-delegation model), only attempting to load the class itself if the Bootstrap loader couldn't find/provide it. (4) The Application Class Loader is then created as the Platform Class Loader's child, continuing the hierarchy.</li>
+<li><strong>Memory Layout</strong>: Standard Metaspace class metadata storage, no special memory characteristics beyond being a distinct loader identity used for module/class provenance and the delegation chain.</li>
+<li><strong>Diagrams</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Bootstrap Class Loader (native)
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>        |
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        v
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>Platform Class Loader (java.lang.ClassLoader instance)
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>   loads: java.sql, java.desktop, java.xml, other non-base platform modules
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>        |
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        v
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>Application/System Class Loader
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong>: <code>ClassLoader.getPlatformClassLoader()</code> provides programmatic access to this loader instance (introduced in Java 9 alongside the module system, replacing the old, JDK-8-and-earlier concept of <code>getSystemClassLoader().getParent()</code> returning the Extension Class Loader); code can use it e.g. to construct a <code>ServiceLoader</code> scoped specifically to platform-provided service implementations.</li>
+</ul>
+<h3 id="interview-questions_1">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What did the Platform Class Loader replace, and in which Java version?
+2. How do you obtain a reference to the Platform Class Loader programmatically?</p>
+<p><strong>Intermediate</strong>
+3. What kinds of classes does the Platform Class Loader load, as distinct from the Bootstrap Class Loader?
+4. Where does the Platform Class Loader sit in the classloader hierarchy relative to Bootstrap and Application loaders?</p>
+<p><strong>Advanced</strong>
+5. Why did the JDK move away from the old <code>lib/ext</code> Extension Class Loader mechanism?</p>
+<p><strong>Scenario-based</strong>
+6. Your application uses <code>java.sql.Driver</code> implementations and you want to understand which loader is responsible if you see a <code>ClassNotFoundException</code> for a JDK-provided SQL class. How would you investigate?</p>
+<h3 id="detailed-answers_1">Detailed Answers</h3>
+<ol>
+<li>It replaced the "Extension Class Loader" (which loaded JAR files dropped into the JDK's <code>lib/ext</code> directory), as part of the Java Platform Module System introduced in Java 9 (JEP 261, JEP 220). The rename and conceptual shift reflect that the JDK's own optional-but-standard modules (like <code>java.sql</code>, <code>java.desktop</code>) are now loaded by a well-defined "Platform" loader rather than an ad hoc extension-directory mechanism.</li>
+<li>Via the static method <code>ClassLoader.getPlatformClassLoader()</code>, introduced in Java 9 specifically to give a stable, documented way to reference this loader (previously, pre-modules, you might indirectly reach the analogous Extension loader via <code>ClassLoader.getSystemClassLoader().getParent()</code>, which is no longer a reliable pattern under the new naming/hierarchy).</li>
+<li>The Bootstrap Class Loader loads only the <code>java.base</code> module - the absolute minimum foundational classes the JVM needs to run at all. The Platform Class Loader loads classes from other standard JDK platform modules that ship with the JDK but aren't part of that essential base - things like <code>java.sql</code> (JDBC), <code>java.desktop</code> (AWT/Swing), <code>java.naming</code>, <code>java.xml</code>, etc. - modules that are part of the standard Java SE platform but logically separable from the absolute core runtime.</li>
+<li>It sits directly below the Bootstrap Class Loader and directly above the Application (System) Class Loader: Bootstrap (root, native) -&gt; Platform (Java object, loads standard-but-non-base JDK modules) -&gt; Application/System (Java object, loads your application's classpath/module-path classes).</li>
+<li>The old <code>lib/ext</code> mechanism (dropping arbitrary JARs into a special directory to have them automatically loaded with elevated classpath precedence) was considered fragile and poorly integrated with proper dependency management - it encouraged implicit, hard-to-track "magic" extensions to the runtime classpath outside of normal build/dependency tooling, complicated security reasoning (jars silently gained broad visibility), and didn't fit cleanly into the new, more explicit and controllable module system's philosophy of clearly declared module dependencies and boundaries introduced by Project Jigsaw.</li>
+<li>Use <code>java.sql.Driver.class.getClassLoader()</code> (or the class loader of the specific driver implementation class in question) to directly identify which loader is responsible - since <code>java.sql</code> is a standard (non-base) platform module, its core interfaces should be Platform-Class-Loader-provided (<code>ClassLoader.getPlatformClassLoader()</code>), so comparing the two references confirms whether the class actually came from the expected JDK module. If a specific third-party JDBC driver implementation isn't found, that's a separate issue relating to the Application Class Loader/module-path or <code>ServiceLoader</code> configuration for that particular driver JAR, not the Platform Class Loader's responsibility, since the driver <em>implementation</em> (as opposed to the standard <code>java.sql</code> API classes) is application-supplied, not JDK-supplied.</li>
+</ol>
+<h3 id="code-examples_1">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PlatformLoaderDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="c1">// java.sql.Connection is part of the java.sql platform module -&gt; Platform Class Loader</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">        </span><span class="n">ClassLoader</span><span class="w"> </span><span class="n">sqlLoader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">sql</span><span class="p">.</span><span class="na">Connection</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getClassLoader</span><span class="p">();</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"java.sql.Connection loader: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sqlLoader</span><span class="p">);</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Is Platform Class Loader? "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">sqlLoader</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ClassLoader</span><span class="p">.</span><span class="na">getPlatformClassLoader</span><span class="p">()));</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="c1">// java.lang.String is part of java.base -&gt; Bootstrap Class Loader (represented as null)</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"java.lang.String loader: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getClassLoader</span><span class="p">());</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="c1">// This application class is loaded by the Application/System Class Loader, a child of Platform</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"This class's loader: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">PlatformLoaderDemo</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getClassLoader</span><span class="p">());</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Its parent (Platform loader): "</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">            </span><span class="o">+</span><span class="w"> </span><span class="n">PlatformLoaderDemo</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getClassLoader</span><span class="p">().</span><span class="na">getParent</span><span class="p">());</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="application">Application</h2>
+<h3 id="theory_2">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong>: The Application Class Loader (also called the System Class Loader) is the loader responsible for loading classes found on the application's classpath or module-path - your own application code and any third-party library JARs/dependencies. It's the default loader used to load the class containing your <code>main</code> method.</li>
+<li><strong>Internal Working</strong>: A genuine Java <code>ClassLoader</code> instance, obtainable via <code>ClassLoader.getSystemClassLoader()</code>, whose parent is the Platform Class Loader; it resolves classes by searching the paths specified via the <code>-classpath</code>/<code>-cp</code> flag (or <code>-p</code>/<code>--module-path</code> for modules) and the <code>CLASSPATH</code> environment variable.</li>
+<li><strong>When to Use It</strong>: This is the loader most application code implicitly uses; explicitly relevant when writing frameworks/tools that need to dynamically load application classes, or when diagnosing classpath-related <code>ClassNotFoundException</code>/<code>NoClassDefFoundError</code> issues.</li>
+<li><strong>Advantages</strong>: Provides the natural, expected behaviour for typical application execution (classes on the classpath "just work" without any custom loader code); serves as the default parent for any custom class loaders an application creates, ensuring they still see all standard application/library classes unless explicitly designed otherwise.</li>
+<li><strong>Limitations</strong>: A single flat classpath can suffer "JAR hell"/dependency version conflicts since all classpath entries are visible in one loader's namespace with no isolation between different JARs' potentially conflicting transitive dependencies (a key motivation for OSGi, module systems, and custom classloader-based isolation in application servers).</li>
+</ul>
+<h3 id="internal-working_2">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: (1) After the Bootstrap and Platform loaders are initialized, the JVM creates the Application Class Loader as the Platform loader's child. (2) It's configured with the effective classpath (from <code>-cp</code>/<code>-classpath</code>, <code>CLASSPATH</code> env var, or module-path equivalents) as its source of class bytes. (3) When your program's <code>main</code> method is invoked, the class containing it (and everything it transitively references that isn't already resolved by an ancestor loader) is loaded through this Application loader. (4) Any custom class loader your application creates, unless explicitly given a different parent, defaults to using the Application Class Loader as its parent, preserving the delegation chain up through Platform and Bootstrap.</li>
+<li><strong>Memory Layout</strong>: Standard Metaspace-resident class metadata; no special memory characteristics beyond being the typical, expected "home" loader identity for the vast majority of classes in a running application.</li>
+<li><strong>Diagrams</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Bootstrap Class Loader (native, java.base)
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>        |
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>        v
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>Platform Class Loader (java.sql, java.desktop, ...)
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>        |
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>        v
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>Application/System Class Loader (your app + third-party JARs on classpath/module-path)
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>        |
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>        v
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>[optional] custom application class loaders (parent = Application, by default)
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong>: <code>ClassLoader.getSystemClassLoader()</code> returns this loader; frameworks doing dynamic class loading/reflection (dependency injection containers, plugin systems, ORMs generating proxy classes) frequently reference <code>Thread.currentThread().getContextClassLoader()</code> (which typically defaults to the Application Class Loader unless explicitly overridden) to resolve application classes correctly even when the framework code itself was loaded by a different (e.g. custom/parent) loader.</li>
+</ul>
+<h3 id="interview-questions_2">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What does the Application Class Loader load, and how do you obtain a reference to it?
+2. What is another common name for the Application Class Loader?</p>
+<p><strong>Intermediate</strong>
+3. What determines which classpath entries the Application Class Loader searches?
+4. What is the "context class loader" and why does it matter for frameworks?</p>
+<p><strong>Advanced</strong>
+5. What classic problem arises from all application/library JARs sharing one flat Application Class Loader namespace, and how do systems like OSGi or the Java Module System address it?</p>
+<p><strong>Scenario-based</strong>
+6. Your application throws <code>NoClassDefFoundError</code> for a class you know exists in a JAR file, but only when run via a certain launcher script. What classpath-related aspects would you check regarding the Application Class Loader?</p>
+<h3 id="detailed-answers_2">Detailed Answers</h3>
+<ol>
+<li>It loads classes and resources found on the application's classpath (or module-path), which includes your own compiled classes and any third-party dependency JARs specified via <code>-cp</code>/<code>-classpath</code> or the <code>CLASSPATH</code> environment variable. You obtain a reference to it via the static method <code>ClassLoader.getSystemClassLoader()</code>.</li>
+<li>It's also commonly called the "System Class Loader," and <code>getSystemClassLoader()</code> is indeed the standard JDK API method name used to retrieve it - the two names ("Application" and "System" Class Loader) refer to the exact same loader instance and are used interchangeably in JDK documentation and general usage.</li>
+<li>The classpath entries it searches are determined by the <code>-classpath</code>/<code>-cp</code> command-line flag passed to the <code>java</code> launcher (or <code>-p</code>/<code>--module-path</code> for module-based applications), falling back to the <code>CLASSPATH</code> environment variable if no explicit flag is given, plus any additional entries added programmatically via build/launch tooling (e.g. a fat/uber JAR's manifest <code>Class-Path</code> attribute, or a framework that manipulates the effective classpath before invoking <code>main</code>).</li>
+<li>The "context class loader" (<code>Thread.getContextClassLoader()</code>) is a per-thread reference to a class loader that frameworks/libraries can use to resolve application-specific classes even when the framework's own code was itself loaded by a different (often more ancestral, e.g. the Bootstrap or Platform, or a shared library) class loader. This matters because a naive framework class, if it simply used its <em>own</em> defining class loader to look up application classes, might fail to find them (since the framework's loader may sit above/apart from the application's loader in the delegation hierarchy and doesn't automatically see classes visible only to descendant loaders) - the context class loader gives frameworks an explicit, settable reference to "the loader that knows about the application's classes," typically defaulting to the Application Class Loader for the main thread unless something (a container, a plugin system) has deliberately overridden it.</li>
+<li>The classic problem is often called "JAR hell" or "dependency hell": since every JAR on the classpath shares one single, flat Application Class Loader namespace, if two different dependencies (or a dependency and the application itself) require different, incompatible versions of the same class (same fully-qualified name), only one version can actually be loaded and used application-wide - whichever is found first on the classpath - silently breaking whichever code expected the other version's behaviour/API, often producing confusing <code>NoSuchMethodError</code>/<code>ClassCastException</code> at runtime rather than a clear conflict message. OSGi addresses this by giving each bundle its own class loader with fine-grained, explicitly declared import/export visibility between bundles (allowing multiple versions of the same package to coexist in different isolated bundle namespaces). The Java Platform Module System (Project Jigsaw, Java 9+) addresses a related but distinct problem - reliable configuration and strong encapsulation of module boundaries/dependencies - though it does not by itself solve the "multiple versions of the same module simultaneously" problem as thoroughly as OSGi's bundle isolation does.</li>
+<li>Check exactly what classpath the launcher script actually constructs and passes to the <code>java</code> command (echo/print the resolved classpath argument, since launcher scripts sometimes build it dynamically and can silently omit a directory/JAR due to a glob pattern not matching, a relative-path working-directory mismatch, or an environment variable not being set as expected in that particular execution context); verify the JAR file in question is genuinely present in one of those exact classpath entries (not just "exists somewhere on disk"); and check for classpath ordering conflicts where an earlier, different version of a same-named class might shadow the expected one (relevant if <code>NoClassDefFoundError</code> is actually masking a <code>NoSuchMethodError</code>/version-mismatch scenario rather than a pure "class truly missing" scenario) - comparing <code>System.getProperty("java.class.path")</code> printed at runtime against your expectations is a quick, direct way to confirm exactly what the Application Class Loader was actually configured to search.</li>
+</ol>
+<h3 id="code-examples_2">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ApplicationLoaderDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">        </span><span class="n">ClassLoader</span><span class="w"> </span><span class="n">systemLoader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ClassLoader</span><span class="p">.</span><span class="na">getSystemClassLoader</span><span class="p">();</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"System/Application Class Loader: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">systemLoader</span><span class="p">);</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Its parent (Platform Class Loader): "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">systemLoader</span><span class="p">.</span><span class="na">getParent</span><span class="p">());</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">        </span><span class="c1">// The classpath actually being searched by the Application Class Loader</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Effective classpath: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">"java.class.path"</span><span class="p">));</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">        </span><span class="c1">// Context class loader typically defaults to the Application Class Loader on the main thread</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">        </span><span class="n">ClassLoader</span><span class="w"> </span><span class="n">contextLoader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Thread</span><span class="p">.</span><span class="na">currentThread</span><span class="p">().</span><span class="na">getContextClassLoader</span><span class="p">();</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Context class loader matches system loader? "</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">            </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">contextLoader</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">systemLoader</span><span class="p">));</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">        </span><span class="c1">// This class itself was loaded by the Application Class Loader</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"This class's loader: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ApplicationLoaderDemo</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getClassLoader</span><span class="p">());</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="custom-class-loader">Custom Class Loader</h2>
+<h3 id="theory_3">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong>: A custom class loader is a user-defined subclass of <code>java.lang.ClassLoader</code> (typically overriding <code>findClass(String name)</code>, and sometimes <code>loadClass</code> for special delegation semantics) that loads class bytes from a non-standard source - a database, network location, encrypted/obfuscated storage, or a dynamically generated in-memory byte array - or that provides isolation between groups of classes (plugin systems, hot-reload frameworks, application servers hosting multiple deployed apps).</li>
+<li><strong>Internal Working</strong>: Extending <code>ClassLoader</code> and overriding <code>findClass()</code> lets you supply raw class bytes to the JVM via the protected <code>defineClass(name, bytes, offset, length)</code> method, which the JVM then verifies, links, and makes available as a genuine <code>Class</code> object - while typically still honoring (or, if desired, deliberately breaking) the standard parent-delegation model for the "check parent first" step.</li>
+<li><strong>When to Use It</strong>: Building plugin architectures where each plugin needs its own isolated classpath/version of dependencies, application servers that need to isolate multiple deployed web applications from each other, hot-reloading frameworks that need to load a fresh version of a modified class, or loading classes from non-file sources (network, database, dynamically generated bytecode e.g. via ASM/ByteBuddy).</li>
+<li><strong>Advantages</strong>: Enables full control over where/how class bytes are sourced and how classloading isolation boundaries are drawn; supports scenarios (multiple versions of the same class coexisting, hot-swap/reload, sandboxing) impossible with the standard flat Application Class Loader alone.</li>
+<li><strong>Limitations</strong>: Two classes with the same fully-qualified name loaded by two <em>different</em> class loaders are considered completely distinct types by the JVM (<code>instanceof</code>/casting between them fails, even if the bytecode is identical) - a frequent source of confusing <code>ClassCastException</code>s in multi-classloader systems; incorrect custom loaders that skip proper parent delegation can inadvertently break security/consistency guarantees (e.g. loading a rogue <code>java.lang.String</code> if not carefully guarded, though the JVM's "sealed" <code>java.*</code> package protections prevent user-defined classes from actually being placed in the <code>java.*</code> namespace).</li>
+</ul>
+<h3 id="internal-working_3">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: (1) Subclass <code>ClassLoader</code>, typically calling <code>super(parentLoader)</code> in the constructor to establish its place in the delegation chain. (2) Override <code>findClass(String name)</code>: locate/read the raw <code>.class</code> bytes from your custom source (file, network, decrypted blob, generated bytecode) into a <code>byte[]</code>. (3) Call the inherited <code>protected final Class&lt;?&gt; defineClass(String name, byte[] b, int off, int len)</code> method, which hands the bytes to the JVM for verification (bytecode verifier checks structural/type safety) and returns a <code>Class</code> object representing the newly defined class. (4) The JVM caches this <code>Class</code> object against this specific loader instance - if the same custom loader is asked for the same class name again, it will return the cached (already-linked) <code>Class</code>, but a <em>different</em> loader instance asked for the same class name will independently define a brand-new, distinct <code>Class</code> object even from identical bytes.</li>
+<li><strong>Memory Layout</strong>: Each distinct classloader instance's loaded classes get separate Metaspace entries (even for identical bytecode loaded by two different loader instances - the JVM does not deduplicate class metadata across loader identities), and when a custom loader instance becomes unreachable (along with everything it loaded), its entire Metaspace footprint becomes eligible for bulk reclamation.</li>
+<li><strong>Diagrams</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>classDiagram
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    class ClassLoader {
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>        +loadClass(name)
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>        #findClass(name)
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>        #defineClass(name, bytes, off, len)
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    }
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    class PluginClassLoader {
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>        #findClass(name) : reads bytes from plugin jar/network/db
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    }
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    ClassLoader &lt;|-- PluginClassLoader
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    PluginClassLoader --&gt; "parent" ClassLoader : delegates first
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong>: Class identity in the JVM is defined as the pair (fully-qualified class name, defining class loader instance) - this is why two structurally identical classes loaded by two different loader instances are treated as entirely unrelated types at the bytecode/verifier level, enabling legitimate use cases like hot-reload (define a "new version" of a class under a fresh loader instance, since a class, once loaded, cannot be redefined/reloaded in place under the <em>same</em> loader) but also being the classic root cause of confusing multi-classloader <code>ClassCastException</code>s.</li>
+</ul>
+<h3 id="interview-questions_3">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. Which method do you typically override to implement a custom class loader, and what does it return?
+2. Why can't you simply "reload" an already-loaded class using the same class loader instance?</p>
+<p><strong>Intermediate</strong>
+3. What does it mean that class identity in the JVM includes the defining class loader, not just the class name?
+4. What's the difference between overriding <code>findClass()</code> versus overriding <code>loadClass()</code> in a custom loader?</p>
+<p><strong>Advanced</strong>
+5. How would a hot-reload framework use custom class loaders to load a modified version of a class while the application keeps running?</p>
+<p><strong>Scenario-based</strong>
+6. Two plugins, each loaded via its own dedicated custom class loader, both depend on different (incompatible) versions of the same third-party library. Explain how custom class loaders solve this, and what pitfall to watch for if the plugins need to exchange objects with each other.</p>
+<h3 id="detailed-answers_3">Detailed Answers</h3>
+<ol>
+<li>Typically you override <code>protected Class&lt;?&gt; findClass(String name) throws ClassNotFoundException</code>, whose job is to locate the raw bytecode for the requested class name (from whatever custom source you're implementing) and call the inherited <code>defineClass(...)</code> method to actually turn those bytes into a <code>Class</code> object, which <code>findClass</code> then returns.</li>
+<li>Once a class has been loaded (defined) by a particular class loader instance, that <code>Class</code> object is permanently associated with that loader and cannot be redefined in place under the same loader (attempting to define another class with the same name under the same loader instance throws <code>LinkageError: duplicate class definition</code>). To load a "new version" of a class's bytecode, you must use a <em>different</em> class loader instance - this is precisely the technique hot-reload frameworks use.</li>
+<li>It means the JVM's notion of "what class is this" is the combined identity of (fully-qualified class name + the specific <code>ClassLoader</code> instance that defined it) - not the class name alone. Consequently, <code>com.example.Foo</code> loaded by loader instance A and <code>com.example.Foo</code> loaded by loader instance B, even from byte-for-byte identical <code>.class</code> file contents, are two completely distinct, unrelated types as far as the JVM is concerned: an object of "A's Foo" fails <code>instanceof</code> and casting checks against "B's Foo", even though they look identical in source.</li>
+<li>Overriding <code>findClass()</code> is the recommended, narrower customization point: it's only invoked by the default <code>loadClass()</code> implementation <em>after</em> parent delegation has already been attempted and failed, meaning you get correct standard delegation behaviour "for free" and only customize <em>where bytes come from</em> when the class isn't found via ancestors. Overriding <code>loadClass()</code> directly instead gives you full control over the <em>entire</em> loading algorithm, including whether/how parent delegation happens at all - necessary for advanced scenarios like child-first delegation (checking your own custom source before asking the parent, used in some plugin/isolation systems to intentionally override/shadow a parent-provided class), but riskier since you must correctly reimplement caching and delegation semantics yourself.</li>
+<li>A hot-reload framework, upon detecting a source file change, recompiles the modified class and creates a <em>brand-new</em> custom class loader instance, using it to define the newly compiled bytecode as a fresh <code>Class</code> object (distinct in JVM identity from the previous version, even though it shares the same fully-qualified name) - since redefining a class under the <em>same</em> loader instance isn't permitted. The framework then swaps references so that new work uses instances of this new class, while care must be taken with any existing objects created from the <em>old</em> class version (they remain instances of the old <code>Class</code> identity and typically cannot simply be cast/reused as the new version without additional state-migration logic) - this is why hot-reload approaches often only fully support method-body-level changes cleanly, and struggle with structural changes.</li>
+<li>Each plugin gets its own custom class loader that loads that plugin's own bundled copy of the third-party library's classes; because class identity includes the defining loader, "LibraryX version 1.0 classes loaded by Plugin A's loader" and "LibraryX version 2.0 classes loaded by Plugin B's loader" coexist independently in the same JVM without conflict, each plugin only ever seeing its own version - solving the classic single-flat-classpath "only one version can win" problem. The pitfall: if Plugin A tries to pass an object of a shared-library type directly to Plugin B (e.g. calling a method on Plugin B expecting a <code>LibraryX.SomeType</code> parameter), the JVM will throw a <code>ClassCastException</code> (or the call simply won't type-check across the two systems) because "Plugin A's LibraryX.SomeType" and "Plugin B's LibraryX.SomeType" are, despite the identical name, entirely different types from the JVM's perspective - cross-plugin communication in such isolated-classloader architectures typically requires using shared, common-ancestor-loaded interface types (defined once, by a shared parent loader both plugins delegate to) for any objects that need to cross the isolation boundary.</li>
+</ol>
+<h3 id="code-examples_3">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.*</span><span class="p">;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.nio.file.*</span><span class="p">;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CustomClassLoaderDemo</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">ClassLoader</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">classDirectory</span><span class="p">;</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">CustomClassLoaderDemo</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">classDirectory</span><span class="p">,</span><span class="w"> </span><span class="n">ClassLoader</span><span class="w"> </span><span class="n">parent</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">parent</span><span class="p">);</span><span class="w"> </span><span class="c1">// preserve normal parent-delegation chain</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">classDirectory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">classDirectory</span><span class="p">;</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span><span class="nd">@Override</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">Class</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="nf">findClass</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">ClassNotFoundException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">classDirectory</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"/"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">name</span><span class="p">.</span><span class="na">replace</span><span class="p">(</span><span class="sc">'.'</span><span class="p">,</span><span class="w"> </span><span class="sc">'/'</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">".class"</span><span class="p">;</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">            </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">bytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Files</span><span class="p">.</span><span class="na">readAllBytes</span><span class="p">(</span><span class="n">Path</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">path</span><span class="p">));</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">            </span><span class="c1">// Hand raw bytecode to the JVM for verification/linking, producing a Class object</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">defineClass</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">bytes</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">bytes</span><span class="p">.</span><span class="na">length</span><span class="p">);</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">IOException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ClassNotFoundException</span><span class="p">(</span><span class="s">"Could not load "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="w">        </span><span class="c1">// A custom loader defining a class from a directory of .class files on disk,</span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="w">        </span><span class="c1">// useful for plugin systems or hot-reload scenarios needing isolated class identities.</span>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="w">        </span><span class="n">CustomClassLoaderDemo</span><span class="w"> </span><span class="n">pluginLoader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CustomClassLoaderDemo</span><span class="p">(</span>
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="w">            </span><span class="s">"target/classes"</span><span class="p">,</span><span class="w"> </span><span class="n">CustomClassLoaderDemo</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getClassLoader</span><span class="p">());</span>
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a>
+<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="w">        </span><span class="n">Class</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="n">loadedClass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pluginLoader</span><span class="p">.</span><span class="na">loadClass</span><span class="p">(</span><span class="n">CustomClassLoaderDemo</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+<a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Loaded via custom loader: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">loadedClass</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span>
+<a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="w">            </span><span class="o">+</span><span class="w"> </span><span class="s">", loader="</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">loadedClass</span><span class="p">.</span><span class="na">getClassLoader</span><span class="p">());</span>
+<a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Same Class object as normally loaded? "</span>
+<a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a><span class="w">            </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">loadedClass</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">CustomClassLoaderDemo</span><span class="p">.</span><span class="na">class</span><span class="p">));</span>
+<a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="parent-delegation-model">Parent Delegation Model</h2></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2025 <a href="https://github.com/abhishekghoshh"  target="_blank" rel="noopener">Abhishek Ghosh</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/abhishekghoshh" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://x.com/abhishek_ghoshh" target="_blank" rel="noopener" title="x.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/abhishek-ghosh-220679132/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

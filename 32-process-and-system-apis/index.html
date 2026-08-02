@@ -1,0 +1,2289 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abhishekghoshh.github.io/java-helper/32-process-and-system-apis/">
+      
+      
+        <link rel="prev" href="../31-native-and-foreign-interoperability/">
+      
+      
+        <link rel="next" href="../33-testing-fundamentals/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Process & System APIs - Java Helper</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Process & System APIs - Java Helper" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/32-process-and-system-apis.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://abhishekghoshh.github.io/java-helper/32-process-and-system-apis/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Process & System APIs - Java Helper" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/32-process-and-system-apis.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#32-process-system-apis-new" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Java Helper" class="md-header__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Java Helper
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Process & System APIs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../1-java-language-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Java Language Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../2-object-oriented-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Object-Oriented Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../3-classes/" class="md-tabs__link">
+        
+  
+    
+  
+  Classes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../4-constructors/" class="md-tabs__link">
+        
+  
+    
+  
+  Constructors
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-access-modifiers/" class="md-tabs__link">
+        
+  
+    
+  
+  Access Modifiers
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../6-packages/" class="md-tabs__link">
+        
+  
+    
+  
+  Packages
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../7-strings/" class="md-tabs__link">
+        
+  
+    
+  
+  Strings
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../8-arrays/" class="md-tabs__link">
+        
+  
+    
+  
+  Arrays
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../9-collections-framework/" class="md-tabs__link">
+        
+  
+    
+  
+  Collections Framework
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../10-generics/" class="md-tabs__link">
+        
+  
+    
+  
+  Generics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../11-exception-handling/" class="md-tabs__link">
+        
+  
+    
+  
+  Exception Handling
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../12-file-io/" class="md-tabs__link">
+        
+  
+    
+  
+  File I/O
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../13-serialization/" class="md-tabs__link">
+        
+  
+    
+  
+  Serialization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../14-reflection/" class="md-tabs__link">
+        
+  
+    
+  
+  Reflection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../15-annotations/" class="md-tabs__link">
+        
+  
+    
+  
+  Annotations
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../16-functional-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Functional Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../17-streams-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Streams API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../18-date-and-time-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Date and Time API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../19-jvm-internals/" class="md-tabs__link">
+        
+  
+    
+  
+  JVM Internals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../20-class-loader/" class="md-tabs__link">
+        
+  
+    
+  
+  Class Loader
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../21-memory-management/" class="md-tabs__link">
+        
+  
+    
+  
+  Memory Management
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../22-garbage-collection/" class="md-tabs__link">
+        
+  
+    
+  
+  Garbage Collection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../23-concurrency/" class="md-tabs__link">
+        
+  
+    
+  
+  Concurrency
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../24-networking/" class="md-tabs__link">
+        
+  
+    
+  
+  Networking
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../25-design-patterns-in-java/" class="md-tabs__link">
+        
+  
+    
+  
+  Design Patterns in Java
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../26-modern-java-language-features/" class="md-tabs__link">
+        
+  
+    
+  
+  Modern Java Language Features
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../27-regular-expressions/" class="md-tabs__link">
+        
+  
+    
+  
+  Regular Expressions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../28-internationalization-and-localization/" class="md-tabs__link">
+        
+  
+    
+  
+  Internationalization & Localization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../29-logging/" class="md-tabs__link">
+        
+  
+    
+  
+  Logging
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../30-security-basics/" class="md-tabs__link">
+        
+  
+    
+  
+  Security Basics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-tabs__link">
+        
+  
+    
+  
+  Native & Foreign Interoperability
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Process & System APIs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../33-testing-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Testing Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Java Helper" class="md-nav__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Java Helper
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-java-language-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java Language Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-object-oriented-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-classes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Classes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-constructors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constructors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-access-modifiers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access Modifiers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Packages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-strings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Strings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-collections-framework/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collections Framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-generics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-exception-handling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exception Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-file-io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File I/O
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-serialization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serialization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-reflection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reflection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-annotations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-functional-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Functional Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-streams-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Streams API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-date-and-time-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Date and Time API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-jvm-internals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JVM Internals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-class-loader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Class Loader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-memory-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-garbage-collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Garbage Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-concurrency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concurrency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-networking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-design-patterns-in-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Patterns in Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-modern-java-language-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modern Java Language Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-regular-expressions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Regular Expressions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-internationalization-and-localization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internationalization & Localization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-logging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30-security-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Native & Foreign Interoperability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Process & System APIs
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Process & System APIs
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#processbuilder-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      ProcessBuilder / Process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ProcessBuilder / Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-properties-environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Properties &amp; Environment Variables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Properties & Environment Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#runtime-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Runtime Class
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Runtime Class">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33-testing-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div><h1 id="32-process-system-apis-new">32. Process &amp; System APIs <em>(new)</em></h1>
+<h2 id="processbuilder-process"><code>ProcessBuilder</code> / <code>Process</code></h2>
+<h3 id="theory">Theory</h3>
+<p><strong>Core Concepts</strong>
+<code>ProcessBuilder</code> (<code>java.lang.ProcessBuilder</code>) is a builder API for configuring and launching native OS processes (external commands/executables) from Java, replacing the older, more limited <code>Runtime.exec(...)</code> overloads. <code>Process</code> (<code>java.lang.Process</code>) represents a running (or completed) native process, exposing its input/output/error streams, exit value, and lifecycle control (waiting, destroying). Since Java 9, the <code>ProcessHandle</code> API complements this with richer process introspection (PID, parent/children, CPU time) for both processes started by the JVM and arbitrary OS processes.</p>
+<p><strong>Internal Working</strong>
+<code>ProcessBuilder.start()</code> invokes native OS process-creation calls (<code>fork</code>/<code>exec</code> on POSIX, <code>CreateProcess</code> on Windows) via JNI in the JDK's native library layer, sets up pipes connecting the child's stdin/stdout/stderr to the parent <code>Process</code> object's streams (or redirects them per configuration), and returns a <code>Process</code> handle whose <code>waitFor()</code>/<code>exitValue()</code>/<code>isAlive()</code> methods query native process state.</p>
+<p><strong>When to Use It</strong>
+- Invoking external command-line tools (compilers, image/video processors, system utilities, shell scripts) from a Java application.
+- Building CLI wrapper tools, build systems, or CI orchestration logic in Java.
+- Capturing or piping process output for further processing within the JVM.</p>
+<p><strong>Advantages</strong>
+- <code>ProcessBuilder</code> provides a fluent, mutable configuration object (command, working directory, environment variables, I/O redirection) reused across multiple <code>start()</code> calls, cleaner than juggling <code>Runtime.exec</code> overloads.
+- <code>redirectInput/Output/Error</code> (including <code>Redirect.INHERIT</code>) allows efficient direct OS-level piping without the JVM copying bytes through Java-level streams.
+- <code>Process.onExit()</code> (Java 9+) returns a <code>CompletableFuture&lt;Process&gt;</code>, integrating process completion into async/reactive pipelines.</p>
+<p><strong>Limitations</strong>
+- Failing to drain a child process's stdout/stderr streams promptly can deadlock the child process if its OS pipe buffer fills up (a classic, frequently-tested pitfall) — must consume both streams (e.g. on separate threads) or redirect them, especially when also writing to stdin.
+- No built-in cross-platform shell interpretation — <code>ProcessBuilder</code> executes a program directly (argv array), not a shell command line; shell features (pipes, globbing, env var expansion) require explicitly invoking a shell (<code>sh -c "..."</code> / <code>cmd /c "..."</code>).
+- Process creation is relatively expensive (OS-level fork/exec) — not suitable for high-frequency, latency-sensitive invocation.
+- Zombie/orphan processes can occur if a <code>Process</code> is not properly waited on or destroyed, particularly in long-running server applications spawning many children.</p>
+<h3 id="internal-working">Internal Working</h3>
+<p><strong>Step-by-Step Explanation</strong>
+1. <code>new ProcessBuilder(command...)</code> configures the command array, optionally working directory (<code>directory()</code>), environment (<code>environment()</code> map, inherited by default from the JVM's process environment), and I/O redirection (<code>redirectInput/Output/Error</code>, or <code>redirectErrorStream(true)</code> to merge stderr into stdout).
+2. <code>start()</code> triggers a native call that forks/execs (POSIX) or calls <code>CreateProcess</code> (Windows), setting up OS pipes for any non-inherited/non-redirected streams.
+3. The returned <code>Process</code> object exposes <code>getOutputStream()</code> (child's stdin, from the parent's perspective an <code>OutputStream</code> to write to), <code>getInputStream()</code> (child's stdout), and <code>getErrorStream()</code> (child's stderr), unless redirected, in which case those streams are simplified/inherited.
+4. The parent must actively read <code>getInputStream()</code>/<code>getErrorStream()</code> (typically on separate threads) to avoid the child blocking when its OS pipe buffer fills — a full buffer with no reader causes the child to stall on its own writes.
+5. <code>waitFor()</code> blocks until the process terminates (or a timeout elapses, in the overloaded form), returning/consuming the exit code; <code>exitValue()</code> throws <code>IllegalThreadStateException</code> if called while still running. <code>destroy()</code>/<code>destroyForcibly()</code> (SIGTERM/SIGKILL-equivalent) terminate the process; <code>Process.onExit()</code> (Java 9+) gives a <code>CompletableFuture&lt;Process&gt;</code> for async completion handling.</p>
+<p><strong>Memory Layout</strong>
+Not directly applicable to JVM heap/stack in the usual sense — a <code>Process</code> represents a separate OS process with its own independent address space, heap, and stack, entirely outside the JVM's memory management; the parent JVM only holds lightweight handle/stream objects referencing OS-level pipe file descriptors.</p>
+<p><strong>Diagrams</strong>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Parent JVM Process                         Child OS Process
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>┌─────────────────────┐                    ┌─────────────────────┐
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│ ProcessBuilder       │  fork/exec via JNI │                     │
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│   .start() ──────────┼───────────────────►│  argv, env, cwd     │
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│                       │                    │                     │
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│ Process object        │◄── stdout pipe ───┤  stdout              │
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│  .getInputStream()    │                    │                     │
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│  .getOutputStream() ──┼─── stdin pipe ────►│  stdin               │
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│  .getErrorStream()    │◄── stderr pipe ───┤  stderr              │
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│  .waitFor()            │◄── exit code ─────┤  process exit        │
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>└─────────────────────┘                    └─────────────────────┘
+</code></pre></div>
+<p><strong>JVM Behaviour</strong>
+Process creation goes through native code (<code>ProcessImpl</code> on each platform) invoking OS system calls outside normal Java bytecode execution — this is a genuine OS-level context switch/new process, not a JVM thread; file descriptor limits, OS process limits, and OS scheduling all apply. The JVM must also reap terminated child processes (via <code>waitpid</code>-equivalent calls internally) to avoid leaving zombie processes on POSIX systems if <code>waitFor()</code>/<code>exitValue()</code> is never called.</p>
+<h3 id="interview-questions">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What is the difference between <code>Runtime.exec()</code> and <code>ProcessBuilder</code>?
+2. How do you capture the standard output of a launched process in Java?
+3. What does <code>Process.waitFor()</code> do, and what does it return?</p>
+<p><strong>Intermediate</strong>
+4. Why can a child process hang indefinitely if you don't read its stdout/stderr streams?
+5. How do you merge a child process's stderr into its stdout stream?
+6. How would you run a shell command with pipes (e.g. <code>ps aux | grep java</code>) using <code>ProcessBuilder</code>?</p>
+<p><strong>Advanced</strong>
+7. How does <code>Process.onExit()</code> integrate with <code>CompletableFuture</code>-based asynchronous workflows?
+8. What is <code>ProcessHandle</code>, and how does it differ from <code>Process</code> (introduced in which Java version, and why)?
+9. How do you implement a timeout for a process that might hang, ensuring it's forcibly terminated and its resources cleaned up?</p>
+<p><strong>Scenario-based</strong>
+10. A Java service spawns an external image-conversion tool per uploaded file and occasionally hangs under load with high CPU/thread usage. Diagnose likely causes and propose a robust fix.</p>
+<h3 id="detailed-answers">Detailed Answers</h3>
+<ol>
+<li>
+<p><strong>Difference between <code>Runtime.exec()</code> and <code>ProcessBuilder</code>?</strong>
+   <code>Runtime.exec()</code> offers several overloaded methods taking a command string or array, with limited configurability (environment as a separate array parameter, no persistent configuration object, string-based overloads prone to incorrect manual argument splitting). <code>ProcessBuilder</code> is the modern replacement: a mutable, reusable builder object exposing <code>command()</code>, <code>directory()</code>, <code>environment()</code> (a live <code>Map</code> view), and <code>redirectInput/Output/Error()</code>, letting you configure a process launch once and <code>start()</code> it (potentially multiple times) cleanly. <code>Runtime.exec()</code> internally delegates to <code>ProcessBuilder</code> in modern JDKs.</p>
+</li>
+<li>
+<p><strong>How to capture a launched process's standard output?</strong>
+   Call <code>process.getInputStream()</code> (this is the child's stdout from the parent's perspective) and read from it, typically wrapping in a <code>BufferedReader</code>, ideally on a dedicated thread (or using <code>process.getInputStream().readAllBytes()</code> for simple cases) to avoid blocking if the child produces a lot of output while the parent is also waiting on <code>waitFor()</code>.</p>
+</li>
+<li>
+<p><strong>What does <code>Process.waitFor()</code> do, and what does it return?</strong>
+   It blocks the calling thread until the underlying native process terminates, then returns the process's exit code (<code>int</code>) — conventionally <code>0</code> for success, non-zero for failure/error, though the exact meaning of non-zero codes is application-defined. An overloaded <code>waitFor(long timeout, TimeUnit unit)</code> returns <code>boolean</code> (whether the process exited within the timeout) without blocking indefinitely.</p>
+</li>
+<li>
+<p><strong>Why can a child hang if you don't read its stdout/stderr?</strong>
+   OS pipes connecting parent and child have a finite kernel buffer. If the child writes more output than fits in that buffer and nothing on the parent side is reading, the child's write() call blocks (the OS pipe is full), stalling the child indefinitely — and if the parent is meanwhile blocked in <code>waitFor()</code> waiting for the child to exit (which it never will, since it's stuck writing), you get a classic deadlock. The fix: always drain both <code>getInputStream()</code> and <code>getErrorStream()</code> concurrently (e.g. via dedicated reader threads or <code>redirectErrorStream(true)</code> plus one reader thread) before/while calling <code>waitFor()</code>.</p>
+</li>
+<li>
+<p><strong>How to merge stderr into stdout?</strong>
+   Call <code>processBuilder.redirectErrorStream(true)</code> before <code>start()</code> — this causes the child's stderr to be combined into the same stream as stdout, so <code>process.getErrorStream()</code> becomes effectively unused (an already-closed/empty stream) and only <code>process.getInputStream()</code> needs to be read, simplifying stream-draining logic to a single reader thread.</p>
+</li>
+<li>
+<p><strong>How to run a shell command with pipes using <code>ProcessBuilder</code>?</strong>
+   <code>ProcessBuilder</code> invokes a program directly with an argv array — it does not interpret shell syntax like <code>|</code>. To use shell features, explicitly invoke the shell: <code>new ProcessBuilder("sh", "-c", "ps aux | grep java")</code> on POSIX systems, or <code>new ProcessBuilder("cmd", "/c", "tasklist | findstr java")</code> on Windows — the shell itself parses and executes the pipeline; <code>ProcessBuilder</code> just launches the shell as the "program."</p>
+</li>
+<li>
+<p><strong>How does <code>Process.onExit()</code> integrate with <code>CompletableFuture</code> workflows?</strong>
+   <code>Process.onExit()</code> (Java 9+) returns a <code>CompletableFuture&lt;Process&gt;</code> that completes when the process terminates, backed internally by a JDK-managed process-reaper thread pool rather than requiring the caller to block a dedicated thread in <code>waitFor()</code>. This lets you compose process completion with <code>thenApply</code>/<code>thenCompose</code>/<code>exceptionally</code> chains, combine it with timeouts (<code>orTimeout</code>), or run multiple external processes concurrently and react to whichever completes, fitting naturally into asynchronous/reactive service code.</p>
+</li>
+<li>
+<p><strong>What is <code>ProcessHandle</code>, and how does it differ from <code>Process</code>?</strong>
+   <code>ProcessHandle</code> (Java 9+, JEP 102) is a lighter-weight, more introspective API for referring to <em>any</em> native process — not just ones started by the current JVM — providing access to PID, parent/children/descendant processes (<code>ProcessHandle.parent()</code>, <code>children()</code>), <code>ProcessHandle.Info</code> (command, arguments, start time, CPU time owner), and <code>ProcessHandle.current()</code>/<code>allProcesses()</code> for enumerating the whole system's process tree (subject to OS permissions). <code>Process</code> (the older API) is specific to child processes launched via <code>ProcessBuilder</code>/<code>Runtime.exec</code>, focused on I/O streams and exit codes rather than broad OS process introspection; <code>Process.toHandle()</code> bridges the two, and <code>Process</code> now extends functionality via default methods delegating to <code>ProcessHandle</code>.</p>
+</li>
+<li>
+<p><strong>How to implement a timeout with forced termination and cleanup?</strong>
+   Use <code>process.waitFor(timeout, TimeUnit)</code>; if it returns <code>false</code> (still running), call <code>process.destroyForcibly()</code> (sends a forceful kill, e.g. <code>SIGKILL</code> on POSIX) and then call <code>process.waitFor()</code> again (or check <code>isAlive()</code>) to confirm termination before proceeding, ensuring associated stream-reader threads are also interrupted/joined and their streams closed to avoid resource/thread leaks; <code>Process.onExit().orTimeout(...)</code> combined with <code>.exceptionally(ex -&gt; { process.destroyForcibly(); return process; })</code> offers an async-friendly equivalent.</p>
+</li>
+<li>
+<p><strong>Diagnose and fix a hanging external image-conversion process under load.</strong>
+    Likely causes: (a) the parent isn't draining the child's stdout/stderr concurrently, so under higher-resolution/larger images producing more log output, the OS pipe buffer fills and the child blocks — classic pipe-deadlock, worse under load because more data is produced; (b) no timeout is enforced, so a genuinely stuck/slow conversion accumulates indefinitely-blocked threads, exhausting a thread pool; (c) too many concurrent process launches overwhelm OS process/file-descriptor limits. Fix: always spawn dedicated stream-reader threads (or <code>redirectErrorStream(true)</code> + one reader, or redirect output to a file via <code>redirectOutput(File)</code> if the output isn't needed in-process) for every launched process; enforce a <code>waitFor(timeout, unit)</code> with <code>destroyForcibly()</code> fallback; and bound concurrency (e.g. a semaphore or fixed-size executor) to cap the number of simultaneously running child processes relative to available OS resources.</p>
+</li>
+</ol>
+<h3 id="code-examples">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.*</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.*</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ProcessBuilderDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="n">ProcessBuilder</span><span class="w"> </span><span class="n">pb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProcessBuilder</span><span class="p">(</span><span class="s">"sh"</span><span class="p">,</span><span class="w"> </span><span class="s">"-c"</span><span class="p">,</span><span class="w"> </span><span class="s">"echo start; sleep 1; echo done; ls /nonexistent"</span><span class="p">);</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="n">pb</span><span class="p">.</span><span class="na">redirectErrorStream</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"> </span><span class="c1">// merge stderr into stdout to simplify draining</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="n">Process</span><span class="w"> </span><span class="n">process</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pb</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="c1">// Drain output on a separate thread to avoid pipe-buffer deadlock</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">        </span><span class="n">ExecutorService</span><span class="w"> </span><span class="n">executor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Executors</span><span class="p">.</span><span class="na">newSingleThreadExecutor</span><span class="p">();</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="n">Future</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">outputFuture</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">executor</span><span class="p">.</span><span class="na">submit</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">            </span><span class="n">StringBuilder</span><span class="w"> </span><span class="n">sb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StringBuilder</span><span class="p">();</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">BufferedReader</span><span class="w"> </span><span class="n">reader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BufferedReader</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">InputStreamReader</span><span class="p">(</span><span class="n">process</span><span class="p">.</span><span class="na">getInputStream</span><span class="p">())))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">                </span><span class="n">String</span><span class="w"> </span><span class="n">line</span><span class="p">;</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">                </span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="n">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reader</span><span class="p">.</span><span class="na">readLine</span><span class="p">())</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">                    </span><span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">line</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">lineSeparator</span><span class="p">());</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">sb</span><span class="p">.</span><span class="na">toString</span><span class="p">();</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">        </span><span class="p">});</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">        </span><span class="kt">boolean</span><span class="w"> </span><span class="n">finished</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">process</span><span class="p">.</span><span class="na">waitFor</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">TimeUnit</span><span class="p">.</span><span class="na">SECONDS</span><span class="p">);</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">finished</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">            </span><span class="n">process</span><span class="p">.</span><span class="na">destroyForcibly</span><span class="p">();</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Exit code: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">process</span><span class="p">.</span><span class="na">exitValue</span><span class="p">());</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Output:\n"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">outputFuture</span><span class="p">.</span><span class="na">get</span><span class="p">());</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">        </span><span class="n">executor</span><span class="p">.</span><span class="na">shutdown</span><span class="p">();</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">        </span><span class="c1">// Modern async completion handling via Process.onExit()</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">        </span><span class="n">Process</span><span class="w"> </span><span class="n">asyncProcess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProcessBuilder</span><span class="p">(</span><span class="s">"sh"</span><span class="p">,</span><span class="w"> </span><span class="s">"-c"</span><span class="p">,</span><span class="w"> </span><span class="s">"sleep 1; echo async-done"</span><span class="p">).</span><span class="na">start</span><span class="p">();</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">        </span><span class="n">asyncProcess</span><span class="p">.</span><span class="na">onExit</span><span class="p">().</span><span class="na">thenAccept</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Async process exited with code "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="na">exitValue</span><span class="p">()));</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="system-properties-environment-variables">System Properties &amp; Environment Variables</h2>
+<h3 id="theory_1">Theory</h3>
+<p><strong>Core Concepts</strong>
+System properties (<code>System.getProperty</code>/<code>setProperty</code>, backed by a <code>Properties</code> object accessible via <code>System.getProperties()</code>) are JVM-scoped, mutable key/value configuration values — some set by the JVM itself at startup (<code>java.version</code>, <code>os.name</code>, <code>user.home</code>, <code>file.separator</code>, <code>java.class.path</code>), others supplied via <code>-Dkey=value</code> command-line flags or set programmatically at runtime. Environment variables (<code>System.getenv()</code>/<code>System.getenv(String)</code>) are OS-level key/value pairs inherited from the process that launched the JVM (shell, container runtime, CI system), exposed to Java as a <strong>read-only, immutable snapshot</strong> taken at JVM startup.</p>
+<p><strong>Internal Working</strong>
+System properties live in a <code>Properties</code> (a <code>Hashtable</code> subclass) instance held by the <code>System</code> class, mutable via <code>setProperty</code>/<code>clearProperty</code>, and consulted by many JDK/library facilities (e.g. <code>java.io.tmpdir</code>, <code>line.separator</code>, locale defaults, proxy settings) as global configuration. Environment variables are read once, at JVM startup, from the OS process environment block (<code>environ</code> on POSIX, or the Windows process environment) via native code, then copied into an internal unmodifiable <code>Map&lt;String,String&gt;</code> returned by <code>System.getenv()</code> — changes to the OS environment after JVM startup, or via other processes, are never reflected.</p>
+<p><strong>When to Use It</strong>
+- System properties: JVM/application-level configuration toggles set at launch (<code>-Dspring.profiles.active=prod</code>), feature flags read at startup, or standard JDK behavior queries (OS detection via <code>os.name</code>, temp directory via <code>java.io.tmpdir</code>).
+- Environment variables: configuration conventionally supplied by the deployment environment/container/orchestrator (e.g. <code>DATABASE_URL</code>, <code>PATH</code>, secrets injected by Kubernetes/Docker) — the "twelve-factor app" convention favors environment variables for environment-specific config over baked-in files.</p>
+<p><strong>Advantages</strong>
+- System properties are mutable at runtime (<code>System.setProperty</code>), useful for tests or dynamic reconfiguration; environment variables provide a standard, language-agnostic, container/orchestrator-friendly configuration channel shared across all processes in a deployment.
+- Both are simple, ubiquitous, zero-dependency mechanisms requiring no additional configuration-file parsing.</p>
+<p><strong>Limitations</strong>
+- System properties are JVM-global mutable state — like <code>Locale.setDefault()</code>, indiscriminate <code>System.setProperty()</code> calls from library code can cause action-at-a-distance bugs affecting unrelated code sharing the same JVM.
+- Environment variables are immutable once the JVM starts (<code>System.getenv()</code> reflects only the startup-time snapshot) — you cannot use <code>System.getenv()</code> to pick up environment changes made after the JVM launched, unlike system properties which can be changed live.
+- Environment variable names are conventionally uppercase-with-underscores and may differ in casing/availability across OSes (Windows environment variable names are case-insensitive; POSIX are case-sensitive) — code assuming a specific casing can be non-portable.
+- Storing secrets in either mechanism has security implications: system properties can appear in process listings (<code>ps -ef</code> may show <code>-D</code> flags) and are visible via <code>System.getProperties()</code>/heap dumps to any code in the same JVM; environment variables are visible to child processes and, on some systems, via <code>/proc/&lt;pid&gt;/environ</code>.</p>
+<h3 id="internal-working_1">Internal Working</h3>
+<p><strong>Step-by-Step Explanation</strong>
+1. At JVM startup, the launcher populates initial system properties (OS/JVM/user info) and applies any <code>-Dkey=value</code> command-line arguments into the shared <code>Properties</code> object.
+2. <code>System.getProperty("key")</code> performs a straightforward <code>Hashtable</code> lookup (thread-safe due to <code>Hashtable</code>'s internal synchronization) against this shared, mutable object; <code>System.setProperty("key", "value")</code> mutates it, visible immediately to any subsequent reader in any thread of the same JVM.
+3. Separately, at JVM startup, native launcher code reads the OS environment block once and populates an internal, unmodifiable map.
+4. <code>System.getenv()</code> returns this unmodifiable map directly (defensive copy is unnecessary since it's immutable); <code>System.getenv("KEY")</code> performs a lookup against it. No JVM API allows setting/mutating this map at runtime (there is no supported public <code>System.setenv</code>) — the correct way to change an environment variable's effective value is to set it before the JVM starts, or use a system property/config file instead for values needing runtime mutability.
+5. <code>ProcessBuilder.environment()</code> returns a mutable copy of the current process's environment (seeded from <code>System.getenv()</code>) that can be modified before <code>start()</code>, to control the environment passed specifically to a <em>child</em> process — but this doesn't affect the parent JVM's own <code>System.getenv()</code> view.</p>
+<p><strong>Memory Layout</strong>
+Not directly applicable to heap generation distinctions — both are simple, small, long-lived key/value maps typically promoted to the old generation early and rarely garbage collected; there's no special JVM memory region for them (they're ordinary heap objects held as static state within the <code>System</code> class).</p>
+<p><strong>Diagrams</strong>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>OS process environment (immutable snapshot at JVM start)
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>        │
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        ▼
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>System.getenv() ──► unmodifiable Map&lt;String,String&gt;  (never changes during JVM lifetime)
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>-Dkey=value CLI flags + JVM startup defaults + System.setProperty() calls
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        │
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>        ▼
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>System.getProperties() ──► mutable Properties (Hashtable)  (can change any time, any thread)
+</code></pre></div>
+<p><strong>JVM Behaviour</strong>
+Reading environment variables/system properties involves no bytecode-level special handling beyond ordinary field/map access; the initial population happens in native launcher code before <code>main()</code> runs, meaning by the time any Java code executes, both maps are already fully initialized and available.</p>
+<h3 id="interview-questions_1">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What is the difference between a system property and an environment variable in Java?
+2. How do you set a system property from the command line, and how do you read it in code?
+3. Can you modify environment variables from within a running Java program?</p>
+<p><strong>Intermediate</strong>
+4. Why might <code>System.getProperty("os.name")</code> be used for platform-specific logic, and what are its pitfalls?
+5. How would you pass a different environment to a child process launched via <code>ProcessBuilder</code> without affecting the parent JVM's environment?
+6. What security concerns exist around storing secrets in system properties vs. environment variables?</p>
+<p><strong>Advanced</strong>
+7. Why is <code>System.getenv()</code> immutable while <code>System.getProperties()</code> is mutable, and what design rationale explains this?
+8. How do containerized deployments (Docker/Kubernetes) typically leverage environment variables for configuration, and how should a Spring Boot-style application consume them?
+9. How would you design a configuration-loading strategy that layers system properties, environment variables, and config files with a defined precedence order?</p>
+<p><strong>Scenario-based</strong>
+10. A production incident occurs because a <code>-Dapp.env=staging</code> flag was accidentally included in a production JVM's startup script, causing it to load staging configuration. How would you redesign the configuration strategy to prevent this class of error?</p>
+<h3 id="detailed-answers_1">Detailed Answers</h3>
+<ol>
+<li>
+<p><strong>Difference between a system property and an environment variable?</strong>
+   System properties are JVM-internal, mutable key/value configuration (<code>System.getProperty</code>/<code>setProperty</code>), settable via <code>-Dkey=value</code> at launch or programmatically at runtime, visible only within that JVM instance. Environment variables are OS-level key/value pairs inherited from the parent process at JVM startup, exposed read-only via <code>System.getenv()</code>, and shared with (visible to) any child processes the JVM spawns, not just Java-specific configuration.</p>
+</li>
+<li>
+<p><strong>How to set a system property from the command line and read it in code?</strong>
+   <code>java -Dapp.mode=debug -jar app.jar</code>, then in code: <code>String mode = System.getProperty("app.mode", "default-value");</code> (the second argument is an optional default if unset).</p>
+</li>
+<li>
+<p><strong>Can you modify environment variables from within a running Java program?</strong>
+   Not officially/portably for the current JVM's own environment — there is no supported public API like <code>System.setenv()</code>. (Reflection-based hacks against internal <code>ProcessEnvironment</code> fields exist but are fragile, unsupported, and blocked or broken by module strong encapsulation in modern JDKs.) You <em>can</em>, however, control the environment passed to a <strong>child</strong> process by mutating the <code>Map</code> returned by <code>processBuilder.environment()</code> before calling <code>start()</code> — that only affects the child, not the parent JVM.</p>
+</li>
+<li>
+<p><strong>Why use <code>System.getProperty("os.name")</code> for platform logic, and pitfalls?</strong>
+   It's the standard, dependency-free way to branch OS-specific logic (e.g. choosing a path separator behavior, native library extension, or shell interpreter). Pitfalls: the returned string format is OS/version-dependent and not perfectly standardized (e.g. "Windows 10", "Windows 11", "Mac OS X", "Linux" — exact strings can change across JDK/OS versions), so code should use case-insensitive substring checks (<code>os.name</code>.toLowerCase().contains("win")<code>) rather than exact-string equality, and prefer higher-level abstractions (</code>java.nio.file.Path<code>,</code>File.separator`) over manual OS-name branching wherever possible.</p>
+</li>
+<li>
+<p><strong>How to pass a different environment to a child <code>ProcessBuilder</code> process without affecting the parent?</strong>
+   <code>Map&lt;String,String&gt; env = processBuilder.environment();</code> returns a mutable copy seeded from the current process's environment; call <code>env.put("KEY", "value")</code> or <code>env.remove("KEY")</code> on it before calling <code>processBuilder.start()</code>. This modifies only the environment map that will be handed to the <em>child</em> process; the parent JVM's own <code>System.getenv()</code> view remains completely unaffected since it's a separate, immutable snapshot.</p>
+</li>
+<li>
+<p><strong>Security concerns: secrets in system properties vs. environment variables?</strong>
+   Both can leak: system properties set via <code>-Dsecret=...</code> may appear in process listing tools (<code>ps -ef</code>/<code>ps aux</code> on some systems show full command lines) and are readable by any code in the same JVM via <code>System.getProperties()</code> (including third-party libraries, which could inadvertently log them, or via heap/thread dumps). Environment variables are visible to all child processes (which may log them or pass them further) and, on Linux, can be read by any process with sufficient permissions via <code>/proc/&lt;pid&gt;/environ</code>. Best practice: avoid passing secrets via either mechanism when possible — prefer dedicated secret managers (Vault, AWS Secrets Manager, Kubernetes Secrets mounted as files with restricted permissions) instead.</p>
+</li>
+<li>
+<p><strong>Why is <code>System.getenv()</code> immutable while <code>System.getProperties()</code> is mutable?</strong>
+   Environment variables model OS-level process state, which — following POSIX/OS semantics — is fixed for the lifetime of a process (a process cannot change its own effective environment as seen by an in-process API in a way that's meaningfully "live" across languages/tools); the JDK models this faithfully by taking one immutable snapshot at startup, avoiding the complexity/inconsistency of pretending to support live OS environment mutation that the underlying platform doesn't cleanly support. System properties, by contrast, are a purely JVM-internal construct with no OS-level equivalent constraint, so the JDK made them mutable to support runtime configuration flexibility (e.g. tests dynamically toggling behavior via <code>System.setProperty</code>).</p>
+</li>
+<li>
+<p><strong>How do containerized deployments use environment variables, and how should apps consume them?</strong>
+   Docker/Kubernetes conventionally inject configuration (database URLs, feature flags, secrets via mounted env from <code>Secret</code>/<code>ConfigMap</code> objects) as environment variables set on the container process, following twelve-factor-app principles so the same container image can run unmodified across environments (dev/staging/prod) by varying only its environment. Spring Boot-style applications consume these via a layered <code>Environment</code> abstraction (<code>@Value("${DATABASE_URL}")</code>, <code>application.yml</code> placeholders <code>${DATABASE_URL}</code>, or <code>Environment.getProperty()</code>), which transparently checks environment variables (with relaxed binding, e.g. <code>DATABASE_URL</code> maps to <code>database.url</code>) alongside system properties and config files, giving a unified configuration model with defined precedence.</p>
+</li>
+<li>
+<p><strong>How to design a layered config-loading strategy with defined precedence?</strong>
+   A common, well-tested precedence (highest to lowest): (1) command-line arguments / explicit <code>-D</code> system properties (for ad-hoc overrides), (2) environment variables (deployment-specific, container-injected), (3) profile-specific config files (<code>application-prod.yml</code>), (4) base config file (<code>application.yml</code>), (5) hardcoded defaults in code. Implement by loading each layer into a <code>Map</code>/<code>Properties</code>-like structure and merging with later (lower-precedence) layers only filling in keys not already set by an earlier (higher-precedence) layer — frameworks like Spring's <code>Environment</code>/<code>PropertySource</code> chain or libraries like Typesafe Config implement exactly this pattern; document the precedence clearly so operators know which layer "wins" for a given key.</p>
+</li>
+<li>
+<p><strong>Redesign to prevent accidental <code>-Dapp.env=staging</code> reaching production.</strong>
+    Root cause: environment-selection was controlled by an easily-copy-pasted, error-prone command-line flag with no validation guardrail. Redesign options: (a) derive the environment from a more "sticky", deployment-pipeline-controlled source that's harder to accidentally carry over — e.g. an environment variable injected exclusively by the deployment orchestrator/CI pipeline per environment (not manually maintained scripts), or better, from infrastructure metadata (cloud instance tags, Kubernetes namespace) rather than a copy-pasteable flag; (b) add a startup validation/fail-fast check that cross-verifies the declared environment against an independent signal (e.g. hostname pattern, a required-only-in-prod secret) and refuses to start (or loudly alarms) on mismatch; (c) treat environment-selection configuration as infrastructure-as-code (version-controlled, reviewed) rather than manually edited startup scripts, reducing the chance of stale/copy-pasted flags surviving a promotion to production.</p>
+</li>
+</ol>
+<h3 id="code-examples_1">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.*</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SystemPropertiesEnvDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="c1">// Reading standard JVM-provided system properties</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Java version: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">"java.version"</span><span class="p">));</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"OS name: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">"os.name"</span><span class="p">));</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Temp dir: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">"java.io.tmpdir"</span><span class="p">));</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="c1">// Custom system property with a fallback default, mutable at runtime</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">appMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">"app.mode"</span><span class="p">,</span><span class="w"> </span><span class="s">"production"</span><span class="p">);</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"App mode: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">appMode</span><span class="p">);</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">setProperty</span><span class="p">(</span><span class="s">"app.mode"</span><span class="p">,</span><span class="w"> </span><span class="s">"debug"</span><span class="p">);</span><span class="w"> </span><span class="c1">// visible immediately to any subsequent reader in this JVM</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"App mode after override: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">getProperty</span><span class="p">(</span><span class="s">"app.mode"</span><span class="p">));</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">        </span><span class="c1">// Environment variables: read-only snapshot from JVM startup</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">        </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">getenv</span><span class="p">();</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">env</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">"PATH"</span><span class="p">);</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"PATH starts with: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">path</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">min</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="na">length</span><span class="p">()))</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">"N/A"</span><span class="p">));</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">        </span><span class="c1">// Passing a customized environment to a CHILD process only (parent's System.getenv() is untouched)</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">        </span><span class="n">ProcessBuilder</span><span class="w"> </span><span class="n">pb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProcessBuilder</span><span class="p">(</span><span class="s">"sh"</span><span class="p">,</span><span class="w"> </span><span class="s">"-c"</span><span class="p">,</span><span class="w"> </span><span class="s">"echo CUSTOM_VAR=$CUSTOM_VAR"</span><span class="p">);</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">        </span><span class="n">pb</span><span class="p">.</span><span class="na">environment</span><span class="p">().</span><span class="na">put</span><span class="p">(</span><span class="s">"CUSTOM_VAR"</span><span class="p">,</span><span class="w"> </span><span class="s">"child-only-value"</span><span class="p">);</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">        </span><span class="n">Process</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pb</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">        </span><span class="n">p</span><span class="p">.</span><span class="na">getInputStream</span><span class="p">().</span><span class="na">transferTo</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">);</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">        </span><span class="n">p</span><span class="p">.</span><span class="na">waitFor</span><span class="p">();</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="runtime-class"><code>Runtime</code> Class</h2>
+<h3 id="theory_2">Theory</h3>
+<p><strong>Core Concepts</strong>
+<code>java.lang.Runtime</code> is a singleton (one instance per JVM, obtained via <code>Runtime.getRuntime()</code>) providing access to JVM-level operational facilities: memory statistics (<code>totalMemory</code>, <code>freeMemory</code>, <code>maxMemory</code>), garbage collection hints (<code>gc()</code>), shutdown hook registration (<code>addShutdownHook</code>), available processor count (<code>availableProcessors()</code>), and legacy process launching (<code>exec(...)</code>, superseded by <code>ProcessBuilder</code>). It represents the "environment in which the application is running" as opposed to <code>System</code>, which is a related facade offering similar and additional facilities (many <code>System</code> methods actually delegate to <code>Runtime</code> internally, e.g. <code>System.gc()</code> calls <code>Runtime.getRuntime().gc()</code>).</p>
+<p><strong>Internal Working</strong>
+<code>Runtime</code> is implemented as a classic singleton with a private constructor and a static <code>currentRuntime</code> field returned by <code>getRuntime()</code>; its memory-related methods query the JVM's internal heap management subsystem (the active garbage collector's memory pools) to report current/max/free memory, while <code>addShutdownHook</code>/<code>removeShutdownHook</code> register <code>Thread</code> objects with an internal JVM shutdown-sequence list that is invoked (in unspecified order, potentially concurrently) when the JVM begins an orderly shutdown.</p>
+<p><strong>When to Use It</strong>
+- Registering cleanup logic (closing resources, flushing logs, releasing locks) to run on JVM shutdown via <code>addShutdownHook</code>.
+- Querying available processors (<code>availableProcessors()</code>) to size thread pools appropriately for the host machine.
+- Reporting heap memory diagnostics (<code>totalMemory</code>/<code>freeMemory</code>/<code>maxMemory</code>) for monitoring/health-check endpoints.
+- Legacy code still calling <code>Runtime.getRuntime().exec(...)</code> (new code should prefer <code>ProcessBuilder</code>).</p>
+<p><strong>Advantages</strong>
+- Provides direct, dependency-free access to JVM-level operational information without needing external monitoring libraries for basic diagnostics.
+- Shutdown hooks provide a reliable (though not 100% guaranteed under all termination scenarios) mechanism for graceful cleanup on normal JVM exit or external termination signals (e.g. <code>SIGTERM</code>, <code>Ctrl+C</code>).</p>
+<p><strong>Limitations</strong>
+- <code>Runtime.gc()</code> is only a <em>hint</em> to the JVM to consider running garbage collection — the JVM is free to ignore it entirely (unlike <code>System.gc()</code>'s conceptually identical, equally unreliable behavior); relying on it for deterministic memory reclamation is a well-known anti-pattern.
+- Shutdown hooks are <strong>not guaranteed to run</strong> if the JVM is killed abruptly (<code>kill -9</code>/<code>SIGKILL</code>, power loss, <code>Runtime.halt()</code>), and hooks that throw exceptions or run indefinitely can delay or complicate shutdown; multiple hooks run concurrently with no guaranteed ordering, so they must not depend on each other's side effects.
+- <code>Runtime.exec(...)</code> overloads are largely superseded by <code>ProcessBuilder</code> and are considered legacy — string-command overloads are especially error-prone (naive whitespace-based argument splitting).
+- Memory figures (<code>totalMemory</code>/<code>freeMemory</code>) reflect the JVM's currently <em>allocated</em> heap from the OS, not necessarily the true "used" application memory, and can be misleading without understanding generational GC behavior (e.g. <code>freeMemory</code> can look artificially low right before a GC reclaims a lot of garbage).</p>
+<h3 id="internal-working_2">Internal Working</h3>
+<p><strong>Step-by-Step Explanation</strong>
+1. <code>Runtime.getRuntime()</code> returns the single per-JVM <code>Runtime</code> instance (constructed once during JVM bootstrap).
+2. <code>runtime.availableProcessors()</code> queries the OS/JVM for the number of processors available to the JVM (which can change at runtime in containerized environments with dynamic CPU allocation — hence why this method's value should not be cached forever in long-running containerized applications).
+3. <code>runtime.totalMemory()</code>/<code>freeMemory()</code>/<code>maxMemory()</code> consult the active garbage collector's heap accounting: <code>totalMemory()</code> is the heap currently committed from the OS, <code>maxMemory()</code> is the configured upper bound (<code>-Xmx</code>), and <code>freeMemory()</code> is the portion of <code>totalMemory()</code> not currently occupied by live+garbage objects (an approximate, GC-cycle-dependent figure).
+4. <code>runtime.addShutdownHook(thread)</code> registers a <code>Thread</code> object (not yet started) into an internal JVM-managed list; when JVM shutdown begins (via normal <code>main</code> completion, explicit <code>System.exit()</code>, or external interrupt signal handling), the JVM starts all registered hook threads (concurrently, unspecified order), then waits for them all to finish (unless <code>Runtime.halt()</code> is called, which skips hooks entirely) before actually terminating the process.
+5. <code>runtime.gc()</code> invokes the JVM's garbage collector as a suggestion — the actual GC implementation decides whether/when to honor this (modern low-pause collectors like G1/ZGC/Shenandoah may choose to ignore or heavily deprioritize explicit <code>gc()</code> calls).</p>
+<p><strong>Memory Layout</strong>
+<code>Runtime</code>'s memory-reporting methods directly reflect heap layout: <code>maxMemory()</code> corresponds to the <code>-Xmx</code>-bounded total heap ceiling (young + old generation combined, under the default generational collectors); <code>totalMemory()</code> is the currently committed portion of that ceiling (may grow as the heap expands toward <code>-Xmx</code>); <code>freeMemory()</code> is unused space within the currently committed region. Metaspace (class metadata) is tracked separately and is <strong>not</strong> reflected in these heap-focused figures — <code>java.lang.management.MemoryMXBean</code>/<code>MemoryPoolMXBean</code> provide more granular, generation-aware statistics (including Metaspace) than <code>Runtime</code>'s coarse-grained methods.</p>
+<p><strong>Diagrams</strong>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>                     Runtime.getRuntime()  (singleton)
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>                              │
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>       ┌──────────────────────┼───────────────────────┐
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>       ▼                      ▼                       ▼
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a> availableProcessors()   totalMemory()/freeMemory()   addShutdownHook(thread)
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>       │                 /maxMemory()                     │
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>       ▼                      ▼                       ▼
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a> sized thread pools      heap diagnostics          registered in JVM shutdown
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>                                                      hook list
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>                                                          │
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>                                             JVM shutdown begins (normal exit,
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>                                             System.exit(), or SIGTERM handling)
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>                                                          │
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>                                                          ▼
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>                                          all hooks started concurrently, JVM
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>                                          waits for all to finish, then exits
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>                                          (skipped entirely by Runtime.halt())
+</code></pre></div>
+<p><strong>JVM Behaviour</strong>
+Shutdown hooks run as real JVM threads participating in the normal shutdown sequence (finalizers, if enabled, and hook threads); if a hook thread hangs indefinitely, JVM shutdown can hang indefinitely too (there's no default hook timeout), which is a common production gotcha — hooks should have bounded, fast cleanup logic or enforce their own internal timeouts. <code>Runtime.gc()</code> calls flow into whatever GC algorithm is configured (Serial/Parallel/G1/ZGC/Shenandoah), each of which independently decides whether to actually perform a full collection in response.</p>
+<h3 id="interview-questions_2">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. How do you obtain a <code>Runtime</code> instance, and why is it a singleton?
+2. What is the difference between <code>Runtime.totalMemory()</code>, <code>freeMemory()</code>, and <code>maxMemory()</code>?
+3. What does <code>Runtime.getRuntime().gc()</code> actually guarantee?</p>
+<p><strong>Intermediate</strong>
+4. How do you register a JVM shutdown hook, and what are its limitations?
+5. Why shouldn't you cache the result of <code>availableProcessors()</code> permanently in a containerized environment?
+6. What is the relationship between <code>System.gc()</code>/<code>System.exit()</code> and their <code>Runtime</code> equivalents?</p>
+<p><strong>Advanced</strong>
+7. Under what circumstances will registered shutdown hooks NOT run?
+8. How would you use <code>MemoryMXBean</code>/<code>MemoryPoolMXBean</code> instead of <code>Runtime</code> for more precise memory diagnostics, and why might you prefer them?
+9. What are the risks of a slow or hanging shutdown hook in a production service, and how would you mitigate them?</p>
+<p><strong>Scenario-based</strong>
+10. Your Kubernetes-deployed service needs to flush an in-memory metrics buffer and close a database connection pool gracefully on pod termination (<code>SIGTERM</code>), within Kubernetes's default grace period. Design the shutdown handling using <code>Runtime</code>.</p>
+<h3 id="detailed-answers_2">Detailed Answers</h3>
+<ol>
+<li>
+<p><strong>How to obtain a <code>Runtime</code> instance, and why singleton?</strong>
+   Via the static factory <code>Runtime.getRuntime()</code>; there is exactly one <code>Runtime</code> object per JVM because it represents JVM-wide operational state (heap configuration, shutdown sequence, processor count) that is inherently a property of the single running JVM process, not something meaningfully instantiable per-object — a private constructor prevents external instantiation.</p>
+</li>
+<li>
+<p><strong>Difference between <code>totalMemory()</code>, <code>freeMemory()</code>, and <code>maxMemory()</code>?</strong>
+   <code>maxMemory()</code> is the maximum heap size the JVM is configured to grow to (<code>-Xmx</code>, or a platform default). <code>totalMemory()</code> is the heap size currently committed/allocated from the OS (can be less than <code>maxMemory()</code> and grows toward it as needed). <code>freeMemory()</code> is the amount of the currently committed (<code>totalMemory()</code>) heap not occupied by live or as-yet-uncollected garbage objects — it's an approximate figure that changes significantly around GC cycles.</p>
+</li>
+<li>
+<p><strong>What does <code>Runtime.getRuntime().gc()</code> actually guarantee?</strong>
+   Nothing guaranteed — it is merely a hint/suggestion to the JVM that now might be a good time to perform garbage collection; the JVM specification explicitly permits the implementation to do nothing in response. Modern low-pause collectors often deprioritize or reinterpret explicit <code>gc()</code> requests. It should never be relied upon for deterministic resource reclamation (e.g. don't call it expecting finalizers/cleaners to run predictably).</p>
+</li>
+<li>
+<p><strong>How to register a shutdown hook, and its limitations?</strong>
+   <code>Runtime.getRuntime().addShutdownHook(new Thread(() -&gt; { /* cleanup */ }));</code> — pass an unstarted <code>Thread</code>. Limitations: hooks are not guaranteed to run if the JVM is killed forcibly (<code>kill -9</code>, <code>Runtime.halt()</code>, abrupt power loss); multiple hooks execute concurrently with no defined ordering, so hooks must be independent and not assume another hook has/hasn't run yet; hooks that throw uncaught exceptions don't stop other hooks but the exception is essentially swallowed (printed via default uncaught exception handling); a slow/hanging hook delays JVM termination indefinitely since there's no built-in timeout.</p>
+</li>
+<li>
+<p><strong>Why not permanently cache <code>availableProcessors()</code> in containers?</strong>
+   In containerized/cloud environments, CPU allocation (cgroup CPU quota/shares) can change dynamically (e.g. vertical autoscaling, Kubernetes resizing), and <code>availableProcessors()</code> reflects the JVM's current view of available CPUs, which the JDK has, since Java 10ish improvements to container-awareness, made responsive to cgroup limits rather than only host-level core counts — code that caches this value once at startup into a static field could end up sizing thread pools incorrectly if the container's CPU allocation is later changed without a JVM restart.</p>
+</li>
+<li>
+<p><strong>Relationship between <code>System.gc()</code>/<code>System.exit()</code> and <code>Runtime</code> equivalents?</strong>
+   <code>System.gc()</code> is simply a convenience delegation to <code>Runtime.getRuntime().gc()</code>. <code>System.exit(status)</code> terminates the JVM by (internally) invoking the shutdown sequence — running all registered shutdown hooks, then (if security manager/shutdown state permits) actually halting — conceptually related to, though not a direct passthrough of, <code>Runtime.exit(status)</code> (in fact, <code>System.exit</code> calls <code>Runtime.getRuntime().exit(status)</code> internally); <code>Runtime.halt(status)</code> is a more abrupt variant that skips shutdown hooks and finalization entirely.</p>
+</li>
+<li>
+<p><strong>Under what circumstances will registered shutdown hooks NOT run?</strong>
+   When the JVM is terminated abruptly without going through its normal shutdown sequence: <code>kill -9</code>/<code>SIGKILL</code> (cannot be intercepted by any process), <code>Runtime.getRuntime().halt(status)</code> (explicitly bypasses hooks), abrupt host power loss/crash, or a fatal JVM crash (native segfault, <code>OutOfMemoryError</code> in some catastrophic native-level cases) that prevents orderly shutdown. Hooks <em>do</em> generally run for normal <code>main()</code> completion, explicit <code>System.exit()</code>, and typically for <code>SIGTERM</code>/<code>SIGINT</code> (<code>Ctrl+C</code>) on POSIX systems, since the JVM installs signal handlers for those that trigger orderly shutdown.</p>
+</li>
+<li>
+<p><strong>Why prefer <code>MemoryMXBean</code>/<code>MemoryPoolMXBean</code> over <code>Runtime</code> for diagnostics?</strong>
+   <code>Runtime</code>'s memory methods give only coarse, whole-heap figures (total/free/max), with no visibility into individual generations (young/old) or Metaspace/non-heap pools. <code>ManagementFactory.getMemoryMXBean()</code> exposes separate <code>MemoryUsage</code> for heap vs. non-heap memory, and <code>getMemoryPoolMXBeans()</code> gives per-pool detail (Eden, Survivor, Old Gen, Metaspace, Code Cache, etc.), including peak usage and (for many pools) usage thresholds/notifications — essential for building accurate monitoring/alerting rather than <code>Runtime</code>'s single aggregate heap snapshot.</p>
+</li>
+<li>
+<p><strong>Risks of a slow/hanging shutdown hook, and mitigation?</strong>
+   A hanging hook can delay or entirely block JVM termination (no default timeout exists), which in orchestrated environments (Kubernetes, systemd) risks the platform's own grace period expiring and issuing a forceful <code>SIGKILL</code>, which then skips any <em>remaining</em> unfinished cleanup (including other hooks) entirely — potentially worse than not having a graceful hook at all if it consumes most of the grace period without completing meaningful work. Mitigation: keep hook logic fast and bounded; wrap cleanup steps in their own timeouts (e.g. <code>ExecutorService.awaitTermination(timeout, unit)</code>); avoid hooks that depend on other threads/hooks; log clearly at hook start/end for observability; and size the platform's grace period (e.g. Kubernetes <code>terminationGracePeriodSeconds</code>) generously enough for the hook's expected worst-case duration.</p>
+</li>
+<li>
+<p><strong>Design graceful shutdown for a Kubernetes pod handling <code>SIGTERM</code> within the grace period.</strong>
+    Register a single shutdown hook via <code>Runtime.getRuntime().addShutdownHook(new Thread(this::gracefulShutdown))</code> where <code>gracefulShutdown()</code>: (a) flips an <code>AtomicBoolean shuttingDown</code> flag so health/readiness probes immediately start reporting "not ready" (causing Kubernetes to stop routing new traffic to the pod, if not already draining); (b) flushes the in-memory metrics buffer synchronously with a bounded timeout; (c) calls the database connection pool's <code>close()</code>/<code>shutdown()</code> method, again with a bounded timeout via an <code>ExecutorService.awaitTermination</code>; (d) logs completion. The whole hook's total expected duration should be comfortably under the Kubernetes pod's <code>terminationGracePeriodSeconds</code> (increase that value if the cleanup genuinely needs more time), and each step should have its own internal timeout so a single slow step (e.g. a stuck DB connection close) can't consume the entire grace period and risk a forceful <code>SIGKILL</code> truncating the remaining cleanup steps.</p>
+</li>
+</ol>
+<h3 id="code-examples_2">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.*</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.atomic.AtomicBoolean</span><span class="p">;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RuntimeDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">AtomicBoolean</span><span class="w"> </span><span class="n">shuttingDown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AtomicBoolean</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="n">Runtime</span><span class="w"> </span><span class="n">runtime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Runtime</span><span class="p">.</span><span class="na">getRuntime</span><span class="p">();</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">        </span><span class="c1">// Size a thread pool based on available processors (re-checked, not permanently cached across long uptimes)</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">workers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">max</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">runtime</span><span class="p">.</span><span class="na">availableProcessors</span><span class="p">());</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">        </span><span class="n">ExecutorService</span><span class="w"> </span><span class="n">pool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Executors</span><span class="p">.</span><span class="na">newFixedThreadPool</span><span class="p">(</span><span class="n">workers</span><span class="p">);</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Sized thread pool with "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">workers</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" workers"</span><span class="p">);</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">        </span><span class="c1">// Basic heap diagnostics</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">"Max: %dMB, Total: %dMB, Free: %dMB%n"</span><span class="p">,</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">                </span><span class="n">runtime</span><span class="p">.</span><span class="na">maxMemory</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">1024</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1024</span><span class="p">),</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">                </span><span class="n">runtime</span><span class="p">.</span><span class="na">totalMemory</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">1024</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1024</span><span class="p">),</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">                </span><span class="n">runtime</span><span class="p">.</span><span class="na">freeMemory</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">1024</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1024</span><span class="p">));</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">        </span><span class="c1">// Graceful shutdown hook: flip a flag, drain work, close resources within a bounded timeout</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">        </span><span class="n">runtime</span><span class="p">.</span><span class="na">addShutdownHook</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Thread</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">            </span><span class="n">shuttingDown</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Shutdown hook: draining in-flight work..."</span><span class="p">);</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">            </span><span class="n">pool</span><span class="p">.</span><span class="na">shutdown</span><span class="p">();</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">pool</span><span class="p">.</span><span class="na">awaitTermination</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">TimeUnit</span><span class="p">.</span><span class="na">SECONDS</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">                    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Timed out waiting for tasks; forcing shutdown"</span><span class="p">);</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">                    </span><span class="n">pool</span><span class="p">.</span><span class="na">shutdownNow</span><span class="p">();</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="w">                </span><span class="n">Thread</span><span class="p">.</span><span class="na">currentThread</span><span class="p">().</span><span class="na">interrupt</span><span class="p">();</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="w">                </span><span class="n">pool</span><span class="p">.</span><span class="na">shutdownNow</span><span class="p">();</span>
+<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Shutdown hook: cleanup complete"</span><span class="p">);</span>
+<a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a><span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="s">"graceful-shutdown-hook"</span><span class="p">));</span>
+<a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a>
+<a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a><span class="w">        </span><span class="n">pool</span><span class="p">.</span><span class="na">submit</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a><span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">shuttingDown</span><span class="p">.</span><span class="na">get</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a><span class="w">                </span><span class="c1">// simulate periodic background work</span>
+<a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a><span class="w">                </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">ignored</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a><span class="w">        </span><span class="p">});</span>
+<a id="__codelineno-5-44" name="__codelineno-5-44" href="#__codelineno-5-44"></a>
+<a id="__codelineno-5-45" name="__codelineno-5-45" href="#__codelineno-5-45"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Application running. Press Ctrl+C to trigger graceful shutdown."</span><span class="p">);</span>
+<a id="__codelineno-5-46" name="__codelineno-5-46" href="#__codelineno-5-46"></a><span class="w">        </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"> </span><span class="c1">// demo: exit shortly after start instead of running forever</span>
+<a id="__codelineno-5-47" name="__codelineno-5-47" href="#__codelineno-5-47"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-48" name="__codelineno-5-48" href="#__codelineno-5-48"></a><span class="p">}</span>
+</code></pre></div></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2025 <a href="https://github.com/abhishekghoshh"  target="_blank" rel="noopener">Abhishek Ghosh</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/abhishekghoshh" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://x.com/abhishek_ghoshh" target="_blank" rel="noopener" title="x.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/abhishek-ghosh-220679132/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

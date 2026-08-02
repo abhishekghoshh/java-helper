@@ -1,0 +1,2799 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abhishekghoshh.github.io/java-helper/21-memory-management/">
+      
+      
+        <link rel="prev" href="../20-class-loader/">
+      
+      
+        <link rel="next" href="../22-garbage-collection/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Memory Management - Java Helper</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Memory Management - Java Helper" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/21-memory-management.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://abhishekghoshh.github.io/java-helper/21-memory-management/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Memory Management - Java Helper" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/21-memory-management.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#21-memory-management" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Java Helper" class="md-header__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Java Helper
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Memory Management
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../1-java-language-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Java Language Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../2-object-oriented-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Object-Oriented Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../3-classes/" class="md-tabs__link">
+        
+  
+    
+  
+  Classes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../4-constructors/" class="md-tabs__link">
+        
+  
+    
+  
+  Constructors
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-access-modifiers/" class="md-tabs__link">
+        
+  
+    
+  
+  Access Modifiers
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../6-packages/" class="md-tabs__link">
+        
+  
+    
+  
+  Packages
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../7-strings/" class="md-tabs__link">
+        
+  
+    
+  
+  Strings
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../8-arrays/" class="md-tabs__link">
+        
+  
+    
+  
+  Arrays
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../9-collections-framework/" class="md-tabs__link">
+        
+  
+    
+  
+  Collections Framework
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../10-generics/" class="md-tabs__link">
+        
+  
+    
+  
+  Generics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../11-exception-handling/" class="md-tabs__link">
+        
+  
+    
+  
+  Exception Handling
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../12-file-io/" class="md-tabs__link">
+        
+  
+    
+  
+  File I/O
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../13-serialization/" class="md-tabs__link">
+        
+  
+    
+  
+  Serialization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../14-reflection/" class="md-tabs__link">
+        
+  
+    
+  
+  Reflection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../15-annotations/" class="md-tabs__link">
+        
+  
+    
+  
+  Annotations
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../16-functional-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Functional Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../17-streams-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Streams API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../18-date-and-time-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Date and Time API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../19-jvm-internals/" class="md-tabs__link">
+        
+  
+    
+  
+  JVM Internals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../20-class-loader/" class="md-tabs__link">
+        
+  
+    
+  
+  Class Loader
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Memory Management
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../22-garbage-collection/" class="md-tabs__link">
+        
+  
+    
+  
+  Garbage Collection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../23-concurrency/" class="md-tabs__link">
+        
+  
+    
+  
+  Concurrency
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../24-networking/" class="md-tabs__link">
+        
+  
+    
+  
+  Networking
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../25-design-patterns-in-java/" class="md-tabs__link">
+        
+  
+    
+  
+  Design Patterns in Java
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../26-modern-java-language-features/" class="md-tabs__link">
+        
+  
+    
+  
+  Modern Java Language Features
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../27-regular-expressions/" class="md-tabs__link">
+        
+  
+    
+  
+  Regular Expressions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../28-internationalization-and-localization/" class="md-tabs__link">
+        
+  
+    
+  
+  Internationalization & Localization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../29-logging/" class="md-tabs__link">
+        
+  
+    
+  
+  Logging
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../30-security-basics/" class="md-tabs__link">
+        
+  
+    
+  
+  Security Basics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-tabs__link">
+        
+  
+    
+  
+  Native & Foreign Interoperability
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../32-process-and-system-apis/" class="md-tabs__link">
+        
+  
+    
+  
+  Process & System APIs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../33-testing-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Testing Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Java Helper" class="md-nav__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Java Helper
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-java-language-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java Language Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-object-oriented-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-classes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Classes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-constructors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constructors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-access-modifiers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access Modifiers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Packages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-strings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Strings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-collections-framework/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collections Framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-generics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-exception-handling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exception Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-file-io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File I/O
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-serialization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serialization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-reflection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reflection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-annotations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-functional-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Functional Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-streams-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Streams API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-date-and-time-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Date and Time API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-jvm-internals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JVM Internals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-class-loader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Class Loader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Memory Management
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Memory Management
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#heap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heap
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Heap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#young-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Young Generation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Young Generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eden" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eden
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eden">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#survivor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Survivor
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Survivor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#old-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Old Generation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Old Generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metaspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metaspace
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metaspace">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#direct-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Direct Memory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Direct Memory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#native-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Native Memory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Native Memory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memory-leaks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Leaks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Memory Leaks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memory-profiling-tools-new" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Profiling Tools (new)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Memory Profiling Tools (new)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Additional Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#articles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Articles
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-garbage-collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Garbage Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-concurrency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concurrency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-networking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-design-patterns-in-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Patterns in Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-modern-java-language-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modern Java Language Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-regular-expressions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Regular Expressions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-internationalization-and-localization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internationalization & Localization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-logging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30-security-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Native & Foreign Interoperability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32-process-and-system-apis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process & System APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33-testing-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div><h1 id="21-memory-management">21. Memory Management</h1>
+<h2 id="heap">Heap</h2>
+<h3 id="young-generation">Young Generation</h3>
+<h4 id="eden">Eden</h4>
+<h5 id="theory">Theory</h5>
+<ul>
+<li><strong>Core Concepts</strong>: Eden is the region of the Young Generation where nearly all new objects are initially allocated (via bump-pointer/TLAB allocation). It is the "nursery" - most objects die here without ever being promoted, exploiting the generational hypothesis that most objects are short-lived.</li>
+<li><strong>Internal Working</strong>: Threads allocate into their own Thread-Local Allocation Buffer (TLAB) carved out of Eden, avoiding synchronization on the common allocation pointer for the common case; when Eden fills, a Minor GC (copying collector) runs.</li>
+<li><strong>When to Use It</strong>: Not a user-configurable "use" per se - it's an automatic JVM memory region, but its size can be tuned (<code>-Xmn</code>, <code>-XX:NewRatio</code>, <code>-XX:SurvivorRatio</code>) to influence Minor GC frequency and pause characteristics.</li>
+<li><strong>Advantages</strong>: Extremely fast allocation (simple pointer bump within a TLAB, no free-list search), and because most objects die young, Minor GCs that only scan live objects in a small region are cheap relative to a full heap scan.</li>
+<li><strong>Limitations</strong>: Too-small an Eden causes frequent Minor GCs (throughput overhead); too-large an Eden increases the pause duration of each Minor GC (more live data to copy, though still typically far less than Old Gen) and delays promotion signal timing.</li>
+</ul>
+<h5 id="internal-working">Internal Working</h5>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: (1) <code>new Object()</code> allocates from the current thread's TLAB inside Eden via a simple pointer-bump (<code>top += size</code>). (2) If the TLAB is exhausted, the thread requests a new TLAB from Eden (still just a pointer bump at the Eden level) or, if Eden itself is full, triggers a Minor GC. (3) During Minor GC (typically a copying/Scavenge collector), all objects in Eden are scanned from GC roots; live objects are copied to a Survivor space (or directly promoted to Old Gen if surviving objects exceed the Survivor's capacity or the object is deemed too large); dead objects are simply left behind - Eden is then wiped/reset by moving the allocation pointer back to the start, no per-object free necessary. (4) This copy step also implicitly compacts memory, eliminating fragmentation in Eden/Survivor.</li>
+<li><strong>Memory Layout</strong>: Eden is a contiguous sub-region of the Young Generation on the heap, typically the largest fraction (default 8x each Survivor's size, i.e. <code>SurvivorRatio=8</code>), subdivided further at runtime into per-thread TLABs.</li>
+<li><strong>Diagrams</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Young Generation
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>+------------------------------+----------+----------+
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>|             Eden             |  S0      |   S1     |
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>| [TLAB1][TLAB2][TLAB3]...     | (empty)  | (empty)  |
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>+------------------------------+----------+----------+
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>      new objects allocated here via bump pointer
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong>: Minor GC pauses are "stop-the-world" for the application threads involved (though modern collectors like G1/ZGC/Shenandoah minimize this further); the JIT compiler is aware of TLAB allocation and inlines the fast-path bump-pointer allocation directly into compiled code, falling back to a slow-path VM call only when a new TLAB/GC is needed.</li>
+</ul>
+<h5 id="interview-questions">Interview Questions</h5>
+<p><strong>Basic</strong>
+1. Where are new objects allocated in the JVM heap by default?
+2. What is a TLAB and why does it exist?</p>
+<p><strong>Intermediate</strong>
+3. What triggers a Minor GC, and what happens to objects that survive it?
+4. How does Eden's size affect GC pause frequency versus pause duration?</p>
+<p><strong>Advanced</strong>
+5. Why is bump-pointer allocation in Eden so much faster than a general-purpose heap allocator's free-list search?</p>
+<p><strong>Scenario-based</strong>
+6. Your application shows very frequent, short Minor GC pauses. What Eden-related tuning would you consider, and what trade-off does it introduce?</p>
+<h5 id="detailed-answers">Detailed Answers</h5>
+<ol>
+<li>By default, nearly all new objects are allocated in Eden, the largest sub-region of the Young Generation, using fast bump-pointer allocation (with escape-analysis-based stack/scalar allocation as a further JIT optimization for objects proven not to escape a method).</li>
+<li>A Thread-Local Allocation Buffer (TLAB) is a chunk of Eden reserved exclusively for one thread's allocations. Because each thread has its own TLAB, allocating an object within it requires no synchronization with other threads (just a local pointer bump), eliminating a major contention point that would otherwise exist if all threads shared one global Eden allocation pointer.</li>
+<li>A Minor GC is triggered when Eden fills up (a new allocation, or new TLAB request, cannot be satisfied). The collector traces live objects reachable from GC roots within the Young Generation; objects that survive are copied into a Survivor space (their age counter incremented), and objects that have survived enough Minor GCs (reaching the tenuring threshold) or don't fit in Survivor are promoted directly to the Old Generation. Dead objects in Eden are not individually freed - Eden is simply reset since nothing points to them anymore.</li>
+<li>A smaller Eden fills up faster, causing more frequent but typically shorter Minor GCs (less live data to trace/copy each time); a larger Eden fills up less often, causing fewer but potentially longer Minor GCs (more objects may be live at collection time, more copying work). Tuning is a throughput-vs-latency trade-off: larger Eden generally improves throughput (fewer GC events, more allocation between them) at the cost of occasionally longer individual pauses.</li>
+<li>A general-purpose allocator must search a free list for a suitably sized free block, handle fragmentation, and often synchronize across threads - all relatively expensive per-allocation costs. Bump-pointer allocation in a TLAB, by contrast, is just "read current top pointer, add object size, return old top as the new object's address, update top" - a handful of CPU instructions with no search, no fragmentation handling (since Eden is wiped wholesale after each Minor GC rather than freed object-by-object), and no cross-thread synchronization since each thread owns its TLAB exclusively.</li>
+<li>Consider increasing Eden's size, either directly via <code>-Xmn</code>/<code>-XX:NewSize</code> or indirectly via <code>-XX:NewRatio</code> (lowering the ratio to give more heap to the Young Generation), which reduces Minor GC frequency by letting more objects die before Eden fills. The trade-off is that each individual Minor GC pause may become somewhat longer (more surviving objects to trace and copy) and the overall heap dedicates more space to Young Gen, potentially leaving less headroom for Old Gen unless the total heap (<code>-Xmx</code>) is also increased - so this must be balanced against overall memory budget and acceptable pause-time SLAs.</li>
+</ol>
+<h5 id="code-examples">Code Examples</h5>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EdenAllocationDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="c1">// Demonstrates how short-lived objects rapidly fill Eden, triggering Minor GCs.</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="c1">// Run with: java -Xmn20m -Xlog:gc -verbose:gc EdenAllocationDemo</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="kt">long</span><span class="w"> </span><span class="n">allocated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5_000_000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">            </span><span class="c1">// Each iteration allocates a short-lived object that dies almost immediately -</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">            </span><span class="c1">// classic Eden churn: allocate in TLAB, become garbage before next Minor GC.</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">            </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">shortLived</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="o">[</span><span class="mi">256</span><span class="o">]</span><span class="p">;</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">            </span><span class="n">allocated</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">shortLived</span><span class="p">.</span><span class="na">length</span><span class="p">;</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">1_000_000</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Allocated so far: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">allocated</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" bytes"</span><span class="p">);</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Done, total bytes touched: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">allocated</span><span class="p">);</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="p">}</span>
+</code></pre></div>
+<h4 id="survivor">Survivor</h4>
+<h5 id="theory_1">Theory</h5>
+<ul>
+<li><strong>Core Concepts</strong>: The Survivor space consists of two equally-sized sub-regions (commonly called S0/"From" and S1/"To") within the Young Generation, used as an intermediate holding area for objects that survived at least one Minor GC but have not yet been promoted to the Old Generation.</li>
+<li><strong>Internal Working</strong>: At any point in time exactly one Survivor half is "active"/in-use (holding currently-surviving objects) and the other is empty, ready to receive the next Minor GC's copied survivors; the two halves swap roles ("from" becomes "to" and vice versa) after every Minor GC, a technique known as a semi-space copying collector.</li>
+<li><strong>When to Use It</strong>: Automatically managed by the JVM; tunable via <code>-XX:SurvivorRatio</code> (Eden-to-each-Survivor ratio) and <code>-XX:MaxTenuringThreshold</code> (how many Minor GCs an object survives in Survivor before being promoted to Old Gen).</li>
+<li><strong>Advantages</strong>: Gives short-to-medium-lived objects a chance to die before incurring the cost of promotion to (and eventual Old Gen collection from) the Old Generation; the copying design keeps Survivor space always compacted (no fragmentation).</li>
+<li><strong>Limitations</strong>: If Survivor space is too small relative to the surviving-object volume, objects get prematurely promoted to Old Gen ("premature promotion"), increasing Old Gen occupancy and triggering more (expensive) Major/Full GCs; too large a Survivor wastes heap space that could otherwise be Eden or Old Gen.</li>
+</ul>
+<h5 id="internal-working_1">Internal Working</h5>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: (1) Minor GC scans Eden plus the currently active ("From") Survivor half for live objects reachable from GC roots. (2) Live objects are copied into the other ("To") Survivor half, and each object's age counter is incremented. (3) Objects whose age reaches <code>MaxTenuringThreshold</code> (or whose cumulative size exceeds the <code>TargetSurvivorRatio</code> occupancy of the "To" survivor, causing dynamic age computation to lower the effective threshold) are instead copied directly to the Old Generation. (4) After the copy, Eden and the old "From" survivor are considered fully empty (their contents were either copied out or were garbage) and are reset for future allocation; the "To" survivor becomes the new "From" for the next cycle.</li>
+<li><strong>Memory Layout</strong>: Two equally-sized contiguous sub-regions within the Young Generation (default ratio <code>Eden:S0:S1 = 8:1:1</code> via <code>SurvivorRatio=8</code>); only one half holds live data at any given moment, the other is always kept empty as the copy destination.</li>
+<li><strong>Diagrams</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sequenceDiagram
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    participant Eden
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    participant From as Survivor (From)
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    participant To as Survivor (To)
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    participant Old as Old Generation
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    Note over Eden,From: Before Minor GC
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    Eden-&gt;&gt;To: copy live objects (age++)
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    From-&gt;&gt;To: copy live objects (age++)
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    Note over To,Old: objects at MaxTenuringThreshold promoted
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    To--&gt;&gt;Old: promote aged objects
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    Note over Eden,From: Eden &amp; old From reset/emptied; To becomes new From
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong>: This copying approach means Minor GC pause time is roughly proportional to the <em>live</em> data volume in Eden+Survivor, not to Eden's total capacity - a key reason generational GC is efficient when the generational hypothesis holds (most objects die young, so live data at Minor GC time is small).</li>
+</ul>
+<h5 id="interview-questions_1">Interview Questions</h5>
+<p><strong>Basic</strong>
+1. Why are there two Survivor spaces instead of one?
+2. What happens to an object's "age" each time it survives a Minor GC?</p>
+<p><strong>Intermediate</strong>
+3. What is "premature promotion" and what causes it?
+4. What does <code>-XX:MaxTenuringThreshold</code> control?</p>
+<p><strong>Advanced</strong>
+5. Why does a semi-space (copying) design keep Survivor space free of fragmentation, unlike a mark-sweep-only approach?</p>
+<p><strong>Scenario-based</strong>
+6. You observe rapidly increasing Old Generation occupancy alongside a workload that mostly creates medium-lived caches (living slightly longer than typical Minor GC cycles but not permanently). What Survivor-related tuning might reduce pressure on Old Gen?</p>
+<h5 id="detailed-answers_1">Detailed Answers</h5>
+<ol>
+<li>Two equally-sized Survivor spaces let the JVM implement a semi-space copying collector: at every Minor GC, live objects are copied from Eden <em>and</em> the currently occupied Survivor half into the other, currently-empty Survivor half. This guarantees the destination is always contiguous and compacted, and it lets the source half be wholesale-reset afterward instead of requiring per-object freeing or in-place compaction.</li>
+<li>Each time an object is found live during a Minor GC and copied to (or retained within) a Survivor space, its age counter (stored typically in the object header) is incremented by one. Once the age reaches the tenuring threshold (or dynamic age computation decides it should be promoted earlier due to Survivor occupancy pressure), the object is promoted to the Old Generation instead of being copied to Survivor again.</li>
+<li>Premature promotion happens when Survivor space is too small to hold all objects that are still alive after a Minor GC, forcing the JVM to promote them directly to the Old Generation before they've truly proven to be long-lived. This inflates Old Gen occupancy with objects that would have died shortly after, triggering Old Gen/Major GCs more often than necessary and increasing overall GC overhead; it's typically caused by an undersized Survivor ratio relative to the allocation/survival rate of the workload.</li>
+<li><code>-XX:MaxTenuringThreshold</code> sets the maximum number of Minor GC cycles an object can survive while remaining in Survivor space before it is unconditionally promoted to the Old Generation (default is typically 15, though many collectors compute a dynamic, often lower, effective threshold at runtime based on Survivor occupancy via <code>TargetSurvivorRatio</code>).</li>
+<li>A copying collector only ever touches <em>live</em> objects, moving them to a completely empty destination region and never leaving "holes" from dead objects since dead objects are simply not copied over - the source region is then discarded/reset in bulk. A mark-sweep-only collector, by contrast, must free individual dead objects in place, which can leave a scattered patchwork of free and occupied slots (fragmentation) unless a separate, more expensive compaction pass is also run.</li>
+<li>Increasing the Survivor space size (lowering <code>-XX:SurvivorRatio</code>, e.g. from the default 8 to 4 or 6) gives these medium-lived cache objects more Minor GC cycles to either die or accumulate age before being promoted, reducing how often they get shunted into Old Gen prematurely; alternatively/additionally, raising <code>-XX:MaxTenuringThreshold</code> extends how many cycles an object can survive in Survivor before forced promotion, giving the workload's natural object lifetime more room to resolve within the Young Generation rather than polluting Old Gen and triggering more Major GCs.</li>
+</ol>
+<h5 id="code-examples_1">Code Examples</h5>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.*</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SurvivorTuningDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="c1">// Simulates medium-lived objects (short-term caches) that outlive one Minor GC</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="c1">// but should ideally die before being promoted to Old Gen.</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="c1">// Run with: java -Xmn40m -XX:SurvivorRatio=4 -XX:MaxTenuringThreshold=10 -Xlog:gc+age=trace SurvivorTuningDemo</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="n">Deque</span><span class="o">&lt;</span><span class="kt">byte</span><span class="o">[]&gt;</span><span class="w"> </span><span class="n">mediumLivedCache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayDeque</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">cycle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">cycle</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span><span class="w"> </span><span class="n">cycle</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">            </span><span class="c1">// Add a batch of medium-lived entries</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">                </span><span class="n">mediumLivedCache</span><span class="p">.</span><span class="na">addLast</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="o">[</span><span class="mi">512</span><span class="o">]</span><span class="p">);</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">            </span><span class="c1">// Evict the oldest entries after a few cycles, simulating a bounded cache</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">mediumLivedCache</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">4000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">                </span><span class="n">mediumLivedCache</span><span class="p">.</span><span class="na">removeFirst</span><span class="p">();</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cycle</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Cycle "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cycle</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">", cache size="</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">mediumLivedCache</span><span class="p">.</span><span class="na">size</span><span class="p">());</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="old-generation">Old Generation</h3>
+<h4 id="theory_2">Theory</h4>
+<ul>
+<li><strong>Core Concepts</strong>: The Old (Tenured) Generation holds objects that have survived enough Minor GC cycles in the Young Generation to be promoted, and generally holds longer-lived or large objects. It's collected far less frequently but the collections (Major/Full GCs) are typically far more expensive per cycle.</li>
+<li><strong>Internal Working</strong>: Depending on the collector, Old Gen is managed either as a single contiguous mark-sweep(-compact) region (Serial, Parallel, CMS) or as a set of independently-collected regions (G1's "old regions", chosen based on garbage density) or handled with concurrent, mostly-non-moving/relocating algorithms (ZGC, Shenandoah).</li>
+<li><strong>When to Use It</strong>: Not directly user-selected - objects arrive here via promotion; sizing (<code>-Xmx</code>, ratio to Young Gen) and choice of collector are the tunable levers.</li>
+<li><strong>Advantages</strong>: Amortizes collection cost by only scanning Old Gen infrequently, since most short-lived garbage was already filtered out in Young Gen - exploiting the generational hypothesis for overall throughput.</li>
+<li><strong>Limitations</strong>: Old Gen collections (especially Full GCs on older collectors like Serial/Parallel/CMS-with-fallback) can cause long stop-the-world pauses proportional to Old Gen's live-object volume; fragmentation can occur in non-compacting or partially-compacting collectors, potentially causing promotion failures even when nominal free space exists.</li>
+</ul>
+<h4 id="internal-working_2">Internal Working</h4>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: (1) An object is promoted into Old Gen either after exceeding <code>MaxTenuringThreshold</code> in Survivor, or immediately if it's larger than a size threshold the Young Gen can't accommodate ("humongous"/large object direct allocation, e.g. G1's humongous object handling for objects &gt;= half a region size), or if Survivor space overflow forces early promotion. (2) Old Gen fills up over time as the application runs. (3) When Old Gen occupancy crosses a threshold (or an allocation/promotion cannot be satisfied), a Major GC (often but not always accompanied by a full Young Gen collection too, hence commonly conflated with "Full GC") runs: it identifies live objects via mark phase, then reclaims/compacts space via sweep and/or compact phases (or, in G1, evacuates chosen high-garbage regions rather than the whole space). (4) Since Old Gen isn't reset/wiped wholesale like Young Gen (too much live data to copy cheaply), most mature collectors use mark-sweep-compact rather than pure copying for this generation.</li>
+<li><strong>Memory Layout</strong>: A large contiguous (or, for G1/ZGC/Shenandoah, region-based) portion of the heap, typically several times larger than the combined Young Generation, holding long-lived application state: caches, session data, loaded configuration, connection pools, and any object that has proven itself long-lived by surviving Young Gen.</li>
+<li><strong>Diagrams</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Heap
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>+---------------------- Old Generation ----------------------+------ Young Gen ------+
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>| live long-lived objects ... (mark-sweep-compact or region-  | Eden | S0 | S1        |
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>| based evacuation, collected infrequently but expensively)    |      |    |           |
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>+---------------------------------------------------------------+-----------------------+
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong>: Old Gen GCs (Major/Full GC) are the primary source of noticeable application pause times in traditional collectors; modern low-latency collectors (G1 mostly, ZGC and Shenandoah almost entirely) perform the bulk of Old Gen collection work concurrently with running application threads, dramatically shrinking (or, for ZGC/Shenandoah, nearly eliminating) stop-the-world pause duration regardless of Old Gen size.</li>
+</ul>
+<h4 id="interview-questions_2">Interview Questions</h4>
+<p><strong>Basic</strong>
+1. How does an object end up in the Old Generation?
+2. Why are Old Gen collections generally more expensive than Young Gen collections?</p>
+<p><strong>Intermediate</strong>
+3. What is the difference between a "Major GC" and a "Full GC"?
+4. Why might a large object be allocated directly into Old Gen, bypassing Young Gen entirely?</p>
+<p><strong>Advanced</strong>
+5. Why do many Old Gen collectors use mark-sweep-compact rather than the pure copying approach used for Young Gen?</p>
+<p><strong>Scenario-based</strong>
+6. Your service experiences occasional multi-second GC pauses under the default Parallel/Serial-style collector as heap size has grown to 16 GB. What collector change would you evaluate, and why?</p>
+<h4 id="detailed-answers_2">Detailed Answers</h4>
+<ol>
+<li>An object is promoted to Old Gen when it survives enough Minor GC cycles in the Young Generation to reach the tenuring threshold, or when Survivor space cannot accommodate all currently-live survivors (forcing earlier promotion), or immediately upon allocation if the object is large enough to be handled as a "humongous"/large-object allocation that Young Gen mechanisms aren't suited for.</li>
+<li>Old Gen typically holds far more live data than Young Gen at any given time (since it accumulates longer-lived objects over the application's lifetime), so a full trace of Old Gen's live object graph, plus whatever sweep/compact work is needed, touches proportionally far more memory than a Minor GC's typical small live-set in Eden/Survivor - making each Old Gen collection inherently costlier in both scan time and (if compacting) move time.</li>
+<li>Terminology varies by collector, but generally a "Major GC" refers to a collection of the Old Generation specifically, while a "Full GC" refers to a collection of the entire heap (Young + Old, and often Metaspace too) - in many traditional collectors (Serial, Parallel) a Major GC of Old Gen is typically accompanied by a full Young Gen collection as well, which is why the terms are frequently (if imprecisely) used interchangeably in casual discussion and tooling output.</li>
+<li>Objects above a certain size threshold aren't well-suited to Young Gen's copying mechanism (copying a very large object on every surviving Minor GC would be wasteful and could even exceed Survivor space capacity outright), so many collectors (notably G1, which defines "humongous objects" as those &gt;= 50% of a region size) allocate such objects directly into Old Gen (or dedicated humongous regions) from the start, skipping the Young Gen lifecycle entirely.</li>
+<li>Young Gen's copying approach works well because most objects there are expected to die (making the "live set to copy" small relative to the region size), so wholesale-resetting the source region after copying survivors is cheap and gives compaction "for free." Old Gen, however, typically has a much higher live-object ratio (most objects there have already proven long-lived), so copying nearly all of Old Gen's contents on every collection would be prohibitively expensive; mark-sweep(-compact) instead only moves objects when compaction is explicitly needed to fight fragmentation, and can reclaim dead space via sweeping without touching (copying) every live object each time.</li>
+<li>Evaluate migrating to G1 GC (if not already the default, which it has been since Java 9) or, for very large heaps and strict low-latency requirements, ZGC or Shenandoah. G1 divides the heap into many small regions and prioritizes collecting the regions with the most garbage first ("garbage-first"), giving much more predictable, configurable pause targets (<code>-XX:MaxGCPauseMillis</code>) than Serial/Parallel's monolithic Old Gen collection. For a 16 GB heap with multi-second pause complaints, ZGC or Shenandoah would be worth evaluating specifically because their pause times are largely decoupled from heap size (sub-millisecond to low-single-digit-millisecond pauses even at very large heap sizes), trading some throughput and additional CPU/memory overhead (for concurrent marking/relocation bookkeeping) for drastically reduced worst-case pause latency.</li>
+</ol>
+<h4 id="code-examples_2">Code Examples</h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.*</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OldGenerationPressureDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="c1">// Simulates long-lived state accumulating in Old Generation: a growing session cache</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="c1">// that is never evicted, eventually forcing Major/Full GC activity.</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="c1">// Run with: java -Xmx256m -Xmn32m -Xlog:gc*:file=gc.log OldGenerationPressureDemo</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="kt">byte</span><span class="o">[]&gt;</span><span class="w"> </span><span class="n">longLivedSessionCache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">200_000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">            </span><span class="c1">// Each entry survives indefinitely (referenced by the map) -&gt; promoted to Old Gen</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">            </span><span class="n">longLivedSessionCache</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"session-"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="o">[</span><span class="mi">512</span><span class="o">]</span><span class="p">);</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">50_000</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Cache size: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">longLivedSessionCache</span><span class="p">.</span><span class="na">size</span><span class="p">());</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Final cache size: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">longLivedSessionCache</span><span class="p">.</span><span class="na">size</span><span class="p">());</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="metaspace">Metaspace</h2>
+<h3 id="theory_3">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong>: Metaspace (introduced in Java 8, replacing PermGen) is a native-memory region storing class metadata - method bytecode, constant pools, field/method descriptors, annotations, and other per-class structures created during class loading.</li>
+<li><strong>Internal Working</strong>: Unlike the heap, Metaspace is allocated out of native (off-heap) memory managed directly by the JVM via its own arena/chunk allocator, growing dynamically as classes are loaded, and shrinking (returning memory to the OS) when classloaders (and all classes they defined) become unreachable and are unloaded.</li>
+<li><strong>When to Use It</strong>: Not directly used by application code; relevant when tuning class-loading-heavy applications (large frameworks, many dynamically generated classes/proxies, application servers hosting many deployed apps) via <code>-XX:MetaspaceSize</code> and <code>-XX:MaxMetaspaceSize</code>.</li>
+<li><strong>Advantages</strong>: Not capped by a fixed heap-relative size by default (unlike PermGen, which had a fixed max size prone to <code>OutOfMemoryError: PermGen space</code>), grows on demand up to available native memory (or an explicit cap if set), and is automatically reclaimed on classloader unloading without needing a full GC pass over heap-resident metadata.</li>
+<li><strong>Limitations</strong>: Uncapped Metaspace can still exhaust native/system memory if an application leaks classloaders (e.g. repeatedly redeploying without ever letting old classloaders become unreachable), producing <code>OutOfMemoryError: Metaspace</code>; still requires GC involvement to detect and unload dead classloaders (they aren't reclaimed purely by native allocation bookkeeping).</li>
+</ul>
+<h3 id="internal-working_3">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: (1) When a class is loaded, the JVM allocates space in Metaspace for its runtime constant pool, method bytecode, field/method metadata, and related structures. (2) This memory is carved from native memory in "chunks," managed per classloader (each classloader gets its own metaspace arena to simplify bulk reclamation). (3) When a classloader becomes unreachable (all classes it defined are no longer referenced and it's not reachable from GC roots), a GC cycle detects this and the entire classloader's Metaspace arena can be reclaimed in bulk. (4) If Metaspace usage exceeds current committed size, the JVM requests more native memory from the OS (up to <code>-XX:MaxMetaspaceSize</code> if set, else limited only by available system memory) and may trigger a GC first to try reclaiming unused classloader metadata before expanding.</li>
+<li><strong>Memory Layout</strong>: Native (off-heap) memory, not part of the <code>-Xmx</code> heap sizing at all; organized as per-classloader chunks/arenas rather than one monolithic region, which is why aggressively creating and discarding classloaders (dynamic proxies, scripting engines, hot-redeploy application servers) is the classic Metaspace-leak scenario.</li>
+<li><strong>Diagrams</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Process native memory (outside -Xmx heap)
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>+------------------- Metaspace -------------------+
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>| ClassLoader A arena: [ClassX meta][ClassY meta]  |
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>| ClassLoader B arena: [ClassZ meta]               |
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>+---------------------------------------------------+
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>   (reclaimed in bulk when a classloader becomes unreachable)
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong>: Class metadata is read extremely frequently during method invocation (vtable/itable lookups, bytecode fetch for interpretation/JIT compilation), so Metaspace access patterns matter for JIT warm-up performance; growth of Metaspace can also trigger a Full GC in some JVM configurations if it needs to check for reclaimable classloaders before expanding, which is a subtle source of unexpected GC pauses in class-loading-heavy applications.</li>
+</ul>
+<h3 id="interview-questions_3">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What replaced PermGen in Java 8, and what does it store?
+2. Is Metaspace part of the heap governed by <code>-Xmx</code>?</p>
+<p><strong>Intermediate</strong>
+3. What can cause <code>OutOfMemoryError: Metaspace</code>, and how does it differ from a heap <code>OutOfMemoryError</code>?
+4. How does the JVM reclaim Metaspace memory?</p>
+<p><strong>Advanced</strong>
+5. Why was PermGen removed in favor of Metaspace - what specific pain points did it solve?</p>
+<p><strong>Scenario-based</strong>
+6. An application server that hot-redeploys web applications frequently shows steadily increasing Metaspace usage across redeployments, eventually throwing <code>OutOfMemoryError: Metaspace</code>. What's the likely root cause and how would you diagnose it?</p>
+<h3 id="detailed-answers_3">Detailed Answers</h3>
+<ol>
+<li>Metaspace replaced PermGen (Permanent Generation) starting in Java 8 (JEP 122). It stores class metadata: method bytecode, constant pools, annotations, field/method descriptors, and other structures the JVM needs to describe and execute loaded classes - conceptually similar data to what PermGen stored, but relocated to native memory with different sizing/GC characteristics.</li>
+<li>No - Metaspace lives in native memory, entirely separate from the Java heap that <code>-Xmx</code>/<code>-Xms</code> govern. Its size is controlled independently via <code>-XX:MetaspaceSize</code> (initial high-water mark that triggers a GC to attempt reclamation before expanding) and <code>-XX:MaxMetaspaceSize</code> (hard cap, unlimited by default).</li>
+<li><code>OutOfMemoryError: Metaspace</code> occurs when class metadata can't fit within <code>-XX:MaxMetaspaceSize</code> (if set) or, if unset, when available native/system memory is exhausted - typically caused by loading an ever-growing number of classes without ever unloading their classloaders (a "classloader leak"), common with dynamic proxies, scripting/reflection-heavy frameworks, or repeated hot-redeployment. This differs from a heap <code>OutOfMemoryError</code> (which reflects live <em>object</em> data exceeding heap capacity) in that it reflects excessive <em>class metadata</em> volume, usually pointing to a classloading/classloader-lifecycle problem rather than an object-retention problem.</li>
+<li>Metaspace memory is organized per classloader; when a classloader (along with every class it defined) becomes unreachable from GC roots, a GC cycle detects this and the classloader's entire Metaspace arena can be reclaimed in bulk (rather than needing fine-grained per-class-metadata garbage collection), returning the underlying native memory chunks for reuse or back to the OS.</li>
+<li>PermGen had a fixed maximum size (set via <code>-XX:MaxPermSize</code>) carved out similarly to heap generations, which frequently caused <code>OutOfMemoryError: PermGen space</code> in applications that loaded many classes (large frameworks, extensive use of reflection/dynamic proxies, application servers with hot redeployment) even when heap memory itself was ample. Additionally, PermGen's fixed sizing required guessing an appropriate value upfront, was awkward to resize, and mixed class metadata with some other data (like interned strings, in older JVMs) in a way that complicated GC tuning. Metaspace decouples class metadata from the heap, grows dynamically using native memory (removing the need to pre-guess a fixed size), and by default has effectively no cap (bounded only by system memory), directly eliminating the most common PermGen exhaustion complaints.</li>
+<li>The likely root cause is a classloader leak: each hot redeployment should create a new classloader for the redeployed application and let the previous one (and all classes/class metadata it defined) become unreachable and eligible for reclamation, but something is retaining a reference to the old classloader (or one of its loaded classes/instances) across redeployments - common culprits include static fields in shared/parent classloaders holding references to instances from the child classloader, un-shutdown thread pools/threads whose <code>Thread</code> objects retain a <code>contextClassLoader</code> reference, JDBC driver registrations left in a shared <code>DriverManager</code>, or listeners/caches registered globally that hold onto old classloader-scoped objects. Diagnosis: take heap dumps before/after several redeploy cycles and use a tool (Eclipse MAT, VisualVM) to search for duplicate classloader instances and trace the GC-root reference chain keeping the old classloader (or its defined classes) reachable - the "leak suspects" report in MAT is specifically designed to surface this pattern.</li>
+</ol>
+<h3 id="code-examples_3">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.net.URLClassLoader</span><span class="p">;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.net.URL</span><span class="p">;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MetaspacePressureDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="c1">// Simulates repeated classloading pressure similar to hot-redeploy scenarios.</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="c1">// Run with: java -XX:MaxMetaspaceSize=64m -Xlog:class+unload MetaspacePressureDemo</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">            </span><span class="c1">// Each iteration creates a fresh, isolated classloader and loads a class through it;</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">            </span><span class="c1">// once this loader (and its classes) become unreachable, its Metaspace arena is reclaimable.</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">URLClassLoader</span><span class="w"> </span><span class="n">loader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">URLClassLoader</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">URL</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="n">MetaspacePressureDemo</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getClassLoader</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">                </span><span class="n">Class</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="n">loaded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Class</span><span class="p">.</span><span class="na">forName</span><span class="p">(</span><span class="s">"java.util.ArrayList"</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="n">loader</span><span class="p">);</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Iteration "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" loaded via: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">loaded</span><span class="p">.</span><span class="na">getClassLoader</span><span class="p">());</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">            </span><span class="c1">// Explicitly drop the reference and hint at collection so old loaders become eligible</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">gc</span><span class="p">();</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="direct-memory">Direct Memory</h2>
+<h3 id="theory_4">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong>: Direct memory refers to native (off-heap) memory allocated via <code>java.nio.ByteBuffer.allocateDirect()</code> (or <code>MemorySegment</code>/Foreign Memory API in modern Java), used primarily for I/O operations where the OS/native code can operate on the buffer without an intermediate copy through the Java heap.</li>
+<li><strong>Internal Working</strong>: A <code>DirectByteBuffer</code> object itself is a small heap object, but it holds a native pointer to a block of memory allocated outside the heap (via <code>malloc</code>-like native allocation); this native block is freed either through a <code>Cleaner</code>/<code>PhantomReference</code>-based mechanism when the <code>DirectByteBuffer</code> becomes unreachable, or explicitly (in newer APIs) via an <code>Arena</code>.</li>
+<li><strong>When to Use It</strong>: High-throughput I/O (NIO channels, network servers, memory-mapped files) where avoiding a heap-to-native copy on every read/write meaningfully reduces CPU/GC overhead - e.g. Netty, database drivers, file I/O libraries.</li>
+<li><strong>Advantages</strong>: Avoids the extra copy that would otherwise be needed to move data from a heap-resident byte array into native memory for a system call (and back), reduces GC pressure since the large data payload itself doesn't live in heap-managed regions subject to Minor/Major GC scanning, can be more efficient for memory-mapped file access.</li>
+<li><strong>Limitations</strong>: Allocation/deallocation is more expensive than a simple heap allocation (native <code>malloc</code>/<code>free</code>-equivalent calls have higher fixed overhead), sized/tracked separately from the heap (<code>-XX:MaxDirectMemorySize</code>) so misconfiguration can cause native OOM even while heap looks healthy, harder to profile/observe than heap objects with standard heap profilers, and cleanup timing is tied to GC detecting the wrapper object's unreachability (not immediate, unless using the newer deterministic <code>Arena.close()</code>).</li>
+</ul>
+<h3 id="internal-working_4">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: (1) <code>ByteBuffer.allocateDirect(size)</code> calls into native code to <code>malloc</code> (or platform equivalent) a block of <code>size</code> bytes outside the JVM heap. (2) A small <code>DirectByteBuffer</code> Java object is created on the heap, holding the native memory address and size, plus a <code>Cleaner</code> registration (a <code>PhantomReference</code>-based mechanism) that will free the native block once the <code>DirectByteBuffer</code> object itself becomes unreachable and is collected. (3) I/O operations (<code>FileChannel.read/write</code>, socket I/O) can pass the native address directly to OS system calls, avoiding an extra heap-to-native copy that would be required for a heap-backed (non-direct) buffer. (4) When the <code>DirectByteBuffer</code> becomes unreachable, GC eventually processes its <code>Cleaner</code>'s phantom reference, invoking native <code>free()</code> on the underlying block - meaning native memory release is deferred to GC's schedule, not immediate upon "no more Java references."</li>
+<li><strong>Memory Layout</strong>: The actual data buffer lives entirely in native (off-heap) memory, invisible to <code>-Xmx</code> heap sizing and to heap-based GC scanning; only the small <code>DirectByteBuffer</code> wrapper object (holding the address, capacity, and cleanup registration) resides on the heap.</li>
+<li><strong>Diagrams</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Java Heap                              Native (off-heap) memory
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>+----------------------+               +--------------------------+
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>| DirectByteBuffer obj |  address ---&gt; | raw byte buffer (size N)  |
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>| (small wrapper)      |               | allocated via malloc()   |
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>+----------------------+               +--------------------------+
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>   collected by GC -&gt; Cleaner runs -&gt; native free() invoked
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong>: Direct memory is bounded independently by <code>-XX:MaxDirectMemorySize</code>; exceeding it throws <code>OutOfMemoryError: Direct buffer memory</code> even if the heap has ample free space, since direct memory allocation failures are tracked and enforced separately from heap allocation failures.</li>
+</ul>
+<h3 id="interview-questions_4">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. How do you allocate a direct (off-heap) <code>ByteBuffer</code>?
+2. Why would I/O code prefer a direct buffer over a heap buffer?</p>
+<p><strong>Intermediate</strong>
+3. How and when is direct memory actually freed?
+4. What JVM flag controls the maximum amount of direct memory allowed, and what happens if it's exceeded?</p>
+<p><strong>Advanced</strong>
+5. Why can <code>DirectByteBuffer</code> cleanup lag behind when you'd expect, and what problems can this cause in practice?</p>
+<p><strong>Scenario-based</strong>
+6. A service using Netty (heavy direct-buffer user) reports native memory usage steadily climbing (visible via OS-level tools) even though heap usage and heap GC logs look completely normal. What would you investigate?</p>
+<h3 id="detailed-answers_4">Detailed Answers</h3>
+<ol>
+<li>Via <code>ByteBuffer buf = ByteBuffer.allocateDirect(sizeInBytes);</code> (or, using the modern Foreign Function &amp; Memory API, <code>Arena arena = Arena.ofConfined(); MemorySegment segment = arena.allocate(sizeInBytes);</code>), both of which allocate the backing storage in native memory outside the JVM heap rather than as a <code>byte[]</code> on the heap.</li>
+<li>Because system calls for I/O (reading from a socket/file into a buffer, or writing a buffer out) operate at the OS level on native memory addresses; a heap-backed (non-direct) <code>ByteBuffer</code> must first be copied into a temporary native buffer before the OS call and copied back afterward (the JVM does this transparently), whereas a direct buffer's native address can be passed straight through, eliminating that extra copy - meaningful for high-throughput I/O workloads.</li>
+<li>The underlying native memory block is registered with a <code>Cleaner</code> (a <code>PhantomReference</code>-based cleanup mechanism) at allocation time. Once the <code>DirectByteBuffer</code> Java wrapper object becomes unreachable and is collected by the garbage collector, the JVM processes the corresponding cleaner action, which invokes native <code>free()</code> on the block. This means the native memory isn't released the instant your code drops its last reference - it's released whenever GC next determines the wrapper is unreachable and runs its cleaner, which can be delayed if GC isn't triggered for a while (e.g. low heap allocation rate).</li>
+<li><code>-XX:MaxDirectMemorySize</code> sets the cap on total direct memory that can be allocated via <code>ByteBuffer.allocateDirect()</code> (default, if unset, is typically tied to <code>-Xmx</code>). Exceeding it throws <code>OutOfMemoryError: Direct buffer memory</code> at the point of attempted allocation, independent of how much heap memory is actually free, since direct memory accounting is tracked and enforced separately from the heap.</li>
+<li>Because native memory release is tied to the <code>DirectByteBuffer</code> wrapper object's <em>heap</em> reachability and the GC's own scheduling (it only runs when GC decides to collect, typically driven by heap allocation pressure, not direct memory pressure), an application that allocates large direct buffers but has low heap churn may not trigger GC often enough to promptly reclaim direct memory, leading to native memory usage climbing well beyond what "logical" outstanding buffers would suggest - sometimes to the point of native OOM - even though the heap itself looks perfectly healthy. This is why direct-buffer-heavy libraries (e.g. Netty) often implement explicit reference counting and manual release (<code>ReferenceCounted.release()</code>) rather than relying purely on GC-driven cleanup.</li>
+<li>Investigate whether direct buffers are being explicitly released (Netty's <code>ByteBuf.release()</code> reference-counting contract) versus being leaked - a missed <code>release()</code> call (e.g. an exception path that skips cleanup, or a buffer handed off between threads without proper ownership transfer) keeps the underlying native memory alive indefinitely regardless of GC activity, since Netty's pooled/direct buffers rely on explicit reference counting rather than solely on GC-triggered <code>Cleaner</code>-based reclamation. Enable Netty's resource leak detection (<code>-Dio.netty.leakDetection.level=paranoid</code> temporarily) to get stack traces of buffers that were never released, and cross-check <code>-XX:MaxDirectMemorySize</code> / <code>Runtime</code> direct-memory metrics against actual OS-reported process memory to confirm the direct-memory pool (not some other native allocation) is the source.</li>
+</ol>
+<h3 id="code-examples_4">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.RandomAccessFile</span><span class="p">;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.nio.ByteBuffer</span><span class="p">;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.nio.channels.FileChannel</span><span class="p">;</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DirectBufferIODemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="c1">// Demonstrates direct buffer usage for efficient file I/O, avoiding heap&lt;-&gt;native copies.</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"direct-buffer-demo.tmp"</span><span class="p">;</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">RandomAccessFile</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RandomAccessFile</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="s">"rw"</span><span class="p">);</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">             </span><span class="n">FileChannel</span><span class="w"> </span><span class="n">channel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="na">getChannel</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">            </span><span class="n">ByteBuffer</span><span class="w"> </span><span class="n">directBuffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ByteBuffer</span><span class="p">.</span><span class="na">allocateDirect</span><span class="p">(</span><span class="mi">1024</span><span class="p">);</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">            </span><span class="n">directBuffer</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"Direct memory demo payload"</span><span class="p">.</span><span class="na">getBytes</span><span class="p">());</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">            </span><span class="n">directBuffer</span><span class="p">.</span><span class="na">flip</span><span class="p">();</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">            </span><span class="n">channel</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">directBuffer</span><span class="p">);</span><span class="w"> </span><span class="c1">// OS writes directly from native memory, no extra copy</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">            </span><span class="n">directBuffer</span><span class="p">.</span><span class="na">clear</span><span class="p">();</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="w">            </span><span class="n">channel</span><span class="p">.</span><span class="na">position</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="w">            </span><span class="n">channel</span><span class="p">.</span><span class="na">read</span><span class="p">(</span><span class="n">directBuffer</span><span class="p">);</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="w">            </span><span class="n">directBuffer</span><span class="p">.</span><span class="na">flip</span><span class="p">();</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="w">            </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">readBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="o">[</span><span class="n">directBuffer</span><span class="p">.</span><span class="na">remaining</span><span class="p">()</span><span class="o">]</span><span class="p">;</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="w">            </span><span class="n">directBuffer</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">readBytes</span><span class="p">);</span>
+<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Read back: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="n">readBytes</span><span class="p">));</span>
+<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">io</span><span class="p">.</span><span class="na">File</span><span class="p">(</span><span class="n">path</span><span class="p">).</span><span class="na">delete</span><span class="p">();</span>
+<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="native-memory">Native Memory</h2>
+<h3 id="theory_5">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong>: Native memory encompasses all memory the JVM process uses outside the Java heap - Metaspace, thread stacks, JIT-compiled code cache, GC internal bookkeeping structures, direct buffers, JNI/native library allocations, and the JVM's own internal data structures. It's memory managed by the OS/C-runtime allocator, not the Java garbage collector.</li>
+<li><strong>Internal Working</strong>: The JVM tracks much of its own native memory usage internally via Native Memory Tracking (NMT, enabled with <code>-XX:NativeMemoryTracking=summary|detail</code>), categorizing usage into buckets like Thread, Code Cache, GC, Compiler, Symbol, Class, and Internal.</li>
+<li><strong>When to Use It</strong>: Relevant whenever total process memory (as seen by the OS, e.g. via <code>top</code>/container memory limits) needs to be understood or bounded - especially critical in containerized deployments where a container's memory limit encompasses heap <em>plus</em> all native memory, and exceeding it triggers an OOM-kill by the container runtime, not a graceful Java <code>OutOfMemoryError</code>.</li>
+<li><strong>Advantages</strong>: Enables features that must live outside GC-managed heap: thread stacks (must be contiguous, fixed-purpose per-thread memory), JIT-compiled native code (Code Cache), JNI interop with native libraries, and low-copy I/O via direct buffers.</li>
+<li><strong>Limitations</strong>: Not covered by <code>-Xmx</code>, so a correctly-sized heap doesn't guarantee the process fits within a container's memory limit; harder to observe/tune than heap (requires NMT, OS tools, or native profilers rather than standard heap profilers); native leaks (e.g. in JNI code, or a JVM bug) can be much harder to diagnose than Java heap leaks since standard heap-dump tooling doesn't cover them.</li>
+</ul>
+<h3 id="internal-working_5">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: (1) At JVM startup and throughout execution, the JVM allocates native memory for numerous subsystems: each Java thread gets a native OS thread stack (<code>-Xss</code> sized), the JIT compiler's output goes into the Code Cache (<code>-XX:ReservedCodeCacheSize</code>), GC maintains its own bookkeeping (card tables, remembered sets, mark bitmaps) outside the heap, and class metadata goes to Metaspace. (2) If NMT is enabled, the JVM instruments its internal allocators to record category, call-site, and size information for every native allocation/deallocation. (3) Total process RSS (Resident Set Size) as reported by the OS equals heap + Metaspace + Code Cache + thread stacks + GC native structures + direct buffers + any JNI-allocated native memory + JVM/glibc allocator overhead. (4) In containers, cgroup memory limits apply to this entire RSS total, not just the Java heap, so a container can be OOM-killed by the kernel even while the JVM reports plenty of free heap.</li>
+<li><strong>Memory Layout</strong>: Entirely outside the <code>-Xmx</code>-governed heap; scattered across OS-level allocations for thread stacks (one per thread, contiguous), the Code Cache (one or a few large regions), Metaspace (per-classloader arenas), and various smaller allocator-managed native blocks for GC/compiler/JNI purposes.</li>
+<li><strong>Diagrams</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>OS Process Memory (RSS)
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>+------------------------------------------------------+
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>| Java Heap (-Xmx bounded)                              |
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>+------------------------------------------------------+
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>| Metaspace | Code Cache | Thread Stacks | GC internals |
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>| Direct Buffers | JNI native allocations | Misc         |
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>+------------------------------------------------------+
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>   (container memory limit applies to the WHOLE box above)
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong>: Because native memory isn't subject to the same GC-driven reclamation as heap objects, native memory growth (from thread creation, JIT compilation activity, or JNI code) is comparatively "invisible" to standard heap-focused monitoring - which is precisely why NMT and OS-level memory tools are essential complements to heap profiling in production diagnostics, especially for container "OOM-killed" incidents.</li>
+</ul>
+<h3 id="interview-questions_5">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. Name three categories of native (off-heap) memory the JVM uses besides direct buffers.
+2. Why doesn't a correctly-sized <code>-Xmx</code> guarantee a container won't hit its memory limit?</p>
+<p><strong>Intermediate</strong>
+3. What is Native Memory Tracking (NMT) and how do you enable it?
+4. How does thread creation contribute to native memory usage, and what JVM flag influences it?</p>
+<p><strong>Advanced</strong>
+5. Why can a JVM process be OOM-killed by a container orchestrator even while <code>jstat</code>/heap dumps show the Java heap is healthy?</p>
+<p><strong>Scenario-based</strong>
+6. A containerized service with <code>-Xmx2g</code> is running in a pod with a 2.5 GB memory limit, and gets OOM-killed periodically under load with many concurrent requests spinning up threads. What's the likely native-memory contributor, and how would you fix it?</p>
+<h3 id="detailed-answers_5">Detailed Answers</h3>
+<ol>
+<li>Thread stacks (native OS stack memory per Java thread, sized via <code>-Xss</code>), the JIT Code Cache (compiled native machine code for hot methods, sized via <code>-XX:ReservedCodeCacheSize</code>), and Metaspace (class metadata) are three major non-direct-buffer native memory consumers; GC-internal bookkeeping structures (card tables, remembered sets) are a fourth common category.</li>
+<li>Because <code>-Xmx</code> only bounds the Java heap; total process memory as enforced by a container's cgroup limit includes the heap <em>plus</em> Metaspace, thread stacks, Code Cache, GC internal structures, direct buffers, and any JNI-allocated native memory - so even a heap that never exceeds its cap can coexist with a process that exceeds the container's overall memory limit due to these other native consumers, resulting in an OS/kernel-level OOM-kill rather than a JVM-level <code>OutOfMemoryError</code>.</li>
+<li>Native Memory Tracking is a built-in JVM diagnostic facility that instruments the JVM's internal native allocators to record memory usage by category (Thread, Code Cache, GC, Compiler, Symbol, Class, Internal, and more). It's enabled by adding <code>-XX:NativeMemoryTracking=summary</code> (coarse category totals) or <code>=detail</code> (finer-grained, including call sites) at JVM startup, and results are then queried via <code>jcmd &lt;pid&gt; VM.native_memory summary</code> (or <code>detail</code>) while the process is running.</li>
+<li>Every Java <code>Thread</code> corresponds to a native OS thread, which requires the OS to allocate a native stack for it - by default typically 512 KB to 1 MB depending on platform/JVM defaults, configurable via <code>-Xss&lt;size&gt;</code>. Creating a very large number of threads (e.g. an unbounded thread-per-request model under high concurrency) can therefore consume substantial native memory purely for stacks, independent of heap usage, which is one reason bounded thread pools (or virtual threads, which use much smaller, dynamically-sized stack footprints) are preferred at scale.</li>
+<li>Because the container orchestrator's memory limit (enforced via the cgroup) applies to the process's total RSS - heap plus every category of native memory - not just to whatever the JVM itself considers "the heap." A JVM can report ample free heap via <code>jstat</code>/heap dumps precisely because heap usage genuinely is fine, while some other native consumer (thread stacks from an unbounded thread pool, Code Cache filling up from excessive JIT compilation, a native library leaking memory via JNI, or even just Metaspace growth from dynamic class generation) pushes total RSS past the container's limit, triggering a kernel OOM-kill that bypasses the JVM's own OutOfMemoryError handling entirely (the process is killed externally, often with no Java-level stack trace or log message at all).</li>
+<li>The likely contributor is native memory consumed by thread stacks: many concurrent requests spinning up threads (especially if using an unbounded or very large thread pool, or a thread-per-request model) each require a native OS stack (default ~1 MB), so thousands of concurrent threads alone could consume several hundred MB to multiple GB of native memory, on top of the 2 GB heap, easily exceeding the 2.5 GB container limit. Fixes: bound the thread pool size explicitly (rather than unbounded thread creation), reduce <code>-Xss</code> if stacks are deeper than necessary, or - the more modern solution - migrate the concurrency model to virtual threads (Project Loom, stable since Java 21), whose stacks are far smaller and grow/shrink dynamically on the heap rather than requiring a fixed-size native OS stack per thread, dramatically reducing native memory pressure under high concurrency.</li>
+</ol>
+<h3 id="code-examples_5">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ThreadStackMemoryDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="c1">// Demonstrates how naive unbounded thread creation consumes native memory (stacks)</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="c1">// independent of heap usage. Run with: java -Xmx256m -Xss1m ThreadStackMemoryDemo</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">threadCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2000</span><span class="p">;</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">        </span><span class="n">Thread</span><span class="o">[]</span><span class="w"> </span><span class="n">threads</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Thread</span><span class="o">[</span><span class="n">threadCount</span><span class="o">]</span><span class="p">;</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">threadCount</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">            </span><span class="c1">// Each platform thread reserves a native stack (~1MB here), consumed regardless</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">            </span><span class="c1">// of how little heap memory the thread's own work actually uses.</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">            </span><span class="n">threads</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Thread</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">                </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">                    </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">ignored</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">            </span><span class="p">});</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="w">            </span><span class="n">threads</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Thread</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">threads</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="w">            </span><span class="n">t</span><span class="p">.</span><span class="na">join</span><span class="p">();</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"All "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">threadCount</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" threads completed - observe native RSS via OS tools during the run."</span><span class="p">);</span>
+<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="memory-leaks">Memory Leaks</h2>
+<h3 id="theory_6">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong>: A Java "memory leak" is not memory becoming unrecoverable in the C/C++ sense (the GC always reclaims truly unreachable objects) - it's unintended object retention: objects remain reachable from GC roots (via a reference chain the developer didn't intend to keep alive) long after they're logically no longer needed, causing heap usage to grow unboundedly over time.</li>
+<li><strong>Internal Working</strong>: Because reachability, not "logical need," determines whether GC collects an object, any long-lived reference holder (static fields, caches without eviction, listener/callback registries, ThreadLocals on pooled threads, unclosed resources) that keeps accumulating references to otherwise-dead objects will prevent their collection indefinitely.</li>
+<li><strong>When to Use It</strong>: N/A (this is a failure mode to detect and prevent, not a feature to use) - but understanding common leak patterns is essential for designing long-lived caches, listener systems, and thread-pool-based code correctly.</li>
+<li><strong>Advantages</strong>: N/A.</li>
+<li><strong>Limitations/Symptoms</strong>: Gradually increasing Old Generation occupancy across GC cycles that never returns to baseline, increasingly frequent/longer Major GCs, eventually <code>OutOfMemoryError: Java heap space</code>; often only manifests after extended uptime, making it easy to miss in short-lived testing.</li>
+</ul>
+<h3 id="internal-working_6">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation (typical leak lifecycle)</strong>: (1) An object is created and, at some point, logically becomes unnecessary to the application. (2) However, a reference to it remains reachable through some long-lived holder - e.g. a <code>static</code> collection that's only ever added to and never pruned, a registered listener never unregistered, a <code>ThreadLocal</code> value never removed from a thread that's returned to a pool and reused indefinitely, or a resource (stream/connection) never closed whose internal buffers stay referenced. (3) Each Minor GC cycle finds the object still reachable (via that holder) and promotes it to Old Gen (or it was already there). (4) Over time, more and more such objects accumulate in Old Gen, since nothing ever removes the reference keeping them alive, until Major GCs become frequent/expensive and eventually the JVM cannot reclaim enough space to satisfy an allocation, throwing <code>OutOfMemoryError</code>.</li>
+<li><strong>Memory Layout</strong>: Leaked objects typically accumulate in the Old Generation (since they survive long enough to be promoted, precisely because nothing ever un-references them); heap dumps analyzed post-mortem typically show a dominant retained-size path pointing to the true "leak suspect" holder (a specific static field, cache, or collection).</li>
+<li><strong>Diagrams</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>flowchart LR
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>    GCRoot["GC Root (static field / thread-local)"] --&gt; Holder["Long-lived Collection/Cache"]
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    Holder --&gt; Obj1["Logically-dead object 1"]
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    Holder --&gt; Obj2["Logically-dead object 2"]
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>    Holder --&gt; ObjN["... accumulating without bound ..."]
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong>: The GC does exactly what it's supposed to do throughout - correctly keeps every reachable object alive; a "leak" is purely an application-level bug in reference management, not a GC malfunction, which is why leak diagnosis focuses on heap dump/reference-chain analysis (finding <em>why</em> something is reachable) rather than GC log analysis (which just shows the growing symptom).</li>
+</ul>
+<h3 id="interview-questions_6">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What does "memory leak" mean in a garbage-collected language like Java, given the GC reclaims all unreachable objects?
+2. Name two common causes of Java memory leaks.</p>
+<p><strong>Intermediate</strong>
+3. How can <code>ThreadLocal</code> cause a memory leak, particularly with thread pools?
+4. What symptoms in GC logs or monitoring would suggest a memory leak versus normal memory pressure?</p>
+<p><strong>Advanced</strong>
+5. How would you use a heap dump to pinpoint the root cause of a suspected leak?</p>
+<p><strong>Scenario-based</strong>
+6. A long-running service's Old Gen occupancy climbs steadily over days and eventually triggers <code>OutOfMemoryError</code>, while load remains constant. Walk through your diagnostic approach.</p>
+<h3 id="detailed-answers_6">Detailed Answers</h3>
+<ol>
+<li>It means objects remain <em>reachable</em> (and therefore ineligible for collection) via some reference chain from a GC root, even though the application logically no longer needs them - the GC is behaving correctly by keeping every reachable object alive; the bug is that the application inadvertently kept a reference around (in a static collection, cache, listener registry, etc.) longer than intended, not that the GC failed to do its job.</li>
+<li>(a) Unbounded caches or collections (e.g. a <code>static Map</code> used as a cache with no eviction policy, or entries never removed as their corresponding "real" data is deleted) that grow forever; (b) listener/callback registries where objects register themselves (e.g. <code>addListener(this)</code>) but never call the corresponding <code>removeListener(this)</code> when they're done, keeping them reachable from the registry indefinitely. Other common causes: <code>ThreadLocal</code> values not removed on pooled threads, unclosed resources (streams, connections) whose internal buffers stay referenced, and inner classes (implicit outer references) outliving their intended scope.</li>
+<li>A <code>ThreadLocal</code> associates a value with a specific <code>Thread</code> object via an internal <code>ThreadLocalMap</code> owned by that thread. In a thread pool, threads are long-lived and reused across many tasks; if a task sets a <code>ThreadLocal</code> value and never calls <code>remove()</code> when done, that value remains attached to the pooled thread indefinitely (since the thread itself never dies and gets reused for future, unrelated tasks) - each subsequent task on that thread keeps the old value reachable via the thread's <code>ThreadLocalMap</code>, and if many different values/large objects get set this way across many pooled threads, this constitutes a slow, steady leak that's easy to overlook since no code explicitly "keeps" the object - the leak is via the pooled thread's internal state.</li>
+<li>A genuine leak shows Old Generation occupancy that keeps trending upward across many consecutive GC cycles and never returns to a stable baseline even after Major/Full GCs (a healthy application's Old Gen occupancy should stabilize at some plateau after GC, reflecting genuinely long-lived state); a leak instead shows the post-GC "floor" itself rising release over release, cycle over cycle, eventually leading to GC pauses becoming more frequent and longer as the collector works harder to find shrinking headroom, culminating in <code>OutOfMemoryError: Java heap space</code> once no further reclamation is possible.</li>
+<li>Capture a heap dump (via <code>jmap -dump</code> or automatically on OOM via <code>-XX:+HeapDumpOnOutOfMemoryError</code>) and load it into a heap analysis tool like Eclipse MAT or VisualVM. Use the tool's "dominator tree" / "leak suspects" report to identify which objects/collections have the largest <em>retained size</em> (i.e., how much memory would be freed if that object became unreachable) - this typically surfaces the actual leaking collection or cache directly. Then use "path to GC roots" analysis on a sample of the accumulating objects to see exactly which reference chain (static field, thread-local, listener list) is keeping them alive, which points directly at the code needing a fix (add eviction, call <code>remove()</code>/<code>unregister()</code>, etc.).</li>
+<li>First, confirm it's a genuine leak rather than expected growth (compare Old Gen occupancy trend across days via GC logs/monitoring - a real leak shows a steadily rising post-GC floor, not just high but stable usage). Next, capture two or more heap dumps spaced hours/days apart under the same load conditions and use a tool like Eclipse MAT's comparison feature (or simply compare "leak suspects"/dominator trees) to identify which object types/collections are growing in count and retained size between the two snapshots. Once the growing collection is identified, use "path to GC roots" to trace exactly what's holding a reference to it (a static cache field, an un-cleared <code>ThreadLocal</code>, an ever-growing listener list), then fix the specific reference-management bug (add size-bounded eviction/LRU policy, ensure <code>remove()</code>/<code>close()</code>/<code>unregister()</code> calls happen on the relevant lifecycle event) and verify occupancy stabilizes in subsequent monitoring.</li>
+</ol>
+<h3 id="code-examples_6">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.*</span><span class="p">;</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MemoryLeakPatternsDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">    </span><span class="c1">// ANTI-PATTERN: unbounded static cache with no eviction -&gt; classic memory leak</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="kt">byte</span><span class="o">[]&gt;</span><span class="w"> </span><span class="n">UNBOUNDED_CACHE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">leakyCacheInsert</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">        </span><span class="n">UNBOUNDED_CACHE</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">);</span><span class="w"> </span><span class="c1">// never removed -&gt; grows forever</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">    </span><span class="c1">// FIX: bounded LRU cache using LinkedHashMap's removeEldestEntry hook</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAX_ENTRIES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="kt">byte</span><span class="o">[]&gt;</span><span class="w"> </span><span class="n">BOUNDED_CACHE</span><span class="w"> </span><span class="o">=</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="n">LinkedHashMap</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="mf">0.75f</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="w">            </span><span class="nd">@Override</span>
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="w">            </span><span class="kd">protected</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">removeEldestEntry</span><span class="p">(</span><span class="n">Map</span><span class="p">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="kt">byte</span><span class="o">[]&gt;</span><span class="w"> </span><span class="n">eldest</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">MAX_ENTRIES</span><span class="p">;</span><span class="w"> </span><span class="c1">// evicts least-recently-used entry automatically</span>
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="w">        </span><span class="p">};</span>
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">safeCacheInsert</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="w">        </span><span class="n">BOUNDED_CACHE</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">);</span>
+<a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a>
+<a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a><span class="w">    </span><span class="c1">// ANTI-PATTERN vs FIX: ThreadLocal leak on pooled threads</span>
+<a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">ThreadLocal</span><span class="o">&lt;</span><span class="kt">byte</span><span class="o">[]&gt;</span><span class="w"> </span><span class="n">REQUEST_CONTEXT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ThreadLocal</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a>
+<a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">handleRequestOnPooledThread</span><span class="p">(</span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">contextData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-29" name="__codelineno-13-29" href="#__codelineno-13-29"></a><span class="w">        </span><span class="n">REQUEST_CONTEXT</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">contextData</span><span class="p">);</span>
+<a id="__codelineno-13-30" name="__codelineno-13-30" href="#__codelineno-13-30"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-31" name="__codelineno-13-31" href="#__codelineno-13-31"></a><span class="w">            </span><span class="c1">// ... process request using REQUEST_CONTEXT.get() ...</span>
+<a id="__codelineno-13-32" name="__codelineno-13-32" href="#__codelineno-13-32"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-33" name="__codelineno-13-33" href="#__codelineno-13-33"></a><span class="w">            </span><span class="n">REQUEST_CONTEXT</span><span class="p">.</span><span class="na">remove</span><span class="p">();</span><span class="w"> </span><span class="c1">// ESSENTIAL on pooled threads to avoid leaking across tasks</span>
+<a id="__codelineno-13-34" name="__codelineno-13-34" href="#__codelineno-13-34"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-13-35" name="__codelineno-13-35" href="#__codelineno-13-35"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-36" name="__codelineno-13-36" href="#__codelineno-13-36"></a>
+<a id="__codelineno-13-37" name="__codelineno-13-37" href="#__codelineno-13-37"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-38" name="__codelineno-13-38" href="#__codelineno-13-38"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5000</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-39" name="__codelineno-13-39" href="#__codelineno-13-39"></a><span class="w">            </span><span class="n">safeCacheInsert</span><span class="p">(</span><span class="s">"key-"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="o">[</span><span class="mi">128</span><span class="o">]</span><span class="p">);</span>
+<a id="__codelineno-13-40" name="__codelineno-13-40" href="#__codelineno-13-40"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-13-41" name="__codelineno-13-41" href="#__codelineno-13-41"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Bounded cache size (capped): "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">BOUNDED_CACHE</span><span class="p">.</span><span class="na">size</span><span class="p">());</span>
+<a id="__codelineno-13-42" name="__codelineno-13-42" href="#__codelineno-13-42"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-43" name="__codelineno-13-43" href="#__codelineno-13-43"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="memory-profiling-tools-new">Memory Profiling Tools <em>(new)</em></h2>
+<h3 id="theory_7">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong>: A family of tools for observing JVM memory behaviour in real time or post-mortem: JVisualVM (GUI heap/CPU/thread monitor bundled historically with the JDK, now a separate download), async-profiler (low-overhead sampling profiler supporting CPU, allocation, and lock profiling via perf_events/JFR), and JFR/Java Flight Recorder (built-in, low-overhead, always-available event recording framework), often paired with Eclipse MAT for heap dump analysis.</li>
+<li><strong>Internal Working</strong>: These tools work at different levels - JFR/async-profiler use low-overhead sampling and JVM-internal event hooks (often via <code>JVMTI</code> or JFR's native event system) to record data continuously with minimal application impact; JVisualVM and Eclipse MAT instead operate on point-in-time snapshots (heap dumps) or via JMX polling, which is heavier-weight but gives a complete object graph.</li>
+<li><strong>When to Use It</strong>: JFR for always-on, low-overhead production monitoring and later analysis (works well combined with JDK Mission Control for visualization); async-profiler for targeted, short-duration deep-dive profiling (CPU hotspots, allocation hotspots, lock contention) with minimal overhead in both dev and production; JVisualVM for quick, ad-hoc local/dev inspection; Eclipse MAT specifically for analyzing a captured heap dump to find leak suspects and dominator trees.</li>
+<li><strong>Advantages</strong>: JFR's overhead is low enough (~1% or less) to leave enabled permanently in production, providing a rolling recording buffer to inspect after an incident even without having proactively started profiling beforehand; async-profiler avoids the JVM safepoint bias that plagued older profilers (which could only sample at safepoints, skewing results); Eclipse MAT's automated leak-suspect and dominator-tree reports dramatically speed up root-causing a memory leak from a raw heap dump.</li>
+<li><strong>Limitations</strong>: Heap dumps (used by JVisualVM/MAT) are expensive to capture (can pause the JVM briefly and are large on disk) and only represent a single instant, not a "growth over time" view/full request-scoped tracing; JFR data requires JDK Mission Control (or manual/CLI analysis via <code>jfr print</code>) for full interpretability; async-profiler requires OS-level permissions (perf_events access) on some platforms/containers and isn't bundled with the JDK by default (separate install).</li>
+</ul>
+<h3 id="internal-working_7">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: (1) JFR is enabled either at JVM startup (<code>-XX:StartFlightRecording=...</code>) or dynamically at runtime via <code>jcmd &lt;pid&gt; JFR.start</code>; it continuously records low-level JVM events (allocations above a threshold, GC pauses, lock contention, thread starts, exceptions, and more) into an efficient binary buffer with minimal instrumentation overhead, periodically flushing to disk if configured, or kept purely in-memory as a rolling buffer for on-demand dumping. (2) async-profiler attaches to a running JVM (via <code>-agentpath</code> or dynamically) and uses <code>perf_events</code> (Linux) or equivalent OS facilities, combined with JVMTI's <code>AsyncGetCallTrace</code>, to sample stack traces at high frequency with very low overhead, avoiding safepoint bias. (3) JVisualVM connects to a running JVM via JMX/Attach API to show live heap/thread/CPU graphs and can trigger an on-demand heap dump. (4) Eclipse MAT loads a heap dump file (<code>.hprof</code>), builds an in-memory index of the entire object graph, computes dominator trees (which object, if removed, would free the most retained memory) and runs heuristic "leak suspect" reports.</li>
+<li><strong>Memory Layout</strong>: Not directly applicable to the tools themselves; they observe/report on the heap/Metaspace/native memory layout described in the other sections of this document rather than introducing new memory regions.</li>
+<li><strong>Diagrams</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>Production JVM  --JFR events (always-on, low overhead)--&gt; .jfr recording file
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>                --async-profiler (on-demand attach)------&gt; flamegraph / collapsed stacks
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>                --heap dump (jmap / -XX:+HeapDumpOnOutOfMemoryError)--&gt; .hprof file
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>                                                                          |
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>                                                                          v
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>                                                              Eclipse MAT / JVisualVM analysis
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong>: JFR is integrated directly into the JVM (originally a commercial feature, open-sourced and available in all OpenJDK builds since JDK 11) and shares infrastructure with GC/JIT/thread subsystems to record events with minimal instrumentation cost; async-profiler's low overhead comes specifically from avoiding safepoint-biased sampling (a known flaw in older <code>hprof</code>/JVM-TI-only profilers that could only sample when the JVM happened to be at a safepoint, systematically over- or under-representing certain code paths).</li>
+</ul>
+<h3 id="interview-questions_7">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What is JFR (Java Flight Recorder) and why is its overhead low enough for production use?
+2. What is a heap dump and which tools are commonly used to analyze one?</p>
+<p><strong>Intermediate</strong>
+3. What problem does async-profiler solve that traditional safepoint-based sampling profilers had?
+4. How would you capture a heap dump automatically when an <code>OutOfMemoryError</code> occurs?</p>
+<p><strong>Advanced</strong>
+5. How does Eclipse MAT's "dominator tree" help identify the root cause of a memory leak?</p>
+<p><strong>Scenario-based</strong>
+6. Production is experiencing intermittent CPU spikes correlated with unclear causes, and you cannot easily reproduce it in a test environment. Which tool would you reach for first, and how would you use it with minimal risk to the running service?</p>
+<h3 id="detailed-answers_7">Detailed Answers</h3>
+<ol>
+<li>JFR (Java Flight Recorder) is a built-in JVM framework for recording detailed runtime events - object allocations (sampled, above configurable thresholds), GC pauses, thread lifecycle events, lock contention, exceptions, and more - into a compact binary format. Its overhead is low (typically well under 1-2%) because it's implemented deep inside the JVM using efficient, purpose-built event-recording infrastructure (shared with existing GC/JIT/thread bookkeeping) rather than bolted-on instrumentation, low enough that Oracle/OpenJDK explicitly recommend leaving it continuously enabled in production for "always have data available after an incident" diagnostics.</li>
+<li>A heap dump is a complete snapshot of every object on the Java heap at a point in time (typically an <code>.hprof</code> file), including their field values, class information, and reference relationships to every other object - essentially a serialized graph of the entire heap. Eclipse MAT (Memory Analyzer Tool) and JVisualVM are the two most commonly used tools for analyzing one, with MAT generally preferred for deep leak analysis due to its dominator-tree and automated leak-suspect reports, and JVisualVM favored for quick, lighter-weight ad hoc inspection.</li>
+<li>Older profilers relying purely on JVMTI's synchronous stack-sampling APIs could only capture a stack trace when the JVM happened to be at a safepoint (a state where all threads are paused for GC/other coordinated operations), which systematically biases sampled results toward code that naturally reaches safepoints frequently and under-represents tight loops or code that avoids safepoint checks - a well-documented flaw ("safepoint bias") in tools like the original <code>hprof</code>. async-profiler instead uses OS-level <code>perf_events</code> (on Linux) combined with JVMTI's <code>AsyncGetCallTrace</code>, allowing it to sample stack traces asynchronously at arbitrary points, not just at safepoints, producing far more statistically accurate CPU/allocation profiles.</li>
+<li>Add the JVM flag <code>-XX:+HeapDumpOnOutOfMemoryError</code> (optionally paired with <code>-XX:HeapDumpPath=/path/to/dumps</code>) at startup; when the JVM throws an <code>OutOfMemoryError</code> (heap space, Metaspace, etc.), it automatically writes a full heap dump to disk before/at the point of the error, capturing the exact memory state that led to the failure without requiring you to have manually triggered a dump in advance (which is impossible to do reactively once the process has already crashed or been restarted).</li>
+<li>The dominator tree models the object graph such that object A "dominates" object B if every path from any GC root to B necessarily passes through A - meaning if A were removed/became unreachable, B (and everything else A dominates) would also become collectible. MAT's dominator tree report ranks objects by <em>retained size</em> (total memory that would be freed if that object were removed), which directly surfaces the single object/collection responsible for holding the largest chunk of memory alive - typically the actual leaking cache, list, or map - rather than requiring you to manually trace potentially thousands of individual reference chains to find the common root cause.</li>
+<li>async-profiler is the best first choice for this scenario: it can be attached to the already-running production JVM (dynamically, via its agent, with no restart required) with very low overhead and run for a short, bounded duration (e.g. 30-60 seconds during a spike) to capture a CPU flamegraph showing exactly which methods/call stacks are consuming CPU during that window, then detached - minimizing risk since it doesn't require restarting the service, changing startup flags, or leaving heavyweight instrumentation running continuously. If JFR is already enabled (as recommended for production), its always-on recording can also be dumped and inspected retroactively for the exact time window of a past spike without needing to catch it live at all, which is an even lower-risk complementary approach.</li>
+</ol>
+<h3 id="code-examples_7">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ProfilingTargetDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="c1">// A workload with an intentional CPU hotspot and allocation churn, useful for</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span><span class="c1">// demonstrating profiling tools. Run alongside:</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">    </span><span class="c1">//   java -XX:StartFlightRecording=duration=60s,filename=demo.jfr ProfilingTargetDemo</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">    </span><span class="c1">//   or attach async-profiler: ./profiler.sh -d 30 -f flamegraph.html &lt;pid&gt;</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">        </span><span class="kt">long</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">round</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">round</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"> </span><span class="n">round</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">            </span><span class="n">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">cpuIntensiveHotspot</span><span class="p">(</span><span class="mi">2_000_000</span><span class="p">);</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">            </span><span class="n">allocateChurn</span><span class="p">(</span><span class="mi">50_000</span><span class="p">);</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="w">            </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Total: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">total</span><span class="p">);</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="w">    </span><span class="c1">// Deliberately inefficient hotspot (nested loop, no early exit) for CPU profiling demos</span>
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">cpuIntensiveHotspot</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="w">        </span><span class="kt">long</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a><span class="w">                </span><span class="n">sum</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="p">)</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">sqrt</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">sum</span><span class="p">;</span>
+<a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-15-26" name="__codelineno-15-26" href="#__codelineno-15-26"></a>
+<a id="__codelineno-15-27" name="__codelineno-15-27" href="#__codelineno-15-27"></a><span class="w">    </span><span class="c1">// Allocation churn to observe in an allocation-profiling / JFR allocation view</span>
+<a id="__codelineno-15-28" name="__codelineno-15-28" href="#__codelineno-15-28"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">allocateChurn</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-29" name="__codelineno-15-29" href="#__codelineno-15-29"></a><span class="w">        </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">List</span><span class="o">&lt;</span><span class="kt">byte</span><span class="o">[]&gt;</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-15-30" name="__codelineno-15-30" href="#__codelineno-15-30"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-31" name="__codelineno-15-31" href="#__codelineno-15-31"></a><span class="w">            </span><span class="n">temp</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="o">[</span><span class="mi">64</span><span class="o">]</span><span class="p">);</span><span class="w"> </span><span class="c1">// short-lived, dies right after this method returns</span>
+<a id="__codelineno-15-32" name="__codelineno-15-32" href="#__codelineno-15-32"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-15-33" name="__codelineno-15-33" href="#__codelineno-15-33"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-15-34" name="__codelineno-15-34" href="#__codelineno-15-34"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="additional-resources">Additional Resources</h2>
+<h3 id="articles">Articles</h3>
+<ul>
+<li><a href="https://medium.com/@gaddamnaveen192/memory-leaks-in-java-real-time-use-case-fixes-29f92faa99e0">Memory Leaks in Java (Real-Time Use Case &amp; Fixes)</a></li>
+</ul></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2025 <a href="https://github.com/abhishekghoshh"  target="_blank" rel="noopener">Abhishek Ghosh</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/abhishekghoshh" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://x.com/abhishek_ghoshh" target="_blank" rel="noopener" title="x.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/abhishek-ghosh-220679132/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

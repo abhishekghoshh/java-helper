@@ -1,0 +1,2187 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abhishekghoshh.github.io/java-helper/29-logging/">
+      
+      
+        <link rel="prev" href="../28-internationalization-and-localization/">
+      
+      
+        <link rel="next" href="../30-security-basics/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Logging - Java Helper</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Logging - Java Helper" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/29-logging.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://abhishekghoshh.github.io/java-helper/29-logging/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Logging - Java Helper" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/29-logging.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#29-logging-new" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Java Helper" class="md-header__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Java Helper
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Logging
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../1-java-language-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Java Language Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../2-object-oriented-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Object-Oriented Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../3-classes/" class="md-tabs__link">
+        
+  
+    
+  
+  Classes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../4-constructors/" class="md-tabs__link">
+        
+  
+    
+  
+  Constructors
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-access-modifiers/" class="md-tabs__link">
+        
+  
+    
+  
+  Access Modifiers
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../6-packages/" class="md-tabs__link">
+        
+  
+    
+  
+  Packages
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../7-strings/" class="md-tabs__link">
+        
+  
+    
+  
+  Strings
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../8-arrays/" class="md-tabs__link">
+        
+  
+    
+  
+  Arrays
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../9-collections-framework/" class="md-tabs__link">
+        
+  
+    
+  
+  Collections Framework
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../10-generics/" class="md-tabs__link">
+        
+  
+    
+  
+  Generics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../11-exception-handling/" class="md-tabs__link">
+        
+  
+    
+  
+  Exception Handling
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../12-file-io/" class="md-tabs__link">
+        
+  
+    
+  
+  File I/O
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../13-serialization/" class="md-tabs__link">
+        
+  
+    
+  
+  Serialization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../14-reflection/" class="md-tabs__link">
+        
+  
+    
+  
+  Reflection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../15-annotations/" class="md-tabs__link">
+        
+  
+    
+  
+  Annotations
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../16-functional-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Functional Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../17-streams-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Streams API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../18-date-and-time-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Date and Time API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../19-jvm-internals/" class="md-tabs__link">
+        
+  
+    
+  
+  JVM Internals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../20-class-loader/" class="md-tabs__link">
+        
+  
+    
+  
+  Class Loader
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../21-memory-management/" class="md-tabs__link">
+        
+  
+    
+  
+  Memory Management
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../22-garbage-collection/" class="md-tabs__link">
+        
+  
+    
+  
+  Garbage Collection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../23-concurrency/" class="md-tabs__link">
+        
+  
+    
+  
+  Concurrency
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../24-networking/" class="md-tabs__link">
+        
+  
+    
+  
+  Networking
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../25-design-patterns-in-java/" class="md-tabs__link">
+        
+  
+    
+  
+  Design Patterns in Java
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../26-modern-java-language-features/" class="md-tabs__link">
+        
+  
+    
+  
+  Modern Java Language Features
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../27-regular-expressions/" class="md-tabs__link">
+        
+  
+    
+  
+  Regular Expressions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../28-internationalization-and-localization/" class="md-tabs__link">
+        
+  
+    
+  
+  Internationalization & Localization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Logging
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../30-security-basics/" class="md-tabs__link">
+        
+  
+    
+  
+  Security Basics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-tabs__link">
+        
+  
+    
+  
+  Native & Foreign Interoperability
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../32-process-and-system-apis/" class="md-tabs__link">
+        
+  
+    
+  
+  Process & System APIs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../33-testing-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Testing Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Java Helper" class="md-nav__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Java Helper
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-java-language-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java Language Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-object-oriented-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-classes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Classes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-constructors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constructors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-access-modifiers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access Modifiers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Packages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-strings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Strings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-collections-framework/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collections Framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-generics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-exception-handling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exception Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-file-io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File I/O
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-serialization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serialization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-reflection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reflection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-annotations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-functional-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Functional Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-streams-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Streams API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-date-and-time-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Date and Time API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-jvm-internals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JVM Internals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-class-loader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Class Loader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-memory-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-garbage-collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Garbage Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-concurrency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concurrency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-networking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-design-patterns-in-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Patterns in Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-modern-java-language-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modern Java Language Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-regular-expressions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Regular Expressions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-internationalization-and-localization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internationalization & Localization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Logging
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Logging
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#javautillogging" class="md-nav__link">
+    <span class="md-ellipsis">
+      java.util.logging
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="java.util.logging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logging-levels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logging Levels
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logging Levels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#handlers-formatters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handlers &amp; Formatters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Handlers & Formatters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logging-facades-slf4j-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logging Facades (SLF4J) &amp; Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logging Facades (SLF4J) & Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30-security-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Native & Foreign Interoperability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32-process-and-system-apis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process & System APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33-testing-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div><h1 id="29-logging-new">29. Logging <em>(new)</em></h1>
+<h2 id="javautillogging"><code>java.util.logging</code></h2>
+<h3 id="theory">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - <code>java.util.logging</code> (JUL) is the JDK's built-in logging framework (<code>java.util.logging.Logger</code>), providing hierarchical named loggers, configurable levels, handlers (output destinations), and formatters, with zero external dependencies required.</li>
+<li><strong>Internal Working</strong> - Loggers form a hierarchy by dot-separated name (mirroring package names), each optionally configuring its own level/handlers, with unset properties inherited from parent loggers up to the root logger; log calls are dispatched to the logger's (and ancestors', if configured) handlers if the message's level meets the effective threshold.</li>
+<li><strong>When to Use It</strong> - Use directly for simple applications/libraries wanting zero-dependency logging, or understand it because many JDK-internal components and older libraries use it; in most modern application code, prefer a facade like SLF4J over a concrete backend (often Logback) instead of coding directly against JUL.</li>
+<li><strong>Advantages</strong> - No external dependency (ships with the JDK); integrates automatically with JDK-internal logging (e.g., some <code>java.net</code>/security-related diagnostics).</li>
+<li><strong>Limitations</strong> - Widely considered clunkier/less ergonomic than alternatives (Logback, Log4j2) - more verbose configuration, fewer built-in appenders/formatters out of the box, weaker performance tuning options (e.g., no built-in async appenders), and its API/config style feels dated compared to modern facades.</li>
+</ul>
+<h3 id="internal-working">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - <code>Logger.getLogger("com.example.Service")</code> returns (creating if necessary) a named logger; calling <code>logger.info("message")</code> checks the logger's <em>effective</em> level (its own level if set, else walking up parent loggers until one has an explicit level, ultimately the root logger's default) - if the message level is at or above that threshold, it's wrapped in a <code>LogRecord</code> and passed to the logger's own <code>Handler</code>s, and (unless <code>setUseParentHandlers(false)</code>) also propagated up to ancestor loggers' handlers, each of which may apply its own level filter and a <code>Formatter</code> before writing output.</li>
+<li><strong>Memory Layout</strong> - Loggers are typically held as <code>static final</code> fields (one heap object per named logger, cached internally by the <code>LogManager</code>); <code>LogRecord</code> objects are short-lived, created per log call and typically collected quickly after being formatted/written.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>graph TD
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    Root[Root Logger - level INFO] --&gt; Pkg[com.example - inherits INFO]
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    Pkg --&gt; Cls[com.example.Service - level FINE, own ConsoleHandler]
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    Cls --&gt;|logger.fine msg| Check{FINE &gt;= effective level?}
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    Check --&gt;|yes| Handler1[Service's ConsoleHandler]
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    Check --&gt;|yes, propagates| Handler2[Root's default handlers]
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - Logging calls are ordinary method invocations with no special JVM support; performance-sensitive code should guard expensive log-message construction with <code>logger.isLoggable(Level.FINE)</code> checks to avoid unnecessary string concatenation/formatting work when the level wouldn't be logged anyway.</li>
+</ul>
+<h3 id="interview-questions">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What class do you use to obtain a logger in <code>java.util.logging</code>?
+2. Does JUL require any external dependency?</p>
+<p><strong>Intermediate</strong>
+1. How does the logger hierarchy determine a logger's "effective level" if it has none set explicitly?
+2. Why should you guard expensive log statements with <code>isLoggable()</code>?</p>
+<p><strong>Advanced</strong>
+1. Why do most modern Java applications avoid coding directly against <code>java.util.logging</code> even though it's built into the JDK?</p>
+<p><strong>Scenario-based</strong>
+1. A library you depend on logs via <code>java.util.logging</code>, but your application uses SLF4J+Logback - how do you unify these into one logging pipeline?</p>
+<h3 id="detailed-answers">Detailed Answers</h3>
+<ol>
+<li><strong>Q: How to obtain a logger?</strong> A: <code>Logger.getLogger("some.logger.name")</code> (conventionally the fully-qualified class name via <code>getClass().getName()</code> or a <code>static final</code> constant).</li>
+<li><strong>Q: External dependency needed?</strong> A: No - it's part of the JDK standard library (<code>java.util.logging</code> package), available with zero additional dependencies.</li>
+<li><strong>Q: Effective level determination?</strong> A: If a logger has no explicitly set level, it walks up its parent chain (based on dot-separated name hierarchy) until it finds an ancestor with an explicit level set, ultimately falling back to the root logger's configured default level.</li>
+<li><strong>Q: Why guard with <code>isLoggable()</code>?</strong> A: Constructing a log message (especially with string concatenation or expensive <code>toString()</code> calls on arguments) has a real CPU cost even if the message is ultimately discarded because its level is below the threshold; checking <code>if (logger.isLoggable(Level.FINE)) { logger.fine(expensiveMessage()); }</code> avoids that wasted work entirely when the level wouldn't be logged.</li>
+<li><strong>Q: Why avoid coding directly against JUL?</strong> A: JUL is generally considered less feature-rich and ergonomic than alternatives (fewer appender types, weaker performance/async options, more verbose configuration); the broader ecosystem convention is to code against a facade (SLF4J) so the application/library isn't tied to any specific concrete logging implementation, letting the end application choose/swap the actual backend.</li>
+<li><strong>Q: Unifying JUL with SLF4J+Logback?</strong> A: Use the <code>jul-to-slf4j</code> bridge (<code>org.slf4j:jul-to-slf4j</code>) which installs a <code>SLF4JBridgeHandler</code> on the JUL root logger, redirecting all JUL log records into the SLF4J API (and thus into your Logback backend), giving one unified logging pipeline/configuration for both your code and the dependent library's JUL-based logging.</li>
+</ol>
+<h3 id="code-examples">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.logging.Level</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.logging.Logger</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">JulDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Logger</span><span class="w"> </span><span class="n">LOGGER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Logger</span><span class="p">.</span><span class="na">getLogger</span><span class="p">(</span><span class="n">JulDemo</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="n">LOGGER</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">"Application starting"</span><span class="p">);</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="c1">// Guard expensive message construction with isLoggable()</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">LOGGER</span><span class="p">.</span><span class="na">isLoggable</span><span class="p">(</span><span class="n">Level</span><span class="p">.</span><span class="na">FINE</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">            </span><span class="n">LOGGER</span><span class="p">.</span><span class="na">fine</span><span class="p">(</span><span class="s">"Detailed state: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">computeExpensiveDebugInfo</span><span class="p">());</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">            </span><span class="n">riskyOperation</span><span class="p">();</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">            </span><span class="n">LOGGER</span><span class="p">.</span><span class="na">log</span><span class="p">(</span><span class="n">Level</span><span class="p">.</span><span class="na">SEVERE</span><span class="p">,</span><span class="w"> </span><span class="s">"Operation failed"</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span><span class="w"> </span><span class="c1">// logs exception with stack trace</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">computeExpensiveDebugInfo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">"expensive-to-build-details"</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">riskyOperation</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Exception</span><span class="p">(</span><span class="s">"simulated failure"</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="logging-levels">Logging Levels</h2>
+<h3 id="theory_1">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - Logging levels express the relative severity/verbosity of a log message, letting operators filter output at runtime without changing code; JUL defines (highest to lowest): <code>SEVERE</code>, <code>WARNING</code>, <code>INFO</code>, <code>CONFIG</code>, <code>FINE</code>, <code>FINER</code>, <code>FINEST</code> (plus <code>OFF</code>/<code>ALL</code> sentinels), while SLF4J/Log4j2 use the more common <code>ERROR</code>, <code>WARN</code>, <code>INFO</code>, <code>DEBUG</code>, <code>TRACE</code>.</li>
+<li><strong>Internal Working</strong> - Each logger/handler has a configured minimum level threshold; a log call's level is compared against the effective threshold, and the message is emitted only if it meets or exceeds that threshold - purely an integer comparison under the hood (each level wraps an int severity value).</li>
+<li><strong>When to Use It</strong> - Use <code>ERROR</code>/<code>SEVERE</code> for failures needing attention, <code>WARN</code>/<code>WARNING</code> for recoverable/unexpected situations, <code>INFO</code> for high-level operational events (startup, shutdown, major state transitions), <code>DEBUG</code>/<code>FINE</code> for detailed diagnostic information useful during development/troubleshooting, <code>TRACE</code>/<code>FINEST</code> for extremely verbose step-by-step tracing.</li>
+<li><strong>Advantages</strong> - Enables adjusting verbosity per environment (verbose in dev/staging, minimal in production) without code changes, and per-component (turn on DEBUG for just the module you're investigating) via configuration.</li>
+<li><strong>Limitations</strong> - Overusing high-severity levels (logging routine events as <code>ERROR</code>) causes "alert fatigue"/noisy logs that obscure real problems; inconsistent level usage across a codebase/team makes log-based monitoring/alerting unreliable.</li>
+</ul>
+<h3 id="internal-working_1">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - Each <code>Level</code> (JUL) or level enum (SLF4J backends) wraps an integer severity value; a logging call like <code>logger.warn(msg)</code> is effectively "is WARN's integer &gt;= the configured threshold's integer for this logger context? If yes, format and emit; if no, discard immediately (ideally without even evaluating message arguments, motivating parameterized logging like <code>logger.debug("value={}", expensiveCall())</code>- style APIs that defer argument evaluation).</li>
+<li><strong>Memory Layout</strong> - Not directly applicable - levels are lightweight enum-like singleton objects, not per-call allocations.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Severity (JUL):     SEVERE &gt; WARNING &gt; INFO &gt; CONFIG &gt; FINE &gt; FINER &gt; FINEST
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Severity (SLF4J):   ERROR  &gt; WARN    &gt; INFO &gt;         DEBUG              &gt; TRACE
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>Threshold = INFO -&gt; DEBUG/TRACE calls are discarded; INFO/WARN/ERROR calls are emitted
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - Level comparison is a cheap integer comparison; the real performance concern is ensuring message argument evaluation (string building, <code>toString()</code> calls) is deferred/skipped when the level check fails - modern facades (SLF4J) support parameterized logging (<code>log.debug("x={}", x)</code>) specifically so the JIT/runtime doesn't need to eagerly concatenate strings before the level check happens.</li>
+</ul>
+<h3 id="interview-questions_1">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. List the standard SLF4J logging levels from highest to lowest severity.
+2. What's the purpose of having multiple logging levels?</p>
+<p><strong>Intermediate</strong>
+1. Why is parameterized logging (<code>log.debug("x={}", x)</code>) preferred over string concatenation (<code>log.debug("x=" + x)</code>)?
+2. What's the practical difference between <code>WARN</code> and <code>ERROR</code>?</p>
+<p><strong>Advanced</strong>
+1. How does a logging framework decide whether to actually format/emit a message versus discard it, and where's the performance-critical path?</p>
+<p><strong>Scenario-based</strong>
+1. Production logs are so noisy with <code>INFO</code>-level messages that real <code>ERROR</code>s get lost/ignored by the on-call team - how would you address this using levels and configuration?</p>
+<h3 id="detailed-answers_1">Detailed Answers</h3>
+<ol>
+<li><strong>Q: SLF4J levels, highest to lowest?</strong> A: <code>ERROR</code> &gt; <code>WARN</code> &gt; <code>INFO</code> &gt; <code>DEBUG</code> &gt; <code>TRACE</code>.</li>
+<li><strong>Q: Purpose of multiple levels?</strong> A: To allow filtering log verbosity at runtime/per-environment/per-component without code changes - e.g., running production at <code>INFO</code> (or <code>WARN</code>) to reduce noise/overhead while allowing <code>DEBUG</code>/<code>TRACE</code> to be enabled temporarily and selectively when troubleshooting a specific issue.</li>
+<li><strong>Q: Why parameterized logging?</strong> A: <code>log.debug("x=" + x)</code> ALWAYS performs the string concatenation (and any <code>toString()</code> calls) regardless of whether DEBUG is enabled, wasting CPU when it's disabled; <code>log.debug("x={}", x)</code> defers formatting - the framework only builds the final string if the DEBUG level check passes, avoiding wasted work when logging is disabled at that level.</li>
+<li><strong>Q: <code>WARN</code> vs <code>ERROR</code> distinction?</strong> A: <code>WARN</code> indicates something unexpected or potentially problematic that the application recovered from or can continue despite (e.g., a retried operation, a deprecated API usage, a fallback path taken); <code>ERROR</code> indicates an actual failure requiring attention (an operation that failed and could not complete/recover, likely impacting functionality).</li>
+<li><strong>Q: Performance-critical decision path?</strong> A: The framework first performs a cheap integer-level comparison (<code>isEnabled(level)</code>) before doing ANY message construction; the critical practice is ensuring that comparison happens BEFORE expensive argument evaluation/string building - achieved via parameterized/lazy logging APIs or explicit <code>isDebugEnabled()</code>-style guards around costly message construction.</li>
+<li><strong>Q: Noisy <code>INFO</code> logs burying <code>ERROR</code>s?</strong> A: Audit and reduce excessive <code>INFO</code>-level logging (demote truly routine/high-volume events to <code>DEBUG</code>), configure production log level appropriately (often <code>INFO</code> or <code>WARN</code> as the baseline, with <code>DEBUG</code> reserved for targeted troubleshooting), and set up log-based alerting/dashboards that specifically filter and highlight <code>ERROR</code>/<code>WARN</code> entries so they're not visually lost among high-volume <code>INFO</code> noise, rather than relying on humans scrolling through raw logs.</li>
+</ol>
+<h3 id="code-examples_1">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.slf4j.Logger</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.slf4j.LoggerFactory</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LoggingLevelsDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Logger</span><span class="w"> </span><span class="n">log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LoggerFactory</span><span class="p">.</span><span class="na">getLogger</span><span class="p">(</span><span class="n">LoggingLevelsDemo</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="n">log</span><span class="p">.</span><span class="na">error</span><span class="p">(</span><span class="s">"Payment processing failed for order {}"</span><span class="p">,</span><span class="w"> </span><span class="s">"ORD-123"</span><span class="p">);</span><span class="w"> </span><span class="c1">// needs attention</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="n">log</span><span class="p">.</span><span class="na">warn</span><span class="p">(</span><span class="s">"Retrying connection to {} (attempt {})"</span><span class="p">,</span><span class="w"> </span><span class="s">"db-primary"</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="c1">// recoverable</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="n">log</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">"Order {} placed successfully"</span><span class="p">,</span><span class="w"> </span><span class="s">"ORD-124"</span><span class="p">);</span><span class="w"> </span><span class="c1">// high-level operational event</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="n">log</span><span class="p">.</span><span class="na">debug</span><span class="p">(</span><span class="s">"Computed discount={} for order={}"</span><span class="p">,</span><span class="w"> </span><span class="mf">0.15</span><span class="p">,</span><span class="w"> </span><span class="s">"ORD-124"</span><span class="p">);</span><span class="w"> </span><span class="c1">// detailed diagnostic</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="n">log</span><span class="p">.</span><span class="na">trace</span><span class="p">(</span><span class="s">"Entering calculateDiscount() with rawTotal={}"</span><span class="p">,</span><span class="w"> </span><span class="mf">199.99</span><span class="p">);</span><span class="w"> </span><span class="c1">// very verbose tracing</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">        </span><span class="c1">// Note: argument formatting for debug()/trace() is deferred - no cost if disabled.</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="handlers-formatters">Handlers &amp; Formatters</h2>
+<h3 id="theory_2">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - In <code>java.util.logging</code>, a <code>Handler</code> determines WHERE log records go (console, file, network socket, memory buffer), while a <code>Formatter</code> determines HOW a <code>LogRecord</code> is rendered into text (or another format) before the handler writes it - a separation of "destination" from "presentation" mirrored by "appenders"/"layouts" in Logback/Log4j2.</li>
+<li><strong>Internal Working</strong> - A logger can have zero or more handlers attached; each handler has its own level threshold (independent of the logger's) and its own formatter; when a <code>LogRecord</code> reaches a handler, the handler checks its own level filter, then calls its formatter's <code>format(record)</code> to produce the final string/bytes, then writes them to its destination.</li>
+<li><strong>When to Use It</strong> - Attach a <code>ConsoleHandler</code> for local/dev visibility, a <code>FileHandler</code> for persistent logs, and custom handlers/formatters for structured (JSON) output feeding into log aggregation systems (ELK, Splunk); customize formatters when the default <code>SimpleFormatter</code>'s plain-text output doesn't fit your log-processing pipeline's needs.</li>
+<li><strong>Advantages</strong> - Clean separation of concerns lets you reuse the same formatter across different handlers (or vice versa), and lets a single log call fan out to multiple destinations (console AND file AND remote) each with independent formatting/filtering.</li>
+<li><strong>Limitations</strong> - JUL's built-in handlers/formatters are relatively basic (no built-in JSON formatter, no built-in async/buffered file rotation policies as sophisticated as Logback's) - production systems typically need custom or third-party handlers/formatters, or simply use a more capable framework (Logback/Log4j2) instead.</li>
+</ul>
+<h3 id="internal-working_2">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - <code>logger.info(msg)</code> creates a <code>LogRecord</code> and passes it to each attached <code>Handler</code> (plus, if <code>useParentHandlers</code> is true, ancestor loggers' handlers too); each <code>Handler.publish(record)</code> first checks its own level filter (independent from the logger's level - a handler can further restrict what it actually outputs), then calls its <code>Formatter.format(record)</code> to produce a <code>String</code>, then writes that string to its underlying destination (<code>System.out</code>/<code>System.err</code> for <code>ConsoleHandler</code>, a rotating file for <code>FileHandler</code>, etc.), typically flushing based on the handler's configuration.</li>
+<li><strong>Memory Layout</strong> - <code>Handler</code>/<code>Formatter</code> instances are ordinary long-lived heap objects configured once at startup; <code>FileHandler</code> internally manages file I/O buffers and rotation state (current file index, byte count) as part of its own object state.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>LogRecord --&gt; Handler.publish()
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>                |-- checks handler's own level
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>                |-- Formatter.format(record) -&gt; String
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>                \-- writes to destination (console/file/socket)
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>One logger can fan out to MULTIPLE handlers: ConsoleHandler + FileHandler + CustomJsonHandler
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - No special JVM behaviour - handlers perform ordinary I/O (console/file/network writes), which can block the calling thread unless the handler is explicitly asynchronous/buffered; a slow handler (e.g., writing over a flaky network) can become a bottleneck for any thread that logs through it, since JUL's built-in handlers are largely synchronous by default.</li>
+</ul>
+<h3 id="interview-questions_2">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What's the difference between a <code>Handler</code> and a <code>Formatter</code> in <code>java.util.logging</code>?
+2. Name two built-in JUL handlers.</p>
+<p><strong>Intermediate</strong>
+1. Can a handler have a different (more restrictive) level than its logger? What's the effect?
+2. How does a single log call end up in both console output and a file?</p>
+<p><strong>Advanced</strong>
+1. Why can synchronous file/network handlers become a performance bottleneck, and how would you mitigate this?</p>
+<p><strong>Scenario-based</strong>
+1. You need production logs emitted as structured JSON for ingestion into an ELK stack, but JUL's default <code>SimpleFormatter</code> produces plain text - how would you address this?</p>
+<h3 id="detailed-answers_2">Detailed Answers</h3>
+<ol>
+<li><strong>Q: Handler vs Formatter?</strong> A: A <code>Handler</code> decides the output destination (console, file, network) and manages the actual I/O; a <code>Formatter</code> decides how a <code>LogRecord</code>'s data (message, level, timestamp, exception) is rendered into the text/bytes the handler writes - destination versus presentation.</li>
+<li><strong>Q: Two built-in JUL handlers?</strong> A: <code>ConsoleHandler</code> (writes to <code>System.err</code> by default) and <code>FileHandler</code> (writes to a rotating set of files).</li>
+<li><strong>Q: Handler with stricter level than logger?</strong> A: Yes - a handler's level acts as an additional filter on top of whatever passed the logger's own level check; e.g., a logger at <code>FINE</code> might still have a <code>ConsoleHandler</code> configured at <code>INFO</code>, so <code>FINE</code>/<code>FINER</code> messages reach the handler but are further filtered out there, never appearing on console (useful for having verbose file logs but a quieter console).</li>
+<li><strong>Q: One call, multiple destinations?</strong> A: Attach multiple handlers to the same logger (e.g., <code>logger.addHandler(consoleHandler); logger.addHandler(fileHandler);</code>) - each <code>LogRecord</code> is dispatched to every attached handler (and ancestor handlers, if <code>useParentHandlers</code> is true), each independently formatting and writing it to its own destination.</li>
+<li><strong>Q: Why can synchronous handlers bottleneck?</strong> A: If a handler performs a blocking I/O operation (writing to a slow disk, or especially a network socket) synchronously as part of <code>publish()</code>, the calling application thread is blocked for that duration on every log call; mitigate by using (or writing) an asynchronous handler that hands the <code>LogRecord</code> off to a background thread/queue for actual writing, decoupling the application's logging call from the I/O latency.</li>
+<li><strong>Q: JSON logging for ELK?</strong> A: Implement a custom <code>Formatter</code> subclass overriding <code>format(LogRecord)</code> to produce a JSON string (timestamp, level, logger name, message, exception details) instead of plain text, and attach it to your handlers (<code>handler.setFormatter(new JsonFormatter())</code>); alternatively, migrate to a framework with built-in structured-logging support (e.g., Logback with <code>logstash-logback-encoder</code>), which is the more common production choice.</li>
+</ol>
+<h3 id="code-examples_2">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.logging.*</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.IOException</span><span class="p">;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HandlersFormattersDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">        </span><span class="n">Logger</span><span class="w"> </span><span class="n">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Logger</span><span class="p">.</span><span class="na">getLogger</span><span class="p">(</span><span class="s">"com.example.app"</span><span class="p">);</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="na">setUseParentHandlers</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w"> </span><span class="c1">// don't also use the default root console handler</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="na">setLevel</span><span class="p">(</span><span class="n">Level</span><span class="p">.</span><span class="na">FINE</span><span class="p">);</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">        </span><span class="n">ConsoleHandler</span><span class="w"> </span><span class="n">console</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ConsoleHandler</span><span class="p">();</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">        </span><span class="n">console</span><span class="p">.</span><span class="na">setLevel</span><span class="p">(</span><span class="n">Level</span><span class="p">.</span><span class="na">INFO</span><span class="p">);</span><span class="w"> </span><span class="c1">// console only shows INFO and above, even though logger allows FINE</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">        </span><span class="n">console</span><span class="p">.</span><span class="na">setFormatter</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">SimpleFormatter</span><span class="p">());</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">        </span><span class="n">FileHandler</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileHandler</span><span class="p">(</span><span class="s">"app.log"</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span><span class="w"> </span><span class="c1">// append mode</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">        </span><span class="n">file</span><span class="p">.</span><span class="na">setLevel</span><span class="p">(</span><span class="n">Level</span><span class="p">.</span><span class="na">FINE</span><span class="p">);</span><span class="w"> </span><span class="c1">// file captures more detail than console</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">        </span><span class="n">file</span><span class="p">.</span><span class="na">setFormatter</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">SimpleFormatter</span><span class="p">());</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="na">addHandler</span><span class="p">(</span><span class="n">console</span><span class="p">);</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="na">addHandler</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">"Visible on console AND in file"</span><span class="p">);</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">        </span><span class="n">logger</span><span class="p">.</span><span class="na">fine</span><span class="p">(</span><span class="s">"Only in file, filtered out of console by its handler-level"</span><span class="p">);</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="logging-facades-slf4j-best-practices">Logging Facades (SLF4J) &amp; Best Practices</h2>
+<h3 id="theory_3">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - SLF4J (Simple Logging Facade for Java) is an abstraction layer providing a single logging API (<code>Logger</code>/<code>LoggerFactory</code>) that decouples application/library code from any specific concrete logging implementation (Logback, Log4j2, JUL), with the actual backend selected at deployment time via which binding JAR is on the classpath.</li>
+<li><strong>Internal Working</strong> - Application code calls <code>LoggerFactory.getLogger(...)</code>, which at runtime discovers and delegates to whichever concrete SLF4J binding is present on the classpath (e.g., <code>logback-classic</code>, or a bridge like <code>log4j-over-slf4j</code>); this indirection means library authors can log via SLF4J without forcing a specific backend choice on consumers.</li>
+<li><strong>When to Use It</strong> - Use SLF4J as the logging API in virtually all new application AND library code; choose a concrete backend (commonly Logback or Log4j2) only at the final application's deployment, wiring in the appropriate binding dependency.</li>
+<li><strong>Advantages</strong> - Decouples logging API from implementation (swap backends without code changes), supports parameterized/lazy logging (<code>log.debug("x={}", x)</code>), is the de facto ecosystem standard so libraries interoperate cleanly, and offers bridges to unify logs from libraries using other frameworks (JUL, Log4j 1.x, Commons Logging) into one pipeline.</li>
+<li><strong>Limitations</strong> - Adds one layer of indirection (a facade call must still resolve to a concrete implementation, occasionally causing "multiple bindings on classpath" warnings/conflicts if dependency management isn't careful); doesn't itself provide advanced features (async appenders, rolling file policies) - those come from the chosen concrete backend.</li>
+</ul>
+<h3 id="internal-working_3">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - At class-load time, <code>LoggerFactory</code> locates the SLF4J binding on the classpath (a <code>StaticLoggerBinder</code>/<code>ServiceLoader</code>-based mechanism depending on SLF4J version) and delegates all subsequent <code>Logger</code> creation/log calls to that binding's actual implementation (e.g., Logback's <code>Logger</code>), which then handles level filtering, formatting, and appender dispatch exactly as it would if used directly - SLF4J itself contains no logging implementation, purely the API plus a thin discovery/delegation layer.</li>
+<li><strong>Memory Layout</strong> - Not directly applicable - a thin API layer with negligible additional per-log-call overhead beyond a normal method call delegating to the real backend's logger.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>graph LR
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    App[Application/Library code] --&gt; SLF4J[SLF4J API: Logger/LoggerFactory]
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    SLF4J --&gt; Binding{Which binding JAR is on classpath?}
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    Binding --&gt; Logback[logback-classic]
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    Binding --&gt; Log4j2[log4j-slf4j2-impl]
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    Binding --&gt; JUL[slf4j-jdk14]
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - No special JVM behaviour beyond normal class loading/delegation; the binding resolution happens once at startup (or first use), after which all logging calls go directly to the resolved concrete implementation with no ongoing per-call resolution overhead.</li>
+</ul>
+<h3 id="interview-questions_3">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What is SLF4J, and what problem does it solve?
+2. Does SLF4J itself write log output anywhere?</p>
+<p><strong>Intermediate</strong>
+1. Why should library authors log against SLF4J instead of a concrete framework like Logback directly?
+2. What causes the classic "multiple SLF4J bindings" warning, and how do you fix it?</p>
+<p><strong>Advanced</strong>
+1. How do bridge libraries (e.g., <code>jul-to-slf4j</code>, <code>log4j-over-slf4j</code>) unify logging from dependencies using different frameworks?</p>
+<p><strong>Scenario-based</strong>
+1. You're building a shared library used by many different applications, some using Logback, others using Log4j2 - what logging approach should the library use, and why?</p>
+<h3 id="detailed-answers_3">Detailed Answers</h3>
+<ol>
+<li><strong>Q: What is SLF4J and what problem does it solve?</strong> A: A logging facade/API that decouples calling code from any specific concrete logging implementation, solving the problem of applications and their many dependencies each potentially wanting a different logging framework - by coding against one common API, the actual backend can be chosen once, application-wide.</li>
+<li><strong>Q: Does SLF4J write output itself?</strong> A: No - it's purely an API; actual log formatting/writing is performed by whichever concrete binding (Logback, Log4j2, JUL bridge, etc.) is present on the classpath at runtime.</li>
+<li><strong>Q: Why should libraries use SLF4J, not a concrete framework?</strong> A: If a library logged directly via, say, Logback, every consuming application would be forced to have Logback on its classpath (and potentially conflict with the application's own chosen framework); logging via SLF4J lets the library remain implementation-agnostic, with the final application deciding which concrete backend to wire in.</li>
+<li><strong>Q: "Multiple bindings" warning cause/fix?</strong> A: Occurs when more than one SLF4J binding JAR (e.g., both <code>logback-classic</code> and <code>slf4j-log4j12</code>) is present on the classpath simultaneously, making it ambiguous which one should handle logging; fix by auditing your dependency tree (e.g., <code>mvn dependency:tree</code>) and excluding the unwanted/duplicate binding(s), keeping exactly one concrete binding on the classpath.</li>
+<li><strong>Q: How do bridge libraries unify logging?</strong> A: They replace the OTHER framework's logging implementation with a thin shim that redirects calls into SLF4J instead (e.g., <code>jul-to-slf4j</code> installs a custom JUL <code>Handler</code> on the root JUL logger that forwards every <code>LogRecord</code> into the SLF4J API; <code>log4j-over-slf4j</code> provides a <code>log4j-over-slf4j.jar</code> that mimics the Log4j 1.x API but delegates calls to SLF4J) - so ALL logging, regardless of which API a given dependency was originally written against, ultimately flows through one real backend and its configuration.</li>
+<li><strong>Q: Shared library's logging approach?</strong> A: Use SLF4J exclusively for all logging calls within the library, and do NOT bundle/depend on any concrete backend (Logback/Log4j2) as a compile-time dependency (at most as an optional/test-scope dependency) - this lets each consuming application supply whichever concrete SLF4J binding matches its own logging setup, without forcing a specific choice or risking classpath conflicts.</li>
+</ol>
+<h3 id="code-examples_3">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.slf4j.Logger</span><span class="p">;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.slf4j.LoggerFactory</span><span class="p">;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Slf4jBestPracticesDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="c1">// Library/application code depends only on the SLF4J API, never a concrete backend directly</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Logger</span><span class="w"> </span><span class="n">log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LoggerFactory</span><span class="p">.</span><span class="na">getLogger</span><span class="p">(</span><span class="n">Slf4jBestPracticesDemo</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">processOrder</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">orderId</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">        </span><span class="n">log</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">"Processing order {} for amount {}"</span><span class="p">,</span><span class="w"> </span><span class="n">orderId</span><span class="p">,</span><span class="w"> </span><span class="n">amount</span><span class="p">);</span><span class="w"> </span><span class="c1">// parameterized, lazy formatting</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">amount</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s">"Negative amount"</span><span class="p">);</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">            </span><span class="n">log</span><span class="p">.</span><span class="na">debug</span><span class="p">(</span><span class="s">"Order {} validated successfully"</span><span class="p">,</span><span class="w"> </span><span class="n">orderId</span><span class="p">);</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">IllegalArgumentException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">            </span><span class="n">log</span><span class="p">.</span><span class="na">error</span><span class="p">(</span><span class="s">"Failed to process order {}"</span><span class="p">,</span><span class="w"> </span><span class="n">orderId</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span><span class="w"> </span><span class="c1">// logs message + full stack trace</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="n">Slf4jBestPracticesDemo</span><span class="p">().</span><span class="na">processOrder</span><span class="p">(</span><span class="s">"ORD-1"</span><span class="p">,</span><span class="w"> </span><span class="mf">99.99</span><span class="p">);</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="p">}</span>
+</code></pre></div></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2025 <a href="https://github.com/abhishekghoshh"  target="_blank" rel="noopener">Abhishek Ghosh</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/abhishekghoshh" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://x.com/abhishek_ghoshh" target="_blank" rel="noopener" title="x.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/abhishek-ghosh-220679132/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

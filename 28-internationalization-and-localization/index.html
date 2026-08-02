@@ -1,0 +1,2438 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abhishekghoshh.github.io/java-helper/28-internationalization-and-localization/">
+      
+      
+        <link rel="prev" href="../27-regular-expressions/">
+      
+      
+        <link rel="next" href="../29-logging/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Internationalization & Localization - Java Helper</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Internationalization & Localization - Java Helper" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/28-internationalization-and-localization.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://abhishekghoshh.github.io/java-helper/28-internationalization-and-localization/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Internationalization & Localization - Java Helper" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/28-internationalization-and-localization.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#28-internationalization-localization-new" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Java Helper" class="md-header__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Java Helper
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Internationalization & Localization
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../1-java-language-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Java Language Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../2-object-oriented-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Object-Oriented Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../3-classes/" class="md-tabs__link">
+        
+  
+    
+  
+  Classes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../4-constructors/" class="md-tabs__link">
+        
+  
+    
+  
+  Constructors
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-access-modifiers/" class="md-tabs__link">
+        
+  
+    
+  
+  Access Modifiers
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../6-packages/" class="md-tabs__link">
+        
+  
+    
+  
+  Packages
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../7-strings/" class="md-tabs__link">
+        
+  
+    
+  
+  Strings
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../8-arrays/" class="md-tabs__link">
+        
+  
+    
+  
+  Arrays
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../9-collections-framework/" class="md-tabs__link">
+        
+  
+    
+  
+  Collections Framework
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../10-generics/" class="md-tabs__link">
+        
+  
+    
+  
+  Generics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../11-exception-handling/" class="md-tabs__link">
+        
+  
+    
+  
+  Exception Handling
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../12-file-io/" class="md-tabs__link">
+        
+  
+    
+  
+  File I/O
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../13-serialization/" class="md-tabs__link">
+        
+  
+    
+  
+  Serialization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../14-reflection/" class="md-tabs__link">
+        
+  
+    
+  
+  Reflection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../15-annotations/" class="md-tabs__link">
+        
+  
+    
+  
+  Annotations
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../16-functional-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Functional Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../17-streams-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Streams API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../18-date-and-time-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Date and Time API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../19-jvm-internals/" class="md-tabs__link">
+        
+  
+    
+  
+  JVM Internals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../20-class-loader/" class="md-tabs__link">
+        
+  
+    
+  
+  Class Loader
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../21-memory-management/" class="md-tabs__link">
+        
+  
+    
+  
+  Memory Management
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../22-garbage-collection/" class="md-tabs__link">
+        
+  
+    
+  
+  Garbage Collection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../23-concurrency/" class="md-tabs__link">
+        
+  
+    
+  
+  Concurrency
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../24-networking/" class="md-tabs__link">
+        
+  
+    
+  
+  Networking
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../25-design-patterns-in-java/" class="md-tabs__link">
+        
+  
+    
+  
+  Design Patterns in Java
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../26-modern-java-language-features/" class="md-tabs__link">
+        
+  
+    
+  
+  Modern Java Language Features
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../27-regular-expressions/" class="md-tabs__link">
+        
+  
+    
+  
+  Regular Expressions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Internationalization & Localization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../29-logging/" class="md-tabs__link">
+        
+  
+    
+  
+  Logging
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../30-security-basics/" class="md-tabs__link">
+        
+  
+    
+  
+  Security Basics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-tabs__link">
+        
+  
+    
+  
+  Native & Foreign Interoperability
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../32-process-and-system-apis/" class="md-tabs__link">
+        
+  
+    
+  
+  Process & System APIs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../33-testing-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Testing Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Java Helper" class="md-nav__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Java Helper
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-java-language-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java Language Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-object-oriented-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-classes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Classes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-constructors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constructors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-access-modifiers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access Modifiers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Packages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-strings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Strings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-collections-framework/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collections Framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-generics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-exception-handling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exception Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-file-io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File I/O
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-serialization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serialization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-reflection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reflection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-annotations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-functional-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Functional Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-streams-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Streams API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-date-and-time-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Date and Time API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-jvm-internals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JVM Internals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-class-loader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Class Loader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-memory-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-garbage-collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Garbage Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-concurrency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concurrency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-networking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-design-patterns-in-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Patterns in Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-modern-java-language-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modern Java Language Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-regular-expressions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Regular Expressions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Internationalization & Localization
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Internationalization & Localization
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#locale" class="md-nav__link">
+    <span class="md-ellipsis">
+      Locale
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Locale">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resourcebundle" class="md-nav__link">
+    <span class="md-ellipsis">
+      ResourceBundle
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ResourceBundle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#numberformat-dateformat" class="md-nav__link">
+    <span class="md-ellipsis">
+      NumberFormat / DateFormat
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NumberFormat / DateFormat">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#collator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Collator
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Collator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-logging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30-security-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Native & Foreign Interoperability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32-process-and-system-apis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process & System APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33-testing-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div><h1 id="28-internationalization-localization-new">28. Internationalization &amp; Localization <em>(new)</em></h1>
+<h2 id="locale"><code>Locale</code></h2>
+<h3 id="theory">Theory</h3>
+<p><strong>Core Concepts</strong>
+A <code>Locale</code> (<code>java.util.Locale</code>) represents a specific geographical, political, or cultural region — typically a combination of a language code (ISO 639, e.g. <code>en</code>), a country/region code (ISO 3166, e.g. <code>US</code>), and optionally a variant, script, or extension tags (BCP 47, e.g. <code>en-US-u-nu-thai</code>). It does not itself perform any formatting or translation — it is a <em>key</em> that other i18n classes (<code>ResourceBundle</code>, <code>NumberFormat</code>, <code>DateFormat</code>, <code>Collator</code>, <code>MessageFormat</code>) use to decide which culturally-specific data or algorithm to apply. Java's internationalization model is built around the separation of "what to display" (locale-sensitive data) from "how to compute it" (locale-neutral logic).</p>
+<p><strong>Internal Working</strong>
+<code>Locale</code> instances are effectively immutable value objects built from language/country/variant/script fields plus optional Unicode BCP 47 extensions; the JDK caches common locales and uses them as lookup keys into <code>ResourceBundle.Control</code> and provider SPIs (<code>LocaleServiceProvider</code>) that supply locale-specific formatting data from CLDR (Common Locale Data Repository).</p>
+<p><strong>When to Use It</strong>
+- Any application that must present dates, numbers, currency, or text in a way appropriate to the end user's culture/region.
+- Selecting the correct <code>ResourceBundle</code> for translated strings.
+- Passing to <code>String.format(Locale, ...)</code>, <code>Collator.getInstance(Locale)</code>, <code>NumberFormat.getInstance(Locale)</code>, etc., instead of relying on the JVM default locale (which can vary across environments and is not thread-safe to rely on implicitly in server applications).</p>
+<p><strong>Advantages</strong>
+- Standardized (BCP 47 / IANA) representation, interoperable with HTTP <code>Accept-Language</code> headers, OS locale settings, and other systems.
+- Extensible via <code>Locale.Builder</code> and extension tags (e.g. calendar type, numbering system) without inventing custom formats.
+- Backed by CLDR, so formatting rules stay current with real-world locale conventions without embedding logic in application code.</p>
+<p><strong>Limitations</strong>
+- <code>Locale.getDefault()</code> is a JVM-wide (or thread-category-specific since Java 7 with <code>Locale.Category</code>) mutable global — relying on it implicitly in multi-tenant server code is a common source of subtle bugs (one request's locale leaking into another's response).
+- Constructing arbitrary <code>new Locale("xx", "YY")</code> strings does not validate that the language/country codes are real; <code>Locale.Builder</code> performs stricter validation.
+- Locale matching (e.g. via <code>Locale.filter</code>/<code>Locale.lookup</code> with language ranges) has non-trivial fallback rules that are easy to get wrong (e.g. <code>en_US</code> not automatically falling back to <code>en</code> unless you build the fallback chain yourself or use <code>ResourceBundle.Control</code>).</p>
+<h3 id="internal-working">Internal Working</h3>
+<p><strong>Step-by-Step Explanation</strong>
+1. A <code>Locale</code> is obtained either via a constant (<code>Locale.US</code>, <code>Locale.JAPAN</code>), <code>Locale.forLanguageTag("en-US")</code>, the multi-part constructor, or <code>new Locale.Builder().setLanguage("en").setRegion("US").build()</code>.
+2. The locale is passed into a locale-sensitive factory method, e.g. <code>NumberFormat.getCurrencyInstance(locale)</code>.
+3. Internally, the factory consults an ordered list of <code>LocaleServiceProvider</code> implementations (JDK's built-in CLDR-based provider by default, or a custom SPI registered via <code>META-INF/services</code>) to find a matching implementation for that locale.
+4. If no exact match exists, the JDK applies locale fallback (stripping variant, then country, then falling back to the default locale's resources or root/invariant data).
+5. The resulting formatter/collator object encapsulates locale-specific rules (digit symbols, currency symbol placement, sort order, etc.) and is used repeatedly — these objects are generally <strong>not thread-safe</strong> (<code>NumberFormat</code>, <code>DateFormat</code>), so they should be created per-use or per-thread (e.g. <code>ThreadLocal</code>), unlike <code>Locale</code> itself which is immutable and thread-safe.</p>
+<p><strong>Memory Layout</strong>
+Not directly applicable to heap generations — a <code>Locale</code> object is a small, typically long-lived, immutable object; the JVM interns/caches common instances (<code>Locale.US</code>, etc.) as static final fields, so they behave like other long-lived objects promoted to the old generation, with negligible GC pressure.</p>
+<p><strong>Diagrams</strong>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Request "Accept-Language: fr-CA"          Locale.forLanguageTag("fr-CA")
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>        │                                          │
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        ▼                                          ▼
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  Locale{language=fr, country=CA} ───► NumberFormat.getInstance(locale)
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        │                                          │
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        ▼                                          ▼
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  Fallback chain: fr_CA → fr → root(invariant) ──► CLDR data lookup ──► formatted output
+</code></pre></div>
+<p><strong>JVM Behaviour</strong>
+No special bytecode or JIT behavior — <code>Locale</code> is ordinary immutable object usage. The JVM default locale is initialized once at startup from OS/<code>user.language</code>/<code>user.country</code> system properties and cached in a static field; <code>Locale.setDefault()</code> mutates this global cache and is visible to all threads (a potential concurrency hazard in servers handling multiple locales concurrently — prefer passing <code>Locale</code> explicitly rather than mutating the default).</p>
+<h3 id="interview-questions">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What is a <code>Locale</code> and what three main components can it be composed of?
+2. How do you obtain a <code>Locale</code> for "German as spoken in Switzerland"?
+3. What is the difference between <code>Locale.getDefault()</code> and passing an explicit <code>Locale</code> to a formatter?</p>
+<p><strong>Intermediate</strong>
+4. How does the JDK perform locale fallback when an exact match isn't available?
+5. Why is <code>Locale.setDefault()</code> risky in a multi-tenant web server?
+6. What is the difference between <code>new Locale("en", "US")</code> and <code>Locale.forLanguageTag("en-US")</code>?</p>
+<p><strong>Advanced</strong>
+7. How would you implement a custom <code>LocaleServiceProvider</code> to supply formatting data for a locale not covered by the JDK?
+8. Explain <code>Locale.Category</code> (<code>DISPLAY</code> vs <code>FORMAT</code>) and why it was introduced in Java 7.
+9. How does <code>Locale.filter</code>/<code>Locale.lookup</code> (RFC 4647 language range matching) differ from simple fallback in <code>ResourceBundle</code>?</p>
+<p><strong>Scenario-based</strong>
+10. A Spring Boot REST API serving users worldwide currently calls <code>Locale.setDefault()</code> per request based on the <code>Accept-Language</code> header. What bugs could this cause under concurrent load, and how would you redesign it?</p>
+<h3 id="detailed-answers">Detailed Answers</h3>
+<ol>
+<li>
+<p><strong>What is a <code>Locale</code> and what three main components can it be composed of?</strong>
+   A <code>Locale</code> represents a specific linguistic/geographic/cultural context, used as a lookup key by i18n-aware classes. It is primarily composed of a language code (ISO 639, lower-case, e.g. <code>en</code>), an optional country/region code (ISO 3166, upper-case, e.g. <code>US</code>), and an optional variant, plus modern BCP 47 support for script and Unicode extension subtags (e.g. numbering system).</p>
+</li>
+<li>
+<p><strong>How do you obtain a <code>Locale</code> for "German as spoken in Switzerland"?</strong>
+   <code>Locale swissGerman = new Locale.Builder().setLanguage("de").setRegion("CH").build();</code> or equivalently <code>Locale.forLanguageTag("de-CH")</code>. The older <code>new Locale("de", "CH")</code> constructor still works but performs no tag validation.</p>
+</li>
+<li>
+<p><strong>What is the difference between <code>Locale.getDefault()</code> and passing an explicit <code>Locale</code> to a formatter?</strong>
+   <code>Locale.getDefault()</code> reads a JVM-wide (or category-scoped) mutable static field set at startup from OS/system properties, which can be changed at runtime by any code calling <code>setDefault()</code> — dangerous in concurrent contexts. Passing an explicit <code>Locale</code> (e.g. resolved per-request from an <code>Accept-Language</code> header) makes locale selection deterministic, thread-safe, and testable, decoupled from global JVM state.</p>
+</li>
+<li>
+<p><strong>How does the JDK perform locale fallback when an exact match isn't available?</strong>
+   The lookup/fallback algorithm progressively strips specificity: <code>language_COUNTRY_VARIANT</code> → <code>language_COUNTRY</code> → <code>language</code> → root/invariant bundle. <code>ResourceBundle.Control</code> (or the default <code>ResourceBundle.Control.getControl</code>) implements this candidate-locale list generation; formatters use similar CLDR data fallback internally.</p>
+</li>
+<li>
+<p><strong>Why is <code>Locale.setDefault()</code> risky in a multi-tenant web server?</strong>
+   It mutates a single JVM-wide static (or, since Java 7, per-<code>Category</code> static) value shared by all threads. In a server handling concurrent requests for different users/locales, one thread calling <code>setDefault()</code> can change formatting/parsing behavior seen by other in-flight requests, causing intermittent, hard-to-reproduce bugs (e.g. wrong currency symbol shown to a different user). The fix is to thread the <code>Locale</code> explicitly through method parameters rather than relying on global default state.</p>
+</li>
+<li>
+<p><strong>What is the difference between <code>new Locale("en", "US")</code> and <code>Locale.forLanguageTag("en-US")</code>?</strong>
+   Functionally they produce an equivalent locale for simple cases, but <code>forLanguageTag</code> parses a standards-compliant BCP 47 tag (validating structure, normalizing case, supporting script/extension subtags, and mapping legacy tags), while the constructor does no validation and predates BCP 47 support — it simply stores whatever strings are passed. <code>Locale.Builder</code>/<code>forLanguageTag</code> is the modern, recommended approach.</p>
+</li>
+<li>
+<p><strong>How would you implement a custom <code>LocaleServiceProvider</code> to supply formatting data for a locale not covered by the JDK?</strong>
+   Implement one of the SPI subclasses (e.g. <code>java.text.spi.NumberFormatProvider</code>, <code>DateFormatProvider</code>, <code>BreakIteratorProvider</code>), override <code>getAvailableLocales()</code> and the relevant factory methods to return locale-specific implementations, then register the provider class name in <code>META-INF/services/java.text.spi.NumberFormatProvider</code> (or use <code>java.util.ServiceLoader</code> semantics under the module system with a <code>provides ... with ...</code> directive in <code>module-info.java</code>). The JDK's <code>NumberFormat.getInstance(locale)</code> will discover and delegate to it via <code>ServiceLoader</code> when no built-in provider matches.</p>
+</li>
+<li>
+<p><strong>Explain <code>Locale.Category</code> (<code>DISPLAY</code> vs <code>FORMAT</code>) and why it was introduced in Java 7.</strong>
+   <code>Locale.Category</code> lets an application maintain two independent default locales: <code>DISPLAY</code> (used for menus, dialogs, UI labels) and <code>FORMAT</code> (used for parsing/formatting dates, numbers, currency). This separation allows, for example, a UI localized in English while numeric/date formatting still follows the user's regional (e.g. French) conventions — <code>Locale.setDefault(Locale.Category.FORMAT, frenchLocale)</code> without affecting the UI language default.</p>
+</li>
+<li>
+<p><strong>How does <code>Locale.filter</code>/<code>Locale.lookup</code> (RFC 4647 language range matching) differ from simple fallback in <code>ResourceBundle</code>?</strong>
+   <code>ResourceBundle</code>'s fallback is a fixed truncation chain from the most specific requested locale down to root. <code>Locale.filter</code>/<code>Locale.lookup</code> implement RFC 4647 "basic filtering"/"lookup" semantics against a <em>list of user-supplied priority ranges</em> (e.g. parsed straight from an HTTP <code>Accept-Language</code> header with <code>Locale.LanguageRange.parse</code>), returning the best-matching locale(s) from a candidate set — useful for content-negotiation scenarios where you must pick the best of several <em>available</em> locales, not just fall back within one bundle family.</p>
+</li>
+<li>
+<p><strong>A Spring Boot REST API currently calls <code>Locale.setDefault()</code> per request — what bugs and redesign?</strong>
+    Because <code>Locale.setDefault()</code> mutates shared JVM state, concurrent requests can interleave: request A sets default to <code>fr_FR</code>, request B (different thread, same time window) sets it to <code>ja_JP</code>, and depending on scheduling, thread A's response may be formatted using thread B's locale — a classic race condition, worse under a shared thread pool with request pipelining. The fix: never call <code>setDefault()</code> per request; instead resolve the desired <code>Locale</code> from <code>Accept-Language</code> (e.g. via <code>LocaleResolver</code>/<code>LocaleContextHolder</code> in Spring, which is backed by a <code>ThreadLocal</code>, not a JVM-global) and pass it explicitly to every <code>NumberFormat</code>/<code>DateTimeFormatter</code>/<code>MessageSource</code> call for that request.</p>
+</li>
+</ol>
+<h3 id="code-examples">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Locale</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.text.NumberFormat</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LocaleDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="c1">// Build locales explicitly rather than relying on JVM default</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="n">Locale</span><span class="w"> </span><span class="n">us</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Locale</span><span class="p">.</span><span class="na">forLanguageTag</span><span class="p">(</span><span class="s">"en-US"</span><span class="p">);</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="n">Locale</span><span class="w"> </span><span class="n">germany</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Locale</span><span class="p">.</span><span class="na">forLanguageTag</span><span class="p">(</span><span class="s">"de-DE"</span><span class="p">);</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="n">Locale</span><span class="w"> </span><span class="n">swissGerman</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Locale</span><span class="p">.</span><span class="na">Builder</span><span class="p">().</span><span class="na">setLanguage</span><span class="p">(</span><span class="s">"de"</span><span class="p">).</span><span class="na">setRegion</span><span class="p">(</span><span class="s">"CH"</span><span class="p">).</span><span class="na">build</span><span class="p">();</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1234.5</span><span class="p">;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Locale</span><span class="w"> </span><span class="n">locale</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Locale</span><span class="o">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">us</span><span class="p">,</span><span class="w"> </span><span class="n">germany</span><span class="p">,</span><span class="w"> </span><span class="n">swissGerman</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">            </span><span class="n">NumberFormat</span><span class="w"> </span><span class="n">currency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NumberFormat</span><span class="p">.</span><span class="na">getCurrencyInstance</span><span class="p">(</span><span class="n">locale</span><span class="p">);</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">locale</span><span class="p">.</span><span class="na">toLanguageTag</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" -&gt; "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">currency</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="n">price</span><span class="p">));</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">        </span><span class="c1">// RFC 4647 style negotiation: pick best match from what the app supports</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">supported</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">Locale</span><span class="p">.</span><span class="na">forLanguageTag</span><span class="p">(</span><span class="s">"en"</span><span class="p">),</span><span class="w"> </span><span class="n">Locale</span><span class="p">.</span><span class="na">forLanguageTag</span><span class="p">(</span><span class="s">"fr"</span><span class="p">),</span><span class="w"> </span><span class="n">Locale</span><span class="p">.</span><span class="na">forLanguageTag</span><span class="p">(</span><span class="s">"de"</span><span class="p">));</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">ranges</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Locale</span><span class="p">.</span><span class="na">LanguageRange</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">"fr-CA,fr;q=0.9,en;q=0.5"</span><span class="p">);</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">        </span><span class="n">Locale</span><span class="w"> </span><span class="n">best</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Locale</span><span class="p">.</span><span class="na">lookup</span><span class="p">(</span><span class="n">ranges</span><span class="p">,</span><span class="w"> </span><span class="n">supported</span><span class="p">);</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Best match for Accept-Language header: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">best</span><span class="p">);</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="resourcebundle"><code>ResourceBundle</code></h2>
+<h3 id="theory_1">Theory</h3>
+<p><strong>Core Concepts</strong>
+<code>ResourceBundle</code> (<code>java.util.ResourceBundle</code>) is an abstraction for loading locale-specific key/value data — typically translated UI strings — decoupled from application logic. Concrete forms are <code>PropertyResourceBundle</code> (backed by <code>.properties</code> files, e.g. <code>Messages_en_US.properties</code>) and <code>ListResourceBundle</code>/programmatic subclasses (backed by Java code returning an <code>Object[][]</code>). At runtime, <code>ResourceBundle.getBundle(baseName, locale)</code> resolves the most specific bundle file available for the requested locale, falling back progressively toward a base/default bundle.</p>
+<p><strong>Internal Working</strong>
+<code>getBundle</code> builds a candidate list of locales (most specific → least specific) via <code>ResourceBundle.Control</code>, attempts to load each corresponding <code>.properties</code>/class resource from the classpath (or a custom source if a <code>Control</code>/<code>ResourceBundleProvider</code> SPI is supplied), caches successfully loaded bundles in an internal soft-reference cache keyed by (baseName, locale, classloader), and chains bundles together via <code>setParent()</code> so <code>getString()</code> transparently searches parent bundles for missing keys.</p>
+<p><strong>When to Use It</strong>
+- Externalizing all user-facing text so translators can work on <code>.properties</code> files without touching code.
+- Applications supporting multiple languages/regions where the same key set needs locale-specific values (error messages, labels, email templates).
+- Combined with <code>MessageFormat</code> for parameterized, grammatically-correct translated messages (plurals, ordering of substituted values).</p>
+<p><strong>Advantages</strong>
+- Automatic fallback chain reduces the need for translators to duplicate every key in every locale variant.
+- Pluggable loading strategy (custom <code>Control</code>, or since Java 9 <code>ResourceBundleProvider</code> SPI, module-friendly) allows bundles to come from databases, remote services, or non-classpath sources.
+- Built-in caching avoids repeated file parsing.</p>
+<p><strong>Limitations</strong>
+- Default <code>.properties</code> files are read as ISO-8859-1 by legacy <code>PropertyResourceBundle</code> unless using <code>PropertyResourceBundle</code>'s UTF-8-aware constructor/<code>Properties.load(Reader)</code> path (Java 9+ default encoding for bundles changed to UTF-8, but be careful with older toolchains and <code>native2ascii</code> workflows).
+- No built-in pluralization/grammar handling — <code>MessageFormat.choice</code>/<code>ChoiceFormat</code> or a library like ICU4J is needed for complex plural rules.
+- The bundle cache is keyed partly by classloader and can cause stale-bundle issues in hot-reload/plugin environments unless <code>ResourceBundle.clearCache()</code> is used.
+- Missing-key lookups throw <code>MissingResourceException</code> at runtime rather than compile time — there is no static verification that all locales define all keys.</p>
+<h3 id="internal-working_1">Internal Working</h3>
+<p><strong>Step-by-Step Explanation</strong>
+1. <code>ResourceBundle.getBundle("Messages", locale)</code> is called.
+2. The default <code>Control</code> generates a candidate locale list, e.g. for <code>Locale("fr", "CA")</code>: <code>fr_CA</code>, <code>fr</code>, root (empty).
+3. For each candidate, the loader looks for <code>Messages_fr_CA.class</code>, then <code>Messages_fr_CA.properties</code>, then repeats for <code>fr</code>, then for the base <code>Messages.properties</code>.
+4. The first bundle found becomes the primary; subsequent, less-specific bundles found are linked as parents via <code>setParent()</code>, forming a chain (<code>fr_CA</code> → <code>fr</code> → root).
+5. <code>bundle.getString("greeting")</code> looks up the key in the primary bundle; if absent, delegates to <code>parent.getString(...)</code> recursively until found or <code>MissingResourceException</code> is thrown.
+6. Loaded bundles are cached (soft references) keyed by base name, locale, and the calling classloader, so repeated <code>getBundle</code> calls are cheap.</p>
+<p><strong>Memory Layout</strong>
+Not directly applicable to stack/heap generation distinctions beyond ordinary object lifetime; the internal bundle cache uses <code>SoftReference</code>s so cached bundles can be reclaimed under memory pressure before an <code>OutOfMemoryError</code>, then reloaded on next access.</p>
+<p><strong>Diagrams</strong>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>getBundle("Messages", fr_CA)
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>        │
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        ▼
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a> candidate locales: [fr_CA, fr, ""(root)]
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>        │
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>        ▼
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a> Messages_fr_CA.properties  found?  → primary bundle
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>        │ no
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        ▼
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a> Messages_fr.properties      found?  → primary bundle, parent = fr_CA (if partially found) 
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>        │ no
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>        ▼
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a> Messages.properties (root)  → base bundle, parent chain terminus
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>Lookup chain for getString("key"):
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a> fr_CA bundle --(miss)--&gt; fr bundle --(miss)--&gt; root bundle --(miss)--&gt; MissingResourceException
+</code></pre></div>
+<p><strong>JVM Behaviour</strong>
+Loading <code>.properties</code>-backed bundles goes through the classloader's resource-loading path (<code>getResourceAsStream</code>), which is subject to normal classpath/module visibility rules; under the Java Platform Module System, resource bundles must be either open packages or accessed via the <code>ResourceBundleProvider</code> SPI (<code>module-info.java</code> <code>uses</code>/<code>provides</code>) since Java 9, because reflective/resource access to non-open packages is restricted.</p>
+<h3 id="interview-questions_1">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What is the difference between <code>PropertyResourceBundle</code> and <code>ListResourceBundle</code>?
+2. How does <code>ResourceBundle.getBundle</code> decide which file to load for a given locale?
+3. What exception is thrown when a key is missing from all bundles in the fallback chain?</p>
+<p><strong>Intermediate</strong>
+4. How would you structure <code>.properties</code> files to support English (default), French, and French-Canadian variants efficiently?
+5. Why might <code>.properties</code> file encoding matter, and how do you handle non-ASCII translated text?
+6. How does <code>ResourceBundle</code> caching work, and how can stale cached bundles be invalidated?</p>
+<p><strong>Advanced</strong>
+7. How do you supply resource bundles from a non-classpath source (e.g. a database) using a custom <code>Control</code> or <code>ResourceBundleProvider</code>?
+8. How does the Java Platform Module System change resource bundle loading, and what is <code>ResourceBundleProvider</code> used for?
+9. How would you integrate <code>ResourceBundle</code> with <code>MessageFormat</code> to handle parameterized, pluralized messages correctly across locales?</p>
+<p><strong>Scenario-based</strong>
+10. Your team ships translated <code>.properties</code> files that are frequently out of sync (some locales missing new keys added for a feature). How would you catch this at build time rather than in production?</p>
+<h3 id="detailed-answers_1">Detailed Answers</h3>
+<ol>
+<li>
+<p><strong>Difference between <code>PropertyResourceBundle</code> and <code>ListResourceBundle</code>?</strong>
+   <code>PropertyResourceBundle</code> loads key/value pairs from a <code>.properties</code> text file (simple, translator-friendly, but string-only values). <code>ListResourceBundle</code> is a Java class you write that returns an <code>Object[][]</code> of key/value pairs — compiled, type-safe, can hold arbitrary objects (not just strings), but requires a code change/recompile/redeploy to update translations, making it less suitable for external translator workflows.</p>
+</li>
+<li>
+<p><strong>How does <code>getBundle</code> decide which file to load?</strong>
+   It builds an ordered candidate-locale list from most to least specific (language+country+variant → language+country → language → root), using the <code>ResourceBundle.Control</code> in effect (default or custom), and returns the first bundle found on the classpath/module path for those candidates, linking any additional found bundles as a fallback parent chain.</p>
+</li>
+<li>
+<p><strong>What exception when a key is missing everywhere in the chain?</strong>
+   <code>MissingResourceException</code> (unchecked, extends <code>RuntimeException</code>), thrown by <code>getString</code>/<code>getObject</code> when the key isn't found in the bundle or any of its parents.</p>
+</li>
+<li>
+<p><strong>How to structure <code>.properties</code> files for English default + French + French-Canadian?</strong>
+   <code>Messages.properties</code> (root/default, typically English), <code>Messages_fr.properties</code> (French overrides/additions), <code>Messages_fr_CA.properties</code> (only the handful of Québec-specific overrides). Because of fallback, <code>fr_CA</code> need only contain keys that differ from <code>fr</code>, and <code>fr</code> need only contain keys that differ from the root — reducing translation duplication.</p>
+</li>
+<li>
+<p><strong>Why does <code>.properties</code> encoding matter, and how to handle non-ASCII text?</strong>
+   Traditionally <code>.properties</code> files were read as ISO-8859-1, requiring non-Latin-1 characters to be encoded as <code>\uXXXX</code> escapes (often via the <code>native2ascii</code> tool). Since Java 9, <code>PropertyResourceBundle</code>/<code>Properties</code> default to reading <code>.properties</code> files as UTF-8, simplifying this — but teams must ensure their build tooling and <code>Properties.load</code> calls agree on encoding to avoid mojibake, especially in mixed old/new toolchains.</p>
+</li>
+<li>
+<p><strong>How does bundle caching work, and how do you invalidate stale bundles?</strong>
+   <code>getBundle</code> caches loaded bundles in an internal cache (soft-referenced) keyed by base name, locale, and classloader, avoiding repeated I/O/parsing. To force a reload (e.g. after hot-swapping translation files in a plugin system), call <code>ResourceBundle.clearCache()</code> (clears entries for the caller's classloader) or <code>clearCache(ClassLoader)</code>.</p>
+</li>
+<li>
+<p><strong>How to supply bundles from a non-classpath source using <code>Control</code> or <code>ResourceBundleProvider</code>?</strong>
+   Pre-Java 9: subclass <code>ResourceBundle.Control</code>, override <code>newBundle(baseName, locale, format, loader, reload)</code> to fetch data (e.g. from a database) and construct/return a <code>ResourceBundle</code> (often a custom subclass wrapping a <code>Map</code>), then call <code>ResourceBundle.getBundle(baseName, locale, control)</code>. Java 9+ modular approach: implement <code>ResourceBundleProvider</code>, declare <code>uses java.util.spi.ResourceBundleProvider;</code>/<code>provides ... with ...;</code> in <code>module-info.java</code>, and the module system uses <code>ServiceLoader</code> to discover the provider, which is the required approach for named modules since resource lookups across module boundaries are otherwise restricted.</p>
+</li>
+<li>
+<p><strong>How does JPMS change resource bundle loading, and what is <code>ResourceBundleProvider</code> for?</strong>
+   Under JPMS, non-open packages are not reflectively/resource-accessible across module boundaries, so classpath-style <code>.properties</code> lookup inside another module's package may fail. <code>ResourceBundleProvider</code> (and its subtypes for properties/class-based bundles) lets a module explicitly export bundle-providing services via <code>provides</code>/<code>uses</code> directives, giving controlled, module-aware access instead of relying on open packages.</p>
+</li>
+<li>
+<p><strong>How to integrate <code>ResourceBundle</code> with <code>MessageFormat</code> for pluralized/parameterized messages?</strong>
+   Store message <em>patterns</em> (not final strings) in the bundle, e.g. <code>itemCount={0,choice,0#no items|1#one item|1&lt;{0,number} items}</code>, then at runtime do <code>new MessageFormat(bundle.getString("itemCount"), locale).format(new Object[]{count})</code>. This lets each locale's translator adjust word order, gender agreement, or plural rules within the pattern itself, rather than concatenating translated fragments in code (which breaks across languages with different grammar).</p>
+</li>
+<li>
+<p><strong>How to catch out-of-sync translation keys at build time?</strong>
+    Write a build-time (Maven/Gradle) unit test or annotation-processor step that loads the root bundle plus every locale variant bundle, computes the key set for each, and asserts that every locale's key set is a superset (accounting for intentional fallback) of the keys added in the current release, failing the build if any translated bundle is missing new keys — often paired with a CI report of missing/extra keys per locale.</p>
+</li>
+</ol>
+<h3 id="code-examples_1">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.*</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ResourceBundleDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="c1">// Loads Messages_fr_CA.properties, falls back to Messages_fr.properties, then Messages.properties</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="n">Locale</span><span class="w"> </span><span class="n">frCA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Locale</span><span class="p">.</span><span class="na">forLanguageTag</span><span class="p">(</span><span class="s">"fr-CA"</span><span class="p">);</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="n">ResourceBundle</span><span class="w"> </span><span class="n">bundle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ResourceBundle</span><span class="p">.</span><span class="na">getBundle</span><span class="p">(</span><span class="s">"Messages"</span><span class="p">,</span><span class="w"> </span><span class="n">frCA</span><span class="p">);</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">bundle</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">"greeting"</span><span class="p">));</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="c1">// Parameterized, locale-aware message using a MessageFormat pattern stored in the bundle</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">pattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bundle</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">"itemCount"</span><span class="p">);</span><span class="w"> </span><span class="c1">// e.g. "{0,choice,0#no items|1#one item|1&lt;{0,number} items}"</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">formatted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">text</span><span class="p">.</span><span class="na">MessageFormat</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span><span class="w"> </span><span class="n">frCA</span><span class="p">).</span><span class="na">format</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Object</span><span class="o">[]</span><span class="p">{</span><span class="mi">3</span><span class="p">});</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">formatted</span><span class="p">);</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">        </span><span class="c1">// Programmatic bundle for cases without external files (e.g. small embedded default set)</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">        </span><span class="n">ResourceBundle</span><span class="w"> </span><span class="n">fallback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ListResourceBundle</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">            </span><span class="kd">protected</span><span class="w"> </span><span class="n">Object</span><span class="o">[][]</span><span class="w"> </span><span class="nf">getContents</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Object</span><span class="o">[][]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="s">"greeting"</span><span class="p">,</span><span class="w"> </span><span class="s">"Hello (fallback)"</span><span class="p">}</span><span class="w"> </span><span class="p">};</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">        </span><span class="p">};</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">fallback</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">"greeting"</span><span class="p">));</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="numberformat-dateformat"><code>NumberFormat</code> / <code>DateFormat</code></h2>
+<h3 id="theory_2">Theory</h3>
+<p><strong>Core Concepts</strong>
+<code>NumberFormat</code> and <code>DateFormat</code> (<code>java.text</code> package) are abstract base classes providing locale-sensitive formatting and parsing of numbers/currency/percentages and dates/times respectively. <code>NumberFormat.getInstance()/getCurrencyInstance()/getPercentInstance()</code> and <code>DateFormat.getDateInstance()/getTimeInstance()/getDateTimeInstance()</code> return locale-appropriate concrete implementations (<code>DecimalFormat</code>, <code>SimpleDateFormat</code>) without the caller needing to know locale-specific patterns. Since Java 8, the modern <code>java.time</code> package's <code>DateTimeFormatter</code> is preferred over <code>DateFormat</code>/<code>SimpleDateFormat</code> for new code, but <code>DateFormat</code> remains prevalent in legacy codebases and APIs using <code>java.util.Date</code>.</p>
+<p><strong>Internal Working</strong>
+These factory methods consult CLDR-backed locale data to select decimal/grouping separators, currency symbols and their placement, calendar systems, and month/day names, then construct a mutable formatter instance (<code>DecimalFormat</code> or <code>SimpleDateFormat</code>) preconfigured with a locale-specific pattern string; formatting/parsing subsequently uses that pattern with <code>java.math</code>/character-level algorithms.</p>
+<p><strong>When to Use It</strong>
+- Formatting numeric/currency/percentage values for display to end users in their own locale conventions (<code>1,234.56</code> vs <code>1.234,56</code>).
+- Parsing user-entered locale-formatted numbers/dates back into <code>double</code>/<code>Date</code> values.
+- Legacy codebases still centered on <code>java.util.Date</code>/<code>Calendar</code> rather than <code>java.time</code>.</p>
+<p><strong>Advantages</strong>
+- Removes the need to hand-write locale-specific formatting patterns (currency symbol position, thousands separators, calendar name translations).
+- Parsing is symmetric with formatting — the same formatter instance can parse text it would have produced.</p>
+<p><strong>Limitations</strong>
+- <strong>Not thread-safe</strong> — <code>DecimalFormat</code>/<code>SimpleDateFormat</code> instances mutate internal state during <code>format</code>/<code>parse</code>; sharing one instance across threads without synchronization causes data corruption. Common mitigations: create a new instance per use, or wrap in <code>ThreadLocal&lt;DateFormat&gt;</code>.
+- <code>DateFormat</code>/<code>SimpleDateFormat</code> operate on the legacy <code>Date</code>/<code>Calendar</code> API, which has well-known design flaws (mutability, poor time-zone handling, 0-based months); <code>java.time.format.DateTimeFormatter</code> (immutable, thread-safe) is the modern replacement.
+- Lenient parsing by default (<code>setLenient(true)</code>) can silently accept malformed dates (e.g. "Feb 30" rolling over to March 2) unless explicitly disabled.</p>
+<h3 id="internal-working_2">Internal Working</h3>
+<p><strong>Step-by-Step Explanation</strong>
+1. <code>NumberFormat.getCurrencyInstance(locale)</code> (or <code>DateFormat.getDateInstance(style, locale)</code>) looks up CLDR pattern/symbol data for the locale.
+2. A concrete formatter (<code>DecimalFormat</code> with a <code>DecimalFormatSymbols</code>, or <code>SimpleDateFormat</code> with locale-specific month/day names) is constructed and returned.
+3. <code>format(value)</code> walks the pattern, substituting digits/separators (or date/time fields) according to locale symbols, producing a <code>String</code>.
+4. <code>parse(text)</code> does the reverse: it scans the input string according to the same pattern/symbols, accumulating a numeric or date value; malformed input throws <code>ParseException</code> (checked) unless lenient parsing "recovers" by reinterpreting it.
+5. Because the returned formatter instance holds mutable internal parsing/formatting state (e.g. a shared <code>Calendar</code> field in <code>SimpleDateFormat</code>), concurrent calls to <code>format</code>/<code>parse</code> on the same instance from multiple threads can produce corrupted results without external synchronization.</p>
+<p><strong>Memory Layout</strong>
+Not directly applicable beyond standard object lifetimes; formatter instances are typically short-lived (created per formatting operation or cached per-thread) — creating one per call in a hot loop can create GC churn, which is why per-thread caching (<code>ThreadLocal</code>) is a common performance optimization for high-throughput formatting code.</p>
+<p><strong>Diagrams</strong>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>                 locale=de_DE                          locale=en_US
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>                     │                                      │
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>                     ▼                                      ▼
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>      DecimalFormat: "#,##0.00 €" style          DecimalFormat: "$#,##0.00" style
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>                     │                                      │
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>             format(1234.5)                          format(1234.5)
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>                     │                                      │
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>                 "1.234,50 €"                           "$1,234.50"
+</code></pre></div>
+<p><strong>JVM Behaviour</strong>
+No special JIT/GC-specific behavior beyond ordinary object allocation; heavy use of <code>SimpleDateFormat</code>/<code>DecimalFormat</code> in tight loops without reuse can increase allocation rate and minor GC frequency — profiling hot formatting code paths sometimes reveals this as a target for caching formatter instances per thread.</p>
+<h3 id="interview-questions_2">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What is the difference between <code>NumberFormat.getInstance()</code> and <code>getCurrencyInstance()</code>?
+2. Why is <code>SimpleDateFormat</code> considered unsafe to share across threads?
+3. What checked exception does <code>parse()</code> throw, and why is it checked rather than unchecked?</p>
+<p><strong>Intermediate</strong>
+4. How would you safely reuse a <code>SimpleDateFormat</code> instance across multiple threads?
+5. What is the effect of <code>setLenient(false)</code> on <code>DateFormat</code>, and when would you use it?
+6. How do you format a number as a percentage or in a specific currency for a given locale?</p>
+<p><strong>Advanced</strong>
+7. Why does the JDK recommend migrating from <code>DateFormat</code>/<code>SimpleDateFormat</code> to <code>java.time.format.DateTimeFormatter</code>?
+8. How does <code>DecimalFormat</code> support custom pattern symbols (grouping size, multiplier, custom prefix/suffix) beyond simple locale defaults?
+9. How would you implement round-trip-safe parsing (parse(format(x)) == x) for currency values, considering rounding and locale-specific grouping?</p>
+<p><strong>Scenario-based</strong>
+10. A high-throughput report-generation service formats millions of dates per minute using a single shared <code>static final SimpleDateFormat</code>. Diagnose the likely bug and propose a fix with minimal performance regression.</p>
+<h3 id="detailed-answers_2">Detailed Answers</h3>
+<ol>
+<li>
+<p><strong>Difference between <code>getInstance()</code> and <code>getCurrencyInstance()</code>?</strong>
+   <code>NumberFormat.getInstance(locale)</code> returns a general-purpose decimal formatter (grouping separators, locale-appropriate decimal point) suitable for plain numbers. <code>getCurrencyInstance(locale)</code> returns a formatter preconfigured with the locale's currency symbol, correct symbol placement (prefix/suffix), and the currency's standard number of fraction digits (e.g. 2 for USD, 0 for JPY).</p>
+</li>
+<li>
+<p><strong>Why is <code>SimpleDateFormat</code> unsafe to share across threads?</strong>
+   It's a mutable class — internally it uses a shared <code>Calendar</code> instance and mutable working buffers during <code>format</code>/<code>parse</code> calls. If two threads call <code>format</code>/<code>parse</code> concurrently on the same instance, their operations can interleave and corrupt each other's intermediate state, producing wrong or inconsistent results (not always an exception — often silently wrong output, which is more dangerous).</p>
+</li>
+<li>
+<p><strong>What checked exception does <code>parse()</code> throw, and why checked?</strong>
+   <code>java.text.ParseException</code>. It's checked because malformed user input (e.g. free-text date entry) is an expected, recoverable failure mode that callers are forced to explicitly handle (show a validation error, retry, etc.) rather than let propagate as an unchecked runtime failure.</p>
+</li>
+<li>
+<p><strong>How to safely reuse <code>SimpleDateFormat</code> across threads?</strong>
+   Options: (a) create a new instance per use (simplest, some allocation overhead); (b) wrap it in a <code>ThreadLocal&lt;SimpleDateFormat&gt;</code> so each thread gets its own instance, reused across calls without contention; (c) migrate to <code>java.time.format.DateTimeFormatter</code>, which is immutable and inherently thread-safe, eliminating the problem entirely — the recommended modern solution.</p>
+</li>
+<li>
+<p><strong>Effect of <code>setLenient(false)</code>, and when to use it?</strong>
+   By default, <code>DateFormat</code> is lenient — it "corrects" invalid field combinations by rolling them over (e.g. parsing "February 30" as March 1/2). <code>setLenient(false)</code> makes parsing strict, throwing <code>ParseException</code> for such invalid dates instead of silently normalizing them — important for validating genuine user input (e.g. birthdate forms) where silent correction could mask user error.</p>
+</li>
+<li>
+<p><strong>How to format a number as a percentage or specific currency for a locale?</strong>
+   Percentage: <code>NumberFormat.getPercentInstance(locale).format(0.42)</code> → e.g. <code>"42%"</code>. Specific (non-default) currency for a locale: use <code>DecimalFormat</code> with <code>setCurrency(Currency.getInstance("EUR"))</code> on a <code>NumberFormat.getCurrencyInstance(locale)</code> instance, allowing the locale's grouping/placement conventions to apply to a currency other than the locale's default.</p>
+</li>
+<li>
+<p><strong>Why migrate from <code>DateFormat</code>/<code>SimpleDateFormat</code> to <code>DateTimeFormatter</code>?</strong>
+   <code>java.time</code> classes (<code>LocalDate</code>, <code>LocalDateTime</code>, <code>ZonedDateTime</code>) and <code>DateTimeFormatter</code> are immutable and thread-safe by design, have clearer semantics for time zones and offsets, avoid the notorious <code>Calendar</code>/<code>Date</code> pitfalls (0-based months, mutdaily state, ambiguous time-zone handling), and provide a much richer, more precise formatting/parsing API (ISO-8601 support, <code>DateTimeFormatterBuilder</code> for custom patterns, better locale-aware era/eratext handling).</p>
+</li>
+<li>
+<p><strong>How does <code>DecimalFormat</code> support custom pattern symbols beyond locale defaults?</strong>
+   Via <code>DecimalFormatSymbols</code> (grouping/decimal separators, currency symbol, digit characters, exponent symbol) which can be customized independent of the pattern, and via <code>DecimalFormat</code> methods like <code>setGroupingSize</code>, <code>setMultiplier</code> (e.g. ×100 for percentages/×1000 for per-mille), <code>setPositivePrefix/Suffix</code>/<code>setNegativePrefix/Suffix</code> for custom formatting beyond what locale defaults provide, while still layering on top of a locale's base symbol set if desired.</p>
+</li>
+<li>
+<p><strong>How to implement round-trip-safe parsing for currency values?</strong>
+   Configure the formatter's rounding mode explicitly (<code>DecimalFormat.setRoundingMode(RoundingMode.HALF_EVEN)</code> or appropriate for the domain), fix the fraction digits to the currency's defined scale (<code>Currency.getDefaultFractionDigits()</code>), and use <code>BigDecimal</code> (via <code>setParseBigDecimal(true)</code>) rather than <code>double</code> for both formatting and parsing to avoid binary floating-point representation error; then verify <code>parse(format(x)).equals(x)</code> holds for the fixed scale, since values beyond that scale should have been rejected/rounded at input time.</p>
+</li>
+<li>
+<p><strong>Diagnose bug in shared <code>static final SimpleDateFormat</code> under high throughput.</strong>
+    The shared instance is mutated concurrently by many threads calling <code>format</code>, causing race conditions that silently corrupt output (garbled or wrong dates under load — often intermittent and hard to reproduce, worse under high concurrency/throughput as described). Fix with minimal performance regression: replace with a <code>ThreadLocal&lt;SimpleDateFormat&gt;</code> (or better, migrate the whole pipeline to <code>java.time.format.DateTimeFormatter</code>, which is thread-safe and can remain a single shared <code>static final</code> instance with zero contention and no per-thread allocation overhead).</p>
+</li>
+</ol>
+<h3 id="code-examples_2">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.text.*</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.*</span><span class="p">;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.*</span><span class="p">;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.format.DateTimeFormatter</span><span class="p">;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">NumberDateFormatDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">ParseException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="n">Locale</span><span class="w"> </span><span class="n">germany</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Locale</span><span class="p">.</span><span class="na">GERMANY</span><span class="p">;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">        </span><span class="n">Locale</span><span class="w"> </span><span class="n">us</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Locale</span><span class="p">.</span><span class="na">US</span><span class="p">;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">        </span><span class="c1">// Currency formatting differs by locale (symbol placement, separators)</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">        </span><span class="n">NumberFormat</span><span class="w"> </span><span class="n">deCurrency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NumberFormat</span><span class="p">.</span><span class="na">getCurrencyInstance</span><span class="p">(</span><span class="n">germany</span><span class="p">);</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">        </span><span class="n">NumberFormat</span><span class="w"> </span><span class="n">usCurrency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NumberFormat</span><span class="p">.</span><span class="na">getCurrencyInstance</span><span class="p">(</span><span class="n">us</span><span class="p">);</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">deCurrency</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="mf">19999.5</span><span class="p">));</span><span class="w"> </span><span class="c1">// e.g. "19.999,50 €"</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">usCurrency</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="mf">19999.5</span><span class="p">));</span><span class="w"> </span><span class="c1">// e.g. "$19,999.50"</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">        </span><span class="c1">// Strict parsing to reject invalid user-entered dates</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">        </span><span class="n">DateFormat</span><span class="w"> </span><span class="n">strictDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateFormat</span><span class="p">.</span><span class="na">getDateInstance</span><span class="p">(</span><span class="n">DateFormat</span><span class="p">.</span><span class="na">SHORT</span><span class="p">,</span><span class="w"> </span><span class="n">us</span><span class="p">);</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">        </span><span class="n">strictDate</span><span class="p">.</span><span class="na">setLenient</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">            </span><span class="n">strictDate</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">"13/40/2024"</span><span class="p">);</span><span class="w"> </span><span class="c1">// invalid month/day</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">ParseException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Rejected invalid date: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">        </span><span class="c1">// Modern, thread-safe alternative: java.time + DateTimeFormatter</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">        </span><span class="n">DateTimeFormatter</span><span class="w"> </span><span class="n">isoFormatter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateTimeFormatter</span><span class="p">.</span><span class="na">ofPattern</span><span class="p">(</span><span class="s">"dd MMM yyyy"</span><span class="p">,</span><span class="w"> </span><span class="n">Locale</span><span class="p">.</span><span class="na">US</span><span class="p">);</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">        </span><span class="n">LocalDate</span><span class="w"> </span><span class="n">today</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalDate</span><span class="p">.</span><span class="na">now</span><span class="p">();</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">today</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="n">isoFormatter</span><span class="p">));</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="collator"><code>Collator</code></h2>
+<h3 id="theory_3">Theory</h3>
+<p><strong>Core Concepts</strong>
+<code>Collator</code> (<code>java.text.Collator</code>) performs locale-sensitive <strong>string comparison and sorting</strong>, respecting linguistic ordering rules that differ from naive Unicode code-point comparison (<code>String.compareTo</code>). For example, in Swedish, "ö" sorts after "z", while in German it sorts near "o"; accented characters, case, and combining marks all require locale-aware rules to sort "correctly" from a human reader's perspective. <code>Collator.getInstance(locale)</code> returns a concrete instance (typically <code>RuleBasedCollator</code>) configured with CLDR collation rules for that locale.</p>
+<p><strong>Internal Working</strong>
+<code>RuleBasedCollator</code> converts each string into a multi-level <strong>sort key</strong> (primary: base letter differences, secondary: accents/diacritics, tertiary: case, and sometimes quaternary/identical levels) according to locale collation rules, then compares strings level-by-level so that base-letter differences dominate accent differences, which dominate case differences — matching human intuition about alphabetical order.</p>
+<p><strong>When to Use It</strong>
+- Sorting user-facing lists of names, product titles, or any text that must appear in "natural" alphabetical order for a given locale/language.
+- Locale-aware, accent-insensitive or case-insensitive searching/matching (via <code>Collator.setStrength()</code>).
+- Any comparison logic that must be culturally correct rather than based on raw UTF-16 code unit values.</p>
+<p><strong>Advantages</strong>
+- Produces linguistically correct ordering that <code>String.compareTo</code> (raw code point/UTF-16 comparison) cannot, especially for accented and non-Latin scripts.
+- Configurable strength levels (<code>PRIMARY</code>, <code>SECONDARY</code>, <code>TERTIARY</code>, <code>IDENTICAL</code>) allow flexible "fuzzy" matching (e.g. treat "café" and "CAFE" as equal at <code>PRIMARY</code> strength).
+- <code>getCollationKey()</code> produces a precomputed, comparable <code>CollationKey</code> for efficient repeated sorting (avoids re-deriving sort rules on every comparison in large sorts).</p>
+<p><strong>Limitations</strong>
+- Collation rules can be surprisingly locale-specific and non-obvious (e.g. Lithuanian and Czech have unusual sort orders for certain digraphs/diacritics) — assuming one universal "correct" order is wrong.
+- <code>Collator</code> instances are <strong>not guaranteed thread-safe</strong> (like <code>DecimalFormat</code>/<code>SimpleDateFormat</code>) — the Javadoc explicitly warns against sharing them across threads without synchronization; clone per thread if needed.
+- Performance: calling <code>compare()</code> repeatedly with the same strings in large sorts is more expensive than pre-computing <code>CollationKey</code>s once and sorting those.</p>
+<h3 id="internal-working_3">Internal Working</h3>
+<p><strong>Step-by-Step Explanation</strong>
+1. <code>Collator.getInstance(locale)</code> loads CLDR collation rules for the locale and returns a <code>RuleBasedCollator</code> (or a subclass) instance.
+2. <code>collator.setStrength(Collator.SECONDARY)</code> (or <code>PRIMARY</code>/<code>TERTIARY</code>/<code>IDENTICAL</code>) configures how many "levels" of difference matter for equality/ordering.
+3. <code>collator.compare(s1, s2)</code> internally derives (or uses cached) multi-level sort keys for each string and compares them level by level: primary (base letters) first; only if primary levels tie does it examine secondary (diacritics), then tertiary (case), etc.
+4. For repeated sorting of the same strings (e.g. sorting a list multiple times, or binary-searching), <code>collator.getCollationKey(s)</code> precomputes a <code>CollationKey</code>, whose <code>compareTo</code> is a fast byte-array comparison — avoiding recomputation of collation rules on each comparison.
+5. <code>Collections.sort(list, collator)</code> or <code>list.sort(collator)</code> applies this comparator across the whole collection.</p>
+<p><strong>Memory Layout</strong>
+Not directly applicable to heap generations beyond normal object lifetime; <code>CollationKey</code> objects hold a byte-array representation of the multi-level sort key and are typically short-lived, scoped to a sort operation, so they are cheap, generation-young allocations that are collected quickly after sorting completes.</p>
+<p><strong>Diagrams</strong>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Strings: ["café", "cafe", "Cafe"]           Strength = PRIMARY (base letter only, ignore accents/case)
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>        │
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>        ▼
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a> Sort keys (primary level only): "cafe" == "cafe" == "cafe"  → all considered equal at PRIMARY
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>        │
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>        ▼
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>Strength = TERTIARY (base + accent + case)
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>        │
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>        ▼
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a> Sort keys distinguish: "cafe" &lt; "cafe with accent" &lt; "Cafe"(case difference) → distinct ordering
+</code></pre></div>
+<p><strong>JVM Behaviour</strong>
+No special bytecode/JIT considerations; collation rule tables are loaded from CLDR data bundled in the JDK (or supplied via a <code>java.text.spi.CollatorProvider</code> SPI for custom locales) at class-load/first-use time and cached for reuse — first invocation for a given locale may be marginally slower due to rule-table initialization.</p>
+<h3 id="interview-questions_3">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. Why does <code>String.compareTo()</code> sometimes produce "wrong" alphabetical order for accented text, and how does <code>Collator</code> fix this?
+2. What are the four <code>Collator</code> strength levels, and what does each control?
+3. How do you get a locale-aware collator instance?</p>
+<p><strong>Intermediate</strong>
+4. What is a <code>CollationKey</code>, and when should you prefer it over calling <code>compare()</code> repeatedly?
+5. How would you implement case-insensitive, accent-insensitive search using <code>Collator</code>?
+6. Is <code>Collator</code> thread-safe? How do you use it safely in a multi-threaded sort?</p>
+<p><strong>Advanced</strong>
+7. How does <code>RuleBasedCollator</code> internally represent multi-level sort keys, and why does level ordering (primary before secondary before tertiary) matter?
+8. How would you customize collation rules for a domain-specific ordering requirement (e.g. treating certain punctuation as ignorable)?
+9. How does <code>Collator</code> interact with Unicode normalization forms (NFC/NFD) when comparing strings with combining characters?</p>
+<p><strong>Scenario-based</strong>
+10. Your application sorts a list of 10 million international customer names for a report, currently calling <code>collator.compare()</code> directly in <code>Collections.sort</code>. The sort is too slow. How would you optimize it?</p>
+<h3 id="detailed-answers_3">Detailed Answers</h3>
+<ol>
+<li>
+<p><strong>Why does <code>String.compareTo()</code> give "wrong" order, and how does <code>Collator</code> fix it?</strong>
+   <code>String.compareTo()</code> compares strings by raw UTF-16 code unit values, which does not reflect linguistic alphabetical order — e.g. it would sort "Z" before "é" purely because of code point value, and it does not account for locale-specific rules (e.g. Swedish placing "ö" after "z"). <code>Collator</code> uses CLDR-derived, locale-specific collation rules to compare strings the way a native reader of that locale would expect them ordered, handling accents, case, and script-specific conventions correctly.</p>
+</li>
+<li>
+<p><strong>What are the four <code>Collator</code> strength levels, and what does each control?</strong>
+   <code>PRIMARY</code> — only base letter differences matter (accents/case ignored, e.g. "a" == "á" == "A"). <code>SECONDARY</code> — base letters plus accents/diacritics matter (case still ignored, e.g. "a" == "A" but "a" != "á"). <code>TERTIARY</code> (default) — base letters, accents, and case all matter (e.g. "a" != "A" != "á"). <code>IDENTICAL</code> — full binary distinction including things like combining character sequence differences, for cases needing exact reproducibility.</p>
+</li>
+<li>
+<p><strong>How do you get a locale-aware collator instance?</strong>
+   <code>Collator collator = Collator.getInstance(locale);</code> — e.g. <code>Collator.getInstance(Locale.forLanguageTag("sv"))</code> for Swedish-specific ordering, or <code>Collator.getInstance()</code> for the JVM default locale.</p>
+</li>
+<li>
+<p><strong>What is a <code>CollationKey</code>, and when to prefer it over repeated <code>compare()</code>?</strong>
+   A <code>CollationKey</code> is a precomputed representation of a string's multi-level sort key (<code>collator.getCollationKey(str)</code>), whose <code>compareTo</code> performs a fast byte-array comparison. When sorting or comparing the same set of strings many times (e.g. large dataset sorts, repeated binary search), computing each string's <code>CollationKey</code> once up front and comparing keys is significantly faster than calling <code>collator.compare(s1, s2)</code> repeatedly, which re-derives collation elements from scratch on every call.</p>
+</li>
+<li>
+<p><strong>How to implement case-insensitive, accent-insensitive search using <code>Collator</code>?</strong>
+   Create a <code>Collator</code> for the target locale and call <code>collator.setStrength(Collator.PRIMARY)</code>, then use <code>collator.compare(a, b) == 0</code> (or <code>collator.equals(a, b)</code>) as the equality test — at <code>PRIMARY</code> strength, base-letter matches are considered equal regardless of case or diacritics, e.g. matching "resume", "résumé", and "RESUME" as equivalent for search purposes.</p>
+</li>
+<li>
+<p><strong>Is <code>Collator</code> thread-safe? How to use it safely in multi-threaded sorts?</strong>
+   No — per the Javadoc, <code>Collator</code> instances are not guaranteed thread-safe for concurrent use, similar to <code>DateFormat</code>. Safe usage patterns: create a separate <code>Collator</code> instance per thread (or clone via <code>collator.clone()</code>, since <code>Collator</code> implements <code>Cloneable</code>), or synchronize access to a shared instance, or — best for performance — precompute <code>CollationKey</code>s (immutable, safely shareable) once per string and let threads compare/sort using those keys without touching the mutable collator at all.</p>
+</li>
+<li>
+<p><strong>How does <code>RuleBasedCollator</code> represent multi-level sort keys, and why does level order matter?</strong>
+   It decomposes each character/character-sequence into weighted components across levels (primary weight per base letter or "collation element", secondary weight for combining diacritics, tertiary for case/variant forms), producing an ordered sequence of these weights per string. Comparison proceeds level by level — all primary weights are compared across the full string first; only if every primary weight is equal does the comparison proceed to secondary weights, and so on. This ordering matches linguistic intuition: "resume" vs "Résumé" should first be judged on their base letters (identical), and only distinguished by accents/case as tie-breakers, not have a case difference outweigh a base letter difference.</p>
+</li>
+<li>
+<p><strong>How to customize collation rules for domain-specific ordering (e.g. ignorable punctuation)?</strong>
+   Construct a <code>RuleBasedCollator</code> directly from a custom rule string (<code>new RuleBasedCollator(ruleExpression)</code>), which uses a mini rule syntax (<code>&lt;</code>, <code>&lt;&lt;</code>, <code>&lt;&lt;&lt;</code>, <code>=</code> operators to define relative primary/secondary/tertiary/equal orderings, and <code>&amp;</code> to reset a reference point) to express things like "ignore hyphens" or "treat 'ä' as equivalent to 'ae'" for domain-specific needs not covered by the standard CLDR rules for a locale.</p>
+</li>
+<li>
+<p><strong>How does <code>Collator</code> interact with Unicode normalization forms when comparing combining characters?</strong>
+   <code>Collator</code>'s default decomposition mode (<code>Collator.CANONICAL_DECOMPOSITION</code>, the default in Java) normalizes strings so that canonically equivalent sequences (e.g. precomposed "é" [U+00E9] vs. "e" + combining acute accent [U+0065 U+0301]) compare as equal, since both decompose to the same canonical form before collation element derivation. <code>Collator.NO_DECOMPOSITION</code> skips this normalization for performance when input is already known to be normalized, trading correctness on non-normalized input for speed.</p>
+</li>
+<li>
+<p><strong>Optimize sorting 10 million names currently using <code>collator.compare()</code> directly.</strong>
+    Precompute a <code>CollationKey</code> for every name once (<code>Map&lt;String, CollationKey&gt;</code> or store the key alongside each record), then sort using <code>Comparator.comparing(record -&gt; record.collationKey)</code> so the expensive rule-based comparison work happens once per string (O(n)) instead of on every comparison during the sort (O(n log n) comparisons, each re-deriving collation elements). Additionally, ensure a single <code>Collator</code> instance (or one per worker thread if parallelizing key computation) is reused rather than repeatedly calling <code>getInstance()</code>, and consider parallelizing the key-computation phase (e.g. via parallel streams) before the final sequential (or parallel) sort on the precomputed keys.</p>
+</li>
+</ol>
+<h3 id="code-examples_3">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.text.Collator</span><span class="p">;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.text.CollationKey</span><span class="p">;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.*</span><span class="p">;</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CollatorDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">"Österberg"</span><span class="p">,</span><span class="w"> </span><span class="s">"Andersson"</span><span class="p">,</span><span class="w"> </span><span class="s">"Zimmer"</span><span class="p">,</span><span class="w"> </span><span class="s">"Öberg"</span><span class="p">));</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">        </span><span class="c1">// Swedish collation: ö sorts after z, unlike naive Unicode order</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">        </span><span class="n">Collator</span><span class="w"> </span><span class="n">swedish</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Collator</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="n">Locale</span><span class="p">.</span><span class="na">forLanguageTag</span><span class="p">(</span><span class="s">"sv"</span><span class="p">));</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">        </span><span class="n">names</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">swedish</span><span class="p">);</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Swedish order: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">names</span><span class="p">);</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">        </span><span class="c1">// Accent/case-insensitive matching via PRIMARY strength</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">        </span><span class="n">Collator</span><span class="w"> </span><span class="n">primary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Collator</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="n">Locale</span><span class="p">.</span><span class="na">US</span><span class="p">);</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">        </span><span class="n">primary</span><span class="p">.</span><span class="na">setStrength</span><span class="p">(</span><span class="n">Collator</span><span class="p">.</span><span class="na">PRIMARY</span><span class="p">);</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">primary</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"resume"</span><span class="p">,</span><span class="w"> </span><span class="s">"RÉSUMÉ"</span><span class="p">));</span><span class="w"> </span><span class="c1">// true at PRIMARY strength</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">        </span><span class="c1">// Efficient repeated sorting via precomputed CollationKeys</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">largeList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">"café"</span><span class="p">,</span><span class="w"> </span><span class="s">"cafe"</span><span class="p">,</span><span class="w"> </span><span class="s">"Cafe"</span><span class="p">,</span><span class="w"> </span><span class="s">"zebra"</span><span class="p">));</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="w">        </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">CollationKey</span><span class="o">&gt;</span><span class="w"> </span><span class="n">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">largeList</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="w">            </span><span class="n">keys</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">swedish</span><span class="p">.</span><span class="na">getCollationKey</span><span class="p">(</span><span class="n">s</span><span class="p">));</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="w">        </span><span class="n">largeList</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">Comparator</span><span class="p">.</span><span class="na">comparing</span><span class="p">(</span><span class="n">keys</span><span class="p">::</span><span class="n">get</span><span class="p">));</span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Sorted via precomputed keys: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">largeList</span><span class="p">);</span>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="p">}</span>
+</code></pre></div></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2025 <a href="https://github.com/abhishekghoshh"  target="_blank" rel="noopener">Abhishek Ghosh</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/abhishekghoshh" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://x.com/abhishek_ghoshh" target="_blank" rel="noopener" title="x.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/abhishek-ghosh-220679132/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

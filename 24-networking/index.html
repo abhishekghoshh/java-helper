@@ -1,0 +1,2631 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abhishekghoshh.github.io/java-helper/24-networking/">
+      
+      
+        <link rel="prev" href="../23-concurrency/">
+      
+      
+        <link rel="next" href="../25-design-patterns-in-java/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Networking - Java Helper</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Networking - Java Helper" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/24-networking.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://abhishekghoshh.github.io/java-helper/24-networking/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Networking - Java Helper" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/24-networking.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#24-networking" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Java Helper" class="md-header__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Java Helper
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Networking
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../1-java-language-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Java Language Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../2-object-oriented-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Object-Oriented Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../3-classes/" class="md-tabs__link">
+        
+  
+    
+  
+  Classes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../4-constructors/" class="md-tabs__link">
+        
+  
+    
+  
+  Constructors
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-access-modifiers/" class="md-tabs__link">
+        
+  
+    
+  
+  Access Modifiers
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../6-packages/" class="md-tabs__link">
+        
+  
+    
+  
+  Packages
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../7-strings/" class="md-tabs__link">
+        
+  
+    
+  
+  Strings
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../8-arrays/" class="md-tabs__link">
+        
+  
+    
+  
+  Arrays
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../9-collections-framework/" class="md-tabs__link">
+        
+  
+    
+  
+  Collections Framework
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../10-generics/" class="md-tabs__link">
+        
+  
+    
+  
+  Generics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../11-exception-handling/" class="md-tabs__link">
+        
+  
+    
+  
+  Exception Handling
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../12-file-io/" class="md-tabs__link">
+        
+  
+    
+  
+  File I/O
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../13-serialization/" class="md-tabs__link">
+        
+  
+    
+  
+  Serialization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../14-reflection/" class="md-tabs__link">
+        
+  
+    
+  
+  Reflection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../15-annotations/" class="md-tabs__link">
+        
+  
+    
+  
+  Annotations
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../16-functional-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Functional Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../17-streams-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Streams API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../18-date-and-time-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Date and Time API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../19-jvm-internals/" class="md-tabs__link">
+        
+  
+    
+  
+  JVM Internals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../20-class-loader/" class="md-tabs__link">
+        
+  
+    
+  
+  Class Loader
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../21-memory-management/" class="md-tabs__link">
+        
+  
+    
+  
+  Memory Management
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../22-garbage-collection/" class="md-tabs__link">
+        
+  
+    
+  
+  Garbage Collection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../23-concurrency/" class="md-tabs__link">
+        
+  
+    
+  
+  Concurrency
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Networking
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../25-design-patterns-in-java/" class="md-tabs__link">
+        
+  
+    
+  
+  Design Patterns in Java
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../26-modern-java-language-features/" class="md-tabs__link">
+        
+  
+    
+  
+  Modern Java Language Features
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../27-regular-expressions/" class="md-tabs__link">
+        
+  
+    
+  
+  Regular Expressions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../28-internationalization-and-localization/" class="md-tabs__link">
+        
+  
+    
+  
+  Internationalization & Localization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../29-logging/" class="md-tabs__link">
+        
+  
+    
+  
+  Logging
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../30-security-basics/" class="md-tabs__link">
+        
+  
+    
+  
+  Security Basics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-tabs__link">
+        
+  
+    
+  
+  Native & Foreign Interoperability
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../32-process-and-system-apis/" class="md-tabs__link">
+        
+  
+    
+  
+  Process & System APIs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../33-testing-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Testing Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Java Helper" class="md-nav__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Java Helper
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-java-language-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java Language Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-object-oriented-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-classes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Classes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-constructors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constructors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-access-modifiers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access Modifiers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Packages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-strings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Strings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-collections-framework/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collections Framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-generics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-exception-handling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exception Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-file-io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File I/O
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-serialization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serialization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-reflection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reflection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-annotations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-functional-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Functional Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-streams-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Streams API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-date-and-time-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Date and Time API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-jvm-internals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JVM Internals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-class-loader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Class Loader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-memory-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-garbage-collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Garbage Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-concurrency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concurrency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Networking
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Networking
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#socket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Socket
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Socket">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#serversocket" class="md-nav__link">
+    <span class="md-ellipsis">
+      ServerSocket
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ServerSocket">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http-client-javanethttphttpclient-new" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP Client (java.net.http.HttpClient) (new)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTP Client (java.net.http.HttpClient) (new)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    <span class="md-ellipsis">
+      URL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="URL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uri" class="md-nav__link">
+    <span class="md-ellipsis">
+      URI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="URI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-blocking-io-with-nio-channelsselectors-new" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-Blocking I/O with NIO Channels/Selectors (new)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Non-Blocking I/O with NIO Channels/Selectors (new)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Additional Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#frameworks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frameworks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Frameworks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#armeria" class="md-nav__link">
+    <span class="md-ellipsis">
+      Armeria
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helidon-nima" class="md-nav__link">
+    <span class="md-ellipsis">
+      Helidon Níma
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#micronaut" class="md-nav__link">
+    <span class="md-ellipsis">
+      Micronaut
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quarkus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quarkus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#courses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Courses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample Projects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#articles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Articles
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-design-patterns-in-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Patterns in Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-modern-java-language-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modern Java Language Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-regular-expressions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Regular Expressions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-internationalization-and-localization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internationalization & Localization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-logging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30-security-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Native & Foreign Interoperability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32-process-and-system-apis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process & System APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33-testing-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div><h1 id="24-networking">24. Networking</h1>
+<h2 id="socket">Socket</h2>
+<h3 id="theory">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - <code>java.net.Socket</code> represents one endpoint of a bidirectional TCP connection between a client and server, exposing <code>InputStream</code>/<code>OutputStream</code> for byte-level communication once connected.</li>
+<li><strong>Internal Working</strong> - Wraps an underlying OS socket file descriptor; <code>connect()</code> performs the TCP three-way handshake; reads/writes are blocking by default, delegating to native socket syscalls (<code>recv</code>/<code>send</code>) via the JVM's platform-specific socket implementation.</li>
+<li><strong>When to Use It</strong> - Use for low-level, custom TCP protocols (proprietary binary protocols, simple client-server tools) where a higher-level abstraction (HTTP client, message queue) isn't needed.</li>
+<li><strong>Advantages</strong> - Direct control over the raw byte stream and protocol framing; minimal overhead compared to higher-level abstractions.</li>
+<li><strong>Limitations</strong> - Blocking I/O by default means one thread is tied up per connection (doesn't scale to huge numbers of concurrent connections without a thread-per-connection model or NIO); no built-in protocol framing/parsing - you must implement message boundaries yourself.</li>
+</ul>
+<h3 id="internal-working">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - <code>new Socket(host, port)</code> resolves the hostname, opens a native socket, and performs the TCP handshake (SYN, SYN-ACK, ACK) synchronously, blocking the calling thread until the connection is established or times out; subsequent <code>getInputStream()</code>/<code>getOutputStream()</code> reads/writes block the calling thread until data is available/the OS send buffer accepts it, delegating to blocking native <code>read()</code>/<code>write()</code> syscalls under the hood.</li>
+<li><strong>Memory Layout</strong> - The <code>Socket</code> object itself is a small heap object wrapping a native file descriptor (via an internal <code>SocketImpl</code>/<code>FileDescriptor</code>); actual buffered data resides in OS-managed kernel socket buffers (send/receive buffers), not directly visible in the Java heap.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sequenceDiagram
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    participant Client
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    participant OS as OS Kernel Socket Buffers
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    participant Server
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    Client-&gt;&gt;Server: SYN
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    Server-&gt;&gt;Client: SYN-ACK
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    Client-&gt;&gt;Server: ACK (connection established)
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    Client-&gt;&gt;OS: outputStream.write(bytes)
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    OS-&gt;&gt;Server: TCP segments
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    Server-&gt;&gt;OS: inputStream.read() blocks until data arrives
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - Each blocking <code>read()</code>/<code>write()</code> call parks the calling Java thread (mapped to an OS thread) until the underlying syscall returns, meaning the JVM thread is genuinely blocked at the OS level - platform threads consumed this way don't run other work, motivating either a thread-per-connection model (fine with virtual threads since Java 21) or NIO for high concurrency.</li>
+</ul>
+<h3 id="interview-questions">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What does <code>java.net.Socket</code> represent?
+2. Is <code>Socket</code> I/O blocking or non-blocking by default?</p>
+<p><strong>Intermediate</strong>
+1. What happens at the TCP level when you call <code>new Socket(host, port)</code>?
+2. Why doesn't the thread-per-connection model using blocking sockets scale to tens of thousands of connections with platform threads?</p>
+<p><strong>Advanced</strong>
+1. How do virtual threads (Project Loom, Java 21+) change the calculus around blocking socket I/O?</p>
+<p><strong>Scenario-based</strong>
+1. A simple TCP client needs to send a request and read a line-delimited response - walk through the code and potential pitfalls (partial reads, buffering).</p>
+<h3 id="detailed-answers">Detailed Answers</h3>
+<ol>
+<li><strong>Q: What does <code>Socket</code> represent?</strong> A: One endpoint of a TCP connection, providing streams for reading/writing bytes to the connected peer.</li>
+<li><strong>Q: Blocking or non-blocking?</strong> A: Blocking by default - <code>connect()</code>, and stream reads/writes all block the calling thread until the operation completes (or times out/fails).</li>
+<li><strong>Q: TCP handshake on <code>new Socket()</code>?</strong> A: The constructor resolves the address and performs the standard TCP three-way handshake (SYN, SYN-ACK, ACK) synchronously before returning, blocking the calling thread until the connection is established or a connection timeout/refusal occurs.</li>
+<li><strong>Q: Why doesn't thread-per-connection scale with platform threads?</strong> A: Each platform thread consumes significant OS resources (a large fixed stack, kernel scheduling overhead) and blocking I/O ties up that thread for the connection's entire lifetime; tens of thousands of concurrent connections would require tens of thousands of OS threads, exceeding practical memory/scheduling limits.</li>
+<li><strong>Q: Virtual threads' impact?</strong> A: Virtual threads (JEP 444) let blocking calls like socket I/O "park" the lightweight virtual thread without blocking the underlying OS carrier thread, so a thread-per-connection style using blocking <code>Socket</code> I/O can now scale to huge numbers of concurrent connections cheaply, without needing NIO's more complex non-blocking/callback style.</li>
+<li><strong>Q: Line-delimited TCP client pitfalls?</strong> A: Must handle partial reads (<code>InputStream.read()</code> may return fewer bytes than expected, or a "line" may span multiple <code>read()</code> calls) - typically wrap the stream in a <code>BufferedReader</code>/<code>BufferedInputStream</code> and use <code>readLine()</code> or a length-prefixed/delimiter-based framing protocol; also must flush the output stream to ensure data is actually sent, and handle connection reset/timeout exceptions.</li>
+</ol>
+<h3 id="code-examples">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.*</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.net.Socket</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SocketClientDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">Socket</span><span class="w"> </span><span class="n">socket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Socket</span><span class="p">(</span><span class="s">"example.com"</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">            </span><span class="n">socket</span><span class="p">.</span><span class="na">setSoTimeout</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span><span class="w"> </span><span class="c1">// avoid blocking forever on read()</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">            </span><span class="n">PrintWriter</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PrintWriter</span><span class="p">(</span><span class="n">socket</span><span class="p">.</span><span class="na">getOutputStream</span><span class="p">(),</span><span class="w"> </span><span class="kc">true</span><span class="p">);</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">            </span><span class="n">BufferedReader</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BufferedReader</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">InputStreamReader</span><span class="p">(</span><span class="n">socket</span><span class="p">.</span><span class="na">getInputStream</span><span class="p">()));</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">            </span><span class="n">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">"GET / HTTP/1.1\r\nHost: example.com\r\nConnection: close\r\n\r\n"</span><span class="p">);</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">            </span><span class="n">out</span><span class="p">.</span><span class="na">flush</span><span class="p">();</span><span class="w"> </span><span class="c1">// ensure the request is actually sent</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">line</span><span class="p">;</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="n">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">in</span><span class="p">.</span><span class="na">readLine</span><span class="p">())</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">line</span><span class="p">);</span><span class="w"> </span><span class="c1">// blocks per line until data/EOF arrives</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="serversocket">ServerSocket</h2>
+<h3 id="theory_1">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - <code>java.net.ServerSocket</code> listens on a TCP port and accepts incoming client connections, returning a new <code>Socket</code> for each accepted connection while continuing to listen for further clients.</li>
+<li><strong>Internal Working</strong> - <code>bind()</code> associates the socket with a port and starts listening (OS-level <code>listen()</code> syscall with a backlog queue); <code>accept()</code> blocks until a pending connection is available, dequeuing it and returning a connected <code>Socket</code>.</li>
+<li><strong>When to Use It</strong> - Use to build custom TCP servers (protocol servers, simple internal services) that need low-level control over connection handling, typically paired with a thread-per-connection or thread-pool model (or virtual threads for scale).</li>
+<li><strong>Advantages</strong> - Simple, direct API for accepting TCP connections; full control over per-connection handling logic.</li>
+<li><strong>Limitations</strong> - <code>accept()</code> is blocking (one thread needed to accept, plus typically one thread per active connection with the classic model); no built-in protocol/session management - must be built manually or via a higher-level framework (Netty, Spring, etc.) for production use.</li>
+</ul>
+<h3 id="internal-working_1">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - <code>new ServerSocket(port)</code> binds to the port and begins listening with a connection backlog queue (pending, not-yet-accepted TCP connections that completed their handshake); <code>accept()</code> blocks the calling thread until a connection is available in that queue, then dequeues it, completes the Java-level <code>Socket</code> object wrapping the accepted native connection, and returns it - typically the accepting thread then hands off the returned socket to a worker thread (or virtual thread) to handle the actual request/response, looping back to call <code>accept()</code> again immediately for the next client.</li>
+<li><strong>Memory Layout</strong> - The <code>ServerSocket</code> itself is a small heap object; the OS maintains the connection backlog queue and per-connection kernel buffers, not directly part of the Java heap.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sequenceDiagram
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    participant Server as ServerSocket (accept loop)
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    participant OS as OS backlog queue
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    participant Client1
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    participant Worker as Worker thread/virtual thread
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    Client1-&gt;&gt;OS: TCP handshake completes, queued
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    Server-&gt;&gt;OS: accept() dequeues connection
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    OS--&gt;&gt;Server: returns connected Socket
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    Server-&gt;&gt;Worker: hand off socket to handle request
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    Server-&gt;&gt;OS: loop back to accept() for next client
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - Each <code>accept()</code> call blocks the calling (platform or virtual) thread at the OS level until a connection arrives; a typical scalable design uses one dedicated "acceptor" thread looping on <code>accept()</code> and dispatches each accepted <code>Socket</code> to a thread pool (or, with Java 21+, spawns a new virtual thread per connection cheaply) rather than processing requests on the acceptor thread itself.</li>
+</ul>
+<h3 id="interview-questions_1">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What does <code>ServerSocket.accept()</code> do?
+2. What is a connection backlog?</p>
+<p><strong>Intermediate</strong>
+1. Why is it a bad idea to process each client's request directly on the thread calling <code>accept()</code> in a loop?
+2. What common threading models exist for handling multiple simultaneous clients with <code>ServerSocket</code>?</p>
+<p><strong>Advanced</strong>
+1. How do virtual threads change the recommended design for a simple <code>ServerSocket</code>-based server?</p>
+<p><strong>Scenario-based</strong>
+1. A simple echo server built with <code>ServerSocket</code> works fine with a few clients but becomes unresponsive under many concurrent connections using the naive "handle then accept again" loop - diagnose and redesign.</p>
+<h3 id="detailed-answers_1">Detailed Answers</h3>
+<ol>
+<li><strong>Q: What does <code>accept()</code> do?</strong> A: Blocks until an incoming client connection completes its TCP handshake and is available in the backlog queue, then returns a connected <code>Socket</code> representing that specific client connection.</li>
+<li><strong>Q: Connection backlog?</strong> A: The OS-maintained queue of TCP connections that have completed the handshake but haven't yet been <code>accept()</code>ed by the application; its size is configurable via the <code>ServerSocket</code> constructor's backlog parameter.</li>
+<li><strong>Q: Why not process requests on the accept loop thread?</strong> A: While handling one client's request (potentially slow/blocking I/O), the thread cannot call <code>accept()</code> again, so new clients queue up (or are rejected once the backlog fills) - starving all other clients of timely connection acceptance; requests should be dispatched to separate worker threads.</li>
+<li><strong>Q: Common threading models?</strong> A: Thread-per-connection (simple, doesn't scale well with platform threads), fixed-size thread pool (bounded concurrency, may queue/reject under load), and NIO-based selector/event-loop models (single or few threads handling many connections via non-blocking I/O and readiness selection).</li>
+<li><strong>Q: Virtual threads' impact on design?</strong> A: With Java 21+ virtual threads, you can go back to the simple thread-per-connection model (spawn a new virtual thread per accepted socket) without the traditional platform-thread scalability concerns, since virtual threads are extremely lightweight and blocking I/O within them doesn't tie up an OS thread - simplifying server design considerably compared to NIO-based event loops.</li>
+<li><strong>Q: Unresponsive echo server fix?</strong> A: The naive loop calls <code>accept()</code>, then processes the client fully (blocking on that client's I/O) before looping back to <code>accept()</code> again, so only one client is served at a time and others queue/timeout; redesign by dispatching each accepted socket to a thread pool (<code>executor.submit(() -&gt; handle(socket))</code>) or spawning a virtual thread per connection (<code>Thread.startVirtualThread(() -&gt; handle(socket))</code>), so the acceptor loop returns to <code>accept()</code> immediately after each dispatch.</li>
+</ol>
+<h3 id="code-examples_1">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.*</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.net.ServerSocket</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.net.Socket</span><span class="p">;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.Executors</span><span class="p">;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.ExecutorService</span><span class="p">;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ServerSocketDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">ServerSocket</span><span class="w"> </span><span class="n">serverSocket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ServerSocket</span><span class="p">(</span><span class="mi">8080</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">            </span><span class="n">ExecutorService</span><span class="w"> </span><span class="n">pool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Executors</span><span class="p">.</span><span class="na">newFixedThreadPool</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w"> </span><span class="c1">// bounded concurrency</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Listening on 8080..."</span><span class="p">);</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">                </span><span class="n">Socket</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">serverSocket</span><span class="p">.</span><span class="na">accept</span><span class="p">();</span><span class="w"> </span><span class="c1">// blocks until a client connects</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">                </span><span class="n">pool</span><span class="p">.</span><span class="na">submit</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">handleClient</span><span class="p">(</span><span class="n">client</span><span class="p">));</span><span class="w"> </span><span class="c1">// dispatch, loop back to accept() immediately</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">handleClient</span><span class="p">(</span><span class="n">Socket</span><span class="w"> </span><span class="n">client</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">client</span><span class="p">;</span><span class="w"> </span><span class="n">BufferedReader</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BufferedReader</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">InputStreamReader</span><span class="p">(</span><span class="n">client</span><span class="p">.</span><span class="na">getInputStream</span><span class="p">()));</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">             </span><span class="n">PrintWriter</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PrintWriter</span><span class="p">(</span><span class="n">client</span><span class="p">.</span><span class="na">getOutputStream</span><span class="p">(),</span><span class="w"> </span><span class="kc">true</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">in</span><span class="p">.</span><span class="na">readLine</span><span class="p">();</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">            </span><span class="n">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Echo: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">line</span><span class="p">);</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">IOException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="http-client-javanethttphttpclient-new">HTTP Client (<code>java.net.http.HttpClient</code>) <em>(new)</em></h2>
+<h3 id="theory_2">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - <code>java.net.http.HttpClient</code> (introduced in Java 11, JEP 321) is the modern standard HTTP client supporting HTTP/1.1 and HTTP/2, both synchronous (<code>send()</code>) and asynchronous (<code>sendAsync()</code>, returning <code>CompletableFuture</code>) request execution, replacing the legacy <code>HttpURLConnection</code>.</li>
+<li><strong>Internal Working</strong> - Built on a reusable, connection-pooling <code>HttpClient</code> instance; requests are immutable <code>HttpRequest</code> objects; <code>send()</code> blocks the calling thread, while <code>sendAsync()</code> executes on an internal/default executor and completes the returned <code>CompletableFuture</code> when the response arrives.</li>
+<li><strong>When to Use It</strong> - Use for any modern HTTP client needs (calling REST APIs, webhooks) instead of <code>HttpURLConnection</code> or pulling in a third-party library for simple cases; supports HTTP/2 multiplexing for efficiency.</li>
+<li><strong>Advantages</strong> - Native HTTP/2 support (multiplexed streams over one connection), clean fluent builder API, built-in async support via <code>CompletableFuture</code>, connection pooling/reuse handled automatically by a shared <code>HttpClient</code> instance.</li>
+<li><strong>Limitations</strong> - No built-in retry/circuit-breaker/backoff logic (must be added manually or via a library); the <code>HttpClient</code> instance should be reused/shared (creating a new one per request loses connection pooling benefits) which requires careful lifecycle management in an application.</li>
+</ul>
+<h3 id="internal-working_2">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - <code>HttpClient.newHttpClient()</code> (or <code>newBuilder()...build()</code>) creates a client managing a pool of connections; <code>client.send(request, bodyHandler)</code> selects/creates a connection (upgrading to HTTP/2 via ALPN negotiation during TLS handshake if supported by the server), writes the request, and blocks until the full response (per the given <code>BodyHandler</code>, e.g., <code>ofString()</code>) is received; <code>sendAsync()</code> performs the same work on a background thread pool, immediately returning a <code>CompletableFuture&lt;HttpResponse&lt;T&gt;&gt;</code> that completes later.</li>
+<li><strong>Memory Layout</strong> - The <code>HttpClient</code> instance holds pooled connection objects (sockets/HTTP2 streams) as regular heap objects for its lifetime; request/response bodies are typically buffered heap byte arrays or streamed depending on the chosen <code>BodyHandler</code>/<code>BodyPublisher</code>.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sequenceDiagram
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    participant App
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    participant Client as HttpClient (pooled connections)
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    participant Server
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    App-&gt;&gt;Client: client.send(request, BodyHandlers.ofString())
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    Client-&gt;&gt;Server: HTTP/2 (or 1.1) request over pooled/new connection
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    Server--&gt;&gt;Client: response
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    Client--&gt;&gt;App: HttpResponse&lt;String&gt; (blocking send()) or CompletableFuture completes (sendAsync())
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - <code>sendAsync()</code> uses an internal default executor (a cached thread pool, or a custom one supplied via <code>HttpClient.Builder.executor()</code>) to perform I/O and complete futures without blocking the calling thread; HTTP/2 multiplexes many logical request/response streams over a single TCP connection, reducing the connection-per-request overhead typical of HTTP/1.1.</li>
+</ul>
+<h3 id="interview-questions_2">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What Java version introduced <code>java.net.http.HttpClient</code>, and what does it replace?
+2. What's the difference between <code>send()</code> and <code>sendAsync()</code>?</p>
+<p><strong>Intermediate</strong>
+1. Why should you reuse a single <code>HttpClient</code> instance instead of creating one per request?
+2. What HTTP protocol version does it support in addition to HTTP/1.1, and what's the benefit?</p>
+<p><strong>Advanced</strong>
+1. How does <code>BodyHandler</code>/<code>BodyPublisher</code> control how request/response bodies are processed?</p>
+<p><strong>Scenario-based</strong>
+1. A service making thousands of outbound API calls per second creates a <code>new HttpClient()</code> per call and shows poor performance and connection exhaustion - diagnose and fix.</p>
+<h3 id="detailed-answers_2">Detailed Answers</h3>
+<ol>
+<li><strong>Q: Introduced when, replaces what?</strong> A: Java 11 (JEP 321, incubated in Java 9); it replaces the older, more cumbersome <code>java.net.HttpURLConnection</code> as the standard synchronous/asynchronous HTTP client.</li>
+<li><strong>Q: <code>send()</code> vs <code>sendAsync()</code>?</strong> A: <code>send()</code> blocks the calling thread until the full response is received, returning <code>HttpResponse&lt;T&gt;</code> directly; <code>sendAsync()</code> returns immediately with a <code>CompletableFuture&lt;HttpResponse&lt;T&gt;&gt;</code> that completes once the response arrives, executed on a background executor.</li>
+<li><strong>Q: Why reuse a single <code>HttpClient</code>?</strong> A: An <code>HttpClient</code> instance manages a pool of reusable connections (including HTTP/2 connection multiplexing); creating a new instance per request discards this pooling, forcing a new TCP/TLS handshake for every request, drastically hurting latency and resource usage.</li>
+<li><strong>Q: Additional protocol support and benefit?</strong> A: HTTP/2, negotiated automatically via ALPN during the TLS handshake if the server supports it; its main benefit is multiplexing multiple concurrent request/response streams over a single underlying TCP connection, reducing connection overhead and head-of-line blocking compared to HTTP/1.1's one-request-per-connection (or pipelining) model.</li>
+<li><strong>Q: <code>BodyHandler</code>/<code>BodyPublisher</code> role?</strong> A: <code>BodyPublisher</code> (on the request side) controls how the request body is supplied/streamed to the server (e.g., <code>ofString()</code>, <code>ofFile()</code>, <code>ofInputStream()</code>); <code>BodyHandler</code> (on the response side) controls how the response body is consumed/converted (e.g., <code>ofString()</code>, <code>ofByteArray()</code>, <code>ofInputStream()</code> for streaming large responses without buffering everything in memory).</li>
+<li><strong>Q: Per-call <code>new HttpClient()</code> fix?</strong> A: Create a single shared, application-scoped <code>HttpClient</code> instance (built once, ideally configured with an appropriate executor and connection timeout) and reuse it for all outbound calls, allowing connection pooling and HTTP/2 multiplexing to actually take effect instead of paying full handshake cost per call.</li>
+</ol>
+<h3 id="code-examples_2">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.net.URI</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.net.http.HttpClient</span><span class="p">;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.net.http.HttpRequest</span><span class="p">;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.net.http.HttpResponse</span><span class="p">;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.net.http.HttpResponse.BodyHandlers</span><span class="p">;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.Duration</span><span class="p">;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.CompletableFuture</span><span class="p">;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">HttpClientDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="c1">// Shared, reused client - enables connection pooling and HTTP/2 multiplexing</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">HttpClient</span><span class="w"> </span><span class="n">CLIENT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HttpClient</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">            </span><span class="p">.</span><span class="na">connectTimeout</span><span class="p">(</span><span class="n">Duration</span><span class="p">.</span><span class="na">ofSeconds</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">            </span><span class="p">.</span><span class="na">version</span><span class="p">(</span><span class="n">HttpClient</span><span class="p">.</span><span class="na">Version</span><span class="p">.</span><span class="na">HTTP_2</span><span class="p">)</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">            </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">        </span><span class="n">HttpRequest</span><span class="w"> </span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HttpRequest</span><span class="p">.</span><span class="na">newBuilder</span><span class="p">()</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">                </span><span class="p">.</span><span class="na">uri</span><span class="p">(</span><span class="n">URI</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">"https://api.github.com/repos/openjdk/jdk"</span><span class="p">))</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">                </span><span class="p">.</span><span class="na">header</span><span class="p">(</span><span class="s">"Accept"</span><span class="p">,</span><span class="w"> </span><span class="s">"application/json"</span><span class="p">)</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">                </span><span class="p">.</span><span class="na">GET</span><span class="p">()</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">                </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">        </span><span class="c1">// Synchronous</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">        </span><span class="n">HttpResponse</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CLIENT</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">BodyHandlers</span><span class="p">.</span><span class="na">ofString</span><span class="p">());</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Status: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="na">statusCode</span><span class="p">());</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">        </span><span class="c1">// Asynchronous</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">        </span><span class="n">CompletableFuture</span><span class="o">&lt;</span><span class="n">HttpResponse</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">future</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CLIENT</span><span class="p">.</span><span class="na">sendAsync</span><span class="p">(</span><span class="n">request</span><span class="p">,</span><span class="w"> </span><span class="n">BodyHandlers</span><span class="p">.</span><span class="na">ofString</span><span class="p">());</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">        </span><span class="n">future</span><span class="p">.</span><span class="na">thenAccept</span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Async status: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="na">statusCode</span><span class="p">())).</span><span class="na">join</span><span class="p">();</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="url">URL</h2>
+<h3 id="theory_3">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - <code>java.net.URL</code> represents a Uniform Resource Locator - a reference to a network resource that also historically provided direct access methods (<code>openConnection()</code>, <code>openStream()</code>) to fetch that resource, tightly coupling naming with resolution/access.</li>
+<li><strong>Internal Working</strong> - Parsing a <code>URL</code> (especially with non-standard/custom protocols) can trigger classloading and even network/DNS activity (e.g., its <code>equals()</code>/<code>hashCode()</code> infamously perform DNS resolution to compare hosts), and its protocol handling is pluggable via <code>URLStreamHandler</code>.</li>
+<li><strong>When to Use It</strong> - Use mainly to interoperate with legacy APIs requiring <code>URL</code> objects, or genuinely to open a direct connection/stream to a resource for simple one-off reads; for general URI parsing/manipulation, prefer <code>URI</code> (see below) and convert to <code>URL</code> only when actually connecting.</li>
+<li><strong>Advantages</strong> - Convenient one-step resource access (<code>url.openStream()</code>); understood/accepted by many older APIs.</li>
+<li><strong>Limitations</strong> - <code>equals()</code>/<code>hashCode()</code> perform a blocking DNS lookup to resolve hostnames for comparison - a notorious performance/correctness footgun (two URLs with hostnames resolving to the same IP are considered "equal" even if textually different, and vice versa if DNS is unavailable); no validation of general URI syntax rules the way <code>URI</code> provides; effectively superseded by <code>URI</code> for parsing/representation purposes, per Effective Java's guidance.</li>
+</ul>
+<h3 id="internal-working_3">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - Constructing a <code>new URL(spec)</code> parses the string into protocol/host/port/path/query components using a <code>URLStreamHandler</code> looked up for that protocol (built-in for <code>http</code>/<code>https</code>/<code>file</code>/<code>jar</code>, pluggable for custom schemes); calling <code>openConnection()</code> obtains a <code>URLConnection</code> (e.g., <code>HttpURLConnection</code>) which performs the actual network I/O when its stream is read; calling <code>.equals()</code>/<code>.hashCode()</code> triggers a DNS resolution of the host component(s) being compared as part of determining equality.</li>
+<li><strong>Memory Layout</strong> - Not directly applicable - <code>URL</code> is an ordinary heap object storing string components; any network activity (DNS lookups, actual connections) happens outside the JVM heap via OS networking calls.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>new URL("https://example.com/path?q=1")
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  -&gt; protocol=https, host=example.com, port=443(default), path=/path, query=q=1
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>url1.equals(url2) --&gt; triggers DNS resolution of both hosts (SLOW, surprising side effect)
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - The blocking DNS lookup inside <code>equals()</code>/<code>hashCode()</code> means putting <code>URL</code> objects in a <code>HashSet</code>/<code>HashMap</code> (or comparing them) can silently perform network I/O and block the calling thread - a well-documented Java API design flaw, which is one of the primary reasons <code>URI</code> is now the recommended type for representing/comparing web addresses.</li>
+</ul>
+<h3 id="interview-questions_3">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What does <code>URL.openStream()</code> do?
+2. What network activity can <code>URL.equals()</code> trigger, unexpectedly?</p>
+<p><strong>Intermediate</strong>
+1. Why is <code>URI</code> generally recommended over <code>URL</code> for parsing/representing addresses?
+2. How is protocol handling for schemes like <code>http</code>/<code>file</code>/<code>jar</code> implemented under the hood?</p>
+<p><strong>Advanced</strong>
+1. Why is triggering DNS resolution inside <code>equals()</code>/<code>hashCode()</code> considered a serious API design flaw?</p>
+<p><strong>Scenario-based</strong>
+1. A <code>HashSet&lt;URL&gt;</code> used to deduplicate URLs performs poorly and occasionally hangs under network issues - diagnose and fix using <code>URI</code> instead.</p>
+<h3 id="detailed-answers_3">Detailed Answers</h3>
+<ol>
+<li><strong>Q: <code>openStream()</code>?</strong> A: Opens a connection to the resource the URL refers to and returns an <code>InputStream</code> for reading its content directly - a convenience combining <code>openConnection()</code> and <code>getInputStream()</code>.</li>
+<li><strong>Q: DNS side effect of <code>equals()</code>?</strong> A: <code>URL.equals()</code> resolves the hostname(s) of both URLs to IP addresses via DNS as part of determining equality - meaning simply comparing two <code>URL</code> objects (or inserting them into a <code>HashSet</code>) can perform blocking network I/O.</li>
+<li><strong>Q: Why prefer <code>URI</code>?</strong> A: <code>URI</code> is a pure syntactic representation (no network I/O, no DNS resolution for equality/hashing) that correctly validates general URI syntax per RFC 3986, making it safe and fast for parsing, comparing, and manipulating identifiers without unintended side effects; convert to <code>URL</code> only when you actually need to open a connection.</li>
+<li><strong>Q: Protocol handling implementation?</strong> A: Each protocol (<code>http</code>, <code>https</code>, <code>file</code>, <code>jar</code>, etc.) is backed by a <code>URLStreamHandler</code> implementation, looked up via a pluggable <code>URLStreamHandlerFactory</code> mechanism, which knows how to parse that protocol's specific address format and how to open a <code>URLConnection</code> for it.</li>
+<li><strong>Q: Why is DNS-in-equals a flaw?</strong> A: Equality/hashing are expected to be fast, pure, side-effect-free operations usable freely in hot paths and collections; silently performing network I/O (with associated latency, and even failure modes if DNS is unreachable) violates that expectation, causing hard-to-diagnose performance issues and potential hangs, and is explicitly called out as a mistake in Effective Java.</li>
+<li><strong>Q: <code>HashSet&lt;URL&gt;</code> fix?</strong> A: Switch to <code>HashSet&lt;URI&gt;</code> (parsing strings into <code>URI</code> objects instead of <code>URL</code>) for storage/deduplication/comparison purposes, converting to <code>URL</code> only at the point of actually opening a connection (<code>uri.toURL().openStream()</code>), avoiding the DNS-resolution-based equality entirely.</li>
+</ol>
+<h3 id="code-examples_3">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.net.URL</span><span class="p">;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.BufferedReader</span><span class="p">;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.InputStreamReader</span><span class="p">;</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UrlDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">        </span><span class="n">URL</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">URL</span><span class="p">(</span><span class="s">"https://www.example.com/"</span><span class="p">);</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Host: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">url</span><span class="p">.</span><span class="na">getHost</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">", Protocol: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">url</span><span class="p">.</span><span class="na">getProtocol</span><span class="p">());</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">BufferedReader</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BufferedReader</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">InputStreamReader</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="na">openStream</span><span class="p">())))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"First line: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">in</span><span class="p">.</span><span class="na">readLine</span><span class="p">());</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">        </span><span class="c1">// Note: avoid url1.equals(url2) or HashSet&lt;URL&gt; - triggers DNS resolution; use URI instead.</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="uri">URI</h2>
+<h3 id="theory_4">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - <code>java.net.URI</code> represents a Uniform Resource Identifier per RFC 3986 as a pure syntactic construct (scheme, authority, path, query, fragment) with no network-access capability - it's purely for parsing, validating, and manipulating identifiers.</li>
+<li><strong>Internal Working</strong> - Parsing performs strict RFC 3986 syntax validation (throwing <code>URISyntaxException</code> for malformed input); <code>equals()</code>/<code>hashCode()</code> are purely string/component-based comparisons with no I/O whatsoever.</li>
+<li><strong>When to Use It</strong> - Use as the default type for representing, parsing, validating, comparing, and manipulating URIs/URLs throughout your codebase; convert to <code>URL</code> (<code>uri.toURL()</code>) only at the point you need to actually open a network connection.</li>
+<li><strong>Advantages</strong> - Fast, side-effect-free equality/hashing (safe for collections); strict, standards-compliant syntax validation; supports relative URI resolution (<code>resolve()</code>) and normalization (<code>normalize()</code>).</li>
+<li><strong>Limitations</strong> - Cannot directly open a connection/stream itself (must convert to <code>URL</code> first for that); being purely syntactic means it doesn't validate that a resource actually exists or is reachable.</li>
+</ul>
+<h3 id="internal-working_4">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - <code>new URI(string)</code> parses the input strictly against RFC 3986 grammar, decomposing it into scheme, scheme-specific-part/authority, host, port, path, query, and fragment components, throwing <code>URISyntaxException</code> immediately for any syntax violation; <code>resolve(URI)</code> combines a base URI with a relative reference per the RFC's resolution algorithm; <code>normalize()</code> removes redundant <code>.</code>/<code>..</code> path segments; none of these operations perform any network access.</li>
+<li><strong>Memory Layout</strong> - Ordinary heap object storing parsed string components (often cached substrings of the original input); no native/OS resources involved.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>new URI("https://user@host:8080/path/../a?q=1#frag")
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>  -&gt; scheme=https, userInfo=user, host=host, port=8080, path=/path/../a, query=q=1, fragment=frag
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>.normalize() -&gt; path becomes /a  (no network access anywhere)
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - Purely CPU-bound string parsing/manipulation - no blocking calls, no DNS resolution, making <code>URI</code> fast and safe to use in hot paths, equality checks, and hash-based collections, unlike <code>URL</code>.</li>
+</ul>
+<h3 id="interview-questions_4">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What's the fundamental difference in capability between <code>URI</code> and <code>URL</code>?
+2. Does creating/comparing <code>URI</code> objects ever perform network I/O?</p>
+<p><strong>Intermediate</strong>
+1. How do you convert a <code>URI</code> to a <code>URL</code> when you actually need to connect?
+2. What does <code>URI.resolve()</code> do, and give an example.</p>
+<p><strong>Advanced</strong>
+1. Why does <code>URI</code> validate syntax strictly per RFC 3986 while <code>URL</code> is more lenient/protocol-specific?</p>
+<p><strong>Scenario-based</strong>
+1. You're building a web crawler that needs to deduplicate millions of discovered links and resolve relative links found on each page - which type(s) would you use and how?</p>
+<h3 id="detailed-answers_4">Detailed Answers</h3>
+<ol>
+<li><strong>Q: Fundamental difference?</strong> A: <code>URI</code> is purely a syntactic identifier representation with no ability to open a connection; <code>URL</code> additionally knows how to actually locate/access the resource (<code>openConnection()</code>/<code>openStream()</code>) for a specific protocol.</li>
+<li><strong>Q: Network I/O for <code>URI</code>?</strong> A: No - all <code>URI</code> operations (parsing, <code>equals()</code>, <code>hashCode()</code>, <code>resolve()</code>, <code>normalize()</code>) are pure in-memory string/component operations with zero network access.</li>
+<li><strong>Q: Converting <code>URI</code> to <code>URL</code>?</strong> A: Call <code>uri.toURL()</code>, which requires the URI to be absolute and to have a protocol handler available; do this conversion only at the point you actually need to open a connection.</li>
+<li><strong>Q: <code>resolve()</code> behaviour and example?</strong> A: Combines a base URI with a (possibly relative) reference per RFC 3986's resolution algorithm - e.g., <code>new URI("https://example.com/a/b/").resolve("../c")</code> yields <code>https://example.com/a/c</code>, correctly handling relative path navigation the same way a browser resolves links found on a page.</li>
+<li><strong>Q: Why stricter syntax validation?</strong> A: <code>URI</code> is designed as a general-purpose, standards-compliant identifier syntax checker independent of any specific protocol's semantics, so it enforces RFC 3986's grammar uniformly; <code>URL</code> delegates parsing to protocol-specific <code>URLStreamHandler</code>s, which historically have been more lenient/inconsistent since their primary job is enabling a working connection, not strict standards conformance.</li>
+<li><strong>Q: Web crawler design?</strong> A: Use <code>URI</code> for storing/deduplicating discovered links (fast, side-effect-free equality/hashing in a <code>HashSet&lt;URI&gt;</code>) and for resolving relative links found on each page via <code>pageBaseUri.resolve(relativeLink)</code>; convert to <code>URL</code> (<code>uri.toURL().openStream()</code> or via <code>HttpClient</code>) only at the moment of actually fetching a page's content.</li>
+</ol>
+<h3 id="code-examples_4">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.net.URI</span><span class="p">;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.net.URISyntaxException</span><span class="p">;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.HashSet</span><span class="p">;</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Set</span><span class="p">;</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UriDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">URISyntaxException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">        </span><span class="n">URI</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">URI</span><span class="p">(</span><span class="s">"https://example.com/docs/guide/"</span><span class="p">);</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">        </span><span class="n">URI</span><span class="w"> </span><span class="n">resolved</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">base</span><span class="p">.</span><span class="na">resolve</span><span class="p">(</span><span class="s">"../api/index.html"</span><span class="p">);</span><span class="w"> </span><span class="c1">// relative link resolution, no network access</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">resolved</span><span class="p">);</span><span class="w"> </span><span class="c1">// https://example.com/docs/api/index.html</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">        </span><span class="c1">// Safe, fast deduplication - no DNS resolution involved (unlike URL)</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">        </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">URI</span><span class="o">&gt;</span><span class="w"> </span><span class="n">discovered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashSet</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">        </span><span class="n">discovered</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">URI</span><span class="p">(</span><span class="s">"https://example.com/a"</span><span class="p">));</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">        </span><span class="n">discovered</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">URI</span><span class="p">(</span><span class="s">"https://example.com/a"</span><span class="p">));</span><span class="w"> </span><span class="c1">// duplicate, correctly deduplicated</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">discovered</span><span class="p">.</span><span class="na">size</span><span class="p">());</span><span class="w"> </span><span class="c1">// 1</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="non-blocking-io-with-nio-channelsselectors-new">Non-Blocking I/O with NIO Channels/Selectors <em>(new)</em></h2>
+<h3 id="theory_5">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - <code>java.nio</code> provides non-blocking, buffer-oriented, selector-based I/O: <code>Channel</code>s (e.g., <code>SocketChannel</code>, <code>ServerSocketChannel</code>) can operate in non-blocking mode, and a single <code>Selector</code> can monitor readiness (read/write/accept/connect) across many channels simultaneously, enabling one thread to handle thousands of connections (the reactor/event-loop pattern).</li>
+<li><strong>Internal Working</strong> - Non-blocking channels return immediately from I/O operations that would otherwise block, indicating how much progress was made; a <code>Selector</code> uses the OS's efficient event-notification facility (epoll on Linux, kqueue on macOS/BSD, IOCP-backed on Windows) to report which registered channels are ready for the operations they were registered for, without polling each one individually.</li>
+<li><strong>When to Use It</strong> - Use when building high-concurrency servers/proxies needing to handle very large numbers of simultaneous connections with a small, fixed number of threads (before virtual threads existed, this was the primary scalability technique; still valuable for genuinely I/O-multiplexed designs like proxies/load balancers).</li>
+<li><strong>Advantages</strong> - Scales to huge connection counts with minimal thread count (avoiding thread-per-connection memory/scheduling overhead); efficient OS-level readiness notification avoids busy-polling.</li>
+<li><strong>Limitations</strong> - Significantly more complex programming model than blocking I/O (manual state machines per connection, careful buffer management, harder to debug); with Java 21+ virtual threads, much of NIO's traditional scalability advantage can be achieved with simpler blocking-style code instead.</li>
+</ul>
+<h3 id="internal-working_5">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - (1) Create channels (<code>SocketChannel.open()</code>/<code>ServerSocketChannel.open()</code>) and set them non-blocking (<code>configureBlocking(false)</code>); (2) create a <code>Selector</code> and register each channel with it, specifying interested operations (<code>OP_ACCEPT</code>, <code>OP_READ</code>, <code>OP_WRITE</code>, <code>OP_CONNECT</code>); (3) call <code>selector.select()</code>, which blocks (efficiently, via the OS's event mechanism) until at least one registered channel is ready for one of its interested operations; (4) iterate the returned <code>selectedKeys()</code>, handling each ready channel (accepting new connections, reading available bytes into a <code>ByteBuffer</code>, writing pending data) without blocking, since the channel is guaranteed ready for that specific operation; (5) loop back to <code>select()</code>.</li>
+<li><strong>Memory Layout</strong> - <code>ByteBuffer</code>s used with NIO channels can be heap-allocated (<code>allocate()</code>, backed by a Java byte array) or direct (<code>allocateDirect()</code>, backed by native off-heap memory, avoiding an extra copy between JVM heap and OS buffers during actual I/O syscalls - beneficial for large/frequent transfers but with allocation/deallocation cost and less GC visibility).</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sequenceDiagram
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    participant EventLoop as Single Thread (event loop)
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    participant Selector
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    participant OS as OS (epoll/kqueue)
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    participant Ch1 as Channel A
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    participant Ch2 as Channel B
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    EventLoop-&gt;&gt;Selector: select() (blocks efficiently)
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>    OS--&gt;&gt;Selector: Channel A readable, Channel B writable
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    Selector--&gt;&gt;EventLoop: selectedKeys = {A:READ, B:WRITE}
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>    EventLoop-&gt;&gt;Ch1: read() - guaranteed non-blocking progress
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>    EventLoop-&gt;&gt;Ch2: write() - guaranteed non-blocking progress
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>    EventLoop-&gt;&gt;Selector: loop back to select()
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - The <code>Selector</code>'s <code>select()</code> implementation delegates to the OS's native scalable event-notification API (epoll/kqueue/IOCP) rather than looping and checking each channel individually, which is what makes it efficient at monitoring thousands of channels with a single call; NIO channel reads/writes map to non-blocking native syscalls that return immediately with however many bytes were actually transferable at that moment.</li>
+</ul>
+<h3 id="interview-questions_5">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What is the role of a <code>Selector</code> in Java NIO?
+2. What does <code>configureBlocking(false)</code> do to a channel?</p>
+<p><strong>Intermediate</strong>
+1. Why can a single thread handle many connections using NIO, unlike classic blocking <code>Socket</code>/<code>ServerSocket</code> code?
+2. What's the difference between a heap <code>ByteBuffer</code> and a direct <code>ByteBuffer</code>?</p>
+<p><strong>Advanced</strong>
+1. How does <code>Selector.select()</code> avoid busy-polling thousands of channels individually?</p>
+<p><strong>Scenario-based</strong>
+1. Given that Java 21 introduced cheap virtual threads, when would you still choose NIO selectors over a simple thread-per-connection (virtual thread) design?</p>
+<h3 id="detailed-answers_5">Detailed Answers</h3>
+<ol>
+<li><strong>Q: <code>Selector</code> role?</strong> A: It monitors multiple registered channels for readiness on specific operations (accept/read/write/connect), letting one thread efficiently wait for and react to whichever channels have work ready, instead of dedicating a thread per connection.</li>
+<li><strong>Q: <code>configureBlocking(false)</code>?</strong> A: Switches the channel into non-blocking mode, so I/O operations on it return immediately (indicating partial progress or that no data was available/writable) instead of blocking the calling thread until completion.</li>
+<li><strong>Q: Why can one thread handle many connections?</strong> A: Because the thread never blocks waiting on any single connection's I/O - it uses <code>select()</code> to efficiently learn which of many registered channels are currently ready, and only performs (guaranteed non-blocking, immediately-completable) I/O on those specific ready channels before looping back, rather than dedicating a thread to wait on each connection individually.</li>
+<li><strong>Q: Heap vs direct <code>ByteBuffer</code>?</strong> A: A heap buffer is backed by a regular Java byte array on the garbage-collected heap; a direct buffer is backed by native (off-heap) memory allocated outside the GC-managed heap, avoiding an extra buffer copy when the JVM hands data to/from OS-level I/O syscalls - beneficial for high-throughput I/O, at the cost of slower allocation and manual/GC-triggered native memory cleanup.</li>
+<li><strong>Q: How does <code>select()</code> avoid busy-polling?</strong> A: It delegates to the operating system's efficient, scalable event-notification mechanism (epoll on Linux, kqueue on macOS/BSD) which the OS kernel itself uses to track readiness across many file descriptors, allowing <code>select()</code> to block efficiently (without CPU spinning) until the OS reports at least one channel is ready, rather than the JVM looping and checking each channel's status repeatedly.</li>
+<li><strong>Q: NIO selectors vs virtual threads?</strong> A: Choose NIO selectors when you need true I/O multiplexing semantics as a first-class design concern (e.g., a proxy/load balancer explicitly reasoning about many streams' readiness together, extremely fine-grained control over buffer/backpressure management, or interoperating with existing NIO-based frameworks like Netty); for typical "handle one client's full request/response" server logic, virtual threads with simple blocking-style code are usually simpler to write/maintain while achieving comparable scalability.</li>
+</ol>
+<h3 id="code-examples_5">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.IOException</span><span class="p">;</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.net.InetSocketAddress</span><span class="p">;</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.nio.ByteBuffer</span><span class="p">;</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.nio.channels.*</span><span class="p">;</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Iterator</span><span class="p">;</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">NioSelectorDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">        </span><span class="n">ServerSocketChannel</span><span class="w"> </span><span class="n">serverChannel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ServerSocketChannel</span><span class="p">.</span><span class="na">open</span><span class="p">();</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">        </span><span class="n">serverChannel</span><span class="p">.</span><span class="na">bind</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">InetSocketAddress</span><span class="p">(</span><span class="mi">8080</span><span class="p">));</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">        </span><span class="n">serverChannel</span><span class="p">.</span><span class="na">configureBlocking</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span><span class="w"> </span><span class="c1">// non-blocking mode required for selector registration</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">        </span><span class="n">Selector</span><span class="w"> </span><span class="n">selector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Selector</span><span class="p">.</span><span class="na">open</span><span class="p">();</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">        </span><span class="n">serverChannel</span><span class="p">.</span><span class="na">register</span><span class="p">(</span><span class="n">selector</span><span class="p">,</span><span class="w"> </span><span class="n">SelectionKey</span><span class="p">.</span><span class="na">OP_ACCEPT</span><span class="p">);</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="w">            </span><span class="n">selector</span><span class="p">.</span><span class="na">select</span><span class="p">();</span><span class="w"> </span><span class="c1">// blocks efficiently (OS event notification) until something is ready</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="w">            </span><span class="n">Iterator</span><span class="o">&lt;</span><span class="n">SelectionKey</span><span class="o">&gt;</span><span class="w"> </span><span class="n">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">selector</span><span class="p">.</span><span class="na">selectedKeys</span><span class="p">().</span><span class="na">iterator</span><span class="p">();</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">keys</span><span class="p">.</span><span class="na">hasNext</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="w">                </span><span class="n">SelectionKey</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">keys</span><span class="p">.</span><span class="na">next</span><span class="p">();</span>
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="w">                </span><span class="n">keys</span><span class="p">.</span><span class="na">remove</span><span class="p">();</span>
+<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">key</span><span class="p">.</span><span class="na">isAcceptable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="w">                    </span><span class="n">SocketChannel</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">serverChannel</span><span class="p">.</span><span class="na">accept</span><span class="p">();</span>
+<a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="w">                    </span><span class="n">client</span><span class="p">.</span><span class="na">configureBlocking</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+<a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a><span class="w">                    </span><span class="n">client</span><span class="p">.</span><span class="na">register</span><span class="p">(</span><span class="n">selector</span><span class="p">,</span><span class="w"> </span><span class="n">SelectionKey</span><span class="p">.</span><span class="na">OP_READ</span><span class="p">);</span><span class="w"> </span><span class="c1">// now watch this client for readability</span>
+<a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a><span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">key</span><span class="p">.</span><span class="na">isReadable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a><span class="w">                    </span><span class="n">SocketChannel</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">SocketChannel</span><span class="p">)</span><span class="w"> </span><span class="n">key</span><span class="p">.</span><span class="na">channel</span><span class="p">();</span>
+<a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a><span class="w">                    </span><span class="n">ByteBuffer</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ByteBuffer</span><span class="p">.</span><span class="na">allocate</span><span class="p">(</span><span class="mi">256</span><span class="p">);</span>
+<a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a><span class="w">                    </span><span class="kt">int</span><span class="w"> </span><span class="n">read</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="na">read</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span><span class="w"> </span><span class="c1">// guaranteed non-blocking, ready per the selector</span>
+<a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a><span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">read</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="na">close</span><span class="p">();</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">buffer</span><span class="p">.</span><span class="na">flip</span><span class="p">();</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">buffer</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// echo</span>
+<a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-11-33" name="__codelineno-11-33" href="#__codelineno-11-33"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-11-34" name="__codelineno-11-34" href="#__codelineno-11-34"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-35" name="__codelineno-11-35" href="#__codelineno-11-35"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="additional-resources">Additional Resources</h2>
+<h3 id="frameworks">Frameworks</h3>
+<h4 id="armeria">Armeria</h4>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=hLlctum1pIA">JOTB19 - Armeria: The Only Thrift/gRPC/REST Microservice Framework You'll Need by Trustin H. Lee</a></li>
+<li><a href="https://www.youtube.com/watch?v=Vr-0GKUmzo8">Trustin Lee — Armeria: A microservice framework well-suited everywhere</a></li>
+<li><a href="https://armeria.dev/docs">Armeria docs</a></li>
+<li><a href="https://armeria.dev/tutorials">Armeria tutorials</a></li>
+<li><a href="https://armeria.dev/docs/server-annotated-service">Annotated services</a></li>
+<li><a href="https://javadoc.io/doc/com.linecorp.armeria/armeria-javadoc/latest/com/linecorp/armeria/server/annotation/RequestConverter.html">Adding additional parameters in controller</a></li>
+<li><a href="https://github.com/line/armeria/pull/4202">Add DependencyInjector to inject dependencies in annotations</a></li>
+<li><a href="https://github.com/line/armeria-examples">armeria-examples</a></li>
+<li><a href="https://engineering.linecorp.com/en/blog/reactive-streams-armeria-1">Let's Play with Reactive Streams on Armeria - Part 1</a></li>
+<li><a href="https://engineering.linecorp.com/en/blog/reactive-streams-armeria-2">Let's Play with Reactive Streams on Armeria - Part 2</a></li>
+</ul>
+<h4 id="helidon-nima">Helidon Níma</h4>
+<ul>
+<li><a href="https://helidon.io/nima">Helidon Níma</a> — the first Java microservices framework based on virtual threads</li>
+<li><a href="https://www.youtube.com/watch?v=diUvR6gqHVY">Helidon - Microservices on Modern Java</a></li>
+</ul>
+<h4 id="micronaut">Micronaut</h4>
+<ul>
+<li><a href="https://micronaut.io/">micronaut</a></li>
+<li><a href="https://www.youtube.com/watch?v=0PN3KeLNC5U">Building High Performance Microservices for Java with Micronaut &amp; GraalVM</a></li>
+<li><a href="https://medium.com/danieldiasjava/creating-a-rest-application-with-micronaut-30a001b3c38b">Creating a Rest application with Micronaut</a></li>
+<li><a href="https://guides.micronaut.io/latest/micronaut-websocket-maven-java.html">Expose a WebSocket Server in a Micronaut Application</a></li>
+</ul>
+<h4 id="quarkus">Quarkus</h4>
+<ul>
+<li><a href="https://github.com/hendisantika/quarkus-simple-rest-api">hendisantika/quarkus-simple-rest-api</a></li>
+<li><a href="https://quarkus.io/guides/getting-started">Creating Your First Application</a></li>
+<li><a href="https://quarkus.io/guides/rest">Writing REST Services with Quarkus REST</a></li>
+<li><a href="https://quarkus.io/guides/rest-json">Writing JSON REST Services</a></li>
+<li><a href="https://quarkus.io/guides/rest-client">rest-client</a></li>
+<li><a href="https://quarkus.io/guides/mongodb">mongodb</a></li>
+<li><a href="https://quarkus.io/guides/cdi-reference">Contexts and Dependency Injection</a></li>
+<li><a href="https://github.com/quarkusio/quarkus-quickstarts">quarkusio/quarkus-quickstarts</a></li>
+<li><a href="https://stackoverflow.com/questions/75673145/how-to-build-a-quarkus-docker-image-with-jdk-19-and-virtual-thread-support">How to build a quarkus docker image with JDK 19 and Virtual Thread support</a></li>
+<li><a href="https://medium.com/geekculture/creating-a-reactive-crud-blog-app-with-mongodb-quarkus-and-panache-54d659cf8dcb">Creating a Reactive CRUD blog app with MongoDB, Quarkus and Panache</a> — <a href="https://github.com/dvddhln/quarkus-crud-reactive-mongodb">dvddhln/quarkus-crud-reactive-mongodb</a></li>
+<li><a href="https://medium.com/deno-the-complete-reference/quarkus-jvm-vs-graalvm-hello-world-case-37f4ab401e22">Quarkus — JVM vs GraalVM: Hello world case</a></li>
+</ul>
+<h4 id="spring">Spring</h4>
+<blockquote>
+<p>See the Spring Boot helper repo for Spring-specific framework notes.</p>
+</blockquote>
+<h3 id="courses">Courses</h3>
+<ul>
+<li><a href="https://thoughtworks.udemy.com/course/distributed-systems-cloud-computing-with-java/">Distributed Systems &amp; Cloud Computing with Java</a></li>
+</ul>
+<h3 id="sample-projects">Sample Projects</h3>
+<ul>
+<li><a href="https://www.youtube.com/playlist?list=PLnUreBIx5Q8gXVjr04vYzhTlXmyjK8zCB">Building an HTTP Server in Java: From Basics to File Serving</a> — <a href="https://github.com/gouthampradhan/simple-http-server">gouthampradhan/simple-http-server</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLAuGQNR28pW56GigraPdiI0oKwcs8gglW">Create a Simple HTTP Server in Java Tutorial</a> — <a href="https://github.com/CoderFromScratch/simple-java-http-server">CoderFromScratch/simple-java-http-server</a></li>
+</ul>
+<h3 id="articles">Articles</h3>
+<ul>
+<li><a href="https://medium.com/@kanishksinghpujari/optimizing-spring-boot-for-insane-traffic-the-1m-rps-guide-8b2a54cd711d">Optimizing Spring Boot for INSANE Traffic: The 1M RPS Guide</a></li>
+</ul></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2025 <a href="https://github.com/abhishekghoshh"  target="_blank" rel="noopener">Abhishek Ghosh</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/abhishekghoshh" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://x.com/abhishek_ghoshh" target="_blank" rel="noopener" title="x.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/abhishek-ghosh-220679132/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

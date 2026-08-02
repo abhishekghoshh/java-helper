@@ -1,0 +1,2492 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abhishekghoshh.github.io/java-helper/15-annotations/">
+      
+      
+        <link rel="prev" href="../14-reflection/">
+      
+      
+        <link rel="next" href="../16-functional-programming/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Annotations - Java Helper</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Annotations - Java Helper" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/15-annotations.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://abhishekghoshh.github.io/java-helper/15-annotations/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Annotations - Java Helper" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/15-annotations.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#15-annotations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Java Helper" class="md-header__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Java Helper
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Annotations
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../1-java-language-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Java Language Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../2-object-oriented-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Object-Oriented Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../3-classes/" class="md-tabs__link">
+        
+  
+    
+  
+  Classes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../4-constructors/" class="md-tabs__link">
+        
+  
+    
+  
+  Constructors
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-access-modifiers/" class="md-tabs__link">
+        
+  
+    
+  
+  Access Modifiers
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../6-packages/" class="md-tabs__link">
+        
+  
+    
+  
+  Packages
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../7-strings/" class="md-tabs__link">
+        
+  
+    
+  
+  Strings
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../8-arrays/" class="md-tabs__link">
+        
+  
+    
+  
+  Arrays
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../9-collections-framework/" class="md-tabs__link">
+        
+  
+    
+  
+  Collections Framework
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../10-generics/" class="md-tabs__link">
+        
+  
+    
+  
+  Generics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../11-exception-handling/" class="md-tabs__link">
+        
+  
+    
+  
+  Exception Handling
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../12-file-io/" class="md-tabs__link">
+        
+  
+    
+  
+  File I/O
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../13-serialization/" class="md-tabs__link">
+        
+  
+    
+  
+  Serialization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../14-reflection/" class="md-tabs__link">
+        
+  
+    
+  
+  Reflection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Annotations
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../16-functional-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Functional Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../17-streams-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Streams API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../18-date-and-time-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Date and Time API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../19-jvm-internals/" class="md-tabs__link">
+        
+  
+    
+  
+  JVM Internals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../20-class-loader/" class="md-tabs__link">
+        
+  
+    
+  
+  Class Loader
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../21-memory-management/" class="md-tabs__link">
+        
+  
+    
+  
+  Memory Management
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../22-garbage-collection/" class="md-tabs__link">
+        
+  
+    
+  
+  Garbage Collection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../23-concurrency/" class="md-tabs__link">
+        
+  
+    
+  
+  Concurrency
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../24-networking/" class="md-tabs__link">
+        
+  
+    
+  
+  Networking
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../25-design-patterns-in-java/" class="md-tabs__link">
+        
+  
+    
+  
+  Design Patterns in Java
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../26-modern-java-language-features/" class="md-tabs__link">
+        
+  
+    
+  
+  Modern Java Language Features
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../27-regular-expressions/" class="md-tabs__link">
+        
+  
+    
+  
+  Regular Expressions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../28-internationalization-and-localization/" class="md-tabs__link">
+        
+  
+    
+  
+  Internationalization & Localization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../29-logging/" class="md-tabs__link">
+        
+  
+    
+  
+  Logging
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../30-security-basics/" class="md-tabs__link">
+        
+  
+    
+  
+  Security Basics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-tabs__link">
+        
+  
+    
+  
+  Native & Foreign Interoperability
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../32-process-and-system-apis/" class="md-tabs__link">
+        
+  
+    
+  
+  Process & System APIs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../33-testing-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Testing Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Java Helper" class="md-nav__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Java Helper
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-java-language-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java Language Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-object-oriented-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-classes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Classes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-constructors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constructors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-access-modifiers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access Modifiers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Packages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-strings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Strings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-collections-framework/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collections Framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-generics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-exception-handling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exception Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-file-io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File I/O
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-serialization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serialization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-reflection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reflection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Annotations
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Annotations
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#built-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      Built-in
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Built-in">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#meta-annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Meta Annotations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Meta Annotations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#runtime-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Runtime Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Runtime Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annotation-processing-apt-new" class="md-nav__link">
+    <span class="md-ellipsis">
+      Annotation Processing (APT) (new)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Annotation Processing (APT) (new)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-functional-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Functional Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-streams-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Streams API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-date-and-time-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Date and Time API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-jvm-internals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JVM Internals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-class-loader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Class Loader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-memory-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-garbage-collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Garbage Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-concurrency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concurrency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-networking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-design-patterns-in-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Patterns in Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-modern-java-language-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modern Java Language Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-regular-expressions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Regular Expressions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-internationalization-and-localization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internationalization & Localization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-logging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30-security-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Native & Foreign Interoperability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32-process-and-system-apis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process & System APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33-testing-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div><h1 id="15-annotations">15. Annotations</h1>
+<h2 id="built-in">Built-in</h2>
+<h3 id="theory">Theory</h3>
+<p><strong>Core Concepts</strong>: Java ships a set of standard annotations in <code>java.lang</code> (<code>@Override</code>, <code>@Deprecated</code>, <code>@SuppressWarnings</code>, <code>@SafeVarargs</code>, <code>@FunctionalInterface</code>) and <code>java.lang.annotation</code> (the meta-annotations covered separately) that the compiler and/or JVM understand and act upon without any external framework, representing the language's own built-in use of the annotation mechanism.</p>
+<p><strong>Internal Working</strong>: Each built-in annotation has a specific retention policy matched to its purpose — <code>@Override</code>, <code>@SuppressWarnings</code>, and <code>@SafeVarargs</code> are <code>SOURCE</code>-retained (compiler-only, discarded after compilation), while <code>@Deprecated</code> is <code>RUNTIME</code>-retained (so reflection and tooling can detect deprecated APIs at runtime, e.g., IDEs and API-usage-scanning tools), and <code>@FunctionalInterface</code> is <code>RUNTIME</code>-retained but purely documentary/validating at compile time.</p>
+<p><strong>When to Use It</strong>: <code>@Override</code> on every method intended to override/implement a supertype/interface method (safety net against typos or signature drift); <code>@Deprecated</code> (paired with the <code>@deprecated</code> Javadoc tag) to mark APIs scheduled for removal/replacement; <code>@SuppressWarnings</code> narrowly scoped to suppress specific, justified compiler warnings; <code>@SafeVarargs</code> on <code>final</code>/<code>static</code>/<code>private</code> varargs methods that are provably safe from heap pollution; <code>@FunctionalInterface</code> on any interface intended for lambda/method-reference use.</p>
+<p><strong>Advantages</strong>: Catch real bugs at compile time (<code>@Override</code> catches signature mismatches that would otherwise silently create an unrelated overload instead of an override); communicate intent clearly to other developers and tooling; <code>@FunctionalInterface</code> locks an interface's single-abstract-method contract, preventing accidental addition of a second abstract method that would break lambda compatibility.</p>
+<p><strong>Limitations</strong>: These annotations don't change runtime behavior (except <code>@Deprecated</code>'s reflective visibility, which itself has no behavioral effect, only informational value plus a compiler warning at use sites); over-broad <code>@SuppressWarnings</code> (e.g., suppressing at the class level instead of the specific statement) can hide genuinely important warnings elsewhere in the same scope.</p>
+<h3 id="internal-working">Internal Working</h3>
+<p><strong>Step-by-Step Explanation</strong>:
+1. <code>@Override</code>: purely a compile-time check — <code>javac</code> verifies the annotated method actually overrides/implements a method from a supertype or interface with a compatible signature; if it doesn't (e.g., due to a typo in the method name or a parameter-type mismatch), compilation fails with an error, catching what would otherwise be a silent, hard-to-detect overloading bug.
+2. <code>@Deprecated</code>: recorded with <code>RUNTIME</code> retention (and additionally as a distinct <code>Deprecated</code> attribute in the class file predating the annotation itself, for backward compatibility with pre-annotation deprecation marking) — the compiler emits a warning at every <em>use site</em> of a <code>@Deprecated</code>-marked API, and reflection can query <code>isAnnotationPresent(Deprecated.class)</code> to detect deprecated members at runtime (used by API-linting/migration tools). Since Java 9, <code>@Deprecated</code> gained <code>since</code> and <code>forRemoval</code> elements for finer-grained deprecation lifecycle tracking.
+3. <code>@SuppressWarnings("...")</code>: purely compile-time — instructs <code>javac</code> to suppress specific categories of warnings (e.g., <code>"unchecked"</code>, <code>"deprecation"</code>, <code>"rawtypes"</code>) within the annotated element's scope; the exact set of recognized warning names isn't formally standardized across compilers but is broadly consistent for <code>javac</code>.
+4. <code>@SafeVarargs</code>: compile-time-only — asserts to the compiler that a varargs method with a generic varargs parameter (e.g., <code>T... args</code>) does not perform unsafe operations on the underlying array (like storing an incompatible type into it), suppressing the "unchecked generic array creation" warning at call sites; usable only on <code>static</code>, <code>final</code>, <code>private</code> (Java 9+), or constructor methods, since only those can't be overridden in a way that would violate the safety guarantee.
+5. <code>@FunctionalInterface</code>: compile-time-only — <code>javac</code> verifies the annotated interface has exactly one abstract method (default/static/private interface methods don't count), failing compilation if a second abstract method is added, protecting the interface's suitability as a lambda/method-reference target.</p>
+<p><strong>Memory Layout</strong>: Not directly applicable — these are metadata annotations with no runtime object-layout impact; only <code>@Deprecated</code>'s attribute presence occupies a small amount of Metaspace-resident class-file metadata.</p>
+<p><strong>Diagrams</strong>:
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>@Override        -&gt; compile-time signature check only (SOURCE retention)
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>@SuppressWarnings -&gt; compile-time warning suppression only (SOURCE retention)
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>@SafeVarargs      -&gt; compile-time unchecked-warning suppression only (SOURCE retention)
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>@FunctionalInterface -&gt; compile-time single-abstract-method validation (RUNTIME retention, rarely queried)
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>@Deprecated       -&gt; RUNTIME retention: reflective tools + compiler use-site warnings
+</code></pre></div>
+<p><strong>JVM Behaviour</strong>: None of the compiler-only built-in annotations affect generated bytecode or JIT behavior at all — they exist purely to shift certain classes of bugs/warnings earlier (to compile time) rather than leaving them as runtime surprises; <code>@Deprecated</code>'s runtime visibility is purely informational and has zero effect on method dispatch, JIT compilation, or class loading.</p>
+<h3 id="interview-questions">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What does <code>@Override</code> actually verify, and when does compilation fail because of it?
+2. What's the retention policy of <code>@Override</code> versus <code>@Deprecated</code>, and why does that difference matter?</p>
+<p><strong>Intermediate</strong>
+1. What restrictions apply to where <code>@SafeVarargs</code> can be used, and why?
+2. What are the <code>since</code> and <code>forRemoval</code> elements added to <code>@Deprecated</code> in Java 9?</p>
+<p><strong>Advanced</strong>
+1. Why does <code>@FunctionalInterface</code> need <code>RUNTIME</code> retention if its validation happens entirely at compile time?</p>
+<p><strong>Scenario-based</strong>
+1. A teammate removes <code>@Override</code> from a method because "it's just documentation." Explain why this is a meaningful risk, using a concrete example.</p>
+<h3 id="detailed-answers">Detailed Answers</h3>
+<ol>
+<li>
+<p><strong>What <code>@Override</code> verifies</strong>: It instructs <code>javac</code> to confirm the annotated method genuinely overrides (or implements) a method declared in a supertype or interface with a matching signature (name, parameter types, and a covariant-compatible return type). Compilation fails if no such supertype/interface method exists — this most commonly catches accidental "overloads" created by a typo'd method name or subtly mismatched parameter types, which without the annotation would silently compile as an unrelated new method rather than failing loudly.</p>
+</li>
+<li>
+<p><strong>Retention policy difference</strong>: <code>@Override</code> is <code>SOURCE</code>-retained (pure compiler check, discarded after compilation, since nothing at runtime needs to know a method was marked as an override). <code>@Deprecated</code> is <code>RUNTIME</code>-retained specifically so that tools operating on compiled bytecode or via reflection (IDEs performing "find deprecated API usage," runtime API-governance/migration scanners) can programmatically detect deprecation status without access to source code — the difference reflects that one is purely a compile-time developer aid, while the other has legitimate runtime/tooling consumers.</p>
+</li>
+<li>
+<p><strong><code>@SafeVarargs</code> restrictions</strong>: It's only permitted on methods that are <code>static</code>, <code>final</code>, <code>private</code> (allowed since Java 9), or constructors — i.e., methods that cannot be overridden. This restriction exists because the annotation's safety guarantee (the method doesn't perform unsafe writes into the generic varargs array, which could otherwise cause heap pollution/<code>ClassCastException</code>s elsewhere) is a property of that specific method body; if the method were overridable, a subclass could override it with unsafe behavior while still "inheriting" the safety annotation's suppression of the compiler warning, defeating the guarantee's purpose.</p>
+</li>
+<li>
+<p><strong>Java 9 <code>@Deprecated</code> enhancements</strong>: <code>since</code> (a <code>String</code> element) documents which version introduced the deprecation, useful for tracking deprecation timelines across a large API surface. <code>forRemoval</code> (a <code>boolean</code> element) explicitly signals whether the API is planned for actual removal in a future release (as opposed to being deprecated but likely to remain indefinitely for compatibility) — <code>javac</code> emits a stronger warning for <code>forRemoval = true</code> usages, helping consumers correctly prioritize which deprecated APIs need urgent migration versus which can be deprioritized.</p>
+</li>
+<li>
+<p><strong>Why <code>@FunctionalInterface</code> needs <code>RUNTIME</code> retention</strong>: Although its primary validation (single-abstract-method check) happens entirely at compile time, <code>RUNTIME</code> retention allows reflective tools, IDEs, and documentation generators to programmatically identify which interfaces are intended as functional interfaces without re-deriving that fact by re-parsing the interface's method set themselves — a convenience and API-discoverability benefit that a <code>SOURCE</code>-only retention would preclude for anything operating purely on compiled artifacts.</p>
+</li>
+<li>
+<p><strong>Removing <code>@Override</code> risk scenario</strong>: Without <code>@Override</code>, if a subclass method intended to override <code>toString()</code> were accidentally declared as <code>toString(int)</code> or <code>tostring()</code> (typo) or with a subtly wrong parameter type, the compiler would happily accept it as a brand-new, unrelated overloaded/renamed method rather than flagging the mismatch — the original supertype method remains un-overridden, meaning polymorphic dispatch silently continues calling the <em>original</em> (unintended) implementation everywhere the object is used via its supertype reference, a bug that can go undetected for a long time since the code compiles and often even partially "works" until the specific override-dependent behavior is exercised. <code>@Override</code> converts this into an immediate, loud compile-time error.</p>
+</li>
+</ol>
+<h3 id="code-examples">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BuiltInAnnotationsDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Shape</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">describe</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">"generic shape"</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Circle</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Shape</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="nd">@Override</span><span class="w"> </span><span class="c1">// catches typos/signature drift at compile time — try renaming to "descirbe"</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">describe</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="s">"circle"</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="nd">@Deprecated</span><span class="p">(</span><span class="n">since</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"2.0"</span><span class="p">,</span><span class="w"> </span><span class="n">forRemoval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">legacyCalculate</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"legacy calculation path"</span><span class="p">);</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="nd">@SafeVarargs</span><span class="w"> </span><span class="c1">// only legal on static/final/private methods/constructors</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">listOf</span><span class="p">(</span><span class="n">T</span><span class="p">...</span><span class="w"> </span><span class="n">items</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">items</span><span class="p">)</span><span class="w"> </span><span class="n">result</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">item</span><span class="p">);</span><span class="w"> </span><span class="c1">// no unsafe writes into the varargs array</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">    </span><span class="nd">@SuppressWarnings</span><span class="p">(</span><span class="s">"deprecation"</span><span class="p">)</span><span class="w"> </span><span class="c1">// narrowly scoped suppression, justified by migration timeline</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">        </span><span class="n">Shape</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Circle</span><span class="p">();</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="na">describe</span><span class="p">());</span><span class="w"> </span><span class="c1">// "circle" — correct override dispatch</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">        </span><span class="n">legacyCalculate</span><span class="p">();</span><span class="w"> </span><span class="c1">// would normally warn; suppressed here deliberately</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="s">"Ada"</span><span class="p">,</span><span class="w"> </span><span class="s">"Grace"</span><span class="p">,</span><span class="w"> </span><span class="s">"Katherine"</span><span class="p">);</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">names</span><span class="p">);</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="custom">Custom</h2>
+<h3 id="theory_1">Theory</h3>
+<p><strong>Core Concepts</strong>: Custom annotations are user-defined annotation types declared with <code>@interface</code>, optionally carrying elements (annotation "members," which look like abstract methods but are actually typed configuration slots with optional <code>default</code> values). They're the foundation of virtually every declarative Java framework feature (<code>@Entity</code>, <code>@Autowired</code>, <code>@Test</code>, <code>@RequestMapping</code>, etc.).</p>
+<p><strong>Internal Working</strong>: A custom annotation type is compiled into an actual interface bytecode-wise (implicitly extending <code>java.lang.annotation.Annotation</code>), with each declared element compiled as an abstract method; annotation usages store their element values as structured data in the class file's annotation attributes (subject to the type's meta-annotation-declared retention policy).</p>
+<p><strong>When to Use It</strong>: Whenever you want to attach structured, declarative metadata to code elements (classes, methods, fields, parameters) that either your own reflection-based logic, a build-time annotation processor, or a third-party framework will act upon — replacing what would otherwise require verbose XML configuration or repetitive boilerplate marker interfaces.</p>
+<p><strong>Advantages</strong>: Keeps metadata co-located with the code it describes (better locality/discoverability than external configuration files); strongly typed (annotation elements have declared types, validated at compile time, unlike loosely-typed string-keyed config maps); supports default values, reducing boilerplate at annotation use sites.</p>
+<p><strong>Limitations</strong>: Annotation elements can only be of a restricted set of types — primitives, <code>String</code>, <code>Class</code>, enums, other annotations, or arrays of these (notably, arbitrary objects and generics are <em>not</em> allowed as element types); annotations cannot express complex conditional logic themselves (they're pure declarative data, with all actual behavior implemented externally in whatever reads them); overuse can lead to "magic" behavior that's hard to trace without deep framework knowledge (the classic trade-off of declarative vs. imperative code).</p>
+<h3 id="internal-working_1">Internal Working</h3>
+<p><strong>Step-by-Step Explanation</strong>:
+1. <code>@interface MyAnnotation { String value(); int priority() default 0; }</code> compiles to an actual class-file-level interface extending <code>java.lang.annotation.Annotation</code>, with <code>value()</code> and <code>priority()</code> as abstract methods (the <code>default 0</code> becomes part of the annotation's metadata, used when generating the runtime proxy for usages that omit that element).
+2. When a class/method/field is annotated <code>@MyAnnotation("x")</code>, <code>javac</code> records this in the appropriate <code>RuntimeVisibleAnnotations</code> (or <code>RuntimeInvisibleAnnotations</code>/nothing, per the type's own <code>@Retention</code>) attribute of that element's class-file entry, encoding the annotation type and each explicitly-provided (or defaulted) element value.
+3. At runtime, <code>getAnnotation(MyAnnotation.class)</code> parses that attribute and generates a dynamic proxy implementing the <code>MyAnnotation</code> interface (via the same mechanism underlying <code>java.lang.reflect.Proxy</code>), whose <code>value()</code>/<code>priority()</code> method implementations simply return the specific values recorded for that usage.
+4. Annotations themselves also get sensible auto-generated <code>equals()</code>/<code>hashCode()</code>/<code>toString()</code> semantics per the <code>Annotation</code> interface's documented contract (two annotation instances of the same type with equal element values are <code>.equals()</code>), implemented as part of the generated proxy's behavior.</p>
+<p><strong>Memory Layout</strong>: Annotation type metadata (like any class) resides in Metaspace; per-usage element-value data is stored compactly in the class file's annotation attributes (referencing the constant pool for literal values), and materialized proxy instances (when queried reflectively) are ordinary, typically short-lived or JDK-cached heap objects.</p>
+<p><strong>Diagrams</strong>:
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>@interface Retryable {
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    int maxAttempts() default 3;
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    Class&lt;? extends Exception&gt;[] retryOn() default {};
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>}
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>@Retryable(maxAttempts = 5, retryOn = {java.io.IOException.class})
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>void fetchRemoteData() { ... }
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>Class file attribute (conceptual):
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>RuntimeVisibleAnnotations:
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>  Retryable(maxAttempts=5, retryOn=[IOException.class])
+</code></pre></div>
+<p><strong>JVM Behaviour</strong>: Custom annotations impose zero runtime overhead unless something actually queries them reflectively (or an annotation processor consumes them at compile time) — an annotated-but-never-inspected class behaves identically, performance-wise, to an unannotated one, since the annotation data is purely passive metadata sitting in the class file until explicitly read.</p>
+<h3 id="interview-questions_1">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What keyword declares a custom annotation type, and what does it implicitly extend?
+2. What types can an annotation element have?</p>
+<p><strong>Intermediate</strong>
+1. How do you provide a default value for an annotation element, and what happens if a required (no-default) element is omitted at a usage site?
+2. Why can't annotation elements be arbitrary generic types?</p>
+<p><strong>Advanced</strong>
+1. How does the JVM/JDK actually produce a usable, callable object when you call <code>getAnnotation()</code>, given that <code>@interface</code> types have no explicit implementation?</p>
+<p><strong>Scenario-based</strong>
+1. You're designing a <code>@Retryable(maxAttempts = 3, retryOn = {IOException.class})</code> annotation for a resilience framework. Discuss the design considerations for its element types and defaults.</p>
+<h3 id="detailed-answers_1">Detailed Answers</h3>
+<ol>
+<li>
+<p><strong>Declaration keyword</strong>: <code>@interface</code>. It implicitly compiles to a type extending <code>java.lang.annotation.Annotation</code>, meaning every custom annotation automatically inherits that interface's contract (including documented <code>equals</code>/<code>hashCode</code>/<code>toString</code>/<code>annotationType()</code> semantics), even though you never write <code>extends Annotation</code> explicitly — the language forbids explicit extension since the compiler synthesizes this relationship itself.</p>
+</li>
+<li>
+<p><strong>Allowed element types</strong>: Primitive types (<code>int</code>, <code>boolean</code>, etc.), <code>String</code>, <code>Class</code> (or <code>Class&lt;? extends SomeType&gt;</code>), enum types, other annotation types (nested annotations), and one-dimensional arrays of any of the preceding — notably excluding arbitrary reference types, generics (beyond bounded <code>Class&lt;?&gt;</code> references), and multi-dimensional arrays.</p>
+</li>
+<li>
+<p><strong>Default values and omission</strong>: A <code>default</code> clause after an element's declaration (<code>int priority() default 0;</code>) supplies the value used whenever a usage site doesn't explicitly specify that element. If an element has no default and a usage omits it, compilation fails with an error requiring that element to be explicitly provided — annotations enforce this "required unless defaulted" contract at compile time, unlike, say, an optional map key that would simply be absent at runtime.</p>
+</li>
+<li>
+<p><strong>Why not arbitrary generics</strong>: Annotation element values must be representable as compile-time constants storable directly in the class file's constant pool / annotation attribute structure (so they can be fully resolved without running arbitrary code) — arbitrary generic types could reference type parameters not resolvable at compile time in this constant, self-contained way, and arbitrary object element values would require object construction/serialization logic the annotation attribute format doesn't support; restricting to primitives/String/Class/enum/nested-annotation/arrays keeps every element value expressible as pure, self-contained, compile-time-resolvable data.</p>
+</li>
+<li>
+<p><strong>How <code>getAnnotation()</code> produces a callable object</strong>: Since the annotation type is compiled as an interface (with element declarations becoming abstract methods), the JDK's reflection implementation dynamically generates (via the same proxy-generation infrastructure as <code>java.lang.reflect.Proxy</code>) a concrete implementation class at the moment it's first requested, whose methods simply return the exact values that were encoded for that particular annotated element in the class file — you never write or see this generated implementation class directly, but it's a genuine, loaded class satisfying the annotation interface, not a special JVM-magic value.</p>
+</li>
+<li>
+<p><strong><code>@Retryable</code> design scenario</strong>: <code>maxAttempts</code> as a primitive <code>int</code> with a sensible <code>default 3</code> keeps the common case terse (<code>@Retryable</code> alone works) while allowing overriding when needed; <code>retryOn</code> as <code>Class&lt;? extends Exception&gt;[]</code> (defaulting to an empty array, conventionally interpreted by the consuming framework as "retry on any exception" or "retry on none," a decision that must be clearly documented) lets callers specify exactly which exception types should trigger a retry, using <code>Class</code> references rather than, say, <code>String</code> class names, since <code>Class</code> element values are type-checked at compile time (catching typos immediately) versus a string that would only fail at runtime reflection time if misspelled.</p>
+</li>
+</ol>
+<h3 id="code-examples_1">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.lang.annotation.ElementType</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.lang.annotation.Retention</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.lang.annotation.RetentionPolicy</span><span class="p">;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.lang.annotation.Target</span><span class="p">;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.IOException</span><span class="p">;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CustomAnnotationDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="nd">@Retention</span><span class="p">(</span><span class="n">RetentionPolicy</span><span class="p">.</span><span class="na">RUNTIME</span><span class="p">)</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="nd">@Target</span><span class="p">(</span><span class="n">ElementType</span><span class="p">.</span><span class="na">METHOD</span><span class="p">)</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="nd">@interface</span><span class="w"> </span><span class="n">Retryable</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="nf">maxAttempts</span><span class="p">()</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">        </span><span class="n">Class</span><span class="o">&lt;?</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Exception</span><span class="o">&gt;[]</span><span class="w"> </span><span class="nf">retryOn</span><span class="p">()</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{};</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RemoteClient</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">        </span><span class="nd">@Retryable</span><span class="p">(</span><span class="n">maxAttempts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">retryOn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">IOException</span><span class="p">.</span><span class="na">class</span><span class="p">})</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">        </span><span class="kt">void</span><span class="w"> </span><span class="nf">fetchRemoteData</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IOException</span><span class="p">(</span><span class="s">"simulated transient network failure"</span><span class="p">);</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RemoteClient</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getDeclaredMethod</span><span class="p">(</span><span class="s">"fetchRemoteData"</span><span class="p">);</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">        </span><span class="n">Retryable</span><span class="w"> </span><span class="n">retryable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">method</span><span class="p">.</span><span class="na">getAnnotation</span><span class="p">(</span><span class="n">Retryable</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Max attempts configured: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">retryable</span><span class="p">.</span><span class="na">maxAttempts</span><span class="p">());</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Class</span><span class="o">&lt;?</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Exception</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ex</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">retryable</span><span class="p">.</span><span class="na">retryOn</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Will retry on: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ex</span><span class="p">.</span><span class="na">getSimpleName</span><span class="p">());</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="meta-annotations">Meta Annotations</h2>
+<h3 id="theory_2">Theory</h3>
+<p><strong>Core Concepts</strong>: Meta-annotations are annotations whose target is other annotation type declarations, used to configure how a custom annotation itself behaves — chiefly <code>@Retention</code> (how long the annotation is retained: SOURCE/CLASS/RUNTIME), <code>@Target</code> (which kinds of program elements it may annotate), <code>@Inherited</code> (whether subclasses inherit a class-level annotation), <code>@Documented</code> (whether it appears in generated Javadoc), and <code>@Repeatable</code> (Java 8+, allowing multiple instances of the same annotation on one element).</p>
+<p><strong>Internal Working</strong>: Each meta-annotation is itself just an ordinary annotation type (with <code>RUNTIME</code> retention) defined in <code>java.lang.annotation</code>, applied to <code>@interface</code> declarations; the compiler reads these meta-annotations to enforce/encode the corresponding constraints (valid targets, retention level) directly into how the custom annotation type and its usages are compiled.</p>
+<p><strong>When to Use It</strong>: <code>@Retention(RUNTIME)</code> whenever reflection needs to see the annotation; <code>@Target</code> to restrict/document valid usage locations and catch misapplication at compile time; <code>@Inherited</code> for class-level annotations meant to propagate down a class hierarchy automatically (note: does NOT apply to interfaces or methods, only classes); <code>@Repeatable</code> when a single element may need multiple instances of the same conceptual annotation (e.g., multiple <code>@Schedule</code> cron triggers on one method).</p>
+<p><strong>Advantages</strong>: Gives annotation designers precise control over their annotation's applicability and lifecycle without writing any enforcement code themselves — <code>javac</code> and the reflection API handle it uniformly based on these declarative meta-annotation settings.</p>
+<p><strong>Limitations</strong>: <code>@Inherited</code> only affects class-level annotation inheritance via <code>getAnnotation()</code>-style superclass lookup, and explicitly does <em>not</em> apply to interfaces (an implementing class does not "inherit" an interface's annotations this way) or to methods/fields; <code>@Repeatable</code> requires an additional explicit "container" annotation type to be declared to hold the repeated instances, adding a small amount of boilerplate to set up.</p>
+<h3 id="internal-working_2">Internal Working</h3>
+<p><strong>Step-by-Step Explanation</strong>:
+1. <code>@Retention(RetentionPolicy.X)</code> on a custom <code>@interface</code> tells <code>javac</code> which class-file attribute (if any) to emit for usages of that annotation type: <code>SOURCE</code> emits nothing (discarded after compilation), <code>CLASS</code> emits a <code>RuntimeInvisibleAnnotations</code> entry (present in bytecode but reflection-invisible, the implicit default if <code>@Retention</code> is omitted), <code>RUNTIME</code> emits a <code>RuntimeVisibleAnnotations</code> entry (reflection-visible).
+2. <code>@Target({ElementType.METHOD, ElementType.FIELD, ...})</code> restricts which kinds of declarations the annotation may legally be placed on; <code>javac</code> rejects (compile error) any usage on a disallowed element kind — omitting <code>@Target</code> entirely permits the annotation almost anywhere (all element types).
+3. <code>@Inherited</code> on a custom annotation type means that if a class <code>A</code> is annotated and class <code>B extends A</code> doesn't repeat the annotation, then <code>B.class.getAnnotation(TheAnnotation.class)</code> will still find it by walking up the superclass chain — this lookup logic is implemented within <code>Class.getAnnotation()</code> itself, checking the <code>@Inherited</code> meta-annotation on the queried annotation type.
+4. <code>@Repeatable(ContainerAnnotation.class)</code> (Java 8+) lets a single element carry multiple <code>@X</code> usages; the compiler actually stores them by implicitly wrapping them in the declared container annotation (<code>ContainerAnnotation</code> holding a <code>TheAnnotation[] value()</code>), and reflective APIs like <code>getAnnotationsByType()</code> transparently unwrap this container to present the repeated annotations as if they were a natural array, hiding the container-wrapping mechanism from most callers.</p>
+<p><strong>Memory Layout</strong>: Not directly applicable — meta-annotations only influence class-file attribute generation and compiler validation; no distinct runtime memory structures beyond ordinary annotation-attribute storage already discussed.</p>
+<p><strong>Diagrams</strong>:
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>@Retention(RUNTIME) @Target(METHOD) @Repeatable(Schedules.class)
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>@interface Schedule { String cron(); }
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>@interface Schedules { Schedule[] value(); } // required container for @Repeatable
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>Usage:
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>@Schedule(cron = "0 0 * * *")
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>@Schedule(cron = "0 12 * * *")
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>void job() { ... }
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>Compiled as (transparently):
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>@Schedules({ @Schedule(cron="0 0 * * *"), @Schedule(cron="0 12 * * *") })
+</code></pre></div>
+<p><strong>JVM Behaviour</strong>: None of this affects bytecode execution or JIT behavior — meta-annotations are entirely a compile-time-enforcement and class-file-metadata-shaping mechanism, with reflective consumption (<code>getAnnotationsByType</code>, inherited lookup) being ordinary library-level logic layered on top of the stored metadata, not special JVM instructions.</p>
+<h3 id="interview-questions_2">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What does <code>@Retention(RetentionPolicy.RUNTIME)</code> control?
+2. What is the default retention policy if <code>@Retention</code> is omitted?</p>
+<p><strong>Intermediate</strong>
+1. Does <code>@Inherited</code> cause annotation inheritance across interfaces or for methods/fields?
+2. What extra annotation type must you declare to use <code>@Repeatable</code>?</p>
+<p><strong>Advanced</strong>
+1. How does <code>Class.getAnnotation()</code> implement <code>@Inherited</code> lookup internally?</p>
+<p><strong>Scenario-based</strong>
+1. You mark a custom annotation <code>@Inherited</code> and apply it to an interface, expecting implementing classes to "inherit" it reflectively — but <code>getAnnotation()</code> on the implementing class returns <code>null</code>. Explain why.</p>
+<h3 id="detailed-answers_2">Detailed Answers</h3>
+<ol>
+<li>
+<p><strong>What <code>@Retention(RUNTIME)</code> controls</strong>: It instructs <code>javac</code> to retain usages of the annotated custom annotation type all the way into the compiled class file as a <code>RuntimeVisibleAnnotations</code> attribute entry, and further guarantees the JVM/reflection API keeps this data available for runtime queries via <code>getAnnotation()</code>/<code>getAnnotations()</code> — without <code>RUNTIME</code> retention, reflective code cannot see the annotation at all, regardless of how it's used at the language level.</p>
+</li>
+<li>
+<p><strong>Default retention</strong>: <code>RetentionPolicy.CLASS</code> — if <code>@Retention</code> is omitted entirely, the annotation is retained in the compiled bytecode (as <code>RuntimeInvisibleAnnotations</code>) but is not visible to runtime reflection, only to tools that directly parse class files (like some bytecode-manipulation libraries or certain annotation processors operating in later rounds).</p>
+</li>
+<li>
+<p><strong><code>@Inherited</code> scope limits</strong>: No — <code>@Inherited</code> explicitly only affects annotations placed on <em>classes</em>, propagating them to direct/indirect <em>subclasses</em> via the standard superclass chain lookup in <code>getAnnotation()</code>. It explicitly does not apply when the annotated type is an interface (implementing classes do not inherit interface-level annotations this way) nor to method or field annotations (those are never "inherited" by overriding methods or shadowing fields regardless of this meta-annotation) — a frequently-tested distinction in interviews.</p>
+</li>
+<li>
+<p><strong><code>@Repeatable</code> container requirement</strong>: You must declare a separate "containing" annotation type with a <code>value()</code> element that's an array of the repeatable annotation type (e.g., <code>@interface Schedules { Schedule[] value(); }</code>), and reference that container type in the repeatable annotation's own <code>@Repeatable(Schedules.class)</code> meta-annotation — the compiler uses this container to actually store multiple usages under the hood, even though calling code can mostly ignore the container's existence when using <code>getAnnotationsByType()</code>.</p>
+</li>
+<li>
+<p><strong><code>getAnnotation()</code> inherited-lookup implementation</strong>: When queried for an annotation type that is itself meta-annotated <code>@Inherited</code>, <code>Class.getAnnotation()</code> first checks the class itself for a direct usage; if absent, it walks up the <code>getSuperclass()</code> chain (not interfaces), checking each ancestor class in turn for a direct usage of that annotation type, returning the first one found (or <code>null</code> if none exists anywhere up the chain) — this walk is implemented directly in the JDK's <code>Class</code>/annotation-parsing internals, conditioned specifically on the target annotation type carrying <code>@Inherited</code> itself (an annotation without <code>@Inherited</code> never triggers this superclass walk at all).</p>
+</li>
+<li>
+<p><strong>Interface <code>@Inherited</code> scenario</strong>: The bug is a fundamental misunderstanding of <code>@Inherited</code>'s documented scope — it applies only to class-to-subclass inheritance via <code>getSuperclass()</code>, and explicitly does <em>not</em> apply to interface-to-implementing-class relationships. An annotation placed on an interface is never "inherited" (in this reflective sense) by any class that implements that interface, regardless of the <code>@Inherited</code> meta-annotation being present — to detect such interface-level annotations on an implementing class, you'd need to manually walk <code>getInterfaces()</code> (and their super-interfaces) yourself and check each one directly, since the JDK provides no built-in reflective inheritance mechanism for interface annotations.</p>
+</li>
+</ol>
+<h3 id="code-examples_2">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.lang.annotation.*</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MetaAnnotationsDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="nd">@Retention</span><span class="p">(</span><span class="n">RetentionPolicy</span><span class="p">.</span><span class="na">RUNTIME</span><span class="p">)</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="nd">@Target</span><span class="p">(</span><span class="n">ElementType</span><span class="p">.</span><span class="na">METHOD</span><span class="p">)</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="nd">@Repeatable</span><span class="p">(</span><span class="n">Schedules</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="nd">@interface</span><span class="w"> </span><span class="n">Schedule</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="nf">cron</span><span class="p">();</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="nd">@Retention</span><span class="p">(</span><span class="n">RetentionPolicy</span><span class="p">.</span><span class="na">RUNTIME</span><span class="p">)</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="nd">@Target</span><span class="p">(</span><span class="n">ElementType</span><span class="p">.</span><span class="na">METHOD</span><span class="p">)</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="nd">@interface</span><span class="w"> </span><span class="n">Schedules</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">        </span><span class="n">Schedule</span><span class="o">[]</span><span class="w"> </span><span class="nf">value</span><span class="p">();</span><span class="w"> </span><span class="c1">// required container for @Repeatable</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">    </span><span class="nd">@Retention</span><span class="p">(</span><span class="n">RetentionPolicy</span><span class="p">.</span><span class="na">RUNTIME</span><span class="p">)</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">    </span><span class="nd">@Target</span><span class="p">(</span><span class="n">ElementType</span><span class="p">.</span><span class="na">TYPE</span><span class="p">)</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">    </span><span class="nd">@Inherited</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">    </span><span class="nd">@interface</span><span class="w"> </span><span class="n">AuditedComponent</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">    </span><span class="nd">@AuditedComponent</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BaseService</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderService</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">BaseService</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">        </span><span class="nd">@Schedule</span><span class="p">(</span><span class="n">cron</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"0 0 * * *"</span><span class="p">)</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">        </span><span class="nd">@Schedule</span><span class="p">(</span><span class="n">cron</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"0 12 * * *"</span><span class="p">)</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">        </span><span class="kt">void</span><span class="w"> </span><span class="nf">runDailyReconciliation</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="w">        </span><span class="c1">// @Inherited: subclass reflectively "sees" the superclass's class-level annotation</span>
+<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">OrderService</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getAnnotation</span><span class="p">(</span><span class="n">AuditedComponent</span><span class="p">.</span><span class="na">class</span><span class="p">));</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a>
+<a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a><span class="w">        </span><span class="c1">// @Repeatable: transparently unwrapped into an array despite the Schedules container</span>
+<a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OrderService</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getDeclaredMethod</span><span class="p">(</span><span class="s">"runDailyReconciliation"</span><span class="p">);</span>
+<a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Schedule</span><span class="w"> </span><span class="n">schedule</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">method</span><span class="p">.</span><span class="na">getAnnotationsByType</span><span class="p">(</span><span class="n">Schedule</span><span class="p">.</span><span class="na">class</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Cron trigger: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">schedule</span><span class="p">.</span><span class="na">cron</span><span class="p">());</span>
+<a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="runtime-processing">Runtime Processing</h2>
+<h3 id="theory_3">Theory</h3>
+<p><strong>Core Concepts</strong>: "Runtime processing" refers to the pattern of a framework using reflection at application runtime to discover annotated classes/methods/fields and act on that metadata dynamically — as opposed to acting on annotations at compile time (annotation processing/APT). This is how Spring's component scanning, JUnit's test discovery, and Jackson's field-based (de)serialization all fundamentally operate.</p>
+<p><strong>Internal Working</strong>: A runtime annotation processor typically: (1) obtains a set of candidate classes (via classpath scanning, explicit registration, or a pre-built index), (2) reflectively inspects each for annotations of interest via <code>AnnotatedElement</code> methods, (3) reads annotation element values to configure some behavior, and (4) uses further reflection (<code>Method.invoke</code>, <code>Field.set</code>, <code>Constructor.newInstance</code>) to actually apply that behavior (invoke methods, inject values, construct objects).</p>
+<p><strong>When to Use It</strong>: When the framework's behavior genuinely needs to adapt to runtime information unavailable at compile time (e.g., which specific beans exist in a given running application context, conditional bean creation based on runtime configuration/profiles) — this flexibility is exactly why most dependency-injection and testing frameworks use runtime processing despite its performance cost relative to compile-time code generation.</p>
+<p><strong>Advantages</strong>: Maximum flexibility — logic can depend on runtime-only information (system properties, active profiles, dynamically loaded plugins); no separate build step required beyond normal compilation; easier to iterate on during development (no annotation-processor recompilation step needed to see metadata changes take effect).</p>
+<p><strong>Limitations</strong>: Startup cost — classpath scanning and reflective analysis at application boot can be a meaningful contributor to startup latency for large applications (a major motivation behind ahead-of-time-compilation-friendly frameworks like Spring's Native/GraalVM support, which shift much of this analysis to build time); errors in annotation configuration (e.g., a typo in a referenced bean name) surface only at runtime, not compile time, unlike compile-time-validated annotation processing.</p>
+<h3 id="internal-working_3">Internal Working</h3>
+<p><strong>Step-by-Step Explanation</strong>:
+1. Candidate discovery: frameworks typically scan the classpath (via mechanisms like ASM-based lightweight bytecode scanning to avoid fully loading every class just to check annotations, or via a pre-built index generated at build time as an optimization) to build a list of classes potentially relevant to a given annotation type.
+2. Reflective inspection: for each candidate, the framework calls <code>isAnnotationPresent</code>/<code>getAnnotation</code> (as covered under "Annotations via Reflection") on the class itself and/or its methods/fields/constructors to extract relevant configuration metadata.
+3. Metadata-driven action: using the extracted annotation element values (e.g., a bean name, a required dependency type, a test method name), the framework performs the actual runtime action — constructing an object (<code>Constructor.newInstance</code>), injecting a dependency (<code>Field.set</code>), invoking a lifecycle/test method (<code>Method.invoke</code>), or registering a route/handler mapping.
+4. Caching: because this reflective discovery/inspection process is relatively expensive, most frameworks perform it once at startup (or on first access) and cache the resulting metadata/<code>Method</code>/<code>Field</code> objects for the application's remaining lifetime, avoiding repeating the expensive scan-and-inspect cycle on every subsequent use.</p>
+<p><strong>Memory Layout</strong>: Not directly applicable beyond the ordinary heap cost of caching discovered <code>Method</code>/<code>Field</code>/<code>Constructor</code> reflective objects and associated framework-internal metadata structures (bean definitions, route tables, etc.) for the application's lifetime.</p>
+<p><strong>Diagrams</strong>:
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>flowchart TD
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    A["Application Startup"] --&gt; B["Classpath Scan (find candidate classes)"]
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    B --&gt; C["Reflectively inspect annotations on each candidate"]
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    C --&gt; D["Extract element values (bean names, dependencies, routes)"]
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    D --&gt; E["Cache Method/Field/Constructor + metadata"]
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    E --&gt; F["Runtime: use cached reflection to invoke/inject/construct"]
+</code></pre></div>
+<p><strong>JVM Behaviour</strong>: The classpath-scanning phase itself often involves loading many classes solely to inspect their annotations, which contributes real classloading (Metaspace population) and reflective-inspection cost at startup — a well-known JVM-application-startup-time concern that's a primary driver behind newer approaches (GraalVM native image, Spring AOT processing) that move this work to build time entirely, producing a startup-time-optimized artifact at the cost of build-time complexity and reduced runtime dynamism.</p>
+<h3 id="interview-questions_3">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. Give an example of a framework feature that relies on runtime annotation processing.
+2. Why is startup time often slower in frameworks that rely heavily on runtime classpath scanning?</p>
+<p><strong>Intermediate</strong>
+1. How do frameworks typically mitigate the cost of repeated reflective annotation inspection?
+2. What's the fundamental trade-off between runtime processing and compile-time annotation processing?</p>
+<p><strong>Advanced</strong>
+1. How does classpath scanning actually work under the hood without fully initializing every scanned class?</p>
+<p><strong>Scenario-based</strong>
+1. Your Spring Boot application's startup time has grown significantly as the codebase expanded, and profiling shows a large portion of startup time in classpath scanning/bean definition processing. What architectural options would you consider?</p>
+<h3 id="detailed-answers_3">Detailed Answers</h3>
+<ol>
+<li>
+<p><strong>Example of runtime annotation processing</strong>: Spring's component scanning (<code>@ComponentScan</code> discovering <code>@Component</code>/<code>@Service</code>/<code>@Repository</code>-annotated classes at application startup, reflectively inspecting constructors for <code>@Autowired</code> dependencies to wire up the application context) is a canonical example; JUnit discovering and invoking <code>@Test</code>-annotated methods, and Jackson reflectively discovering <code>@JsonProperty</code>-annotated fields for (de)serialization, are others.</p>
+</li>
+<li>
+<p><strong>Why classpath scanning slows startup</strong>: Scanning potentially requires loading or at least parsing (via bytecode-scanning libraries) every candidate class file to check for relevant annotations — for large applications with many classes/dependencies, this represents a genuinely large amount of I/O (reading class files), parsing, and (for classes that must be fully loaded rather than just bytecode-scanned) classloading/linking work concentrated entirely at application boot, directly extending time-to-first-request-served.</p>
+</li>
+<li>
+<p><strong>Mitigating repeated inspection cost</strong>: Frameworks perform the expensive discovery/inspection pass once (typically at startup) and cache the resulting metadata and reflective objects (<code>Method</code>, <code>Field</code>, <code>Constructor</code> references, bean definitions, route tables) for reuse throughout the application's remaining lifetime — later requests/operations consult this cached metadata rather than re-scanning/re-inspecting from scratch, converting an O(runtime calls) cost into an O(1) startup cost plus fast cached lookups thereafter.</p>
+</li>
+<li>
+<p><strong>Fundamental trade-off</strong>: Runtime processing offers maximum flexibility (behavior can depend on genuinely runtime-only information like active profiles, conditionally-present classes/beans, dynamically loaded plugins) at the cost of startup latency and only-discoverable-at-runtime configuration errors. Compile-time annotation processing (APT) shifts that discovery/validation work to the build step, producing faster-starting artifacts and earlier error detection, but sacrifices the ability to react to information that's genuinely unavailable until the application actually runs.</p>
+</li>
+<li>
+<p><strong>Classpath scanning internals</strong>: Rather than fully loading (via a <code>ClassLoader</code>, which triggers full verification and potential static initialization) every candidate class just to inspect its annotations, frameworks commonly use lightweight bytecode-parsing libraries (e.g., ASM, or Spring's own <code>ASM</code>-based <code>MetadataReader</code>) that read and parse just enough of the raw <code>.class</code> file structure (the constant pool and annotation attributes specifically) to answer "does this class have annotation X" without triggering full class loading/linking/initialization — this is significantly cheaper per-candidate than reflectively loading every class purely to check annotations, especially when the vast majority of scanned classes won't actually match the annotations of interest.</p>
+</li>
+<li>
+<p><strong>Spring Boot startup optimization scenario</strong>: Reasonable options include: (1) narrowing <code>@ComponentScan</code> base packages to avoid scanning irrelevant parts of the classpath/dependencies; (2) enabling Spring's build-time indexing (<code>spring-context-indexer</code>), which generates a <code>META-INF/spring.components</code> index at compile time listing annotated classes, letting the runtime skip full classpath scanning in favor of reading this pre-built index; (3) evaluating Spring AOT processing / GraalVM native image compilation, which performs the bulk of reflective bean-definition analysis at build time, producing a startup-optimized (and potentially natively-compiled) artifact at the cost of some runtime dynamism and a more complex/slower build pipeline; (4) lazy initialization of beans not needed for the first request, deferring their construction cost past the initial startup measurement.</p>
+</li>
+</ol>
+<h3 id="code-examples_3">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.lang.annotation.*</span><span class="p">;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.lang.reflect.*</span><span class="p">;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.*</span><span class="p">;</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RuntimeProcessingDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="nd">@Retention</span><span class="p">(</span><span class="n">RetentionPolicy</span><span class="p">.</span><span class="na">RUNTIME</span><span class="p">)</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="nd">@Target</span><span class="p">(</span><span class="n">ElementType</span><span class="p">.</span><span class="na">TYPE</span><span class="p">)</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="nd">@interface</span><span class="w"> </span><span class="n">Component</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">value</span><span class="p">()</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="s">""</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">    </span><span class="nd">@Retention</span><span class="p">(</span><span class="n">RetentionPolicy</span><span class="p">.</span><span class="na">RUNTIME</span><span class="p">)</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span><span class="nd">@Target</span><span class="p">(</span><span class="n">ElementType</span><span class="p">.</span><span class="na">FIELD</span><span class="p">)</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span><span class="nd">@interface</span><span class="w"> </span><span class="n">Inject</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">    </span><span class="nd">@Component</span><span class="p">(</span><span class="s">"orderRepository"</span><span class="p">)</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderRepository</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">        </span><span class="kt">void</span><span class="w"> </span><span class="nf">save</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Order saved"</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="w">    </span><span class="nd">@Component</span><span class="p">(</span><span class="s">"orderService"</span><span class="p">)</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderService</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="w">        </span><span class="nd">@Inject</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="w">        </span><span class="kd">private</span><span class="w"> </span><span class="n">OrderRepository</span><span class="w"> </span><span class="n">repository</span><span class="p">;</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="w">        </span><span class="kt">void</span><span class="w"> </span><span class="nf">placeOrder</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="w">            </span><span class="n">repository</span><span class="p">.</span><span class="na">save</span><span class="p">();</span>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a>
+<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="w">    </span><span class="c1">// Minimal illustrative container performing runtime annotation-driven wiring</span>
+<a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="nf">instantiateAndWire</span><span class="p">(</span><span class="n">Class</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="n">componentClass</span><span class="p">,</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">registry</span><span class="p">)</span>
+<a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="w">            </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a><span class="w">        </span><span class="n">Constructor</span><span class="o">&lt;?&gt;</span><span class="w"> </span><span class="n">ctor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">componentClass</span><span class="p">.</span><span class="na">getDeclaredConstructor</span><span class="p">();</span>
+<a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a><span class="w">        </span><span class="n">Object</span><span class="w"> </span><span class="n">instance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctor</span><span class="p">.</span><span class="na">newInstance</span><span class="p">();</span>
+<a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a>
+<a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Field</span><span class="w"> </span><span class="n">field</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">componentClass</span><span class="p">.</span><span class="na">getDeclaredFields</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">field</span><span class="p">.</span><span class="na">isAnnotationPresent</span><span class="p">(</span><span class="n">Inject</span><span class="p">.</span><span class="na">class</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-38" name="__codelineno-7-38" href="#__codelineno-7-38"></a><span class="w">                </span><span class="n">Object</span><span class="w"> </span><span class="n">dependency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">registry</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">field</span><span class="p">.</span><span class="na">getType</span><span class="p">());</span>
+<a id="__codelineno-7-39" name="__codelineno-7-39" href="#__codelineno-7-39"></a><span class="w">                </span><span class="n">field</span><span class="p">.</span><span class="na">setAccessible</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<a id="__codelineno-7-40" name="__codelineno-7-40" href="#__codelineno-7-40"></a><span class="w">                </span><span class="n">field</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span><span class="w"> </span><span class="n">dependency</span><span class="p">);</span>
+<a id="__codelineno-7-41" name="__codelineno-7-41" href="#__codelineno-7-41"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-7-42" name="__codelineno-7-42" href="#__codelineno-7-42"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-7-43" name="__codelineno-7-43" href="#__codelineno-7-43"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">instance</span><span class="p">;</span>
+<a id="__codelineno-7-44" name="__codelineno-7-44" href="#__codelineno-7-44"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-45" name="__codelineno-7-45" href="#__codelineno-7-45"></a>
+<a id="__codelineno-7-46" name="__codelineno-7-46" href="#__codelineno-7-46"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-47" name="__codelineno-7-47" href="#__codelineno-7-47"></a><span class="w">        </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Class</span><span class="o">&lt;?&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">registry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-7-48" name="__codelineno-7-48" href="#__codelineno-7-48"></a><span class="w">        </span><span class="n">registry</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">OrderRepository</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">instantiateAndWire</span><span class="p">(</span><span class="n">OrderRepository</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">registry</span><span class="p">));</span>
+<a id="__codelineno-7-49" name="__codelineno-7-49" href="#__codelineno-7-49"></a><span class="w">        </span><span class="n">OrderService</span><span class="w"> </span><span class="n">service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">OrderService</span><span class="p">)</span><span class="w"> </span><span class="n">instantiateAndWire</span><span class="p">(</span><span class="n">OrderService</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">registry</span><span class="p">);</span>
+<a id="__codelineno-7-50" name="__codelineno-7-50" href="#__codelineno-7-50"></a>
+<a id="__codelineno-7-51" name="__codelineno-7-51" href="#__codelineno-7-51"></a><span class="w">        </span><span class="n">service</span><span class="p">.</span><span class="na">placeOrder</span><span class="p">();</span><span class="w"> </span><span class="c1">// dependency was wired purely via runtime annotation inspection</span>
+<a id="__codelineno-7-52" name="__codelineno-7-52" href="#__codelineno-7-52"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-53" name="__codelineno-7-53" href="#__codelineno-7-53"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="annotation-processing-apt-new">Annotation Processing (APT) <em>(new)</em></h2>
+<h3 id="theory_4">Theory</h3>
+<p><strong>Core Concepts</strong>: Annotation Processing (formally the <code>javax.annotation.processing</code> API, historically called "APT" for the older standalone Annotation Processing Tool that predated its integration into <code>javac</code>) lets you hook into the <em>compilation</em> process itself: a <code>Processor</code> implementation is invoked by <code>javac</code> during compilation to inspect annotated source elements and generate new source files (or resources), entirely at build time, before bytecode even exists.</p>
+<p><strong>Internal Working</strong>: <code>javac</code> compilation proceeds in rounds; after each round, it invokes any registered annotation processors (discovered via <code>META-INF/services/javax.annotation.processing.Processor</code> or <code>@AutoService</code>) with a <code>RoundEnvironment</code> describing annotated elements found so far, letting processors generate additional source files via a <code>Filer</code>, which then participate in a subsequent compilation round — this repeats until no processor generates further new sources.</p>
+<p><strong>When to Use It</strong>: Compile-time code generation to avoid runtime reflection cost entirely — Dagger (dependency injection) generating factory classes, Lombok generating boilerplate getters/setters/constructors, MapStruct generating type-mapping implementation classes, Room (Android) generating DAO implementations — all rely on annotation processing to produce ordinary, fully-typed, reflection-free Java source at build time.</p>
+<p><strong>Advantages</strong>: Zero runtime reflection cost for the generated code path (it's just ordinary compiled Java, JIT-optimizable like any other code); compile-time error reporting for misconfigured annotations (a processor can call <code>Messager.printMessage(ERROR, ...)</code> to fail the build with a clear message, far preferable to a confusing runtime <code>NullPointerException</code> or misbehavior); works well with tools requiring full static analyzability (like GraalVM native-image, which struggles with unpredictable runtime reflection).</p>
+<p><strong>Limitations</strong>: Annotation processors can only <em>add</em> new source files/resources — they cannot modify existing source files' AST in place (a deliberate design constraint to keep the compilation model well-defined and avoid processor-ordering chaos; tools like Lombok that appear to "modify" existing classes technically achieve this via non-standard, JDK-internal-API hacks rather than the public annotation processing contract, which is precisely why Lombok has historically been fragile across JDK version upgrades); writing a processor requires working with the somewhat verbose <code>javax.lang.model</code> AST API rather than ordinary reflection; build times increase due to the additional compilation rounds.</p>
+<h3 id="internal-working_4">Internal Working</h3>
+<p><strong>Step-by-Step Explanation</strong>:
+1. <code>javac</code> discovers registered <code>Processor</code> implementations (via the <code>ServiceLoader</code> mechanism, reading <code>META-INF/services/javax.annotation.processing.Processor</code>, or increasingly via Google's <code>@AutoService</code> annotation which itself is an annotation processor generating that service file).
+2. For each compilation round, <code>javac</code> calls each processor's <code>process(annotations, roundEnv)</code> method, passing the set of annotation types the processor declared interest in (via <code>@SupportedAnnotationTypes</code> or the <code>getSupportedAnnotationTypes()</code> override) and a <code>RoundEnvironment</code> exposing all elements annotated with those types found in this round's source set.
+3. The processor inspects these elements using the <code>javax.lang.model.element</code>/<code>javax.lang.model.type</code> AST-like API (representing source structure abstractly, independent of whether it came from source or already-compiled binaries) and, if it needs to generate output, requests a <code>Writer</code>/<code>JavaFileObject</code> from the provided <code>Filer</code> and writes new Java source (or other resource files) to it.
+4. Any newly generated source files become part of the input for a subsequent compilation round — <code>javac</code> repeats the process-and-generate cycle until a round produces no new files, at which point normal compilation of everything (original + all generated sources) proceeds to bytecode.
+5. Processors can report errors/warnings via a <code>Messager</code>, which <code>javac</code> surfaces as ordinary compiler diagnostics tied to specific source positions, failing the build for <code>ERROR</code>-kind messages.</p>
+<p><strong>Memory Layout</strong>: Not directly applicable — annotation processing is purely a build-time, javac-internal activity; it has no runtime memory footprint of its own (only the eventually-compiled generated code has ordinary runtime memory characteristics, identical to hand-written code of the same shape).</p>
+<p><strong>Diagrams</strong>:
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>flowchart TD
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    A["Round N: javac has source + annotations"] --&gt; B["Invoke registered Processors"]
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    B --&gt; C{"Processor generates new source?"}
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    C --&gt;|Yes| D["Filer writes new .java files"]
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    D --&gt; A2["Round N+1: recompile including new sources"]
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    A2 --&gt; B
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    C --&gt;|No| E["Final compilation: all sources -&gt; bytecode"]
+</code></pre></div>
+<p><strong>JVM Behaviour</strong>: None directly — this entire mechanism executes inside <code>javac</code> before any class files/bytecode exist; its only JVM-relevant effect is indirect, via the <em>additional, generated source files</em> that ultimately get compiled into ordinary bytecode subject to normal classloading/JIT behavior like any other code, with the key benefit being that this generated code needs no runtime reflection to do its job (e.g., a Dagger-generated factory class calls <code>new Foo(dep1, dep2)</code> directly rather than reflectively).</p>
+<h3 id="interview-questions_4">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What is the fundamental capability an annotation processor has that a runtime-reflection-based framework does not?
+2. Name a well-known library that relies on annotation processing for compile-time code generation.</p>
+<p><strong>Intermediate</strong>
+1. Can an annotation processor modify an existing source file's contents in place?
+2. What triggers a new "round" of annotation processing?</p>
+<p><strong>Advanced</strong>
+1. Why is Lombok considered technically fragile/unusual compared to "proper" annotation processors like Dagger or MapStruct?</p>
+<p><strong>Scenario-based</strong>
+1. You're deciding between implementing a dependency-injection mechanism via runtime reflection (like classic Spring) versus compile-time annotation processing (like Dagger). What factors would drive the choice, especially considering a deployment target like a serverless function with strict cold-start latency requirements?</p>
+<h3 id="detailed-answers_4">Detailed Answers</h3>
+<ol>
+<li>
+<p><strong>Fundamental capability</strong>: An annotation processor can <em>generate new, ordinary Java source code at build time</em>, which is then compiled normally — meaning the final runtime artifact contains no reflection at all for that generated logic, just plain, statically-typed, JIT-friendly method calls; a runtime-reflection-based framework, in contrast, must perform its metadata inspection and dynamic dispatch every time the application runs (or at least once per process lifetime at startup), always paying some reflective overhead and always being somewhat opaque to static analysis tools.</p>
+</li>
+<li>
+<p><strong>Well-known example</strong>: Dagger (compile-time dependency injection, generating factory/component implementation classes with zero runtime reflection) is a canonical example; others include Lombok (generating boilerplate accessors/constructors), MapStruct (generating object-mapping implementation classes), and Room (Android's SQLite ORM, generating DAO implementations).</p>
+</li>
+<li>
+<p><strong>In-place modification?</strong> No — the standard <code>javax.annotation.processing</code> contract only allows generating <em>new</em> source files/resources via the <code>Filer</code>; it does not support modifying the AST of an already-existing source file in place. This is a deliberate design decision to keep the multi-round compilation model deterministic and avoid processor-ordering conflicts. (Lombok's apparent in-place modification of classes is achieved through non-standard, JDK-internal API access rather than the sanctioned processor contract, which is exactly why it has repeatedly broken across major JDK version upgrades and requires special compiler flags/workarounds on newer JDKs.)</p>
+</li>
+<li>
+<p><strong>What triggers a new round</strong>: Whenever any processor, during the current round, generates at least one new source file (or resource) via the <code>Filer</code>, <code>javac</code> schedules another processing round including that newly generated content as part of the source set available for (re-)inspection by all registered processors — this continues iteratively until an entire round completes with no processor generating anything new, signaling processing is complete and final compilation to bytecode can proceed.</p>
+</li>
+<li>
+<p><strong>Why Lombok is fragile</strong>: "Proper" annotation processors (Dagger, MapStruct) strictly follow the public contract of generating brand-new source files that are then compiled normally alongside the original, unmodified sources. Lombok, however, needs to <em>modify the existing class</em> you're annotating (e.g., inject generated getters directly into the same class rather than a separate generated class) — something the standard API doesn't support — so it reaches into <code>javac</code>'s internal, explicitly-unsupported implementation classes (the internal AST/<code>com.sun.tools.javac.*</code> packages) to mutate the compiler's in-memory representation of your source directly. Because these are internal APIs never intended for external use, they can (and have) changed or become inaccessible across JDK versions (especially post-Java 9's strong module encapsulation), requiring Lombok to release frequent compatibility patches and sometimes requiring explicit <code>--add-opens</code>-style JVM flags to keep working on newer JDKs.</p>
+</li>
+<li>
+<p><strong>DI mechanism choice scenario</strong>: For a serverless function with strict cold-start latency requirements, compile-time annotation processing (Dagger-style) is strongly favored: since there's no runtime classpath scanning or reflective bean-discovery/wiring cost at all (all dependency graphs are resolved and generated as plain constructor-call chains at build time), cold-start time is dramatically reduced compared to a runtime-reflection-heavy framework like classic Spring, which must perform its component scan and bean-graph resolution fresh on every cold start. The trade-off is reduced runtime flexibility (harder to support genuinely dynamic, runtime-conditional wiring decisions) and a somewhat less familiar/more verbose developer experience compared to Spring's implicit, reflection-driven conventions — but for a latency-sensitive, relatively static dependency graph typical of a serverless function, this trade-off strongly favors the compile-time approach (and is precisely why frameworks like Micronaut and Quarkus, explicitly designed for serverless/cloud-native use cases, similarly emphasize compile-time processing over runtime reflection wherever possible).</p>
+</li>
+</ol>
+<h3 id="code-examples_4">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">// Simplified illustration of a minimal annotation processor (build-time, not runtime code).</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="c1">// Demonstrates the shape of a real processor like Dagger/MapStruct would follow.</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.annotation.processing.*</span><span class="p">;</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.lang.model.SourceVersion</span><span class="p">;</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.lang.model.element.Element</span><span class="p">;</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.lang.model.element.TypeElement</span><span class="p">;</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.tools.Diagnostic</span><span class="p">;</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.PrintWriter</span><span class="p">;</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Set</span><span class="p">;</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="nd">@SupportedAnnotationTypes</span><span class="p">(</span><span class="s">"io.reflectdemo.GenerateFactory"</span><span class="p">)</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="nd">@SupportedSourceVersion</span><span class="p">(</span><span class="n">SourceVersion</span><span class="p">.</span><span class="na">RELEASE_17</span><span class="p">)</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">FactoryGeneratingProcessor</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AbstractProcessor</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">    </span><span class="nd">@Override</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="n">Set</span><span class="o">&lt;?</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">javax</span><span class="p">.</span><span class="na">lang</span><span class="p">.</span><span class="na">model</span><span class="p">.</span><span class="na">element</span><span class="p">.</span><span class="na">TypeElement</span><span class="o">&gt;</span><span class="w"> </span><span class="n">annotations</span><span class="p">,</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">                            </span><span class="n">RoundEnvironment</span><span class="w"> </span><span class="n">roundEnv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Element</span><span class="w"> </span><span class="n">element</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">roundEnv</span><span class="p">.</span><span class="na">getElementsAnnotatedWith</span><span class="p">(</span><span class="n">GenerateFactory</span><span class="p">.</span><span class="na">class</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="w">            </span><span class="n">TypeElement</span><span class="w"> </span><span class="n">typeElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">TypeElement</span><span class="p">)</span><span class="w"> </span><span class="n">element</span><span class="p">;</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">className</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">typeElement</span><span class="p">.</span><span class="na">getSimpleName</span><span class="p">().</span><span class="na">toString</span><span class="p">();</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="w">            </span><span class="n">String</span><span class="w"> </span><span class="n">factoryName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">className</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"Factory"</span><span class="p">;</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="w">                </span><span class="kd">var</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">processingEnv</span><span class="p">.</span><span class="na">getFiler</span><span class="p">().</span><span class="na">createSourceFile</span><span class="p">(</span><span class="n">factoryName</span><span class="p">);</span>
+<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="w">                </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">PrintWriter</span><span class="w"> </span><span class="n">writer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PrintWriter</span><span class="p">(</span><span class="n">file</span><span class="p">.</span><span class="na">openWriter</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="w">                    </span><span class="c1">// Generates plain Java source with a direct constructor call —</span>
+<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="w">                    </span><span class="c1">// no reflection needed at runtime for the generated factory.</span>
+<a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a><span class="w">                    </span><span class="n">writer</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"public class "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">factoryName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" {"</span><span class="p">);</span>
+<a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a><span class="w">                    </span><span class="n">writer</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"    public static "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">className</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" create() {"</span><span class="p">);</span>
+<a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a><span class="w">                    </span><span class="n">writer</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"        return new "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">className</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"();"</span><span class="p">);</span>
+<a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a><span class="w">                    </span><span class="n">writer</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"    }"</span><span class="p">);</span>
+<a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a><span class="w">                    </span><span class="n">writer</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"}"</span><span class="p">);</span>
+<a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-9-35" name="__codelineno-9-35" href="#__codelineno-9-35"></a><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-36" name="__codelineno-9-36" href="#__codelineno-9-36"></a><span class="w">                </span><span class="n">processingEnv</span><span class="p">.</span><span class="na">getMessager</span><span class="p">().</span><span class="na">printMessage</span><span class="p">(</span>
+<a id="__codelineno-9-37" name="__codelineno-9-37" href="#__codelineno-9-37"></a><span class="w">                        </span><span class="n">Diagnostic</span><span class="p">.</span><span class="na">Kind</span><span class="p">.</span><span class="na">ERROR</span><span class="p">,</span><span class="w"> </span><span class="s">"Failed to generate factory: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">(),</span><span class="w"> </span><span class="n">element</span><span class="p">);</span>
+<a id="__codelineno-9-38" name="__codelineno-9-38" href="#__codelineno-9-38"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-9-39" name="__codelineno-9-39" href="#__codelineno-9-39"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-9-40" name="__codelineno-9-40" href="#__codelineno-9-40"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// claim these annotations</span>
+<a id="__codelineno-9-41" name="__codelineno-9-41" href="#__codelineno-9-41"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-42" name="__codelineno-9-42" href="#__codelineno-9-42"></a><span class="p">}</span>
+<a id="__codelineno-9-43" name="__codelineno-9-43" href="#__codelineno-9-43"></a>
+<a id="__codelineno-9-44" name="__codelineno-9-44" href="#__codelineno-9-44"></a><span class="nd">@interface</span><span class="w"> </span><span class="n">GenerateFactory</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2025 <a href="https://github.com/abhishekghoshh"  target="_blank" rel="noopener">Abhishek Ghosh</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/abhishekghoshh" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://x.com/abhishek_ghoshh" target="_blank" rel="noopener" title="x.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/abhishek-ghosh-220679132/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

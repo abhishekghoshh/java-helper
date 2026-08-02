@@ -1,0 +1,2342 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abhishekghoshh.github.io/java-helper/6-packages/">
+      
+      
+        <link rel="prev" href="../5-access-modifiers/">
+      
+      
+        <link rel="next" href="../7-strings/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Packages - Java Helper</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Packages - Java Helper" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/6-packages.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://abhishekghoshh.github.io/java-helper/6-packages/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Packages - Java Helper" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/6-packages.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#6-packages" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Java Helper" class="md-header__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Java Helper
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Packages
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../1-java-language-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Java Language Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../2-object-oriented-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Object-Oriented Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../3-classes/" class="md-tabs__link">
+        
+  
+    
+  
+  Classes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../4-constructors/" class="md-tabs__link">
+        
+  
+    
+  
+  Constructors
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-access-modifiers/" class="md-tabs__link">
+        
+  
+    
+  
+  Access Modifiers
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Packages
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../7-strings/" class="md-tabs__link">
+        
+  
+    
+  
+  Strings
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../8-arrays/" class="md-tabs__link">
+        
+  
+    
+  
+  Arrays
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../9-collections-framework/" class="md-tabs__link">
+        
+  
+    
+  
+  Collections Framework
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../10-generics/" class="md-tabs__link">
+        
+  
+    
+  
+  Generics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../11-exception-handling/" class="md-tabs__link">
+        
+  
+    
+  
+  Exception Handling
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../12-file-io/" class="md-tabs__link">
+        
+  
+    
+  
+  File I/O
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../13-serialization/" class="md-tabs__link">
+        
+  
+    
+  
+  Serialization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../14-reflection/" class="md-tabs__link">
+        
+  
+    
+  
+  Reflection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../15-annotations/" class="md-tabs__link">
+        
+  
+    
+  
+  Annotations
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../16-functional-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Functional Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../17-streams-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Streams API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../18-date-and-time-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Date and Time API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../19-jvm-internals/" class="md-tabs__link">
+        
+  
+    
+  
+  JVM Internals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../20-class-loader/" class="md-tabs__link">
+        
+  
+    
+  
+  Class Loader
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../21-memory-management/" class="md-tabs__link">
+        
+  
+    
+  
+  Memory Management
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../22-garbage-collection/" class="md-tabs__link">
+        
+  
+    
+  
+  Garbage Collection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../23-concurrency/" class="md-tabs__link">
+        
+  
+    
+  
+  Concurrency
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../24-networking/" class="md-tabs__link">
+        
+  
+    
+  
+  Networking
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../25-design-patterns-in-java/" class="md-tabs__link">
+        
+  
+    
+  
+  Design Patterns in Java
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../26-modern-java-language-features/" class="md-tabs__link">
+        
+  
+    
+  
+  Modern Java Language Features
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../27-regular-expressions/" class="md-tabs__link">
+        
+  
+    
+  
+  Regular Expressions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../28-internationalization-and-localization/" class="md-tabs__link">
+        
+  
+    
+  
+  Internationalization & Localization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../29-logging/" class="md-tabs__link">
+        
+  
+    
+  
+  Logging
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../30-security-basics/" class="md-tabs__link">
+        
+  
+    
+  
+  Security Basics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-tabs__link">
+        
+  
+    
+  
+  Native & Foreign Interoperability
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../32-process-and-system-apis/" class="md-tabs__link">
+        
+  
+    
+  
+  Process & System APIs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../33-testing-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Testing Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Java Helper" class="md-nav__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Java Helper
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-java-language-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java Language Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-object-oriented-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-classes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Classes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-constructors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constructors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-access-modifiers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access Modifiers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Packages
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Packages
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#import" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Import">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static Import
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Static Import">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#package-visibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      Package Visibility
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Package Visibility">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jpms-module-declarations-module-infojava-new-cross-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      JPMS Module Declarations (module-info.java) (new, cross-reference)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JPMS Module Declarations (module-info.java) (new, cross-reference)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Additional Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-tooling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build Tooling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Build Tooling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#maven" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maven
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gradle
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-strings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Strings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-collections-framework/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collections Framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-generics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-exception-handling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exception Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-file-io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File I/O
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-serialization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serialization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-reflection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reflection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-annotations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-functional-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Functional Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-streams-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Streams API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-date-and-time-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Date and Time API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-jvm-internals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JVM Internals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-class-loader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Class Loader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-memory-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-garbage-collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Garbage Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-concurrency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concurrency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-networking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-design-patterns-in-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Patterns in Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-modern-java-language-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modern Java Language Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-regular-expressions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Regular Expressions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-internationalization-and-localization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internationalization & Localization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-logging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30-security-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Native & Foreign Interoperability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32-process-and-system-apis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process & System APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33-testing-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div><h1 id="6-packages">6. Packages</h1>
+<h2 id="import">Import</h2>
+<h3 id="theory">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong>: The <code>import</code> statement tells the compiler which fully-qualified type names (classes, interfaces, enums, annotations) a source file wants to refer to by their simple name. It is purely a compile-time convenience — it does not load classes, does not affect the generated bytecode, and does not create any runtime dependency by itself. Java supports single-type imports (<code>import java.util.List;</code>) and on-demand (wildcard) imports (<code>import java.util.*;</code>), which bring every public top-level type in a package into scope.</li>
+<li><strong>Internal Working</strong>: The compiler resolves simple names by consulting the import list, the current package, and <code>java.lang</code> (implicitly imported); it rewrites simple names to fully-qualified names purely inside the <code>.class</code> file's constant pool references — no <code>Import</code> bytecode instruction exists.</li>
+<li><strong>When to Use It</strong>: Use single-type imports for clarity and to avoid ambiguity; use wildcard imports sparingly (some teams disallow them) when a file uses many types from one package, such as <code>javax.swing.*</code> in UI code.</li>
+<li><strong>Advantages</strong>: Improves readability by allowing short names, avoids repetitive fully-qualified references, enables IDEs to auto-manage dependencies.</li>
+<li><strong>Limitations</strong>: Wildcard imports can cause name clashes that only surface when a new type is added to an imported package later; imports are not transitive (importing a class doesn't import its nested classes or its package's other types); they only work for types, not for static members (that requires <code>import static</code>).</li>
+</ul>
+<h3 id="internal-working">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: 1) Parser scans <code>import</code> declarations at the top of the compilation unit. 2) For every simple type name used in the file, <code>javac</code> searches: (a) types declared in the same file, (b) single-type imports, (c) types in the current package, (d) on-demand imports, (e) <code>java.lang.*</code>. 3) If more than one on-demand import supplies a type with the same simple name and it is actually used, compilation fails with an ambiguity error. 4) The resolved fully-qualified name is emitted into the <code>Constant_Class_info</code> entries of the class file's constant pool — the compiled <code>.class</code> file has no trace of which import statement was used.</li>
+<li><strong>Memory Layout</strong>: Not directly applicable — imports are a source-level/compile-time construct only; they have no heap, stack, or metaspace footprint themselves. The <em>classes</em> they refer to are loaded into metaspace/heap only when actually used at runtime, driven by the class loader, not by the import statement.</li>
+<li><strong>Diagrams</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>source file (MyClass.java)
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  import java.util.List;      -- single-type import
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  import java.time.*;         -- on-demand import
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        |
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        v  (javac name resolution)
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  simple name "List"   -&gt; java.util.List   (constant pool: Ljava/util/List;)
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  simple name "LocalDate" -&gt; java.time.LocalDate (found via wildcard)
+</code></pre></div>
+<ul>
+<li><strong>JVM Behaviour</strong>: The JVM never sees import statements — it only sees fully-qualified binary names embedded in the constant pool of the compiled class. Class loading for referenced types is deferred until first active use (lazy loading), following the standard loading → linking → initialization sequence, completely decoupled from where/how the source imported the type.</li>
+</ul>
+<h3 id="interview-questions">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What is the difference between a single-type import and an on-demand (wildcard) import?
+2. Does using <code>import java.util.*;</code> slow down the compiled program at runtime?
+3. Why is <code>java.lang.*</code> never explicitly imported in most Java files?</p>
+<p><strong>Intermediate</strong>
+4. What happens if two wildcard-imported packages both contain a class with the same simple name?
+5. Can you import a class and then still need to use its fully-qualified name somewhere in the same file? Why?</p>
+<p><strong>Advanced</strong>
+6. How does <code>javac</code> resolve simple names when a type is imported but a nested/inner class in the current file has the same simple name?
+7. Why don't imports work for static members, and what specific mechanism (<code>import static</code>) solves this?</p>
+<p><strong>Scenario-based</strong>
+8. Your team enforces a "no wildcard imports" checkstyle rule. What concrete compile-time or maintenance risk does this rule guard against?</p>
+<h3 id="detailed-answers">Detailed Answers</h3>
+<ol>
+<li>A single-type import (<code>import java.util.List;</code>) brings exactly one named type into scope, making the import list explicit and IDE-refactor-friendly. An on-demand import (<code>import java.util.*;</code>) makes every public top-level type of that package available by simple name, but does <strong>not</strong> recursively import sub-packages (<code>java.util.concurrent</code> is a distinct package and needs its own import).</li>
+<li>No. Imports are resolved entirely by the compiler; the resulting bytecode references fully-qualified class names in the constant pool regardless of which import form was used. There is zero runtime performance difference — the only costs are compile-time name lookup and, arguably, a marginal risk of future ambiguity errors.</li>
+<li><code>java.lang</code> (containing <code>Object</code>, <code>String</code>, <code>Integer</code>, <code>Exception</code>, etc.) is implicitly imported into every compilation unit by the Java Language Specification, so writing <code>import java.lang.*;</code> is legal but redundant.</li>
+<li>If both simple names are actually referenced in the file, <code>javac</code> raises a "reference to X is ambiguous" compile error and forces the developer to disambiguate with a fully-qualified name or a single-type import. If only one of the colliding classes is actually used in the file, there's no error — ambiguity is only checked against <em>actual usage</em>, not just the presence of the import.</li>
+<li>Yes — if the current file also declares (or inherits) a type with the same simple name as the imported one (e.g., a nested class <code>Point</code> shadowing <code>java.awt.Point</code>), the compiler prefers the locally visible name, and you must use the fully-qualified name (<code>java.awt.Point</code>) to reach the imported type.</li>
+<li>Name resolution follows a strict priority: types visible in the enclosing scope (including inherited members and nested classes of the current class) take precedence over single-type imports, which in turn take precedence over on-demand imports. This mirrors general Java shadowing rules — the "closest" declaration wins.</li>
+<li>Regular <code>import</code> only maps simple type names to fully-qualified type names; it has no mechanism for referring to a <em>member</em> (a <code>static</code> field or method) without qualifying it by its declaring class. <code>import static java.lang.Math.*;</code> (or a single static import) extends the resolution table to also map bare member names like <code>PI</code> or <code>max(...)</code> directly to <code>Math.PI</code> / <code>Math.max</code>.</li>
+<li>Wildcard imports create a "silent breakage" risk: if a new class is later added to one of the wildcard-imported packages with the same simple name as a class from another wildcard import (or a class already used elsewhere), previously-compiling code can suddenly fail to compile, or worse, silently resolve to the wrong type if only one import is wildcarded and the other is a stale unrelated dependency. Explicit single-type imports make every dependency visible in a diff and eliminate this class of surprise.</li>
+</ol>
+<h3 id="code-examples">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// Single-type imports: explicit, refactor-safe, preferred in production code</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.LocalDate</span><span class="p">;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderService</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">summarize</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">LocalDate</span><span class="o">&gt;</span><span class="w"> </span><span class="n">orderDates</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">summaries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">LocalDate</span><span class="w"> </span><span class="n">date</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">orderDates</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">            </span><span class="n">summaries</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"Order placed on "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">date</span><span class="p">);</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">summaries</span><span class="p">;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// Demonstrating that ambiguity is only flagged when a colliding name is actually used</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.*</span><span class="p">;</span><span class="w">   </span><span class="c1">// java.util.List</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.awt.*</span><span class="p">;</span><span class="w">    </span><span class="c1">// java.awt.List (an AWT component!) - both packages define "List"</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ImportAmbiguityDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="c1">// This line fails to compile: "reference to List is ambiguous"</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="c1">// List names = new ArrayList&lt;&gt;();</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="c1">// Disambiguating with a fully-qualified name resolves it:</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="static-import">Static Import</h2>
+<h3 id="theory_1">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong>: <code>import static</code> (introduced in Java 5) extends the import mechanism to <code>static</code> members — fields and methods — of a class or interface, allowing them to be referenced by simple name without the enclosing class qualifier. For example, <code>import static java.lang.Math.*;</code> lets code write <code>sqrt(x)</code> instead of <code>Math.sqrt(x)</code>.</li>
+<li><strong>Internal Working</strong>: Exactly like regular imports, this is a compile-time-only name-resolution aid; the compiler rewrites bare member references to fully-qualified <code>ClassName.member</code> invocations/field accesses in the generated bytecode (<code>invokestatic</code> / <code>getstatic</code> instructions reference the owning class directly).</li>
+<li><strong>When to Use It</strong>: Idiomatic for DSL-style code, unit test assertion libraries (<code>import static org.junit.jupiter.api.Assertions.*;</code>), mathematical code using <code>Math.*</code>, or enum constants used repeatedly within a single class.</li>
+<li><strong>Advantages</strong>: Reduces visual noise for heavily-used utility methods/constants, makes test code read like natural assertions (<code>assertEquals(expected, actual)</code> instead of <code>Assertions.assertEquals(...)</code>).</li>
+<li><strong>Limitations</strong>: Overuse harms readability by hiding the origin of a symbol, increases risk of naming collisions with local variables/methods, and static-imported wildcard members are just as prone to ambiguity issues as regular wildcard imports.</li>
+</ul>
+<h3 id="internal-working_1">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: 1) <code>javac</code> parses <code>import static pkg.ClassName.member;</code> (single-static) or <code>import static pkg.ClassName.*;</code> (on-demand static). 2) When resolving a bare identifier or method call that isn't a local variable/field/method of the current class, the compiler checks the static-import table for a matching static field or method in the referenced class. 3) On match, the compiler emits the same bytecode as if the member had been explicitly qualified — <code>getstatic</code>/<code>putstatic</code> for fields, <code>invokestatic</code> for methods.</li>
+<li><strong>Memory Layout</strong>: Not directly applicable — no additional runtime memory structures are created; the static members still live exactly once in the method area/metaspace of the class that declares them, regardless of how many files statically import them.</li>
+<li><strong>Diagrams</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>import static java.lang.Math.sqrt;
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>import static java.lang.Math.PI;
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>double c = sqrt(PI * r * r);
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>         |         |
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>         v         v
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>invokestatic Math.sqrt   getstatic Math.PI
+</code></pre></div>
+<ul>
+<li><strong>JVM Behaviour</strong>: Because static imports resolve to ordinary <code>invokestatic</code>/<code>getstatic</code> bytecode, they carry zero runtime overhead versus explicit qualification and participate normally in JIT inlining decisions (e.g., <code>Math.sqrt</code> can be intrinsified by the JIT compiler using hardware instructions regardless of the import style used to invoke it).</li>
+</ul>
+<h3 id="interview-questions_1">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What problem does <code>import static</code> solve that a regular <code>import</code> cannot?
+2. Give a common real-world example where static imports improve readability.</p>
+<p><strong>Intermediate</strong>
+3. What is the difference in bytecode, if any, between calling <code>Math.sqrt(x)</code> and calling <code>sqrt(x)</code> after a static import?
+4. What are the readability risks of overusing static imports?</p>
+<p><strong>Advanced</strong>
+5. How does the compiler disambiguate a bare method call when both a static-imported method and an instance method with the same name/signature are in scope?</p>
+<p><strong>Scenario-based</strong>
+6. You're reviewing a PR that adds <code>import static java.util.Collections.*;</code> to a class that also has a local variable named <code>emptyList</code>. What issue might arise, and how would you resolve it?</p>
+<h3 id="detailed-answers_1">Detailed Answers</h3>
+<ol>
+<li>A regular <code>import</code> only maps simple <em>type</em> names to fully-qualified type names; it cannot bring a <code>static</code> field or method into unqualified scope. <code>import static</code> adds a second resolution table specifically for static members, enabling code like <code>PI</code> instead of <code>Math.PI</code>.</li>
+<li>Testing frameworks are the canonical example: <code>import static org.junit.jupiter.api.Assertions.*;</code> lets test methods read as <code>assertEquals(expected, actual)</code> and <code>assertThrows(...)</code> rather than being prefixed with <code>Assertions.</code> everywhere, closely mirroring natural-language assertions.</li>
+<li>There is no difference whatsoever — both compile to an identical <code>invokestatic java/lang/Math.sqrt:(D)D</code> instruction. Static import is purely a source-level convenience; the constant pool and instruction stream are indistinguishable from the explicitly qualified form.</li>
+<li>Because the qualifying class name is omitted, a reader (or an IDE without full semantic highlighting) cannot immediately tell where a bare identifier like <code>MAX_VALUE</code> or a method like <code>of(...)</code> comes from, especially with multiple wildcard static imports in the same file; it also increases the chance that a locally-declared variable or method shadows, or is shadowed by, an imported static member.</li>
+<li>Members declared in or inherited by the current class always take precedence over statically-imported members — the compiler only falls back to the static-import table if no applicable member is found in the current class's own scope (fields, methods, inherited members). This mirrors the general rule that lexically closer declarations shadow imported ones.</li>
+<li>The local variable <code>emptyList</code> merely shadows the <em>name</em> within its scope; since <code>Collections.emptyList()</code> is a <em>method call</em> (<code>emptyList()</code>) not a bare identifier, there's no actual naming conflict — Java distinguishes variables from method invocations syntactically. However, if the wildcard import brought in a field or constant with the exact same name as a local variable, the local variable would simply take precedence within its scope, which could silently hide the intended imported symbol; the fix is to use a single specific static import or qualify the reference explicitly (<code>Collections.emptyList()</code>) for clarity.</li>
+</ol>
+<h3 id="code-examples_1">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import static</span><span class="w"> </span><span class="nn">java.lang.Math.PI</span><span class="p">;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">import static</span><span class="w"> </span><span class="nn">java.lang.Math.pow</span><span class="p">;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CircleMetrics</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="c1">// Reads naturally thanks to static imports, avoiding repeated "Math." prefixes</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">radius</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">pow</span><span class="p">(</span><span class="n">radius</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// Typical JUnit 5 usage pattern relying on static imports for readable assertions</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">import static</span><span class="w"> </span><span class="nn">org.junit.jupiter.api.Assertions.assertEquals</span><span class="p">;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kn">import static</span><span class="w"> </span><span class="nn">org.junit.jupiter.api.Assertions.assertThrows</span><span class="p">;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="kd">class</span> <span class="nc">CircleMetricsTest</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">areaIsComputedCorrectly</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">        </span><span class="n">assertEquals</span><span class="p">(</span><span class="mf">78.5398</span><span class="p">,</span><span class="w"> </span><span class="n">CircleMetrics</span><span class="p">.</span><span class="na">area</span><span class="p">(</span><span class="mf">5.0</span><span class="p">),</span><span class="w"> </span><span class="mf">0.001</span><span class="p">);</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="n">assertThrows</span><span class="p">(</span><span class="n">IllegalArgumentException</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">CircleMetrics</span><span class="p">.</span><span class="na">area</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="package-visibility">Package Visibility</h2>
+<h3 id="theory_2">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong>: "Package visibility" (also called package-private or default access) is the access level applied when a class, field, method, or constructor is declared <strong>without</strong> any explicit access modifier (<code>public</code>, <code>protected</code>, <code>private</code>). A package-private member is visible only to other types declared in the <em>same package</em>, regardless of inheritance relationships across packages.</li>
+<li><strong>Internal Working</strong>: The JVM enforces this at both compile time (<code>javac</code> rejects out-of-package access) and, critically, at class-loading/linking time via bytecode verification — the <code>access_flags</code> of a class or member simply lack the <code>ACC_PUBLIC</code>/<code>ACC_PROTECTED</code>/<code>ACC_PRIVATE</code> bits, and the JVM's field/method resolution algorithm checks the caller's package against the declaring class's package.</li>
+<li><strong>When to Use It</strong>: Ideal for internal helper classes/methods that support a package's public API but shouldn't leak as part of it — a classic technique for enforcing encapsulation at the package level before JPMS existed, and still useful within a single module today.</li>
+<li><strong>Advantages</strong>: Enables package-level encapsulation, letting cooperating classes in one package share implementation details without exposing them publicly; supports the common pattern of package-private constructors combined with public static factory methods.</li>
+<li><strong>Limitations</strong>: Because Java packages are "open" by default (historically, unrelated code could declare a class in the same package name — a "split package" scenario), package-private is a weaker security boundary than JPMS module encapsulation; it's also easy to forget and accidentally leave a member with default access.</li>
+</ul>
+<h3 id="internal-working_2">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: 1) At compile time, <code>javac</code> checks that the referencing code's package matches the declaring type's package when no explicit modifier is present; a mismatch is a compile error. 2) At class-file level, the member's <code>access_flags</code> in the <code>field_info</code>/<code>method_info</code> structure has none of <code>ACC_PUBLIC</code>, <code>ACC_PRIVATE</code>, <code>ACC_PROTECTED</code> set. 3) At link time (specifically during verification and on first use via <code>getfield</code>/<code>invokevirtual</code>/etc.), the JVM's access control algorithm (JVMS section 5.4.4) compares the run-time package of the accessing class (defining class loader + package name) against the run-time package of the declaring class; access is granted only if they match.</li>
+<li><strong>Memory Layout</strong>: Not directly applicable in terms of heap/stack, but relevant at the metaspace level — the JVM stores each loaded class's package name as part of its identity (a class is uniquely identified by binary name <strong>and</strong> defining class loader), which is exactly what enables the classic "classloader-based sandboxing" trick of putting untrusted code in the same package name but loaded by a different class loader, defeating naive package-private assumptions.</li>
+<li><strong>Diagrams</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>package com.acme.billing;
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>class InvoiceCalculator {      // package-private class
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    double compute(...) { ... }   // package-private method
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>}
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>package com.acme.billing;      -- same package: CAN access InvoiceCalculator
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>package com.acme.reporting;    -- different package: CANNOT access it, even in the same module
+</code></pre></div>
+<ul>
+<li><strong>JVM Behaviour</strong>: Access checks are performed by the verifier and by the <code>invoke*</code>/<code>getfield</code>/<code>putfield</code> resolution logic at link time; an illegal cross-package access to a package-private member throws <code>IllegalAccessError</code> at runtime if it somehow slipped past compile-time checking (e.g., via separately compiled/mismatched class files), demonstrating that visibility is a runtime-enforced JVM concern, not merely a <code>javac</code> courtesy.</li>
+</ul>
+<h3 id="interview-questions_2">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What is package-private (default) access, and how do you declare a member with it?
+2. How is package-private access different from <code>protected</code>?</p>
+<p><strong>Intermediate</strong>
+3. If two classes declare the same package name (<code>com.acme.util</code>) but are loaded by two different class loaders, can they access each other's package-private members?
+4. Why might a library author deliberately choose package-private over <code>private</code> for a helper class?</p>
+<p><strong>Advanced</strong>
+5. How does the JVM enforce package-private access at the bytecode level, independent of <code>javac</code>'s compile-time checks?
+6. How does the Java Platform Module System (JPMS) change or strengthen the guarantees of package-private access?</p>
+<p><strong>Scenario-based</strong>
+7. You maintain a public API in package <code>com.acme.api</code> and want to share internal utility code with <code>com.acme.api.internal</code> without exposing it publicly. Package-private alone won't work across those two package names — what are your options?</p>
+<h3 id="detailed-answers_2">Detailed Answers</h3>
+<ol>
+<li>Package-private access is the access level applied automatically when no <code>public</code>, <code>protected</code>, or <code>private</code> modifier is written on a top-level class, field, method, or constructor. A member with default access is visible only to code in classes that share the exact same package name.</li>
+<li><code>protected</code> grants access to the same package <strong>plus</strong> subclasses in other packages (via inheritance, with the restriction that the access must occur through a reference of the subclass type or its subtype). Package-private grants access strictly to same-package code and does <strong>not</strong> extend to subclasses in different packages at all.</li>
+<li>No. The JVM's notion of a "runtime package" combines both the package name <strong>and</strong> the defining class loader. Two classes with an identical package name loaded by different class loaders are considered to be in different runtime packages, and cross-package-private access between them is denied — this is precisely the mechanism that prevents malicious code from injecting a class into <code>java.lang</code> to reach package-private JDK internals.</li>
+<li>Package-private lets a small cluster of cooperating classes within the same package share an implementation-detail helper class (e.g., a builder, validator, or cache) without making it part of the package's public API, while still allowing multiple classes in that package to reuse it — something <code>private</code> (visible only within a single top-level class) cannot do.</li>
+<li>Each loaded class's constant pool and <code>access_flags</code> record its members' visibility; when bytecode performs <code>getfield</code>, <code>putfield</code>, <code>invokevirtual</code>, <code>invokespecial</code>, or <code>invokestatic</code> against a member, the JVM's linkage/resolution algorithm (JVMS section 5.4.4) checks whether the member has default (no explicit) access and, if so, verifies that the calling class and the resolved class share the same runtime package (name + class loader); a violation throws <code>IllegalAccessError</code>, independent of anything <code>javac</code> already checked.</li>
+<li>JPMS adds a coarser, module-level encapsulation layer on top of package visibility: by default, no package is exported from a module, meaning even <code>public</code> types in a non-exported package are inaccessible to other modules via strong encapsulation (enforced by the module system at both compile time and runtime) — package-private still governs same-package access as before, but JPMS additionally lets you hide entire packages (all their public members included) from consumers outside the module unless explicitly <code>exports</code>-ed.</li>
+<li>Options include: (a) restructure so the internal helper lives in the same package as its only consumers, sacrificing some package organization; (b) use JPMS and keep <code>com.acme.api.internal</code> un-exported (or <code>exports ... to</code> a restricted set of modules) while making the helper <code>public</code> within that internal package, relying on module boundaries instead of package-private; (c) use a documented "internal, not part of public API" convention with <code>public</code> visibility, accepting weaker enforcement; JPMS (option b) is the strongest and most idiomatic modern solution.</li>
+</ol>
+<h3 id="code-examples_2">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">com.acme.billing</span><span class="p">;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1">// Package-private class: only usable by other classes inside com.acme.billing</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="kd">class</span> <span class="nc">TaxCalculator</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="c1">// Package-private method: implementation detail, not part of any public API</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">calculate</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">rate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">amount</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">rate</span><span class="p">;</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="p">}</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Invoice</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">TaxCalculator</span><span class="w"> </span><span class="n">taxCalculator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TaxCalculator</span><span class="p">();</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">total</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">taxRate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">        </span><span class="c1">// Same package -&gt; allowed to use the package-private class and method</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">amount</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">taxCalculator</span><span class="p">.</span><span class="na">calculate</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span><span class="w"> </span><span class="n">taxRate</span><span class="p">);</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">com.acme.reporting</span><span class="p">;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.acme.billing.Invoice</span><span class="p">;</span><span class="w"> </span><span class="c1">// Invoice itself is public, so this import is fine</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ReportGenerator</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">generate</span><span class="p">(</span><span class="n">Invoice</span><span class="w"> </span><span class="n">invoice</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">        </span><span class="c1">// The following would NOT compile if uncommented:</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">        </span><span class="c1">// TaxCalculator calc = new TaxCalculator(); // package-private, inaccessible here</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Report for invoice total: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">invoice</span><span class="p">.</span><span class="na">total</span><span class="p">(</span><span class="mf">100.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.08</span><span class="p">));</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="jpms-module-declarations-module-infojava-new-cross-reference">JPMS Module Declarations (<code>module-info.java</code>) <em>(new, cross-reference)</em></h2>
+<h3 id="theory_3">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong>: The Java Platform Module System (JPMS, JSR 376, introduced in Java 9) lets a JAR declare itself as a <em>module</em> via a <code>module-info.java</code> file at its root. A module declaration names the module (<code>module com.acme.billing { ... }</code>) and lists directives: <code>requires</code> (dependencies on other modules), <code>exports</code> (packages visible to other modules), <code>opens</code> (packages visible for deep reflection, e.g., by frameworks), <code>uses</code>/<code>provides</code> (service loader integration), and <code>requires transitive</code> (re-exporting a dependency to consumers).</li>
+<li><strong>Internal Working</strong>: <code>module-info.java</code> compiles to a special <code>module-info.class</code> containing a <code>Module</code> attribute; at runtime the JVM builds a <em>module graph</em> from these descriptors, and the module system enforces both readability (<code>requires</code>) and accessibility (<code>exports</code>/<code>opens</code>) independently of classpath-style visibility.</li>
+<li><strong>When to Use It</strong>: For libraries and applications that want strong encapsulation of internal packages, explicit dependency declarations, and reliable configuration (fail-fast on missing dependencies) rather than relying on the classpath's flat, unstructured JAR list.</li>
+<li><strong>Advantages</strong>: Strong encapsulation (non-exported packages are truly inaccessible, even via reflection, unless <code>opens</code>-ed), reliable configuration (missing/duplicate module errors surface at startup, not as obscure <code>NoClassDefFoundError</code>s later), smaller custom runtimes via <code>jlink</code>.</li>
+<li><strong>Limitations</strong>: Migrating large legacy codebases to modules is often costly (split packages, automatic modules, illegal reflective access from frameworks like older Hibernate/Spring versions); many real-world applications still run on the classpath (unnamed module) rather than the module path.</li>
+</ul>
+<h3 id="internal-working_3">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: 1) <code>javac</code> compiles <code>module-info.java</code> into <code>module-info.class</code>, embedding a <code>Module</code> attribute describing requires/exports/opens/uses/provides. 2) At launch, if the application runs from the module path, the JVM's module system resolves the full module graph starting from the root module(s), computing readability edges (<code>requires</code>) transitively, and fails fast with <code>FindException</code>/<code>ResolutionException</code> if a required module is missing or if there are duplicate modules on the path. 3) At class-loading time, in addition to the classic package-visibility check, the JVM verifies that the accessing module <em>reads</em> the target module and that the target package is <em>exported</em> (or <em>opened</em>, for reflective access) to the accessing module; otherwise it throws <code>IllegalAccessError</code> or, for reflection, <code>InaccessibleObjectException</code>.</li>
+<li><strong>Memory Layout</strong>: Not directly applicable to heap/stack, but each module's classes are still loaded into metaspace exactly as with the classpath; the module graph itself (a small in-memory structure of <code>Module</code>/<code>Configuration</code>/<code>ResolvedModule</code> objects) is built once at JVM bootstrap and held for the life of the process.</li>
+<li><strong>Diagrams</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>module com.acme.billing {
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    requires java.sql;                     // read edge to java.sql module
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    requires transitive com.acme.core;     // re-exported dependency
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    exports com.acme.billing.api;          // public API package, readable by other modules
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    opens com.acme.billing.model to com.fasterxml.jackson.databind; // deep reflection for JSON
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>}
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>      com.acme.billing  --requires--&gt;  java.sql
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>             |
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>             +--exports--&gt; com.acme.billing.api   (visible to any module that `requires com.acme.billing`)
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>             +--opens----&gt;  com.acme.billing.model (reflective access limited to Jackson)
+</code></pre></div>
+<ul>
+<li><strong>JVM Behaviour</strong>: Module resolution happens during JVM bootstrap (before <code>main</code> executes) when running from the module path; class loading afterward is delegated to three built-in loaders (bootstrap, platform, application) each associated with sets of modules, and every <code>invoke*</code>/<code>getfield</code>/reflective <code>setAccessible(true)</code> call is subject to both classic access-modifier checks and the additional module-readability/<code>exports</code>/<code>opens</code> checks — a <code>public</code> class in a non-exported package is loadable within its own module but throws <code>IllegalAccessError</code> when accessed reflectively or directly from another module without an <code>opens</code>/<code>exports</code> directive.</li>
+</ul>
+<h3 id="interview-questions_3">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What is a <code>module-info.java</code> file, and where does it live in a project?
+2. What is the difference between <code>requires</code> and <code>exports</code> in a module declaration?</p>
+<p><strong>Intermediate</strong>
+3. What does <code>opens</code> do, and how is it different from <code>exports</code>?
+4. What happens if module A <code>requires</code> module B, but module B is missing from the module path at launch?</p>
+<p><strong>Advanced</strong>
+5. What is <code>requires transitive</code>, and when should you use it?
+6. What is an "automatic module," and how does JPMS handle a plain JAR (without <code>module-info.class</code>) placed on the module path?</p>
+<p><strong>Scenario-based</strong>
+7. A Spring-based application fails at startup with <code>InaccessibleObjectException</code> when Spring tries to reflectively access a private field in one of your model classes, after you migrated the app to JPMS modules. What is happening, and how do you fix it?</p>
+<h3 id="detailed-answers_3">Detailed Answers</h3>
+<ol>
+<li><code>module-info.java</code> is a special source file placed at the root of a module's source tree (e.g., <code>src/main/java/module-info.java</code> in a typical Maven/Gradle layout) that declares the module's name and its dependencies/exports via directives inside a <code>module ModuleName { ... }</code> block. It compiles to <code>module-info.class</code>, which the JVM reads to build the module graph.</li>
+<li><code>requires</code> declares a <em>dependency</em>: "this module needs to read that other module to compile/run against its exported types." <code>exports</code> declares <em>visibility outward</em>: "this module makes the given package's public types accessible to any module that requires this one." A module can <code>require</code> things without exporting anything, and can <code>export</code> packages that have no <code>requires</code> at all (if they only use <code>java.lang</code>, for instance).</li>
+<li><code>opens</code> grants <strong>reflective</strong> access (via the <code>java.lang.reflect</code> and <code>java.lang.invoke</code> APIs, including deep reflection into private members) to a package at runtime, without making it accessible for ordinary compile-time <code>import</code>/reference use. <code>exports</code> grants <strong>both</strong> compile-time and runtime accessibility to public types but does <em>not</em> by itself permit reflective access to non-public members. Frameworks like Jackson, Hibernate, or Spring that use reflection to instantiate/inspect classes typically require the containing package to be <code>opens</code>-ed to them (or opened unconditionally with <code>opens pkg;</code>).</li>
+<li>The module system performs resolution before the application starts; a missing required module causes the JVM to fail immediately at launch with a <code>FindException</code> (module not found) wrapped in a startup error, rather than failing later at first use with a <code>NoClassDefFoundError</code> as would happen on the classpath — this "fail fast, fail loud" behavior is one of JPMS's key reliability benefits.</li>
+<li><code>requires transitive</code> means that any module which <code>requires</code> your module automatically also gets a readability edge to the transitively-required module, without needing to declare it explicitly. It's used when your module's public API exposes types from the dependency (e.g., a method returning <code>java.sql.Connection</code> means your module should <code>requires transitive java.sql;</code> so consumers can use the returned type without a separate explicit <code>requires</code>).</li>
+<li>An automatic module is created when a plain (non-modularized) JAR is placed on the module path instead of the classpath. The JVM derives its module name either from the <code>Automatic-Module-Name</code> entry in the JAR's manifest (preferred, stable) or by algorithmically deriving one from the JAR's filename (fragile, changes if the filename changes). Automatic modules implicitly <code>export</code> all of their packages and <code>require</code> all other modules (including other automatic modules and the unnamed module), acting as a bridge/compatibility mechanism during incremental modularization.</li>
+<li>This happens because the model class's package was not <code>opens</code>-ed to Spring's module (or <code>opens</code>-ed unconditionally), so the module system blocks the reflective <code>setAccessible(true)</code> call Spring needs to read/write private fields. The fix is to add <code>opens com.acme.model to spring.core;</code> (or the actual module names Spring components live in) — or, if broad reflective access is genuinely needed and encapsulation is not a priority for that package, <code>opens com.acme.model;</code> to open it to all modules; alternatively, remaining on the classpath (unnamed module) sidesteps the restriction entirely, since the unnamed module has no module encapsulation.</li>
+</ol>
+<h3 id="code-examples_3">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1">// module-info.java at the root of the module's source set</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">module</span><span class="w"> </span><span class="n">com</span><span class="p">.</span><span class="na">acme</span><span class="p">.</span><span class="na">billing</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="n">requires</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">sql</span><span class="p">;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="n">requires</span><span class="w"> </span><span class="n">transitive</span><span class="w"> </span><span class="n">com</span><span class="p">.</span><span class="na">acme</span><span class="p">.</span><span class="na">core</span><span class="p">;</span><span class="w">      </span><span class="c1">// re-exported: consumers of billing also read core</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="n">exports</span><span class="w"> </span><span class="n">com</span><span class="p">.</span><span class="na">acme</span><span class="p">.</span><span class="na">billing</span><span class="p">.</span><span class="na">api</span><span class="p">;</span><span class="w">           </span><span class="c1">// public API, usable by any module that requires this one</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">    </span><span class="n">exports</span><span class="w"> </span><span class="n">com</span><span class="p">.</span><span class="na">acme</span><span class="p">.</span><span class="na">billing</span><span class="p">.</span><span class="na">dto</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">com</span><span class="p">.</span><span class="na">acme</span><span class="p">.</span><span class="na">reporting</span><span class="p">;</span><span class="w"> </span><span class="c1">// qualified export: only reporting can see it</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">    </span><span class="n">opens</span><span class="w"> </span><span class="n">com</span><span class="p">.</span><span class="na">acme</span><span class="p">.</span><span class="na">billing</span><span class="p">.</span><span class="na">model</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">com</span><span class="p">.</span><span class="na">fasterxml</span><span class="p">.</span><span class="na">jackson</span><span class="p">.</span><span class="na">databind</span><span class="p">;</span><span class="w"> </span><span class="c1">// allow Jackson's reflection</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">    </span><span class="n">uses</span><span class="w"> </span><span class="n">com</span><span class="p">.</span><span class="na">acme</span><span class="p">.</span><span class="na">billing</span><span class="p">.</span><span class="na">spi</span><span class="p">.</span><span class="na">PaymentGateway</span><span class="p">;</span><span class="w">              </span><span class="c1">// service consumer</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">    </span><span class="n">provides</span><span class="w"> </span><span class="n">com</span><span class="p">.</span><span class="na">acme</span><span class="p">.</span><span class="na">billing</span><span class="p">.</span><span class="na">spi</span><span class="p">.</span><span class="na">PaymentGateway</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">        </span><span class="n">with</span><span class="w"> </span><span class="n">com</span><span class="p">.</span><span class="na">acme</span><span class="p">.</span><span class="na">billing</span><span class="p">.</span><span class="na">internal</span><span class="p">.</span><span class="na">StripeGateway</span><span class="p">;</span><span class="w">       </span><span class="c1">// service provider</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">// A module that consumes com.acme.billing's exported API</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">module</span><span class="w"> </span><span class="n">com</span><span class="p">.</span><span class="na">acme</span><span class="p">.</span><span class="na">reporting</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="n">requires</span><span class="w"> </span><span class="n">com</span><span class="p">.</span><span class="na">acme</span><span class="p">.</span><span class="na">billing</span><span class="p">;</span><span class="w">   </span><span class="c1">// can use types from com.acme.billing.api (and .dto, per qualified export)</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="n">exports</span><span class="w"> </span><span class="n">com</span><span class="p">.</span><span class="na">acme</span><span class="p">.</span><span class="na">reporting</span><span class="p">.</span><span class="na">api</span><span class="p">;</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="additional-resources">Additional Resources</h2>
+<h3 id="build-tooling">Build Tooling</h3>
+<p>Java source files are organized into packages/modules, but real-world projects are almost always compiled, tested, and packaged with a build tool rather than raw <code>javac</code>. Maven and Gradle are the two dominant choices in the Java ecosystem.</p>
+<h4 id="maven">Maven</h4>
+<ul>
+<li><a href="https://medium.com/@saquibdev/everything-you-need-to-know-about-apache-maven-part-1-f16ce2ed7d24">Everything You Need To Know About Apache Maven : Part 1</a></li>
+<li><a href="https://medium.com/javarevisited/maven-build-lifecycles-maven-plugins-and-maven-profiles-10bc01640662">Maven Build Lifecycles, Maven Plugins and Maven Profiles</a></li>
+<li><a href="https://www.youtube.com/watch?v=Xatr8AZLOsE">Maven Tutorial - Crash Course</a> — <a href="https://github.com/marcobehlerjetbrains/maven-tutorial">marcobehlerjetbrains/maven-tutorial</a></li>
+<li><a href="https://maven.apache.org/guides/introduction/introduction-to-the-pom.html">Introduction to the POM</a></li>
+<li><a href="https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Dependency_Scope">Introduction to the Dependency Mechanism</a></li>
+<li><a href="https://books.sonatype.com/mvnref-book/reference/index.html">Maven: The Complete Reference</a></li>
+<li><a href="https://www.marcobehler.com/guides/mvn-clean-install-a-short-guide-to-maven">mvn clean install - a short guide to Maven</a></li>
+</ul>
+<p><strong>Useful commands</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>mvn<span class="w"> </span>--version<span class="w">                       </span><span class="c1"># Display Maven version</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>mvn<span class="w"> </span>clean<span class="w">                           </span><span class="c1"># Remove the target directory with all build data</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>mvn<span class="w"> </span>install<span class="w">                         </span><span class="c1"># Install the project's artifacts into the local repository</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>mvn<span class="w"> </span>validate<span class="w">                        </span><span class="c1"># Validate the project is correct and all necessary information is available</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>mvn<span class="w"> </span>compile<span class="w">                         </span><span class="c1"># Compile the source code of the project</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>mvn<span class="w"> </span><span class="nb">test</span><span class="w">                            </span><span class="c1"># Run tests using a suitable unit testing framework</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>mvn<span class="w"> </span>clean<span class="w"> </span>install<span class="w">                   </span><span class="c1"># Clean the project then install its artifacts into the local repository</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>mvn<span class="w"> </span>clean<span class="w"> </span>package<span class="w"> </span>-DskipTests<span class="w">       </span><span class="c1"># Clean and package the project, skipping tests</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>mvn<span class="w"> </span>compile<span class="w"> </span><span class="nb">test</span><span class="w"> </span>package<span class="w">            </span><span class="c1"># Compile, test, and package the project</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>mvn<span class="w"> </span>clean<span class="w"> </span>-Pnative<span class="w"> </span>native:compile<span class="w"> </span>-DskipTests<span class="w">   </span><span class="c1"># Clean and compile the project natively, skipping tests</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>mvn<span class="w"> </span>wrapper:wrapper<span class="w">                 </span><span class="c1"># Create the Maven wrapper scripts</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>mvnw<span class="w"> </span>--version<span class="w">                      </span><span class="c1"># Display the Maven wrapper version</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>mvn<span class="w"> </span>clean<span class="w"> </span>deploy
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>mvn<span class="w"> </span>nexus-staging:release
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>mvn<span class="w"> </span>nexus-staging:drop
+</code></pre></div>
+<p><strong>Publishing to Maven Central</strong></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=xEMOF443WI8">How to publish your own library to Maven Central Repository | Publishing dependency to OSSRH | HINDI</a> — <a href="https://github.com/librbary/librbary-retry">librbary/librbary-retry</a></li>
+<li><a href="https://medium.com/@jtbsorensen/publish-your-artifact-to-the-maven-central-repository-using-github-actions-15d3b5d9ce88">Publish your artifact to the Maven Central Repository using GitHub Actions</a></li>
+<li><a href="https://central.sonatype.org/publish/publish-maven/">Deploying to OSSRH with Apache Maven</a></li>
+<li><a href="https://central.sonatype.com/">Maven Central</a> / <a href="https://central.sonatype.org/register/central-portal/">Register to Publish Via the Central Portal</a></li>
+</ul>
+<p>Steps: (1) create an account on Maven Central, create and verify a namespace (signing in with GitHub helps), generate a publishing token; (2) add the required plugins from the OSSRH publishing guide above; (3) install GnuPG and create a key pair per the <a href="https://central.sonatype.org/publish/requirements/gpg/">GPG requirements</a> — <code>gpg --gen-key</code> to generate, <code>gpg --list-signatures --keyid-format 0xshort</code> to list, <code>gpg --keyserver keys.openpgp.org --send-keys $PUBLIC_KEY</code> to publish the public key, <code>gpg --armor --export-secret-keys $PUBLIC_KEY</code> to export the private key.</p>
+<p>The official <code>maven-gpg-plugin</code> does not work well in GitHub Actions, so <code>org.simplify4u.plugins:sign-maven-plugin</code> can be used there instead, keeping <code>maven-gpg-plugin</code> for local builds:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="cm">&lt;!-- This plugin is used for signing the jars in GitHub Actions --&gt;</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nt">&lt;plugin&gt;</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span><span class="nt">&lt;groupId&gt;</span>org.simplify4u.plugins<span class="nt">&lt;/groupId&gt;</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>sign-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">    </span><span class="nt">&lt;version&gt;</span>1.1.0<span class="nt">&lt;/version&gt;</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="nt">&lt;/plugin&gt;</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="cm">&lt;!-- This plugin does not work in GitHub Actions; uncomment if building locally --&gt;</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="nt">&lt;plugin&gt;</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">    </span><span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>maven-gpg-plugin<span class="nt">&lt;/artifactId&gt;</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">    </span><span class="nt">&lt;version&gt;</span>${maven-gpg-plugin.version}<span class="nt">&lt;/version&gt;</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">    </span><span class="nt">&lt;executions&gt;</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="w">        </span><span class="nt">&lt;execution&gt;</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="w">            </span><span class="nt">&lt;id&gt;</span>sign-artifacts<span class="nt">&lt;/id&gt;</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="w">            </span><span class="nt">&lt;phase&gt;</span>verify<span class="nt">&lt;/phase&gt;</span>
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="w">            </span><span class="nt">&lt;goals&gt;</span>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="w">                </span><span class="nt">&lt;goal&gt;</span>sign<span class="nt">&lt;/goal&gt;</span>
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="w">            </span><span class="nt">&lt;/goals&gt;</span>
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="w">        </span><span class="nt">&lt;/execution&gt;</span>
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="w">    </span><span class="nt">&lt;/executions&gt;</span>
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a><span class="nt">&lt;/plugin&gt;</span>
+</code></pre></div>
+<p>See also <a href="https://www.simplify4u.org/how-to/maven-openpgp-signatures.html">Easy way to create PGP/GPG Signatures with Maven on CI/CD</a> and <a href="https://maven.apache.org/plugins/maven-gpg-plugin/usage.html">Sign artifacts with GnuPG</a>.</p>
+<h4 id="gradle">Gradle</h4>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=gKPMKRnnbXU">Gradle Tutorial - Crash Course</a> — <a href="https://github.com/marcobehlerjetbrains/gradle-tutorial">marcobehlerjetbrains/gradle-tutorial</a></li>
+</ul></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2025 <a href="https://github.com/abhishekghoshh"  target="_blank" rel="noopener">Abhishek Ghosh</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/abhishekghoshh" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://x.com/abhishek_ghoshh" target="_blank" rel="noopener" title="x.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/abhishek-ghosh-220679132/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

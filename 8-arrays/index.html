@@ -1,0 +1,2417 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abhishekghoshh.github.io/java-helper/8-arrays/">
+      
+      
+        <link rel="prev" href="../7-strings/">
+      
+      
+        <link rel="next" href="../9-collections-framework/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Arrays - Java Helper</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Arrays - Java Helper" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/8-arrays.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://abhishekghoshh.github.io/java-helper/8-arrays/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Arrays - Java Helper" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/8-arrays.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#8-arrays" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Java Helper" class="md-header__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Java Helper
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Arrays
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../1-java-language-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Java Language Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../2-object-oriented-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Object-Oriented Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../3-classes/" class="md-tabs__link">
+        
+  
+    
+  
+  Classes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../4-constructors/" class="md-tabs__link">
+        
+  
+    
+  
+  Constructors
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-access-modifiers/" class="md-tabs__link">
+        
+  
+    
+  
+  Access Modifiers
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../6-packages/" class="md-tabs__link">
+        
+  
+    
+  
+  Packages
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../7-strings/" class="md-tabs__link">
+        
+  
+    
+  
+  Strings
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Arrays
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../9-collections-framework/" class="md-tabs__link">
+        
+  
+    
+  
+  Collections Framework
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../10-generics/" class="md-tabs__link">
+        
+  
+    
+  
+  Generics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../11-exception-handling/" class="md-tabs__link">
+        
+  
+    
+  
+  Exception Handling
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../12-file-io/" class="md-tabs__link">
+        
+  
+    
+  
+  File I/O
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../13-serialization/" class="md-tabs__link">
+        
+  
+    
+  
+  Serialization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../14-reflection/" class="md-tabs__link">
+        
+  
+    
+  
+  Reflection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../15-annotations/" class="md-tabs__link">
+        
+  
+    
+  
+  Annotations
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../16-functional-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Functional Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../17-streams-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Streams API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../18-date-and-time-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Date and Time API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../19-jvm-internals/" class="md-tabs__link">
+        
+  
+    
+  
+  JVM Internals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../20-class-loader/" class="md-tabs__link">
+        
+  
+    
+  
+  Class Loader
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../21-memory-management/" class="md-tabs__link">
+        
+  
+    
+  
+  Memory Management
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../22-garbage-collection/" class="md-tabs__link">
+        
+  
+    
+  
+  Garbage Collection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../23-concurrency/" class="md-tabs__link">
+        
+  
+    
+  
+  Concurrency
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../24-networking/" class="md-tabs__link">
+        
+  
+    
+  
+  Networking
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../25-design-patterns-in-java/" class="md-tabs__link">
+        
+  
+    
+  
+  Design Patterns in Java
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../26-modern-java-language-features/" class="md-tabs__link">
+        
+  
+    
+  
+  Modern Java Language Features
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../27-regular-expressions/" class="md-tabs__link">
+        
+  
+    
+  
+  Regular Expressions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../28-internationalization-and-localization/" class="md-tabs__link">
+        
+  
+    
+  
+  Internationalization & Localization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../29-logging/" class="md-tabs__link">
+        
+  
+    
+  
+  Logging
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../30-security-basics/" class="md-tabs__link">
+        
+  
+    
+  
+  Security Basics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-tabs__link">
+        
+  
+    
+  
+  Native & Foreign Interoperability
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../32-process-and-system-apis/" class="md-tabs__link">
+        
+  
+    
+  
+  Process & System APIs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../33-testing-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Testing Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Java Helper" class="md-nav__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Java Helper
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-java-language-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java Language Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-object-oriented-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-classes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Classes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-constructors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constructors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-access-modifiers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access Modifiers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Packages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-strings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Strings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Arrays
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Arrays
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#single-dimension" class="md-nav__link">
+    <span class="md-ellipsis">
+      Single Dimension
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Single Dimension">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-dimension" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi Dimension
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi Dimension">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jagged-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jagged Arrays
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Jagged Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arrays-utility-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arrays Utility Class
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Arrays Utility Class">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#array-covariance-new" class="md-nav__link">
+    <span class="md-ellipsis">
+      Array Covariance (new)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Array Covariance (new)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-collections-framework/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collections Framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-generics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-exception-handling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exception Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-file-io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File I/O
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-serialization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serialization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-reflection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reflection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-annotations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-functional-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Functional Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-streams-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Streams API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-date-and-time-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Date and Time API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-jvm-internals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JVM Internals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-class-loader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Class Loader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-memory-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-garbage-collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Garbage Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-concurrency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concurrency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-networking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-design-patterns-in-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Patterns in Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-modern-java-language-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modern Java Language Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-regular-expressions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Regular Expressions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-internationalization-and-localization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internationalization & Localization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-logging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30-security-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Native & Foreign Interoperability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32-process-and-system-apis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process & System APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33-testing-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div><h1 id="8-arrays">8. Arrays</h1>
+<h2 id="single-dimension">Single Dimension</h2>
+<h3 id="theory">Theory</h3>
+<p><strong>Core Concepts</strong>: A single-dimension array in Java (<code>int[] arr</code>, <code>String[] names</code>) is a fixed-length, homogeneous, index-addressable sequence of elements, treated as a first-class object in the JVM's type system — every array type has a corresponding synthetic <code>Class</code> object (e.g., <code>int[].class</code>), and arrays implicitly extend <code>Object</code> and implement <code>Cloneable</code>/<code>Serializable</code>.</p>
+<p><strong>Internal Working</strong>: An array is a contiguous block of memory on the heap consisting of an object header, a <code>length</code> field, and then the elements themselves laid out sequentially (primitives stored inline, object arrays storing references) — this contiguous layout is what makes index-based access O(1) via direct address-offset arithmetic.</p>
+<p><strong>When to Use It</strong>: When you need a fixed-size, maximally memory-efficient, cache-friendly sequential collection of a known element count — performance-critical code (numeric computation, buffers, low-level data structures backing collections like <code>ArrayList</code>) almost always prefers raw arrays over boxed collection types for primitives.</p>
+<p><strong>Advantages</strong>: O(1) random access by index; minimal memory overhead compared to boxed collections (an <code>int[]</code> stores raw 4-byte ints contiguously, whereas an <code>ArrayList&lt;Integer&gt;</code> stores boxed <code>Integer</code> object references with all the associated per-object overhead); excellent CPU cache locality due to contiguous layout.</p>
+<p><strong>Limitations</strong>: Fixed length once created (no resizing — growing requires allocating a new, larger array and copying, exactly what <code>ArrayList</code> does internally); no generics support directly (<code>new T[]</code> is disallowed for a type parameter <code>T</code> due to type erasure — see Array Covariance); lacks the rich API of <code>Collection</code> types (no built-in <code>add</code>/<code>remove</code>, though <code>java.util.Arrays</code> supplies utility methods).</p>
+<h3 id="internal-working">Internal Working</h3>
+<p><strong>Step-by-Step Explanation</strong>:
+1. <code>int[] arr = new int[5];</code> triggers the <code>newarray</code> bytecode instruction (for primitive component types) or <code>anewarray</code> (for reference component types), which allocates a contiguous block of heap memory sized for the object header, a 4-byte <code>length</code> field, and <code>5</code> slots of the component type's size.
+2. Elements are zero-initialized by default (<code>0</code>/<code>0.0</code>/<code>false</code> for primitives, <code>null</code> for references) as part of allocation — the JVM guarantees this default-initialization, unlike, say, raw C arrays.
+3. <code>arr[i] = value</code> compiles to <code>iastore</code>(or the type-appropriate <code>*astore</code> variant), which performs a bounds check (<code>i &gt;= 0 &amp;&amp; i &lt; arr.length</code>) before writing directly to the computed memory offset; <code>arr[i]</code> read access compiles similarly to <code>iaload</code>/<code>*aload</code> with the same bounds check.
+4. Out-of-bounds access throws <code>ArrayIndexOutOfBoundsException</code> — a runtime check the JVM always performs (it cannot be disabled), though the JIT can sometimes eliminate redundant repeated bounds checks within a single verified-safe loop via bounds-check elimination optimization.</p>
+<p><strong>Memory Layout</strong>: Heap-allocated: <code>[object header (12-16 bytes)] [length (4 bytes)] [element 0][element 1]...[element n-1]</code>, each element occupying exactly its type's fixed size (4 bytes for <code>int</code>, 8 for <code>long</code>/<code>double</code>, a reference-sized slot — typically 4 bytes with compressed oops — for object array elements).</p>
+<p><strong>Diagrams</strong>:
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>int[] arr = new int[4];  // heap allocation
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>+--------+--------+-------+-------+-------+-------+
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>| header | length |  [0]  |  [1]  |  [2]  |  [3]  |
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>| 12-16B |   4B   |  4B   |  4B   |  4B   |  4B   |
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>+--------+--------+-------+-------+-------+-------+
+</code></pre></div>
+<p><strong>JVM Behaviour</strong>: Array bounds checks are mandatory per the JLS/JVM spec (unlike C/C++), but the JIT's bounds-check-elimination (BCE) optimization can remove redundant checks it can prove are always satisfied (e.g., a simple <code>for (i = 0; i &lt; arr.length; i++)</code> loop), making well-structured array-traversal code nearly as fast as unchecked native array access despite the safety guarantee; arrays are also always allocated as a single contiguous object (never split/fragmented), which is central to their cache-friendliness.</p>
+<h3 id="interview-questions">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What are the default values of a newly allocated <code>int[]</code> and <code>String[]</code>?
+2. Is an array's length fixed after creation?</p>
+<p><strong>Intermediate</strong>
+1. What bytecode instructions are involved in creating and accessing an array element?
+2. Why is <code>int[]</code> more memory- and cache-efficient than <code>ArrayList&lt;Integer&gt;</code>?</p>
+<p><strong>Advanced</strong>
+1. What is bounds-check elimination, and under what conditions can the JIT apply it?</p>
+<p><strong>Scenario-based</strong>
+1. You're processing a very large numeric dataset in a hot loop and must choose between <code>int[]</code> and <code>List&lt;Integer&gt;</code>. Justify your choice with concrete memory/performance reasoning.</p>
+<h3 id="detailed-answers">Detailed Answers</h3>
+<ol>
+<li>
+<p><strong>Default values</strong>: <code>int[]</code> elements default to <code>0</code>; <code>String[]</code> (any reference type array) elements default to <code>null</code> — the JVM zero-initializes all array memory at allocation time as a language/JVM guarantee, so uninitialized array slots never contain garbage values (unlike, e.g., raw C arrays).</p>
+</li>
+<li>
+<p><strong>Fixed length?</strong> Yes — an array's length is fixed permanently at creation time and cannot be changed; "resizing" always means allocating an entirely new array of the desired size and copying the relevant elements across (exactly what <code>Arrays.copyOf</code> and <code>ArrayList</code>'s internal growth mechanism do under the hood).</p>
+</li>
+<li>
+<p><strong>Bytecode involved</strong>: Creation uses <code>newarray &lt;type&gt;</code> for primitive component arrays or <code>anewarray &lt;class&gt;</code> for reference component arrays. Element access uses type-specific load/store instructions — <code>iaload</code>/<code>iastore</code> for <code>int[]</code>, <code>aaload</code>/<code>aastore</code> for reference arrays, with analogous variants for other primitive types (<code>laload</code>/<code>lastore</code> for <code>long</code>, etc.) — each performing an implicit bounds check against the array's stored <code>length</code>.</p>
+</li>
+<li>
+<p><strong>Memory/cache efficiency vs <code>ArrayList&lt;Integer&gt;</code></strong>: An <code>int[]</code> stores raw 4-byte integers contiguously with essentially zero per-element overhead beyond the array's own header/length. An <code>ArrayList&lt;Integer&gt;</code> instead stores an <code>Object[]</code> of <em>references</em> to individually heap-allocated <code>Integer</code> objects (each carrying its own object header plus the boxed <code>int</code> value, typically 16 bytes per boxed <code>Integer</code> versus 4 bytes for a raw <code>int</code>), and those boxed objects are scattered across the heap rather than contiguous — meaning far worse cache locality (each element access potentially requires an additional memory dereference/cache miss to reach the actual boxed value) and significantly higher total memory consumption for large collections.</p>
+</li>
+<li>
+<p><strong>Bounds-check elimination (BCE)</strong>: This JIT optimization removes redundant array-bounds checks when the compiler can statically prove, through analysis of a loop's induction variable, that every access is guaranteed within <code>[0, arr.length)</code> — the canonical case being a simple <code>for (int i = 0; i &lt; arr.length; i++) arr[i]...</code> loop, where the loop condition itself already guarantees <code>i &lt; arr.length</code> and <code>i &gt;= 0</code> is guaranteed by the initialization and increment pattern, letting the JIT emit the loop body without a per-iteration bounds check while still preserving full safety guarantees (the check is proven unnecessary, not skipped unsafely).</p>
+</li>
+<li>
+<p><strong>Large numeric dataset scenario</strong>: <code>int[]</code> is the clearly superior choice — for a dataset of, say, 10 million integers, <code>int[]</code> consumes roughly 40MB (4 bytes/element plus negligible fixed overhead) with fully contiguous, cache-friendly layout enabling fast sequential/random access and vectorizable JIT-compiled loops. <code>List&lt;Integer&gt;</code> would consume dramatically more memory (each boxed <code>Integer</code> typically costing ~16 bytes plus an 4/8-byte reference in the backing array, potentially 3-5x the raw data size or more) and suffer materially worse cache behavior due to pointer-chasing to reach scattered boxed objects, along with boxing/unboxing overhead on every arithmetic operation — for hot-loop numeric processing at scale, raw primitive arrays are essentially always the correct choice over boxed collections.</p>
+</li>
+</ol>
+<h3 id="code-examples">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Arrays</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SingleDimensionArrayDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="c1">// Default zero-initialization guarantee</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">scores</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="mi">5</span><span class="o">]</span><span class="p">;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">scores</span><span class="p">));</span><span class="w"> </span><span class="c1">// [0, 0, 0, 0, 0]</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="n">scores</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">95</span><span class="p">;</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="n">scores</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">88</span><span class="p">;</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">scores</span><span class="p">));</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="c1">// Bounds check is always enforced — this throws, never silently corrupts memory</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">oob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scores</span><span class="o">[</span><span class="mi">10</span><span class="o">]</span><span class="p">;</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">ArrayIndexOutOfBoundsException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Caught expected: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">        </span><span class="c1">// "Resizing" always means allocating a new array and copying</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">        </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">grown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">copyOf</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Original length: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">scores</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">", grown length: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">grown</span><span class="p">.</span><span class="na">length</span><span class="p">);</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="multi-dimension">Multi Dimension</h2>
+<h3 id="theory_1">Theory</h3>
+<p><strong>Core Concepts</strong>: Java doesn't have "true" multi-dimensional arrays in the C sense (a single contiguous block addressed by multiple indices with compiler-computed strides) — a Java <code>int[][]</code> is actually an <em>array of arrays</em>: a one-dimensional array whose elements are themselves references to (independently allocated) one-dimensional <code>int[]</code> arrays. This is a crucial distinction from languages with genuinely flat multi-dimensional array memory layouts (like Fortran or C's static multi-dimensional arrays).</p>
+<p><strong>Internal Working</strong>: <code>int[][] grid = new int[3][4];</code> allocates one outer <code>int[][]</code>-typed array of 3 reference slots, then eagerly allocates 3 separate inner <code>int[4]</code> arrays (each independently heap-allocated), and stores references to them in the outer array's slots.</p>
+<p><strong>When to Use It</strong>: Representing genuinely rectangular or ragged 2D+ data (matrices, grids, boards) where per-row or per-dimension independent sizing, or straightforward nested-index access syntax (<code>grid[i][j]</code>), is convenient — for maximum-performance flat numeric matrices, a single 1D array with manually computed <code>row * width + col</code> indexing is sometimes preferred to avoid the extra indirection.</p>
+<p><strong>Advantages</strong>: Natural, readable nested-indexing syntax matching mathematical matrix notation; supports genuinely jagged/ragged structures without wasted space (unlike a fixed rectangular native multi-dimensional array); each row is independently addressable/replaceable as its own array object.</p>
+<p><strong>Limitations</strong>: Extra pointer indirection per dimension — accessing <code>grid[i][j]</code> requires first dereferencing the outer array to get the inner array's reference, then indexing into that, versus a single computed offset in a true flat layout, meaning worse cache locality (rows are not guaranteed to be contiguous with each other in memory, since each is a separately allocated object that could be located anywhere on the heap); more allocation overhead (N+1 separate array objects for an N-row 2D array, each with its own header) compared to one single flat allocation.</p>
+<h3 id="internal-working_1">Internal Working</h3>
+<p><strong>Step-by-Step Explanation</strong>:
+1. <code>new int[3][4]</code> is compiled using the <code>multianewarray</code> bytecode instruction (for arrays of 2+ declared dimensions created together in one expression), which the JVM executes by allocating the outer array, then looping to allocate each inner array, assigning each into the corresponding outer slot.
+2. Each inner <code>int[4]</code> array is a fully independent heap object with its own header, <code>length</code> field, and contiguous element storage — it is not part of one giant contiguous block spanning all rows.
+3. Accessing <code>grid[i][j]</code> compiles to two chained array-access operations: first <code>aaload</code> (or equivalent) on the outer array at index <code>i</code> to retrieve the inner array reference, then <code>iaload</code> on that inner array at index <code>j</code> — two bounds checks and two memory accesses instead of one.
+4. Because each row is independently allocated, you can legally give rows different lengths (jagged arrays — see next section) or even reassign an entire row to a brand-new array (<code>grid[1] = new int[10];</code>), operations that would be meaningless/impossible in a truly flat, rectangular native multi-dimensional array.</p>
+<p><strong>Memory Layout</strong>: Outer array holds 3 references; each of the 3 inner arrays is a separately heap-allocated object (with no memory-layout guarantee of being adjacent to each other or the outer array) — visually a "spine" of row-pointers fanning out to independently-located row buffers.</p>
+<p><strong>Diagrams</strong>:
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>int[][] grid = new int[3][4];
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Heap:
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>outer array (grid) --&gt; [ ref0 | ref1 | ref2 ]
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>                          |      |      |
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>                          v      v      v
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>                       [int[4]][int[4]][int[4]]   &lt;- three separately allocated row arrays,
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>                                                       NOT guaranteed contiguous with each other
+</code></pre></div>
+<p><strong>JVM Behaviour</strong>: The <code>multianewarray</code> instruction handles allocation of all specified dimensions in one bytecode operation for array-creation-expressions like <code>new int[3][4]</code>, but the resulting structure is still fundamentally array-of-arrays at the object-model level — there is no special "true 2D array" object type in the JVM; nested indexing always costs an extra dereference and bounds check per additional dimension traversed.</p>
+<h3 id="interview-questions_1">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. Is <code>int[][]</code> in Java a true 2D array in the way C's static multi-dimensional arrays are?
+2. What bytecode instruction handles multi-dimensional array creation?</p>
+<p><strong>Intermediate</strong>
+1. Why can two rows of a Java 2D array have different lengths?
+2. What's the performance cost of <code>grid[i][j]</code> versus a single flat-array-with-computed-offset approach?</p>
+<p><strong>Advanced</strong>
+1. For a performance-critical numeric matrix computation (e.g., matrix multiplication), would you recommend <code>int[][]</code> or a flat <code>int[]</code> with manual indexing, and why?</p>
+<p><strong>Scenario-based</strong>
+1. You're iterating a large <code>double[][]</code> matrix and notice iterating row-major (outer loop over rows, inner over columns) is significantly faster than column-major iteration. Explain why, tying it to the underlying memory layout.</p>
+<h3 id="detailed-answers_1">Detailed Answers</h3>
+<ol>
+<li>
+<p><strong>True 2D array?</strong> No — Java's <code>int[][]</code> is an array of references to independently-allocated one-dimensional arrays ("array of arrays"), not a single contiguous block addressed via compiler-computed multi-dimensional strides as in C's <code>int arr[3][4]</code>. This is a fundamental structural difference with real performance and flexibility implications (jagged rows are possible; but cache locality is worse).</p>
+</li>
+<li>
+<p><strong>Multi-dimensional creation bytecode</strong>: <code>multianewarray</code>, used specifically when creating an array with two or more dimensions specified directly in a single <code>new</code> expression (e.g., <code>new int[3][4]</code>); it allocates the outer array and all specified inner-dimension arrays as one compiled operation, though the resulting object graph is still the same array-of-arrays structure as if you'd manually allocated each row separately.</p>
+</li>
+<li>
+<p><strong>Different row lengths</strong>: Because each "row" is actually its own, entirely independent one-dimensional array object, nothing in the language or JVM enforces that all rows share the same length — you can construct (or later reassign) each row array with whatever length you like, which is precisely how genuinely ragged/jagged 2D structures are represented natively in Java without wasted padding space.</p>
+</li>
+<li>
+<p><strong>Performance cost of <code>grid[i][j]</code></strong>: Each additional dimension of indexing requires an extra memory dereference (following the outer array's stored reference to locate the specific inner row array) plus an extra bounds check, versus a single flat <code>data[row * width + col]</code> array where one bounds check and one direct offset computation suffices. For tight numeric loops, this extra indirection can meaningfully hurt performance, especially combined with the worse cache locality from rows potentially being scattered non-contiguously across the heap.</p>
+</li>
+<li>
+<p><strong>Matrix computation recommendation</strong>: For maximum performance (e.g., large matrix multiplication in numerically-intensive code), a flat <code>int[]</code>/<code>double[]</code> with manually computed <code>row * width + col</code> indexing is generally preferable — it guarantees the entire matrix is one contiguous memory block (excellent cache locality, especially for row-major traversal matching the memory layout), avoids the extra per-access indirection/bounds-check pair inherent to <code>int[][]</code>, and is more amenable to JIT auto-vectorization and manual loop-tiling optimizations common in high-performance numeric code; the <code>int[][]</code> structure remains preferable when genuine raggedness or independent per-row manipulation (replacing whole rows) is a functional requirement rather than a performance concern.</p>
+</li>
+<li>
+<p><strong>Row-major vs column-major iteration scenario</strong>: Each row of a <code>double[][]</code> is a separate, contiguous array in memory, so iterating row-major (<code>for row { for col { grid[row][col] } }</code>) accesses each row's elements sequentially in memory — excellent spatial locality, meaning the CPU's cache lines (typically 64 bytes, holding several consecutive <code>double</code>s) are fully utilized before moving to the next row. Column-major iteration (<code>for col { for row { grid[row][col] } }</code>) instead jumps between potentially widely-scattered row arrays on every single access (visiting <code>grid[0][col]</code>, then <code>grid[1][col]</code>, etc., where each row is a different, non-adjacent heap object), causing far more cache misses since consecutive accesses rarely share a cache line — the same underlying cache-locality principle explains why this Java-specific array-of-arrays structure makes iteration order performance-sensitive in a way that doesn't occur with a genuinely flat, contiguous single array.</p>
+</li>
+</ol>
+<h3 id="code-examples_1">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Arrays</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MultiDimensionArrayDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="c1">// Standard rectangular 2D array via multianewarray</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="kt">int</span><span class="o">[][]</span><span class="w"> </span><span class="n">grid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="mi">3</span><span class="o">][</span><span class="mi">4</span><span class="o">]</span><span class="p">;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">grid</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">row</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">grid</span><span class="o">[</span><span class="n">row</span><span class="o">]</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">col</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">                </span><span class="n">grid</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">col</span><span class="p">;</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">grid</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">row</span><span class="p">));</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">        </span><span class="c1">// Rows are independent array objects — can be reassigned to a different length</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">        </span><span class="n">grid</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="p">{</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">3</span><span class="p">};</span><span class="w"> </span><span class="c1">// now a ragged structure</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Row 1 after reassignment: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">grid</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">));</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">        </span><span class="c1">// Flat-array alternative for performance-critical numeric code</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">        </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">flat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="n">width</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">height</span><span class="o">]</span><span class="p">;</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">height</span><span class="p">;</span><span class="w"> </span><span class="n">row</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">width</span><span class="p">;</span><span class="w"> </span><span class="n">col</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">                </span><span class="n">flat</span><span class="o">[</span><span class="n">row</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">col</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">col</span><span class="p">;</span><span class="w"> </span><span class="c1">// single contiguous block, one indirection</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Flat representation: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">flat</span><span class="p">));</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="jagged-arrays">Jagged Arrays</h2>
+<h3 id="theory_2">Theory</h3>
+<p><strong>Core Concepts</strong>: A jagged array is a multi-dimensional array (array of arrays) where the inner arrays (rows) have differing lengths — a direct and natural consequence of Java's array-of-arrays representation of multi-dimensional arrays (as opposed to a forced-rectangular native 2D array layout).</p>
+<p><strong>Internal Working</strong>: Each row is created and sized independently — <code>new int[3][]</code> allocates only the outer array (3 <code>null</code> row references), and each row is subsequently assigned its own independently-sized array (<code>arr[0] = new int[2]; arr[1] = new int[5];</code>), or a jagged structure emerges simply by later reassigning individual rows of an initially-rectangular array to different lengths.</p>
+<p><strong>When to Use It</strong>: Representing genuinely variable-length row data — adjacency lists for graphs (each vertex has a different number of neighbors), triangular matrices, per-record variable-length fields, or any dataset where forcing a rectangular shape would waste significant memory on unused padding.</p>
+<p><strong>Advantages</strong>: No wasted memory on padding for rows that don't need the maximum row length; directly and naturally expresses genuinely variable-length per-row data structures without auxiliary length-tracking data.</p>
+<p><strong>Limitations</strong>: Requires careful null-checking if rows are lazily assigned (<code>new int[3][]</code> leaves all rows <code>null</code> until explicitly assigned, unlike <code>new int[3][4]</code> which eagerly allocates all rows) — iterating before assignment risks <code>NullPointerException</code>; slightly more complex construction code than simple rectangular arrays; loses the (illusory, but sometimes assumed) guarantee that <code>arr[i].length</code> is constant across all <code>i</code>, which can be a source of bugs if code assumes rectangularity.</p>
+<h3 id="internal-working_2">Internal Working</h3>
+<p><strong>Step-by-Step Explanation</strong>:
+1. <code>int[][] jagged = new int[3][];</code> — note the missing second dimension size — allocates only the outer array with 3 slots, all initialized to <code>null</code> (the default value for a reference-typed array element, and inner arrays are references) since no inner-dimension size was specified for the JVM to eagerly allocate.
+2. Each row must then be individually allocated and assigned: <code>jagged[0] = new int[2]; jagged[1] = new int[5]; jagged[2] = new int[3];</code> — each of these is an entirely independent <code>newarray</code> allocation.
+3. From this point on, <code>jagged[i].length</code> may differ freely for each <code>i</code>, since each row is a distinct array object with its own stored <code>length</code> field, with no JVM-level constraint tying them together.
+4. Any attempt to access a row before it's been assigned (still <code>null</code>) throws <code>NullPointerException</code> when you try to index into it (<code>jagged[2][0]</code> before <code>jagged[2]</code> is assigned), a common bug for jagged-array code that doesn't fully initialize every row up front.</p>
+<p><strong>Memory Layout</strong>: Identical in principle to the general multi-dimension array layout — an outer reference array plus independently-sized, independently-located inner arrays — except the inner array lengths are intentionally non-uniform, and potentially some remain <code>null</code> (unallocated) if not yet assigned.</p>
+<p><strong>Diagrams</strong>:
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>int[][] jagged = new int[3][];   // rows initially null
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>jagged[0] = new int[]{1, 2};
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>jagged[1] = new int[]{3, 4, 5, 6};
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>jagged[2] = new int[]{7};
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>outer --&gt; [ ref0 | ref1 | ref2 ]
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>             |      |      |
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>             v      v      v
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>          [1,2]  [3,4,5,6] [7]      &lt;- different lengths, independently allocated
+</code></pre></div>
+<p><strong>JVM Behaviour</strong>: No special JVM support beyond ordinary single-dimension array allocation applied per row — "jaggedness" is purely an emergent property of how the application code chooses to allocate/assign each row independently; the JVM has no concept of "jagged" versus "rectangular" arrays as distinct types, both are just arrays of (possibly array-typed) elements.</p>
+<h3 id="interview-questions_2">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. How do you declare a 2D array without immediately specifying the inner row lengths?
+2. What is the default value of an unassigned row in a jagged array declared this way?</p>
+<p><strong>Intermediate</strong>
+1. Give a real-world data structure that's naturally represented as a jagged array rather than a rectangular one.
+2. What runtime exception occurs if you index into a jagged array row before assigning it?</p>
+<p><strong>Advanced</strong>
+1. How much memory can a jagged array save versus a forced-rectangular array for highly variable row lengths (e.g., a triangular matrix)?</p>
+<p><strong>Scenario-based</strong>
+1. You're representing an adjacency list for a graph with 100,000 vertices where the average vertex has 3 neighbors but a few "hub" vertices have thousands. Explain why a jagged array is the appropriate structure here, with a memory comparison against a naive rectangular alternative.</p>
+<h3 id="detailed-answers_2">Detailed Answers</h3>
+<ol>
+<li>
+<p><strong>Declaring without inner sizes</strong>: <code>int[][] jagged = new int[3][];</code> — specifying only the outer dimension's size (3) and leaving the inner dimension size unspecified (empty brackets) allocates just the outer array of 3 row-references, deferring individual row allocation to later explicit assignment statements.</p>
+</li>
+<li>
+<p><strong>Default value of unassigned rows</strong>: <code>null</code> — since each row is itself a reference-typed element (a reference to an <code>int[]</code>), and <code>null</code> is the standard default value for any uninitialized reference-type array slot, exactly as it would be for any other object-reference array.</p>
+</li>
+<li>
+<p><strong>Real-world jagged example</strong>: An adjacency list representation of a graph — <code>int[][] adjacency</code> where <code>adjacency[v]</code> holds the array of neighbor vertex IDs for vertex <code>v</code> — naturally has wildly different lengths per vertex (a vertex with 2 connections has a length-2 row, a highly-connected hub vertex might have a length-10,000 row), making a jagged array the natural, memory-efficient fit versus forcing every row to the maximum-degree length.</p>
+</li>
+<li>
+<p><strong>Exception on unassigned row access</strong>: <code>NullPointerException</code> — since the row itself is still <code>null</code> (never assigned an actual array), attempting <code>jagged[i][j]</code> when <code>jagged[i]</code> hasn't yet been assigned an array first dereferences a <code>null</code> reference during the implicit "get row, then index into it" two-step access, throwing NPE before any bounds check on <code>j</code> even occurs.</p>
+</li>
+<li>
+<p><strong>Memory savings for a triangular matrix</strong>: For an N x N triangular matrix (where row <code>i</code> only needs <code>i+1</code> meaningful elements), a jagged array allocates exactly <code>1 + 2 + 3 + ... + N = N(N+1)/2</code> total elements, versus <code>N * N</code> for a forced-rectangular array — for large N this approaches roughly half the memory of the rectangular version (e.g., for N=1000, jagged uses ~500,500 elements versus 1,000,000 for rectangular, roughly a 50% reduction), with the exact savings depending on the specific "raggedness" shape of the data.</p>
+</li>
+<li>
+<p><strong>Graph adjacency list scenario</strong>: A jagged <code>int[][] adjacency</code> array lets each vertex's row be sized exactly to its actual degree (number of neighbors) — for the described graph, most rows would be tiny (length ~3) while a handful of hub-vertex rows would be very large (length in the thousands). A naive rectangular <code>int[100000][maxDegree]</code> array, by contrast, would need every one of the 100,000 rows sized to accommodate the <em>largest</em> hub vertex's degree (say, several thousand), wasting enormous amounts of memory on unused padding for the vast majority of low-degree vertices — potentially requiring gigabytes of mostly-empty space versus the jagged structure's memory footprint proportional only to the actual total number of edges in the graph (which is what a jagged array, or better yet a purpose-built sparse graph representation, would actually consume).</p>
+</li>
+</ol>
+<h3 id="code-examples_2">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Arrays</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">JaggedArrayDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">        </span><span class="c1">// Adjacency list for a small graph: vertex -&gt; array of neighbor IDs</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">vertexCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">        </span><span class="kt">int</span><span class="o">[][]</span><span class="w"> </span><span class="n">adjacency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="n">vertexCount</span><span class="o">][]</span><span class="p">;</span><span class="w"> </span><span class="c1">// rows start null</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">        </span><span class="n">adjacency</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">};</span><span class="w">       </span><span class="c1">// vertex 0 connects to 1, 2</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">        </span><span class="n">adjacency</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">};</span><span class="w"> </span><span class="c1">// vertex 1 is a "hub"</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">        </span><span class="n">adjacency</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">};</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">        </span><span class="n">adjacency</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">        </span><span class="n">adjacency</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">adjacency</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">v</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Vertex "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" neighbors: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">adjacency</span><span class="o">[</span><span class="n">v</span><span class="o">]</span><span class="p">));</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">        </span><span class="c1">// Demonstrating the NPE risk of an unassigned row</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">        </span><span class="kt">int</span><span class="o">[][]</span><span class="w"> </span><span class="n">incomplete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="mi">3</span><span class="o">][]</span><span class="p">;</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">        </span><span class="n">incomplete</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[]</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">incomplete</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span><span class="w"> </span><span class="c1">// row 1 never assigned</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">NullPointerException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Caught expected NPE: unassigned jagged row accessed"</span><span class="p">);</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="arrays-utility-class">Arrays Utility Class</h2>
+<h3 id="theory_3">Theory</h3>
+<p><strong>Core Concepts</strong>: <code>java.util.Arrays</code> is a final utility class of <code>static</code> methods providing algorithmic operations on arrays that the language's bare array type doesn't natively support — sorting (<code>sort</code>), searching (<code>binarySearch</code>), comparison (<code>equals</code>, <code>deepEquals</code>), copying (<code>copyOf</code>, <code>copyOfRange</code>), filling (<code>fill</code>), string representation (<code>toString</code>, <code>deepToString</code>), and stream conversion (<code>stream</code>).</p>
+<p><strong>Internal Working</strong>: <code>Arrays.sort</code> uses a dual-pivot quicksort variant for primitive arrays (generally not guaranteed stable, and its exact algorithm/thresholds have evolved across JDK versions, sometimes falling back to insertion sort for very small subarrays) and a stable, adaptive merge sort (TimSort-derived) for object arrays (<code>Comparable</code>/<code>Comparator</code>-based), since object comparisons can have side effects and object array sorting needs to be stable by specification. <code>Arrays.binarySearch</code> requires the array to already be sorted (consistent with the comparison order used) or its result is undefined.</p>
+<p><strong>When to Use It</strong>: Any time you're working directly with arrays (rather than <code>Collection</code> types) and need common bulk operations — sorting a primitive array before binary search, deep-comparing/deep-printing nested arrays (which don't have useful default <code>toString</code>/<code>equals</code> since arrays inherit <code>Object</code>'s identity-based versions), or converting between arrays and streams for functional-style processing.</p>
+<p><strong>Advantages</strong>: Provides a comprehensive, well-tested, performance-tuned standard toolkit so application code doesn't need to hand-roll sorting/searching/comparison logic; <code>deepEquals</code>/<code>deepToString</code> correctly handle nested array structures that plain <code>equals</code>/<code>toString</code> cannot (since <code>Object.equals</code> on an array is reference equality, and <code>Object.toString</code> on an array produces an unhelpful <code>[I@hashcode</code>-style string).</p>
+<p><strong>Limitations</strong>: <code>Arrays.asList()</code> returns a fixed-size list backed directly by the array (structural modifications like <code>add</code>/<code>remove</code> throw <code>UnsupportedOperationException</code>, and element updates via the list actually mutate the backing array — a classic surprise/gotcha); <code>Arrays.sort</code> for object arrays requires elements to be mutually comparable (implementing <code>Comparable</code> or providing a <code>Comparator</code>) or it throws <code>ClassCastException</code>; primitive array sorting and object array sorting use genuinely different algorithms with different complexity/stability guarantees, a frequent interview distinction.</p>
+<h3 id="internal-working_3">Internal Working</h3>
+<p><strong>Step-by-Step Explanation</strong>:
+1. <code>Arrays.sort(int[])</code> uses a dual-pivot quicksort (introduced in Java 7, replacing the older single-pivot quicksort) for primitive arrays — average-case O(n log n), with an insertion-sort fallback for small subarrays (a common practical optimization since insertion sort has lower constant-factor overhead for tiny inputs) and dedicated multi-pivot partitioning to reduce comparisons on average versus classic single-pivot quicksort.
+2. <code>Arrays.sort(Object[])</code> (and <code>sort(T[], Comparator)</code>) uses a modified merge sort (TimSort, adapted from the algorithm used in Python) — guaranteed O(n log n) worst case, and crucially <em>stable</em> (equal elements retain their relative input order), a requirement the JLS/API contract explicitly documents for object array sorting (unlike primitive sorting, where "equal" elements are indistinguishable anyway, making stability a non-issue).
+3. <code>Arrays.binarySearch</code> implements the standard binary search algorithm (O(log n)), requiring the input already be sorted per the same ordering it will use for comparisons; if the array isn't sorted, the returned result is explicitly documented as undefined (no exception is thrown — it may simply return an incorrect index or "not found" incorrectly).
+4. <code>Arrays.equals</code>/<code>deepEquals</code> and <code>toString</code>/<code>deepToString</code> differ in whether they recurse into nested array elements: the non-deep variants treat nested array elements as ordinary objects (comparing/printing by reference/identity, since a plain array element that happens to be another array uses <code>Object.equals</code>/<code>toString</code> unless deep-aware logic is used), while the deep variants recursively apply array-aware equality/formatting to any element that is itself an array.</p>
+<p><strong>Memory Layout</strong>: <code>copyOf</code>/<code>copyOfRange</code> allocate an entirely new backing array and use an optimized bulk copy (effectively <code>System.arraycopy</code>, itself typically a JIT/VM intrinsic mapping to an efficient native memory-copy operation) rather than an element-by-element Java loop.</p>
+<p><strong>Diagrams</strong>:
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Arrays.sort(int[])     -&gt; Dual-pivot quicksort (not stable, not needed for primitives)
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Arrays.sort(Object[])  -&gt; TimSort-derived stable merge sort (stability required by contract)
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>Arrays.binarySearch()  -&gt; O(log n), REQUIRES pre-sorted input (undefined otherwise)
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>Arrays.asList(arr)     -&gt; fixed-size List VIEW backed by arr (set() mutates arr; add()/remove() throw)
+</code></pre></div>
+<p><strong>JVM Behaviour</strong>: <code>System.arraycopy</code> (used internally by <code>copyOf</code>/<code>copyOfRange</code> and generally recommended over manual loops for bulk array copying) is a JVM intrinsic — the JIT/interpreter recognizes this specific native method and substitutes a highly optimized, often hardware-accelerated (vectorized/wide-word) memory-copy routine rather than executing it as an ordinary interpreted or even JIT-compiled Java loop, making it substantially faster than a hand-written element-by-element copy loop for large arrays.</p>
+<h3 id="interview-questions_3">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What sorting algorithm does <code>Arrays.sort</code> use for <code>int[]</code> versus <code>Object[]</code>, and why the difference?
+2. What precondition must hold before calling <code>Arrays.binarySearch</code>?</p>
+<p><strong>Intermediate</strong>
+1. What's the well-known gotcha with <code>Arrays.asList()</code> regarding mutability?
+2. Why do <code>Arrays.equals</code> and <code>Arrays.deepEquals</code> behave differently for an array of arrays?</p>
+<p><strong>Advanced</strong>
+1. Why is <code>System.arraycopy</code> typically much faster than a manual element-by-element copy loop?</p>
+<p><strong>Scenario-based</strong>
+1. A developer calls <code>list.add(x)</code> on the result of <code>Arrays.asList(someArray)</code> and gets an <code>UnsupportedOperationException</code> at runtime in production. Explain the root cause and the correct fix.</p>
+<h3 id="detailed-answers_3">Detailed Answers</h3>
+<ol>
+<li>
+<p><strong>Sort algorithm difference</strong>: <code>Arrays.sort(int[])</code> (and other primitive array overloads) uses dual-pivot quicksort, which is not stable but that's irrelevant for primitives since identical primitive values are indistinguishable from each other anyway (there's no notion of "which one" among equal ints). <code>Arrays.sort(Object[])</code> uses a stable, TimSort-derived merge sort because object elements that compare as "equal" (per <code>compareTo</code>/<code>Comparator</code>) may still be distinguishable objects with other differing state, and the API contract guarantees their relative order is preserved — a real, observable behavioral requirement that only applies to reference types.</p>
+</li>
+<li>
+<p><strong><code>binarySearch</code> precondition</strong>: The array must already be sorted in ascending order consistent with the natural ordering (<code>Comparable</code>) or the specific <code>Comparator</code> supplied to the search call — if this precondition is violated, the method's behavior/return value is explicitly documented as undefined (it will not necessarily throw an exception; it may simply return a wrong or misleading result).</p>
+</li>
+<li>
+<p><strong><code>Arrays.asList()</code> gotcha</strong>: The <code>List</code> returned by <code>Arrays.asList(array)</code> is a fixed-size <em>view</em> directly backed by the original array — calling <code>set(index, value)</code> on this list actually mutates the underlying array in place (a genuinely useful, sometimes surprising property), but calling any structurally-modifying method (<code>add</code>, <code>remove</code>) throws <code>UnsupportedOperationException</code> immediately, since the list's size is permanently tied to the backing array's fixed length and cannot grow/shrink.</p>
+</li>
+<li>
+<p><strong><code>equals</code> vs <code>deepEquals</code> for nested arrays</strong>: <code>Arrays.equals(Object[] a, Object[] b)</code> compares corresponding elements using each element's own <code>.equals()</code> method — if an element is itself an array, <code>array.equals()</code> (inherited from <code>Object</code>) is reference-identity comparison, so two structurally-identical-but-distinct inner arrays would compare as unequal. <code>Arrays.deepEquals</code> instead recursively detects array-typed elements and applies array-aware (recursively deep) equality logic to them, correctly comparing nested array structures element-by-element all the way down, which is what's usually actually intended when comparing multi-dimensional or nested array data.</p>
+</li>
+<li>
+<p><strong>Why <code>System.arraycopy</code> is faster</strong>: It's implemented as a JVM intrinsic — rather than executing as an ordinary sequence of interpreted or JIT-compiled load/store instructions per element (as a hand-written <code>for</code> loop copying element-by-element would, at least until/unless the JIT can auto-vectorize it), the JVM directly substitutes a specialized, highly optimized native memory-copy implementation (often leveraging wide-word or SIMD/vectorized CPU instructions and taking advantage of the fact the source and destination are both plain contiguous arrays) recognized specially by the runtime, making it consistently faster and more predictable than relying on the JIT to discover and apply equivalent optimizations to a manual loop.</p>
+</li>
+<li>
+<p><strong><code>UnsupportedOperationException</code> scenario</strong>: The root cause is that <code>Arrays.asList(someArray)</code> returns a fixed-size <code>List</code> view directly wrapping the array — it deliberately does not support structural modification (<code>add</code>/<code>remove</code>) since doing so would require resizing the underlying array, which the view contract explicitly disallows. The fix is to wrap the result in a genuinely resizable, independent collection: <code>new ArrayList&lt;&gt;(Arrays.asList(someArray))</code>, which copies the elements into a real, growable <code>ArrayList</code> decoupled from the original fixed-size array-backed view, allowing normal <code>add</code>/<code>remove</code> operations afterward.</p>
+</li>
+</ol>
+<h3 id="code-examples_3">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Arrays</span><span class="p">;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ArraysUtilityDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">        </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">};</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">        </span><span class="n">Arrays</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">numbers</span><span class="p">);</span><span class="w"> </span><span class="c1">// dual-pivot quicksort for primitives</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">numbers</span><span class="p">));</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">binarySearch</span><span class="p">(</span><span class="n">numbers</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span><span class="w"> </span><span class="c1">// requires pre-sorted input</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Found 8 at index: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">index</span><span class="p">);</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">        </span><span class="c1">// deepEquals/deepToString for nested arrays</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">        </span><span class="kt">int</span><span class="o">[][]</span><span class="w"> </span><span class="n">matrixA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">}};</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">        </span><span class="kt">int</span><span class="o">[][]</span><span class="w"> </span><span class="n">matrixB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">}};</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"equals(): "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">matrixA</span><span class="p">,</span><span class="w"> </span><span class="n">matrixB</span><span class="p">));</span><span class="w">         </span><span class="c1">// false: compares inner refs</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"deepEquals(): "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">deepEquals</span><span class="p">(</span><span class="n">matrixA</span><span class="p">,</span><span class="w"> </span><span class="n">matrixB</span><span class="p">));</span><span class="w"> </span><span class="c1">// true: recursive comparison</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">deepToString</span><span class="p">(</span><span class="n">matrixA</span><span class="p">));</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="w">        </span><span class="c1">// Arrays.asList() gotcha and correct fix</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fixedView</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="w">            </span><span class="n">fixedView</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span><span class="w"> </span><span class="c1">// throws — fixed-size view backed by an array</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">UnsupportedOperationException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Caught expected: fixed-size list view cannot grow"</span><span class="p">);</span>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">resizable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">fixedView</span><span class="p">);</span><span class="w"> </span><span class="c1">// correct fix</span>
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="w">        </span><span class="n">resizable</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">resizable</span><span class="p">);</span>
+<a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="array-covariance-new">Array Covariance <em>(new)</em></h2>
+<h3 id="theory_4">Theory</h3>
+<p><strong>Core Concepts</strong>: Array covariance is the rule that if <code>Sub</code> is a subtype of <code>Super</code>, then <code>Sub[]</code> is treated as a subtype of <code>Super[]</code> — meaning a <code>Sub[]</code> reference can be assigned to a <code>Super[]</code>-typed variable. This is a deliberate design decision from early Java (predating generics) that trades static type safety for API expressiveness, and it directly contrasts with generics, which are <em>invariant</em> (<code>List&lt;Sub&gt;</code> is NOT a subtype of <code>List&lt;Super&gt;</code>).</p>
+<p><strong>Internal Working</strong>: Because arrays retain their actual runtime component type (unlike generics, which erase type parameters), the JVM can and does perform a runtime check — <code>ArrayStoreException</code> — on every reference-array element write (<code>aastore</code>), verifying the value being stored is actually compatible with the array's real runtime component type, not just its static (potentially widened, covariant) compile-time type.</p>
+<p><strong>When to Use It</strong>: Rarely intentionally exploited directly in modern code — mostly relevant historically for APIs predating generics (e.g., <code>Object[] toArray()</code> on collections accepting/returning covariant array types) — but essential to understand as the mechanism that makes certain array-based method signatures type-flexible while still requiring a runtime safety net.</p>
+<p><strong>Advantages</strong>: Allows a single method to operate polymorphically over arrays of any subtype (e.g., a method accepting <code>Object[]</code> can accept a <code>String[]</code> argument directly) without needing generics at all, which mattered greatly for API design before Java 5 introduced generics.</p>
+<p><strong>Limitations</strong>: Covariance defers a whole class of type errors from compile time to runtime — code that compiles cleanly (assigning a <code>String[]</code> to an <code>Object[]</code>-typed variable, then attempting to store an <code>Integer</code> into it through that reference) can throw a runtime <code>ArrayStoreException</code>, a category of bug generics were specifically designed to prevent by being invariant and catching such mismatches at compile time instead.</p>
+<h3 id="internal-working_4">Internal Working</h3>
+<p><strong>Step-by-Step Explanation</strong>:
+1. <code>String[] strings = {"a", "b"}; Object[] objects = strings;</code> compiles successfully because arrays are covariant — <code>String[]</code> is-a <code>Object[]</code> for the purposes of assignment compatibility, verified purely against the compile-time static types.
+2. However, the array object itself, at runtime, still "remembers" its true, original component type (<code>String</code>, not <code>Object</code>) — this runtime component-type tag is part of every array object's internal metadata (accessible via <code>arr.getClass().getComponentType()</code>).
+3. When code performs <code>objects[0] = 42;</code> (storing an <code>Integer</code> through the covariant <code>Object[]</code>-typed reference), the JVM's <code>aastore</code> bytecode instruction performs a runtime type check comparing the value's actual runtime type against the array's <em>actual</em> runtime component type (<code>String</code>, not the static <code>Object</code> type used at the assignment's compile-time location) — since <code>Integer</code> is not assignable to <code>String</code>, this check fails.
+4. The JVM throws <code>ArrayStoreException</code> at that exact store operation, preventing the array from ever actually holding a value inconsistent with its true component type, preserving overall runtime type safety despite the compile-time covariance "hole."</p>
+<p><strong>Memory Layout</strong>: Not directly applicable beyond the fact that every array object's header/metadata includes its actual runtime component type (part of the array's <code>Class</code> reference), which is exactly what the <code>aastore</code> runtime check consults — this is different from generic collections, where type-parameter information is erased and unavailable at runtime for any equivalent check.</p>
+<p><strong>Diagrams</strong>:
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>String[] strings = {"a", "b"};
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>Object[] objects = strings;      // compiles: covariance allows this assignment
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>objects[0] = "ok";                // succeeds: String IS assignable to String (the array's real type)
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>objects[1] = Integer.valueOf(5);  // COMPILES (static type is Object[]) but throws ArrayStoreException at runtime
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>                                   // because the array's actual runtime component type is String, not Object
+</code></pre></div>
+<p><strong>JVM Behaviour</strong>: The <code>aastore</code> instruction (used for storing into any reference-type array) always performs this runtime component-type compatibility check — it is not an optional or JIT-eliminable safety net in the general covariant case (though the JIT can eliminate the check in cases where it can statically prove the store is always safe, such as storing directly into an array of its own declared, non-widened type). This check is the JVM's way of closing the type-safety hole opened by allowing covariant array assignment at compile time, and is a direct, deliberate contrast to how generics achieve safety instead — purely at compile time, via erasure and invariance, with no runtime check needed (or even possible, given erasure).</p>
+<h3 id="interview-questions_4">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What does it mean for arrays to be "covariant" in Java?
+2. What exception can occur specifically because of array covariance, and when?</p>
+<p><strong>Intermediate</strong>
+1. Why are generic collections (<code>List&lt;T&gt;</code>) invariant while arrays are covariant — what problem does invariance solve that covariance doesn't?
+2. Does <code>arr.getClass().getComponentType()</code> reflect the static or the actual runtime type of the array?</p>
+<p><strong>Advanced</strong>
+1. Why couldn't Java simply make arrays invariant like generics, given the safety benefits, without breaking existing code?</p>
+<p><strong>Scenario-based</strong>
+1. A method has the signature <code>void printAll(Object[] items)</code> and is called with a <code>String[]</code>. Inside the method, a buggy line does <code>items[0] = new StringBuilder("oops");</code>. Explain exactly what happens and why the compiler didn't catch it.</p>
+<h3 id="detailed-answers_4">Detailed Answers</h3>
+<ol>
+<li>
+<p><strong>Array covariance meaning</strong>: It means that for any reference types where <code>Sub</code> is a subtype of <code>Super</code>, the array type <code>Sub[]</code> is likewise considered a subtype of <code>Super[]</code> — so a <code>Sub[]</code>-typed reference can be assigned directly to a variable of type <code>Super[]</code> without any cast, purely based on the compile-time class hierarchy, even though this can introduce runtime-detectable unsafety (see below).</p>
+</li>
+<li>
+<p><strong>Exception caused by covariance</strong>: <code>ArrayStoreException</code> — thrown when code attempts to store a value into an array (through a covariantly-widened reference) whose actual runtime type is incompatible with the array's true, original runtime component type; it occurs specifically at the point of the offending <code>array[i] = value</code> store operation, not at the earlier covariant assignment itself (which always compiles and succeeds regardless).</p>
+</li>
+<li>
+<p><strong>Why generics are invariant instead</strong>: Generics were introduced specifically to provide <em>compile-time</em> type safety for collections and other parameterized types — making <code>List&lt;Sub&gt;</code> NOT a subtype of <code>List&lt;Super&gt;</code> (invariance) closes exactly the kind of hole array covariance leaves open: if <code>List&lt;Sub&gt;</code> were assignable to <code>List&lt;Super&gt;</code>, code could then call <code>list.add(someSuperButNotSubInstance)</code> through the <code>List&lt;Super&gt;</code>-typed reference, silently corrupting the underlying <code>List&lt;Sub&gt;</code> with an incompatible element — generics prevent this entirely at compile time by disallowing the initial covariant assignment itself (you'd need an explicit, deliberately-scoped mechanism like wildcards <code>List&lt;? extends Super&gt;</code> to get safe, read-only covariant-like behavcovariant-like behavior).</p>
+</li>
+<li>
+<p><strong><code>getComponentType()</code> — static or runtime?</strong> It reflects the array's actual runtime component type, not whatever static type a reference to it might currently be declared with — this is precisely why the <code>aastore</code> runtime check (and thus <code>ArrayStoreException</code>) works correctly even after an array has been assigned through several layers of covariant supertype-typed references; the JVM never loses track of what the array object "really is."</p>
+</li>
+<li>
+<p><strong>Why arrays couldn't simply be made invariant</strong>: Arrays and their covariance rules predate generics by roughly a decade (arrays have existed since Java 1.0; generics arrived in Java 5) — a vast amount of existing API surface and application code was already written relying on covariant array assignment/parameter-passing semantics (e.g., methods accepting <code>Object[]</code> callable with any reference-array subtype). Changing arrays to be invariant would have been a severe, sweeping backward-compatibility break for virtually all existing Java code, which is why the JVM/language instead retained covariance for arrays (accepting the runtime-check safety-net trade-off) while introducing a <em>different</em>, invariant, compile-time-only safety model specifically for the new generics feature going forward.</p>
+</li>
+<li>
+<p><strong><code>printAll(Object[] items)</code> scenario</strong>: The compiler cannot catch this because, from its perspective at the point of <code>items[0] = new StringBuilder(...)</code>, <code>items</code> is statically typed <code>Object[]</code>, and <code>StringBuilder</code> is a perfectly valid <code>Object</code> — the assignment is completely legal according to the <em>static</em> type system, exactly as array covariance is designed to permit. However, at runtime, the actual array object passed in was created as a genuine <code>String[]</code> — so when the <code>aastore</code> instruction executes this store, the JVM checks the value's actual type (<code>StringBuilder</code>) against the array's real runtime component type (<code>String</code>), finds them incompatible, and throws <code>ArrayStoreException</code> at that exact line — a runtime failure for code that compiled without any warning, illustrating precisely why array covariance is considered a design wart that generics deliberately avoided repeating.</p>
+</li>
+</ol>
+<h3 id="code-examples_4">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ArrayCovarianceDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">printAll</span><span class="p">(</span><span class="n">Object</span><span class="o">[]</span><span class="w"> </span><span class="n">items</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">items</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="c1">// Buggy method illustrating the covariance hole: compiles fine, fails at runtime</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">corruptFirstElement</span><span class="p">(</span><span class="n">Object</span><span class="o">[]</span><span class="w"> </span><span class="n">items</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">        </span><span class="n">items</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StringBuilder</span><span class="p">(</span><span class="s">"oops"</span><span class="p">);</span><span class="w"> </span><span class="c1">// legal per static type Object[]</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">        </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s">"Ada"</span><span class="p">,</span><span class="w"> </span><span class="s">"Grace"</span><span class="p">,</span><span class="w"> </span><span class="s">"Katherine"</span><span class="p">};</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">        </span><span class="c1">// Covariant assignment: String[] is-a Object[] at compile time</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">        </span><span class="n">Object</span><span class="o">[]</span><span class="w"> </span><span class="n">asObjectArray</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">names</span><span class="p">;</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">        </span><span class="n">printAll</span><span class="p">(</span><span class="n">asObjectArray</span><span class="p">);</span><span class="w"> </span><span class="c1">// works fine — only reading, no store type mismatch</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="w">            </span><span class="n">corruptFirstElement</span><span class="p">(</span><span class="n">names</span><span class="p">);</span><span class="w"> </span><span class="c1">// names is ACTUALLY a String[] at runtime</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">ArrayStoreException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Caught expected ArrayStoreException: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a>
+<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="w">        </span><span class="c1">// Confirming the array "remembers" its true runtime component type</span>
+<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Runtime component type: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">names</span><span class="p">.</span><span class="na">getClass</span><span class="p">().</span><span class="na">getComponentType</span><span class="p">());</span>
+<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a><span class="p">}</span>
+</code></pre></div></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2025 <a href="https://github.com/abhishekghoshh"  target="_blank" rel="noopener">Abhishek Ghosh</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/abhishekghoshh" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://x.com/abhishek_ghoshh" target="_blank" rel="noopener" title="x.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/abhishek-ghosh-220679132/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

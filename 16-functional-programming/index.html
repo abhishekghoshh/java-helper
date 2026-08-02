@@ -1,0 +1,2499 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abhishekghoshh.github.io/java-helper/16-functional-programming/">
+      
+      
+        <link rel="prev" href="../15-annotations/">
+      
+      
+        <link rel="next" href="../17-streams-api/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Functional Programming - Java Helper</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Functional Programming - Java Helper" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/16-functional-programming.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://abhishekghoshh.github.io/java-helper/16-functional-programming/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Functional Programming - Java Helper" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/16-functional-programming.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#16-functional-programming" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Java Helper" class="md-header__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Java Helper
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Functional Programming
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../1-java-language-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Java Language Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../2-object-oriented-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Object-Oriented Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../3-classes/" class="md-tabs__link">
+        
+  
+    
+  
+  Classes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../4-constructors/" class="md-tabs__link">
+        
+  
+    
+  
+  Constructors
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-access-modifiers/" class="md-tabs__link">
+        
+  
+    
+  
+  Access Modifiers
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../6-packages/" class="md-tabs__link">
+        
+  
+    
+  
+  Packages
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../7-strings/" class="md-tabs__link">
+        
+  
+    
+  
+  Strings
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../8-arrays/" class="md-tabs__link">
+        
+  
+    
+  
+  Arrays
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../9-collections-framework/" class="md-tabs__link">
+        
+  
+    
+  
+  Collections Framework
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../10-generics/" class="md-tabs__link">
+        
+  
+    
+  
+  Generics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../11-exception-handling/" class="md-tabs__link">
+        
+  
+    
+  
+  Exception Handling
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../12-file-io/" class="md-tabs__link">
+        
+  
+    
+  
+  File I/O
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../13-serialization/" class="md-tabs__link">
+        
+  
+    
+  
+  Serialization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../14-reflection/" class="md-tabs__link">
+        
+  
+    
+  
+  Reflection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../15-annotations/" class="md-tabs__link">
+        
+  
+    
+  
+  Annotations
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Functional Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../17-streams-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Streams API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../18-date-and-time-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Date and Time API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../19-jvm-internals/" class="md-tabs__link">
+        
+  
+    
+  
+  JVM Internals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../20-class-loader/" class="md-tabs__link">
+        
+  
+    
+  
+  Class Loader
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../21-memory-management/" class="md-tabs__link">
+        
+  
+    
+  
+  Memory Management
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../22-garbage-collection/" class="md-tabs__link">
+        
+  
+    
+  
+  Garbage Collection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../23-concurrency/" class="md-tabs__link">
+        
+  
+    
+  
+  Concurrency
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../24-networking/" class="md-tabs__link">
+        
+  
+    
+  
+  Networking
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../25-design-patterns-in-java/" class="md-tabs__link">
+        
+  
+    
+  
+  Design Patterns in Java
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../26-modern-java-language-features/" class="md-tabs__link">
+        
+  
+    
+  
+  Modern Java Language Features
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../27-regular-expressions/" class="md-tabs__link">
+        
+  
+    
+  
+  Regular Expressions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../28-internationalization-and-localization/" class="md-tabs__link">
+        
+  
+    
+  
+  Internationalization & Localization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../29-logging/" class="md-tabs__link">
+        
+  
+    
+  
+  Logging
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../30-security-basics/" class="md-tabs__link">
+        
+  
+    
+  
+  Security Basics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-tabs__link">
+        
+  
+    
+  
+  Native & Foreign Interoperability
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../32-process-and-system-apis/" class="md-tabs__link">
+        
+  
+    
+  
+  Process & System APIs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../33-testing-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Testing Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Java Helper" class="md-nav__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Java Helper
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-java-language-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java Language Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-object-oriented-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-classes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Classes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-constructors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constructors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-access-modifiers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access Modifiers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Packages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-strings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Strings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-collections-framework/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collections Framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-generics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-exception-handling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exception Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-file-io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File I/O
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-serialization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serialization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-reflection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reflection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-annotations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Functional Programming
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Functional Programming
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lambda" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lambda
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lambda">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functional-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functional Interfaces
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Functional Interfaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      Method References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Method References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#closures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Closures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Closures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Optional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Additional Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#videos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Videos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#courses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Courses
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-question-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Question Resources
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-streams-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Streams API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-date-and-time-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Date and Time API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-jvm-internals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JVM Internals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-class-loader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Class Loader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-memory-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-garbage-collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Garbage Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-concurrency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concurrency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-networking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-design-patterns-in-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Patterns in Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-modern-java-language-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modern Java Language Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-regular-expressions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Regular Expressions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-internationalization-and-localization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internationalization & Localization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-logging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30-security-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Native & Foreign Interoperability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32-process-and-system-apis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process & System APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33-testing-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div><h1 id="16-functional-programming">16. Functional Programming</h1>
+<h2 id="lambda">Lambda</h2>
+<h3 id="theory">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong>: A lambda expression (Java 8+) is a concise, anonymous function-like value — <code>(params) -&gt; expression-or-block</code> — that provides an implementation for a single abstract method of a functional interface. It is Java's mechanism for treating behavior as data without the verbosity of an anonymous inner class.</li>
+<li><strong>Internal Working</strong>: Unlike anonymous inner classes, lambdas are <strong>not</strong> compiled into a separate <code>.class</code> file per lambda at compile time; instead, <code>javac</code> emits an <code>invokedynamic</code> instruction whose bootstrap method (<code>LambdaMetafactory.metafactory</code>) generates the actual implementing class lazily at first execution, using the <code>java.lang.invoke</code> API.</li>
+<li><strong>When to Use It</strong>: Whenever you need to pass a short, focused piece of behavior as an argument — <code>Comparator</code>, stream pipeline operations (<code>map</code>, <code>filter</code>, <code>forEach</code>), event handlers, <code>Runnable</code>/<code>Callable</code> tasks.</li>
+<li><strong>Advantages</strong>: Dramatically reduces boilerplate versus anonymous classes, enables the entire Streams API and functional-style composition, captures enclosing variables without an explicit constructor.</li>
+<li><strong>Limitations</strong>: Lambdas can only implement functional interfaces (exactly one abstract method); captured local variables must be effectively final; overuse of deeply nested lambdas can hurt readability and make stack traces harder to read; debugging can be less intuitive than named methods.</li>
+</ul>
+<h3 id="internal-working">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: 1) <code>javac</code> type-checks the lambda against its target functional interface (inferred from context — assignment, method parameter, cast) and compiles its body into a private synthetic method on the enclosing class (e.g., <code>lambda$main$0</code>). 2) At the call site, the compiler emits <code>invokedynamic</code>, whose bootstrap method is <code>LambdaMetafactory.metafactory</code> with static/dynamic arguments describing the functional interface's method signature and a <code>MethodHandle</code> pointing at the synthetic method. 3) On first execution of that <code>invokedynamic</code> call site, the JVM invokes the bootstrap method exactly once, which uses <code>MethodHandle</code>/<code>MethodType</code> machinery (and, since it's implemented via generated hidden classes, <code>ASM</code>-style bytecode spinning under the hood) to define a small hidden implementation class implementing the functional interface, wrapping the <code>MethodHandle</code>. 4) The <code>CallSite</code> returned is cached, so subsequent invocations at that call site directly invoke the generated implementation with near-zero further linkage overhead.</li>
+<li><strong>Memory Layout</strong>: The lambda's captured variables (for non-static lambdas capturing <code>this</code> or local effectively-final variables) are stored as constructor-supplied fields on the heap-allocated lambda instance, analogous to an anonymous inner class instance; the class metadata for the dynamically generated implementation lives in metaspace, but as a <strong>hidden class</strong> it is more readily unloadable by the GC (via <code>Lookup.defineHiddenClass</code>) when no longer referenced, unlike a classic named nested class.</li>
+<li><strong>Diagrams</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Comparator&lt;String&gt; byLength = (a, b) -&gt; a.length() - b.length();
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                    |
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>                    v (javac)
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>private static int lambda$main$0(String a, String b) { return a.length() - b.length(); }
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>                    |
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        invokedynamic call site -&gt; LambdaMetafactory.metafactory (bootstrap, first call only)
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>                    |
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        generates hidden class implementing Comparator, wrapping a MethodHandle to lambda$main$0
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>                    |
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        CallSite cached -&gt; subsequent calls invoke directly, no further metafactory cost
+</code></pre></div>
+<ul>
+<li><strong>JVM Behaviour</strong>: Because generation is deferred to first use via <code>invokedynamic</code>, classes for lambdas that are never executed are never generated at all (unlike anonymous classes, which are always compiled to <code>.class</code> files whether used or not); the JIT compiler treats the resulting call sites like any other monomorphic call after linkage, allowing full inlining once warmed up, and the hidden classes are eligible for unloading, reducing metaspace pressure in lambda-heavy, dynamically-generated-class-heavy applications.</li>
+</ul>
+<h3 id="interview-questions">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What is a lambda expression, and what must the target type be?
+2. What does "effectively final" mean in the context of variables captured by a lambda?</p>
+<p><strong>Intermediate</strong>
+3. Why don't lambda expressions produce a visible <code>.class</code> file for each lambda the way anonymous inner classes do?
+4. What is the difference between a lambda capturing <code>this</code> versus one that doesn't reference any enclosing instance state?</p>
+<p><strong>Advanced</strong>
+5. Explain the role of <code>invokedynamic</code> and <code>LambdaMetafactory</code> in how lambdas are implemented.
+6. Why are lambda-generated classes described as "hidden classes," and why does that matter for memory management?</p>
+<p><strong>Scenario-based</strong>
+7. A lambda inside a loop captures a loop variable and a colleague gets a compile error "local variables referenced from a lambda expression must be final or effectively final." Explain why this restriction exists and how to work around it.</p>
+<h3 id="detailed-answers">Detailed Answers</h3>
+<ol>
+<li>A lambda expression is an anonymous implementation of a single abstract method, of the form <code>(params) -&gt; body</code>. Its target type must be a <strong>functional interface</strong> — an interface with exactly one abstract method (default/static/<code>Object</code> methods don't count) — determined by the assignment context, method parameter type, or explicit cast; Java infers this target type rather than the lambda having an intrinsic type of its own.</li>
+<li>"Effectively final" means a local variable is never reassigned after its initial assignment, even though it isn't explicitly declared <code>final</code>. Lambdas may only capture such variables (by value, at the point of lambda creation) because the captured value is copied into the lambda instance's field; allowing later reassignment of the original variable would create ambiguity about which value the lambda "sees," especially since the lambda might outlive the enclosing method's stack frame.</li>
+<li>Lambdas use <code>invokedynamic</code> with <code>LambdaMetafactory</code> to generate their implementing class <strong>lazily at runtime</strong>, on first execution of the call site, rather than having <code>javac</code> eagerly emit a named <code>.class</code> file for every lambda at compile time. This keeps the compiled JAR smaller and defers (or entirely avoids, for unexecuted code paths) the cost of class generation.</li>
+<li>A lambda that references <code>this</code> or an instance field/method of the enclosing class captures a reference to the enclosing instance (similar to a non-static inner class), meaning it implicitly keeps that instance reachable for as long as the lambda lives. A lambda that only uses its own parameters or effectively-final local variables (and no enclosing instance state) can be implemented without holding an enclosing-instance reference, which is sometimes compiled to a "non-capturing" lambda that the JVM can even reuse as a singleton instance for that call site, since it needs no per-invocation captured state.</li>
+<li><code>invokedynamic</code> is a bytecode instruction that defers the choice of what code actually runs (and how) to a bootstrap method resolved at first execution, rather than baking in a fixed method reference at compile time. For lambdas, the compiler emits an <code>invokedynamic</code> instruction whose bootstrap method is <code>java.lang.invoke.LambdaMetafactory.metafactory</code> (or <code>altMetafactory</code> for special cases like serializable lambdas); this method dynamically generates a class implementing the target functional interface that delegates to a <code>MethodHandle</code> referencing the compiler-synthesized lambda body method, and returns a <code>CallSite</code> that is cached for all future invocations of that specific lambda expression's call site.</li>
+<li>Hidden classes (<code>Lookup.defineHiddenClass</code>, formally introduced as a JVM/API concept in Java 15, and used internally for lambda implementation since Java 8's original mechanism, later formalized) are classes that cannot be discovered by name via normal reflection/classloading and are not registered in the defining class loader's normal class list, meaning they can be unloaded independently of — and more eagerly than — regular named classes once unreachable, even while their defining class loader remains alive. This matters for memory management because applications generating large numbers of distinct lambda expressions (e.g., dynamically per request) don't permanently bloat metaspace, since the JVM can reclaim these hidden classes once the corresponding call sites/instances become unreachable.</li>
+<li>Java requires captured local variables to be effectively final because the lambda's generated implementation class stores a <strong>copy</strong> of the captured variable's value in a field at the time the lambda instance is created; if the original loop variable could still change afterward, the lambda's captured copy and the "live" variable would diverge, creating confusing semantics (which value should the lambda see — the one at creation time, or the current one?). Since Java, unlike JavaScript, doesn't support true mutable closures, the workaround is to introduce a new effectively-final local variable inside the loop body (e.g., <code>final int captured = i;</code>) that is re-created fresh on each iteration and never reassigned, so each lambda instance captures its own independent, immutable snapshot.</li>
+</ol>
+<h3 id="code-examples">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.function.Predicate</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OrderFiltering</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Order</span><span class="o">&gt;</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="n">Order</span><span class="p">(</span><span class="s">"ORD-1"</span><span class="p">,</span><span class="w"> </span><span class="mf">150.0</span><span class="p">,</span><span class="w"> </span><span class="s">"SHIPPED"</span><span class="p">),</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="n">Order</span><span class="p">(</span><span class="s">"ORD-2"</span><span class="p">,</span><span class="w"> </span><span class="mf">45.0</span><span class="p">,</span><span class="w"> </span><span class="s">"PENDING"</span><span class="p">),</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">                </span><span class="k">new</span><span class="w"> </span><span class="n">Order</span><span class="p">(</span><span class="s">"ORD-3"</span><span class="p">,</span><span class="w"> </span><span class="mf">999.0</span><span class="p">,</span><span class="w"> </span><span class="s">"SHIPPED"</span><span class="p">)</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="p">);</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">        </span><span class="c1">// Lambda implementing Predicate&lt;Order&gt; - no target-type boilerplate needed</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="n">Predicate</span><span class="o">&lt;</span><span class="n">Order</span><span class="o">&gt;</span><span class="w"> </span><span class="n">isHighValueShipped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">-&gt;</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">                </span><span class="n">order</span><span class="p">.</span><span class="na">status</span><span class="p">().</span><span class="na">equals</span><span class="p">(</span><span class="s">"SHIPPED"</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">order</span><span class="p">.</span><span class="na">total</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">100.0</span><span class="p">;</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">        </span><span class="n">orders</span><span class="p">.</span><span class="na">stream</span><span class="p">()</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">              </span><span class="p">.</span><span class="na">filter</span><span class="p">(</span><span class="n">isHighValueShipped</span><span class="p">)</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">              </span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">o</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"High value shipped: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="na">id</span><span class="p">()));</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span><span class="kd">record</span> <span class="nc">Order</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">total</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">status</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.function.Supplier</span><span class="p">;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LambdaCaptureDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Supplier</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">suppliers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">            </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">captured</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="c1">// fresh effectively-final variable per iteration</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">            </span><span class="n">suppliers</span><span class="p">.</span><span class="na">add</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">captured</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">captured</span><span class="p">);</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">        </span><span class="c1">// Each lambda captured its own independent snapshot: prints 0, 1, 4</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">        </span><span class="n">suppliers</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="na">get</span><span class="p">()));</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="functional-interfaces">Functional Interfaces</h2>
+<h3 id="theory_1">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong>: A functional interface is any interface with exactly one abstract method (a "Single Abstract Method" or SAM type), optionally annotated with <code>@FunctionalInterface</code> for compiler-enforced documentation. It may still declare any number of <code>default</code>, <code>static</code>, or <code>private</code> methods, and inherited <code>Object</code> methods (<code>equals</code>, <code>hashCode</code>, <code>toString</code>) don't count toward the abstract-method count. <code>java.util.function</code> provides a rich standard library of them: <code>Function&lt;T,R&gt;</code>, <code>Predicate&lt;T&gt;</code>, <code>Supplier&lt;T&gt;</code>, <code>Consumer&lt;T&gt;</code>, <code>BiFunction&lt;T,U,R&gt;</code>, <code>UnaryOperator&lt;T&gt;</code>, and primitive specializations (<code>IntPredicate</code>, <code>ToDoubleFunction&lt;T&gt;</code>, etc.).</li>
+<li><strong>Internal Working</strong>: The interface itself is a completely ordinary compiled interface at the bytecode level; what makes it usable as a lambda target is purely the SAM-shape rule checked by <code>javac</code> at the lambda/method-reference call site, not any special runtime marker.</li>
+<li><strong>When to Use It</strong>: Whenever an API needs to accept "a piece of behavior" as a parameter — reuse a standard <code>java.util.function</code> interface whenever its shape fits, rather than declaring a redundant custom interface, to maximize interoperability with the Streams/Optional APIs.</li>
+<li><strong>Advantages</strong>: Enables lambda/method-reference syntax, promotes composability (<code>Function.andThen</code>, <code>Predicate.and/or/negate</code>), standard interfaces improve API consistency across the JDK and third-party libraries.</li>
+<li><strong>Limitations</strong>: Only one abstract method is allowed, so representing multi-method behavioral contracts still requires a traditional interface with an implementing class; primitive functional interfaces (<code>IntFunction</code>, <code>ToIntFunction</code>, etc.) exist only for common primitive combinations, so uncommon combinations still incur autoboxing.</li>
+</ul>
+<h3 id="internal-working_1">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: 1) <code>javac</code> scans an interface's methods, counting only truly abstract, non-<code>Object</code>-overriding methods; if there is exactly one, the interface qualifies as a valid lambda/method-reference target. 2) <code>@FunctionalInterface</code> is purely a compile-time assertion — if present, the compiler raises an error if the interface does <em>not</em> have exactly one abstract method, catching accidental additions of a second abstract method during maintenance. 3) When a lambda or method reference targets this interface, the previously-described <code>invokedynamic</code>/<code>LambdaMetafactory</code> machinery generates an implementation of that specific interface at the call site.</li>
+<li><strong>Memory Layout</strong>: Not directly applicable beyond ordinary interface metadata in metaspace; standard <code>java.util.function</code> interfaces are loaded once by the bootstrap/platform class loader and shared across the entire application, with zero additional footprint from being "functional."</li>
+<li><strong>Diagrams</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>@FunctionalInterface
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>interface Validator&lt;T&gt; {
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    boolean isValid(T value);        // exactly one abstract method -&gt; SAM
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    default Validator&lt;T&gt; and(Validator&lt;T&gt; other) {   // default methods allowed, don't count
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>        return v -&gt; this.isValid(v) &amp;&amp; other.isValid(v);
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    }
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>}
+</code></pre></div>
+<ul>
+<li><strong>JVM Behaviour</strong>: No special runtime behavior distinguishes a functional interface from any other interface — <code>instanceof</code> checks, virtual dispatch (<code>invokeinterface</code>), and class loading proceed identically; the "functional" nature is a purely compile-time contract enforced by <code>javac</code> and, optionally, self-documented via <code>@FunctionalInterface</code>.</li>
+</ul>
+<h3 id="interview-questions_1">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What qualifies an interface as a "functional interface"?
+2. What does the <code>@FunctionalInterface</code> annotation actually do?</p>
+<p><strong>Intermediate</strong>
+3. Name four core interfaces from <code>java.util.function</code> and describe their shapes (input/output arity).
+4. Can a functional interface have <code>default</code> and <code>static</code> methods? Does that break the SAM rule?</p>
+<p><strong>Advanced</strong>
+5. Why do <code>Object</code>'s methods (<code>equals</code>, <code>hashCode</code>, <code>toString</code>) not count against the single-abstract-method rule, even if redeclared abstractly in the functional interface?
+6. Why does the JDK provide primitive-specialized functional interfaces like <code>IntPredicate</code> and <code>ToDoubleFunction&lt;T&gt;</code> instead of relying solely on generic <code>Predicate&lt;Integer&gt;</code>/<code>Function&lt;T,Double&gt;</code>?</p>
+<p><strong>Scenario-based</strong>
+7. You need an interface representing "a function that takes two <code>int</code>s and returns an <code>int</code>, and may throw a checked <code>IOException</code>." None of <code>java.util.function</code>'s built-ins fit. What's the right approach?</p>
+<h3 id="detailed-answers_1">Detailed Answers</h3>
+<ol>
+<li>An interface qualifies as a functional interface if it declares exactly one abstract method that is not already implicitly provided by <code>Object</code> (methods like <code>equals(Object)</code>, <code>toString()</code>, <code>hashCode()</code> are excluded from the count even if redeclared). It may have any number of <code>default</code>, <code>static</code>, or <code>private</code> methods in addition.</li>
+<li><code>@FunctionalInterface</code> is a compiler-checked marker annotation: applying it causes <code>javac</code> to emit a compile error if the annotated interface does <strong>not</strong> satisfy the single-abstract-method rule (zero or more than one qualifying abstract method). It has no runtime effect whatsoever — it exists purely to catch accidental interface-contract violations early and to self-document intent for readers and tools.</li>
+<li><code>Function&lt;T,R&gt;</code> takes one argument of type <code>T</code> and returns <code>R</code> (method <code>apply</code>); <code>Predicate&lt;T&gt;</code> takes one argument and returns <code>boolean</code> (method <code>test</code>); <code>Supplier&lt;T&gt;</code> takes no arguments and returns <code>T</code> (method <code>get</code>); <code>Consumer&lt;T&gt;</code> takes one argument and returns <code>void</code> (method <code>accept</code>). <code>BiFunction&lt;T,U,R&gt;</code> extends this pattern to two input arguments.</li>
+<li>Yes — <code>default</code> and <code>static</code> methods are fully permitted and do not affect the SAM rule at all, since the rule only counts <strong>abstract</strong> methods. This is precisely what allows rich standard interfaces like <code>Predicate</code> to offer combinators such as <code>and(Predicate)</code>, <code>or(Predicate)</code>, and <code>negate()</code> as <code>default</code> methods while still being usable as a plain lambda target for their single abstract <code>test</code> method.</li>
+<li>The Java Language Specification explicitly excludes public methods of <code>Object</code> from the abstract-method count for functional interfaces, because every implementing class — including every lambda-generated implementation — automatically inherits concrete implementations of those methods from <code>Object</code> regardless of what the interface declares; redeclaring them abstractly in the interface is purely a documentation/type-refinement device (e.g., to add different Javadoc) and doesn't represent "real" missing behavior a lambda would need to supply.</li>
+<li>Generic functional interfaces like <code>Predicate&lt;Integer&gt;</code> require autoboxing every <code>int</code> into an <code>Integer</code> object on each invocation, which allocates wrapper objects and adds GC pressure in hot loops (e.g., inside a stream pipeline processing millions of primitives). Primitive-specialized interfaces (<code>IntPredicate</code>, <code>ToDoubleFunction&lt;T&gt;</code>, <code>IntUnaryOperator</code>, etc.) operate directly on primitive <code>int</code>/<code>long</code>/<code>double</code> values without boxing, which is why <code>IntStream</code>/<code>LongStream</code>/<code>DoubleStream</code> exist as primitive-specialized stream types built around these interfaces for performance-sensitive numeric pipelines.</li>
+<li>None of the standard <code>java.util.function</code> interfaces permit checked exceptions in their abstract method signatures (they'd have to be caught/wrapped inside the lambda body, since interfaces like <code>BiFunction</code> don't declare <code>throws</code>). The correct approach is to declare a small custom <code>@FunctionalInterface</code> — e.g., <code>interface ThrowingIntBinaryOperator { int apply(int a, int b) throws IOException; }</code> — tailored to the exact shape and checked-exception requirement, since <code>java.util.function.IntBinaryOperator</code> cannot express a checked <code>throws</code> clause.</li>
+</ol>
+<h3 id="code-examples_1">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.function.Predicate</span><span class="p">;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CompositePredicateDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="n">Predicate</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">isNotBlank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">s</span><span class="p">.</span><span class="na">isBlank</span><span class="p">();</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="n">Predicate</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">isShort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="na">length</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="c1">// Combinators (default methods) compose functional interfaces without new classes</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">        </span><span class="n">Predicate</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">isValidUsername</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">isNotBlank</span><span class="p">.</span><span class="na">and</span><span class="p">(</span><span class="n">isShort</span><span class="p">);</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">isValidUsername</span><span class="p">.</span><span class="na">test</span><span class="p">(</span><span class="s">"alice"</span><span class="p">));</span><span class="w">           </span><span class="c1">// true</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">isValidUsername</span><span class="p">.</span><span class="na">test</span><span class="p">(</span><span class="s">""</span><span class="p">));</span><span class="w">                </span><span class="c1">// false</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">isValidUsername</span><span class="p">.</span><span class="na">test</span><span class="p">(</span><span class="s">"a"</span><span class="p">.</span><span class="na">repeat</span><span class="p">(</span><span class="mi">50</span><span class="p">)));</span><span class="w">    </span><span class="c1">// false</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.IOException</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1">// Custom functional interface: java.util.function has no built-in shape</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1">// that both operates on two ints AND declares a checked exception.</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nd">@FunctionalInterface</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="kd">interface</span> <span class="nc">ThrowingIntBinaryOperator</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="p">;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="p">}</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CustomFunctionalInterfaceDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">readAndCombine</span><span class="p">(</span><span class="n">ThrowingIntBinaryOperator</span><span class="w"> </span><span class="n">op</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">op</span><span class="p">.</span><span class="na">apply</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IOException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">readAndCombine</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IOException</span><span class="p">(</span><span class="s">"negative operand"</span><span class="p">);</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">result</span><span class="p">);</span><span class="w"> </span><span class="c1">// 7</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="method-references">Method References</h2>
+<h3 id="theory_2">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong>: A method reference (<code>::</code> syntax) is shorthand for a lambda whose body does nothing but call an existing method or constructor. Java defines four kinds: static (<code>ClassName::staticMethod</code>), bound instance (<code>instance::instanceMethod</code>, referring to a specific object), unbound instance (<code>ClassName::instanceMethod</code>, where the first lambda parameter becomes the receiver), and constructor references (<code>ClassName::new</code>).</li>
+<li><strong>Internal Working</strong>: Method references compile through the exact same <code>invokedynamic</code>/<code>LambdaMetafactory</code> pipeline as lambdas — <code>javac</code> treats <code>Foo::bar</code> as sugar for <code>(args) -&gt; Foo.bar(args)</code> (adjusted per the four kinds), generating a <code>MethodHandle</code> to the target method rather than a synthetic lambda-body method (since the target method already exists, no new private method needs to be synthesized).</li>
+<li><strong>When to Use It</strong>: Whenever a lambda's entire body is a single call to an existing method/constructor with matching parameters — improves readability by referencing well-named existing methods instead of re-describing behavior inline.</li>
+<li><strong>Advantages</strong>: More concise and often more readable than an equivalent lambda; reuses (and reads as) an already-named, already-tested method; avoids introducing a redundant synthetic lambda body method since it points directly at the referenced method.</li>
+<li><strong>Limitations</strong>: Only applicable when the lambda body is literally just a delegating call with compatible signature/arity — any additional logic (even a null check) forces falling back to a full lambda; can occasionally be less obvious to less experienced readers which of the four reference kinds is in play.</li>
+</ul>
+<h3 id="internal-working_2">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: 1) <code>javac</code> determines which of the four method-reference kinds applies based on syntax and whether the left-hand side names a type or an expression/instance. 2) For an unbound instance reference (<code>String::toUpperCase</code> used as a <code>Function&lt;String,String&gt;</code>), the compiler arranges for the functional interface's first parameter to become the implicit receiver of the referenced instance method. 3) A <code>MethodHandle</code> is resolved for the target method (static, virtual, or constructor, via <code>invokestatic</code>/<code>invokevirtual</code>/<code>invokespecial</code>-equivalent handle kinds) and passed to <code>LambdaMetafactory.metafactory</code> as with lambdas, producing a generated implementation class at first call-site execution that simply forwards to that handle. 4) No synthetic lambda-body method is generated in the enclosing class for a method reference, unlike a full lambda expression, because the handle can point directly at the pre-existing target method.</li>
+<li><strong>Memory Layout</strong>: Not directly applicable beyond ordinary <code>invokedynamic</code> call-site linkage; bound instance references (<code>instance::method</code>) capture the bound instance as a field of the generated implementation object, exactly like a lambda capturing <code>this</code> or a local variable.</li>
+<li><strong>Diagrams</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Static:            Integer::parseInt        ==  s -&gt; Integer.parseInt(s)
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Bound instance:    order::getTotal          ==  () -&gt; order.getTotal()
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>Unbound instance:  String::toUpperCase      ==  s -&gt; s.toUpperCase()
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>Constructor:       ArrayList::new           ==  () -&gt; new ArrayList&lt;&gt;()
+</code></pre></div>
+<ul>
+<li><strong>JVM Behaviour</strong>: Identical to lambdas — deferred, <code>invokedynamic</code>-based generation of a hidden implementation class on first execution, cached <code>CallSite</code> for subsequent calls, and eligibility for hidden-class unloading; the JIT can inline through the generated forwarding call exactly as it would for a directly-written lambda once the call site is warmed up and monomorphic.</li>
+</ul>
+<h3 id="interview-questions_2">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What are the four kinds of method references in Java?
+2. Rewrite the lambda <code>s -&gt; s.length()</code> as a method reference.</p>
+<p><strong>Intermediate</strong>
+3. What is the difference between a "bound" and an "unbound" instance method reference?
+4. Can you use a method reference to refer to a constructor? Give an example with <code>Function</code>.</p>
+<p><strong>Advanced</strong>
+5. Under the hood, is a method reference compiled differently from an equivalent lambda expression? What specifically differs?</p>
+<p><strong>Scenario-based</strong>
+6. A teammate writes <code>list.forEach(x -&gt; System.out.println(x));</code> and you suggest simplifying it. What would you suggest, and would it change behavior?</p>
+<h3 id="detailed-answers_2">Detailed Answers</h3>
+<ol>
+<li>The four kinds are: (1) reference to a static method (<code>ClassName::staticMethod</code>), (2) reference to an instance method of a particular, already-existing object (<code>instance::instanceMethod</code>), (3) reference to an instance method of an arbitrary object of a particular type, where the receiver becomes the functional interface's first parameter (<code>ClassName::instanceMethod</code>), and (4) reference to a constructor (<code>ClassName::new</code>).</li>
+<li><code>String::length</code> (an unbound instance method reference), used wherever a <code>Function&lt;String,Integer&gt;</code> or <code>ToIntFunction&lt;String&gt;</code> is expected — the implicit receiver <code>s</code> becomes the object on which <code>.length()</code> is invoked.</li>
+<li>A bound instance reference captures a <em>specific, already-evaluated</em> object at the time the reference is created (e.g., <code>order::getTotal</code> where <code>order</code> is a concrete variable already in scope) — the object is fixed, like a closure capturing a variable. An unbound instance reference (<code>String::toUpperCase</code>) has no fixed receiver; instead, the first parameter supplied to the functional interface at call time <em>becomes</em> the receiver on which the method is invoked, meaning the object varies per invocation (e.g., in <code>stream.map(String::toUpperCase)</code>, each stream element is, in turn, the receiver).</li>
+<li>Yes — <code>ClassName::new</code> refers to a constructor. For example, <code>Function&lt;String, StringBuilder&gt; factory = StringBuilder::new;</code> creates a <code>StringBuilder</code> from a <code>String</code> argument by matching the <code>StringBuilder(String)</code> constructor to the <code>Function</code>'s single-argument signature; <code>factory.apply("hello")</code> invokes <code>new StringBuilder("hello")</code>.</li>
+<li>Yes, subtly: both ultimately use the <code>invokedynamic</code>/<code>LambdaMetafactory</code> pipeline and produce a dynamically-generated implementation class at the call site, but a method reference does <strong>not</strong> require the compiler to synthesize a new private lambda-body method in the enclosing class, since the <code>MethodHandle</code> passed to the metafactory can point directly at the already-existing target method (static, instance, or constructor). A lambda expression, by contrast, always needs its body compiled into a fresh synthetic method first, which the generated implementation class then delegates to via a handle.</li>
+<li>The lambda <code>x -&gt; System.out.println(x)</code> is exactly an unbound... actually here it's a bound reference to the specific <code>System.out</code> <code>PrintStream</code> instance's <code>println</code> method, so it can be simplified to <code>list.forEach(System.out::println);</code>. Behavior is identical — both print each element — but the method reference is more concise and, arguably, more directly communicates "call <code>println</code> for each element" rather than restating the call as an explicit lambda body.</li>
+</ol>
+<h3 id="code-examples_2">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.function.Function</span><span class="p">;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.stream.Collectors</span><span class="p">;</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MethodReferenceDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">"alice"</span><span class="p">,</span><span class="w"> </span><span class="s">"Bob"</span><span class="p">,</span><span class="w"> </span><span class="s">"CHARLIE"</span><span class="p">);</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">        </span><span class="c1">// Unbound instance method reference: receiver comes from each stream element</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">upper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">names</span><span class="p">.</span><span class="na">stream</span><span class="p">()</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">                </span><span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">String</span><span class="p">::</span><span class="n">toUpperCase</span><span class="p">)</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">                </span><span class="p">.</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toList</span><span class="p">());</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">upper</span><span class="p">);</span><span class="w"> </span><span class="c1">// [ALICE, BOB, CHARLIE]</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">        </span><span class="c1">// Static method reference</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">        </span><span class="n">Function</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">parse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Integer</span><span class="p">::</span><span class="n">parseInt</span><span class="p">;</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">parse</span><span class="p">.</span><span class="na">apply</span><span class="p">(</span><span class="s">"42"</span><span class="p">));</span><span class="w"> </span><span class="c1">// 42</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">        </span><span class="c1">// Constructor reference</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="w">        </span><span class="n">Function</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">StringBuilder</span><span class="o">&gt;</span><span class="w"> </span><span class="n">builderFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StringBuilder</span><span class="p">::</span><span class="k">new</span><span class="p">;</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">builderFactory</span><span class="p">.</span><span class="na">apply</span><span class="p">(</span><span class="s">"hi"</span><span class="p">).</span><span class="na">reverse</span><span class="p">());</span><span class="w"> </span><span class="c1">// ih</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BoundReferenceDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">    </span><span class="kd">record</span> <span class="nc">Order</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">total</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="nf">getTotal</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">total</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">        </span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Order</span><span class="p">(</span><span class="s">"ORD-1"</span><span class="p">,</span><span class="w"> </span><span class="mf">249.99</span><span class="p">);</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">        </span><span class="c1">// Bound instance method reference: 'order' is fixed at reference-creation time</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">        </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">function</span><span class="p">.</span><span class="na">Supplier</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">totalSupplier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">order</span><span class="p">::</span><span class="n">getTotal</span><span class="p">;</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">totalSupplier</span><span class="p">.</span><span class="na">get</span><span class="p">());</span><span class="w"> </span><span class="c1">// 249.99</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Order</span><span class="o">&gt;</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">order</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Order</span><span class="p">(</span><span class="s">"ORD-2"</span><span class="p">,</span><span class="w"> </span><span class="mf">50.0</span><span class="p">));</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">        </span><span class="n">orders</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">::</span><span class="n">println</span><span class="p">);</span><span class="w"> </span><span class="c1">// bound reference to System.out's println</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="closures">Closures</h2>
+<h3 id="theory_3">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong>: A closure is a function value that "closes over" (captures) variables from its enclosing lexical scope so it can use them even after the enclosing scope has finished executing. Java's lambdas and anonymous inner classes are closures in this sense, but with a key restriction versus languages like JavaScript or Python: captured local variables must be effectively final — Java implements "capture by value of an immutable snapshot," not true mutable shared-variable closures.</li>
+<li><strong>Internal Working</strong>: The compiler copies each captured effectively-final local variable's value into a field of the generated lambda/anonymous-class implementation instance at the moment the closure object is created; captured instance fields of the enclosing object are instead accessed indirectly by capturing a reference to <code>this</code>, so those fields <em>can</em> reflect later mutation (since they're read through the live object, not copied by value).</li>
+<li><strong>When to Use It</strong>: Whenever behavior needs contextual data from its defining scope — event handler configuration, deferred/lazy computations, callback parameterization, building <code>Comparator</code>/<code>Predicate</code> instances with locally-scoped configuration values.</li>
+<li><strong>Advantages</strong>: Enables powerful, concise parameterized behavior without manually threading extra parameters through every call; supports currying-like patterns and configuration-by-closure.</li>
+<li><strong>Limitations</strong>: Cannot mutate a captured local variable directly (must resort to a mutable wrapper like an <code>AtomicInteger</code>, single-element array, or an instance field on an object); accidental capture of large objects (e.g., a whole enclosing entity) can create unintended reference retention, delaying garbage collection of the enclosing instance for as long as the closure lives.</li>
+</ul>
+<h3 id="internal-working_3">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: 1) <code>javac</code> performs definite-assignment/effectively-final analysis over every local variable referenced inside a lambda or anonymous class body. 2) For each captured local variable, the compiler adds a corresponding field to the generated implementation class and a constructor parameter that copies the value in at creation time (for lambdas, this manifests as extra static/dynamic arguments passed to <code>LambdaMetafactory</code>, effectively bound into the returned <code>CallSite</code>'s target). 3) If the closure references <code>this</code> (an instance method/field of the enclosing object) or a <code>static</code> field, no by-value copy is needed for that access — the generated class instead holds (for <code>this</code>) an implicit reference to the enclosing instance, or (for <code>static</code> members) simply reads/writes the shared static field directly, meaning static-field or enclosing-instance-field mutations <em>are</em> visible through the closure, unlike captured locals.</li>
+<li><strong>Memory Layout</strong>: The captured-value fields live on the heap as part of the lambda/anonymous-class instance; if <code>this</code> is captured, that reference keeps the entire enclosing object reachable for as long as any closure derived from it survives (a common, subtle memory-leak vector if such closures are stored long-term, e.g., registered as long-lived listeners).</li>
+<li><strong>Diagrams</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>class ReportBuilder {
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    private double taxRate = 0.08;               // instance field: captured by reference via 'this'
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    Function&lt;Double, Double&gt; buildTaxCalculator(double discount) {  // 'discount' is a local param
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>        return amount -&gt; (amount - discount) * (1 + this.taxRate);
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>        //                          ^ copied by value at closure creation
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>        //                                          ^ read live through captured 'this'
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>    }
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>}
+</code></pre></div>
+<ul>
+<li><strong>JVM Behaviour</strong>: Captured-by-value fields are ordinary final-like fields on the generated instance, subject to normal JIT constant-propagation/inlining once the closure's shape is stable; capturing <code>this</code> produces a strong reference edge from the closure object to the enclosing instance that the GC must trace through normally — no special "weak capture" exists in vanilla Java (unlike some GUI frameworks' weak-listener patterns, which must be built manually on top).</li>
+</ul>
+<h3 id="interview-questions_3">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What is a closure, and how do Java lambdas qualify as closures?
+2. Why can't a lambda in Java reassign a captured local variable?</p>
+<p><strong>Intermediate</strong>
+3. If a lambda captures an instance field of its enclosing object rather than a local variable, can it observe later mutations to that field? Why is this different from local-variable capture?
+4. How would you work around Java's "effectively final" restriction if you genuinely need a closure to accumulate a running total across invocations?</p>
+<p><strong>Advanced</strong>
+5. What memory-leak risk can arise from a closure capturing <code>this</code>, and in what kind of application is this most likely to bite?</p>
+<p><strong>Scenario-based</strong>
+6. You register a lambda as a long-lived event listener in a long-running server application, and the lambda captures <code>this</code> from a short-lived request-handling object. What problem might occur, and how would you avoid it?</p>
+<h3 id="detailed-answers_3">Detailed Answers</h3>
+<ol>
+<li>A closure is a function-like value that retains access to variables from the lexical scope in which it was created, even after that scope has exited. Java lambdas (and anonymous inner classes) qualify because they can reference local variables, method parameters, and enclosing instance state from their defining context, packaging that context alongside the executable code in a single object.</li>
+<li>Because the compiler implements capture as a one-time, by-value copy of the variable into a field of the generated closure object at creation time — if the original variable could be reassigned afterward, the copied field and the "live" variable would diverge, and Java has no shared-cell/box mechanism (as JavaScript does) to keep them in sync; requiring effective finality avoids this ambiguity entirely by construction.</li>
+<li>Yes, it can observe later mutations. Capturing an instance field means the closure actually holds a reference to the enclosing <code>this</code> object and reads the field <em>through</em> that reference at invocation time (like any other field access), rather than copying the field's value at creation time. This is different from local-variable capture, where the value is copied once into the closure's own field and frozen at that point — subsequent changes to the original local variable (which, being effectively final, can't happen anyway) would never be visible even if they were allowed.</li>
+<li>Wrap the mutable state in an object whose <em>reference</em> can be effectively final even though its <em>contents</em> are mutable — common choices are <code>java.util.concurrent.atomic.AtomicInteger</code>/<code>AtomicLong</code> (also providing thread-safety if needed), a single-element array (<code>int[] total = {0};</code>), or a small mutable holder class field. The closure then captures the (effectively final) reference to this container and mutates its contents, sidestepping the restriction on reassigning the captured variable itself.</li>
+<li>If a closure captures <code>this</code>, it holds a strong reference to the entire enclosing object for as long as the closure itself is reachable. In a long-running application, if that closure is registered somewhere long-lived (a static listener list, a cache, a thread pool's queued task), the enclosing object — and everything it transitively references — cannot be garbage-collected even after its "logical" lifetime should have ended, causing a memory leak. This is especially likely in GUI applications (listeners registered on long-lived components) and server applications (callbacks registered against long-lived caches/executors) where a request-scoped or short-lived object accidentally becomes pinned in memory via a captured closure.</li>
+<li>The event listener will keep the request-handling object (and its entire object graph — any large payloads, database connections, etc. it references) alive for as long as the listener remains registered, potentially indefinitely in a long-running server, causing a memory leak and possibly stale/incorrect behavior if the captured object represents per-request state that should have been discarded. The fix is to avoid capturing <code>this</code> (or the request object) directly in a long-lived closure — instead, extract only the specific small pieces of data actually needed into local effectively-final variables before creating the lambda, or explicitly unregister the listener when the request/scope ends, or use a weak reference wrapper if the framework supports it.</li>
+</ol>
+<h3 id="code-examples_3">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.concurrent.atomic.AtomicInteger</span><span class="p">;</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.function.Consumer</span><span class="p">;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ClosureAccumulatorDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">        </span><span class="c1">// AtomicInteger's reference is effectively final; its VALUE is mutable -</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">        </span><span class="c1">// this is how you "mutate state across closure invocations" in Java.</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">        </span><span class="n">AtomicInteger</span><span class="w"> </span><span class="n">runningTotal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AtomicInteger</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">        </span><span class="n">Consumer</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">accumulate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">amount</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">runningTotal</span><span class="p">.</span><span class="na">addAndGet</span><span class="p">(</span><span class="n">amount</span><span class="p">);</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">        </span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">).</span><span class="na">forEach</span><span class="p">(</span><span class="n">accumulate</span><span class="p">);</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Total: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">runningTotal</span><span class="p">.</span><span class="na">get</span><span class="p">());</span><span class="w"> </span><span class="c1">// Total: 60</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.function.Function</span><span class="p">;</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ClosureOverInstanceStateDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">taxRate</span><span class="p">;</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">    </span><span class="n">ClosureOverInstanceStateDemo</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">taxRate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">taxRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">taxRate</span><span class="p">;</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">    </span><span class="c1">// Closure captures 'this' implicitly, so it reads the LIVE taxRate field, not a snapshot.</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">    </span><span class="n">Function</span><span class="o">&lt;</span><span class="n">Double</span><span class="p">,</span><span class="w"> </span><span class="n">Double</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">priceWithTax</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">amount</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">amount</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">taxRate</span><span class="p">);</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="w">        </span><span class="n">ClosureOverInstanceStateDemo</span><span class="w"> </span><span class="n">pricing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ClosureOverInstanceStateDemo</span><span class="p">(</span><span class="mf">0.08</span><span class="p">);</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="w">        </span><span class="n">Function</span><span class="o">&lt;</span><span class="n">Double</span><span class="p">,</span><span class="w"> </span><span class="n">Double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">calculator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pricing</span><span class="p">.</span><span class="na">priceWithTax</span><span class="p">();</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">calculator</span><span class="p">.</span><span class="na">apply</span><span class="p">(</span><span class="mf">100.0</span><span class="p">));</span><span class="w"> </span><span class="c1">// 108.0</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="w">        </span><span class="n">pricing</span><span class="p">.</span><span class="na">taxRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.15</span><span class="p">;</span><span class="w"> </span><span class="c1">// mutate the captured instance field after closure creation</span>
+<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">calculator</span><span class="p">.</span><span class="na">apply</span><span class="p">(</span><span class="mf">100.0</span><span class="p">));</span><span class="w"> </span><span class="c1">// 115.0 - closure sees the updated field</span>
+<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="optional">Optional</h2>
+<h3 id="theory_4">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong>: <code>java.util.Optional&lt;T&gt;</code> (Java 8+) is a container object that either holds a non-null value or represents its absence (<code>Optional.empty()</code>), designed as an explicit, type-visible alternative to returning <code>null</code> from methods. It is primarily intended as a <strong>method return type</strong> to signal "this may or may not have a result," not as a general-purpose replacement for <code>null</code> everywhere (fields, parameters, collection elements).</li>
+<li><strong>Internal Working</strong>: <code>Optional&lt;T&gt;</code> is an ordinary immutable final class wrapping a single reference field, with methods like <code>map</code>, <code>filter</code>, <code>flatMap</code>, <code>orElse</code>, <code>orElseGet</code>, <code>orElseThrow</code>, and <code>ifPresent</code> implementing a small monadic-style API for chaining operations without explicit null checks. There is no special JVM support — it is plain library code (though the JIT can often eliminate <code>Optional</code> allocation entirely via escape analysis for tightly-scoped usage).</li>
+<li><strong>When to Use It</strong>: As the return type of a method whose absence-of-result is a normal, expected outcome (e.g., <code>findById</code> in a repository) that callers should be forced to explicitly handle.</li>
+<li><strong>Advantages</strong>: Makes "no result" part of the type signature (impossible to ignore silently the way a nullable return type is easy to forget to check), encourages a fluent, chainable style (<code>repository.findById(id).map(...).orElse(...)</code>), reduces <code>NullPointerException</code>s at call sites that use it correctly.</li>
+<li><strong>Limitations</strong>: Not <code>Serializable</code> (by design), inappropriate as a field type (adds an extra allocation/indirection with no compile-time-enforced benefit since fields aren't forced through <code>Optional</code>'s API the way method returns are), inappropriate as a method parameter type (forces callers to wrap even non-optional arguments, and overload resolution/null-handling becomes awkward), and <code>Optional.of(null)</code> throws <code>NullPointerException</code> immediately (use <code>Optional.ofNullable</code> for a possibly-null source value).</li>
+</ul>
+<h3 id="internal-working_4">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: 1) A method returns <code>Optional.ofNullable(result)</code> (or <code>Optional.of(result)</code> if <code>result</code> is statically known non-null, or <code>Optional.empty()</code>), wrapping the possibly-absent value. 2) The caller chains operations: <code>map(Function)</code> transforms the contained value only if present, returning a new <code>Optional</code>; <code>filter(Predicate)</code> turns a present-but-non-matching value into empty; <code>flatMap(Function&lt;T, Optional&lt;U&gt;&gt;)</code> avoids nested <code>Optional&lt;Optional&lt;U&gt;&gt;</code> by flattening one level. 3) Terminal operations extract the value: <code>orElse(T)</code> provides a default (always evaluated eagerly, even if unused — a common subtle performance pitfall), <code>orElseGet(Supplier&lt;T&gt;)</code> provides a lazily-computed default, <code>orElseThrow(...)</code> throws a custom exception if empty, and <code>get()</code> (or <code>orElseThrow()</code> with no arguments, Java 10+) throws <code>NoSuchElementException</code> if empty and should generally be avoided in favor of the more explicit alternatives.</li>
+<li><strong>Memory Layout</strong>: <code>Optional&lt;T&gt;</code> instances are ordinary heap-allocated objects wrapping a single reference; for tightly-scoped local usage (created and consumed within the same method without escaping), the JIT's escape analysis can frequently scalar-replace the <code>Optional</code> wrapper entirely, avoiding actual heap allocation — but this optimization is not guaranteed and shouldn't be relied upon architecturally.</li>
+<li><strong>Diagrams</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Optional&lt;Customer&gt; found = repository.findById(id);
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>        |
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>        v
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>   map(Customer::getEmail)         -- only applied if present
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>        |
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>        v
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>   filter(email -&gt; !email.isBlank())
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>        |
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>        v
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>   orElseThrow(() -&gt; new CustomerNotFoundException(id))
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>empty at any stage --&gt; short-circuits remaining map/filter calls --&gt; falls through to orElse*/orElseThrow
+</code></pre></div>
+<ul>
+<li><strong>JVM Behaviour</strong>: No special bytecode instructions exist for <code>Optional</code> — every operation compiles to ordinary virtual method calls (<code>invokevirtual</code>) on a plain final class; performance-sensitive code paths that create and immediately consume <code>Optional</code> within a single method are good candidates for JIT scalar replacement (avoiding actual allocation) once the method is hot enough to be compiled by C2.</li>
+</ul>
+<h3 id="interview-questions_4">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What problem does <code>Optional&lt;T&gt;</code> solve, and where is it best used?
+2. What is the difference between <code>Optional.of(value)</code> and <code>Optional.ofNullable(value)</code>?</p>
+<p><strong>Intermediate</strong>
+3. What is the difference between <code>orElse(defaultValue)</code> and <code>orElseGet(supplier)</code>, and why does it matter for performance/correctness?
+4. Why is it generally considered bad practice to use <code>Optional</code> as a field type or method parameter type?</p>
+<p><strong>Advanced</strong>
+5. What is the difference between <code>map</code> and <code>flatMap</code> on <code>Optional</code>, and when would using <code>map</code> instead of <code>flatMap</code> cause a compile error or an awkward nested type?</p>
+<p><strong>Scenario-based</strong>
+6. A code reviewer flags <code>if (optionalUser.isPresent()) { doSomething(optionalUser.get()); }</code> as an anti-pattern. What would they suggest instead, and why?</p>
+<h3 id="detailed-answers_4">Detailed Answers</h3>
+<ol>
+<li><code>Optional&lt;T&gt;</code> solves the ambiguity of a <code>null</code> return value — callers of a method returning <code>Optional&lt;T&gt;</code> are forced (by the type system, since <code>Optional</code> has no <code>T</code>-shaped methods directly) to explicitly consider the "absent" case via <code>map</code>/<code>orElse</code>/<code>orElseThrow</code>/etc., rather than silently forgetting a null check and risking a <code>NullPointerException</code> deep in unrelated code. It is best used as a method's <strong>return type</strong> when "no result" is a legitimate, expected outcome.</li>
+<li><code>Optional.of(value)</code> throws <code>NullPointerException</code> immediately if <code>value</code> is <code>null</code> — use it when you can statically guarantee non-null (fail-fast on a programming error). <code>Optional.ofNullable(value)</code> safely handles a possibly-null <code>value</code>, producing <code>Optional.empty()</code> if it is <code>null</code> and a present <code>Optional</code> otherwise — use it when wrapping a value from a source that may legitimately be null (e.g., a <code>Map.get(key)</code> result).</li>
+<li><code>orElse(defaultValue)</code> <strong>always evaluates</strong> its argument eagerly, even when the <code>Optional</code> is present and the default won't be used — this is a correctness/performance trap if the argument is an expensive computation or has side effects (e.g., <code>orElse(expensiveDatabaseCall())</code> always runs the database call). <code>orElseGet(supplier)</code> only invokes the <code>Supplier</code> lazily, if and only if the <code>Optional</code> is actually empty, making it the correct choice whenever the default value is non-trivial to compute or has side effects.</li>
+<li>As a field type, <code>Optional</code> adds an extra allocation and a layer of indirection without gaining any of its main benefit — a field's nullability isn't enforced by the type system the way a method return value's handling is, and <code>Optional</code> fields aren't <code>Serializable</code>, complicating classes that need serialization. As a parameter type, it forces every caller to wrap arguments in <code>Optional.of(...)</code>/<code>ofNullable(...)</code> even when the "optionality" could simply be expressed via method overloading or a sensible default, and it makes null-argument handling inconsistent (should a <code>null</code> <code>Optional</code> parameter itself be tolerated?) — overloaded methods or well-named "withX"-style builder methods are the idiomatic alternative for optional parameters.</li>
+<li><code>map(Function&lt;T,R&gt;)</code> applies a function that returns a plain <code>R</code>; if that function itself would naturally return an <code>Optional&lt;R&gt;</code> (e.g., another method that itself returns <code>Optional</code>), using <code>map</code> produces an awkward <code>Optional&lt;Optional&lt;R&gt;&gt;</code>, which is difficult to work with (you'd need a further <code>map</code>/<code>get</code> just to unwrap the inner <code>Optional</code>). <code>flatMap(Function&lt;T, Optional&lt;R&gt;&gt;)</code> is designed exactly for this case: it expects the mapping function to already return an <code>Optional&lt;R&gt;</code> and flattens the result into a single <code>Optional&lt;R&gt;</code>, avoiding nested wrapping — analogous to <code>flatMap</code> on <code>Stream</code> avoiding nested streams.</li>
+<li>The reviewer would suggest replacing the <code>isPresent()</code>/<code>get()</code> pattern with <code>optionalUser.ifPresent(user -&gt; doSomething(user));</code> (or, if a value needs to be returned/transformed, <code>map</code>/<code>orElse</code>/<code>orElseThrow</code> chains). The <code>isPresent()</code>+<code>get()</code> combination defeats much of <code>Optional</code>'s purpose — it reintroduces an imperative null-check style, is more verbose, and is more error-prone (nothing stops a future edit from calling <code>.get()</code> without the preceding <code>isPresent()</code> check, throwing <code>NoSuchElementException</code>) — whereas <code>ifPresent</code>/<code>map</code>/<code>orElseThrow</code> encode the presence-check and the action atomically, making the incorrect "get without checking" mistake impossible by construction.</li>
+</ol>
+<h3 id="code-examples_4">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Map</span><span class="p">;</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Optional</span><span class="p">;</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CustomerLookupService</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Customer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">customersById</span><span class="p">;</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">    </span><span class="n">CustomerLookupService</span><span class="p">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Customer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">customersById</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">customersById</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">customersById</span><span class="p">;</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">    </span><span class="c1">// Optional as a RETURN TYPE: forces callers to handle the "not found" case explicitly.</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">Customer</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findById</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Optional</span><span class="p">.</span><span class="na">ofNullable</span><span class="p">(</span><span class="n">customersById</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">id</span><span class="p">));</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">resolvePrimaryEmail</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">findById</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="w">                </span><span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">Customer</span><span class="p">::</span><span class="n">email</span><span class="p">)</span><span class="w">                       </span><span class="c1">// only runs if present</span>
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="w">                </span><span class="p">.</span><span class="na">filter</span><span class="p">(</span><span class="n">email</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="o">!</span><span class="n">email</span><span class="p">.</span><span class="na">isBlank</span><span class="p">())</span><span class="w">           </span><span class="c1">// becomes empty if blank</span>
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="w">                </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span>
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a><span class="w">                        </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalStateException</span><span class="p">(</span><span class="s">"No usable email for customer "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">id</span><span class="p">));</span>
+<a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a>
+<a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a><span class="w">    </span><span class="kd">record</span> <span class="nc">Customer</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">email</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Optional</span><span class="p">;</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">OptionalPitfallsDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">expensiveFallback</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Computing expensive fallback..."</span><span class="p">);</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">"fallback-value"</span><span class="p">;</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="w">        </span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">present</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Optional</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">"actual-value"</span><span class="p">);</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="w">        </span><span class="c1">// BAD: expensiveFallback() runs even though 'present' already has a value</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">present</span><span class="p">.</span><span class="na">orElse</span><span class="p">(</span><span class="n">expensiveFallback</span><span class="p">()));</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="w">        </span><span class="c1">// GOOD: orElseGet only invokes the supplier if the Optional is actually empty</span>
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">present</span><span class="p">.</span><span class="na">orElseGet</span><span class="p">(</span><span class="n">OptionalPitfallsDemo</span><span class="p">::</span><span class="n">expensiveFallback</span><span class="p">));</span>
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="additional-resources">Additional Resources</h2>
+<h3 id="videos">Videos</h3>
+<ul>
+<li><a href="https://www.youtube.com/@Javatechie/playlists">Java Techie</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLVz2XdJiJQxzrdrpglCv_nWIO5CDIqOVj">Java8</a></li>
+</ul>
+<h3 id="courses">Courses</h3>
+<ul>
+<li><a href="https://www.udemy.com/course/functional-programming-with-java">Learn Java Functional Programming with Lambdas &amp; Streams</a></li>
+</ul>
+<h3 id="interview-question-resources">Interview Question Resources</h3>
+<ul>
+<li><a href="https://www.interviewbit.com/java-8-interview-questions">Java 8 Interview Questions</a></li>
+</ul></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2025 <a href="https://github.com/abhishekghoshh"  target="_blank" rel="noopener">Abhishek Ghosh</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/abhishekghoshh" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://x.com/abhishek_ghoshh" target="_blank" rel="noopener" title="x.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/abhishek-ghosh-220679132/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

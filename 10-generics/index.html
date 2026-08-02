@@ -1,0 +1,2316 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abhishekghoshh.github.io/java-helper/10-generics/">
+      
+      
+        <link rel="prev" href="../9-collections-framework/">
+      
+      
+        <link rel="next" href="../11-exception-handling/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Generics - Java Helper</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Generics - Java Helper" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/10-generics.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://abhishekghoshh.github.io/java-helper/10-generics/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Generics - Java Helper" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/10-generics.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#10-generics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Java Helper" class="md-header__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Java Helper
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Generics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../1-java-language-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Java Language Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../2-object-oriented-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Object-Oriented Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../3-classes/" class="md-tabs__link">
+        
+  
+    
+  
+  Classes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../4-constructors/" class="md-tabs__link">
+        
+  
+    
+  
+  Constructors
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-access-modifiers/" class="md-tabs__link">
+        
+  
+    
+  
+  Access Modifiers
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../6-packages/" class="md-tabs__link">
+        
+  
+    
+  
+  Packages
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../7-strings/" class="md-tabs__link">
+        
+  
+    
+  
+  Strings
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../8-arrays/" class="md-tabs__link">
+        
+  
+    
+  
+  Arrays
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../9-collections-framework/" class="md-tabs__link">
+        
+  
+    
+  
+  Collections Framework
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Generics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../11-exception-handling/" class="md-tabs__link">
+        
+  
+    
+  
+  Exception Handling
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../12-file-io/" class="md-tabs__link">
+        
+  
+    
+  
+  File I/O
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../13-serialization/" class="md-tabs__link">
+        
+  
+    
+  
+  Serialization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../14-reflection/" class="md-tabs__link">
+        
+  
+    
+  
+  Reflection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../15-annotations/" class="md-tabs__link">
+        
+  
+    
+  
+  Annotations
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../16-functional-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Functional Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../17-streams-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Streams API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../18-date-and-time-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Date and Time API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../19-jvm-internals/" class="md-tabs__link">
+        
+  
+    
+  
+  JVM Internals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../20-class-loader/" class="md-tabs__link">
+        
+  
+    
+  
+  Class Loader
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../21-memory-management/" class="md-tabs__link">
+        
+  
+    
+  
+  Memory Management
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../22-garbage-collection/" class="md-tabs__link">
+        
+  
+    
+  
+  Garbage Collection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../23-concurrency/" class="md-tabs__link">
+        
+  
+    
+  
+  Concurrency
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../24-networking/" class="md-tabs__link">
+        
+  
+    
+  
+  Networking
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../25-design-patterns-in-java/" class="md-tabs__link">
+        
+  
+    
+  
+  Design Patterns in Java
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../26-modern-java-language-features/" class="md-tabs__link">
+        
+  
+    
+  
+  Modern Java Language Features
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../27-regular-expressions/" class="md-tabs__link">
+        
+  
+    
+  
+  Regular Expressions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../28-internationalization-and-localization/" class="md-tabs__link">
+        
+  
+    
+  
+  Internationalization & Localization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../29-logging/" class="md-tabs__link">
+        
+  
+    
+  
+  Logging
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../30-security-basics/" class="md-tabs__link">
+        
+  
+    
+  
+  Security Basics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-tabs__link">
+        
+  
+    
+  
+  Native & Foreign Interoperability
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../32-process-and-system-apis/" class="md-tabs__link">
+        
+  
+    
+  
+  Process & System APIs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../33-testing-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Testing Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Java Helper" class="md-nav__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Java Helper
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-java-language-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java Language Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-object-oriented-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-classes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Classes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-constructors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constructors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-access-modifiers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access Modifiers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Packages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-strings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Strings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-collections-framework/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collections Framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Generics
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Generics
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#generic-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generic Classes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generic-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generic Methods
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generic-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generic Interfaces
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wildcards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wildcards
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wildcards">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#upper-bound" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upper Bound
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lower-bound" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lower Bound
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#type-erasure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Type Erasure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pecs-principle" class="md-nav__link">
+    <span class="md-ellipsis">
+      PECS Principle
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bounded-type-parameters-new" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bounded Type Parameters (new)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-exception-handling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exception Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-file-io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File I/O
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-serialization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serialization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-reflection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reflection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-annotations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-functional-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Functional Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-streams-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Streams API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-date-and-time-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Date and Time API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-jvm-internals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JVM Internals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-class-loader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Class Loader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-memory-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-garbage-collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Garbage Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-concurrency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concurrency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-networking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-design-patterns-in-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Patterns in Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-modern-java-language-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modern Java Language Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-regular-expressions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Regular Expressions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-internationalization-and-localization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internationalization & Localization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-logging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30-security-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Native & Foreign Interoperability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32-process-and-system-apis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process & System APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33-testing-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div><h1 id="10-generics">10. Generics</h1>
+<h2 id="generic-classes">Generic Classes</h2>
+<p><strong>Theory</strong></p>
+<ul>
+<li><strong>Core Concepts</strong>: A generic class declares one or more type parameters (e.g., <code>class Box&lt;T&gt;</code>) that are substituted with concrete types when the class is used, letting a single class definition work uniformly across many types while the compiler enforces type safety at every usage site — eliminating the pre-Java-5 pattern of casting from <code>Object</code>.</li>
+<li><strong>Internal Working</strong>: Type parameters exist only at compile time; the compiler performs <em>type erasure</em>, replacing <code>T</code> with <code>Object</code> (or its bound) in the generated bytecode and inserting implicit casts at call sites, so at runtime there is only one <code>.class</code> file regardless of how many type arguments were used.</li>
+<li><strong>When to Use It</strong>: Container/data-structure classes (<code>List&lt;T&gt;</code>, <code>Box&lt;T&gt;</code>, <code>Pair&lt;K, V&gt;</code>), any class whose behavior is identical regardless of the specific type it operates on, so long as that type is referenced through the type parameter.</li>
+<li><strong>Advantages</strong>: Compile-time type safety (catches type mismatches before runtime instead of via <code>ClassCastException</code>); eliminates manual casting; improves API clarity and IDE tooling (auto-complete on the correct type).</li>
+<li><strong>Limitations</strong>: Type erasure means no runtime type information about <code>T</code> is available (no <code>new T()</code>, no <code>T[] arr = new T[10]</code>, no <code>instanceof T</code>); cannot use primitive types directly as type arguments (must use wrapper types, incurring boxing overhead); static members cannot reference the class's type parameter.</li>
+</ul>
+<p><strong>Internal Working</strong></p>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: (1) Compiler parses <code>class Box&lt;T&gt; { T value; }</code> and type-checks every use of <code>T</code> as if it were its bound (<code>Object</code> if unbounded). (2) At each instantiation site (<code>Box&lt;String&gt; b = new Box&lt;&gt;()</code>), the compiler verifies the substitution is type-safe, but does not generate a specialized class. (3) During bytecode generation, <code>T</code> is erased to its bound type, and any place a value typed <code>T</code> is retrieved and used as <code>T</code> gets an implicit <code>checkcast</code> inserted by the compiler. (4) At runtime there is exactly one <code>Box.class</code> shared by all parameterizations (<code>Box&lt;String&gt;</code>, <code>Box&lt;Integer&gt;</code>, etc.) — <code>new Box&lt;String&gt;().getClass() == new Box&lt;Integer&gt;().getClass()</code> is <code>true</code>.</li>
+<li><strong>Memory Layout</strong>: Since erasure collapses <code>T</code> to <code>Object</code> (or its bound), a field of type <code>T</code> occupies the same memory footprint as an <code>Object</code> reference (a single reference-sized slot, 4 or 8 bytes depending on compressed oops) regardless of the actual type argument used — no per-type specialization or memory overhead is introduced by generics themselves (unlike C++ templates, which generate a distinct class per instantiation).</li>
+<li><strong>Diagrams</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Source:                          Erased bytecode (conceptually):
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>class Box&lt;T&gt; {                   class Box {
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  T value;                         Object value;
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  T get() { return value; }        Object get() { return value; }
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  void set(T v) { value = v; }     void set(Object v) { value = v; }
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>}                                 }
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>Box&lt;String&gt; b = new Box&lt;&gt;();     Box b = new Box();
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>b.set("hi");                      b.set("hi");
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>String s = b.get();               String s = (String) b.get(); // implicit checkcast
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong>: The JVM has no concept of generics at all — the <code>.class</code> file's constant pool and bytecode instructions operate purely on erased types; <code>checkcast</code> instructions inserted by the compiler are the only runtime enforcement of type safety, meaning an <code>Object</code>-level API misuse via raw types or unsafe casts can still produce a <code>ClassCastException</code> at a call site far from the actual unsafe operation ("heap pollution").</li>
+</ul>
+<p><strong>Interview Questions</strong></p>
+<p><em>Basic</em>
+1. What is a generic class, and what problem did it solve compared to pre-Java-5 code using <code>Object</code>?
+2. Can you create an array of a generic type parameter, e.g., <code>new T[10]</code>? Why or why not?</p>
+<p><em>Intermediate</em>
+3. Why can't a generic class have a <code>static</code> field of type <code>T</code>?
+4. What is a "raw type," and why is using one (e.g., <code>Box b = new Box()</code>) discouraged?</p>
+<p><em>Advanced</em>
+5. Explain type erasure in detail: what does the compiler actually generate for <code>class Box&lt;T&gt;</code>, and what runtime type information about <code>T</code> is lost?
+6. What is heap pollution, and how can it occur despite generics' compile-time checks?</p>
+<p><em>Scenario-based</em>
+7. You need a generic <code>Cache&lt;K, V&gt;</code> class that also needs to create new array instances of type <code>V[]</code> internally for a fixed-size ring buffer. How do you work around the array creation restriction?</p>
+<p><strong>Detailed Answers</strong></p>
+<ol>
+<li>A generic class parameterizes its behavior over a type <code>T</code> supplied at the usage site, so the compiler can verify type correctness statically; before generics, containers like collections stored <code>Object</code> references, requiring manual casts on retrieval that could fail at runtime with a <code>ClassCastException</code> if the wrong type had been inserted — generics move that error detection to compile time.</li>
+<li>No, not directly — because of type erasure, the JVM has no runtime representation of <code>T</code>, and array creation (<code>anewarray</code>) requires a concrete, reifiable component type at the bytecode level; <code>new T[10]</code> would need to know <code>T</code>'s actual runtime class, which erasure has discarded. The common workaround is <code>(T[]) new Object[10]</code> (with an unchecked-cast warning) or requiring a <code>Class&lt;T&gt;</code> token/<code>IntFunction&lt;T[]&gt;</code> generator passed in to use <code>java.lang.reflect.Array.newInstance</code>.</li>
+<li>Because there is only one class object shared across all parameterizations (<code>Box&lt;String&gt;</code> and <code>Box&lt;Integer&gt;</code> are the same <code>Box.class</code> at runtime due to erasure) — a <code>static</code> field belongs to the class itself, not to any particular instantiation, so it would be ambiguous which type <code>T</code> a static field's <code>T</code> referred to; the compiler therefore forbids referencing type parameters in static context.</li>
+<li>A raw type is a generic class used without any type argument (e.g., <code>List list = new ArrayList()</code>), which was the only option before Java 5 and remains legal for backward compatibility. It disables all generic type checking for that variable — any object can be inserted or retrieved with only an <code>Object</code>-level static type, silently reintroducing the possibility of <code>ClassCastException</code> at runtime and losing compile-time safety, so it should only be used when interoperating with legacy pre-generics code.</li>
+<li>For <code>class Box&lt;T&gt;</code>, the compiler replaces every occurrence of <code>T</code> with its erasure — <code>Object</code> if unbounded, or the leftmost bound if bounded (e.g., <code>T extends Comparable&lt;T&gt;</code> erases to <code>Comparable</code>). Only one <code>.class</code> file is generated regardless of how many type arguments callers use; bridge methods may be synthesized for generic method overriding to preserve polymorphism after erasure. What's lost: the JVM cannot recover the actual type argument used at any particular call site (<code>new Box&lt;String&gt;()</code> and <code>new Box&lt;Integer&gt;()</code> produce indistinguishable <code>Box</code> instances at runtime) — reflection on the object gives no information about <code>T</code> unless it was captured separately (e.g., via a <code>Class&lt;T&gt;</code> field or <code>TypeToken</code> pattern using <code>getGenericSuperclass()</code>).</li>
+<li>Heap pollution occurs when a variable of a parameterized type refers to an object that is not actually of that parameterized type — most commonly via raw type usage, unchecked casts, or varargs methods with generic array parameters (<code>@SafeVarargs</code> situations). Because erasure removes runtime type checks on individual elements inside a generic container, it's possible to insert an incompatible object through a raw-typed reference to the same underlying collection, and the <code>ClassCastException</code> only surfaces later when a different, properly-typed reference retrieves and casts that element — far from the actual point of corruption.</li>
+<li>Accept either a <code>Class&lt;V&gt;</code> token or an <code>IntFunction&lt;V[]&gt;</code> array-generator lambda in the constructor, and use <code>java.lang.reflect.Array.newInstance(componentType, size)</code> (cast to <code>V[]</code> with a suppressed unchecked warning) or invoke the generator function (<code>generator.apply(size)</code>, mirroring <code>Stream.toArray(IntFunction)</code>) — this defers the actual reifiable array creation to a point where the real runtime component type is known, working within erasure's constraints rather than fighting them.</li>
+</ol>
+<p><strong>Code Examples</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Box</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">set</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="nf">get</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">}</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1">// Usage: compiler enforces type safety, no manual casts needed</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">Box</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stringBox</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Box</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">stringBox</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">);</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="n">String</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stringBox</span><span class="p">.</span><span class="na">get</span><span class="p">();</span><span class="w"> </span><span class="c1">// no cast needed, compiler inserts it under the hood</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.function.IntFunction</span><span class="p">;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RingBuffer</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">T</span><span class="o">[]</span><span class="w"> </span><span class="n">elements</span><span class="p">;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="nd">@SuppressWarnings</span><span class="p">(</span><span class="s">"unchecked"</span><span class="p">)</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">RingBuffer</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">capacity</span><span class="p">,</span><span class="w"> </span><span class="n">IntFunction</span><span class="o">&lt;</span><span class="n">T</span><span class="o">[]&gt;</span><span class="w"> </span><span class="n">generator</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">elements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">generator</span><span class="p">.</span><span class="na">apply</span><span class="p">(</span><span class="n">capacity</span><span class="p">);</span><span class="w"> </span><span class="c1">// reifiable array creation workaround</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">        </span><span class="n">elements</span><span class="o">[</span><span class="n">head</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="p">;</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">        </span><span class="n">head</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">head</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">elements</span><span class="p">.</span><span class="na">length</span><span class="p">;</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="p">}</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="c1">// Usage: RingBuffer&lt;String&gt; buffer = new RingBuffer&lt;&gt;(10, String[]::new);</span>
+</code></pre></div>
+<h2 id="generic-methods">Generic Methods</h2>
+<p><strong>Theory</strong></p>
+<ul>
+<li><strong>Core Concepts</strong>: A generic method declares its own type parameter(s), scoped to that single method (written before the return type, e.g., <code>static &lt;T&gt; T firstOf(List&lt;T&gt; list)</code>), independent of whether the enclosing class is itself generic — enabling type-safe, reusable utility methods.</li>
+<li><strong>Internal Working</strong>: The compiler infers the type argument from the method's actual arguments (or the target/assignment context) at each call site via <em>type inference</em>, then erases the type parameter the same way as class-level generics, inserting casts as needed.</li>
+<li><strong>When to Use It</strong>: Static utility methods operating generically over any type (<code>Collections.max</code>, <code>Arrays.asList</code>), or instance methods whose type parameter is unrelated to (or more specific than) the class's own type parameters.</li>
+<li><strong>Advantages</strong>: Allows a single method to be reused across unrelated types without duplicating code per type; type inference means callers rarely need to specify the type argument explicitly; can express relationships between multiple parameters/return type via a shared type variable that a non-generic signature (using <code>Object</code>) couldn't express.</li>
+<li><strong>Limitations</strong>: Type inference can fail or pick an overly-general common supertype (e.g., <code>Object</code>) in complex nested generic scenarios, sometimes requiring an explicit type witness (<code>Collections.&lt;String&gt;emptyList()</code>); overuse of type parameters where a bounded wildcard would suffice can make signatures needlessly rigid.</li>
+</ul>
+<p><strong>Internal Working</strong></p>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: (1) Compiler encounters <code>&lt;T&gt;</code> before the return type, establishing <code>T</code> as scoped only to that method invocation. (2) At each call site, type inference examines the actual argument types (and, since Java 8's improved target-type inference, the expected return/assignment type) to solve for the most specific <code>T</code> satisfying all constraints. (3) The compiler substitutes the inferred <code>T</code> for type-checking purposes only. (4) Bytecode generation erases <code>T</code> to its bound exactly as with generic classes, and the method itself is compiled once, shared across all inferred type arguments.</li>
+<li><strong>Memory Layout</strong>: Not directly applicable — type parameters are a compile-time construct; no additional memory is allocated per distinct inferred type, and method dispatch is identical to a non-generic method at the bytecode level (single method body, no specialization).</li>
+<li><strong>Diagrams</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>static &lt;T&gt; T firstOf(List&lt;T&gt; list) { return list.get(0); }
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>List&lt;String&gt; names = ...;
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>String first = firstOf(names);   // T inferred as String from argument type
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>Integer n = firstOf(intList);     // T inferred as Integer, same method body reused
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong>: A single erased method (<code>Object firstOf(List)</code>) exists in the classfile; each call site the compiler emits an <code>invokestatic</code>/<code>invokevirtual</code> to that one method plus a <code>checkcast</code> to the statically inferred type when the result is consumed as <code>T</code> — there is no runtime overhead for "which T" was inferred, since erasure means only one method body ever executes.</li>
+</ul>
+<p><strong>Interview Questions</strong></p>
+<p><em>Basic</em>
+1. Where is a generic method's type parameter declared, and how does it differ in scope from a generic class's type parameter?
+2. Do you usually need to explicitly specify the type argument when calling a generic method?</p>
+<p><em>Intermediate</em>
+3. Can a static method in a generic class use the class's own type parameter <code>T</code> directly, or must it declare its own?
+4. What is a "type witness," and when would you need to provide one explicitly?</p>
+<p><em>Advanced</em>
+5. How does Java's target-typing (introduced in Java 8) improve generic method type inference compared to Java 7?
+6. Can a generic method have multiple type parameters with bounds referencing each other? Give an example.</p>
+<p><em>Scenario-based</em>
+7. You're writing a utility method to find the maximum element in any <code>List</code> of a type that supports natural ordering. Design its generic signature and explain each part.</p>
+<p><strong>Detailed Answers</strong></p>
+<ol>
+<li>It's declared in its own angle-bracket section immediately before the method's return type (e.g., <code>static &lt;T&gt; T method(...)</code>), scoping <code>T</code> to just that single method invocation — a fresh binding is inferred independently for every call, unlike a class-level type parameter which is fixed once for the lifetime of a particular instantiated object.</li>
+<li>No — in the overwhelming majority of cases, the compiler infers the type argument automatically from the method's argument types or the expected assignment/return context; explicit type arguments (<code>Collections.&lt;String&gt;emptyList()</code>) are only needed when inference is ambiguous or when there are no arguments to infer from and the target context alone is insufficient.</li>
+<li>It must declare its own type parameter (e.g., <code>static &lt;T&gt; void utility(T item)</code>) — a <code>static</code> method cannot reference the enclosing generic class's type parameter directly, because static members are shared across all parameterizations of the class (per type erasure, there's only one class object at runtime), so the class's <code>T</code> has no fixed binding available in a static context.</li>
+<li>A type witness is an explicit type argument supplied at a generic method call site (e.g., <code>Collections.&lt;String&gt;emptyList()</code>) used when the compiler cannot infer the intended type from arguments or a sufficiently specific target context (e.g., assigning to <code>Object o = Collections.emptyList();</code> — the compiler would infer <code>T</code> as <code>Object</code> without help, whereas passing it into a <code>List&lt;String&gt;</code>-typed formal parameter would let inference work automatically without needing the witness).</li>
+<li>Prior to Java 8, target-type inference occurred only in limited "poly expression" contexts (assignment context alone, roughly); Java 8 significantly broadened where the <em>expected type</em> (the target type of an assignment, method argument, cast, or return statement) participates in inference, allowing generic method calls whose type argument depends purely on how the result is used (not just its own arguments) to resolve correctly, which was also essential for Java 8's lambda expression and method reference type inference to work at all in nested/chained generic contexts.</li>
+<li>Yes — bounds can reference other type parameters of the same method, e.g., <code>static &lt;T, R extends Comparable&lt;? super R&gt;&gt; R transform(T input, Function&lt;T, R&gt; mapper)</code>, where <code>R</code>'s bound (<code>Comparable&lt;? super R&gt;</code>) constrains what <code>R</code> can be independent of <code>T</code>, while <code>mapper</code> ties the two together; this pattern is common in comparator/collector utility methods needing both flexibility and ordering guarantees.</li>
+<li><code>static &lt;T extends Comparable&lt;? super T&gt;&gt; T max(List&lt;? extends T&gt; list)</code> — the type parameter <code>T</code> is bounded by <code>Comparable&lt;? super T&gt;</code> (rather than plain <code>Comparable&lt;T&gt;</code>) using the PECS-informed "Comparable" idiom, allowing elements whose comparison logic is defined on a supertype (e.g., a <code>Number</code> subclass compared via a <code>Comparable&lt;Number&gt;</code> implementation) to still qualify; the parameter uses <code>List&lt;? extends T&gt;</code> so callers can pass a list of any subtype of <code>T</code>, maximizing flexibility for both the compared type and the container's element type.</li>
+</ol>
+<p><strong>Code Examples</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ListUtils</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="c1">// Type parameter T scoped to this method only; inferred from the argument</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="nf">firstOf</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">list</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">())</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">NoSuchElementException</span><span class="p">();</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">list</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="c1">// Two type parameters, R bounded by Comparable relative to itself</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;?</span><span class="w"> </span><span class="kd">super</span><span class="w"> </span><span class="n">R</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="nf">maxBy</span><span class="p">(</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">            </span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span><span class="p">,</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">function</span><span class="p">.</span><span class="na">Function</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="o">&gt;</span><span class="w"> </span><span class="n">keyExtractor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">items</span><span class="p">.</span><span class="na">stream</span><span class="p">()</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">            </span><span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">keyExtractor</span><span class="p">)</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">            </span><span class="p">.</span><span class="na">max</span><span class="p">(</span><span class="n">Comparator</span><span class="p">.</span><span class="na">naturalOrder</span><span class="p">())</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">            </span><span class="p">.</span><span class="na">orElseThrow</span><span class="p">();</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="p">}</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="c1">// Usage: String first = ListUtils.firstOf(names);</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="c1">// Usage: Integer oldestAge = ListUtils.maxBy(people, Person::getAge);</span>
+</code></pre></div>
+<h2 id="generic-interfaces">Generic Interfaces</h2>
+<p><strong>Theory</strong></p>
+<ul>
+<li><strong>Core Concepts</strong>: A generic interface declares type parameters at the interface level (e.g., <code>interface Repository&lt;T, ID&gt;</code>), which implementing classes must either propagate as their own type parameters or bind to concrete types, forming the backbone of type-safe abstraction contracts like <code>Comparable&lt;T&gt;</code>, <code>Comparator&lt;T&gt;</code>, and <code>List&lt;E&gt;</code>.</li>
+<li><strong>Internal Working</strong>: Like generic classes, the interface's type parameters are erased at compile time; a class implementing a generic interface with a concrete type argument (e.g., <code>class IntBox implements Comparable&lt;Integer&gt;</code>) causes the compiler to generate a <em>bridge method</em> so that the erased, <code>Object</code>-based method required by the interface's erasure correctly delegates to the type-specific override, preserving polymorphic dispatch.</li>
+<li><strong>When to Use It</strong>: Defining contracts that must operate generically over caller-supplied types — repository/DAO abstractions, functional interfaces (<code>Function&lt;T, R&gt;</code>, <code>Supplier&lt;T&gt;</code>), comparison/ordering strategies, callback/listener interfaces.</li>
+<li><strong>Advantages</strong>: Forces implementers to commit to specific types at compile time, giving callers of the interface full type safety without casting; enables writing algorithms against the interface abstraction (<code>Comparable&lt;T&gt;</code>) that work for any conforming type.</li>
+<li><strong>Limitations</strong>: A class cannot implement the same generic interface with two different type arguments (e.g., <code>class X implements Comparable&lt;String&gt;, Comparable&lt;Integer&gt;</code> is illegal) because erasure would produce two identical <code>compareTo(Object)</code> method signatures, an unresolvable clash.</li>
+</ul>
+<p><strong>Internal Working</strong></p>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: (1) Interface declares <code>interface Comparable&lt;T&gt; { int compareTo(T o); }</code>. (2) A class <code>class Money implements Comparable&lt;Money&gt;</code> binds <code>T</code> to <code>Money</code>. (3) After erasure, the interface's actual required method becomes <code>int compareTo(Object o)</code> (since <code>T</code> unbounded erases to <code>Object</code>). (4) The compiler generates a synthetic <em>bridge method</em> <code>compareTo(Object o) { return compareTo((Money) o); }</code> in <code>Money</code>'s bytecode, which performs the cast and delegates to the programmer-written <code>compareTo(Money o)</code>, ensuring that calling code using the interface reference (<code>Comparable c = money; c.compareTo(other)</code>) still dispatches correctly via virtual invocation.</li>
+<li><strong>Memory Layout</strong>: Not directly applicable — bridge methods add a small amount of extra bytecode (an additional method entry per erasure-conflicting override) but no additional per-instance memory; the interface's method table (itable) simply has an extra virtual slot for the bridge.</li>
+<li><strong>Diagrams</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>interface Comparable&lt;T&gt; { int compareTo(T o); }
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>class Money implements Comparable&lt;Money&gt; {
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    public int compareTo(Money other) { ... }   // programmer-written
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    // compiler-generated bridge method (erasure-required):
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    public int compareTo(Object other) { return compareTo((Money) other); }
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>}
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong>: Bridge methods are marked with the <code>ACC_BRIDGE</code> and <code>ACC_SYNTHETIC</code> flags in the classfile so tools (debuggers, reflection APIs like <code>Class.getDeclaredMethods()</code>) can distinguish them from user-written code; virtual dispatch (<code>invokeinterface</code>/<code>invokevirtual</code>) through the erased interface type resolves to the bridge, which itself performs one extra <code>invokevirtual</code> hop to the real typed method — a negligible but nonzero indirection the JIT typically inlines away after warm-up.</li>
+</ul>
+<p><strong>Interview Questions</strong></p>
+<p><em>Basic</em>
+1. Give two examples of generic interfaces from the JDK standard library.
+2. Can a class implement a generic interface without specifying a concrete type argument?</p>
+<p><em>Intermediate</em>
+3. What is a bridge method, and why does the compiler generate one when implementing a generic interface with a concrete type argument?
+4. Why can't a class implement <code>Comparable&lt;String&gt;</code> and <code>Comparable&lt;Integer&gt;</code> simultaneously?</p>
+<p><em>Advanced</em>
+5. How can you inspect bridge methods via reflection, and what flags distinguish them from regular methods?
+6. How do generic interfaces interact with type erasure when the interface itself has a bounded type parameter, e.g., <code>interface Repository&lt;T extends Entity&gt;</code>?</p>
+<p><em>Scenario-based</em>
+7. You're designing a <code>Repository&lt;T, ID&gt;</code> interface for a persistence layer. Explain the role of each type parameter and how a concrete <code>UserRepository</code> would implement it.</p>
+<p><strong>Detailed Answers</strong></p>
+<ol>
+<li><code>Comparable&lt;T&gt;</code> (defines <code>compareTo(T o)</code> for natural ordering) and <code>Comparator&lt;T&gt;</code> (defines <code>compare(T a, T b)</code> for external ordering strategies); other common examples include <code>Iterable&lt;T&gt;</code>, <code>Function&lt;T, R&gt;</code>, and <code>List&lt;E&gt;</code> itself (an interface, generic over its element type).</li>
+<li>Yes — it can implement the raw form (<code>class Foo implements Comparable</code>) for legacy compatibility, which disables generic type checking for that interface's methods on <code>Foo</code> (they'll appear to take/return <code>Object</code>), or, if the implementing class is itself generic, it can propagate the interface's type parameter as its own (<code>class Box&lt;T&gt; implements Comparable&lt;Box&lt;T&gt;&gt;</code>), deferring the concrete binding to whoever instantiates <code>Box&lt;T&gt;</code>.</li>
+<li>A bridge method is a synthetic method the compiler generates to reconcile the interface's erased method signature (e.g., <code>compareTo(Object)</code>) with the implementing class's type-specific override (e.g., <code>compareTo(Money)</code>) — since the JVM's virtual dispatch mechanism requires the exact erased signature declared by the interface to exist in the implementing class, the compiler adds a bridge with that erased signature that casts its argument and forwards the call to the real, type-safe method, preserving correct polymorphic behavior when code interacts with the object through the generic interface type.</li>
+<li>Because after erasure, both <code>Comparable&lt;String&gt;</code> and <code>Comparable&lt;Integer&gt;</code> require the exact same method signature <code>compareTo(Object)</code> on the implementing class — a class cannot have two different method bodies for the identical erased signature, so the compiler rejects the attempt at compile time ("cannot implement both Comparable<string> and Comparable<integer> because they have the same erasure").</integer></string></li>
+<li>Via <code>Class.getDeclaredMethods()</code>, a bridge method appears as a distinct <code>Method</code> object whose signature uses the erased (e.g., <code>Object</code>) parameter types; calling <code>Method.isBridge()</code> (or checking <code>Modifier</code> flags, though <code>isBridge()</code> is the direct API) returns <code>true</code> for it, and it's also marked <code>ACC_SYNTHETIC</code> (<code>Method.isSynthetic()</code> also returns <code>true</code>) — reflection-based frameworks (serialization libraries, ORMs) must often explicitly filter out bridge/synthetic methods to avoid processing them as real API surface.</li>
+<li>Erasure uses the <em>leftmost bound</em> as the erasure target instead of plain <code>Object</code> — for <code>interface Repository&lt;T extends Entity&gt;</code>, any method using <code>T</code> (e.g., <code>T findById(ID id)</code>) erases to <code>Entity findById(Object id)</code> rather than <code>Object findById(Object id)</code>, meaning implementing classes' bridge methods (if needed) cast to <code>Entity</code>, and callers using the raw type get <code>Entity</code>-typed results without a cast, reflecting the declared bound.</li>
+<li><code>Repository&lt;T, ID&gt;</code> uses <code>T</code> for the managed entity type (e.g., <code>User</code>) and <code>ID</code> for that entity's primary-key/identifier type (e.g., <code>Long</code> or <code>UUID</code>), typically with methods like <code>Optional&lt;T&gt; findById(ID id)</code>, <code>T save(T entity)</code>, <code>void deleteById(ID id)</code>. A concrete <code>UserRepository implements Repository&lt;User, Long&gt;</code> binds both type parameters to specific types, so its methods become fully type-safe (<code>Optional&lt;User&gt; findById(Long id)</code>) without any casting, and the compiler generates any necessary bridge methods to satisfy the interface's erased contract.</li>
+</ol>
+<p><strong>Code Examples</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">Repository</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">ID</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findById</span><span class="p">(</span><span class="n">ID</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="n">T</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">entity</span><span class="p">);</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">deleteById</span><span class="p">(</span><span class="n">ID</span><span class="w"> </span><span class="n">id</span><span class="p">);</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">}</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">UserRepository</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Repository</span><span class="o">&lt;</span><span class="n">User</span><span class="p">,</span><span class="w"> </span><span class="n">Long</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Long</span><span class="p">,</span><span class="w"> </span><span class="n">User</span><span class="o">&gt;</span><span class="w"> </span><span class="n">store</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span><span class="nd">@Override</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">findById</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Optional</span><span class="p">.</span><span class="na">ofNullable</span><span class="p">(</span><span class="n">store</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">id</span><span class="p">));</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">    </span><span class="nd">@Override</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">User</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="n">User</span><span class="w"> </span><span class="n">entity</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">store</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">entity</span><span class="p">.</span><span class="na">getId</span><span class="p">(),</span><span class="w"> </span><span class="n">entity</span><span class="p">);</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">entity</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">    </span><span class="nd">@Override</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">deleteById</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">store</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">id</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// Comparable&lt;T&gt; implementation illustrating the compiler-generated bridge method</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Money</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">Money</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">cents</span><span class="p">;</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Money</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="n">cents</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">cents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cents</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="nd">@Override</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">compareTo</span><span class="p">(</span><span class="n">Money</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// programmer-written, type-safe</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Long</span><span class="p">.</span><span class="na">compare</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">cents</span><span class="p">,</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="na">cents</span><span class="p">);</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="c1">// Compiler also generates: public int compareTo(Object o) { return compareTo((Money) o); }</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="wildcards">Wildcards</h2>
+<p>Wildcards (<code>?</code>, <code>? extends T</code>, <code>? super T</code>) express flexible, unknown-but-constrained type arguments when a specific type parameter binding isn't needed. See the subsections below for upper- and lower-bounded wildcards.</p>
+<h3 id="upper-bound">Upper Bound</h3>
+<p><strong>Theory</strong></p>
+<ul>
+<li><strong>Core Concepts</strong>: An upper-bounded wildcard <code>? extends T</code> represents an unknown type that is <code>T</code> or any subtype of <code>T</code>, used when a generic structure is only being <em>read from</em> — it restricts what you can safely retrieve (always assignable to <code>T</code>) while forbidding insertion (the compiler cannot verify what exact subtype is expected).</li>
+<li><strong>Internal Working</strong>: The compiler treats any read from a <code>List&lt;? extends T&gt;</code> as yielding <code>T</code> (safe, since every possible actual type is a subtype of <code>T</code>), while any write (other than <code>null</code>) is rejected at compile time because the actual concrete type parameter is unknown and could be any subtype, making an arbitrary <code>T</code>-typed insertion potentially unsafe.</li>
+<li><strong>When to Use It</strong>: Method parameters that only need to <em>produce</em>/read values from a generic structure — this is the "Producer" half of the PECS (Producer-Extends, Consumer-Super) mnemonic, e.g., <code>void printAll(List&lt;? extends Number&gt; list)</code>.</li>
+<li><strong>Advantages</strong>: Maximizes API flexibility for callers — a method accepting <code>List&lt;? extends Number&gt;</code> can be called with <code>List&lt;Integer&gt;</code>, <code>List&lt;Double&gt;</code>, <code>List&lt;Number&gt;</code> etc., which a plain <code>List&lt;Number&gt;</code> parameter would reject.</li>
+<li><strong>Limitations</strong>: Cannot add any element (except <code>null</code>) to a <code>List&lt;? extends T&gt;</code>, since the compiler has no way to verify a <code>T</code>-typed (or subtype-typed) object being inserted matches the actual, unknown captured subtype.</li>
+</ul>
+<p><strong>Internal Working</strong></p>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: (1) Compiler sees <code>List&lt;? extends Number&gt;</code> and internally treats the unknown type as some captured type <code>CAP#1 extends Number</code> for that particular expression. (2) Reading (<code>list.get(0)</code>) is safe and typed as <code>Number</code> because every possible <code>CAP#1</code> is a subtype of <code>Number</code>. (3) Writing (<code>list.add(someNumber)</code>) is rejected because the compiler cannot prove <code>someNumber</code>'s type matches the specific, unknown <code>CAP#1</code> (e.g., the actual list might be a <code>List&lt;Integer&gt;</code>, and adding a <code>Double</code> would corrupt it) — only <code>list.add(null)</code> is permitted since <code>null</code> is compatible with any reference type.</li>
+<li><strong>Memory Layout</strong>: Not directly applicable — wildcards are purely a compile-time type-checking mechanism with zero runtime representation (fully erased, just like ordinary type parameters).</li>
+<li><strong>Diagrams</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>List&lt;? extends Number&gt; nums = new ArrayList&lt;Integer&gt;();
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>Number n = nums.get(0);   // OK: any subtype of Number is safely widened to Number
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>nums.add(3.14);           // COMPILE ERROR: can't prove 3.14 (Double) matches captured Integer
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>nums.add(null);           // OK: null matches any type
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong>: No special runtime behavior — wildcards are erased identically to their bound (<code>? extends Number</code> erases to <code>Number</code> for bytecode purposes); all type safety is enforced entirely by <code>javac</code>'s compile-time type checker, with zero JVM involvement.</li>
+</ul>
+<p><strong>Interview Questions</strong></p>
+<p><em>Basic</em>
+1. What does <code>List&lt;? extends Number&gt;</code> mean, and what operations are allowed on it?
+2. Why is this called an "upper bound"?</p>
+<p><em>Intermediate</em>
+3. Why can't you add an <code>Integer</code> to a <code>List&lt;? extends Number&gt;</code> even though <code>Integer</code> is a <code>Number</code>?
+4. What is "capture conversion" in the context of wildcards?</p>
+<p><em>Advanced</em>
+5. How does the compiler decide the static type of an element retrieved from a <code>List&lt;? extends T&gt;</code>?
+6. Give a real method signature from the JDK (e.g., in <code>Collections</code>) that uses an upper-bounded wildcard, and explain why.</p>
+<p><em>Scenario-based</em>
+7. You're writing a method to sum the total of a list that could be <code>List&lt;Integer&gt;</code>, <code>List&lt;Double&gt;</code>, or <code>List&lt;Long&gt;</code>. Design its signature using an upper-bounded wildcard.</p>
+<p><strong>Detailed Answers</strong></p>
+<ol>
+<li>It means "a list of some unknown type that is <code>Number</code> or a subtype of <code>Number</code>." You may safely read elements out (they're guaranteed at least <code>Number</code>), but you cannot add any element to it (except <code>null</code>), since the compiler doesn't know the exact concrete subtype the underlying list actually holds.</li>
+<li>Because the constraint bounds the unknown type from above in the type hierarchy — the actual type must be <code>Number</code> or something <em>below</em> it (a subtype), i.e., it can't exceed/extend beyond <code>Number</code> in the inheritance direction being restricted, hence "upper bound."</li>
+<li>The wildcard <code>? extends Number</code> represents <em>some specific but unknown</em> subtype of <code>Number</code> — it could concretely be <code>List&lt;Integer&gt;</code>, <code>List&lt;Double&gt;</code>, or any other subtype's list. If the compiler allowed adding an <code>Integer</code>, but the actual underlying list were a <code>List&lt;Double&gt;</code>, that insertion would silently corrupt the list with a type-incompatible element; since the compiler can't know which specific subtype it is at any given call site, it conservatively disallows all insertions (except <code>null</code>, which is safe for any type).</li>
+<li>Capture conversion is the compiler's process of treating each occurrence of a wildcard type in an expression as if it were a fresh, specific (but still unknown to the programmer) type variable — e.g., <code>List&lt;? extends Number&gt;</code> is internally reasoned about as <code>List&lt;CAP#1&gt;</code> where <code>CAP#1</code> is some specific unknown subtype of <code>Number</code> for the duration of that expression's type-checking, which is what allows the compiler to correctly type <code>list.get(0)</code> as <code>Number</code> while rejecting arbitrary <code>add()</code> calls.</li>
+<li>It types the result as the wildcard's declared upper bound (<code>T</code> in <code>? extends T</code>, or <code>Object</code> if no bound is written), because regardless of which actual concrete subtype the captured wildcard represents, every possible instantiation is guaranteed to be assignable to that bound — so retrieving an element and treating it as that bound type is always type-safe.</li>
+<li><code>static &lt;T&gt; void copy(List&lt;? super T&gt; dest, List&lt;? extends T&gt; src)</code> in <code>java.util.Collections</code> — <code>src</code> uses an upper-bounded wildcard because elements are only ever read from it (producing <code>T</code>s to copy), so any list of <code>T</code> or a subtype of <code>T</code> is an acceptable source, maximizing the range of callable argument types.</li>
+<li><code>static double sum(List&lt;? extends Number&gt; numbers) { double total = 0; for (Number n : numbers) total += n.doubleValue(); return total; }</code> — since the method only ever reads (<code>Number.doubleValue()</code>) from the list and never inserts into it, an upper-bounded wildcard is exactly the PECS "Producer-Extends" case, letting the method accept <code>List&lt;Integer&gt;</code>, <code>List&lt;Double&gt;</code>, <code>List&lt;Long&gt;</code>, etc., which a plain <code>List&lt;Number&gt;</code> parameter would reject.</li>
+</ol>
+<p><strong>Code Examples</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MathUtils</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="c1">// Upper-bounded wildcard: reads (produces) Number values from any subtype list</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;?</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Number</span><span class="o">&gt;</span><span class="w"> </span><span class="n">numbers</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Number</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">numbers</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">            </span><span class="n">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="na">doubleValue</span><span class="p">();</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">total</span><span class="p">;</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">sum</span><span class="p">(</span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)));</span><span class="w">       </span><span class="c1">// List&lt;Integer&gt; accepted</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">sum</span><span class="p">(</span><span class="n">List</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span><span class="w"> </span><span class="mf">2.5</span><span class="p">)));</span><span class="w">        </span><span class="c1">// List&lt;Double&gt; accepted</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="lower-bound">Lower Bound</h3>
+<p><strong>Theory</strong></p>
+<ul>
+<li><strong>Core Concepts</strong>: A lower-bounded wildcard <code>? super T</code> represents an unknown type that is <code>T</code> or any <em>supertype</em> of <code>T</code>, used when a generic structure is being <em>written to</em> — it guarantees any <code>T</code> (or subtype of <code>T</code>) can be safely inserted, while reads only guarantee an <code>Object</code>-typed result (since the actual element type could be any supertype).</li>
+<li><strong>Internal Working</strong>: The compiler permits <code>list.add(someT)</code> on a <code>List&lt;? super T&gt;</code> because every possible actual type parameter (<code>T</code> itself or any of its supertypes) can safely hold a <code>T</code> instance by upcasting; reading yields only <code>Object</code> because the actual stored type could be far up the hierarchy (e.g., a <code>List&lt;Object&gt;</code> satisfies <code>List&lt;? super Integer&gt;</code>).</li>
+<li><strong>When to Use It</strong>: Method parameters that only need to <em>consume</em>/write values into a generic structure — the "Consumer-Super" half of PECS, e.g., <code>void addNumbers(List&lt;? super Integer&gt; list)</code>.</li>
+<li><strong>Advantages</strong>: Maximizes flexibility for callers supplying a "write-only" destination — a method accepting <code>List&lt;? super Integer&gt;</code> can be called with <code>List&lt;Integer&gt;</code>, <code>List&lt;Number&gt;</code>, or <code>List&lt;Object&gt;</code>, which a plain <code>List&lt;Integer&gt;</code> parameter would reject.</li>
+<li><strong>Limitations</strong>: Reading an element only yields <code>Object</code> (not <code>T</code>), since the compiler can't guarantee anything more specific about the actual, unknown supertype the list is really parameterized with.</li>
+</ul>
+<p><strong>Internal Working</strong></p>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: (1) Compiler sees <code>List&lt;? super Integer&gt;</code> and knows the actual type parameter is <code>Integer</code> or some supertype (<code>Number</code>, <code>Object</code>, etc.). (2) Any <code>Integer</code> (or subtype) value is safely assignable into any of those possible actual types, so <code>list.add(5)</code> is allowed. (3) Reading (<code>list.get(0)</code>) can only be statically typed as <code>Object</code>, since the compiler cannot know which specific supertype the list truly holds — it could be storing <code>String</code>s if the actual runtime list were declared <code>List&lt;Object&gt;</code>, so no more specific type than <code>Object</code> is safe to assume.</li>
+<li><strong>Memory Layout</strong>: Not directly applicable — purely a compile-time constraint with no runtime representation, fully erased in bytecode.</li>
+<li><strong>Diagrams</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>List&lt;? super Integer&gt; list = new ArrayList&lt;Number&gt;();
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>list.add(42);            // OK: Integer safely upcasts into Number (or Object, or Integer)
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>Object o = list.get(0);  // only Object is guaranteed; NOT Integer or Number
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong>: No runtime distinction — <code>? super T</code> erases to <code>Object</code> in the generated bytecode (since the only common supertype guaranteed across all valid actual type arguments is <code>Object</code>); all safety is enforced purely by <code>javac</code>'s wildcard capture and subtyping rules at compile time.</li>
+</ul>
+<p><strong>Interview Questions</strong></p>
+<p><em>Basic</em>
+1. What does <code>List&lt;? super Integer&gt;</code> mean, and what operations are allowed on it?
+2. Why is this called a "lower bound"?</p>
+<p><em>Intermediate</em>
+3. Why does reading from a <code>List&lt;? super Integer&gt;</code> only give you an <code>Object</code>, not an <code>Integer</code>?
+4. Give the PECS mnemonic and explain what "Consumer-Super" means in that context.</p>
+<p><em>Advanced</em>
+5. Why does <code>Collections.addAll(Collection&lt;? super T&gt; c, T... elements)</code> use a lower-bounded wildcard for its first parameter?
+6. Can a lower-bounded wildcard type parameter also have effectively no useful read operation beyond <code>Object</code>? Why does the language still consider this useful?</p>
+<p><em>Scenario-based</em>
+7. You're implementing a method that fills a caller-supplied list with a sequence of <code>Integer</code> values, where the caller might reasonably pass in a <code>List&lt;Integer&gt;</code>, <code>List&lt;Number&gt;</code>, or <code>List&lt;Object&gt;</code>. Design the method signature.</p>
+<p><strong>Detailed Answers</strong></p>
+<ol>
+<li>It means "a list whose actual type parameter is <code>Integer</code> or some supertype of <code>Integer</code> (e.g., <code>Number</code>, <code>Object</code>)." You can safely insert <code>Integer</code> (or any subtype of <code>Integer</code>) values into it, but reading only guarantees an <code>Object</code>-typed result.</li>
+<li>Because the constraint bounds the unknown actual type parameter from below in the type hierarchy — it must be <code>Integer</code> or something <em>above</em> it (a supertype), i.e., it can't go below <code>Integer</code>, hence "lower bound."</li>
+<li>The compiler only knows the actual type parameter is <em>some</em> supertype of <code>Integer</code> — it could concretely be <code>List&lt;Integer&gt;</code>, <code>List&lt;Number&gt;</code>, or <code>List&lt;Object&gt;</code>. Since <code>Object</code> is the only type guaranteed to be a supertype of every possibility, that's the most specific type the compiler can safely assign to a value read from the list without risking a type error.</li>
+<li>PECS stands for "Producer-Extends, Consumer-Super": use <code>? extends T</code> when the generic structure only <em>produces</em> (you read) <code>T</code> values (a "producer"), and use <code>? super T</code> when the structure only <em>consumes</em> (you write) <code>T</code> values (a "consumer"). "Consumer-Super" specifically means: if your method only calls <code>add</code>/<code>put</code>-style operations pushing <code>T</code> values into the structure, declare it with a lower-bounded (<code>super</code>) wildcard to maximize the range of acceptable destination types.</li>
+<li>Because <code>addAll</code> only ever <em>writes</em> <code>T</code> elements into <code>c</code> — it never reads anything back out of it — making <code>c</code> a pure consumer; declaring it <code>Collection&lt;? super T&gt;</code> (rather than <code>Collection&lt;T&gt;</code>) lets callers pass in a destination collection typed for any supertype of <code>T</code> (e.g., adding <code>Integer</code>s into a <code>List&lt;Number&gt;</code> or <code>List&lt;Object&gt;</code>), which is exactly the flexibility PECS recommends for consumer-only parameters.</li>
+<li>Yes — a lower-bounded wildcard's only guaranteed read type is <code>Object</code>, which is often not very useful directly, but the <em>value</em> of <code>? super T</code> lies entirely in the write-side flexibility it grants callers, not in enabling richer reads; the language still considers it essential because many real APIs are fundamentally about inserting/producing values into a caller-supplied sink, where maximizing the acceptable range of destination types (via the supertype relationship) matters far more than being able to read specific types back out.</li>
+<li><code>static void fillWithRange(List&lt;? super Integer&gt; list, int start, int count) { for (int i = 0; i &lt; count; i++) list.add(start + i); }</code> — since the method only ever inserts <code>Integer</code> values and never reads from the list, a lower-bounded wildcard on the parameter (Consumer-Super) is correct, allowing callers to pass <code>List&lt;Integer&gt;</code>, <code>List&lt;Number&gt;</code>, or <code>List&lt;Object&gt;</code> as the destination.</li>
+</ol>
+<p><strong>Code Examples</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ListFiller</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="c1">// Lower-bounded wildcard: only writes (consumes) Integer values into the list</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">fillWithRange</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;?</span><span class="w"> </span><span class="kd">super</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">list</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">            </span><span class="n">list</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">start</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Number</span><span class="o">&gt;</span><span class="w"> </span><span class="n">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">        </span><span class="n">fillWithRange</span><span class="p">(</span><span class="n">numbers</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span><span class="w"> </span><span class="c1">// List&lt;Number&gt; accepted as a destination for Integers</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">numbers</span><span class="p">);</span><span class="w"> </span><span class="c1">// [1, 2, 3, 4, 5]</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="type-erasure">Type Erasure</h2>
+<p><strong>Theory</strong></p>
+<ul>
+<li><strong>Core Concepts</strong>: Type erasure is the compile-time process by which the Java compiler removes all generic type information after type-checking is complete, replacing type parameters with their bounds (or <code>Object</code> if unbounded) in the generated bytecode — chosen by Java's designers specifically to preserve binary compatibility with pre-generics (Java 1.4 and earlier) code and JVMs.</li>
+<li><strong>Internal Working</strong>: The compiler performs full generic type checking against the source code, then discards the type parameter information, substituting erasure types, inserting synthetic casts (<code>checkcast</code>) at points where a value typed as a type parameter is used, and generating bridge methods where erasure would otherwise break overriding/interface-implementation contracts.</li>
+<li><strong>When to Use It</strong>: Not something you \"use\" directly — it's a language implementation detail every generics user must understand to reason correctly about runtime behavior, reflection, arrays, and overload resolution involving generics.</li>
+<li><strong>Advantages</strong>: Full backward compatibility — generic code compiles to bytecode runnable on any JVM, and pre-generics libraries interoperate seamlessly with generic client code via raw types; no runtime performance/memory overhead from maintaining reified type parameters.</li>
+<li><strong>Limitations</strong>: No runtime type information about type arguments (<code>instanceof List&lt;String&gt;</code> is illegal; <code>new T()</code> and <code>new T[]</code> are illegal); cannot overload methods that would have identical erased signatures; combined with varargs, generics erasure can produce unchecked-cast warnings and heap pollution risk.</li>
+</ul>
+<p><strong>Internal Working</strong></p>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: (1) <code>javac</code> type-checks the entire generic source using the full type parameter information (verifying assignment compatibility, bounds, wildcard capture, etc.). (2) It computes the erasure of every generic type (<code>List&lt;String&gt;</code> -&gt; <code>List</code>, <code>T extends Number</code> -&gt; <code>Number</code>, unbounded <code>T</code> -&gt; <code>Object</code>). (3) It rewrites the AST/bytecode generation to use only erased types, inserting <code>checkcast</code> instructions at any point where an erased <code>Object</code> (or bound type) needs to be treated as the more specific, statically-known generic type. (4) It generates bridge methods for any method overriding/interface implementation whose signature would otherwise mismatch due to erasure (see Generic Interfaces above). (5) The final <code>.class</code> file contains zero generic type parameter information in its executable bytecode (though a <code>Signature</code> attribute <em>is</em> retained in the classfile purely for reflection/tooling/IDE purposes — this is metadata, not enforced at runtime).</li>
+<li><strong>Memory Layout</strong>: No impact beyond what erasure implies for field/variable types — a field declared <code>List&lt;String&gt;</code> occupies exactly the same memory as a field declared raw <code>List</code>, since both are simply object references to a <code>List</code> instance; there is no per-generic-instantiation memory duplication (unlike reified generics in languages like C#).</li>
+<li><strong>Diagrams</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Source (generics visible to compiler):      Bytecode (fully erased):
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>List&lt;String&gt; list = new ArrayList&lt;&gt;();      List list = new ArrayList();
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>String s = list.get(0);                     String s = (String) list.get(0); // checkcast
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>boolean b = (list instanceof List&lt;String&gt;); // COMPILE ERROR — no runtime info about &lt;String&gt;
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>boolean b2 = (list instanceof List&lt;?&gt;);     // OK — raw/wildcard instanceof is legal
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong>: The JVM's class-loading, verification, and execution machinery operates entirely on erased types — it has no notion of <code>List&lt;String&gt;</code> versus <code>List&lt;Integer&gt;</code>, only <code>List</code>; the <code>Signature</code> attribute in the classfile preserves the original generic signature as metadata solely for reflective APIs (<code>Method.getGenericReturnType()</code>) and compile-time tooling (separate compilation units, IDEs), but it plays no role in bytecode verification or execution semantics.</li>
+</ul>
+<p><strong>Interview Questions</strong></p>
+<p><em>Basic</em>
+1. What is type erasure, and why did Java's designers choose this implementation strategy for generics?
+2. Is generic type information completely gone at runtime, or is any of it retained anywhere?</p>
+<p><em>Intermediate</em>
+3. Why is <code>list instanceof List&lt;String&gt;</code> illegal, while <code>list instanceof List&lt;?&gt;</code> is legal?
+4. Why can't you overload two methods <code>void process(List&lt;String&gt; list)</code> and <code>void process(List&lt;Integer&gt; list)</code> in the same class?</p>
+<p><em>Advanced</em>
+5. What is the <code>Signature</code> attribute in a classfile, and what role does it play given that bytecode itself is fully erased?
+6. How does type erasure interact with generic method overriding across a class hierarchy, and what problem do bridge methods solve here?</p>
+<p><em>Scenario-based</em>
+7. A teammate asks why <code>ArrayList&lt;String&gt;</code> and <code>ArrayList&lt;Integer&gt;</code> both report the same <code>Class</code> object via <code>.getClass()</code>, and whether this can be exploited to insert the wrong type into a collection. Explain the mechanism and the risk.</p>
+<p><strong>Detailed Answers</strong></p>
+<ol>
+<li>Type erasure removes generic type parameter information from the bytecode after compile-time checking, replacing it with erasure types (bounds or <code>Object</code>). Java's designers chose this specifically for backward/binary compatibility: generics were retrofitted onto Java 5 without changing the JVM specification or <code>.class</code> file format, so pre-existing pre-generics libraries and already-compiled <code>.class</code> files continued to interoperate seamlessly with new generic code (via raw types), and no JVM upgrade was required to support generics.</li>
+<li>Almost entirely gone from executable bytecode, but not entirely absent from the classfile: a <code>Signature</code> attribute stores the original generic signature as metadata for classes, methods, and fields, used exclusively by reflective APIs (<code>getGenericSuperclass()</code>, <code>getGenericParameterTypes()</code>) and compile-time tools; this information is not consulted by the JVM during bytecode verification or execution — it's purely descriptive metadata.</li>
+<li><code>instanceof</code> is a runtime check, and after erasure the JVM only knows about raw <code>List</code>, not <code>List&lt;String&gt;</code> specifically — there is no runtime object representing "the actual type argument was String" to check against, so the compiler rejects <code>instanceof List&lt;String&gt;</code> as meaningless at compile time. <code>instanceof List&lt;?&gt;</code> is legal because the unbounded wildcard doesn't claim any specific type argument — it only asserts "some <code>List</code>, of any element type," which erasure-based runtime checking (<code>instanceof List</code>) can actually verify.</li>
+<li>After erasure, both method signatures become identical: <code>void process(List list)</code> — the type arguments <code>&lt;String&gt;</code> and <code>&lt;Integer&gt;</code> vanish, leaving two methods with the exact same erased signature, which is a duplicate-method compile error (\"methods have the same erasure\"), since the JVM (and thus the compiler enforcing what's ultimately loadable) cannot distinguish between them at the bytecode level.</li>
+<li>The <code>Signature</code> attribute is an optional classfile attribute that records the <em>original</em>, pre-erasure generic type signature of a class, field, or method as a string, purely so that tools operating above the bytecode level (the Java reflection API, IDEs, annotation processors, deserialization frameworks) can recover generic type information that was otherwise discarded by erasure; the JVM's bytecode verifier and interpreter/JIT completely ignore this attribute during actual program execution — it has zero effect on runtime type-checking or method dispatch.</li>
+<li>When a generic method is overridden in a subclass with a more specific type argument (e.g., overriding <code>Comparable&lt;T&gt;.compareTo(T)</code> with <code>compareTo(Money)</code> after binding <code>T</code> to <code>Money</code>), erasure would otherwise produce a method with a different (more specific) erased signature than the interface/superclass method requires (<code>compareTo(Object)</code>), which would break virtual dispatch (the subclass method wouldn't actually override/implement the erased method the JVM expects). Bridge methods solve this: the compiler adds a synthetic method matching the exact erased signature the supertype/interface requires, which internally casts and delegates to the real, type-specific method — restoring correct polymorphic behavior despite erasure.</li>
+<li>Because of type erasure, <code>ArrayList&lt;String&gt;</code> and <code>ArrayList&lt;Integer&gt;</code> are literally the same class at runtime — there is only one <code>ArrayList.class</code> object, shared by every parameterization; <code>.getClass()</code> returns that same shared <code>Class</code> object regardless of the compile-time type argument used to declare the variable. This can indeed be exploited: obtaining a raw-typed or wildcard-captured reference to the same underlying list object (e.g., via a raw-type cast or through reflection) lets you call <code>list.add(someIncompatibleObject)</code> bypassing the compile-time check that the properly-typed reference enforces, corrupting the collection and causing a <code>ClassCastException</code> later at a seemingly unrelated line where a properly-typed reference retrieves and casts the corrupted element — this is exactly \"heap pollution.\"</li>
+</ol>
+<p><strong>Code Examples</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.ArrayList</span><span class="p">;</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ErasureDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">strings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">integers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">        </span><span class="c1">// Both report the identical Class object at runtime due to erasure</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">strings</span><span class="p">.</span><span class="na">getClass</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">integers</span><span class="p">.</span><span class="na">getClass</span><span class="p">());</span><span class="w"> </span><span class="c1">// true</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">        </span><span class="n">heapPollution</span><span class="p">(</span><span class="n">strings</span><span class="p">);</span><span class="w"> </span><span class="c1">// demonstrates unsafe raw-type bypass</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="w">    </span><span class="nd">@SuppressWarnings</span><span class="p">({</span><span class="err">\</span><span class="s">"unchecked\", \"rawtypes\"})</span>
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="s">    static void heapPollution(List&lt;String&gt; strings) {</span>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="s">        List raw = strings;         // raw type reference to the same list</span>
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="s">        raw.add(42);                 // compiles (with warning); corrupts the list at runtime</span>
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="s">        String s = strings.get(0);   // ClassCastException here, far from the actual corruption</span>
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="s">    }</span>
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a><span class="s">}</span>
+</code></pre></div>
+<h2 id="pecs-principle">PECS Principle</h2>
+<p><strong>Theory</strong></p>
+<ul>
+<li><strong>Core Concepts</strong>: PECS (\"Producer Extends, Consumer Super\") is Joshua Bloch's mnemonic (from <em>Effective Java</em>) for choosing the correct wildcard when designing a generic API parameter: use <code>? extends T</code> when the parameter only produces/supplies <code>T</code> values to your code (read-only), and use <code>? super T</code> when the parameter only consumes/accepts <code>T</code> values from your code (write-only); use an exact <code>T</code> (no wildcard) when the parameter does both.</li>
+<li><strong>Internal Working</strong>: This isn't a language mechanism itself but a design discipline built on top of the compiler's wildcard capture-conversion rules described under Upper/Lower Bound above — PECS is the practical heuristic for applying those rules correctly when designing method signatures rather than reasoning about capture conversion from scratch every time.</li>
+<li><strong>When to Use It</strong>: Any time you're designing a generic method signature involving a wildcard-eligible parameter (particularly utility/copy/transform methods) and need to decide between <code>? extends T</code>, <code>? super T</code>, or a plain <code>T</code>.</li>
+<li><strong>Advantages</strong>: Produces the most flexible possible API surface for callers (accepting the widest range of compatible argument types) without sacrificing compile-time type safety; systematizes wildcard choice into a memorable, teachable rule instead of ad hoc reasoning.</li>
+<li><strong>Limitations</strong>: Doesn't apply cleanly when a parameter is used as <em>both</em> producer and consumer (must use invariant <code>T</code> in that case, sacrificing flexibility for correctness); can be non-obvious in generic methods with multiple interacting type parameters, occasionally requiring an explicit helper type variable pattern (e.g., <code>Collections.copy</code>'s <code>&lt;T&gt;</code> capturing both <code>src</code> and <code>dest</code>'s relationship).</li>
+</ul>
+<p><strong>Internal Working</strong></p>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: (1) For each generic parameter in a method signature, ask: does the method body ever call <code>.add()</code>/<code>.put()</code>/write into this parameter? (2) Does it ever call <code>.get()</code>/read and use the returned value as <code>T</code>? (3) If only read (produces values to the method) -&gt; <code>? extends T</code>. (4) If only written (consumes values from the method) -&gt; <code>? super T</code>. (5) If both read and written -&gt; keep it invariant, <code>T</code>, since neither wildcard alone can safely support both operations simultaneously.</li>
+<li><strong>Memory Layout</strong>: Not directly applicable — PECS is purely an API-design/type-system discipline with zero runtime or memory implications; it affects only which call sites compile successfully.</li>
+<li><strong>Diagrams</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>static &lt;T&gt; void copy(List&lt;? super T&gt; dest, List&lt;? extends T&gt; src) {
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    for (T item : src) {   // src: read-only -&gt; Producer -&gt; extends
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>        dest.add(item);     // dest: write-only -&gt; Consumer -&gt; super
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    }
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>}
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong>: No runtime distinction whatsoever — PECS choices affect only which wildcard-based type checks <code>javac</code> allows at compile time; both <code>? extends T</code> and <code>? super T</code> erase identically to their bound (or <code>Object</code>), so the resulting bytecode for a well-designed PECS signature and a poorly-designed one performing the same erased operations would be indistinguishable at the JVM level.</li>
+</ul>
+<p><strong>Interview Questions</strong></p>
+<p><em>Basic</em>
+1. What does the PECS mnemonic stand for, and who coined it?
+2. When would you use a plain, non-wildcard type parameter <code>T</code> instead of either wildcard?</p>
+<p><em>Intermediate</em>
+3. Apply PECS to design the signature of a method that copies all elements from one list to another.
+4. Why doesn't PECS apply to a parameter that both reads and writes elements?</p>
+<p><em>Advanced</em>
+5. How does PECS relate to the general concept of variance (covariance/contravariance) in type systems?
+6. Explain why <code>Comparator&lt;? super T&gt;</code> is the idiomatic signature for a <code>sort</code> method's comparator parameter rather than <code>Comparator&lt;T&gt;</code>.</p>
+<p><em>Scenario-based</em>
+7. You're designing a method <code>static &lt;T&gt; void addAll(Collection&lt;? super T&gt; dest, T... items)</code> similar to <code>Collections.addAll</code>. Justify each wildcard/parameter choice using PECS.</p>
+<p><strong>Detailed Answers</strong></p>
+<ol>
+<li>\"Producer Extends, Consumer Super\" — coined by Joshua Bloch in <em>Effective Java</em> as a memorable heuristic for choosing between <code>? extends T</code> and <code>? super T</code> wildcards when designing generic method parameters.</li>
+<li>When the parameter must support both producing (reading) and consuming (writing) <code>T</code> values within the same method — e.g., a method that both reads an element from a list and later writes a transformed value of the same type back into the same list requires invariant <code>T</code>, since neither wildcard alone permits both operations safely.</li>
+<li><code>static &lt;T&gt; void copy(List&lt;? super T&gt; dest, List&lt;? extends T&gt; src)</code> — <code>src</code> is read-only (a producer of <code>T</code> values, so <code>? extends T</code>), and <code>dest</code> is write-only (a consumer of <code>T</code> values being added, so <code>? super T</code>); this mirrors <code>java.util.Collections.copy</code>'s actual signature.</li>
+<li>Because <code>? extends T</code> forbids writing (the compiler can't verify an inserted value matches the specific unknown subtype) and <code>? super T</code> only guarantees reading as <code>Object</code> (not <code>T</code>) — a parameter needing to both add <code>T</code> values and retrieve them typed as <code>T</code> requires the precision only an invariant, exact <code>T</code> parameter type provides; neither wildcard alone satisfies both requirements simultaneously.</li>
+<li>PECS is Java's practical, use-site-variance application of the general type-theory concepts of covariance and contravariance: <code>? extends T</code> grants covariant (producer-safe) behavior — treating a <code>List&lt;Integer&gt;</code> as readable like a <code>List&lt;Number&gt;</code> — while <code>? super T</code> grants contravariant (consumer-safe) behavior — treating a <code>List&lt;Object&gt;</code> as writable like a <code>List&lt;Integer&gt;</code>. Unlike languages with declaration-site variance (e.g., Kotlin's <code>out</code>/<code>in</code>, C#'s covariant/contravariant generic interfaces), Java applies variance at each <em>use site</em> via wildcards rather than fixing variance once in the generic type's declaration.</li>
+<li>A <code>Comparator&lt;? super T&gt;</code> can compare <code>T</code> instances using logic defined on any supertype of <code>T</code> (e.g., sorting a <code>List&lt;Integer&gt;</code> using a <code>Comparator&lt;Number&gt;</code> that compares by <code>doubleValue()</code>), which is strictly more flexible than requiring an exact <code>Comparator&lt;T&gt;</code> — the comparator only ever <em>consumes</em> <code>T</code> values (as arguments to <code>compare()</code>), making it a pure PECS \"consumer,\" hence <code>super</code> is the theoretically and practically correct bound, exactly as used in <code>List.sort(Comparator&lt;? super E&gt; c)</code>.</li>
+<li><code>dest</code> is write-only (elements are added into it, never read back within this method) — a pure consumer, so <code>Collection&lt;? super T&gt;</code> is correct, letting callers pass a destination collection of <code>T</code> or any supertype of <code>T</code> (e.g., adding <code>Integer</code>s into a <code>List&lt;Number&gt;</code>). <code>items</code> is a <code>T...</code> varargs producer of the values to be added — since varargs parameters are effectively an array the method only reads from, it correctly stays as an exact <code>T[]</code> (via varargs) rather than needing its own wildcard, as the type parameter <code>T</code> itself already ties the two together correctly (the compiler infers <code>T</code> from whichever call site is used, keeping full type safety end-to-end).</li>
+</ol>
+<p><strong>Code Examples</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Collection</span><span class="p">;</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CollectionUtils</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">    </span><span class="c1">// PECS applied: src produces T (extends), dest consumes T (super)</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">copy</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;?</span><span class="w"> </span><span class="kd">super</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dest</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;?</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">src</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">src</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">            </span><span class="n">dest</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="w">    </span><span class="c1">// dest is a pure consumer of T values supplied via varargs</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">    </span><span class="nd">@SafeVarargs</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">addAll</span><span class="p">(</span><span class="n">Collection</span><span class="o">&lt;?</span><span class="w"> </span><span class="kd">super</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">dest</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="p">...</span><span class="w"> </span><span class="n">items</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">items</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="w">            </span><span class="n">dest</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="bounded-type-parameters-new">Bounded Type Parameters <em>(new)</em></h2>
+<p><strong>Theory</strong></p>
+<ul>
+<li><strong>Core Concepts</strong>: A bounded type parameter restricts a generic type variable to be a subtype of a specific class/interface (or intersection of several), written <code>&lt;T extends Upper&gt;</code> (or <code>&lt;T extends Upper1 &amp; Upper2&gt;</code> for multiple bounds), letting the generic code call methods declared on the bound directly on values of type <code>T</code> — something an unbounded <code>&lt;T&gt;</code> (erasing to <code>Object</code>) would not allow.</li>
+<li><strong>Internal Working</strong>: The compiler erases <code>T</code> to its bound (the first listed type, for multiple bounds) instead of <code>Object</code>, and type-checks every use of <code>T</code> as if it were statically that bound, permitting calls to the bound's methods without any cast.</li>
+<li><strong>When to Use It</strong>: Whenever generic code needs to invoke specific behavior on values of the type parameter (e.g., <code>compareTo</code> for sortable elements, arithmetic-like operations via a numeric interface) rather than only treating them as opaque <code>Object</code> references.</li>
+<li><strong>Advantages</strong>: Restores useful method access lost by plain <code>Object</code> erasure, while still preserving full compile-time type safety and avoiding casts; multiple bounds (<code>T extends Comparable&lt;T&gt; &amp; Serializable</code>) let a single type parameter require conformance to several contracts simultaneously.</li>
+<li><strong>Limitations</strong>: At most one <em>class</em> bound is allowed and it must be listed first (Java doesn't support multiple inheritance of implementation for classes); adding a bound afterwards to an already-published generic API is a breaking change for any caller whose type argument doesn't satisfy the new bound.</li>
+</ul>
+<p><strong>Internal Working</strong></p>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: (1) Compiler parses <code>&lt;T extends Number &amp; Comparable&lt;T&gt;&gt;</code>, recording both bounds. (2) Erasure uses the first bound (<code>Number</code>) as <code>T</code>'s erasure type for fields/variables/return types; the second and further bounds are enforced only at compile time via additional <code>checkcast</code>s or the way method resolution treats <code>T</code>. (3) Any code within the generic class/method can call <code>Number</code> methods (e.g., <code>.doubleValue()</code>) directly on a <code>T</code>-typed value without casting, and can also call <code>Comparable&lt;T&gt;</code>'s <code>compareTo</code> since the compiler knows <code>T</code> satisfies that bound too, even though only <code>Number</code> is the runtime erasure type. (4) At each instantiation site, the compiler verifies the supplied type argument satisfies <em>every</em> listed bound, rejecting the code otherwise.</li>
+<li><strong>Memory Layout</strong>: Not directly applicable — bounded and unbounded type parameters have identical runtime memory representation (a reference-sized slot); the bound only affects which method calls the compiler permits and which erasure type is used for casts, not the object's actual memory footprint.</li>
+<li><strong>Diagrams</strong>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>class NumericBox&lt;T extends Number &amp; Comparable&lt;T&gt;&gt; {
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    private T value;
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    boolean isPositive() { return value.doubleValue() &gt; 0; } // Number method, no cast
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    int compareToZero(T zero) { return value.compareTo(zero); } // Comparable method
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>}
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>// Erasure: T -&gt; Number (first bound); Comparable&lt;T&gt; enforced only at compile time
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong>: Bytecode calls to bound methods (e.g., <code>Number.doubleValue()</code>) compile to ordinary <code>invokevirtual</code>/<code>invokeinterface</code> instructions against the erasure type, with no extra runtime overhead compared to writing non-generic code directly against that bound type; the JIT treats these identically to any other virtual/interface call.</li>
+</ul>
+<p><strong>Interview Questions</strong></p>
+<p><em>Basic</em>
+1. What does <code>&lt;T extends Comparable&lt;T&gt;&gt;</code> mean, and why is a bound needed here?
+2. Can a type parameter have more than one bound? What is the syntax?</p>
+<p><em>Intermediate</em>
+3. If you have <code>&lt;T extends Number &amp; Comparable&lt;T&gt;&gt;</code>, what does <code>T</code> erase to, and why does order of the bounds matter?
+4. Why can a bounded type parameter's methods be called directly, while an unbounded <code>&lt;T&gt;</code>'s cannot (beyond <code>Object</code>'s methods)?</p>
+<p><em>Advanced</em>
+5. Can a type parameter be bounded by more than one class (e.g., <code>&lt;T extends ClassA &amp; ClassB&gt;</code>)? Why or why not?
+6. How does adding a new bound to an existing generic API's type parameter affect binary/source compatibility for existing callers?</p>
+<p><em>Scenario-based</em>
+7. You're writing a generic method to find the maximum of two elements that must both be numeric and mutually comparable. Design the bounded type parameter and method signature.</p>
+<p><strong>Detailed Answers</strong></p>
+<ol>
+<li>It means <code>T</code> must be a type that implements <code>Comparable&lt;T&gt;</code> (i.e., can be compared against instances of itself) — this bound is required because without it, <code>T</code> erases to plain <code>Object</code>, which has no <code>compareTo</code> method, so generic algorithms needing to order/compare <code>T</code> values (like a generic <code>max</code> or sorting utility) couldn't call <code>compareTo</code> at all on an unbounded type parameter.</li>
+<li>Yes — using <code>&amp;</code> to separate multiple bounds, e.g., <code>&lt;T extends Number &amp; Comparable&lt;T&gt;&gt;</code>; at most one of the bounds may be a concrete class (and it must be listed first if present), while any number of additional interface bounds can follow.</li>
+<li><code>T</code> erases to <code>Number</code> (the first listed bound) because Java only allows one class bound and requires it first specifically so the compiler has an unambiguous, single erasure type to use for fields/casts — if class bounds could appear in any order or multiple class bounds were allowed, erasure would be ambiguous (Java classes support single inheritance only, so at most one class bound makes sense structurally too). <code>Comparable&lt;T&gt;</code> is still fully enforced by the compiler for type-checking (you can call <code>compareTo</code>), it just isn't the erasure target.</li>
+<li>A bounded type parameter's erasure is the bound itself (e.g., <code>Number</code>, or the first bound in a multi-bound case) rather than <code>Object</code>, so the compiler knows every value of that type parameter statically supports all of the bound's methods and can permit direct calls without a cast; an unbounded <code>&lt;T&gt;</code> erases to <code>Object</code>, which only exposes <code>Object</code>'s methods (<code>equals</code>, <code>hashCode</code>, <code>toString</code>, etc.), so anything more specific requires an explicit (unchecked, unsafe) cast.</li>
+<li>No — Java classes support only single inheritance, so a type parameter can have at most one <em>class</em> bound (which must be listed first), though it can have any number of <em>interface</em> bounds combined with <code>&amp;</code> (e.g., <code>&lt;T extends AbstractShape &amp; Comparable&lt;T&gt; &amp; Serializable&gt;</code>); attempting two class bounds is a compile-time error since no type could simultaneously extend two unrelated concrete classes.</li>
+<li>Adding a new bound to an existing type parameter is generally a <em>source-breaking</em> (and potentially binary-breaking, depending on how it's used) change — any existing calling code that instantiates the generic type/method with a type argument not satisfying the new bound will fail to compile against the updated API, even if it compiled fine before; this is why bounds should be chosen carefully upfront in public generic APIs and only widened (never newly restricted) in later versions if backward compatibility must be preserved.</li>
+<li><code>static &lt;T extends Number &amp; Comparable&lt;T&gt;&gt; T max(T a, T b) { return a.compareTo(b) &gt;= 0 ? a : b; }</code> — the bound <code>Number &amp; Comparable&lt;T&gt;</code> ensures <code>T</code> supports both potential numeric operations (via <code>Number</code>, e.g., <code>.doubleValue()</code> if needed for further computation) and mutual ordering (via <code>Comparable&lt;T&gt;</code>, enabling the <code>compareTo</code> call), giving the method exactly the capabilities it needs directly on <code>T</code>-typed parameters without any casting.</li>
+</ol>
+<p><strong>Code Examples</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">class</span> <span class="nc">NumericUtils</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="c1">// Bounded type parameter: T must be both Number and mutually Comparable</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Number</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="nf">max</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="o">&lt;</span><span class="n">T</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Number</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isPositive</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">value</span><span class="p">.</span><span class="na">doubleValue</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Number method callable directly, no cast</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">max</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">));</span><span class="w">         </span><span class="c1">// Integer satisfies Number &amp; Comparable&lt;Integer&gt;</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">max</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span><span class="w"> </span><span class="mf">1.1</span><span class="p">));</span><span class="w">      </span><span class="c1">// Double also satisfies the bound</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">isPositive</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">));</span><span class="w">      </span><span class="c1">// false</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a><span class="p">}</span>
+</code></pre></div></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2025 <a href="https://github.com/abhishekghoshh"  target="_blank" rel="noopener">Abhishek Ghosh</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/abhishekghoshh" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://x.com/abhishek_ghoshh" target="_blank" rel="noopener" title="x.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/abhishek-ghosh-220679132/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

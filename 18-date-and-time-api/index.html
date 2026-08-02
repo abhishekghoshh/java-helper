@@ -1,0 +1,2822 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abhishekghoshh.github.io/java-helper/18-date-and-time-api/">
+      
+      
+        <link rel="prev" href="../17-streams-api/">
+      
+      
+        <link rel="next" href="../19-jvm-internals/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Date and Time API - Java Helper</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Date and Time API - Java Helper" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/18-date-and-time-api.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://abhishekghoshh.github.io/java-helper/18-date-and-time-api/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Date and Time API - Java Helper" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/18-date-and-time-api.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#18-date-and-time-api" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Java Helper" class="md-header__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Java Helper
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Date and Time API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../1-java-language-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Java Language Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../2-object-oriented-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Object-Oriented Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../3-classes/" class="md-tabs__link">
+        
+  
+    
+  
+  Classes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../4-constructors/" class="md-tabs__link">
+        
+  
+    
+  
+  Constructors
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-access-modifiers/" class="md-tabs__link">
+        
+  
+    
+  
+  Access Modifiers
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../6-packages/" class="md-tabs__link">
+        
+  
+    
+  
+  Packages
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../7-strings/" class="md-tabs__link">
+        
+  
+    
+  
+  Strings
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../8-arrays/" class="md-tabs__link">
+        
+  
+    
+  
+  Arrays
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../9-collections-framework/" class="md-tabs__link">
+        
+  
+    
+  
+  Collections Framework
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../10-generics/" class="md-tabs__link">
+        
+  
+    
+  
+  Generics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../11-exception-handling/" class="md-tabs__link">
+        
+  
+    
+  
+  Exception Handling
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../12-file-io/" class="md-tabs__link">
+        
+  
+    
+  
+  File I/O
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../13-serialization/" class="md-tabs__link">
+        
+  
+    
+  
+  Serialization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../14-reflection/" class="md-tabs__link">
+        
+  
+    
+  
+  Reflection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../15-annotations/" class="md-tabs__link">
+        
+  
+    
+  
+  Annotations
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../16-functional-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Functional Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../17-streams-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Streams API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Date and Time API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../19-jvm-internals/" class="md-tabs__link">
+        
+  
+    
+  
+  JVM Internals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../20-class-loader/" class="md-tabs__link">
+        
+  
+    
+  
+  Class Loader
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../21-memory-management/" class="md-tabs__link">
+        
+  
+    
+  
+  Memory Management
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../22-garbage-collection/" class="md-tabs__link">
+        
+  
+    
+  
+  Garbage Collection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../23-concurrency/" class="md-tabs__link">
+        
+  
+    
+  
+  Concurrency
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../24-networking/" class="md-tabs__link">
+        
+  
+    
+  
+  Networking
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../25-design-patterns-in-java/" class="md-tabs__link">
+        
+  
+    
+  
+  Design Patterns in Java
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../26-modern-java-language-features/" class="md-tabs__link">
+        
+  
+    
+  
+  Modern Java Language Features
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../27-regular-expressions/" class="md-tabs__link">
+        
+  
+    
+  
+  Regular Expressions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../28-internationalization-and-localization/" class="md-tabs__link">
+        
+  
+    
+  
+  Internationalization & Localization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../29-logging/" class="md-tabs__link">
+        
+  
+    
+  
+  Logging
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../30-security-basics/" class="md-tabs__link">
+        
+  
+    
+  
+  Security Basics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-tabs__link">
+        
+  
+    
+  
+  Native & Foreign Interoperability
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../32-process-and-system-apis/" class="md-tabs__link">
+        
+  
+    
+  
+  Process & System APIs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../33-testing-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Testing Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Java Helper" class="md-nav__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Java Helper
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-java-language-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java Language Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-object-oriented-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-classes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Classes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-constructors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constructors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-access-modifiers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access Modifiers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Packages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-strings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Strings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-collections-framework/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collections Framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-generics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-exception-handling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exception Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-file-io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File I/O
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-serialization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serialization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-reflection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reflection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-annotations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-functional-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Functional Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-streams-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Streams API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Date and Time API
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Date and Time API
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#localdate" class="md-nav__link">
+    <span class="md-ellipsis">
+      LocalDate
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LocalDate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#localtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      LocalTime
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LocalTime">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#localdatetime" class="md-nav__link">
+    <span class="md-ellipsis">
+      LocalDateTime
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LocalDateTime">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#zoneddatetime" class="md-nav__link">
+    <span class="md-ellipsis">
+      ZonedDateTime
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ZonedDateTime">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instant" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instant
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instant">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Duration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Duration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#period" class="md-nav__link">
+    <span class="md-ellipsis">
+      Period
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Period">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datetimeformatter" class="md-nav__link">
+    <span class="md-ellipsis">
+      DateTimeFormatter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DateTimeFormatter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-jvm-internals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JVM Internals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-class-loader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Class Loader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-memory-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-garbage-collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Garbage Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-concurrency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concurrency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-networking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-design-patterns-in-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Patterns in Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-modern-java-language-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modern Java Language Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-regular-expressions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Regular Expressions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-internationalization-and-localization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internationalization & Localization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-logging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30-security-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Native & Foreign Interoperability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32-process-and-system-apis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process & System APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33-testing-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div><h1 id="18-date-and-time-api">18. Date and Time API</h1>
+<h2 id="localdate">LocalDate</h2>
+<h3 id="theory">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong>: <code>java.time.LocalDate</code> (Java 8+, JSR-310) represents a date-only value (year, month, day) with <strong>no time-of-day and no time zone</strong>, using the ISO-8601 calendar system by default. It is part of the modern <code>java.time</code> package that replaced the deeply flawed, mutable <code>java.util.Date</code>/<code>Calendar</code> classes.</li>
+<li><strong>Internal Working</strong>: Internally, <code>LocalDate</code> stores just three <code>int</code>/<code>short</code> fields — year, month, day — and derives everything else (day-of-week, day-of-year, leap-year checks) algorithmically on demand; it is an immutable, thread-safe value type implementing <code>ChronoLocalDate</code>, <code>Temporal</code>, and <code>Comparable&lt;ChronoLocalDate&gt;</code>.</li>
+<li><strong>When to Use It</strong>: For any date-only concept with no meaningful time component — a birthday, a due date, a holiday, a fiscal period boundary.</li>
+<li><strong>Advantages</strong>: Immutability eliminates a huge class of <code>Calendar</code>-era bugs (accidental shared mutable state), rich fluent API (<code>plusDays</code>, <code>minusMonths</code>, <code>withYear</code>), clean interoperability with <code>Period</code>, <code>DateTimeFormatter</code>, and other <code>java.time</code> types.</li>
+<li><strong>Limitations</strong>: Because it has no time-zone or time-of-day information, it's unsuitable for representing an exact instant (e.g., "when did this event happen") — combining it wrongly with time-zone assumptions is a common source of off-by-one-day bugs when converting to/from <code>Instant</code>.</li>
+</ul>
+<h3 id="internal-working">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: 1) <code>LocalDate.of(year, month, day)</code> (or <code>now()</code>, <code>parse(...)</code>) constructs an immutable instance after validating the fields against the ISO chronology (e.g., rejecting February 30). 2) Every "mutator" method (<code>plusDays</code>, <code>withMonth</code>, etc.) returns a <strong>new</strong> <code>LocalDate</code> instance computed from the current fields, leaving the original untouched — critical for thread safety and for avoiding the classic <code>Calendar</code> mutable-shared-state bug class. 3) Field arithmetic (adding days/months/years) internally converts to an epoch-day representation (days since 1970-01-01) for day-level math, or manipulates year/month fields directly with proper day-of-month clamping (e.g., adding one month to January 31st correctly yields February 28th/29th, not March 3rd).</li>
+<li><strong>Memory Layout</strong>: A <code>LocalDate</code> instance is a small, immutable heap object (year as <code>int</code>, month/day as compact fields) — since Java records/value-based classes of this era predate the <code>record</code> keyword, <code>LocalDate</code> is a plain immutable final class but is explicitly documented as a "value-based class," meaning identity-sensitive operations (<code>==</code>, synchronization on its instances, identity hash codes) should never be relied upon.</li>
+<li><strong>Diagrams</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>LocalDate.of(2026, 1, 31).plusMonths(1)
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>        |
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        v
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>year=2026, month=1, day=31 -&gt; add 1 month -&gt; month=2, day clamped to max valid day of Feb (28, non-leap)
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        |
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        v
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>LocalDate(2026, 2, 28)   -- NOT March 3rd
+</code></pre></div>
+<ul>
+<li><strong>JVM Behaviour</strong>: As an ordinary immutable object, <code>LocalDate</code> participates fully in escape analysis (short-lived local instances can be scalar-replaced by the JIT, avoiding heap allocation) and requires no special GC treatment; being value-based, the JDK reserves the right to use future value-type optimizations (Project Valhalla) transparently once available.</li>
+</ul>
+<h3 id="interview-questions">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What does <code>LocalDate</code> represent, and what does it deliberately NOT represent?
+2. Why is <code>LocalDate</code> immutable, and what practical bug class does this eliminate compared to <code>java.util.Calendar</code>?</p>
+<p><strong>Intermediate</strong>
+3. What happens when you call <code>LocalDate.of(2026, 1, 31).plusMonths(1)</code>, and why doesn't it "overflow" into March?
+4. How do you convert a <code>LocalDate</code> into an <code>Instant</code> (an exact point in time), and why is a time zone required to do this correctly?</p>
+<p><strong>Advanced</strong>
+5. What does it mean for <code>LocalDate</code> to be a "value-based class," and what practices does this discourage?</p>
+<p><strong>Scenario-based</strong>
+6. A batch job stores "as of" dates as <code>LocalDate</code> in UTC-based logic and later a bug report shows dates appearing one day off for users in Australia. What's the likely root cause?</p>
+<h3 id="detailed-answers">Detailed Answers</h3>
+<ol>
+<li><code>LocalDate</code> represents a date (year, month, day-of-month) in the ISO-8601 calendar system, with no time-of-day and no time-zone/offset information at all — it cannot answer "what exact moment in time is this," only "what calendar date is this."</li>
+<li>Immutability guarantees that once created, a <code>LocalDate</code> instance's fields never change, so it can be freely shared across threads without synchronization and passed around without defensive copying. <code>java.util.Calendar</code>/<code>Date</code> were mutable, meaning a shared <code>Calendar</code> instance could be silently modified by one part of code (e.g., calling <code>.add(...)</code>) affecting every other reference holding it, a notorious source of subtle multi-threading and aliasing bugs.</li>
+<li><code>plusMonths(1)</code> increments the month field from January to February and then clamps the day-of-month to the maximum valid day for the resulting month (28 for February in a non-leap year, 29 in a leap year) rather than "rolling over" the excess days into the next month — this matches how humans intuitively expect "one month after January 31st" to behave, avoiding an unexpected jump to March.</li>
+<li>You must combine the <code>LocalDate</code> with a time-of-day (commonly <code>LocalTime.MIDNIGHT</code> via <code>atStartOfDay()</code>) and an explicit <code>ZoneId</code> to produce a <code>ZonedDateTime</code>, then call <code>.toInstant()</code>. A time zone is required because the same calendar date corresponds to a different absolute instant in different zones (midnight in Tokyo is a different instant than midnight in New York) — <code>LocalDate</code> alone has no way to disambiguate this, which is precisely why it should never be used to represent an exact moment.</li>
+<li>A value-based class (per its Javadoc contract) is one whose instances are: final and immutable, have no accessible identity-sensitive operations meant to be relied upon (<code>==</code> comparisons should be avoided in favor of <code>.equals()</code>), have no publicly accessible constructors (factory methods like <code>of</code>/<code>now</code> are used instead), and are freely cacheable/substitutable. This discourages using <code>==</code> to compare two <code>LocalDate</code>s, synchronizing on a <code>LocalDate</code> instance as a lock object, or relying on identity hash codes — future JVM optimizations (e.g., Valhalla value types) may make such misuse behave unexpectedly or be disallowed entirely.</li>
+<li>The likely root cause is converting a <code>LocalDate</code> to an <code>Instant</code>/UTC timestamp using an incorrect or default time zone assumption (e.g., always assuming UTC midnight, or using the server's default zone) rather than accounting for the user's actual zone. Since Australia is many hours ahead of UTC, a "UTC midnight" instant for a given calendar date can fall on the <em>previous</em> calendar day when converted back to a local Australian date, producing the observed off-by-one-day discrepancy — the fix is to always explicitly track and use the correct <code>ZoneId</code> relevant to the business context (e.g., the user's zone) rather than implicitly defaulting to UTC or the server's zone.</li>
+</ol>
+<h3 id="code-examples">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.LocalDate</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.DayOfWeek</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SubscriptionRenewalDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="n">LocalDate</span><span class="w"> </span><span class="n">signupDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalDate</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">31</span><span class="p">);</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="c1">// Immutable arithmetic: each call returns a NEW LocalDate</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="n">LocalDate</span><span class="w"> </span><span class="n">firstRenewal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">signupDate</span><span class="p">.</span><span class="na">plusMonths</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">firstRenewal</span><span class="p">);</span><span class="w">              </span><span class="c1">// 2026-02-28 (clamped, not rolled over)</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">signupDate</span><span class="p">);</span><span class="w">                 </span><span class="c1">// 2026-01-31 (original untouched)</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="n">DayOfWeek</span><span class="w"> </span><span class="n">dow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">firstRenewal</span><span class="p">.</span><span class="na">getDayOfWeek</span><span class="p">();</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isWeekend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dow</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">DayOfWeek</span><span class="p">.</span><span class="na">SATURDAY</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">dow</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">DayOfWeek</span><span class="p">.</span><span class="na">SUNDAY</span><span class="p">;</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Renewal falls on a weekend: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">isWeekend</span><span class="p">);</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.LocalDate</span><span class="p">;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.ZoneId</span><span class="p">;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.ZonedDateTime</span><span class="p">;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.Instant</span><span class="p">;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LocalDateToInstantDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span><span class="n">LocalDate</span><span class="w"> </span><span class="n">reportDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalDate</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">26</span><span class="p">);</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">        </span><span class="c1">// Must supply an explicit zone to unambiguously resolve an exact instant</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">        </span><span class="n">ZonedDateTime</span><span class="w"> </span><span class="n">sydneyMidnight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reportDate</span><span class="p">.</span><span class="na">atStartOfDay</span><span class="p">(</span><span class="n">ZoneId</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">"Australia/Sydney"</span><span class="p">));</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="n">Instant</span><span class="w"> </span><span class="n">instant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sydneyMidnight</span><span class="p">.</span><span class="na">toInstant</span><span class="p">();</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">sydneyMidnight</span><span class="p">);</span><span class="w"> </span><span class="c1">// 2026-07-26T00:00+10:00[Australia/Sydney]</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">instant</span><span class="p">);</span><span class="w">        </span><span class="c1">// corresponding UTC instant, on 2026-07-25 in UTC</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="localtime">LocalTime</h2>
+<h3 id="theory_1">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong>: <code>java.time.LocalTime</code> represents a time-of-day with no date and no time-zone — hour, minute, second, and nanosecond precision (e.g., <code>13:45:30.123456789</code>) — using a 24-hour clock. Like <code>LocalDate</code>, it is immutable and part of the ISO-8601-based <code>java.time</code> model.</li>
+<li><strong>Internal Working</strong>: Stores the time as a nanosecond-of-day value internally (conceptually), with convenience accessors (<code>getHour()</code>, <code>getMinute()</code>, <code>getSecond()</code>, <code>getNano()</code>) deriving individual components; arithmetic (<code>plusHours</code>, <code>minusMinutes</code>) wraps around the 24-hour boundary rather than overflowing into a following/preceding day (since <code>LocalTime</code> has no date component to carry into).</li>
+<li><strong>When to Use It</strong>: For a recurring or date-independent time-of-day concept — a daily opening time, a scheduled recurring alarm, a business-hours boundary — where the date is irrelevant or handled separately.</li>
+<li><strong>Advantages</strong>: Nanosecond precision far exceeds <code>Date</code>'s millisecond precision; immutability and a fluent API; clean separation of concerns from date and zone information.</li>
+<li><strong>Limitations</strong>: Wrap-around arithmetic (e.g., <code>LocalTime.of(23, 0).plusHours(2)</code> yields <code>01:00</code>, not "the next day at 1 AM") can surprise developers expecting overflow into a new date — if you need date-aware time arithmetic, <code>LocalDateTime</code> is the correct type instead.</li>
+</ul>
+<h3 id="internal-working_1">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: 1) <code>LocalTime.of(hour, minute, second, nano)</code> validates each field against its valid range (0-23 hours, 0-59 minutes/seconds, 0-999,999,999 nanos) and constructs an immutable instance. 2) Arithmetic methods compute a new total nanosecond-of-day value and apply modulo-based wraparound at the 24-hour boundary (86,400,000,000,000 nanoseconds), discarding any "day overflow" information entirely — <code>LocalTime</code> has no concept of "the next day." 3) Comparison (<code>isBefore</code>, <code>isAfter</code>, <code>compareTo</code>) operates purely on the nanosecond-of-day value, with no notion of a time being "later" if it wrapped past midnight.</li>
+<li><strong>Memory Layout</strong>: A small immutable heap object holding effectively one nanosecond-of-day quantity (represented via hour/minute/second/nano fields internally); a value-based class exactly like <code>LocalDate</code>, subject to the same "don't rely on identity" guidance.</li>
+<li><strong>Diagrams</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>LocalTime.of(23, 0).plusHours(2)
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>       |
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>       v
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>nanos-of-day for 23:00 + 2 hours worth of nanos
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>       |
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>       v (modulo 24h)
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>LocalTime(01:00)   -- wraps around; NO indication that a day boundary was crossed
+</code></pre></div>
+<ul>
+<li><strong>JVM Behaviour</strong>: Same as <code>LocalDate</code> — an ordinary immutable, potentially scalar-replaceable object with no special runtime treatment; nanosecond-precision arithmetic is plain <code>long</code>/<code>int</code> math, with no JVM-level time-related instructions involved.</li>
+</ul>
+<h3 id="interview-questions_1">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What does <code>LocalTime</code> represent, and what precision does it support compared to legacy <code>Date</code>?
+2. What happens when you call <code>LocalTime.of(23, 30).plusHours(2)</code>?</p>
+<p><strong>Intermediate</strong>
+3. Why doesn't <code>LocalTime</code> arithmetic ever "carry over" into a new date, and what problem can this cause if used carelessly?
+4. How would you correctly compute the duration between two <code>LocalTime</code> values that might span midnight (e.g., a night-shift from 22:00 to 06:00)?</p>
+<p><strong>Advanced</strong>
+5. Why is <code>LocalTime</code> unsuitable for representing "this event happened at 3pm" as an exact, unambiguous moment, and what type should be used instead?</p>
+<p><strong>Scenario-based</strong>
+6. A scheduling system stores shift start/end as <code>LocalTime</code> fields and computes shift duration as <code>Duration.between(start, end)</code>, which produces a negative duration for overnight shifts. How do you fix this?</p>
+<h3 id="detailed-answers_1">Detailed Answers</h3>
+<ol>
+<li><code>LocalTime</code> represents a time-of-day only — hour, minute, second, and nanosecond — with no associated date or time zone. It supports nanosecond precision (up to 999,999,999 nanoseconds within a second), a substantial improvement over legacy <code>java.util.Date</code>'s millisecond-only precision.</li>
+<li><code>LocalTime.of(23, 30).plusHours(2)</code> wraps around the 24-hour clock boundary and yields <code>01:30</code> — there is no concept of "the next day" in <code>LocalTime</code>; the two extra hours simply wrap modulo 24 hours.</li>
+<li><code>LocalTime</code> deliberately has no date component at all, so there is nothing for an overflow to "carry into" — arithmetic is defined purely modulo 24 hours by design. This can cause bugs if developers treat a <code>LocalTime</code>-based calculation (e.g., "end time minus start time") as if it always represents a positive, same-day duration; an overnight range (e.g., 22:00 to 06:00) naively subtracted would produce a negative or nonsensical result unless the day-wraparound is explicitly handled.</li>
+<li>Compute it manually by checking if the end time is before the start time (indicating an overnight wraparound) and, if so, adding 24 hours' worth of duration: e.g., <code>Duration duration = Duration.between(start, end); if (duration.isNegative()) duration = duration.plusDays(1);</code> — or, more robustly, convert both times to <code>LocalDateTime</code> anchored on the same reference date (and the following date for the end time if it's earlier), then use <code>Duration.between</code> on those <code>LocalDateTime</code> values, which correctly handles the day boundary without manual sign-correction.</li>
+<li><code>LocalTime</code> has no date and no time-zone/offset, so "3pm" alone is ambiguous — 3pm on which day, and in which time zone (3pm in London is a completely different absolute instant than 3pm in Tokyo)? To represent an unambiguous, exact moment in time, you need <code>Instant</code> (a pure UTC timestamp) or <code>ZonedDateTime</code>/<code>OffsetDateTime</code> (a date, time, and explicit zone/offset combined) — never <code>LocalTime</code> alone.</li>
+<li><code>Duration.between(start, end)</code> on two <code>LocalTime</code> values performs a straightforward subtraction of their nanosecond-of-day values with no awareness of shift semantics, so if <code>end</code> is numerically earlier than <code>start</code> (e.g., 06:00 versus 22:00), the result is negative. The fix is to detect this case and add 24 hours: <code>Duration shiftLength = Duration.between(start, end); if (shiftLength.isNegative()) { shiftLength = shiftLength.plus(Duration.ofDays(1)); }</code> — or better, model shifts using <code>LocalDateTime</code> (or even <code>ZonedDateTime</code> if crossing DST boundaries matters) anchored to explicit calendar dates so the day rollover is handled naturally rather than via ad hoc sign correction.</li>
+</ol>
+<h3 id="code-examples_1">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.LocalTime</span><span class="p">;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.Duration</span><span class="p">;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">NightShiftDurationDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="n">LocalTime</span><span class="w"> </span><span class="n">shiftStart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalTime</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="n">LocalTime</span><span class="w"> </span><span class="n">shiftEnd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalTime</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">        </span><span class="n">Duration</span><span class="w"> </span><span class="n">shiftLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Duration</span><span class="p">.</span><span class="na">between</span><span class="p">(</span><span class="n">shiftStart</span><span class="p">,</span><span class="w"> </span><span class="n">shiftEnd</span><span class="p">);</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">shiftLength</span><span class="p">.</span><span class="na">isNegative</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">            </span><span class="c1">// Correct for the overnight wraparound that LocalTime alone can't represent</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">            </span><span class="n">shiftLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">shiftLength</span><span class="p">.</span><span class="na">plusDays</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Shift length: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">shiftLength</span><span class="p">.</span><span class="na">toHours</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" hours"</span><span class="p">);</span><span class="w"> </span><span class="c1">// 8 hours</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.LocalTime</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BusinessHoursCheckDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">LocalTime</span><span class="w"> </span><span class="n">OPEN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalTime</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">LocalTime</span><span class="w"> </span><span class="n">CLOSE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalTime</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">);</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isWithinBusinessHours</span><span class="p">(</span><span class="n">LocalTime</span><span class="w"> </span><span class="n">now</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">!</span><span class="n">now</span><span class="p">.</span><span class="na">isBefore</span><span class="p">(</span><span class="n">OPEN</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">now</span><span class="p">.</span><span class="na">isBefore</span><span class="p">(</span><span class="n">CLOSE</span><span class="p">);</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">isWithinBusinessHours</span><span class="p">(</span><span class="n">LocalTime</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)));</span><span class="w">   </span><span class="c1">// true (inclusive open)</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">isWithinBusinessHours</span><span class="p">(</span><span class="n">LocalTime</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">)));</span><span class="w"> </span><span class="c1">// false (exclusive close)</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">isWithinBusinessHours</span><span class="p">(</span><span class="n">LocalTime</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)));</span><span class="w">  </span><span class="c1">// false</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="localdatetime">LocalDateTime</h2>
+<h3 id="theory_2">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong>: <code>java.time.LocalDateTime</code> combines a <code>LocalDate</code> and <code>LocalTime</code> into a single immutable value representing a calendar date and time-of-day with <strong>still no time-zone or offset information</strong> — e.g., "2026-07-26T14:30:00" without saying which time zone that refers to.</li>
+<li><strong>Internal Working</strong>: Internally holds a <code>LocalDate</code> and <code>LocalTime</code> pair; nearly all of its API simply delegates date-related operations to the internal <code>LocalDate</code> and time-related operations to the internal <code>LocalTime</code>, while handling the interplay between them (e.g., adding hours that cross midnight correctly rolls the date forward, unlike bare <code>LocalTime</code>).</li>
+<li><strong>When to Use It</strong>: For representing a date-and-time that is inherently local/context-dependent and doesn't need to be compared across time zones — e.g., "the meeting is scheduled for 2026-08-01 at 14:00 in whatever zone the user is in," a timestamp for a wall-clock display, or business rules expressed in a single, implicitly-understood zone.</li>
+<li><strong>Advantages</strong>: Combines date and time cleanly in one immutable type; because it "carries" date/time interplay correctly (adding hours can cross midnight and increment the date), it avoids <code>LocalTime</code>'s wraparound pitfall.</li>
+<li><strong>Limitations</strong>: Still fundamentally zone-less — it cannot represent an unambiguous, exact instant, and naive conversions to/from UTC or across zones are a very common source of subtle bugs (e.g., persisting a <code>LocalDateTime</code> from a server assuming a particular zone, but reading it back with a different assumed zone).</li>
+</ul>
+<h3 id="internal-working_2">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: 1) <code>LocalDateTime.of(date, time)</code> (or component-wise <code>of(year, month, day, hour, minute)</code>, or <code>now()</code>, <code>parse(...)</code>) constructs an immutable instance combining a <code>LocalDate</code> and <code>LocalTime</code>. 2) Arithmetic methods like <code>plusHours</code> first apply to the internal <code>LocalTime</code>; if the result overflows past midnight (in either direction), the excess whole days are then added to (or subtracted from) the internal <code>LocalDate</code>, correctly rolling the date forward/backward — this is the key behavioral difference from bare <code>LocalTime</code>. 3) Because there is no zone/offset, <code>LocalDateTime</code> cannot be directly converted to <code>Instant</code>; doing so requires supplying a <code>ZoneId</code>/<code>ZoneOffset</code> (via <code>atZone(...)</code>/<code>atOffset(...)</code>) to disambiguate which absolute instant the date-time corresponds to.</li>
+<li><strong>Memory Layout</strong>: A small immutable heap object effectively wrapping a <code>LocalDate</code> and <code>LocalTime</code> pair; value-based semantics apply exactly as with the other <code>java.time</code> local types.</li>
+<li><strong>Diagrams</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>LocalDateTime.of(2026, 7, 26, 23, 0).plusHours(2)
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>        |
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>        v
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>LocalTime part: 23:00 + 2h = 01:00, carries "+1 day" into the date part
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>        |
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>        v
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>LocalDateTime(2026-07-27T01:00)   -- date correctly rolled forward, unlike bare LocalTime
+</code></pre></div>
+<ul>
+<li><strong>JVM Behaviour</strong>: Ordinary immutable object composition; no special JVM support, subject to standard JIT escape analysis and GC like any other value-based <code>java.time</code> type.</li>
+</ul>
+<h3 id="interview-questions_2">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What does <code>LocalDateTime</code> add compared to <code>LocalDate</code> and <code>LocalTime</code> individually?
+2. Does <code>LocalDateTime</code> carry any time-zone information?</p>
+<p><strong>Intermediate</strong>
+3. How does adding hours to a <code>LocalDateTime</code> differ in behavior from adding hours to a bare <code>LocalTime</code>, particularly around midnight?
+4. How do you convert a <code>LocalDateTime</code> to an <code>Instant</code>, and what critical piece of information must you supply to do it correctly?</p>
+<p><strong>Advanced</strong>
+5. What subtle bug can occur if a distributed system persists <code>LocalDateTime</code> values without an accompanying, explicitly agreed-upon time zone?</p>
+<p><strong>Scenario-based</strong>
+6. Two servers in different time zones both compute <code>LocalDateTime.now()</code> when logging events and compare timestamps directly to determine event ordering. What is wrong with this approach, and what should be used instead?</p>
+<h3 id="detailed-answers_2">Detailed Answers</h3>
+<ol>
+<li><code>LocalDateTime</code> combines a calendar date and a time-of-day into a single value (e.g., "2026-07-26T14:30"), correctly handling the interplay between the two (date rollover when time arithmetic crosses midnight) — something you'd have to manually coordinate if you kept a separate <code>LocalDate</code> and <code>LocalTime</code>.</li>
+<li>No — despite combining date and time, <code>LocalDateTime</code> still carries <strong>no</strong> time-zone or UTC-offset information whatsoever. "2026-07-26T14:30" is a wall-clock reading with no indication of which zone it applies to; the same textual value could refer to entirely different absolute instants depending on context.</li>
+<li>Adding hours to a <code>LocalDateTime</code> that crosses midnight correctly increments (or decrements) the internal date as needed — e.g., <code>23:00</code> plus 2 hours becomes <code>01:00 the next day</code>. Adding hours to a bare <code>LocalTime</code> also wraps to <code>01:00</code>, but silently loses all information that a day boundary was crossed, since <code>LocalTime</code> has no date field to carry the overflow into — this is the core practical distinction and a common source of bugs when developers use <code>LocalTime</code> where <code>LocalDateTime</code> was actually needed.</li>
+<li>Call <code>.atZone(ZoneId)</code> (or <code>.atOffset(ZoneOffset)</code>) to attach explicit zone/offset information, producing a <code>ZonedDateTime</code>/<code>OffsetDateTime</code>, and then call <code>.toInstant()</code> on that result. The critical missing piece that must be supplied is the <code>ZoneId</code>/<code>ZoneOffset</code> itself — without it, there is no way to know which absolute instant a bare <code>LocalDateTime</code> corresponds to, since the same wall-clock reading maps to different instants in different zones.</li>
+<li>If different components of a distributed system assume different (or inconsistent) time zones when interpreting a persisted <code>LocalDateTime</code> — e.g., one service writes it assuming the server's local zone, another reads it back assuming UTC — the same stored value gets silently misinterpreted as a different absolute instant, leading to bugs like events appearing to happen hours earlier/later than they actually did, incorrect ordering of records across regions, or subtly wrong scheduled-job trigger times, especially around Daylight Saving Time transitions. The standard mitigation is to persist <code>Instant</code> (or an <code>OffsetDateTime</code>/<code>ZonedDateTime</code> with explicit, consistently-applied zone information) for anything that must be unambiguous across systems, reserving <code>LocalDateTime</code> for genuinely zone-agnostic, purely local concepts.</li>
+<li>Comparing <code>LocalDateTime.now()</code> values captured on servers in different time zones is meaningless for determining true chronological ordering, because each server's <code>LocalDateTime.now()</code> reflects its own local wall-clock time with no zone/offset attached — a <code>LocalDateTime</code> of "14:00" from a UTC+9 server and "14:00" from a UTC-5 server represent completely different actual instants, yet would compare as equal. The correct approach is to use <code>Instant.now()</code> (or <code>OffsetDateTime.now(ZoneOffset.UTC)</code>) everywhere timestamps need to be compared across systems/zones, since <code>Instant</code> represents an unambiguous point on the UTC timeline regardless of where it was generated.</li>
+</ol>
+<h3 id="code-examples_2">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.LocalDateTime</span><span class="p">;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LocalDateTimeRolloverDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">        </span><span class="n">LocalDateTime</span><span class="w"> </span><span class="n">scheduled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">        </span><span class="c1">// Unlike bare LocalTime, the date correctly rolls forward here</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">        </span><span class="n">LocalDateTime</span><span class="w"> </span><span class="n">reminder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scheduled</span><span class="p">.</span><span class="na">plusHours</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">reminder</span><span class="p">);</span><span class="w"> </span><span class="c1">// 2026-07-27T01:00</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.LocalDateTime</span><span class="p">;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.ZoneId</span><span class="p">;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.Instant</span><span class="p">;</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.ZonedDateTime</span><span class="p">;</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LocalDateTimeToInstantDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">        </span><span class="n">LocalDateTime</span><span class="w"> </span><span class="n">meetingWallClock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">        </span><span class="c1">// Must attach an explicit zone to disambiguate which absolute instant this represents</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">        </span><span class="n">ZonedDateTime</span><span class="w"> </span><span class="n">tokyoMeeting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">meetingWallClock</span><span class="p">.</span><span class="na">atZone</span><span class="p">(</span><span class="n">ZoneId</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">"Asia/Tokyo"</span><span class="p">));</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">        </span><span class="n">Instant</span><span class="w"> </span><span class="n">meetingInstant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tokyoMeeting</span><span class="p">.</span><span class="na">toInstant</span><span class="p">();</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">tokyoMeeting</span><span class="p">);</span><span class="w">   </span><span class="c1">// 2026-08-01T14:00+09:00[Asia/Tokyo]</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">meetingInstant</span><span class="p">);</span><span class="w"> </span><span class="c1">// corresponding, unambiguous UTC instant</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="zoneddatetime">ZonedDateTime</h2>
+<h3 id="theory_3">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong>: <code>java.time.ZonedDateTime</code> represents a complete date-time with an explicit time zone (<code>ZoneId</code>, e.g., <code>"Europe/Paris"</code>) and the resolved UTC offset that applies at that date-time, correctly accounting for Daylight Saving Time (DST) transitions and historical zone-rule changes via the IANA Time Zone Database bundled with the JDK.</li>
+<li><strong>Internal Working</strong>: Internally composed of a <code>LocalDateTime</code>, a <code>ZoneOffset</code> (the resolved UTC offset for that specific local date-time), and a <code>ZoneId</code> (the zone "rules" reference, e.g., a region like <code>America/New_York</code> which can have different offsets on different dates due to DST); the offset is derived from the zone's rules at construction/computation time, not fixed.</li>
+<li><strong>When to Use It</strong>: Whenever you need to represent or reason about a real-world date-time event tied to a specific geographic time zone and must correctly handle DST — meeting scheduling across zones, calendar/event systems, anything where "what would this local time be in zone X" matters.</li>
+<li><strong>Advantages</strong>: Fully DST-aware (correctly handles the "spring forward"/"fall back" ambiguous or non-existent local times), can convert reliably to/from <code>Instant</code>, supports zone-based arithmetic (e.g., "add 1 day, keeping the same local wall-clock time even across a DST boundary").</li>
+<li><strong>Limitations</strong>: More complex and heavier than <code>Instant</code> for pure absolute-timestamp use cases; ambiguous local times (during a "fall back" DST transition, some local times occur twice) require explicit resolution strategy awareness; non-existent local times (during a "spring forward" transition) are automatically adjusted forward by the gap duration, which can surprise developers unaware of this behavior.</li>
+</ul>
+<h3 id="internal-working_3">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: 1) <code>ZonedDateTime.of(localDateTime, zoneId)</code> (or <code>now(zoneId)</code>, or <code>.atZone(zoneId)</code> on a <code>LocalDateTime</code>) looks up the <code>ZoneRules</code> for the given <code>ZoneId</code> and resolves the correct <code>ZoneOffset</code> for that specific local date-time, handling three cases: normal (one valid offset), gap (a "spring forward" transition skips this local time entirely, so it's shifted forward by the gap length), and overlap (a "fall back" transition means this local time occurs twice, and by default the earlier/standard offset is chosen unless specified otherwise). 2) Arithmetic (<code>plusDays</code>, <code>plusHours</code>) can either preserve the local wall-clock time across a DST change (default for date-based additions like <code>plusDays</code>) or the actual elapsed duration depending on the specific method used, since <code>ZonedDateTime</code> implements both <code>Temporal</code> (local-time-preserving semantics for calendar units) and can be converted to <code>Instant</code> for exact-duration semantics. 3) Conversion to/from <code>Instant</code> (<code>toInstant()</code>/<code>Instant.atZone(zoneId)</code>) is always unambiguous, since <code>Instant</code> has no locality to resolve.</li>
+<li><strong>Memory Layout</strong>: An immutable heap object holding a <code>LocalDateTime</code>, <code>ZoneOffset</code>, and reference to the shared <code>ZoneRules</code> for its <code>ZoneId</code> (the JDK caches parsed time-zone rule data, e.g., from <code>tzdata</code>, so multiple <code>ZonedDateTime</code> instances in the same zone share the same underlying <code>ZoneRules</code> object rather than each parsing/holding a private copy).</li>
+<li><strong>Diagrams</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ZoneId: America/New_York (rules: EST = UTC-5, EDT = UTC-4, transitions on specific dates)
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>ZonedDateTime.of(LocalDateTime.of(2026, 3, 8, 2, 30), ZoneId.of("America/New_York"))
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>        |
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>        v  (2:30 AM on this date falls in the "spring forward" GAP - doesn't exist locally)
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>resolved to 2026-03-08T03:30-04:00[America/New_York]   -- shifted forward by the 1-hour gap
+</code></pre></div>
+<ul>
+<li><strong>JVM Behaviour</strong>: <code>ZoneRules</code> data is loaded once from the JDK's bundled time-zone database (updatable independently via the <code>tzdata</code>/<code>tzupdater</code> mechanism without a full JDK upgrade) and cached in memory for the life of the JVM; ordinary object allocation/GC rules apply to <code>ZonedDateTime</code> instances themselves, with no special bytecode support.</li>
+</ul>
+<h3 id="interview-questions_3">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What three pieces of information does a <code>ZonedDateTime</code> combine?
+2. What is the difference between <code>ZoneId</code> and <code>ZoneOffset</code>?</p>
+<p><strong>Intermediate</strong>
+3. What happens when you construct a <code>ZonedDateTime</code> for a local time that doesn't exist due to a "spring forward" DST transition?
+4. What happens for a local time that occurs twice due to a "fall back" DST transition, and how would you explicitly pick one or the other?</p>
+<p><strong>Advanced</strong>
+5. Why does the JDK's bundled time-zone data need periodic updates independent of full JDK version upgrades, and what mechanism supports this?</p>
+<p><strong>Scenario-based</strong>
+6. A recurring meeting is scheduled for "9:00 AM every day, New York time" using <code>ZonedDateTime.plusDays(1)</code> in a loop. Around a DST transition, does the meeting stay at 9:00 AM local time or shift by an hour in UTC terms? Explain why.</p>
+<h3 id="detailed-answers_3">Detailed Answers</h3>
+<ol>
+<li>A <code>ZonedDateTime</code> combines a <code>LocalDateTime</code> (the wall-clock date and time), a <code>ZoneOffset</code> (the specific UTC offset that applies at that local date-time, e.g., <code>-05:00</code>), and a <code>ZoneId</code> (the named time-zone region whose rules determined that offset, e.g., <code>America/New_York</code>) — together, these unambiguously pin down both a real-world instant and the local/regional context it was expressed in.</li>
+<li><code>ZoneOffset</code> is simply a fixed UTC offset (e.g., <code>+02:00</code>) with no notion of daylight saving rules or historical changes — it never varies. <code>ZoneId</code> refers to a geopolitical/regional time-zone identifier (e.g., <code>Europe/Berlin</code>) backed by a set of <code>ZoneRules</code> that can specify <em>different</em> offsets on different dates (standard time versus daylight saving time, and historical rule changes over the decades) — a <code>ZoneId</code> resolves to a specific <code>ZoneOffset</code> only once you also specify a particular date-time.</li>
+<li>During a "spring forward" transition, a range of local times (e.g., 2:00 AM to 2:59 AM) is skipped entirely as clocks jump forward by an hour, so that local time never actually occurs. <code>ZonedDateTime</code> handles this "gap" by automatically shifting the requested local time forward by the length of the gap (typically one hour), producing a valid, slightly-later local time with the post-transition offset, rather than throwing an exception.</li>
+<li>During a "fall back" transition, a range of local times occurs twice (once under daylight saving time, once under standard time afterward) as clocks are set back by an hour. By default, <code>ZonedDateTime.of(...)</code> resolves such an ambiguous local time to the <strong>earlier</strong> offset (the one before the transition, i.e., still daylight saving time). To explicitly select the later occurrence, you can use <code>.withLaterOffsetAtOverlap()</code> (or <code>.withEarlierOffsetAtOverlap()</code> for the default/earlier one, made explicit) on an existing <code>ZonedDateTime</code> in the overlap region.</li>
+<li>Time-zone rules (DST start/end dates, offset changes, entirely new zone splits) are determined by individual governments and can change with little notice, entirely independent of the JDK's own release schedule. The JDK bundles the IANA Time Zone Database (tzdata) and provides mechanisms (the <code>tzupdater</code> tool historically, and JDK builds regularly refreshed with newer tzdata versions) to update this data without requiring a full JDK version upgrade, ensuring <code>ZonedDateTime</code>/<code>ZoneId</code> calculations remain accurate as real-world zone rules change.</li>
+<li>Using <code>plusDays(1)</code> on a <code>ZonedDateTime</code> preserves the <strong>local wall-clock time</strong> (9:00 AM) across the DST boundary by default — the underlying <code>ZoneOffset</code> automatically adjusts to whatever is correct for the new date (e.g., shifting from <code>-05:00</code> to <code>-04:00</code> or vice versa), meaning the meeting stays at 9:00 AM New York local time every day, but the corresponding UTC instant shifts by an hour across the DST transition date. This is the intended and typically desired behavior for calendar/recurring-event semantics; if instead you wanted a fixed 24-hour-later instant regardless of local time, you'd convert to <code>Instant</code> and add a <code>Duration</code> of exactly 24 hours instead.</li>
+</ol>
+<h3 id="code-examples_3">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.ZonedDateTime</span><span class="p">;</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.LocalDateTime</span><span class="p">;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.ZoneId</span><span class="p">;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DstGapDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">        </span><span class="c1">// 2:30 AM on March 8, 2026 falls inside the US "spring forward" gap in New York</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">        </span><span class="n">ZonedDateTime</span><span class="w"> </span><span class="n">resolved</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZonedDateTime</span><span class="p">.</span><span class="na">of</span><span class="p">(</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">                </span><span class="n">LocalDateTime</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">),</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">                </span><span class="n">ZoneId</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">"America/New_York"</span><span class="p">));</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">        </span><span class="c1">// Automatically shifted forward past the gap rather than throwing an exception</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">resolved</span><span class="p">);</span><span class="w"> </span><span class="c1">// 2026-03-08T03:30-04:00[America/New_York]</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.ZonedDateTime</span><span class="p">;</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.ZoneId</span><span class="p">;</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RecurringMeetingDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">        </span><span class="n">ZoneId</span><span class="w"> </span><span class="n">nyc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZoneId</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">"America/New_York"</span><span class="p">);</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">        </span><span class="n">ZonedDateTime</span><span class="w"> </span><span class="n">meeting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZonedDateTime</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">nyc</span><span class="p">);</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">        </span><span class="c1">// plusDays preserves the LOCAL 9:00 AM wall-clock time across the DST boundary</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">meeting</span><span class="p">);</span><span class="w"> </span><span class="c1">// stays at 09:00 local time; UTC offset shifts on Mar 8</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">            </span><span class="n">meeting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">meeting</span><span class="p">.</span><span class="na">plusDays</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="instant">Instant</h2>
+<h3 id="theory_4">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong>: <code>java.time.Instant</code> represents a single, unambiguous point on the UTC timeline, measured as seconds (plus nanosecond adjustment) since the epoch (1970-01-01T00:00:00Z). It has <strong>no</strong> notion of time zone, calendar date, or human-readable wall-clock time — it is purely a machine-oriented timestamp, analogous to (and the modern replacement for) <code>System.currentTimeMillis()</code>/legacy <code>Date</code>.</li>
+<li><strong>Internal Working</strong>: Stored internally as a <code>long</code> seconds-since-epoch value plus an <code>int</code> nanosecond-of-second adjustment (0-999,999,999), giving it a vastly larger representable range and finer precision than the old millisecond-based <code>Date</code>.</li>
+<li><strong>When to Use It</strong>: Any time you need to record or compare an exact moment in time unambiguously across systems/zones — event timestamps, log entries, "created at"/"updated at" audit fields, measuring elapsed wall-clock time between two points.</li>
+<li><strong>Advantages</strong>: Zone-agnostic and thus immune to the ambiguity/gap/overlap issues of <code>ZonedDateTime</code>; trivially comparable and sortable across systems regardless of where they were generated; nanosecond precision.</li>
+<li><strong>Limitations</strong>: Not human-readable/meaningful on its own (must be converted to a <code>ZonedDateTime</code>/<code>OffsetDateTime</code> with an explicit zone for display); cannot be directly added to <code>Period</code> (calendar-based units like months/years are zone/calendar-dependent and don't make sense purely in UTC-instant terms) — only duration-based (<code>Duration</code>) arithmetic applies directly to <code>Instant</code>.</li>
+</ul>
+<h3 id="internal-working_4">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: 1) <code>Instant.now()</code> reads the system clock (via <code>Clock.systemUTC()</code> by default, itself backed by <code>System.currentTimeMillis()</code> or, on JDK versions/platforms that support it, a higher-resolution native clock source) and constructs an immutable <code>Instant</code> with second and nanosecond fields. 2) Arithmetic (<code>plusSeconds</code>, <code>plusMillis</code>, <code>plus(Duration)</code>) operates directly on the epoch-second/nanosecond representation with no calendar or zone concerns whatsoever. 3) To display or reason about an <code>Instant</code> in human terms, it must be combined with a <code>ZoneId</code> via <code>.atZone(zoneId)</code> (producing a <code>ZonedDateTime</code>) — there is no ambiguity in this direction (converting <code>Instant</code> to zoned time is always well-defined, unlike the reverse).</li>
+<li><strong>Memory Layout</strong>: A tiny, immutable heap object holding one <code>long</code> (epoch seconds) and one <code>int</code> (nanosecond adjustment) — one of the lightest-weight types in <code>java.time</code>, an excellent candidate for JIT scalar replacement in tight loops that create/consume instants transiently.</li>
+<li><strong>Diagrams</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Instant.now()
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>       |
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>       v
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>epochSecond = 1785000000 (example), nanoAdjustment = 123456789
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>       |
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>       v  .atZone(ZoneId.of("Asia/Kolkata"))
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>ZonedDateTime: 2026-07-26T20:00:00.123456789+05:30[Asia/Kolkata]
+</code></pre></div>
+<ul>
+<li><strong>JVM Behaviour</strong>: <code>Instant.now()</code> typically delegates to a JVM-provided high-resolution clock source; ordinary immutable object semantics apply with no special GC/JIT treatment beyond what any small immutable value type receives.</li>
+</ul>
+<h3 id="interview-questions_4">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What does <code>Instant</code> represent, and how is it different from <code>LocalDateTime</code>?
+2. What is the "epoch," and how does <code>Instant</code> use it internally?</p>
+<p><strong>Intermediate</strong>
+3. Why can't you directly add a <code>Period</code> (e.g., "1 month") to an <code>Instant</code>?
+4. How do you convert an <code>Instant</code> into a human-readable date-time in a specific time zone?</p>
+<p><strong>Advanced</strong>
+5. Why is <code>Instant</code> generally preferred over <code>Date</code>/<code>System.currentTimeMillis()</code> for modern timestamp storage, beyond just API ergonomics?</p>
+<p><strong>Scenario-based</strong>
+6. Your team debates whether to store event timestamps in the database as <code>Instant</code>(UTC)/epoch values versus as <code>ZonedDateTime</code> with the user's local zone. What are the tradeoffs, and which is generally recommended for the canonical stored value?</p>
+<h3 id="detailed-answers_4">Detailed Answers</h3>
+<ol>
+<li><code>Instant</code> represents an exact, zone-agnostic point on the UTC timeline (seconds and nanoseconds since the epoch), with no notion of calendar date or wall-clock time at all. <code>LocalDateTime</code> represents a human-readable calendar date and time-of-day but with <strong>no</strong> zone/offset information, meaning it cannot pin down a specific real-world instant — the two types serve fundamentally different purposes (machine timestamp versus human wall-clock reading).</li>
+<li>The epoch is the reference point 1970-01-01T00:00:00Z (midnight UTC on January 1, 1970), the conventional zero-point for Unix-style time systems. <code>Instant</code> internally stores its value as the number of whole seconds since this epoch (which can be negative, for instants before 1970) plus a nanosecond-of-second adjustment for sub-second precision.</li>
+<li><code>Period</code> represents calendar-based units (years, months, days) whose actual duration in elapsed time varies depending on the calendar context (a month can be 28-31 days; a year can be 365 or 366 days) — but <code>Instant</code> has no calendar or zone context at all, so "add one month" is meaningless without first anchoring to a specific calendar date in a specific zone. Only duration-based arithmetic (<code>Duration</code>, representing a fixed length of elapsed time in seconds/nanoseconds) can be directly applied to <code>Instant</code>; to add calendar-based <code>Period</code> units, you must first convert to a <code>ZonedDateTime</code>/<code>LocalDateTime</code>.</li>
+<li>Call <code>.atZone(ZoneId)</code> on the <code>Instant</code> to produce a <code>ZonedDateTime</code> anchored to that zone's rules at that instant (e.g., <code>instant.atZone(ZoneId.of("Europe/London"))</code>), which can then be formatted with a <code>DateTimeFormatter</code> for display. This conversion is always unambiguous in this direction, since a single instant maps to exactly one local date-time in any given zone.</li>
+<li>Beyond a richer, more expressive API, <code>Instant</code> offers nanosecond precision (versus millisecond precision for <code>Date</code>/<code>currentTimeMillis()</code>), is immutable and thread-safe (versus mutable, thread-unsafe <code>Date</code>), integrates cleanly with the rest of the type-safe <code>java.time</code> model (<code>Duration</code>, <code>ZonedDateTime</code>, <code>DateTimeFormatter</code>), and its vastly larger representable range (backed by a <code>long</code> seconds value, versus <code>Date</code>'s <code>long</code> milliseconds which still has a comparable range but combined with poor API design led to many historical bugs) makes correct, unambiguous timestamp handling far easier to get right by construction.</li>
+<li>Storing the canonical timestamp as <code>Instant</code>/UTC (or equivalently, epoch seconds/millis, or <code>OffsetDateTime</code> at a fixed UTC offset) is the generally recommended practice, because it provides one unambiguous, easily-comparable, zone-independent value that every downstream consumer can interpret consistently — the user's local zone (for <em>display</em> purposes only) is better stored/derived separately (e.g., from user profile/session data) and applied only at presentation time via <code>.atZone(...)</code>. Storing <code>ZonedDateTime</code> directly ties the stored record to a specific zone's rules at write time, which complicates comparisons/sorting across records from different zones and can be affected by future changes to that zone's historical DST rules; UTC-based storage sidesteps all of this.</li>
+</ol>
+<h3 id="code-examples_4">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.Instant</span><span class="p">;</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.Duration</span><span class="p">;</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RequestLatencyDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">        </span><span class="n">Instant</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Instant</span><span class="p">.</span><span class="na">now</span><span class="p">();</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">        </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="mi">150</span><span class="p">);</span><span class="w"> </span><span class="c1">// simulate work</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">        </span><span class="n">Instant</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Instant</span><span class="p">.</span><span class="na">now</span><span class="p">();</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">        </span><span class="n">Duration</span><span class="w"> </span><span class="n">elapsed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Duration</span><span class="p">.</span><span class="na">between</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">);</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Request took "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">elapsed</span><span class="p">.</span><span class="na">toMillis</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" ms"</span><span class="p">);</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.Instant</span><span class="p">;</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.ZoneId</span><span class="p">;</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.ZonedDateTime</span><span class="p">;</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.format.DateTimeFormatter</span><span class="p">;</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">AuditTimestampDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">        </span><span class="c1">// Canonical stored value: unambiguous, zone-agnostic</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="w">        </span><span class="n">Instant</span><span class="w"> </span><span class="n">createdAt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Instant</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">"2026-07-26T09:15:30Z"</span><span class="p">);</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="w">        </span><span class="c1">// Applied only at display time, per the viewing user's zone</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="w">        </span><span class="n">ZonedDateTime</span><span class="w"> </span><span class="n">displayed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createdAt</span><span class="p">.</span><span class="na">atZone</span><span class="p">(</span><span class="n">ZoneId</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">"America/Los_Angeles"</span><span class="p">));</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="w">        </span><span class="n">DateTimeFormatter</span><span class="w"> </span><span class="n">formatter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateTimeFormatter</span><span class="p">.</span><span class="na">ofPattern</span><span class="p">(</span><span class="s">"MMM d, yyyy 'at' h:mm a"</span><span class="p">);</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">displayed</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="n">formatter</span><span class="p">));</span><span class="w"> </span><span class="c1">// Jul 26, 2026 at 2:15 AM</span>
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="duration">Duration</h2>
+<h3 id="theory_5">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong>: <code>java.time.Duration</code> represents an exact, time-based amount — a length of elapsed time measured in seconds and nanoseconds (e.g., "2 hours 30 minutes," "500 milliseconds") — independent of any calendar context. It is the time-based counterpart to <code>Period</code>'s date-based (calendar) amount.</li>
+<li><strong>Internal Working</strong>: Stored as a <code>long</code> seconds value plus an <code>int</code> nanosecond adjustment, exactly like <code>Instant</code>; factory methods (<code>ofSeconds</code>, <code>ofMinutes</code>, <code>ofHours</code>, <code>ofDays</code> — note <code>ofDays</code> treats a day as a fixed 24 hours, not a calendar day) and <code>Duration.between(Temporal, Temporal)</code> are the primary construction paths.</li>
+<li><strong>When to Use It</strong>: Measuring/representing elapsed time between two instants or <code>LocalTime</code>/<code>LocalDateTime</code> values, expressing timeouts, intervals, or SLAs (e.g., "retry after a 5-minute <code>Duration</code>"), any time-based (not calendar-based) quantity.</li>
+<li><strong>Advantages</strong>: Precise, unambiguous (no calendar/zone dependency), integrates directly with <code>Instant</code>/<code>LocalTime</code>/<code>LocalDateTime</code> arithmetic, supports convenient unit conversions (<code>toMinutes()</code>, <code>toHours()</code>, <code>toMillis()</code>).</li>
+<li><strong>Limitations</strong>: <code>Duration.ofDays(1)</code> is always exactly 24 hours, which is <strong>not</strong> the same as "one calendar day" during a DST transition (where a calendar day can be 23 or 25 hours) — using <code>Duration</code> where <code>Period</code> (or zone-aware date arithmetic) is semantically required is a common bug source.</li>
+</ul>
+<h3 id="internal-working_5">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: 1) <code>Duration.between(startTemporal, endTemporal)</code> computes the exact elapsed time-based difference between two temporal points (both must support time-based querying — <code>Instant</code>, <code>LocalTime</code>, <code>LocalDateTime</code>, <code>ZonedDateTime</code>, etc.), returning seconds and nanosecond components. 2) Unit conversion methods (<code>toDays()</code>, <code>toHours()</code>, <code>toMinutes()</code>, <code>toMillis()</code>, <code>toNanos()</code>) perform straightforward fixed-ratio arithmetic (1 day = 24 hours = 1440 minutes, always), since <code>Duration</code> has no calendar awareness to vary these ratios. 3) <code>plus</code>/<code>minus</code> combine two <code>Duration</code>s (or add seconds/other time units) via simple arithmetic on the underlying seconds/nanos representation, with normalization to keep the nanosecond component within its valid [0, 999,999,999] range.</li>
+<li><strong>Memory Layout</strong>: Same lightweight profile as <code>Instant</code> — one <code>long</code> and one <code>int</code> field on an immutable heap object, an ideal candidate for JIT scalar replacement in short-lived computations.</li>
+<li><strong>Diagrams</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Duration.between(Instant.parse("2026-07-26T09:00:00Z"), Instant.parse("2026-07-26T11:30:00Z"))
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>        |
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>        v
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>Duration: PT2H30M   (2 hours, 30 minutes - a fixed, calendar-independent length of time)
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>Duration.ofDays(1) == PT24H always, regardless of DST -
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>Period.ofDays(1)   == "1 calendar day" which can be 23 or 25 real hours across a DST transition
+</code></pre></div>
+<ul>
+<li><strong>JVM Behaviour</strong>: Ordinary immutable value semantics; no special runtime behavior beyond standard object allocation/GC and JIT optimization opportunities for tightly-scoped usage.</li>
+</ul>
+<h3 id="interview-questions_5">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What is <code>Duration</code>, and how is it different from <code>Period</code>?
+2. How would you compute the elapsed time between two <code>Instant</code> values?</p>
+<p><strong>Intermediate</strong>
+3. Why is <code>Duration.ofDays(1)</code> not always equivalent to "one calendar day" in wall-clock terms?
+4. What temporal types can <code>Duration.between(...)</code> be used with?</p>
+<p><strong>Advanced</strong>
+5. What subtle correctness bug can arise from using <code>Duration</code> (instead of <code>Period</code> or zone-aware <code>LocalDate</code> arithmetic) to compute "30 days from now" for a calendar-facing feature like a subscription renewal date?</p>
+<p><strong>Scenario-based</strong>
+6. A retry mechanism schedules the next attempt as <code>Instant.now().plus(Duration.ofMinutes(5))</code>. Is this the correct type to use here, or should <code>Period</code> be considered? Justify your answer.</p>
+<h3 id="detailed-answers_5">Detailed Answers</h3>
+<ol>
+<li><code>Duration</code> represents a time-based amount of elapsed time measured precisely in seconds/nanoseconds (e.g., "2 hours"), independent of any calendar. <code>Period</code> represents a date-based amount expressed in years/months/days (e.g., "1 month"), whose actual elapsed real-time length varies depending on the specific calendar dates involved (a "1 month" period is a different number of actual days depending on which month). <code>Duration</code> is for exact, fixed-length time spans; <code>Period</code> is for calendar-conceptual spans.</li>
+<li><code>Duration.between(instant1, instant2)</code> returns the precise <code>Duration</code> representing the elapsed time between the two instants, which can then be queried via <code>.toHours()</code>, <code>.toMinutes()</code>, <code>.getSeconds()</code>, <code>.toMillis()</code>, etc., for the desired unit of elapsed time.</li>
+<li><code>Duration.ofDays(1)</code> is defined as exactly 24 hours (86,400 seconds), a fixed physical/time-based quantity. A "calendar day," however, can be 23 or 25 hours long on the specific dates when a time zone transitions into or out of Daylight Saving Time (clocks skip or repeat an hour) — so adding <code>Duration.ofDays(1)</code> to a <code>ZonedDateTime</code> around a DST boundary can actually shift the <em>local wall-clock time</em> by an hour, whereas adding a <code>Period.ofDays(1)</code> (or using date-based <code>plusDays</code> on a <code>LocalDate</code>/<code>ZonedDateTime</code>, which is calendar-aware) preserves the same local wall-clock time across the transition.</li>
+<li><code>Duration.between(...)</code> requires two <code>Temporal</code> objects that support time-based (second/nanosecond) querying — this includes <code>Instant</code>, <code>LocalTime</code>, <code>LocalDateTime</code>, <code>ZonedDateTime</code>, and <code>OffsetDateTime</code>. It does <strong>not</strong> work directly between two bare <code>LocalDate</code> values, since <code>LocalDate</code> has no time-of-day component to compute a precise sub-day elapsed duration from (<code>Period.between(...)</code> is the calendar-appropriate equivalent for two <code>LocalDate</code>s).</li>
+<li>Using <code>Duration.ofDays(30)</code> added to a <code>ZonedDateTime</code> computes exactly 30 x 24 hours of elapsed real time, which can shift the resulting local wall-clock time by an hour if a DST transition falls within that window — for a subscription renewal date, users expect "30 days later" to mean the same time-of-day on the calendar date 30 days out, not a time that's shifted by an hour due to a DST change encountered along the way. The correct approach for calendar-facing date arithmetic is to use <code>Period.ofDays(30)</code> (or <code>LocalDate</code>/<code>ZonedDateTime.plusDays(30)</code>, which is defined in calendar terms and correctly preserves local time-of-day across DST transitions), reserving <code>Duration</code> for genuine fixed-elapsed-time calculations.</li>
+<li><code>Duration</code> is the correct type here. A retry delay is fundamentally a fixed-length, calendar-independent time span ("wait exactly 5 minutes of real elapsed time before retrying") — it has nothing to do with calendar concepts like months or specific calendar dates, so <code>Period</code> (which represents years/months/days and is explicitly calendar-based, not usable for adding to an <code>Instant</code> at all) would be both semantically wrong and technically inapplicable; <code>Duration</code> correctly and precisely represents "5 minutes of elapsed time" regardless of any calendar/zone context.</li>
+</ol>
+<h3 id="code-examples_5">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.Duration</span><span class="p">;</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.Instant</span><span class="p">;</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SlaMonitoringDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">        </span><span class="n">Instant</span><span class="w"> </span><span class="n">requestReceived</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Instant</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">"2026-07-26T10:00:00Z"</span><span class="p">);</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">        </span><span class="n">Instant</span><span class="w"> </span><span class="n">requestCompleted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Instant</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="s">"2026-07-26T10:00:04.250Z"</span><span class="p">);</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">        </span><span class="n">Duration</span><span class="w"> </span><span class="n">elapsed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Duration</span><span class="p">.</span><span class="na">between</span><span class="p">(</span><span class="n">requestReceived</span><span class="p">,</span><span class="w"> </span><span class="n">requestCompleted</span><span class="p">);</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="w">        </span><span class="n">Duration</span><span class="w"> </span><span class="n">slaLimit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Duration</span><span class="p">.</span><span class="na">ofSeconds</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="w">        </span><span class="kt">boolean</span><span class="w"> </span><span class="n">withinSla</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">elapsed</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">slaLimit</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">"Elapsed: %d ms, within SLA: %b%n"</span><span class="p">,</span><span class="w"> </span><span class="n">elapsed</span><span class="p">.</span><span class="na">toMillis</span><span class="p">(),</span><span class="w"> </span><span class="n">withinSla</span><span class="p">);</span>
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.Duration</span><span class="p">;</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.Instant</span><span class="p">;</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">RetryBackoffDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="n">Instant</span><span class="w"> </span><span class="nf">nextRetryTime</span><span class="p">(</span><span class="n">Instant</span><span class="w"> </span><span class="n">lastAttempt</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">attemptNumber</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">        </span><span class="c1">// Exponential backoff expressed purely in terms of elapsed time - Duration is correct here</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">        </span><span class="n">Duration</span><span class="w"> </span><span class="n">backoff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Duration</span><span class="p">.</span><span class="na">ofSeconds</span><span class="p">((</span><span class="kt">long</span><span class="p">)</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">attemptNumber</span><span class="p">));</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">lastAttempt</span><span class="p">.</span><span class="na">plus</span><span class="p">(</span><span class="n">backoff</span><span class="p">);</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">        </span><span class="n">Instant</span><span class="w"> </span><span class="n">lastAttempt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Instant</span><span class="p">.</span><span class="na">now</span><span class="p">();</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">attempt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">attempt</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">attempt</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="w">            </span><span class="n">Instant</span><span class="w"> </span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nextRetryTime</span><span class="p">(</span><span class="n">lastAttempt</span><span class="p">,</span><span class="w"> </span><span class="n">attempt</span><span class="p">);</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Attempt "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">attempt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" retry at: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">next</span><span class="p">);</span>
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="period">Period</h2>
+<h3 id="theory_6">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong>: <code>java.time.Period</code> represents a date-based amount of time expressed in years, months, and days (e.g., "1 year, 2 months, 15 days") — a calendar-conceptual quantity whose actual elapsed real-time length depends on which specific calendar dates it's applied to. It is the date-based counterpart to <code>Duration</code>'s time-based amount.</li>
+<li><strong>Internal Working</strong>: Stored as three separate <code>int</code> fields (years, months, days) rather than a single normalized total — <code>Period.of(1, 14, 0)</code> is stored as-is (14 months, not normalized to 1 year 2 months) unless you explicitly call <code>.normalized()</code>, which converts the years/months combination into a canonical form (days are never normalized into months, since a month's day-length varies).</li>
+<li><strong>When to Use It</strong>: Representing calendar-conceptual spans tied to human/business semantics — "renews every 1 month," "the contract runs for 2 years," "you must be 18 years and 0 months old" — where the correct behavior is to preserve calendar meaning (e.g., "one month later") rather than a fixed number of elapsed hours.</li>
+<li><strong>Advantages</strong>: Correctly expresses calendar-relative concepts, integrates directly with <code>LocalDate</code> arithmetic (<code>localDate.plus(period)</code>), separates years/months/days as distinct, individually-inspectable components (<code>getYears()</code>, <code>getMonths()</code>, <code>getDays()</code>).</li>
+<li><strong>Limitations</strong>: Cannot be used with <code>Instant</code> or any time-based-only type (no calendar context to interpret months/years against); <code>Period.between(date1, date2)</code> computes a specific years/months/days breakdown that depends on calendar arithmetic order and can be less intuitive than a simple day-count for some use cases (e.g., <code>Period.between</code> on 2024-01-31 and 2024-03-01 yields 1 month, 1 day — not simply "30 days").</li>
+</ul>
+<h3 id="internal-working_6">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: 1) <code>Period.of(years, months, days)</code> or <code>Period.between(startDate, endDate)</code> constructs an immutable instance storing the three components separately. 2) <code>Period.between(...)</code> computes the breakdown by conceptually walking calendar units from largest to smallest — determining the largest whole number of years, then the largest whole number of remaining months, then the remaining days — which is why the result depends on the specific dates involved and their day-of-month alignment, not just the total day-count difference. 3) Adding a <code>Period</code> to a <code>LocalDate</code> (<code>date.plus(period)</code>) applies years, then months, then days in sequence, with the usual day-of-month clamping behavior for month/year additions (matching <code>LocalDate.plusMonths</code>/<code>plusYears</code> semantics).</li>
+<li><strong>Memory Layout</strong>: A small immutable heap object with three <code>int</code> fields; value-based semantics identical to the other <code>java.time</code> types.</li>
+<li><strong>Diagrams</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>Period.between(LocalDate.of(2024, 1, 31), LocalDate.of(2024, 3, 1))
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>        |
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>        v
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>years=0, months=1, days=1   -- NOT simply "30 days" - computed via calendar-unit walking
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>LocalDate.of(2026, 1, 31).plus(Period.ofMonths(1))
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>        |
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>        v
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>LocalDate(2026, 2, 28)   -- same clamping behavior as plusMonths()
+</code></pre></div>
+<ul>
+<li><strong>JVM Behaviour</strong>: Ordinary immutable object; no special runtime behavior, subject to the same JIT/GC treatment as other lightweight <code>java.time</code> value types.</li>
+</ul>
+<h3 id="interview-questions_6">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What is <code>Period</code>, and how does it differ conceptually from <code>Duration</code>?
+2. How do you compute the calendar difference (years/months/days) between two <code>LocalDate</code> values?</p>
+<p><strong>Intermediate</strong>
+3. Why might <code>Period.between(LocalDate.of(2024,1,31), LocalDate.of(2024,3,1))</code> return "1 month, 1 day" rather than a value based on a simple total day count?
+4. Does <code>Period.of(1, 14, 0)</code> automatically normalize to 2 years, 2 months? Why or why not?</p>
+<p><strong>Advanced</strong>
+5. Why can't <code>Period</code> be used to add "1 month" to an <code>Instant</code>, and what would you use instead?</p>
+<p><strong>Scenario-based</strong>
+6. A legal-age-verification feature needs to check "is this person at least 18 years old as of today," accounting for leap years and varying month lengths correctly. Would you use <code>Period</code> or <code>Duration</code> for this, and how would you implement the check?</p>
+<h3 id="detailed-answers_6">Detailed Answers</h3>
+<ol>
+<li><code>Period</code> represents a date-based (calendar) amount — years, months, and days — whose actual real-time length depends on the specific dates it's applied to (e.g., "1 month" is a different number of days depending on which month). <code>Duration</code> represents a time-based amount — a fixed, exact length of elapsed time in seconds/nanoseconds, independent of any calendar context. Use <code>Period</code> for calendar-conceptual spans and <code>Duration</code> for exact elapsed-time spans.</li>
+<li>Use <code>Period.between(startDate, endDate)</code>, which returns a <code>Period</code> object whose <code>getYears()</code>, <code>getMonths()</code>, and <code>getDays()</code> methods give the calendar-unit breakdown of the difference, computed by determining the largest whole number of years, then months, then days between the two dates.</li>
+<li><code>Period.between</code> computes the difference by "walking" from the start date forward by whole years, then whole months, then whole days, until reaching the end date — it does not simply divide a total day count by 30. From January 31 to March 1, adding whole months from January 31 gets you to February 28 (clamped, since 2024 is a leap year, actually February 29 — but conceptually one month forward lands within February), leaving a remaining day or two to reach March 1, hence "1 month, 1 day" rather than an arbitrary day-count-based figure.</li>
+<li>No — <code>Period.of(1, 14, 0)</code> stores the years and months fields exactly as given (1 year, 14 months, 0 days) without automatically normalizing, because <code>Period</code>'s factory methods perform no implicit normalization by design (to preserve exactly what the caller specified). To get the canonical form (2 years, 2 months, 0 days), you must explicitly call <code>.normalized()</code>, which folds excess months into years (but never touches the days field, since day-length varies by month and can't be losslessly folded into months/years).</li>
+<li><code>Period</code> expresses calendar units (years, months) whose length in absolute time varies depending on which specific calendar dates they're being applied to — but <code>Instant</code> has no calendar context (no notion of "which month" or "which year" it currently represents) to resolve that variability against. To add a calendar-based amount to an instant-like concept, you must first anchor the <code>Instant</code> to a specific <code>ZonedDateTime</code> (via <code>.atZone(zoneId)</code>), add the <code>Period</code> to that zoned date-time (which has full calendar context), and then convert back to <code>Instant</code> if needed.</li>
+<li><code>Period</code> is the correct choice, since "18 years old" is an inherently calendar-based concept that must correctly account for leap years and varying month lengths (e.g., someone born on February 29 turning 18). The implementation would compute <code>Period.between(birthDate, LocalDate.now())</code> and check whether <code>.getYears() &gt;= 18</code> (equivalently, compare <code>birthDate.plusYears(18)</code> against today using <code>!LocalDate.now().isBefore(birthDate.plusYears(18))</code>), both of which correctly delegate leap-year and month-length handling to <code>LocalDate</code>'s calendar-aware arithmetic rather than attempting a fragile manual day-count calculation with <code>Duration</code>.</li>
+</ol>
+<h3 id="code-examples_6">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.LocalDate</span><span class="p">;</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.Period</span><span class="p">;</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">AgeVerificationDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isAtLeast</span><span class="p">(</span><span class="n">LocalDate</span><span class="w"> </span><span class="n">birthDate</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">minimumAge</span><span class="p">,</span><span class="w"> </span><span class="n">LocalDate</span><span class="w"> </span><span class="n">asOf</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">        </span><span class="n">Period</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Period</span><span class="p">.</span><span class="na">between</span><span class="p">(</span><span class="n">birthDate</span><span class="p">,</span><span class="w"> </span><span class="n">asOf</span><span class="p">);</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">age</span><span class="p">.</span><span class="na">getYears</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">minimumAge</span><span class="p">;</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="w">        </span><span class="n">LocalDate</span><span class="w"> </span><span class="n">birthDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalDate</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">2008</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">29</span><span class="p">);</span><span class="w"> </span><span class="c1">// born on a leap day</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="w">        </span><span class="n">LocalDate</span><span class="w"> </span><span class="n">today</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalDate</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">isAtLeast</span><span class="p">(</span><span class="n">birthDate</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="n">today</span><span class="p">));</span><span class="w"> </span><span class="c1">// true - correctly handles leap years</span>
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.LocalDate</span><span class="p">;</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.Period</span><span class="p">;</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ContractExpiryDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="w">        </span><span class="n">LocalDate</span><span class="w"> </span><span class="n">contractStart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalDate</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">31</span><span class="p">);</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="w">        </span><span class="n">Period</span><span class="w"> </span><span class="n">contractLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Period</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// 1 calendar month</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="w">        </span><span class="n">LocalDate</span><span class="w"> </span><span class="n">expiry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contractStart</span><span class="p">.</span><span class="na">plus</span><span class="p">(</span><span class="n">contractLength</span><span class="p">);</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">expiry</span><span class="p">);</span><span class="w"> </span><span class="c1">// 2026-02-28 - calendar-aware clamping, same as plusMonths(1)</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a><span class="w">        </span><span class="n">Period</span><span class="w"> </span><span class="n">unnormalized</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Period</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">unnormalized</span><span class="p">);</span><span class="w">              </span><span class="c1">// P1Y14M</span>
+<a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">unnormalized</span><span class="p">.</span><span class="na">normalized</span><span class="p">());</span><span class="w">  </span><span class="c1">// P2Y2M</span>
+<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="datetimeformatter">DateTimeFormatter</h2>
+<h3 id="theory_7">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong>: <code>java.time.format.DateTimeFormatter</code> is the immutable, thread-safe class for parsing strings into <code>java.time</code> objects and formatting <code>java.time</code> objects into strings, replacing the notoriously not-thread-safe <code>java.text.SimpleDateFormat</code>. It supports predefined constants (<code>ISO_LOCAL_DATE</code>, <code>ISO_DATE_TIME</code>, <code>BASIC_ISO_DATE</code>), pattern-based construction (<code>ofPattern("yyyy-MM-dd HH:mm:ss")</code>), and locale-aware/localized styles (<code>ofLocalizedDate(FormatStyle.MEDIUM)</code>).</li>
+<li><strong>Internal Working</strong>: Once built, a <code>DateTimeFormatter</code> compiles its pattern into an internal sequence of formatting/parsing "printer-parser" steps; because it's immutable, a single instance can safely be shared and reused (even cached as a <code>static final</code> field) across many threads simultaneously, unlike <code>SimpleDateFormat</code>, which is explicitly documented as not thread-safe due to internal mutable <code>Calendar</code> state.</li>
+<li><strong>When to Use It</strong>: Any time you need to convert between <code>java.time</code> types and their textual representation — API request/response serialization, log formatting, user-facing date display, parsing user or file input.</li>
+<li><strong>Advantages</strong>: Thread-safe and immutable (safe to share as a static constant, eliminating a whole class of <code>SimpleDateFormat</code> concurrency bugs), rich locale support, works polymorphically across all <code>java.time</code> types via the <code>TemporalAccessor</code>/<code>Temporal</code> interfaces.</li>
+<li><strong>Limitations</strong>: Pattern letters are case-sensitive and easy to mix up (e.g., <code>MM</code> for month vs <code>mm</code> for minute, <code>YYYY</code> week-based-year vs <code>yyyy</code> calendar year — a classic, frequently-cited bug source), and formatting/parsing a type that lacks the fields the pattern requires (e.g., trying to format a <code>LocalDate</code> with an <code>HH:mm</code> time pattern) throws <code>UnsupportedTemporalTypeException</code> at runtime.</li>
+</ul>
+<h3 id="internal-working_7">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong>: 1) <code>DateTimeFormatter.ofPattern("...")</code> parses the pattern string once, building an internal composite "printer-parser" (a tree of formatting steps for each pattern letter/literal segment) — this compilation cost is paid once per formatter instance, which is exactly why formatters should be created once and reused (e.g., as a <code>static final</code> field) rather than rebuilt on every call. 2) <code>.format(temporal)</code> walks the compiled printer-parser steps, querying the given <code>TemporalAccessor</code> (e.g., a <code>LocalDate</code>) for each required field (year, month, day, etc.) and appending the formatted representation; if the temporal object doesn't support a required field, an <code>UnsupportedTemporalTypeException</code> is thrown. 3) <code>.parse(text)</code> (or type-specific <code>LocalDate.parse(text, formatter)</code>) runs the reverse process, matching the input text against the compiled pattern and extracting field values, which are then used to construct the target <code>java.time</code> type.</li>
+<li><strong>Memory Layout</strong>: A <code>DateTimeFormatter</code> instance itself is a moderately-sized immutable object (holding the compiled printer-parser tree, locale, chronology, and zone override settings) that is safely cached/shared; because it's immutable, the JVM/JIT can treat repeated uses through the same reference as operating on stable, unchanging state, aiding optimization.</li>
+<li><strong>Diagrams</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>        |
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>        v (compiled once)
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>[literal print "yyyy"][literal "-"][literal "MM"][literal "-"][literal "dd"]["  "]["HH"][":"]["mm"][":"]["ss"]
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>        |
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>        v .format(LocalDateTime.of(2026,7,26,14,30,0))
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>"2026-07-26 14:30:00"
+</code></pre></div>
+<ul>
+<li><strong>JVM Behaviour</strong>: No special runtime support; the key practical performance/concurrency point is that, being immutable, a single <code>DateTimeFormatter</code> instance can be safely invoked concurrently from many threads without external synchronization, unlike <code>SimpleDateFormat</code>, whose internal mutable <code>Calendar</code> state made concurrent use a classic source of data corruption bugs (garbled dates, <code>NumberFormatException</code>s under load) that required either per-thread instances or explicit synchronization to avoid.</li>
+</ul>
+<h3 id="interview-questions_7">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What is <code>DateTimeFormatter</code> used for, and what legacy class does it replace?
+2. Is <code>DateTimeFormatter</code> thread-safe? Is <code>SimpleDateFormat</code>?</p>
+<p><strong>Intermediate</strong>
+3. What is the difference between the pattern letters <code>MM</code> and <code>mm</code> in a <code>DateTimeFormatter</code> pattern, and why is this a common source of bugs?
+4. What exception is thrown if you try to format a <code>LocalDate</code> using a pattern that includes time fields like <code>HH:mm</code>, and why?</p>
+<p><strong>Advanced</strong>
+5. Why is it a performance and correctness best practice to create a <code>DateTimeFormatter</code> once (e.g., as a <code>static final</code> field) rather than constructing it fresh on every format/parse call?</p>
+<p><strong>Scenario-based</strong>
+6. A production incident report shows intermittent garbled/incorrect dates under high concurrent load using a shared <code>SimpleDateFormat</code> instance. Explain the root cause and the fix using <code>java.time</code>.</p>
+<h3 id="detailed-answers_7">Detailed Answers</h3>
+<ol>
+<li><code>DateTimeFormatter</code> is used to convert between <code>java.time</code> types (<code>LocalDate</code>, <code>LocalDateTime</code>, <code>ZonedDateTime</code>, etc.) and their <code>String</code> representations, for both formatting (object to string) and parsing (string to object). It replaces the legacy <code>java.text.SimpleDateFormat</code>/<code>DateFormat</code> classes, which operated on the old, mutable <code>java.util.Date</code>/<code>Calendar</code> types.</li>
+<li>Yes, <code>DateTimeFormatter</code> is fully immutable and thread-safe — a single instance can be safely shared and used concurrently across multiple threads with no synchronization needed. <code>SimpleDateFormat</code> is explicitly documented as <strong>not</strong> thread-safe, because it holds internal mutable state (a <code>Calendar</code> instance) that gets corrupted if multiple threads format/parse using the same instance concurrently without external synchronization.</li>
+<li><code>MM</code> (uppercase) represents the numeric month-of-year (01-12). <code>mm</code> (lowercase) represents the minute-of-hour (00-59). Because they look nearly identical and are easy to mistype, using <code>mm</code> where <code>MM</code> was intended (or vice versa) is one of the most commonly cited real-world <code>DateTimeFormatter</code>/<code>SimpleDateFormat</code> bugs, silently producing dates/times with the wrong numeric value in that position rather than an obvious compile or runtime error (since both are individually valid pattern letters).</li>
+<li><code>UnsupportedTemporalTypeException</code> is thrown, because <code>LocalDate</code> has no time-of-day fields at all (<code>HOUR_OF_DAY</code>, <code>MINUTE_OF_HOUR</code>) for the formatter to query — the pattern requires fields that the given <code>TemporalAccessor</code> simply cannot provide, and <code>DateTimeFormatter</code> detects and reports this mismatch explicitly rather than silently defaulting missing fields to zero.</li>
+<li>Building a <code>DateTimeFormatter</code> from a pattern string involves parsing and compiling that pattern into its internal printer-parser representation, which has a real (if small) cost — repeating this on every single format/parse call in a hot path wastes CPU cycles unnecessarily. Since <code>DateTimeFormatter</code> is immutable and thread-safe, there is no correctness reason to avoid reuse, so creating it once (typically as a <code>static final</code> constant) and reusing that single instance everywhere is strictly better for both performance and code clarity, with no downside.</li>
+<li><code>SimpleDateFormat</code> holds mutable internal state (notably an internal <code>Calendar</code> instance used during both formatting and parsing) that is not designed for concurrent access; when multiple threads call <code>format()</code>/<code>parse()</code> on the <em>same shared instance</em> simultaneously, their operations interleave and corrupt this shared mutable state, producing garbled output, incorrect dates, or intermittent <code>NumberFormatException</code>s — a classic concurrency bug that's hard to reproduce reliably since it depends on timing. The fix is to migrate to <code>java.time</code>'s <code>DateTimeFormatter</code>, which is immutable and fully thread-safe, so a single shared <code>static final DateTimeFormatter</code> instance can be safely used concurrently across any number of threads without any risk of shared-state corruption.</li>
+</ol>
+<h3 id="code-examples_7">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.LocalDateTime</span><span class="p">;</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.format.DateTimeFormatter</span><span class="p">;</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DateFormattingDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="w">    </span><span class="c1">// Immutable and thread-safe: safe to share as a constant across the whole application</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">DateTimeFormatter</span><span class="w"> </span><span class="n">DISPLAY_FORMAT</span><span class="w"> </span><span class="o">=</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="w">            </span><span class="n">DateTimeFormatter</span><span class="p">.</span><span class="na">ofPattern</span><span class="p">(</span><span class="s">"MMM d, yyyy 'at' h:mm a"</span><span class="p">);</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="w">        </span><span class="n">LocalDateTime</span><span class="w"> </span><span class="n">orderPlaced</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">2026</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">26</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">);</span>
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">formatted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orderPlaced</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="n">DISPLAY_FORMAT</span><span class="p">);</span>
+<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">formatted</span><span class="p">);</span><span class="w"> </span><span class="c1">// Jul 26, 2026 at 2:30 PM</span>
+<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a>
+<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a><span class="w">        </span><span class="n">LocalDateTime</span><span class="w"> </span><span class="n">parsedBack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalDateTime</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span>
+<a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a><span class="w">                </span><span class="s">"Jul 26, 2026 at 2:30 PM"</span><span class="p">,</span><span class="w"> </span><span class="n">DISPLAY_FORMAT</span><span class="p">);</span>
+<a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">parsedBack</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">orderPlaced</span><span class="p">));</span><span class="w"> </span><span class="c1">// true</span>
+<a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-22-19" name="__codelineno-22-19" href="#__codelineno-22-19"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.LocalDate</span><span class="p">;</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.format.DateTimeFormatter</span><span class="p">;</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.format.DateTimeParseException</span><span class="p">;</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SafeDateParsingDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">DateTimeFormatter</span><span class="w"> </span><span class="n">ISO_DATE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateTimeFormatter</span><span class="p">.</span><span class="na">ISO_LOCAL_DATE</span><span class="p">;</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="n">LocalDate</span><span class="w"> </span><span class="nf">parseUserInput</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">rawDate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">LocalDate</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="n">rawDate</span><span class="p">,</span><span class="w"> </span><span class="n">ISO_DATE</span><span class="p">);</span>
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">DateTimeParseException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalArgumentException</span><span class="p">(</span>
+<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a><span class="w">                    </span><span class="s">"Expected format yyyy-MM-dd but got: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">rawDate</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span>
+<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>
+<a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">parseUserInput</span><span class="p">(</span><span class="s">"2026-07-26"</span><span class="p">));</span><span class="w"> </span><span class="c1">// 2026-07-26</span>
+<a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a><span class="w">        </span><span class="c1">// parseUserInput("26/07/2026"); // would throw IllegalArgumentException with a clear message</span>
+<a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a><span class="p">}</span>
+</code></pre></div></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2025 <a href="https://github.com/abhishekghoshh"  target="_blank" rel="noopener">Abhishek Ghosh</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/abhishekghoshh" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://x.com/abhishek_ghoshh" target="_blank" rel="noopener" title="x.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/abhishek-ghosh-220679132/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2291 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://abhishekghoshh.github.io/java-helper/27-regular-expressions/">
+      
+      
+        <link rel="prev" href="../26-modern-java-language-features/">
+      
+      
+        <link rel="next" href="../28-internationalization-and-localization/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Regular Expressions - Java Helper</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Regular Expressions - Java Helper" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/27-regular-expressions.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://abhishekghoshh.github.io/java-helper/27-regular-expressions/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Regular Expressions - Java Helper" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://abhishekghoshh.github.io/java-helper/assets/images/social/27-regular-expressions.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#27-regular-expressions-new" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Java Helper" class="md-header__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Java Helper
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Regular Expressions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../1-java-language-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Java Language Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../2-object-oriented-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Object-Oriented Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../3-classes/" class="md-tabs__link">
+        
+  
+    
+  
+  Classes
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../4-constructors/" class="md-tabs__link">
+        
+  
+    
+  
+  Constructors
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../5-access-modifiers/" class="md-tabs__link">
+        
+  
+    
+  
+  Access Modifiers
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../6-packages/" class="md-tabs__link">
+        
+  
+    
+  
+  Packages
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../7-strings/" class="md-tabs__link">
+        
+  
+    
+  
+  Strings
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../8-arrays/" class="md-tabs__link">
+        
+  
+    
+  
+  Arrays
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../9-collections-framework/" class="md-tabs__link">
+        
+  
+    
+  
+  Collections Framework
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../10-generics/" class="md-tabs__link">
+        
+  
+    
+  
+  Generics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../11-exception-handling/" class="md-tabs__link">
+        
+  
+    
+  
+  Exception Handling
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../12-file-io/" class="md-tabs__link">
+        
+  
+    
+  
+  File I/O
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../13-serialization/" class="md-tabs__link">
+        
+  
+    
+  
+  Serialization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../14-reflection/" class="md-tabs__link">
+        
+  
+    
+  
+  Reflection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../15-annotations/" class="md-tabs__link">
+        
+  
+    
+  
+  Annotations
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../16-functional-programming/" class="md-tabs__link">
+        
+  
+    
+  
+  Functional Programming
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../17-streams-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Streams API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../18-date-and-time-api/" class="md-tabs__link">
+        
+  
+    
+  
+  Date and Time API
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../19-jvm-internals/" class="md-tabs__link">
+        
+  
+    
+  
+  JVM Internals
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../20-class-loader/" class="md-tabs__link">
+        
+  
+    
+  
+  Class Loader
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../21-memory-management/" class="md-tabs__link">
+        
+  
+    
+  
+  Memory Management
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../22-garbage-collection/" class="md-tabs__link">
+        
+  
+    
+  
+  Garbage Collection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../23-concurrency/" class="md-tabs__link">
+        
+  
+    
+  
+  Concurrency
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../24-networking/" class="md-tabs__link">
+        
+  
+    
+  
+  Networking
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../25-design-patterns-in-java/" class="md-tabs__link">
+        
+  
+    
+  
+  Design Patterns in Java
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../26-modern-java-language-features/" class="md-tabs__link">
+        
+  
+    
+  
+  Modern Java Language Features
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Regular Expressions
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../28-internationalization-and-localization/" class="md-tabs__link">
+        
+  
+    
+  
+  Internationalization & Localization
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../29-logging/" class="md-tabs__link">
+        
+  
+    
+  
+  Logging
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../30-security-basics/" class="md-tabs__link">
+        
+  
+    
+  
+  Security Basics
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-tabs__link">
+        
+  
+    
+  
+  Native & Foreign Interoperability
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../32-process-and-system-apis/" class="md-tabs__link">
+        
+  
+    
+  
+  Process & System APIs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../33-testing-fundamentals/" class="md-tabs__link">
+        
+  
+    
+  
+  Testing Fundamentals
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Java Helper" class="md-nav__button md-logo" aria-label="Java Helper" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Java Helper
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-java-language-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java Language Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-object-oriented-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Object-Oriented Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-classes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Classes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-constructors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constructors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-access-modifiers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Access Modifiers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Packages
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-strings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Strings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-arrays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Arrays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-collections-framework/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collections Framework
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-generics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-exception-handling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exception Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-file-io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File I/O
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-serialization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Serialization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-reflection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reflection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-annotations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-functional-programming/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Functional Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-streams-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Streams API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-date-and-time-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Date and Time API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-jvm-internals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JVM Internals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-class-loader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Class Loader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-memory-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-garbage-collection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Garbage Collection
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-concurrency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concurrency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../24-networking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25-design-patterns-in-java/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Design Patterns in Java
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../26-modern-java-language-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modern Java Language Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Regular Expressions
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Regular Expressions
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pattern
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pattern">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matcher" class="md-nav__link">
+    <span class="md-ellipsis">
+      Matcher
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Matcher">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#regex-groups-backreferences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regex Groups &amp; Backreferences
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Regex Groups & Backreferences">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#named-capturing-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Named Capturing Groups
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Named Capturing Groups">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-pitfalls-catastrophic-backtracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Pitfalls (Catastrophic Backtracking)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Pitfalls (Catastrophic Backtracking)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#theory_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internal-working_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internal Working
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interview-questions_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interview Questions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-answers_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Answers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-examples_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-internationalization-and-localization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internationalization & Localization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-logging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30-security-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Security Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../31-native-and-foreign-interoperability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Native & Foreign Interoperability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../32-process-and-system-apis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process & System APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../33-testing-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div><h1 id="27-regular-expressions-new">27. Regular Expressions <em>(new)</em></h1>
+<h2 id="pattern"><code>Pattern</code></h2>
+<h3 id="theory">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - <code>java.util.regex.Pattern</code> represents a compiled regular expression - an immutable, thread-safe representation of the regex ready to be used to create <code>Matcher</code> instances against input text.</li>
+<li><strong>Internal Working</strong> - <code>Pattern.compile(regex)</code> parses the regex syntax into an internal representation (roughly a graph of matching nodes forming a backtracking NFA - Nondeterministic Finite Automaton), which <code>Matcher</code> instances traverse against specific input.</li>
+<li><strong>When to Use It</strong> - Compile a <code>Pattern</code> once (typically as a <code>static final</code> field) and reuse it for many <code>matcher()</code> calls whenever a regex is used repeatedly (e.g., in a loop or hot path), instead of using the convenience <code>String.matches()</code>/<code>replaceAll()</code> methods which recompile the pattern on every call.</li>
+<li><strong>Advantages</strong> - Compilation cost paid once; the resulting <code>Pattern</code> is immutable and thread-safe, so a single instance can be safely shared/cached across threads.</li>
+<li><strong>Limitations</strong> - Complex regexes can still be slow to MATCH (not compile) against certain inputs due to backtracking (see Catastrophic Backtracking topic); regex syntax itself has a learning curve and can hurt readability if overused for complex parsing tasks better suited to a real parser.</li>
+</ul>
+<h3 id="internal-working">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - <code>Pattern.compile(regex)</code> parses the regex string into an internal tree of matching "nodes" (literal, character class, quantifier, group, alternation, etc.), essentially building a backtracking automaton; calling <code>.matcher(input)</code> creates a <code>Matcher</code> bound to both this compiled pattern and the specific input <code>CharSequence</code>, ready to perform <code>find()</code>/<code>matches()</code>/<code>lookingAt()</code> operations that traverse the compiled node graph against the input.</li>
+<li><strong>Memory Layout</strong> - The compiled <code>Pattern</code> object (and its internal node graph) lives on the heap once, shared by any number of <code>Matcher</code> instances created from it; each <code>Matcher</code> holds its own mutable matching state (current position, group boundaries) separate from the shared, immutable <code>Pattern</code>.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Pattern.compile("a(b+)c")  --&gt;  internal node graph: [literal 'a'] -&gt; [group: 'b' one-or-more] -&gt; [literal 'c']
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>.matcher("xabbbcy")        --&gt;  Matcher traverses the graph against this specific input
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - Pattern compilation is pure CPU-bound parsing/graph-construction work with no special JVM support; because <code>Pattern</code> is immutable and thread-safe, the JIT can freely inline/optimize repeated <code>matcher()</code> calls on a cached static instance without any synchronization concerns.</li>
+</ul>
+<h3 id="interview-questions">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What does <code>Pattern.compile()</code> return, and is it reusable?
+2. Why is it recommended to cache a <code>Pattern</code> as a <code>static final</code> field?</p>
+<p><strong>Intermediate</strong>
+1. Is <code>Pattern</code> thread-safe? Is <code>Matcher</code>?
+2. What's the performance difference between <code>String.matches(regex)</code> and using a pre-compiled <code>Pattern</code>?</p>
+<p><strong>Advanced</strong>
+1. What internal algorithm (roughly) does Java's regex engine use to match a compiled pattern against input?</p>
+<p><strong>Scenario-based</strong>
+1. A hot request-handling path calls <code>input.matches("^[a-zA-Z0-9]+$")</code> on every request and profiling shows significant CPU time in regex compilation - how do you fix this?</p>
+<h3 id="detailed-answers">Detailed Answers</h3>
+<ol>
+<li><strong>Q: What does <code>compile()</code> return?</strong> A: An immutable <code>Pattern</code> object representing the compiled regex, safely reusable across many <code>matcher()</code> calls and multiple threads.</li>
+<li><strong>Q: Why cache as <code>static final</code>?</strong> A: Compilation (parsing the regex into its internal matching representation) has real CPU cost; caching avoids repeating that cost on every use, which matters especially in loops or frequently-called methods.</li>
+<li><strong>Q: Thread-safety of <code>Pattern</code> vs <code>Matcher</code>?</strong> A: <code>Pattern</code> is immutable and thread-safe - one instance can be shared freely across threads; <code>Matcher</code> is stateful and mutable (tracks current match position/groups) and is NOT thread-safe - each thread needs its own <code>Matcher</code> instance (typically created via <code>pattern.matcher(input)</code> per use).</li>
+<li><strong>Q: <code>String.matches()</code> vs pre-compiled <code>Pattern</code>?</strong> A: <code>String.matches(regex)</code> internally calls <code>Pattern.compile(regex).matcher(this).matches()</code> EVERY time it's called, recompiling the regex from scratch each call; using a cached, pre-compiled <code>Pattern</code> and calling <code>.matcher(input).matches()</code> skips the repeated compilation cost, which can be a significant win in hot paths.</li>
+<li><strong>Q: Matching algorithm?</strong> A: Java's <code>java.util.regex</code> uses a backtracking, Thompson-NFA-like traversal (not a fully deterministic/linear-time DFA engine like RE2) - it explores the compiled node graph trying alternatives and quantifier repetitions, backtracking on failure, which is powerful/flexible (supports backreferences, lookaround) but can exhibit exponential worst-case behaviour on certain pathological patterns (catastrophic backtracking).</li>
+<li><strong>Q: Hot-path recompilation fix?</strong> A: Extract the regex into a <code>private static final Pattern VALID_INPUT = Pattern.compile("^[a-zA-Z0-9]+$");</code> field, and replace <code>input.matches(regex)</code> with <code>VALID_INPUT.matcher(input).matches()</code>, eliminating repeated compilation overhead per call.</li>
+</ol>
+<h3 id="code-examples">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.regex.Matcher</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.regex.Pattern</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PatternDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="c1">// Compiled once, reused for every validation call - avoids recompilation overhead</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Pattern</span><span class="w"> </span><span class="n">USERNAME_PATTERN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Pattern</span><span class="p">.</span><span class="na">compile</span><span class="p">(</span><span class="s">"^[a-zA-Z][a-zA-Z0-9_]{2,15}$"</span><span class="p">);</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isValidUsername</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">candidate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="n">Matcher</span><span class="w"> </span><span class="n">matcher</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">USERNAME_PATTERN</span><span class="p">.</span><span class="na">matcher</span><span class="p">(</span><span class="n">candidate</span><span class="p">);</span><span class="w"> </span><span class="c1">// cheap: Pattern already compiled</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">matcher</span><span class="p">.</span><span class="na">matches</span><span class="p">();</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">isValidUsername</span><span class="p">(</span><span class="s">"alice_92"</span><span class="p">));</span><span class="w">  </span><span class="c1">// true</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">isValidUsername</span><span class="p">(</span><span class="s">"1bad"</span><span class="p">));</span><span class="w">      </span><span class="c1">// false - starts with digit</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="matcher"><code>Matcher</code></h2>
+<h3 id="theory_1">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - <code>java.util.regex.Matcher</code> is a stateful engine bound to a specific compiled <code>Pattern</code> and a specific input <code>CharSequence</code>, providing operations like <code>matches()</code> (whole input), <code>find()</code> (next subsequence match, repeatable), <code>lookingAt()</code> (match at the start), and group extraction (<code>group()</code>, <code>start()</code>, <code>end()</code>).</li>
+<li><strong>Internal Working</strong> - Maintains internal mutable state - current search position, the boundaries of the most recent match, and captured group boundaries - updated as you call <code>find()</code> repeatedly or reset the input.</li>
+<li><strong>When to Use It</strong> - Use for extracting/iterating over matches (<code>find()</code> in a loop), validating whole-string format (<code>matches()</code>), or performing find-and-replace with group references (<code>replaceAll()</code>/<code>appendReplacement()</code>).</li>
+<li><strong>Advantages</strong> - Rich API for iterative matching, group extraction, and replacement with backreferences; reusable against new input via <code>reset(newInput)</code> without recompiling the pattern.</li>
+<li><strong>Limitations</strong> - Not thread-safe (must not be shared/used concurrently across threads without external synchronization); <code>find()</code>-loop code can be subtly buggy if you forget it's stateful (e.g., mixing <code>matches()</code> and <code>find()</code> calls on the same instance unexpectedly).</li>
+</ul>
+<h3 id="internal-working_1">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - <code>pattern.matcher(input)</code> creates a <code>Matcher</code> with its search cursor at position 0; calling <code>find()</code> searches forward from the current cursor for the next match, updates internal state (match boundaries, group captures) if found, and advances the cursor past the match end for the next <code>find()</code> call; <code>matches()</code> instead requires the ENTIRE input to match the pattern in one shot; <code>group(n)</code>/<code>start(n)</code>/<code>end(n)</code> read out the captured boundaries for group <code>n</code> from the most recent successful match.</li>
+<li><strong>Memory Layout</strong> - The <code>Matcher</code> object holds its own small mutable state (integer positions, an internal array of group boundary offsets) on the heap, distinct from and much smaller than the shared immutable <code>Pattern</code> it references.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Pattern p = Pattern.compile("(\\d+)-(\\d+)");
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Matcher m = p.matcher("12-34 and 56-78");
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>m.find() -&gt; true; m.group(1)="12", m.group(2)="34", cursor advances past index 5
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>m.find() -&gt; true (again); m.group(1)="56", m.group(2)="78"
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>m.find() -&gt; false (no more matches)
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - Each <code>find()</code>/<code>matches()</code> call executes the backtracking traversal algorithm compiled into the <code>Pattern</code>'s node graph against the input <code>CharSequence</code>; because <code>Matcher</code> mutates its own instance state rather than the shared <code>Pattern</code>, multiple threads must each use their own <code>Matcher</code> (obtained via <code>pattern.matcher(...)</code> per thread/use) to avoid data races.</li>
+</ul>
+<h3 id="interview-questions_1">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What's the difference between <code>matches()</code> and <code>find()</code> on a <code>Matcher</code>?
+2. Is <code>Matcher</code> safe to share across multiple threads?</p>
+<p><strong>Intermediate</strong>
+1. How do you iterate over all matches of a pattern in a string?
+2. What do <code>group()</code>, <code>start()</code>, and <code>end()</code> return?</p>
+<p><strong>Advanced</strong>
+1. How would you implement a custom find-and-replace using <code>appendReplacement()</code>/<code>appendTail()</code> instead of <code>replaceAll()</code>?</p>
+<p><strong>Scenario-based</strong>
+1. Code reuses the same <code>Matcher</code> instance across multiple threads to parse different strings concurrently, and results are occasionally corrupted/incorrect - diagnose and fix.</p>
+<h3 id="detailed-answers_1">Detailed Answers</h3>
+<ol>
+<li><strong>Q: <code>matches()</code> vs <code>find()</code>?</strong> A: <code>matches()</code> succeeds only if the ENTIRE input matches the pattern from start to end; <code>find()</code> searches for the next subsequence anywhere in the input that matches, and can be called repeatedly to iterate through successive matches.</li>
+<li><strong>Q: Thread-safe?</strong> A: No - <code>Matcher</code> holds mutable per-match state; concurrent use from multiple threads without synchronization causes race conditions/corrupted results. Each thread should obtain its own <code>Matcher</code> via <code>pattern.matcher(input)</code>.</li>
+<li><strong>Q: Iterating all matches?</strong> A: <code>while (matcher.find()) { String match = matcher.group(); ... }</code> - each <code>find()</code> call advances the internal cursor past the previous match, finding the next one until none remain.</li>
+<li><strong>Q: <code>group()</code>/<code>start()</code>/<code>end()</code>?</strong> A: <code>group(n)</code> returns the substring captured by group <code>n</code> (or the whole match for <code>group()</code>/<code>group(0)</code>); <code>start(n)</code>/<code>end(n)</code> return the input's character indices where that group's match begins/ends (useful for splicing/replacing precisely).</li>
+<li><strong>Q: Custom replace with <code>appendReplacement</code>/<code>appendTail</code>?</strong> A: Loop <code>while (matcher.find())</code>, inside the loop call <code>matcher.appendReplacement(sb, computedReplacementFor(matcher.group()))</code> to append text up to the match plus your custom replacement to a <code>StringBuilder</code>; after the loop, call <code>matcher.appendTail(sb)</code> to append any remaining unmatched input - giving full programmatic control over the replacement logic (e.g., computing replacements dynamically) beyond what <code>replaceAll(String)</code>'s fixed replacement string allows.</li>
+<li><strong>Q: Shared <code>Matcher</code> across threads bug?</strong> A: <code>Matcher</code>'s internal state (cursor position, group captures) is being mutated concurrently by multiple threads, causing race conditions where one thread's <code>find()</code>/<code>group()</code> calls interleave with and corrupt another's; fix by giving each thread (or each parsing operation) its OWN <code>Matcher</code> instance via <code>sharedPattern.matcher(thatThreadsInput)</code> - the underlying <code>Pattern</code> can safely remain shared, but never the <code>Matcher</code>.</li>
+</ol>
+<h3 id="code-examples_1">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.regex.Matcher</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.regex.Pattern</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MatcherDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="n">Pattern</span><span class="w"> </span><span class="n">pattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Pattern</span><span class="p">.</span><span class="na">compile</span><span class="p">(</span><span class="s">"(\\w+)@(\\w+\\.\\w+)"</span><span class="p">);</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="n">Matcher</span><span class="w"> </span><span class="n">matcher</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pattern</span><span class="p">.</span><span class="na">matcher</span><span class="p">(</span><span class="s">"Contact alice@example.com or bob@test.org"</span><span class="p">);</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">matcher</span><span class="p">.</span><span class="na">find</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// iterate over all matches</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Full: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">matcher</span><span class="p">.</span><span class="na">group</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">", user: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">matcher</span><span class="p">.</span><span class="na">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">", domain: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">matcher</span><span class="p">.</span><span class="na">group</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">        </span><span class="c1">// Custom replacement using appendReplacement/appendTail</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">        </span><span class="n">Matcher</span><span class="w"> </span><span class="n">m2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pattern</span><span class="p">.</span><span class="na">matcher</span><span class="p">(</span><span class="s">"alice@example.com"</span><span class="p">);</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">        </span><span class="n">StringBuilder</span><span class="w"> </span><span class="n">sb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StringBuilder</span><span class="p">();</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">m2</span><span class="p">.</span><span class="na">find</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">            </span><span class="n">m2</span><span class="p">.</span><span class="na">appendReplacement</span><span class="p">(</span><span class="n">sb</span><span class="p">,</span><span class="w"> </span><span class="s">"[REDACTED@"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">m2</span><span class="p">.</span><span class="na">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"]"</span><span class="p">);</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">        </span><span class="n">m2</span><span class="p">.</span><span class="na">appendTail</span><span class="p">(</span><span class="n">sb</span><span class="p">);</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">sb</span><span class="p">);</span><span class="w"> </span><span class="c1">// [REDACTED@example.com]</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="regex-groups-backreferences">Regex Groups &amp; Backreferences</h2>
+<h3 id="theory_2">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - A capturing group, written <code>(...)</code>, captures the substring matched by its enclosed sub-pattern for later retrieval (<code>group(n)</code>) or reuse within the same regex via a backreference (<code>\1</code>, <code>\2</code>, ...), which matches the EXACT same text the referenced group previously captured (not the group's pattern re-applied).</li>
+<li><strong>Internal Working</strong> - Groups are numbered left-to-right by their opening parenthesis; a backreference like <code>\1</code> compiles into a matching node that compares upcoming input literally against whatever text group 1 actually captured during this match attempt, rather than re-running group 1's sub-pattern.</li>
+<li><strong>When to Use It</strong> - Use capturing groups to extract structured sub-parts of a match (dates, key-value pairs); use backreferences to require repeated/matching text (detecting duplicated words, matching quote characters that must open and close with the same quote symbol).</li>
+<li><strong>Advantages</strong> - Enables extracting structured data from a single match and expressing repetition constraints ("the same text must appear twice") that a plain pattern without backreferences cannot express.</li>
+<li><strong>Limitations</strong> - Non-capturing groups <code>(?:...)</code> should be used when you need grouping/quantifying without needing to extract or backreference that part, to avoid unnecessary group numbering/overhead and confusion; backreferences make patterns non-regular (technically outside pure regular-language power), and their use can compound the risk of catastrophic backtracking.</li>
+</ul>
+<h3 id="internal-working_2">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - During matching, the engine records the start/end index range in the input each time a numbered group's sub-pattern successfully matches; a <code>\N</code> (backreference) node, when reached, doesn't re-execute group N's pattern - it directly compares the input at the current position against the literal substring group N captured, character by character, advancing only if they match exactly.</li>
+<li><strong>Memory Layout</strong> - Not directly applicable - group boundaries are stored as small integer offset pairs in the <code>Matcher</code>'s internal state array, not separate heap allocations for each group by default (substrings are only materialized as <code>String</code> objects when <code>group(n)</code> is actually called).</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Pattern: (\w+) \1        Input: "hello hello"
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>group 1 captures "hello" (indices 0-5)
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>\1 requires the literal text "hello" again at the current position -&gt; matches
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>Input: "hello world" -&gt; \1 requires "hello" again but sees "world" -&gt; no match
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - Group capture and backreference resolution are handled entirely within the backtracking matching algorithm compiled into the <code>Pattern</code>; no special bytecode/JIT behaviour beyond normal method execution of the regex engine's matching loop.</li>
+</ul>
+<h3 id="interview-questions_2">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What is a capturing group in regex, and how do you refer to its captured text later via <code>group()</code>?
+2. What is a backreference, syntactically, in Java regex?</p>
+<p><strong>Intermediate</strong>
+1. What's the difference between a capturing group <code>(...)</code> and a non-capturing group <code>(?:...)</code>?
+2. Does a backreference <code>\1</code> re-run group 1's pattern, or match its previously captured literal text?</p>
+<p><strong>Advanced</strong>
+1. Why can heavy use of backreferences increase the risk of catastrophic backtracking?</p>
+<p><strong>Scenario-based</strong>
+1. You need a regex to detect immediately repeated words in text (e.g., "the the") - write it using a backreference and explain how it works.</p>
+<h3 id="detailed-answers_2">Detailed Answers</h3>
+<ol>
+<li><strong>Q: Capturing group and <code>group()</code>?</strong> A: <code>(...)</code> captures the text matched by its sub-pattern; after a successful match, <code>matcher.group(n)</code> (n = 1-based index by order of opening parenthesis) returns that captured substring; <code>group(0)</code>/<code>group()</code> returns the entire match.</li>
+<li><strong>Q: Backreference syntax?</strong> A: <code>\1</code>, <code>\2</code>, etc. (in the Java string literal, written as <code>\\1</code> due to Java string escaping) referring back to the text captured by capturing group 1, 2, etc.</li>
+<li><strong>Q: Capturing vs non-capturing group?</strong> A: <code>(...)</code> captures its matched text for later retrieval/backreference and consumes a group number; <code>(?:...)</code> groups/quantifies a sub-pattern (e.g., for applying <code>+</code>/<code>*</code> to a sequence) WITHOUT capturing its text or consuming a group number - preferred when you don't need to extract or backreference that particular grouping.</li>
+<li><strong>Q: Does <code>\1</code> re-run the pattern?</strong> A: No - it matches the exact literal text that group 1 actually captured during this match attempt, not group 1's original sub-pattern re-applied; this is what allows expressing "the same text repeated" constraints.</li>
+<li><strong>Q: Why increase catastrophic backtracking risk?</strong> A: Backreferences force the engine to consider many possible ways an earlier group could have matched (since different capture choices lead to different literal comparisons later), compounding the combinatorial explosion of backtracking paths, especially when combined with nested/overlapping quantifiers.</li>
+<li><strong>Q: Detecting repeated words regex?</strong> A: <code>\b(\w+)\s+\1\b</code> - group 1 captures a word, <code>\s+</code> requires whitespace, and <code>\1</code> requires the EXACT same word to repeat; word-boundary anchors <code>\b</code> prevent partial-word false matches (e.g., avoiding "the" matching inside "there there" incorrectly at odd boundaries).</li>
+</ol>
+<h3 id="code-examples_2">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.regex.Matcher</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.regex.Pattern</span><span class="p">;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">GroupsBackreferencesDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">        </span><span class="c1">// Extract key=value pairs using capturing groups</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">        </span><span class="n">Pattern</span><span class="w"> </span><span class="n">kv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Pattern</span><span class="p">.</span><span class="na">compile</span><span class="p">(</span><span class="s">"(\\w+)=(\\w+)"</span><span class="p">);</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="n">Matcher</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kv</span><span class="p">.</span><span class="na">matcher</span><span class="p">(</span><span class="s">"host=localhost;port=8080"</span><span class="p">);</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="na">find</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="na">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" -&gt; "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="na">group</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">        </span><span class="c1">// Backreference: detect an immediately repeated word</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">        </span><span class="n">Pattern</span><span class="w"> </span><span class="n">repeated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Pattern</span><span class="p">.</span><span class="na">compile</span><span class="p">(</span><span class="s">"\\b(\\w+)\\s+\\1\\b"</span><span class="p">);</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">        </span><span class="n">Matcher</span><span class="w"> </span><span class="n">rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repeated</span><span class="p">.</span><span class="na">matcher</span><span class="p">(</span><span class="s">"this is the the answer"</span><span class="p">);</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rm</span><span class="p">.</span><span class="na">find</span><span class="p">())</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Repeated word found: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">rm</span><span class="p">.</span><span class="na">group</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span><span class="w"> </span><span class="c1">// "the"</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="named-capturing-groups">Named Capturing Groups</h2>
+<h3 id="theory_3">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - Named capturing groups, written <code>(?&lt;name&gt;...)</code>, let you assign a meaningful identifier to a capturing group, retrieved via <code>matcher.group("name")</code> instead of a positional index, improving regex readability and maintainability.</li>
+<li><strong>Internal Working</strong> - Internally still numbered like any capturing group, but the compiled <code>Pattern</code> maintains a name-to-index mapping so <code>group(String name)</code> can resolve to the correct positional group transparently.</li>
+<li><strong>When to Use It</strong> - Use whenever a regex has multiple capturing groups and positional indices (<code>group(1)</code>, <code>group(2)</code>) would be unclear or fragile to maintain (e.g., if group order might change during refactoring).</li>
+<li><strong>Advantages</strong> - Self-documenting code (<code>group("year")</code> versus <code>group(3)</code>), resilient to reordering groups during regex maintenance as long as names stay consistent, can also be referenced via named backreferences <code>\k&lt;name&gt;</code>.</li>
+<li><strong>Limitations</strong> - Slightly more verbose syntax; group names must be unique within a pattern and can only contain letters/digits (no special characters), limiting naming flexibility.</li>
+</ul>
+<h3 id="internal-working_3">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - During compilation, <code>Pattern</code> builds an internal map from each declared group name to its corresponding numeric group index (based on left-to-right parenthesis order, same as unnamed groups); at match time, named groups behave identically to numbered ones for capturing; <code>matcher.group("name")</code> simply looks up the name in that map to find the correct index, then returns the same captured substring <code>group(index)</code> would.</li>
+<li><strong>Memory Layout</strong> - The name-to-index map is a small part of the compiled, shared <code>Pattern</code> object's internal state; no additional per-match memory overhead beyond normal group capture bookkeeping.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Pattern: (?&lt;year&gt;\d{4})-(?&lt;month&gt;\d{2})-(?&lt;day&gt;\d{2})
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Input:   "2024-06-15"
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>matcher.group("year")  -&gt; "2024"   (internally resolves to group index 1)
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>matcher.group("month") -&gt; "06"     (resolves to group index 2)
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - No special JVM behaviour beyond normal <code>Pattern</code>/<code>Matcher</code> execution - the name lookup is a simple map access performed by the <code>java.util.regex</code> library code, not a JIT/bytecode-level concern.</li>
+</ul>
+<h3 id="interview-questions_3">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What's the syntax for a named capturing group in Java regex?
+2. How do you retrieve a named group's captured text from a <code>Matcher</code>?</p>
+<p><strong>Intermediate</strong>
+1. What are the restrictions on valid group names?
+2. How would you write a named backreference?</p>
+<p><strong>Advanced</strong>
+1. Internally, how does <code>group(String name)</code> resolve to the correct captured substring?</p>
+<p><strong>Scenario-based</strong>
+1. A regex parsing log lines has grown to 6 capturing groups referenced by position (<code>group(1)</code> through <code>group(6)</code>), and a recent refactor reordered them, silently breaking downstream code - how would named groups have prevented this?</p>
+<h3 id="detailed-answers_3">Detailed Answers</h3>
+<ol>
+<li><strong>Q: Syntax?</strong> A: <code>(?&lt;name&gt;pattern)</code>, e.g., <code>(?&lt;year&gt;\d{4})</code>.</li>
+<li><strong>Q: Retrieving named group?</strong> A: <code>matcher.group("name")</code> (also <code>matcher.start("name")</code>/<code>matcher.end("name")</code> for its boundary indices).</li>
+<li><strong>Q: Naming restrictions?</strong> A: Names must start with a letter and contain only letters and digits (no underscores, hyphens, or other special characters in standard Java regex), and must be unique within the pattern.</li>
+<li><strong>Q: Named backreference syntax?</strong> A: <code>\k&lt;name&gt;</code>, e.g., <code>(?&lt;word&gt;\w+)\s+\k&lt;word&gt;</code> to match an immediately repeated word by name instead of by number.</li>
+<li><strong>Q: How does <code>group(name)</code> resolve?</strong> A: The compiled <code>Pattern</code> maintains an internal map from group name to its positional group index (assigned during compilation by parenthesis order); <code>group(name)</code> looks up that index in the map, then returns the same captured substring that <code>group(index)</code> would.</li>
+<li><strong>Q: Named groups preventing reorder breakage?</strong> A: If the log-parsing regex used <code>(?&lt;host&gt;...)</code>, <code>(?&lt;status&gt;...)</code>, etc., and downstream code called <code>matcher.group("host")</code>/<code>matcher.group("status")</code>, reordering the groups within the pattern (as long as names stay the same) would have zero effect on downstream code, since name-based lookup doesn't depend on positional order - eliminating that entire class of silent breakage.</li>
+</ol>
+<h3 id="code-examples_3">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.regex.Matcher</span><span class="p">;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.regex.Pattern</span><span class="p">;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">NamedGroupsDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">        </span><span class="n">Pattern</span><span class="w"> </span><span class="n">logPattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Pattern</span><span class="p">.</span><span class="na">compile</span><span class="p">(</span><span class="s">"(?&lt;host&gt;\\S+) - - \\[(?&lt;time&gt;[^\\]]+)\\] \"(?&lt;request&gt;[^\"]+)\""</span><span class="p">);</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">        </span><span class="n">Matcher</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logPattern</span><span class="p">.</span><span class="na">matcher</span><span class="p">(</span><span class="s">"192.168.1.1 - - [10/Oct/2024:13:55:36] \"GET /index.html HTTP/1.1\""</span><span class="p">);</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="na">matches</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Host: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="na">group</span><span class="p">(</span><span class="s">"host"</span><span class="p">));</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Time: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="na">group</span><span class="p">(</span><span class="s">"time"</span><span class="p">));</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Request: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="na">group</span><span class="p">(</span><span class="s">"request"</span><span class="p">));</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="common-pitfalls-catastrophic-backtracking">Common Pitfalls (Catastrophic Backtracking)</h2>
+<h3 id="theory_4">Theory</h3>
+<ul>
+<li><strong>Core Concepts</strong> - Catastrophic backtracking occurs when a regex containing nested or ambiguous quantifiers (e.g., <code>(a+)+b</code> against input with many <code>a</code>s and no trailing <code>b</code>) causes the backtracking engine to explore an exponential number of ways to partition the input among the nested repetitions before concluding there's no match, causing the match attempt to appear to "hang".</li>
+<li><strong>Internal Working</strong> - Java's regex engine is a backtracking NFA simulator (not a linear-time DFA-based engine like RE2); when a quantified group is itself quantified (<code>(x+)+</code>), the number of ways to distribute a matching prefix across the outer and inner repetitions grows exponentially with input length for certain failing inputs.</li>
+<li><strong>When to Use It</strong> - N/A (a pitfall to avoid) - understanding it is essential for writing safe regexes, especially any applied to user-supplied/untrusted input (a classic ReDoS - Regular Expression Denial of Service - vector).</li>
+<li><strong>Advantages</strong> - N/A - purely a hazard to be mitigated.</li>
+<li><strong>Limitations</strong> - Can turn a seemingly simple validation regex into a denial-of-service vulnerability if untrusted input triggers worst-case exponential-time matching, potentially hanging a thread (and, if unbounded, an entire thread pool) indefinitely.</li>
+</ul>
+<h3 id="internal-working_4">Internal Working</h3>
+<ul>
+<li><strong>Step-by-Step Explanation</strong> - For a pattern like <code>(a+)+b</code> matched against <code>"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!"</code> (many a's, then a character that isn't <code>b</code>), the engine tries every possible way the outer <code>+</code> can split the run of a's among multiple iterations of the inner <code>a+</code> group, backtracking through combinatorially many partitions before finally concluding failure - the number of partitions grows exponentially with the length of the a-run, so runtime explodes even though the final answer is simply "no match".</li>
+<li><strong>Memory Layout</strong> - Not directly a memory issue - primarily a CPU-time (single-thread) explosion; the backtracking state itself (a call/choice-point stack) grows but the dominant cost is the sheer number of combinations explored, not memory exhaustion per se.</li>
+<li><strong>Diagrams</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Pattern: (a+)+b   Input: "aaaa...a!" (n a's, no trailing b)
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>Outer + tries: 1 group of n a's, or 2 groups (1+..n-1), or 3 groups, ... exponentially many splits
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>Each split ultimately fails (no 'b' at the end) -&gt; total work grows ~2^n
+</code></pre></div></li>
+<li><strong>JVM Behaviour</strong> - This is a property of the backtracking algorithm itself, not a JIT/GC concern - the thread performing the match simply burns CPU in the regex engine's matching loop; there's no JVM-level timeout by default, so a single pathological match call can hang the thread indefinitely unless the application imposes its own timeout (e.g., running the match on a separate thread/future with a timeout, or since Java 9+ some limited safeguards, though the fundamental risk remains for genuinely malicious patterns/input).</li>
+</ul>
+<h3 id="interview-questions_4">Interview Questions</h3>
+<p><strong>Basic</strong>
+1. What is catastrophic backtracking?
+2. What is ReDoS?</p>
+<p><strong>Intermediate</strong>
+1. What regex pattern shapes are classic red flags for catastrophic backtracking?
+2. How can rewriting a pattern to avoid nested quantifiers or using possessive quantifiers/atomic groups mitigate this?</p>
+<p><strong>Advanced</strong>
+1. Why is Java's regex engine (backtracking NFA) fundamentally susceptible to this, while engines like RE2 are not?</p>
+<p><strong>Scenario-based</strong>
+1. A public-facing form validates email addresses using a complex regex found online, and after launch, certain crafted inputs cause request threads to hang at 100% CPU - diagnose and fix.</p>
+<h3 id="detailed-answers_4">Detailed Answers</h3>
+<ol>
+<li><strong>Q: What is catastrophic backtracking?</strong> A: A pathological performance case where a backtracking regex engine explores an exponential (or high-polynomial) number of ways to match/fail against certain inputs, due to ambiguous nested/overlapping quantifiers, causing the match operation to take drastically longer than expected (seconds, minutes, or effectively "forever").</li>
+<li><strong>Q: What is ReDoS?</strong> A: Regular Expression Denial of Service - an attack where a malicious actor supplies crafted input specifically designed to trigger catastrophic backtracking in a vulnerable regex, tying up server CPU/threads and potentially causing a denial of service.</li>
+<li><strong>Q: Classic red-flag pattern shapes?</strong> A: Nested quantifiers where the inner and outer patterns can match overlapping sets of characters, e.g., <code>(a+)+</code>, <code>(a*)*</code>, <code>(a|aa)+</code>, <code>(a+)+b</code> - any pattern where a repeated group's content overlaps with what the group itself (or a surrounding quantifier) also matches, creating ambiguity in how to partition the input.</li>
+<li><strong>Q: Mitigation via rewriting/possessive quantifiers?</strong> A: Rewrite to eliminate the ambiguity (e.g., <code>(a+)+b</code> simplifies to <code>a+b</code> since the nested quantifier adds no matching power here, just ambiguity); alternatively use possessive quantifiers (<code>a++</code>) or atomic groups (<code>(?&gt;a+)</code>), which commit to a match and never backtrack into it, eliminating the combinatorial exploration at the cost of occasionally rejecting a match a fully-backtracking version would have found (rare when used correctly for genuinely non-overlapping alternatives).</li>
+<li><strong>Q: Why is Java's engine susceptible but RE2 isn't?</strong> A: Java's <code>java.util.regex</code> uses a backtracking simulation of an NFA (needed to support features like backreferences and lookaround, which aren't expressible in a pure finite-automaton/linear-time model); RE2 (and similar engines) deliberately sacrifice backreference/lookaround support to guarantee linear-time matching via true DFA/Thompson-NFA simulation without backtracking, trading expressiveness for a hard performance guarantee.</li>
+<li><strong>Q: Email regex ReDoS fix?</strong> A: Identify and rewrite the vulnerable ambiguous quantifier portion of the pattern (or replace the overly complex "perfect" email regex with a simpler, well-tested one, or a two-step validate-then-parse approach); as defense-in-depth, also enforce a maximum input length before regex validation, and/or run the match with an execution timeout (e.g., on a separate thread, cancellable via <code>Future.get(timeout)</code>), and consider tools like <code>regexstaticanalysis</code>/<code>rxxr2</code> or a linear-time engine if regex complexity is unavoidable.</li>
+</ol>
+<h3 id="code-examples_4">Code Examples</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.regex.Pattern</span><span class="p">;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CatastrophicBacktrackingDemo</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">        </span><span class="c1">// DANGEROUS: nested quantifier (a+)+ creates exponential ambiguity on non-matching input</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">        </span><span class="n">Pattern</span><span class="w"> </span><span class="n">vulnerable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Pattern</span><span class="p">.</span><span class="na">compile</span><span class="p">(</span><span class="s">"(a+)+b"</span><span class="p">);</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">        </span><span class="c1">// vulnerable.matcher("a".repeat(35) + "!").matches(); // would hang for a long time - DO NOT RUN</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">        </span><span class="c1">// SAFE rewrite: equivalent matching power without the nested-quantifier ambiguity</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">        </span><span class="n">Pattern</span><span class="w"> </span><span class="n">safe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Pattern</span><span class="p">.</span><span class="na">compile</span><span class="p">(</span><span class="s">"a+b"</span><span class="p">);</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">safe</span><span class="p">.</span><span class="na">matcher</span><span class="p">(</span><span class="s">"aaaab"</span><span class="p">).</span><span class="na">matches</span><span class="p">());</span><span class="w"> </span><span class="c1">// true, and always fast</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">        </span><span class="c1">// Defense in depth: bound input length before applying any regex to untrusted input</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">untrusted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"a"</span><span class="p">.</span><span class="na">repeat</span><span class="p">(</span><span class="mi">35</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"!"</span><span class="p">;</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">untrusted</span><span class="p">.</span><span class="na">length</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">safe</span><span class="p">.</span><span class="na">matcher</span><span class="p">(</span><span class="n">untrusted</span><span class="p">).</span><span class="na">matches</span><span class="p">());</span><span class="w"> </span><span class="c1">// false, fast (no ambiguity to explore)</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="p">}</span>
+</code></pre></div></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2025 <a href="https://github.com/abhishekghoshh"  target="_blank" rel="noopener">Abhishek Ghosh</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/abhishekghoshh" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://x.com/abhishek_ghoshh" target="_blank" rel="noopener" title="x.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/abhishek-ghosh-220679132/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+    
+  </body>
+</html>
