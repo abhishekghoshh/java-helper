@@ -1017,3 +1017,13 @@ javap -c BytecodeOverviewDemo
 - [GraalVM & Spring Boot: Building a Native Executable | Marco Reacts](https://www.youtube.com/watch?v=soqw1cPHMEE)
 - [Spring Boot and GraalVM Native Images: A Match Made in Heaven?](https://www.youtube.com/watch?v=s9dNoPUmi6E)
 - [Going Native: Fast and Lightweight Spring Boot Applications with GraalVM by Alina Yurenko](https://www.youtube.com/watch?v=8umoZWj6UcU)
+
+
+
+### Medium Resources
+
+- [Understanding JVM Memory Structure (Heap, Stack, Metaspace & More)](https://medium.com/@milon.istiyak/understanding-jvm-memory-structure-heap-stack-metaspace-more-ab4254197965)
+- [Understanding JVM Memory architecture and guidelines and tools for troubleshooting](https://medium.com/javarevisited/understanding-jvm-memory-architecture-and-guidelines-and-tools-for-troubleshooting-f8b33d28d393)
+- [Introduction to Java’s Memory Model — Heap, Stack, and Metaspace](https://medium.com/@AlexanderObregon/introduction-to-javas-memory-model-heap-stack-and-metaspace-ceaeb565921c)
+- [Java Virtual Machine (JVM): Deep Dive into Its Architecture and Performance](https://medium.com/@AlexanderObregon/java-virtual-machine-jvm-deep-dive-into-its-architecture-and-performance-9f8f209b30e7)
+- [Java Interview Questions : Java Memory Model](https://medium.com/@priyasrivastava18official/java-interview-questions-java-memory-model-b0c2695244a9)

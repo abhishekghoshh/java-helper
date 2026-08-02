@@ -694,8 +694,22 @@ public class StreamGatherersDemo {
 ### Interview Question Resources
 
 - [Java Stream API Interview Questions and Answer](https://www.naukri.com/code360/library/stream-api-interview-questions)
+
+
+### Medium Resources
+
+- [50 Hands-On Java Stream Examples You Can’t Miss (Interview Style)](https://medium.com/@gainilaxman5/50-hands-on-java-stream-examples-you-cant-miss-interview-style-856c50e4423b)
+- [The Senior Java Stream API Ultimate Interview Handbook](https://medium.com/@basukinath/the-senior-java-stream-api-ultimate-interview-handbook-47fb4536cba6)
+- [Tricky and interesting Java Streams interview questions](https://codefarm0.medium.com/tricky-and-interesting-java-streams-interview-questions-b86d1306bbcf)
+- [Java Stream API Interview Questions for 3–10 Years Experience](https://medium.com/@umesh382.kushwaha/java-stream-api-interview-questions-for-3-10-years-experience-19d1d3a9b8de)
+- [40 Moderate to Difficult Java Stream API Interview Questions (With Short Answers) — Asked in Top Tech Interviews](https://codefarm0.medium.com/40-moderate-to-difficult-java-stream-api-interview-questions-with-short-answers-asked-in-top-fb9e3e861cd1)
+
 - [Java Stream Coding Interview Questions: Part 1](https://medium.com/@mehar.chand.cloud/java-stream-coding-interview-questions-part-1-dc39e3575727)
 - [Java Stream Coding Interview Questions: Part 2](https://medium.com/@mehar.chand.cloud/java-stream-coding-interview-questions-part-2-9f3aad0025f3)
-- [Java Stream Hard Interview Questions](https://medium.com/@mehar.chand.cloud/java-stream-hard-interview-questions-54ea0de40acc)
+
 - [Avoid These 5 Common Java Stream Mistakes for Efficient Development](https://medium.com/javarevisited/avoid-these-5-common-java-stream-mistakes-for-efficient-development-7aefce097ac3)
 - [Top 10 Java Stream API Coding Questions for your next interview](https://rathod-ajay.medium.com/top-10-java-stream-api-coding-questions-for-your-next-interview-5b96c22da6f7)
+
+- [100 Java Streams Interview Questions with Solutions and Outputs](https://medium.com/@bhangalekunal2631996/100-java-streams-interview-questions-with-solutions-and-outputs-2afb0713ceec)
+
+- [Java Stream Hard Interview Questions](https://medium.com/@mehar.chand.cloud/java-stream-hard-interview-questions-54ea0de40acc)

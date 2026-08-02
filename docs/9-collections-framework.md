@@ -2828,7 +2828,6 @@ public class LinkedListInternalsDemo {
 - [Java Collections](https://www.callicoder.com/java-arraylist/)
 - [Java Collections Interview Questions and Answers](https://www.geeksforgeeks.org/java-collections-interview-questions)
 - [Java Collections Interview Questions](https://www.interviewbit.com/java-collections-interview-questions/)
-- [Top 50 Java Collections Interview Questions You Need to Know](https://medium.com/@harendrakumarrajpoot5/top-50-java-collections-interview-questions-you-need-to-know-e55fcdc8dbfb)
 - [Top Java Collection Interview Questions and Answers for 2025](https://www.simplilearn.com/tutorials/java-tutorial/java-collection-interview-questions)
 - [Java Collections Interview Questions](https://www.baeldung.com/java-collections-interview-questions)
 
@@ -2839,3 +2838,14 @@ public class LinkedListInternalsDemo {
 - Internal working of HashMap, TreeMap, ConcurrentHashMap, LinkedHashMap, SortedMap, Hashtable
 - Same for HashSet, TreeSet, LinkedHashSet
 - Comparable and Comparator
+
+
+### Medium Resources
+
+- [Java Collections Interview Questions](https://sathyaventhan.medium.com/java-collections-interview-questions-9e03a0d05ed0)
+- [Top 50 Java Collections Interview Questions You Need to Know](https://medium.com/@harendrakumarrajpoot5/top-50-java-collections-interview-questions-you-need-to-know-e55fcdc8dbfb)
+- [30 Days of Java — Day 13 — Collections Interview Questions](https://medium.com/@ksshravan667/30-days-of-java-day-13-collections-interview-questions-f0708b3726cb)
+- [Collections in Java interview Questions and Answers](https://medium.com/@javainterviewquestions/collections-in-java-interview-questions-and-answers-5cbe91cb4e73)
+- [Java Collections Interview Questions(2024)](https://medium.com/javarevisited/java-collections-interview-questions-fc252c80b55a)
+- [Java Interview Questions : Collections : ArrayList,LinkedList,HashMap,LinkedHashMap,HashSet,TreeMap,TreeSet,Max-PriorityQueue, Min-Priority Queue](https://medium.com/@priyasrivastava18official/java-interview-questions-collections-f08a6c2fe792)
+- [How ConcurrentHashMap Works Internally (Java 8+)](https://medium.com/javarevisited/how-concurrenthashmap-works-internally-java-8-a03f5b1780b6)

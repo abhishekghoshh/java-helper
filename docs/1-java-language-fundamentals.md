@@ -2718,5 +2718,5 @@ public class ShortCircuitDemo {
 - [Java Interview Questions](https://www.interviewbit.com/java-interview-questions/)
 - [56 Java Interview Questions And Answers For All Levels](https://www.datacamp.com/blog/java-interview-questions)
 - [Java Interview Questions and Answers 2025](https://www.naukri.com/code360/library/java-interview-questions)
-- [I Gave More Than 50 Interviews in the Last 6 Months— Here Are the Most Frequently Asked Java Interview Questions](https://medium.com/javarevisited/i-gave-more-than-50-interviews-in-the-last-6-months-here-are-the-most-frequently-asked-java-b98348f02e9e)
-- [70+ Real Interview Questions for Java Backend Developers EPAM | Autodesk | Citi Bank 2025](https://usersk7.medium.com/70-java-backend-interview-questions-from-epam-autodesk-citi-bank-2025-45f2f273bbf0)
+
+

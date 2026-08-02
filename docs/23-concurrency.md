@@ -3102,14 +3102,39 @@ public class ScopedTenantContext {
 
 - [Java concurrency basics](https://www.callicoder.com/java-concurrency-multithreading-basics/)
 - [Java CompletableFuture Tutorial with Examples](https://www.callicoder.com/java-8-completablefuture-tutorial/)
+-
 - [Guide to the Fork/Join Framework in Java](https://www.baeldung.com/java-fork-join)
 - [A Guide to the Java ExecutorService](https://www.baeldung.com/java-executor-service-tutorial)
 - [Custom Thread Pools in Java Parallel Streams](https://www.baeldung.com/java-8-parallel-streams-custom-threadpool)
-- [Java Multithreading Interview Questions and Answers](https://www.geeksforgeeks.org/java-multithreading-interview-questions-and-answers/)
 - [Java Concurrency Interview Questions (+ Answers)](https://www.baeldung.com/java-concurrency-interview-questions)
+- 
+- [Java Multithreading Interview Questions and Answers](https://www.geeksforgeeks.org/java-multithreading-interview-questions-and-answers/)
+-
 - [Multithreading Interview Questions](https://www.interviewbit.com/multithreading-interview-questions/)
+
+
+
+### Medium Resources
+
 - [Top 7 Advanced Java Multithreading Questions (With Detailed Explanations and Examples)](https://codefarm0.medium.com/top-7-advanced-java-multithreading-questions-with-detailed-explanations-and-examples-e02e04486cc6)
 - [30 Tricky Java Multi-Threading Interview Questions with Answers](https://medium.com/@chandantechie/30-tricky-java-multi-threading-interview-questions-with-answers-c47a9dedaa57)
-- [Multithreading: 350+ Interview Questions & In-Depth Explanations in Java?](https://medium.com/@gaddamnaveen192/multithreading-350-interview-questions-in-depth-explanations-in-java-a9160ba65ad9)
 - [Java Multithreading Interview Questions 2024](https://medium.com/@scholarhatblogs/java-multithreading-interview-questions-2024-d756e4a1d4bf)
 - [Java Interview Questions : Static,final,volatile,synchronized ,Transient ,Atomic](https://medium.com/@priyasrivastava18official/java-interview-questions-static-final-volatile-synchronised-transiet-atomic-4493cf3f5fcc)
+- [Multithreading: 350+ Interview Questions & In-Depth Explanations in Java?](https://medium.com/@gaddamnaveen192/multithreading-350-interview-questions-in-depth-explanations-in-java-a9160ba65ad9)
+- [Cracking the Senior Java Interview: 10 Hardcore Questions on Concurrency](https://medium.com/but-it-works-on-my-machine/cracking-the-senior-java-interview-10-hardcore-questions-on-concurrency-c930688b04ec)
+- [Java Multithreading — Interview Questions with Answers](https://medium.com/@code.chandrashekhar/java-multithreading-interview-questions-with-answers-b5f132afe128)
+- [Top 50 Java Thread and Concurrency Interview Questions Answers for 2 to 5 Years Experienced Developers](https://medium.com/javarevisited/top-50-java-thread-and-concurrency-interview-questions-answers-for-2-to-5-years-experienced-8e373eca8451)
+- [Java Interview Questions : Multithreading (Threads, ExecutorService , Callable, Future)](https://medium.com/@priyasrivastava18official/java-interview-questions-multithreading-threads-executorservice-callable-future-b26019793f7d)
+- [Concurrency & Multithreading: Tricky Interview Questions That Actually Matter](https://codefarm0.medium.com/concurrency-multithreading-tricky-interview-questions-that-actually-matter-d6340a72f070)
+- [The Trickiest Concurrency Question I Ever Faced — And How I Finally Cracked It](https://medium.com/javarevisited/the-trickiest-concurrency-question-i-ever-faced-and-how-i-finally-cracked-it-7fe758fdaad8)
+- [Java Concurrency Interview Questions-03](https://medium.com/@vikas.taank_40391/java-concurrency-interview-questions-03-7299f5ada4bb)
+- [Concurrency #2.3 : Executor Framework Interview Questions](https://medium.com/@javalearners/concurrency-4-executor-framework-interview-questions-part-3-8568b85a55e2)
+- [Java Concurrency Interview Questions for Senior Developers](https://medium.com/@sparsh187/java-concurrency-interview-questions-for-senior-developers-7415d2aeaefe)
+- [Java Concurrency — Top MNC Interview Question and Answers](https://medium.com/@code.chandrashekhar/java-concurrency-top-mnc-interview-question-and-answers-2336360fd641)
+-
+-
+-
+- [We Replaced 500 Tomcat Threads with Virtual Threads — The Results Shocked Us](https://medium.com/@gaddamnaveen192/we-replaced-500-tomcat-threads-with-virtual-threads-the-results-shocked-us-12cd9afe4a15)
+-
+-
+- [Java’s ReentrantLock.lock() Method Explained](https://medium.com/@AlexanderObregon/javas-reentrantlock-lock-method-explained-41ace8b9eec7)
